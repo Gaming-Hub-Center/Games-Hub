@@ -60,11 +60,11 @@ For task management and issue tracking, use our [Jira board](https://rowainaabde
 
 We are a dedicated team of engineers from the Faculty of Engineering at Alexandria University working on the Games Hub project. Meet our team members:
 
-- **Ehab Yasser** - [GitHub](https://github.com/EhabYasser25)
-- **Islam Yasser** - [GitHub](https://github.com/Islam0143)
-- **Rowaina Abdelnaser** - [GitHub](https://github.com/rowaina2025)
-- **Marwan Yasser** - [GitHub](https://github.com/Maro1123)
-- **Elbadry Mohamed** - [GitHub](https://github.com/Elbadry2025)
-- **Mkario Michel** - [GitHub](https://github.com/Mkario)
+- **[Ehab Yasser](https://github.com/EhabYasser25)**
+- **[Islam Yasser](https://github.com/Islam0143)**
+- **[Rowaina Abdelnaser](https://github.com/rowaina2025)**
+- **[Marwan Yasser](https://github.com/Maro1123)**
+- **[Elbadry Mohamed](https://github.com/Elbadry2025)**
+- **[Mkario Michel](https://github.com/Mkario)**
 
 Feel free to reach out to any of us for questions, collaboration, or contributions to the project!
