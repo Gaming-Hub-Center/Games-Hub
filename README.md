@@ -33,7 +33,7 @@ To get started with the project, follow these steps:
 1. Clone the repository.
    ```bash
    git clone https://github.com/your-username/games-hub.git
-   cd games-hub
+   cd games-hub/Frontend
    ```
 
 2. Install dependencies.
@@ -43,10 +43,10 @@ To get started with the project, follow these steps:
    
 3. Run the development server.
    ```bash
-   npm start
+   npm run dev
    ```
 
-4. Open your browser and navigate to http://localhost:3000.
+4. Open your browser and navigate to http://localhost:5173/
 
 ## Documentation
 
