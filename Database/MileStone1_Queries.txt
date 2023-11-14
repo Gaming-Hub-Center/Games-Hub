@@ -21,7 +21,7 @@ CREATE TABLE Seller (
     SellerDescription TEXT,
     Balance FLOAT,
     NationalID VARCHAR(20),
-    Address VARCHAR(255) UNIQUE
+    Address VARCHAR(255)
 
 );
 

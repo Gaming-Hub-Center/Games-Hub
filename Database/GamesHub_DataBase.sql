@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `EmailAddress` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`AdminID`),
   UNIQUE KEY `EmailAddress` (`EmailAddress`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'Alice Johnson','1234567890','alice.johnson@example.com'),(2,'Bob Smith','0987654321','bob.smith@example.com'),(3,'Carol White','1122334455','carol.white@example.com'),(4,'David Brown','2233445566','david.brown@example.com');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +61,7 @@ CREATE TABLE `buyer` (
   `Balance` float DEFAULT NULL,
   PRIMARY KEY (`BuyerID`),
   UNIQUE KEY `Email_Address` (`Email_Address`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +70,7 @@ CREATE TABLE `buyer` (
 
 LOCK TABLES `buyer` WRITE;
 /*!40000 ALTER TABLE `buyer` DISABLE KEYS */;
+INSERT INTO `buyer` VALUES (1,'Elbadry Mohamed','+201006638953','elbadry1775@gmail.com','17 luxor st sporting','Test_Password_SWE',5015);
 /*!40000 ALTER TABLE `buyer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,8 +94,7 @@ CREATE TABLE `seller` (
   `NationalID` varchar(20) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`SellerID`),
-  UNIQUE KEY `Email_Address` (`Email_Address`),
-  UNIQUE KEY `Address` (`Address`)
+  UNIQUE KEY `Email_Address` (`Email_Address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -115,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-14  2:25:32
+-- Dump completed on 2023-11-14  2:37:23
