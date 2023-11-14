@@ -1,0 +1,34 @@
+CREATE SCHEMA GameHub;
+USE GameHub;
+
+CREATE TABLE Buyer (
+    BuyerID INT AUTO_INCREMENT PRIMARY KEY,
+    BuyerName VARCHAR(255),
+    ContactNumber VARCHAR(15),
+    Email_Address VARCHAR(255) UNIQUE,
+    Address VARCHAR(255),
+    UserPassword VARCHAR(64),
+    Balance FLOAT
+);
+CREATE TABLE Seller (
+    SellerID INT AUTO_INCREMENT PRIMARY KEY,
+    Vat_Registration_Number VARCHAR(255),
+    Date_Joined DATE,
+    Seller_Name VARCHAR(255),
+    ContactNumber VARCHAR(15),
+    Email_Address VARCHAR(255) UNIQUE,
+    SellerPassword VARCHAR(64),
+    SellerDescription TEXT,
+    Balance FLOAT,
+    NationalID VARCHAR(20),
+    Address VARCHAR(255) UNIQUE
+
+);
+
+CREATE TABLE Admin (
+    AdminID INT AUTO_INCREMENT PRIMARY KEY,
+    AdminName VARCHAR(255),
+    ContactNumber VARCHAR(15),
+    EmailAddress VARCHAR(255) UNIQUE
+
+);
