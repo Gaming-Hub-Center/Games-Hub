@@ -1,7 +1,9 @@
 package com.gameshub.Controller;
 
-import com.gameshub.User.*;
+import com.gameshub.Exception.*;
+import com.gameshub.Repository.*;
 import com.gameshub.Utils.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,18 +11,41 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("http://localhost:5173")
 public class AuthController {
 
-    @PostMapping("/signin")
-    public ResponseEntity<Boolean> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        System.out.println("ehab");
-        SignIn signIn = new SignIn(loginRequest.getEmail(), loginRequest.getPassword());
-        boolean authentication;
+    @Autowired
+    private BuyerRepository buyerRepository;
+
+    @PostMapping("signin")
+    public ResponseEntity<?> authenticateUser(@RequestBody SignInRequest signInRequest) {
+        GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
         try {
-            authentication = signIn.authenticate();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).header(e.getMessage()).body(false);
+            return ResponseEntity.ok(signInRequest.authenticate(buyerRepository));
+        } catch (InvalidFormatException ex) {
+            return globalExceptionHandler.handleInvalidFormatException(ex);
+        } catch (ResourceNotFoundException ex) {
+            return globalExceptionHandler.handleResourceNotFoundException(ex);
+        } catch (PasswordMismatchException ex) {
+            return globalExceptionHandler.handlePasswordMismatchException(ex);
+        } catch (Exception ex) {
+            return globalExceptionHandler.handleGeneralException(ex);
         }
-        return ResponseEntity.ok(authentication);
     }
+
+    // =========== Testing ===========
+
+//    @GetMapping("buyers")
+//    public List<Buyer> getAllBuyers() {
+//        return buyerRepository.findAll();
+//    }
+//
+//    @GetMapping("buyer")
+//    public ResponseEntity<Buyer> getBuyer(@RequestParam String email) {
+//        Buyer buyer = buyerRepository.findByEmail(email);
+//        if (buyer != null)
+//            return ResponseEntity.ok(buyer);
+//        else
+//            return ResponseEntity.notFound().build();
+//    }
+
+    // ===============================
 
 }
