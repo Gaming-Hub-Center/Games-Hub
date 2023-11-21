@@ -30,22 +30,4 @@ public class AuthController {
         }
     }
 
-    // =========== Testing ===========
-
-//    @GetMapping("buyers")
-//    public List<Buyer> getAllBuyers() {
-//        return buyerRepository.findAll();
-//    }
-//
-//    @GetMapping("buyer")
-//    public ResponseEntity<Buyer> getBuyer(@RequestParam String email) {
-//        Buyer buyer = buyerRepository.findByEmail(email);
-//        if (buyer != null)
-//            return ResponseEntity.ok(buyer);
-//        else
-//            return ResponseEntity.notFound().build();
-//    }
-
-    // ===============================
-
 }
