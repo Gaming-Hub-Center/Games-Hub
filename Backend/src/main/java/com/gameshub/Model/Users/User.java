@@ -1,45 +1,32 @@
-package com.gameshub.Model;
+package com.gameshub.Model.Users;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "buyer")
-public class Buyer {
+@MappedSuperclass
+public abstract class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BuyerID")
-    private int id;
+    @Column(name = "ID")
+    protected Integer id;
 
-    @Column(name = "Buyername")
-    private String name;
+    @Column(name = "Name")
+    protected String name;
 
-    @Column(name = "Email_Address", unique = true)
-    private String email;
+    @Column(name = "Email", unique = true)
+    protected String email;
 
-    @Column(name = "Userpassword")
-    private String password;
+    @Column(name = "Password")
+    protected String password;
 
-    @Column(name = "Contactnumber")
-    private String phone;
+    @Column(name = "Phone")
+    protected String phone;
 
     @Column(name = "Address")
-    private String address;
+    protected String address;
 
     @Column(name = "Balance")
-    private float balance;
-
-    public Buyer() { }
-
-    public Buyer(int id, String name, String email, String password, String phone, String address, float balance) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.address = address;
-        this.balance = balance;
-    }
+    protected float balance;
 
     public int getId() {
         return id;
