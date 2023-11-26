@@ -1,0 +1,39 @@
+{
+  "properties": [
+    {
+      "name": "google.redirect-uri",
+      "type": "java.lang.String",
+      "description": "http://localhost:8080/login/oauth2/code/google"
+    },
+    {
+      "name": "google.authorization-uri",
+      "type": "java.lang.String",
+      "description": "https://accounts.google.com/o/oauth2/auth"
+    },
+    {
+      "name": "google.token-uri",
+      "type": "java.lang.String",
+      "description": "https://oauth2.googleapis.com/token"
+    },
+    {
+      "name": "google.user-info-uri",
+      "type": "java.lang.String",
+      "description": "https://www.googleapis.com/oauth2/v3/userinfo"
+    },
+    {
+      "name": "google.jwk-set-uri",
+      "type": "java.lang.String",
+      "description": "https://www.googleapis.com/oauth2/v3/certs"
+    },
+    {
+      "name": "google.client-id",
+      "type": "java.lang.String",
+      "description": "158604097381-ph6scoj0m3np32h6bi98bvojq4ku6dgj.apps.googleusercontent.com"
+    },
+    {
+      "name": "google.client-secret",
+      "type": "java.lang.String",
+      "description": "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"
+    }
+  ]
+}

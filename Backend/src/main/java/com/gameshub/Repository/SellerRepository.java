@@ -1,6 +1,6 @@
 package com.gameshub.Repository;
 
-import com.gameshub.Model.*;
+import com.gameshub.Model.Users.Seller;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
 
