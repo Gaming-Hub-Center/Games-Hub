@@ -1,14 +1,14 @@
 package com.gameshub.Model.Users;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "buyer")
-public class Buyer extends User {
+public class BuyerDAO extends UserDAO {
 
-    public Buyer() { }
+    public BuyerDAO() { }
 
-    public Buyer(int id, String name, String email, String password, String phone, String address, float balance) {
+    public BuyerDAO(int id, String name, String email, String password, String phone, String address, float balance) {
         this.id = id;
         this.name = name;
         this.email = email;

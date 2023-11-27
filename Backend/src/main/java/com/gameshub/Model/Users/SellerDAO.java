@@ -1,12 +1,11 @@
 package com.gameshub.Model.Users;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.time.*;
 
 @Entity
 @Table(name = "seller")
-public class Seller extends User {
+public class SellerDAO extends UserDAO {
 
     @Column(name = "NationalID")
     private String nationalID;
@@ -20,9 +19,9 @@ public class Seller extends User {
     @Column(name = "Vat_Registration_Number")
     private String vatRegistrationNumber;
 
-    public Seller() { }
+    public SellerDAO() { }
 
-    public Seller(int id, String name, String email, String password, String phone, String address, float balance, String nationalID, LocalDate dateJoined, String sellerDescription, String vatRegistrationNumber) {
+    public SellerDAO(int id, String name, String email, String password, String phone, String address, float balance, String nationalID, LocalDate dateJoined, String sellerDescription, String vatRegistrationNumber) {
         this.id = id;
         this.name = name;
         this.email = email;

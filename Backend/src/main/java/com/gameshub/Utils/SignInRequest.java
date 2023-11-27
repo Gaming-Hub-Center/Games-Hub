@@ -2,7 +2,7 @@ package com.gameshub.Utils;
 
 import com.gameshub.Exception.*;
 import com.gameshub.Model.Users.*;
-import com.gameshub.Repository.*;
+import com.gameshub.Service.*;
 
 import java.util.*;
 import java.util.regex.*;
@@ -34,15 +34,15 @@ public class SignInRequest {
             throw new InvalidFormatException("Email is written in a wrong format!");
     }
 
-    public boolean authenticate(BuyerRepository buyerRepository, SellerRepository sellerRepository) {
+    public boolean authenticate(BuyerDetailsService buyerDetailsService, SellerDetailsService sellerDetailsService) {
         validateEmailFormat();
-        Buyer buyer = buyerRepository.findByEmail(email);
-        Seller seller = sellerRepository.findByEmail(email);
-        if (buyer == null && seller == null)
+        BuyerDAO buyerDAO = buyerDetailsService.getByEmail(email);
+        SellerDAO sellerDAO = sellerDetailsService.getByEmail(email);
+        if (buyerDAO == null && sellerDAO == null)
             throw new ResourceNotFoundException("User with email '" + email + "' not found.");
-        if (buyer != null && !Objects.equals(this.password, buyer.getPassword()))
+        if (buyerDAO != null && !Objects.equals(this.password, buyerDAO.getPassword()))
             throw new PasswordMismatchException("Password does not match.");
-        if (seller != null && !Objects.equals(this.password, seller.getPassword()))
+        if (sellerDAO != null && !Objects.equals(this.password, sellerDAO.getPassword()))
             throw new PasswordMismatchException("Password does not match.");
         return true;
     }

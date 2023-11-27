@@ -1,9 +1,9 @@
 package com.gameshub.Model.Users;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @MappedSuperclass
-public abstract class User {
+public abstract class UserDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

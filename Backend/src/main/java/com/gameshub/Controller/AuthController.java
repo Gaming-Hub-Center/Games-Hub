@@ -1,11 +1,12 @@
 package com.gameshub.Controller;
 
-import com.gameshub.Exception.*;
 import com.gameshub.Model.Users.*;
-import com.gameshub.Repository.*;
-import com.gameshub.Utils.*;
+import com.gameshub.Service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
+import org.springframework.security.authentication.*;
+import org.springframework.security.core.*;
+import org.springframework.security.core.context.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -15,61 +16,79 @@ import java.util.*;
 public class AuthController {
 
     @Autowired
-    private BuyerRepository buyerRepository;
+    private BuyerDetailsService buyerDetailsService;
 
     @Autowired
-    private SellerRepository sellerRepository;
+    private SellerDetailsService sellerDetailsService;
 
-    @PostMapping("signin")
-    public ResponseEntity<?> authenticateUser(@RequestBody SignInRequest signInRequest) {
-        GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
-        try {
-            return ResponseEntity.ok(signInRequest.authenticate(buyerRepository, sellerRepository));
-        } catch (InvalidFormatException ex) {
-            return globalExceptionHandler.handleInvalidFormatException(ex);
-        } catch (ResourceNotFoundException ex) {
-            return globalExceptionHandler.handleResourceNotFoundException(ex);
-        } catch (PasswordMismatchException ex) {
-            return globalExceptionHandler.handlePasswordMismatchException(ex);
-        } catch (Exception ex) {
-            return globalExceptionHandler.handleGeneralException(ex);
-        }
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO) {
+        System.out.println(userLoginDTO.toString());
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(userLoginDTO.getEmail(), userLoginDTO.getPassword())
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return ResponseEntity.ok("Logged in successfully");
     }
+
+    @GetMapping("/")
+    public String home() {
+        return ("<h1>Welcome</h1>");
+    }
+
+//    @PostMapping("signin")
+//    public ResponseEntity<?> authenticateUser(@RequestBody SignInRequest signInRequest) {
+//        GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
+//        try {
+//            return ResponseEntity.ok(signInRequest.authenticate(buyerDetailsService, sellerService));
+//        } catch (InvalidFormatException ex) {
+//            return globalExceptionHandler.handleInvalidFormatException(ex);
+//        } catch (ResourceNotFoundException ex) {
+//            return globalExceptionHandler.handleResourceNotFoundException(ex);
+//        } catch (PasswordMismatchException ex) {
+//            return globalExceptionHandler.handlePasswordMismatchException(ex);
+//        } catch (Exception ex) {
+//            return globalExceptionHandler.handleGeneralException(ex);
+//        }
+//    }
 
     // =========== Testing ===========
 
     @GetMapping("buyers")
-    public List<Buyer> getAllBuyers() {
-        return buyerRepository.findAll();
+    public List<BuyerDAO> getAllBuyers() {
+        return buyerDetailsService.getAll();
     }
 
     @GetMapping("buyer")
-    public ResponseEntity<Buyer> getBuyer(@RequestParam String email) {
-        Buyer buyer = buyerRepository.findByEmail(email);
-        if (buyer != null)
-            return ResponseEntity.ok(buyer);
+    public ResponseEntity<BuyerDAO> getBuyer(@RequestParam String email) {
+        BuyerDAO buyerDAO = buyerDetailsService.getByEmail(email);
+        if (buyerDAO != null)
+            return ResponseEntity.ok(buyerDAO);
         else
             return ResponseEntity.notFound().build();
     }
 
     @GetMapping("sellers")
-    public List<Seller> getAllSellers() {
-        return sellerRepository.findAll();
+    public List<SellerDAO> getAllSellers() {
+        return sellerDetailsService.getAll();
     }
 
     @GetMapping("seller")
-    public ResponseEntity<Seller> getSeller(@RequestParam String email) {
-        Seller seller = sellerRepository.findByEmail(email);
-        if (seller != null)
-            return ResponseEntity.ok(seller);
+    public ResponseEntity<SellerDAO> getSeller(@RequestParam String email) {
+        SellerDAO sellerDAO = sellerDetailsService.getByEmail(email);
+        if (sellerDAO != null)
+            return ResponseEntity.ok(sellerDAO);
         else
             return ResponseEntity.notFound().build();
     }
 
     @GetMapping("users")
     public List<Object> getAllUsers() {
-        List<?> list1 = buyerRepository.findAll();
-        List<?> list2 = sellerRepository.findAll();
+        List<?> list1 = buyerDetailsService.getAll();
+        List<?> list2 = sellerDetailsService.getAll();
 
         List<Object> combinedList = new ArrayList<>(list1);
         combinedList.addAll(list2);
@@ -78,11 +97,11 @@ public class AuthController {
 
     @GetMapping("user")
     public ResponseEntity<Object> getUser(@RequestParam String email) {
-        Buyer buyer = buyerRepository.findByEmail(email);
-        Seller seller = sellerRepository.findByEmail(email);
-        if (buyer != null)
-            return ResponseEntity.ok(buyer);
-        return ResponseEntity.ok(seller);
+        BuyerDAO buyerDAO = buyerDetailsService.getByEmail(email);
+        SellerDAO sellerDAO = sellerDetailsService.getByEmail(email);
+        if (buyerDAO != null)
+            return ResponseEntity.ok(buyerDAO);
+        return ResponseEntity.ok(sellerDAO);
     }
 
     // ===============================
