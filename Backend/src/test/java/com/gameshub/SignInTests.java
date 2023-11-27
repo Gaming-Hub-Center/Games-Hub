@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.databind.*;
 import com.gameshub.Controller.*;
 import com.gameshub.Model.Users.*;
-import com.gameshub.Service.*;
+import com.gameshub.Repository.*;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 import org.springframework.http.*;
@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.request.*;
 import org.springframework.test.web.servlet.setup.*;
 
 import java.time.*;
+import java.util.*;
 
 public class SignInTests {
 
@@ -22,9 +23,9 @@ public class SignInTests {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Mock
-    private BuyerDetailsService buyerDetailsService;
+    private BuyerRepository buyerRepository;
     @Mock
-    private SellerDetailsService sellerDetailsService;
+    private SellerRepository sellerRepository;
 
     @InjectMocks
     private AuthController authController;
@@ -39,10 +40,10 @@ public class SignInTests {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(authController).build();
 
-        when(buyerDetailsService.getByEmail("john.doe@example.com")).thenReturn(buyerDAO1);
-        when(buyerDetailsService.getByEmail("jane.smith@example.com")).thenReturn(buyerDAO2);
-        when(sellerDetailsService.getByEmail("alice.blue@example.com")).thenReturn(sellerDAO1);
-        when(sellerDetailsService.getByEmail("bob.green@example.com")).thenReturn(sellerDAO2);
+        when(buyerRepository.findByEmail("john.doe@example.com")).thenReturn(Optional.of(buyerDAO1));
+        when(buyerRepository.findByEmail("jane.smith@example.com")).thenReturn(Optional.of(buyerDAO2));
+        when(sellerRepository.findByEmail("alice.blue@example.com")).thenReturn(Optional.of(sellerDAO1));
+        when(sellerRepository.findByEmail("bob.green@example.com")).thenReturn(Optional.of(sellerDAO2));
     }
 
     @Test
@@ -61,7 +62,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"invalid_email@example.com\",\"password\":\"pass\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/signin")
+            .post("/login")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isNotFound());
@@ -72,7 +73,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example.com\",\"password\":\"invalid_pass\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/signin")
+            .post("/login")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isUnauthorized());
@@ -83,7 +84,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example\",\"password\":\"password123\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/signin")
+            .post("/login")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isBadRequest());
