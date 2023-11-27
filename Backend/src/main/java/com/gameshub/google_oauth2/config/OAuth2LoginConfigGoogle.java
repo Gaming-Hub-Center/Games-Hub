@@ -1,9 +1,12 @@
-package com.gameshub.google_oauth2;
+package com.gameshub.google_oauth2.config;
 
+import com.gameshub.google_oauth2.handlers.BuyerAuthenticationSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
@@ -12,9 +15,8 @@ import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 @Configuration
+@EnableWebSecurity
 public class OAuth2LoginConfigGoogle {
 
     @Value("${google.client-id}")
@@ -38,6 +40,8 @@ public class OAuth2LoginConfigGoogle {
     @Value("${google.jwk-set-uri}")
     private String jwkSetUri;
 
+    @Autowired
+    private BuyerAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -45,7 +49,7 @@ public class OAuth2LoginConfigGoogle {
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated()
                 )
-                .oauth2Login(withDefaults());
+                .oauth2Login(oauth2 -> oauth2.successHandler(customAuthenticationSuccessHandler));
         return http.build();
     }
 
