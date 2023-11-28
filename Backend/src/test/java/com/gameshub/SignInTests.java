@@ -30,8 +30,8 @@ public class SignInTests {
     @InjectMocks
     private AuthController authController;
 
-    BuyerDAO buyerDAO1 = new BuyerDAO("John Doe", "john.doe@example.com", "password123", "+1234567890", "123 Elm Street");
-    BuyerDAO buyerDAO2 = new BuyerDAO("Jane Smith", "jane.smith@example.com", "mypassword", "+9876543210", "456 Oak Avenue");
+    BuyerDAO buyerDAO1 = new BuyerDAO(1, "John Doe", "john.doe@example.com", "password123", "+1234567890", "123 Elm Street", 3000);
+    BuyerDAO buyerDAO2 = new BuyerDAO(2, "Jane Smith", "jane.smith@example.com", "mypassword", "+9876543210", "456 Oak Avenue", 4000);
     SellerDAO sellerDAO1 = new SellerDAO(1, "Alice Blue", "alice.blue@example.com", "alicepass", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.of(2023, 1, 1), "Description about Alice", "123456789A");
     SellerDAO sellerDAO2 = new SellerDAO(2, "Bob Green", "bob.green@example.com", "bobpassword", "+5647382910", "202 Green Lane", 15000, "ID67890B", LocalDate.of(2023, 2, 2), "Description about Bob", "987654321B");
 
@@ -51,7 +51,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example.com\",\"password\":\"password123\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/login")
+            .post("/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isOk());
@@ -62,7 +62,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"invalid_email@example.com\",\"password\":\"pass\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/login")
+            .post("/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isNotFound());
@@ -73,7 +73,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example.com\",\"password\":\"invalid_pass\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/login")
+            .post("/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isUnauthorized());
@@ -84,7 +84,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example\",\"password\":\"password123\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/login")
+            .post("/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isBadRequest());
