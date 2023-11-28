@@ -8,6 +8,8 @@ import com.gameshub.google_oauth2.service.createUsers.BuyerServiceOAuth2;
 import com.gameshub.google_oauth2.service.proxy.CreateBuyerProxy;
 import com.gameshub.google_oauth2.service.proxy.CreateSellerProxy;
 import com.gameshub.google_oauth2.service.createUsers.SellerServiceOAuth2;
+import com.gameshub.google_oauth2.service.proxy.LoginBuyerProxy;
+import com.gameshub.google_oauth2.service.proxy.LoginSellerProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
@@ -24,6 +26,10 @@ public class OAuth2Controller {
 
     @Autowired
     private CreateSellerProxy createSellerProxy;
+    @Autowired
+    private LoginBuyerProxy loginBuyerProxy;
+    @Autowired
+    private LoginSellerProxy loginSellerProxy;
 
     @Autowired
     private BuyerServiceOAuth2 buyerService;
@@ -54,6 +60,32 @@ public class OAuth2Controller {
                 createSellerProxy.processUserCreation(idToken);
             }
         } catch (UserAlreadyExistsException | ResourceNotFoundException | IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
+    @PostMapping("/oauth/sign-in/seller")
+    public Seller signinPageSeller(@AuthenticationPrincipal OAuth2User principal) {
+        try {
+            if (principal instanceof DefaultOidcUser) {
+                OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
+                loginSellerProxy.processSellerLogin(idToken);
+            }
+        } catch (/*UserAlreadyExistsException | */ResourceNotFoundException | IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
+    @GetMapping("/oauth/sign-in/buyer")
+    public Buyer signinPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
+        try {
+            if (oAuth2User instanceof DefaultOidcUser) {
+                OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
+                loginBuyerProxy.processBuyerLogin(idToken);
+            }
+        } catch (/*UserAlreadyExistsException | */ResourceNotFoundException | IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
         return null;
