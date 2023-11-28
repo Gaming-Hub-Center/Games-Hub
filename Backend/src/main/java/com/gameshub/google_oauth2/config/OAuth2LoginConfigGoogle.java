@@ -13,6 +13,9 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
+import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
+import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
 
 @Configuration
 @EnableWebSecurity
@@ -41,11 +44,18 @@ public class OAuth2LoginConfigGoogle {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        CookieClearingLogoutHandler cookies = new CookieClearingLogoutHandler("our-custom-cookie");
+        HeaderWriterLogoutHandler clearSiteData = new HeaderWriterLogoutHandler(new ClearSiteDataHeaderWriter(ClearSiteDataHeaderWriter.Directive.COOKIES));
+
         http
-                .authorizeHttpRequests(authorize -> authorize
+                .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(Customizer.withDefaults());
+//                .logout((logout) -> logout.logoutUrl("/gamesHub/logout")
+//                        .logoutSuccessUrl("/gamesHub/home")
+//                        .addLogoutHandler(clearSiteData)
+//                        .permitAll());
         return http.build();
     }
 

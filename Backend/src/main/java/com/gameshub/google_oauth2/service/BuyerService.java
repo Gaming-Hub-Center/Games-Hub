@@ -3,6 +3,7 @@ package com.gameshub.google_oauth2.service;
 import com.gameshub.Model.Users.Buyer;
 import com.gameshub.Repository.BuyerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,11 @@ public class BuyerService {
         // Check if user already exists
         Buyer existingUser = buyerRepository.findByEmail(email);
         if (existingUser != null) {
+            System.out.println("User Exists");
             return;
         }
+
+        System.out.println("User Does not exists");
 
         // If not, create a new user
         Buyer newUser = new Buyer();
@@ -35,5 +39,7 @@ public class BuyerService {
         newUser.setBalance(0);
 
         buyerRepository.save(newUser);
+
+
     }
 }

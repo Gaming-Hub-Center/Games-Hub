@@ -28,12 +28,12 @@
     {
       "name": "google.client-id",
       "type": "java.lang.String",
-      "description": "158604097381-ph6scoj0m3np32h6bi98bvojq4ku6dgj.apps.googleusercontent.com"
+      "description": "158604097381-a6cpd9ineg32pgpmq8sdd3v8nfjk983m.apps.googleusercontent.com"
     },
     {
       "name": "google.client-secret",
       "type": "java.lang.String",
-      "description": "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"
+      "description": "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"
     }
   ]
 }
