@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `gamehub` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `gamehub`;
+CREATE DATABASE  IF NOT EXISTS `gameshub` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `gameshub`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: gamehub
+-- Host: localhost    Database: gameshub
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -25,13 +25,14 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin` (
-  `AdminID` int NOT NULL AUTO_INCREMENT,
-  `AdminName` varchar(255) DEFAULT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) DEFAULT NULL,
+  `Password` varchar(72) DEFAULT NULL,
   `ContactNumber` varchar(15) DEFAULT NULL,
   `EmailAddress` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`AdminID`),
+  PRIMARY KEY (`ID`),
   UNIQUE KEY `EmailAddress` (`EmailAddress`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,6 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'Alice Johnson','1234567890','alice.johnson@example.com'),(2,'Bob Smith','0987654321','bob.smith@example.com'),(3,'Carol White','1122334455','carol.white@example.com'),(4,'David Brown','2233445566','david.brown@example.com');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,16 +52,16 @@ DROP TABLE IF EXISTS `buyer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `buyer` (
-  `BuyerID` int NOT NULL AUTO_INCREMENT,
-  `BuyerName` varchar(255) DEFAULT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) DEFAULT NULL,
   `ContactNumber` varchar(15) DEFAULT NULL,
   `Email_Address` varchar(255) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
-  `UserPassword` varchar(64) DEFAULT NULL,
+  `Password` varchar(72) DEFAULT NULL,
   `Balance` float DEFAULT NULL,
-  PRIMARY KEY (`BuyerID`),
+  PRIMARY KEY (`ID`),
   UNIQUE KEY `Email_Address` (`Email_Address`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,6 @@ CREATE TABLE `buyer` (
 
 LOCK TABLES `buyer` WRITE;
 /*!40000 ALTER TABLE `buyer` DISABLE KEYS */;
-INSERT INTO `buyer` VALUES (1,'Elbadry Mohamed','+201006638953','elbadry1775@gmail.com','17 luxor st sporting','Test_Password_SWE',5015);
 /*!40000 ALTER TABLE `buyer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,18 +81,18 @@ DROP TABLE IF EXISTS `seller`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `seller` (
-  `SellerID` int NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `Vat_Registration_Number` varchar(255) DEFAULT NULL,
   `Date_Joined` date DEFAULT NULL,
-  `Seller_Name` varchar(255) DEFAULT NULL,
+  `Name` varchar(255) DEFAULT NULL,
   `ContactNumber` varchar(15) DEFAULT NULL,
   `Email_Address` varchar(255) DEFAULT NULL,
-  `SellerPassword` varchar(64) DEFAULT NULL,
+  `Password` varchar(72) DEFAULT NULL,
   `SellerDescription` text,
   `Balance` float DEFAULT NULL,
   `NationalID` varchar(20) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`SellerID`),
+  PRIMARY KEY (`ID`),
   UNIQUE KEY `Email_Address` (`Email_Address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -116,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-14  2:37:23
+-- Dump completed on 2023-11-28 23:52:07
