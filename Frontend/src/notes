@@ -1,0 +1,15 @@
+sign in:
+email
+password
+Google auth
+
+sign up:
+name
+email
+password
+confirm password
+
+i installed:
+* bootstrap
+* react-bootstrap
+* react-router-dom
