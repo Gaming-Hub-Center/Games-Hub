@@ -30,4 +30,12 @@ public class SellerDetailsService implements UserDetailsService {
         return new User(sellerDAO.getEmail(), sellerDAO.getPassword(), new ArrayList<>());
     }
 
+    public Boolean userExists(String email){
+        return sellerRepository.existsByEmail(email);
+    }
+
+    public void saveNewUser(SellerDAO seller){
+        sellerRepository.save(seller);
+    }
+
 }

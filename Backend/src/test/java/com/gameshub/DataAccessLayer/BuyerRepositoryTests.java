@@ -19,21 +19,15 @@ public class BuyerRepositoryTests {
     PasswordEncoder passwordEncoder;
 
     @Test
-    public void findByEmailTests(){
+    public void findByEmailTests() {
         assert repo.findByEmail("rfa3y@eldso2y.com").isEmpty();
-        Optional<BuyerDAO> buyerDAOOptional= repo.findByEmail("john.doe@example.com");
+        Optional<BuyerDAO> buyerDAOOptional = repo.findByEmail("john.doe@example.com");
         assert buyerDAOOptional.isPresent();
         BuyerDAO buyerEntity = buyerDAOOptional.get();
         assert buyerEntity.getEmail().equals("john.doe@example.com");
         assert buyerEntity.getName().equals("John Doe");
-        assert passwordEncoder.matches("password123" ,buyerEntity.getPassword());
+        assert buyerEntity.getPassword().equals("password123");
         assert buyerEntity.getPhone().equals("+1234567890");
-    }
-
-    @Test
-    public void existsByNameTests(){
-        assert repo.existsByName("John Doe");
-        assert !repo.existsByName("Rfa3y Eldso2y");
     }
 
     @Test

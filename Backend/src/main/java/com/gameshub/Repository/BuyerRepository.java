@@ -9,6 +9,5 @@ import java.util.*;
 @Repository
 public interface BuyerRepository extends JpaRepository<BuyerDAO, Integer> {
     Optional<BuyerDAO> findByEmail(String email);
-    Boolean existsByName(String name);
     Boolean existsByEmail(String email);
 }
