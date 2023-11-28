@@ -1,55 +1,78 @@
 package com.gameshub.google_oauth2.controller;
 
-import com.gameshub.google_oauth2.service.BuyerService;
-import com.gameshub.google_oauth2.service.SellerService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.gameshub.Exception.ResourceNotFoundException;
+import com.gameshub.Exception.UserAlreadyExistsException;
+import com.gameshub.Model.Users.Buyer;
+import com.gameshub.Model.Users.Seller;
+import com.gameshub.google_oauth2.service.createUsers.BuyerServiceOAuth2;
+import com.gameshub.google_oauth2.service.proxy.CreateBuyerProxy;
+import com.gameshub.google_oauth2.service.proxy.CreateSellerProxy;
+import com.gameshub.google_oauth2.service.createUsers.SellerServiceOAuth2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.oidc.OidcIdToken;
+import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OAuth2Controller {
 
     @Autowired
-    private BuyerService buyerService;
+    private CreateBuyerProxy createBuyerProxy;
 
     @Autowired
-    private SellerService sellerService;
+    private CreateSellerProxy createSellerProxy;
+
+    @Autowired
+    private BuyerServiceOAuth2 buyerService;
+
+    @Autowired
+    private SellerServiceOAuth2 sellerService;
 
     private final SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
-    @GetMapping("/oauth/user")
-    public Map<String, Object> getLoginPage(@AuthenticationPrincipal OAuth2User principal) {
-        String userId = principal.getAttribute("sub");
-        Map<String, Object> attributes = new HashMap<>();
-        attributes.put("id", userId);
-        String userName = principal.getAttribute("name");
-        attributes.put("name", userName);
-        String email = principal.getAttribute("email");
-        attributes.put("email", email);
-        String address = principal.getAttribute("address");
-        attributes.put("address", address);
-        return attributes;
+    @GetMapping("/oauth/sign-up/buyer")
+    public Buyer signupPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
+        try {
+            if (oAuth2User instanceof DefaultOidcUser) {
+                OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
+                createBuyerProxy.processUserCreation(idToken);
+            }
+        } catch (UserAlreadyExistsException | ResourceNotFoundException | IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
     }
+
+    @PostMapping("/oauth/sign-up/seller")
+    public Seller signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
+        try {
+            if (principal instanceof DefaultOidcUser) {
+                OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
+                createSellerProxy.processUserCreation(idToken);
+            }
+        } catch (UserAlreadyExistsException | ResourceNotFoundException | IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
+//    @GetMapping("/create_user")
+//    public Buyer createBuyer(@RequestBody Buyer buyer) {
+//        return buyerService.createMockBuyer(buyer);
+//    }
+
 //    @GetMapping("login/oauth2/seller")
 //    public void oauthLoginSeller(@AuthenticationPrincipal OAuth2User principal) { // TODO return the necessary data to the frontend
 //        sellerService.findOrCreateUser(principal);
 //    }
 
-    @PostMapping("/gamesHub/logout")
-    public String performLogout(Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
-        this.logoutHandler.logout(request, response, authentication);
-        return "redirect:/home";
-    }
+//    @PostMapping("/gamesHub/logout")
+//    public String performLogout(Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
+//        this.logoutHandler.logout(request, response, authentication);
+//        return "redirect:/home";
+//    }
 
 }
