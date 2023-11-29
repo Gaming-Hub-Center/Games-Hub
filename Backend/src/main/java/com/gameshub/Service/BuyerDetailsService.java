@@ -1,6 +1,7 @@
 package com.gameshub.Service;
 
-import com.gameshub.Model.Users.*;
+import com.gameshub.Exception.*;
+import com.gameshub.Model.Users.DAOs.*;
 import com.gameshub.Repository.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.core.userdetails.*;
@@ -23,9 +24,9 @@ public class BuyerDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws ResourceNotFoundException {
         BuyerDAO buyerDAO = buyerRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Buyer not found with email: " + username));
+                .orElseThrow(() -> new ResourceNotFoundException("Buyer not found with email: " + username));
 
         return new User(buyerDAO.getEmail(), buyerDAO.getPassword(), new ArrayList<>());
     }

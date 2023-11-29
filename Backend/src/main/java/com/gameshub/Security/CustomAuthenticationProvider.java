@@ -1,5 +1,6 @@
 package com.gameshub.Security;
 
+import com.gameshub.Exception.*;
 import com.gameshub.Service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.authentication.*;
@@ -28,14 +29,14 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         UserDetails userDetails;
         try {
             userDetails = buyerDetailsService.loadUserByUsername(email);
-        } catch (UsernameNotFoundException ex) {
+        } catch (ResourceNotFoundException ex) {
             userDetails = sellerDetailsService.loadUserByUsername(email);
         }
 
         if (passwordEncoder.matches(password, userDetails.getPassword())) {
             return new UsernamePasswordAuthenticationToken(email, password, userDetails.getAuthorities());
         } else {
-            throw new BadCredentialsException("Invalid credentials");
+            throw new PasswordMismatchException("Invalid credentials");
         }
     }
 

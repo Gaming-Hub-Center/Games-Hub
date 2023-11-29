@@ -1,6 +1,8 @@
 package com.gameshub.Controller;
 
-import com.gameshub.Model.Users.*;
+import com.gameshub.Model.Users.DAOs.BuyerDAO;
+import com.gameshub.Model.Users.DAOs.SellerDAO;
+import com.gameshub.Model.Users.DTOs.UserLoginDTO;
 import com.gameshub.Service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
@@ -13,7 +15,7 @@ import java.util.*;
 
 @RestController
 @CrossOrigin("http://localhost:5173")
-@RequestMapping("/auth")
+@RequestMapping("auth")
 public class AuthController {
 
     @Autowired
@@ -25,8 +27,8 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO) {
+    @PostMapping("signin")
+    public ResponseEntity<?> signin(@RequestBody UserLoginDTO userLoginDTO) {
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(userLoginDTO.getEmail(), userLoginDTO.getPassword())
         );
@@ -34,26 +36,10 @@ public class AuthController {
         return ResponseEntity.ok("Logged in successfully");
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home() {
         return ("<h1>Welcome</h1>");
     }
-
-//    @PostMapping("signin")
-//    public ResponseEntity<?> authenticateUser(@RequestBody SignInRequest signInRequest) {
-//        GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
-//        try {
-//            return ResponseEntity.ok(signInRequest.authenticate(buyerDetailsService, sellerService));
-//        } catch (InvalidFormatException ex) {
-//            return globalExceptionHandler.handleInvalidFormatException(ex);
-//        } catch (ResourceNotFoundException ex) {
-//            return globalExceptionHandler.handleResourceNotFoundException(ex);
-//        } catch (PasswordMismatchException ex) {
-//            return globalExceptionHandler.handlePasswordMismatchException(ex);
-//        } catch (Exception ex) {
-//            return globalExceptionHandler.handleGeneralException(ex);
-//        }
-//    }
 
     // =========== Testing ===========
 
