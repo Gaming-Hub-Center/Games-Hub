@@ -16,6 +16,7 @@ function App() {
       }}
     >
       <Routes>
+      <Route path="/welcome" element={<Welcome />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
 
