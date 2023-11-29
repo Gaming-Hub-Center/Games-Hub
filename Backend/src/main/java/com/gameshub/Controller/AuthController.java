@@ -13,6 +13,7 @@ import java.util.*;
 
 @RestController
 @CrossOrigin("http://localhost:5173")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired

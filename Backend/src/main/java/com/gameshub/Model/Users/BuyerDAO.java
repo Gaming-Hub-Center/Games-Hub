@@ -18,4 +18,12 @@ public class BuyerDAO extends UserDAO {
         this.balance = balance;
     }
 
+    public BuyerDAO(String name, String email, String password, String phone, String address) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+    }
+
 }
