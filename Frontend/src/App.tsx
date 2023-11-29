@@ -3,11 +3,15 @@ import { Container, Navbar } from "react-bootstrap";
 import { Welcome } from "./Pages/Welcome";
 import { SignUp } from "./Pages/SignUp";
 import { NavbarC } from "./Components/NavbarC";
+import { SignUpNavbar } from "./Components/SignUpNavbar";
+
 import { SignIn } from "./Pages/SignIn";
+import { SignUpSeller } from "./Pages/SignUpSeller";
 
 function App() {
   return (
-    <Container fluid
+    <Container
+      fluid
       style={{
         paddingLeft: 0,
         paddingRight: 0,
@@ -16,9 +20,10 @@ function App() {
       }}
     >
       <Routes>
+        <Route path="/welcome" element={<Welcome />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
-
+        <Route path="/signupseller" element={<SignUpSeller />}></Route>
       </Routes>
     </Container>
   );

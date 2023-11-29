@@ -1,84 +1,190 @@
-import { SetStateAction, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SetStateAction, useState } from "react";
+import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
+import { AuthService, LoginCredentials  } from '../Login'; 
+
+
 
 export function SignIn() {
   const [validated, setValidated] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
-    if (form.checkValidity() === false || !isValidEmail(email) || !isValidPassword(password)) {
+    if (
+      form.checkValidity() === false ||
+      !isValidEmail(email) ||
+      !isValidPassword(password)
+    ) {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    setValidated(true);
+    try{
+      const credentials: LoginCredentials = { email, password };
+      const response = await AuthService.login(credentials);
+      
+      console.log('Login successful:', response);
+      setValidated(true);
+      alert('Login successful:')
+    }catch(error){
+      setValidated(false);
+      console.error('Signup failed:', error);
+      alert('Login failed:')
+    }
+    // aw hna grb enta
+   // setValidated(true);
+    // rabt hna
+   
+    
   };
 
   const isValidEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[c][o][m]$/.test(email);
   };
 
   const isValidPassword = (password: string | any[]) => {
     return password.length >= 8;
   };
 
-  const handleEmailChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+  const handleEmailChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setEmail(event.target.value);
   };
 
-  const handlePasswordChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+  const handlePasswordChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setPassword(event.target.value);
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Form style={{ width: '30%', backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }} noValidate validated={validated} onSubmit={handleSubmit}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Sign In</h2>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <Form
+        style={{
+          width: "30%",
+          backgroundColor: "#f8f9fa",
+          padding: "20px",
+          borderRadius: "8px",
+          boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+        }}
+        noValidate
+        validated={validated}
+        onSubmit={handleSubmit}
+      >
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Sign In</h2>
         <Row className="mb-3">
-          <Form.Group as={Col}>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Enter your email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please enter a valid email address.
-            </Form.Control.Feedback>
+          <Form.Group as={Col} controlId="validationCustomEmail">
+            <Form.Label>Email address</Form.Label>
+            <Container fluid style={{ padding: 0 }}>
+              <Row>
+                <Col md={1} style={{ paddingTop: 8 }}>
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
+                </Col>
+                <Col md={11}>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    isInvalid={!isValidEmail(email)}
+                  />
+                </Col>
+              </Row>
+            </Container>
           </Form.Group>
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col}>
+          <Form.Group as={Col} controlId="validationCustomPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <Form.Control.Feedback type="invalid">
-              Password must be at least 8 characters.
-            </Form.Control.Feedback>
+            <Container fluid style={{ padding: 0 }}>
+              <Row>
+                <Col md={1} style={{ paddingTop: 8 }}>
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
+                </Col>
+                <Col md={11}>
+                  <Form.Control
+                    required
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    isInvalid={!isValidPassword(password)}
+                  />
+                </Col>
+              </Row>
+            </Container>
           </Form.Group>
         </Row>
-        <Form.Group className="mb-3">
-          <Form.Check
-            required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
-            feedbackType="invalid"
-          />
-        </Form.Group>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Button type="submit">Submit</Button>
+        <div
+          className="mb-1"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Button
+            type="submit"
+            disabled={!isValidEmail(email) || !isValidPassword(password)}
+            style={{ width: "100%" }}
+          >
+            Submit
+          </Button>
+        </div>
+        {/* "Sign in with Google" button */}
+        <div
+          className="mb-1"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Button
+            variant="danger"
+            onClick={() => {
+              // Handle Google Sign-In logic here
+            }}
+            style={{ width: "100%" }}
+          >
+            <FontAwesomeIcon
+              icon={faGoogle}
+              style={{
+                color: "white",
+                fontSize: "15px",
+                marginRight: "10px",
+                paddingRight: "5",
+              }}
+            />
+            Sign in with Google
+          </Button>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <p style={{ paddingRight: "10px" }}>Don't have an account? </p>
+          <Link to="/SignUp">Sign Up</Link>
         </div>
       </Form>
     </div>
