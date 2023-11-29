@@ -39,13 +39,13 @@ public class AuthController {
     // =========== Testing ===========
 
     @GetMapping("buyers")
-    public List<Buyer> getAllBuyers() {
+    public List<BuyerDAO> getAllBuyers() {
         return buyerRepository.findAll();
     }
 
     @GetMapping("buyer")
-    public ResponseEntity<Buyer> getBuyer(@RequestParam String email) {
-        Buyer buyer = buyerRepository.findByEmail(email);
+    public ResponseEntity<BuyerDAO> getBuyer(@RequestParam String email) {
+        BuyerDAO buyer = buyerRepository.findByEmail(email);
         if (buyer != null)
             return ResponseEntity.ok(buyer);
         else
@@ -53,13 +53,13 @@ public class AuthController {
     }
 
     @GetMapping("sellers")
-    public List<Seller> getAllSellers() {
+    public List<SellerDAO> getAllSellers() {
         return sellerRepository.findAll();
     }
 
     @GetMapping("seller")
-    public ResponseEntity<Seller> getSeller(@RequestParam String email) {
-        Seller seller = sellerRepository.findByEmail(email);
+    public ResponseEntity<SellerDAO> getSeller(@RequestParam String email) {
+        SellerDAO seller = sellerRepository.findByEmail(email);
         if (seller != null)
             return ResponseEntity.ok(seller);
         else
@@ -78,8 +78,8 @@ public class AuthController {
 
     @GetMapping("user")
     public ResponseEntity<Object> getUser(@RequestParam String email) {
-        Buyer buyer = buyerRepository.findByEmail(email);
-        Seller seller = sellerRepository.findByEmail(email);
+        BuyerDAO buyer = buyerRepository.findByEmail(email);
+        SellerDAO seller = sellerRepository.findByEmail(email);
         if (buyer != null)
             return ResponseEntity.ok(buyer);
         return ResponseEntity.ok(seller);

@@ -1,8 +1,6 @@
 package com.gameshub;
 
-import com.gameshub.Exception.ResourceNotFoundException;
-import com.gameshub.Exception.UserAlreadyExistsException;
-import com.gameshub.Model.Users.Buyer;
+import com.gameshub.Model.Users.BuyerDAO;
 import com.gameshub.Repository.BuyerRepository;
 import com.gameshub.google_oauth2.service.createUsers.BuyerServiceOAuth2;
 import com.gameshub.google_oauth2.service.proxy.CreateBuyerProxy;
@@ -31,7 +29,7 @@ public class OAuth2BuyerSignUpUnitTest {
     @Mock
     private OidcIdToken idToken;
 
-    private Buyer buyer;
+    private BuyerDAO buyer;
 
     private final CreateBuyerProxy createBuyerProxy = new CreateBuyerProxy();
 
@@ -57,9 +55,9 @@ public class OAuth2BuyerSignUpUnitTest {
 
     @Test
     void testProcessUserCreation_UserExists() {
-        buyer = new Buyer(1111, "Rowaina", "Email.com", null, null, null, 0);
-        when(buyerRepository.save(any(Buyer.class))).thenReturn(buyer);
-        Buyer savedBuyer =buyerRepository.save(buyer);
+        buyer = new BuyerDAO(1111, "Rowaina", "Email.com", null, null, null, 0);
+        when(buyerRepository.save(any(BuyerDAO.class))).thenReturn(buyer);
+        BuyerDAO savedBuyer =buyerRepository.save(buyer);
         verify(buyerRepository, times(1)).save(buyer);
         assertEquals(buyer, savedBuyer); // Optionally assert the saved buyer if needed
     }

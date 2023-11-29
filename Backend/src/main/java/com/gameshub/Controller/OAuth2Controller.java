@@ -1,14 +1,16 @@
-package com.gameshub.google_oauth2.controller;
+package com.gameshub.Controller;
 
 import com.gameshub.Exception.ResourceNotFoundException;
 import com.gameshub.Exception.UserAlreadyExistsException;
-import com.gameshub.Model.Users.Buyer;
-import com.gameshub.Model.Users.Seller;
+import com.gameshub.Model.Users.SellerDAO;
 import com.gameshub.google_oauth2.service.createUsers.BuyerServiceOAuth2;
 import com.gameshub.google_oauth2.service.proxy.CreateBuyerProxy;
 import com.gameshub.google_oauth2.service.proxy.CreateSellerProxy;
 import com.gameshub.google_oauth2.service.createUsers.SellerServiceOAuth2;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
@@ -34,7 +36,7 @@ public class OAuth2Controller {
     private final SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
     @GetMapping("/oauth/sign-up/buyer")
-    public Buyer signupPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
+    public String signupPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
         try {
             if (oAuth2User instanceof DefaultOidcUser) {
                 OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
@@ -47,7 +49,7 @@ public class OAuth2Controller {
     }
 
     @PostMapping("/oauth/sign-up/seller")
-    public Seller signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
+    public SellerDAO signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
         try {
             if (principal instanceof DefaultOidcUser) {
                 OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
@@ -58,6 +60,27 @@ public class OAuth2Controller {
         }
         return null;
     }
+
+    @RequestMapping("/error")
+    public String handleError(HttpServletRequest request) {
+        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+
+        if (status != null) {
+            int statusCode = Integer.parseInt(status.toString());
+
+            if(statusCode == HttpStatus.NOT_FOUND.value()) {
+                return "error-404";
+            }
+            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                return "error-500";
+            }
+            String message = (String) request.getSession().getAttribute("error.message");
+            request.getSession().removeAttribute("error.message");
+            return message;
+        }
+        return "error";
+    }
+
 
 //    @GetMapping("/create_user")
 //    public Buyer createBuyer(@RequestBody Buyer buyer) {

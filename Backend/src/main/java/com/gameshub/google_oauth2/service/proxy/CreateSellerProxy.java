@@ -2,12 +2,9 @@ package com.gameshub.google_oauth2.service.proxy;
 
 import com.gameshub.Exception.ResourceNotFoundException;
 import com.gameshub.Exception.UserAlreadyExistsException;
-import com.gameshub.Model.Users.Buyer;
-import com.gameshub.Model.Users.Seller;
 import com.gameshub.google_oauth2.service.createUsers.SellerServiceOAuth2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,8 +19,6 @@ public class CreateSellerProxy {
         }
 
         String user = idToken.getClaim("sub");
-        int userId =  Integer.parseInt(idToken.getClaim("sub").toString());
-        String name = idToken.getClaim("name").toString();
         String email = idToken.getClaim("email").toString();
 
         if (user == null) {
