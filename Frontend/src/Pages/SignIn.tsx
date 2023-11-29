@@ -1,3 +1,4 @@
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SetStateAction, useState } from "react";
@@ -155,6 +156,30 @@ export function SignIn() {
             style={{ width: "100%" }}
           >
             Submit
+          </Button>
+        </div>
+        {/* "Sign in with Google" button */}
+        <div
+          className="mb-1"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Button
+            variant="danger"
+            onClick={() => {
+              // Handle Google Sign-In logic here
+            }}
+            style={{ width: "100%" }}
+          >
+            <FontAwesomeIcon
+              icon={faGoogle}
+              style={{
+                color: "white",
+                fontSize: "15px",
+                marginRight: "10px",
+                paddingRight: "5",
+              }}
+            />
+            Sign in with Google
           </Button>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
