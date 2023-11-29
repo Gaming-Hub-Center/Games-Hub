@@ -3,9 +3,6 @@ package com.gameshub.Model.Users.DTOs;
 public class UserLoginDTO {
     private String email;
     private String password;
-
-    public UserLoginDTO() { }
-
     public String getEmail() {
         return email;
     }

@@ -1,7 +1,7 @@
 package com.gameshub.Service;
 
 import com.gameshub.Exception.*;
-import com.gameshub.Model.Users.DAOs.*;
+import com.gameshub.Model.Users.DAOs.SellerDAO;
 import com.gameshub.Repository.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.core.userdetails.*;
