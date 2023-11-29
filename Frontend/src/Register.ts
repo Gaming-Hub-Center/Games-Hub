@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Define interfaces for the user and seller registration data
-interface UserRegistrationData {
+export interface UserRegistrationData {
   userName: string;
   email: string;
   password: string;
@@ -11,7 +11,7 @@ interface UserRegistrationData {
   address: string;
 }
 
-interface SellerRegistrationData extends UserRegistrationData {
+export interface SellerRegistrationData extends UserRegistrationData {
   description: string;
   nationalID: string;
   vatRegistrationNumber: string;

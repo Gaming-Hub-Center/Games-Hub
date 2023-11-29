@@ -7,13 +7,16 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
+import { AuthService, LoginCredentials  } from '../Login'; 
+
+
 
 export function SignIn() {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (
       form.checkValidity() === false ||
@@ -23,9 +26,23 @@ export function SignIn() {
       event.preventDefault();
       event.stopPropagation();
     }
+    try{
+      const credentials: LoginCredentials = { email, password };
+      const response = await AuthService.login(credentials);
+      
+      console.log('Login successful:', response);
+      setValidated(true);
+      alert('Login successful:')
+    }catch(error){
+      setValidated(false);
+      console.error('Signup failed:', error);
+      alert('Login failed:')
+    }
     // aw hna grb enta
-    setValidated(true);
+   // setValidated(true);
     // rabt hna
+   
+    
   };
 
   const isValidEmail = (email: string) => {

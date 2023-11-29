@@ -1,7 +1,7 @@
 // src/services/AuthService.ts
 import axios from 'axios';
 
-interface LoginCredentials {
+export interface LoginCredentials {
   email: string;
   password: string;
 }

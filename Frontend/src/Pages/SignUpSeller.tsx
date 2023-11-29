@@ -16,6 +16,8 @@ import {
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../Components/SignUpNavbar";
+import { AuthService, SellerRegistrationData} from '../Register'; 
+
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
@@ -106,7 +108,7 @@ export function SignUpSeller() {
     setDescription(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (
       form.checkValidity() === false ||
@@ -121,8 +123,35 @@ export function SignUpSeller() {
       event.preventDefault();
       event.stopPropagation();
     }
+
+    const sellerData: SellerRegistrationData = {
+      userName: username,
+      email: email,
+      password: password,
+      imageID: '', // Assuming you're handling imageID elsewhere
+      phone: phoneNumber,
+      address: address,
+      description: description,
+      nationalID: nationalID,
+      vatRegistrationNumber: vatRegistrationNumber,
+    };
+    
+    try{
+      const response = await AuthService.registerSeller(sellerData);
+      // Handle the successful response, e.g., user feedback or redirection
+      setValidated(true);
+      console.log('Signup successful:', response);
+      alert("Signup successful")
+
+    }catch(error){
+      setValidated(false);
+      console.error('Signup failed:', error);
+      alert("Signup failed")
+
+    }
+    
     // aw hna grb enta
-    setValidated(true);
+    //setValidated(true);
     // rabt hna
   };
 

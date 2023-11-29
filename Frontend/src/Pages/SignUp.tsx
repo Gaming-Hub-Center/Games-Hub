@@ -13,6 +13,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../Components/SignUpNavbar";
+import { AuthService, UserRegistrationData  } from '../Register'; 
 
 export function SignUp() {
   const [validated, setValidated] = useState(false);
@@ -74,7 +75,7 @@ export function SignUp() {
     setAddress(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (
       form.checkValidity() === false ||
@@ -87,8 +88,29 @@ export function SignUp() {
       event.preventDefault();
       event.stopPropagation();
     }
+    const userData: UserRegistrationData = {
+      userName: username,
+      email: email,
+      password: password,
+      imageID: '', 
+      phone: phoneNumber,
+      address: address,
+    };
+    
+    try{
+      const response = await AuthService.registerUser(userData);
+      console.log('Signup successful:', response);
+      setValidated(true);
+      alert('Signup successful:')
+    }catch(error){
+      console.error('Signup failed:', error);
+      setValidated(false);
+      alert('Signup failed:')
+    }
+
+
     // aw hna grb enta
-    setValidated(true);
+    //setValidated(true);
     // rabt hna 
   };
 
