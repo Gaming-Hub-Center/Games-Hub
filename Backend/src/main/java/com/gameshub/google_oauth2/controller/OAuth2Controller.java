@@ -4,13 +4,14 @@ import com.gameshub.Exception.ResourceNotFoundException;
 import com.gameshub.Exception.UserAlreadyExistsException;
 import com.gameshub.Model.Users.Buyer;
 import com.gameshub.Model.Users.Seller;
-import com.gameshub.google_oauth2.service.createUsers.BuyerServiceOAuth2;
+import com.gameshub.google_oauth2.service.BuyerServiceOAuth2;
 import com.gameshub.google_oauth2.service.proxy.CreateBuyerProxy;
 import com.gameshub.google_oauth2.service.proxy.CreateSellerProxy;
-import com.gameshub.google_oauth2.service.createUsers.SellerServiceOAuth2;
+import com.gameshub.google_oauth2.service.SellerServiceOAuth2;
 import com.gameshub.google_oauth2.service.proxy.LoginBuyerProxy;
 import com.gameshub.google_oauth2.service.proxy.LoginSellerProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
@@ -39,27 +40,41 @@ public class OAuth2Controller {
 
     private final SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
-    @GetMapping("/oauth/sign-up/buyer")
-    public Buyer signupPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
+    @GetMapping("/oauth/buyer")
+    public ResponseEntity<?> signupPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
         try {
-            if (oAuth2User instanceof DefaultOidcUser) {
-                OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
+            OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
+            if(!buyerService.emailAlreadyExist(idToken)) {
                 createBuyerProxy.processUserCreation(idToken);
+                return ResponseEntity.ok("Signed up successfully");
             }
-        } catch (UserAlreadyExistsException | ResourceNotFoundException | IllegalArgumentException ex) {
+            else {
+                //sign in
+                return ResponseEntity.ok("Logged in successfully");
+            }
+        } catch (ResourceNotFoundException | IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
         return null;
     }
 
-    @PostMapping("/oauth/sign-up/seller")
-    public Seller signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
+    @PostMapping("/oauth/seller")
+    public ResponseEntity<?> signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
+        System.out.println("hhhghhhg");
         try {
             if (principal instanceof DefaultOidcUser) {
                 OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
-                createSellerProxy.processUserCreation(idToken);
+                System.out.println(idToken.getClaim("email").toString());
+                if(!sellerService.emailAlreadyExist(idToken)) {
+                    createSellerProxy.processUserCreation(idToken);
+                    return ResponseEntity.ok("Signed up successfully");
+                }
+                else {
+                    //sign in
+                    return ResponseEntity.ok("Logged in successfully");
+                }
             }
-        } catch (UserAlreadyExistsException | ResourceNotFoundException | IllegalArgumentException ex) {
+        } catch (ResourceNotFoundException | IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
         return null;

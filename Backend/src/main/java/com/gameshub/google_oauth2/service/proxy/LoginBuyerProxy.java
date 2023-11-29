@@ -1,6 +1,6 @@
 package com.gameshub.google_oauth2.service.proxy;
 
-import com.gameshub.google_oauth2.service.createUsers.BuyerServiceOAuth2;
+import com.gameshub.google_oauth2.service.BuyerServiceOAuth2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.stereotype.Component;

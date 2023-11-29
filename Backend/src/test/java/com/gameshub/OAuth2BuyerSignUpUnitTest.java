@@ -1,10 +1,8 @@
 package com.gameshub;
 
-import com.gameshub.Exception.ResourceNotFoundException;
-import com.gameshub.Exception.UserAlreadyExistsException;
 import com.gameshub.Model.Users.Buyer;
 import com.gameshub.Repository.BuyerRepository;
-import com.gameshub.google_oauth2.service.createUsers.BuyerServiceOAuth2;
+import com.gameshub.google_oauth2.service.BuyerServiceOAuth2;
 import com.gameshub.google_oauth2.service.proxy.CreateBuyerProxy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

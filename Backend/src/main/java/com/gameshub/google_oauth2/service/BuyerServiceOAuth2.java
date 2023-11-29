@@ -1,5 +1,6 @@
-package com.gameshub.google_oauth2.service.createUsers;
+package com.gameshub.google_oauth2.service;
 
+import com.gameshub.Exception.UserAlreadyExistsException;
 import com.gameshub.Model.Users.Buyer;
 import com.gameshub.Model.Users.Seller;
 import com.gameshub.Repository.BuyerRepository;
@@ -27,6 +28,15 @@ public class BuyerServiceOAuth2 {
         Buyer buyer = new Buyer(userId, name, email, null, null, null, 0);
 
         buyerRepository.save(buyer);
+    }
+
+    public boolean emailAlreadyExist(OidcIdToken idToken) {
+        String email = idToken.getClaim("email").toString();
+        Buyer buyer = buyerRepository.findByEmail(email);
+        if(buyer != null) {
+            return true;
+        }
+        return false;
     }
 
 }
