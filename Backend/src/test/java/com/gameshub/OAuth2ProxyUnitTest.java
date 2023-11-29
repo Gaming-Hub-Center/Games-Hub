@@ -25,7 +25,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class OAuth2BuyerSignUpUnitTest {
+public class OAuth2ProxyUnitTest {
 
     @InjectMocks
     private CreateUserProxy createUserProxy;
@@ -67,7 +67,7 @@ public class OAuth2BuyerSignUpUnitTest {
     void testProcessUserCreation_UserExists() {
         BuyerDAO buyer = new BuyerDAO(1111, "Rowaina", "Email.com", null, null, null, 0);
         when(buyerRepository.saveAndFlush(any(BuyerDAO.class))).thenReturn(buyer);
-        BuyerDAO savedBuyer =buyerRepository.saveAndFlush(buyer);
+        BuyerDAO savedBuyer = buyerRepository.saveAndFlush(buyer);
         verify(buyerRepository, times(1)).saveAndFlush(buyer);
         assertEquals(buyer, savedBuyer); // Optionally assert the saved buyer if needed
     }
