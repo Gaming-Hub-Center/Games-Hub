@@ -1,6 +1,10 @@
-package com.gameshub.Model.Users;
+package com.gameshub.Model.Users.DAOs;
 
-import jakarta.persistence.*;
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.time.*;
 

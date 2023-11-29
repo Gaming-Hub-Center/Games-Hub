@@ -1,4 +1,5 @@
-package com.gameshub.Model.Users;
+package com.gameshub.Model.Users.DAOs;
+
 
 import jakarta.persistence.*;
 
