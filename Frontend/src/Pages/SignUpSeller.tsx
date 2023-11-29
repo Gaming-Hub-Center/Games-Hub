@@ -11,10 +11,13 @@ import {
   faUser,
   faAddressCard,
   faPhone,
+  faAlignJustify,
+  faHashtag,
+  faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../Components/SignUpNavbar";
 
-export function SignUp() {
+export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +26,9 @@ export function SignUp() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneInvalid, setPhoneInvalid] = useState(false); // State for phone number validation
   const [address, setAddress] = useState("");
+  const [nationalID, setnationalID] = useState("");
+  const [vatRegistrationNumber, setVatRegistrationNumber] = useState("");
+  const [description, setDescription] = useState("");
 
   const isValidUsername = (username: string) => {
     return /^[a-zA-Z][a-zA-Z0-9]*$/.test(username);
@@ -42,6 +48,14 @@ export function SignUp() {
 
   const isValidAddress = (address: string) => {
     return address.length > 0;
+  };
+
+  const isValidNationalID = (nationalID: string) => {
+    return /^[0-9]+$/.test(nationalID);
+  };
+
+  const isValidVRN = (vatRegistrationNumber: string) => {
+    return /^[0-9]+$/.test(vatRegistrationNumber);
   };
 
   const handleUsernameChange = (event: {
@@ -74,6 +88,24 @@ export function SignUp() {
     setAddress(event.target.value);
   };
 
+  const handleNationalIdChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setnationalID(event.target.value);
+  };
+
+  const handleVRNChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setVatRegistrationNumber(event.target.value);
+  };
+
+  const handleDescriptionChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setDescription(event.target.value);
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (
@@ -82,14 +114,16 @@ export function SignUp() {
       !isValidPassword(password) ||
       !isPasswordMatch(password, confirmPassword) ||
       !isValidPhoneNumber(phoneNumber) ||
-      !isValidAddress(address)
+      !isValidAddress(address) ||
+      !isValidNationalID(nationalID) ||
+      !isValidVRN(vatRegistrationNumber)
     ) {
       event.preventDefault();
       event.stopPropagation();
     }
     // aw hna grb enta
     setValidated(true);
-    // rabt hna 
+    // rabt hna
   };
 
   return (
@@ -287,6 +321,92 @@ export function SignUp() {
             </Container>
           </Form.Group>
         </Row>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="validation NationalID">
+            <Form.Label> National ID</Form.Label>
+            <Container fluid style={{ padding: 0 }}>
+              <Row>
+                <Col md={1} style={{ paddingTop: 8 }}>
+                  <FontAwesomeIcon
+                    icon={faIdCard}
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
+                </Col>
+                <Col md={11}>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Enter your National ID"
+                    value={nationalID}
+                    onChange={handleNationalIdChange}
+                    isInvalid={!isValidNationalID(nationalID)}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          </Form.Group>
+        </Row>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="validationVatRegistrationNumber">
+            <Form.Label>Vat Registration Number</Form.Label>
+            <Container fluid style={{ padding: 0 }}>
+              <Row>
+                <Col md={1} style={{ paddingTop: 8 }}>
+                  <FontAwesomeIcon
+                    icon={faHashtag}
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
+                </Col>
+                <Col md={11}>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Enter your Vat Registration Number"
+                    value={vatRegistrationNumber}
+                    onChange={handleVRNChange}
+                    isInvalid={!isValidVRN(vatRegistrationNumber)}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          </Form.Group>
+        </Row>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="validationDescription">
+            <Form.Label>Description</Form.Label>
+            <Container fluid style={{ padding: 0 }}>
+              <Row>
+                <Col md={1} style={{ paddingTop: 8 }}>
+                  <FontAwesomeIcon
+                    icon={faAlignJustify}
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
+                </Col>
+                <Col md={11}>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Enter your Description"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          </Form.Group>
+        </Row>
         <div
           className="mb-1"
           style={{ display: "flex", justifyContent: "center" }}
@@ -298,7 +418,9 @@ export function SignUp() {
               !isValidPassword(password) ||
               !isPasswordMatch(password, confirmPassword) ||
               !isValidPhoneNumber(phoneNumber) ||
-              !isValidAddress(address)
+              !isValidAddress(address) ||
+              !isValidNationalID(nationalID) ||
+              !isValidVRN(vatRegistrationNumber)
             }
             style={{ width: "100%" }}
           >

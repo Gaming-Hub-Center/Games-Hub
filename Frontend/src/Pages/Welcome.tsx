@@ -2,7 +2,10 @@ import { Col, Container, Row } from "react-bootstrap";
 
 export function Welcome() {
   return (
-    <Container fluid style={{ height: "100vh", overflow: "hidden", padding: 0 }}>
+    <Container
+      fluid
+      style={{ height: "100vh", overflow: "hidden", padding: 0 }}
+    >
       <video
         autoPlay
         loop

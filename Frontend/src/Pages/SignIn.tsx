@@ -1,4 +1,7 @@
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SetStateAction, useState } from "react";
+import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -20,12 +23,13 @@ export function SignIn() {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    // aw hna grb enta
     setValidated(true);
+    // rabt hna
   };
 
   const isValidEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[c][o][m]$/.test(email);
   };
 
   const isValidPassword = (password: string | any[]) => {
@@ -67,29 +71,61 @@ export function SignIn() {
       >
         <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Sign In</h2>
         <Row className="mb-3">
-        <Form.Group as={Col} controlId="validationCustomEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Enter your email"
-              value={email}
-              onChange={handleEmailChange}
-              isInvalid={!isValidEmail(email)}
-            />
+          <Form.Group as={Col} controlId="validationCustomEmail">
+            <Form.Label>Email address</Form.Label>
+            <Container fluid style={{ padding: 0 }}>
+              <Row>
+                <Col md={1} style={{ paddingTop: 8 }}>
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
+                </Col>
+                <Col md={11}>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    isInvalid={!isValidEmail(email)}
+                  />
+                </Col>
+              </Row>
+            </Container>
           </Form.Group>
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationCustomPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={handlePasswordChange}
-              isInvalid={!isValidPassword(password)}
-            />
+            <Container fluid style={{ padding: 0 }}>
+              <Row>
+                <Col md={1} style={{ paddingTop: 8 }}>
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  />
+                </Col>
+                <Col md={11}>
+                  <Form.Control
+                    required
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    isInvalid={!isValidPassword(password)}
+                  />
+                </Col>
+              </Row>
+            </Container>
           </Form.Group>
         </Row>
         <div
@@ -105,11 +141,8 @@ export function SignIn() {
           </Button>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Link to="/SignUp" style={{ width: "100%" }}>
-            <Button variant="secondary" style={{ width: "100%" }}>
-              Sign Up
-            </Button>
-          </Link>
+          <p style={{ paddingRight: "10px" }}>Don't have an account? </p>
+          <Link to="/SignUp">Sign Up</Link>
         </div>
       </Form>
     </div>

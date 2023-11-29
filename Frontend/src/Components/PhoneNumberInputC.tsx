@@ -1,16 +1,21 @@
-import React from 'react';
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'react-phone-number-input';
+import React from "react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
-interface PhoneNumberInputCProps {
+interface PhoneNumberInputProps {
   value: string;
   onChange: (value: string) => void;
   invalid: boolean;
   setInvalid: (value: boolean) => void;
 }
 
-const PhoneNumberInputC: React.FC<PhoneNumberInputCProps> = ({ value, onChange, invalid, setInvalid }) => {
+const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
+  value,
+  onChange,
+  invalid,
+  setInvalid,
+}) => {
   const handlePhoneNumberChange = (phoneNumber: string) => {
     onChange(phoneNumber);
     setInvalid(!isValidPhoneNumber(phoneNumber));
@@ -19,11 +24,13 @@ const PhoneNumberInputC: React.FC<PhoneNumberInputCProps> = ({ value, onChange, 
   return (
     <PhoneInput
       international
-      defaultCountry="US"
+      defaultCountry="PS"
       placeholder="Enter your Phone number"
       value={value}
       onChange={handlePhoneNumberChange}
-      className={invalid ? 'is-invalid' : ''}
+      className={invalid ? "is-invalid" : ""}
     />
   );
 };
+
+export default PhoneNumberInput;
