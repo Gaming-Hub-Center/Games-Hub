@@ -7,7 +7,13 @@ import "./SignUpNavbar.css";
 
 export function SignUpNavbar() {
   return (
-    <Navbar expand="lg" bg="primary" data-bs-theme="dark" className="navbar">
+    <Navbar
+      expand="lg"
+      bg="primary"
+      variant="primary"
+      data-bs-theme="dark"
+      className="navbar"
+    >
       <Container
         fluid
         className="d-flex align-items-center justify-content-center"
@@ -18,7 +24,14 @@ export function SignUpNavbar() {
             <Nav.Link to="/SignUp" as={NavLink}>
               Customer account
             </Nav.Link>
-            <div className="vertical-line"></div>
+            <div
+              style={{
+                height: "40px",
+                width: "1px",
+                background: "#fff",
+                margin: "0 10px",
+              }}
+            ></div>
             <Nav.Link to="/SignUpSeller" as={NavLink}>
               Seller account
             </Nav.Link>
