@@ -5,7 +5,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.*;
 import com.gameshub.Controller.*;
-import com.gameshub.Model.Users.*;
+import com.gameshub.Model.Users.DAOs.BuyerDAO;
+import com.gameshub.Model.Users.DAOs.SellerDAO;
 import com.gameshub.Repository.*;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
@@ -51,7 +52,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example.com\",\"password\":\"password123\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/auth/login")
+            .post("/auth/signin")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isOk());
@@ -62,7 +63,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"invalid_email@example.com\",\"password\":\"pass\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/auth/login")
+            .post("/auth/signin")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isNotFound());
@@ -73,7 +74,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example.com\",\"password\":\"invalid_pass\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/auth/login")
+            .post("/auth/signin")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isUnauthorized());
@@ -84,7 +85,7 @@ public class SignInTests {
         String signInRequestJson = "{\"email\":\"john.doe@example\",\"password\":\"password123\"}";
 
         mockMvc.perform(MockMvcRequestBuilders
-            .post("/auth/login")
+            .post("/auth/signin")
             .contentType(MediaType.APPLICATION_JSON)
             .content(signInRequestJson))
             .andExpect(status().isBadRequest());

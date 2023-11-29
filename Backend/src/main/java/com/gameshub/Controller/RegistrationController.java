@@ -1,9 +1,9 @@
 package com.gameshub.Controller;
 
-import com.gameshub.Model.Users.BuyerDAO;
+import com.gameshub.Model.Users.DAOs.BuyerDAO;
 import com.gameshub.Model.Users.DTOs.SellerRegistrationDTO;
 import com.gameshub.Model.Users.DTOs.BuyerRegistrationDTO;
-import com.gameshub.Model.Users.SellerDAO;
+import com.gameshub.Model.Users.DAOs.SellerDAO;
 import com.gameshub.Service.BuyerDetailsService;
 import com.gameshub.Service.SellerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,8 @@
 package com.gameshub.Utils;
 
 import com.gameshub.Exception.*;
-import com.gameshub.Model.Users.*;
+import com.gameshub.Model.Users.DAOs.BuyerDAO;
+import com.gameshub.Model.Users.DAOs.SellerDAO;
 import com.gameshub.Service.*;
 
 import java.util.*;
