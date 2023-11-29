@@ -36,8 +36,8 @@ public class SignInRequest {
 
     public boolean authenticate(BuyerRepository buyerRepository, SellerRepository sellerRepository) {
         validateEmailFormat();
-        BuyerDAO buyer = buyerRepository.findByEmail(email);
-        SellerDAO seller = sellerRepository.findByEmail(email);
+        BuyerDAO buyer = buyerRepository.findByEmail(email).orElse(null);
+        SellerDAO seller = sellerRepository.findByEmail(email).orElse(null);
         if (buyer == null && seller == null)
             throw new ResourceNotFoundException("User with email '" + email + "' not found.");
         if (buyer != null && !Objects.equals(this.password, buyer.getPassword()))

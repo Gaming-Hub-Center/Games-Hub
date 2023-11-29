@@ -18,7 +18,10 @@ public class SellerServiceOAuth2 { // TODO complete it
     }
 
     public void createUser(OidcIdToken idToken) {
-        int userId =  Integer.parseInt(idToken.getClaim("sub").toString());
+        System.out.println(idToken.getClaim("sub").toString());
+        int userId = idToken.getClaim("sub").toString().hashCode();
+        System.out.println(userId);
+        //int userId =  Integer.parseInt(idToken.getClaim("sub").toString());
         String name = idToken.getClaim("name").toString();
         String email = idToken.getClaim("email").toString();
 
@@ -28,7 +31,8 @@ public class SellerServiceOAuth2 { // TODO complete it
 
     public boolean emailAlreadyExist(OidcIdToken idToken) {
         String email = idToken.getClaim("email").toString();
-        SellerDAO seller = sellerRepository.findByEmail(email);
+        System.out.println(email);
+        SellerDAO seller = sellerRepository.findByEmail(email).orElse(null);
         if(seller != null) {
             return true;
         }

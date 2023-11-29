@@ -4,12 +4,10 @@ import com.gameshub.Exception.ResourceNotFoundException;
 import com.gameshub.Exception.UserAlreadyExistsException;
 import com.gameshub.Model.Users.BuyerDAO;
 import com.gameshub.Model.Users.SellerDAO;
+import com.gameshub.Repository.SellerRepository;
 import com.gameshub.google_oauth2.service.BuyerServiceOAuth2;
-import com.gameshub.google_oauth2.service.proxy.CreateBuyerProxy;
-import com.gameshub.google_oauth2.service.proxy.CreateSellerProxy;
+import com.gameshub.google_oauth2.service.proxy.*;
 import com.gameshub.google_oauth2.service.SellerServiceOAuth2;
-import com.gameshub.google_oauth2.service.proxy.LoginBuyerProxy;
-import com.gameshub.google_oauth2.service.proxy.LoginSellerProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,6 +22,8 @@ import java.util.Map;
 
 @RestController
 public class OAuth2Controller {
+    @Autowired
+    private SellerRepository sellerRepository;
 
     @Autowired
     private CreateBuyerProxy createBuyerProxy;
@@ -63,13 +63,14 @@ public class OAuth2Controller {
 
     @GetMapping("/oauth/seller")
     public ResponseEntity<?> signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
-        System.out.println("hhhghhhg");
         try {
             if (principal instanceof DefaultOidcUser) {
                 OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
                 System.out.println(idToken.getClaim("email").toString());
                 if(!sellerService.emailAlreadyExist(idToken)) {
+                    System.out.println("ff");
                     createSellerProxy.processUserCreation(idToken);
+                    System.out.println("ffghjghj");
                     return ResponseEntity.ok("Signed up successfully");
                 }
                 else {
@@ -83,45 +84,50 @@ public class OAuth2Controller {
         return null;
     }
 
-    @GetMapping("/user/oauth")
-    public Map<String, Object> getLoginPage(@AuthenticationPrincipal OAuth2User principal) {
-        String userId = principal.getAttribute("sub");
-        Map<String, Object> attributes = new HashMap<>();
-        attributes.put("id", userId);
-        String userName = principal.getAttribute("name");
-        attributes.put("name", userName);
-        String email = principal.getAttribute("email");
-        attributes.put("email", email);
-        String address = principal.getAttribute("address");
-        attributes.put("address", address);
-        return attributes;
-    }
+   /* @GetMapping("/booo")
+    public ResponseEntity<?> booo() {
+        return ResponseEntity.ok(sellerRepository.findByEmail("alice.blue@example.com").orElse(null));
+    }*/
 
-    @PostMapping("/oauth/sign-in/seller")
-    public SellerDAO signinPageSeller(@AuthenticationPrincipal OAuth2User principal) {
-        try {
-            if (principal instanceof DefaultOidcUser) {
-                OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
-                loginSellerProxy.processSellerLogin(idToken);
-            }
-        } catch (/*UserAlreadyExistsException | */ResourceNotFoundException | IllegalArgumentException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return null;
-    }
-
-    @GetMapping("/oauth/sign-in/buyer")
-    public BuyerDAO signinPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
-        try {
-            if (oAuth2User instanceof DefaultOidcUser) {
-                OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
-                loginBuyerProxy.processBuyerLogin(idToken);
-            }
-        } catch (/*UserAlreadyExistsException | */ResourceNotFoundException | IllegalArgumentException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return null;
-    }
+//    @GetMapping("/user/oauth")
+//    public Map<String, Object> getLoginPage(@AuthenticationPrincipal OAuth2User principal) {
+//        String userId = principal.getAttribute("sub");
+//        Map<String, Object> attributes = new HashMap<>();
+//        attributes.put("id", userId);
+//        String userName = principal.getAttribute("name");
+//        attributes.put("name", userName);
+//        String email = principal.getAttribute("email");
+//        attributes.put("email", email);
+//        String address = principal.getAttribute("address");
+//        attributes.put("address", address);
+//        return attributes;
+//    }
+//
+//    @PostMapping("/oauth/sign-in/seller")
+//    public SellerDAO signinPageSeller(@AuthenticationPrincipal OAuth2User principal) {
+//        try {
+//            if (principal instanceof DefaultOidcUser) {
+//                OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
+//                loginSellerProxy.processSellerLogin(idToken);
+//            }
+//        } catch (/*UserAlreadyExistsException | */ResourceNotFoundException | IllegalArgumentException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        return null;
+//    }
+//
+//    @GetMapping("/oauth/sign-in/buyer")
+//    public BuyerDAO signinPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
+//        try {
+//            if (oAuth2User instanceof DefaultOidcUser) {
+//                OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
+//                loginBuyerProxy.processBuyerLogin(idToken);
+//            }
+//        } catch (/*UserAlreadyExistsException | */ResourceNotFoundException | IllegalArgumentException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        return null;
+//    }
 
 //    @GetMapping("/create_user")
 //    public Buyer createBuyer(@RequestBody Buyer buyer) {

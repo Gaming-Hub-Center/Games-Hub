@@ -22,7 +22,8 @@ public class BuyerServiceOAuth2 {
     }
 
     public void createUser(OidcIdToken idToken) {
-        int userId =  Integer.parseInt(idToken.getClaim("sub").toString());
+        //int userId =  Integer.parseInt(idToken.getClaim("sub").toString());
+        int userId = idToken.getClaim("sub").toString().hashCode();
         String name = idToken.getClaim("name").toString();
         String email = idToken.getClaim("email").toString();
         BuyerDAO buyer = new BuyerDAO(userId, name, email, null, null, null, 0);
@@ -32,7 +33,7 @@ public class BuyerServiceOAuth2 {
 
     public boolean emailAlreadyExist(OidcIdToken idToken) {
         String email = idToken.getClaim("email").toString();
-        BuyerDAO buyer = buyerRepository.findByEmail(email);
+        BuyerDAO buyer = buyerRepository.findByEmail(email).orElse(null);
         if(buyer != null) {
             return true;
         }

@@ -45,7 +45,7 @@ public class AuthController {
 
     @GetMapping("buyer")
     public ResponseEntity<BuyerDAO> getBuyer(@RequestParam String email) {
-        BuyerDAO buyer = buyerRepository.findByEmail(email);
+        BuyerDAO buyer = buyerRepository.findByEmail(email).orElse(null);
         if (buyer != null)
             return ResponseEntity.ok(buyer);
         else
@@ -59,7 +59,7 @@ public class AuthController {
 
     @GetMapping("seller")
     public ResponseEntity<SellerDAO> getSeller(@RequestParam String email) {
-        SellerDAO seller = sellerRepository.findByEmail(email);
+        SellerDAO seller = sellerRepository.findByEmail(email).orElse(null);
         if (seller != null)
             return ResponseEntity.ok(seller);
         else
@@ -78,8 +78,8 @@ public class AuthController {
 
     @GetMapping("user")
     public ResponseEntity<Object> getUser(@RequestParam String email) {
-        BuyerDAO buyer = buyerRepository.findByEmail(email);
-        SellerDAO seller = sellerRepository.findByEmail(email);
+        BuyerDAO buyer = buyerRepository.findByEmail(email).orElse(null);
+        SellerDAO seller = sellerRepository.findByEmail(email).orElse(null);
         if (buyer != null)
             return ResponseEntity.ok(buyer);
         return ResponseEntity.ok(seller);

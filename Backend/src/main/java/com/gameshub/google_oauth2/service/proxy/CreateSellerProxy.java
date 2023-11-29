@@ -19,7 +19,7 @@ public class CreateSellerProxy {
         }
 
         String user = idToken.getClaim("sub");
-        int userId =  Integer.parseInt(idToken.getClaim("sub").toString());
+//        int userId =  Integer.parseInt(idToken.getClaim("sub").toString());///////////////////////////
         String name = idToken.getClaim("name").toString();
         String email = idToken.getClaim("email").toString();
 
@@ -27,14 +27,13 @@ public class CreateSellerProxy {
             throw new ResourceNotFoundException("id is missing");
         }
 
-        if(email != null) {
+        /*if(email != null) {
             throw new UserAlreadyExistsException("User Exists");
-        }
+        }*/
 
         // Check for other required attributes
         checkAttribute(idToken, "name");
         checkAttribute(idToken, "sub");
-
 
 //        Seller seller = new Seller(userId, name, email, null, null, null, 0, null, null, null, null);
 
@@ -47,4 +46,6 @@ public class CreateSellerProxy {
             throw new ResourceNotFoundException("Missing attribute: " + attributeName);
         }
     }
+
+
 }

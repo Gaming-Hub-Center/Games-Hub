@@ -25,9 +25,9 @@ public class CreateBuyerProxy {
             throw new ResourceNotFoundException("id is missing");
         }
 
-        if(email != null) {
+        /*if(email != null) {
             throw new UserAlreadyExistsException("User Exists");
-        }
+        }*/
 
         // Check for other required attributes
         checkAttribute(idToken, "name");
