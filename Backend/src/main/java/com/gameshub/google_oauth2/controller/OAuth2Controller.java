@@ -19,6 +19,9 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class OAuth2Controller {
 
@@ -58,7 +61,7 @@ public class OAuth2Controller {
         return null;
     }
 
-    @PostMapping("/oauth/seller")
+    @GetMapping("/oauth/seller")
     public ResponseEntity<?> signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
         System.out.println("hhhghhhg");
         try {
@@ -78,6 +81,20 @@ public class OAuth2Controller {
             System.out.println(ex.getMessage());
         }
         return null;
+    }
+
+    @GetMapping("/user/oauth")
+    public Map<String, Object> getLoginPage(@AuthenticationPrincipal OAuth2User principal) {
+        String userId = principal.getAttribute("sub");
+        Map<String, Object> attributes = new HashMap<>();
+        attributes.put("id", userId);
+        String userName = principal.getAttribute("name");
+        attributes.put("name", userName);
+        String email = principal.getAttribute("email");
+        attributes.put("email", email);
+        String address = principal.getAttribute("address");
+        attributes.put("address", address);
+        return attributes;
     }
 
     @PostMapping("/oauth/sign-in/seller")
