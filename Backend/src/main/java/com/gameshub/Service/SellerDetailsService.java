@@ -1,11 +1,13 @@
 package com.gameshub.Service;
 
 import com.gameshub.Model.Users.*;
+import com.gameshub.Model.Users.DTOs.SellerRegistrationDTO;
 import com.gameshub.Repository.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.*;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service

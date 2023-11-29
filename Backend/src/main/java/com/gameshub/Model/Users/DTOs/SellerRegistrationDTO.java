@@ -1,6 +1,6 @@
 package com.gameshub.Model.Users.DTOs;
 
-public class SellerRegistrationDTO extends UserRegistrationDTO {
+public class SellerRegistrationDTO extends BuyerRegistrationDTO {
     private String description;
     private String nationalID;
     private String vatRegistrationNumber;

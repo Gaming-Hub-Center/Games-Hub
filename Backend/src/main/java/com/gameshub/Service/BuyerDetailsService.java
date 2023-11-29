@@ -37,5 +37,4 @@ public class BuyerDetailsService implements UserDetailsService {
     public void saveNewUser(BuyerDAO buyer){
         buyerRepository.save(buyer);
     }
-
 }
