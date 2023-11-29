@@ -1,7 +1,7 @@
 package com.gameshub.google_oauth2.service;
 
-import com.gameshub.Model.Users.Buyer;
-import com.gameshub.Model.Users.Seller;
+import com.gameshub.Model.Users.BuyerDAO;
+import com.gameshub.Model.Users.SellerDAO;
 import com.gameshub.Repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
@@ -13,7 +13,7 @@ public class SellerServiceOAuth2 { // TODO complete it
     @Autowired
     private SellerRepository sellerRepository;
 
-    public void createUser(Seller buyer) {
+    public void createUser(SellerDAO buyer) {
         sellerRepository.save(buyer);
     }
 
@@ -22,13 +22,13 @@ public class SellerServiceOAuth2 { // TODO complete it
         String name = idToken.getClaim("name").toString();
         String email = idToken.getClaim("email").toString();
 
-        Seller seller = new Seller(userId, name, email, null, null, null, 0, null, null, null, null);
+        SellerDAO seller = new SellerDAO(userId, name, email, null, null, null, 0, null, null, null, null);
         sellerRepository.save(seller);
     }
 
     public boolean emailAlreadyExist(OidcIdToken idToken) {
         String email = idToken.getClaim("email").toString();
-        Seller seller = sellerRepository.findByEmail(email);
+        SellerDAO seller = sellerRepository.findByEmail(email);
         if(seller != null) {
             return true;
         }
