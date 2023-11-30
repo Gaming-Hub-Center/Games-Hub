@@ -3,6 +3,7 @@ package com.gameshub.Security;
 import com.gameshub.Exception.*;
 import com.gameshub.Service.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.*;
 import org.springframework.security.core.userdetails.*;
@@ -10,6 +11,7 @@ import org.springframework.security.crypto.password.*;
 import org.springframework.stereotype.*;
 
 @Component
+@Lazy
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
