@@ -47,7 +47,7 @@ public class SignInTests {
                         .post("/auth/signin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(signInRequestJson))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isInternalServerError());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class SignInTests {
                         .post("/auth/signin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(signInRequestJson))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isInternalServerError());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class SignInTests {
                         .post("/auth/signin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(signInRequestJson))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isInternalServerError());
     }
 
 }

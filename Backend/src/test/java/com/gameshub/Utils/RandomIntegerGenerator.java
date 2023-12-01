@@ -1,5 +1,6 @@
 package com.gameshub.Utils;
-import java.util.Random;
+
+import java.util.*;
 
 public class RandomIntegerGenerator {
 
