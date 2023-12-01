@@ -1,6 +1,6 @@
 package com.gameshub.DataAccessLayer;
 
-import com.gameshub.Model.Users.DAOs.BuyerDAO;
+import com.gameshub.Model.User.DAO.BuyerDAO;
 import com.gameshub.Repository.BuyerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
