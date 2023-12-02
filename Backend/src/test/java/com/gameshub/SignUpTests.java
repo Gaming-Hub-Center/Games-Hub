@@ -1,9 +1,9 @@
 package com.gameshub;
 
-import com.gameshub.Controller.*;
-import com.gameshub.Exception.*;
-import com.gameshub.Model.User.DTO.*;
-import com.gameshub.Utils.*;
+import com.gameshub.controller.*;
+import com.gameshub.exception.*;
+import com.gameshub.utils.*;
+import com.gameshub.controller.DTO.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;

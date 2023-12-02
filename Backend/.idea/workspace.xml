@@ -5,34 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/AuthenticationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/RegistrationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/BuyerDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/BuyerRegistrationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/SellerDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/SellerRegistrationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/UserSigninDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/SignInTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthorizedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/BuyerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/BuyerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/SellerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/SellerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/UserDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DTOs/BuyerRegistrationDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DTOs/SellerRegistrationDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DTOs/UserLoginDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/BuyerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/BuyerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/SellerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/BuyerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/BuyerServiceOAuth2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/SellerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/SellerServiceOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/OAuth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/OAuth2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/InvalidFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/InvalidFormatException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/PasswordMismatchException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/PasswordMismatchException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/ResourceAlreadyFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/ResourceAlreadyFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/UserAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/UserAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/BuyerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/user/BuyerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/SellerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/user/SellerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/user/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/BuyerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/BuyerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/BuyerRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/BuyerRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/SellerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/SellerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/SellerRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/SellerRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/UserSigninDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/UserSigninDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/BuyerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/BuyerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/SellerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/AuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/AuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/JWTAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/JWTGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/JWTGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/PasswordConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/PasswordConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/ConfigConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/BuyerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/BuyerServiceOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/CreateUserProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/CreateUserProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/SellerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/SellerServiceOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Utils/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/config/OAuth2LoginConfigGoogle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/OAuth2LoginConfigGoogle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/BackendApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/BackendApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/Utils/RandomIntegerGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/utils/RandomIntegerGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +75,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -109,7 +131,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.BackendApplication.executor": "Run",
-    "git-widget-placeholder": "GH-150-Google-OAuth-Sign-up",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/CSED/semester5/SWE/Games-Hub/Backend/src/main/java/com/gameshub",
@@ -200,6 +223,9 @@
       </method>
     </configuration>
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="security.jwt.token.secret-key" value="H67t1MCP/ZB2Z40xPPgqaucMdrDu+h/K5stVCctqkZk=" />
+      </envs>
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="Backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.gameshub.BackendApplication" />
@@ -249,6 +275,7 @@
       <workItem from="1701500149398" duration="276000" />
       <workItem from="1701500446736" duration="4516000" />
       <workItem from="1701514280250" duration="1448000" />
+      <workItem from="1701532780159" duration="7907000" />
     </task>
     <servers />
   </component>
@@ -259,6 +286,15 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/gameshub/controller/OAuth2Controller.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="((OidcIdToken)((DefaultOidcUser)principal).idToken).tokenValue" language="JAVA" custom="org.springframework.security.oauth2.core.oidc.OidcIdToken,org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser" />
@@ -266,10 +302,12 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1701287147694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$java_in_Backend.ic" NAME="java in Backend Coverage Results" MODIFIED="1701286983531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1701346956764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$OAuth2BuyerSignUpUnitTest.ic" NAME="OAuth2BuyerSignUpUnitTest Coverage Results" MODIFIED="1701282281272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1701287147694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1701293951902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
