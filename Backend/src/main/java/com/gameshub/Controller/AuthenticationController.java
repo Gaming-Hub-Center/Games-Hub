@@ -66,7 +66,6 @@ public class AuthenticationController {
     public List<SellerDAO> getAllSellers() {
         return userService.getAllSellers();
     }
-
+  
     // ===============================
-
 }
