@@ -5,20 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/UserAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/RegistrationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/BuyerDetails.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/BuyerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/BuyerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/SellerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/SellerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/Users/DAOs/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/config/OAuth2LoginConfigGoogle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/config/OAuth2LoginConfigGoogle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/controller/OAuth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/controller/OAuth2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/controller/OAuth2ErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/controller/OAuth2ErrorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/proxy/CreateUserProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/proxy/CreateUserProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/proxy/LoginBuyerProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/proxy/LoginBuyerProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2BuyerSignUpUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/CustomAuthenticationProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/BuyerDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/SellerDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Utils/SignInRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/config/OAuth2LoginConfigGoogle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/OAuth2LoginConfigGoogle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/controller/OAuth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/OAuth2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/controller/OAuth2ErrorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/BuyerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/BuyerServiceOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/SellerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/SellerServiceOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/proxy/CreateUserProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/CreateUserProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/proxy/LoginBuyerProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/proxy/LoginSellerProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/SignInTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +76,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "JUnit.OAuth2BuyerSignUpUnitTest.executor": "Coverage",
     "JUnit.OAuth2BuyerSignUpUnitTest.findByEmailTests.executor": "Run",
     "JUnit.OAuth2BuyerSignUpUnitTest.testCreateUser.executor": "Run",
@@ -97,7 +117,7 @@
     "git-widget-placeholder": "GH-150-Google-OAuth-Sign-up",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/CSED/semester5/SWE/Project/Proj/Games-Hub/Backend",
+    "last_opened_file_path": "D:/CSED/semester5/SWE/Games-Hub/Backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -226,6 +246,8 @@
       <workItem from="1701252453084" duration="1858000" />
       <workItem from="1701256860713" duration="4733000" />
       <workItem from="1701261617728" duration="26350000" />
+      <workItem from="1701500149398" duration="276000" />
+      <workItem from="1701500446736" duration="3404000" />
     </task>
     <servers />
   </component>

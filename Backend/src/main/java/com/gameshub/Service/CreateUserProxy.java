@@ -1,12 +1,10 @@
-package com.gameshub.google_oauth2.service.proxy;
+package com.gameshub.Service;
 
 
 import com.gameshub.Exception.ResourceNotFoundException;
 import com.gameshub.Exception.UserAlreadyExistsException;
 import com.gameshub.Repository.BuyerRepository;
 import com.gameshub.Repository.SellerRepository;
-import com.gameshub.google_oauth2.service.BuyerServiceOAuth2;
-import com.gameshub.google_oauth2.service.SellerServiceOAuth2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.stereotype.Component;

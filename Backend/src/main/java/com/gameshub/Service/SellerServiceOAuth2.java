@@ -1,4 +1,4 @@
-package com.gameshub.google_oauth2.service;
+package com.gameshub.Service;
 
 import com.gameshub.Model.Users.DAOs.SellerDAO;
 import com.gameshub.Repository.SellerRepository;

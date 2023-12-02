@@ -1,26 +1,27 @@
-package com.gameshub.google_oauth2.controller;
+package com.gameshub.Controller;
 
 import com.gameshub.Exception.ResourceNotFoundException;
-import com.gameshub.google_oauth2.service.BuyerServiceOAuth2;
-import com.gameshub.google_oauth2.service.SellerServiceOAuth2;
-import com.gameshub.google_oauth2.service.proxy.CreateUserProxy;
+import com.gameshub.Service.BuyerServiceOAuth2;
+import com.gameshub.Service.SellerServiceOAuth2;
+import com.gameshub.Service.CreateUserProxy;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class OAuth2Controller {
+@RequestMapping("/oauth2")
+public class OAuth2Controller implements ErrorController {
 
     @Autowired
     private CreateUserProxy createUserProxy;
-
-//    @Autowired
-//    private CreateUserProxy createSellerProxy;
 
     @Autowired
     private BuyerServiceOAuth2 buyerService;
@@ -28,7 +29,7 @@ public class OAuth2Controller {
     @Autowired
     private SellerServiceOAuth2 sellerService;
 
-    @GetMapping("/oauth/buyer")
+    @GetMapping("/buyer")
     public ResponseEntity<?> signupPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
         try {
             OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
@@ -46,7 +47,7 @@ public class OAuth2Controller {
         return null;
     }
 
-    @GetMapping("/oauth/seller")
+    @GetMapping("/seller")
     public ResponseEntity<?> signupPageSeller(@AuthenticationPrincipal OAuth2User principal) {
         try {
             OidcIdToken idToken = ((DefaultOidcUser) principal).getIdToken();
@@ -62,6 +63,26 @@ public class OAuth2Controller {
             System.out.println(ex.getMessage());
         }
         return null;
+    }
+
+    @RequestMapping("/error")
+    public String handleError(HttpServletRequest request) {
+        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+
+        if (status != null) {
+            int statusCode = Integer.parseInt(status.toString());
+
+            if(statusCode == HttpStatus.NOT_FOUND.value()) {
+                return "error-404";
+            }
+            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                return "error-500";
+            }
+            String message = (String) request.getSession().getAttribute("error.message");
+            request.getSession().removeAttribute("error.message");
+            return message;
+        }
+        return "error";
     }
 
 

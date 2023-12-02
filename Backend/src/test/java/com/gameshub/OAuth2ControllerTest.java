@@ -1,21 +1,17 @@
 package com.gameshub;
 
-import com.gameshub.Exception.ResourceNotFoundException;
-import com.gameshub.google_oauth2.controller.OAuth2Controller;
-import com.gameshub.google_oauth2.service.BuyerServiceOAuth2;
-import com.gameshub.google_oauth2.service.SellerServiceOAuth2;
-import com.gameshub.google_oauth2.service.proxy.CreateUserProxy;
+import com.gameshub.Controller.OAuth2Controller;
+import com.gameshub.Service.BuyerServiceOAuth2;
+import com.gameshub.Service.SellerServiceOAuth2;
+import com.gameshub.Service.CreateUserProxy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;

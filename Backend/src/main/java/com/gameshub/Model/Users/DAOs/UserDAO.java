@@ -1,6 +1,7 @@
 package com.gameshub.Model.Users.DAOs;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class UserDAO {

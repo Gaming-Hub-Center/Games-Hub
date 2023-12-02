@@ -1,4 +1,4 @@
-package com.gameshub.google_oauth2.config;
+package com.gameshub.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
