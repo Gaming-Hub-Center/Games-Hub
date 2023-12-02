@@ -1,0 +1,33 @@
+package com.gameshub.Model.User.DAO;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Data
+@MappedSuperclass
+public abstract class UserDAO {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    protected int id;
+
+    @Column(name = "Name")
+    protected String name;
+
+    @Column(name = "Email", unique = true)
+    protected String email;
+
+    @Column(name = "Password")
+    protected String password;
+
+    @Column(name = "Phone")
+    protected String phone;
+
+    @Column(name = "Address")
+    protected String address;
+
+    @Column(name = "Balance")
+    protected float balance;
+
+}

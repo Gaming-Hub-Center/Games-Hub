@@ -3,8 +3,8 @@ package com.gameshub;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.gameshub.Model.Users.DAOs.BuyerDAO;
-import com.gameshub.Model.Users.DAOs.SellerDAO;
+import com.gameshub.Model.User.DAO.BuyerDAO;
+import com.gameshub.Model.User.DAO.SellerDAO;
 import com.gameshub.Repository.BuyerRepository;
 import com.gameshub.Repository.SellerRepository;
 import com.gameshub.Service.BuyerServiceOAuth2;

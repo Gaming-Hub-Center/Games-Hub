@@ -2,8 +2,8 @@ package com.gameshub;
 
 import com.gameshub.Exception.ResourceNotFoundException;
 import com.gameshub.Exception.UserAlreadyExistsException;
-import com.gameshub.Model.Users.DAOs.BuyerDAO;
-import com.gameshub.Model.Users.DAOs.SellerDAO;
+import com.gameshub.Model.User.DAO.BuyerDAO;
+import com.gameshub.Model.User.DAO.SellerDAO;
 import com.gameshub.Repository.BuyerRepository;
 import com.gameshub.Repository.SellerRepository;
 import com.gameshub.Service.BuyerServiceOAuth2;

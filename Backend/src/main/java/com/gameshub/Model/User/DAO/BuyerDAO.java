@@ -1,13 +1,13 @@
-package com.gameshub.Model.Users.DAOs;
+package com.gameshub.Model.User.DAO;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-
+@Data
 @Entity
 @Table(name = "buyer")
+@NoArgsConstructor
 public class BuyerDAO extends UserDAO {
-
-    public BuyerDAO() { }
 
     public BuyerDAO(int id, String name, String email, String password, String phone, String address, float balance) {
         this.id = id;
@@ -19,12 +19,13 @@ public class BuyerDAO extends UserDAO {
         this.balance = balance;
     }
 
-    public BuyerDAO(String name, String email, String password, String phone, String address) {
+    public BuyerDAO(String name, String email, String password, String phone, String address, float balance) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.address = address;
+        this.balance = balance;
     }
 
 }

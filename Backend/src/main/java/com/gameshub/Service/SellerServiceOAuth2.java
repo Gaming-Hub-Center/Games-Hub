@@ -1,6 +1,6 @@
 package com.gameshub.Service;
 
-import com.gameshub.Model.Users.DAOs.SellerDAO;
+import com.gameshub.Model.User.DAO.SellerDAO;
 import com.gameshub.Repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;

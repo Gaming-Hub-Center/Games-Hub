@@ -1,6 +1,6 @@
 package com.gameshub.Repository;
 
-import com.gameshub.Model.Users.DAOs.BuyerDAO;
+import com.gameshub.Model.User.DAO.BuyerDAO;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
 
