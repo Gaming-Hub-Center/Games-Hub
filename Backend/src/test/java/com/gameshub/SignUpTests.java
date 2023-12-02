@@ -1,13 +1,16 @@
 package com.gameshub;
 
-import com.gameshub.Controller.RegistrationController;
-import com.gameshub.Model.Users.DTOs.SellerRegistrationDTO;
-import com.gameshub.Model.Users.DTOs.BuyerRegistrationDTO;
-import com.gameshub.Utils.RandomIntegerGenerator;
+import com.gameshub.Controller.*;
+import com.gameshub.Exception.*;
+import com.gameshub.Model.User.DTO.*;
+import com.gameshub.Utils.*;
 import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
+import org.springframework.http.*;
+import org.springframework.security.crypto.password.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class SignUpTests {
@@ -26,7 +29,7 @@ public class SignUpTests {
         newUserData.setPassword(passwordEncoder.encode("password" + newUserNumber));
         newUserData.setEmail("user" + newUserNumber + "@example.com");
 
-        assert registrationController.registerNewUser(newUserData).getBody().equals("Registered " + newUserData.getName() + " successfully!!");
+        assert registrationController.registerNewBuyer(newUserData).getStatusCode().equals(HttpStatus.OK);
     }
 
     @Test
@@ -38,7 +41,7 @@ public class SignUpTests {
         newUserData.setEmail("user" + newUserNumber + "@example.com");
         newUserData.setDescription("desc" + newUserNumber);
 
-        assert registrationController.registerNewUser(newUserData).getBody().equals("Registered " + newUserData.getName() + " successfully!!");
+        assert registrationController.registerNewSeller(newUserData).getStatusCode().equals(HttpStatus.OK);
     }
 
     @Test
@@ -48,7 +51,9 @@ public class SignUpTests {
         newUserData.setPassword(passwordEncoder.encode("password123"));
         newUserData.setEmail("john.doe@example.com");
 
-        assert registrationController.registerNewUser(newUserData).getBody().equals("User John Doe already exists!!");
+        assertThrows(ResourceAlreadyFoundException.class, () -> {
+            registrationController.registerNewBuyer(newUserData);
+        });
     }
 
     @Test
@@ -57,7 +62,10 @@ public class SignUpTests {
         newUserData.setName("Alice Blue");
         newUserData.setPassword(passwordEncoder.encode("alicepass"));
         newUserData.setEmail("alice.blue@example.com");
-        assert registrationController.registerNewUser(newUserData).getBody().equals("User Alice Blue already exists!!");
+
+        assertThrows(ResourceAlreadyFoundException.class, () -> {
+            registrationController.registerNewSeller(newUserData);
+        });
     }
 
 }

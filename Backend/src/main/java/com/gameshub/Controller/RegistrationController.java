@@ -1,60 +1,70 @@
 package com.gameshub.Controller;
 
-import com.gameshub.Model.Users.DAOs.BuyerDAO;
-import com.gameshub.Model.Users.DTOs.SellerRegistrationDTO;
-import com.gameshub.Model.Users.DTOs.BuyerRegistrationDTO;
-import com.gameshub.Model.Users.DAOs.SellerDAO;
-import com.gameshub.Service.BuyerDetailsService;
-import com.gameshub.Service.SellerDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.gameshub.Model.User.DAO.*;
+import com.gameshub.Model.User.DTO.*;
+import com.gameshub.Security.*;
+import com.gameshub.Service.*;
+import com.gameshub.Utils.*;
+import lombok.*;
+import org.springframework.http.*;
+import org.springframework.security.crypto.password.*;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.time.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/registration")
 public class RegistrationController {
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    private final UserService userService;
 
-    @Autowired
-    BuyerDetailsService buyerDetailsService;
+    private final UserMapper userMapper;
 
-    @Autowired
-    SellerDetailsService sellerDetailsService;
+    private final JWTGenerator jwtGenerator;
 
-    @PostMapping("/user")
-    public ResponseEntity<String> registerNewUser(@RequestBody BuyerRegistrationDTO buyerProvidedInfo){
-        try{
-            buyerDetailsService.saveNewUser(new BuyerDAO(buyerProvidedInfo.getName(), buyerProvidedInfo.getEmail(), passwordEncoder.encode(buyerProvidedInfo.getPassword()),
-                    buyerProvidedInfo.getPhone(), buyerProvidedInfo.getAddress()));
-            return new ResponseEntity<String>("Registered " + buyerProvidedInfo.getName() + " successfully!!" ,HttpStatus.OK);
-        }catch (DataIntegrityViolationException e){
-            return new ResponseEntity<String>("User " + buyerProvidedInfo.getName() + " already exists!!" ,HttpStatus.BAD_REQUEST);
-        }
+    private final PasswordEncoder passwordEncoder;
+
+    @PostMapping("/buyer")
+    public ResponseEntity<UserDTO> registerNewBuyer(@RequestBody BuyerRegistrationDTO buyerRegistrationDTO){
+        userService.saveNewBuyer(
+            new BuyerDAO(
+                buyerRegistrationDTO.getName(),
+                buyerRegistrationDTO.getEmail(),
+                passwordEncoder.encode(buyerRegistrationDTO.getPassword()),
+                buyerRegistrationDTO.getPhone(),
+                buyerRegistrationDTO.getAddress(),
+                0
+            )
+        );
+        String token = jwtGenerator.createToken(buyerRegistrationDTO.getEmail());
+        UserDAO userDAO = userService.getByEmail(buyerRegistrationDTO.getEmail());
+        UserDTO userDTO = userMapper.toUserDTO(userDAO);
+        userDTO.setToken(token);
+        return ResponseEntity.ok(userDTO);
     }
 
     @PostMapping("/seller")
-    public ResponseEntity<String> registerNewUser(@RequestBody SellerRegistrationDTO sellerProvidedInfo){
-        try{
-            sellerDetailsService.saveNewUser(new SellerDAO(sellerProvidedInfo.getName(), sellerProvidedInfo.getEmail(), passwordEncoder.encode(sellerProvidedInfo.getPassword()),
-                    sellerProvidedInfo.getPhone(), sellerProvidedInfo.getAddress(), sellerProvidedInfo.getNationalID(), LocalDate.now(), sellerProvidedInfo.getDescription(), sellerProvidedInfo.getVatRegistrationNumber()));
-
-            return new ResponseEntity<String>("Registered " + sellerProvidedInfo.getName() + " successfully!!" ,HttpStatus.OK);
-        }catch (DataIntegrityViolationException e){
-            return new ResponseEntity<String>("User " + sellerProvidedInfo.getName() + " already exists!!" ,HttpStatus.BAD_REQUEST);
-        }
-
-
-
+    public ResponseEntity<UserDTO> registerNewSeller(@RequestBody SellerRegistrationDTO sellerRegistrationDTO){
+        userService.saveNewSeller(
+            new SellerDAO(
+                    sellerRegistrationDTO.getName(),
+                    sellerRegistrationDTO.getEmail(),
+                    passwordEncoder.encode(sellerRegistrationDTO.getPassword()),
+                    sellerRegistrationDTO.getPhone(),
+                    sellerRegistrationDTO.getAddress(),
+                    0,
+                    sellerRegistrationDTO.getNationalID(),
+                    LocalDate.now(),
+                    sellerRegistrationDTO.getDescription(),
+                    sellerRegistrationDTO.getVatRegistrationNumber()
+            )
+        );
+        String token = jwtGenerator.createToken(sellerRegistrationDTO.getEmail());
+        UserDAO userDAO = userService.getByEmail(sellerRegistrationDTO.getEmail());
+        UserDTO userDTO = userMapper.toUserDTO(userDAO);
+        userDTO.setToken(token);
+        return ResponseEntity.ok(userDTO);
     }
 
 }
