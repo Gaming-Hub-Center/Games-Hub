@@ -1,0 +1,21 @@
+we use:
+    .ts plain typescript files
+    .tsx for typescript components
+
+when writing the names of functions we use:
+    PascalCasing: ex.AnaGamed
+
+---------------------------------------------------
+Components:
+- Components are used to build reusable UI elements, such as buttons or input fields. They can be composed together using other components.
+- we make them as functions. ex. 
+// Message is a component that we made
+import Message from './Message';
+
+function App() {
+    return <div><Message></Message></div>; is eq. to 
+    return <div><Message /></div>;
+}
+
+export default App;
+

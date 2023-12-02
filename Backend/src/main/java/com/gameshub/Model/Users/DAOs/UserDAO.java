@@ -1,7 +1,6 @@
 package com.gameshub.Model.Users.DAOs;
 
-
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @MappedSuperclass
 public abstract class UserDAO {
@@ -9,7 +8,7 @@ public abstract class UserDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    protected Integer id;
+    protected int id;
 
     @Column(name = "Name")
     protected String name;

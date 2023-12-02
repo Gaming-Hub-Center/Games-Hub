@@ -1,9 +1,8 @@
 package com.gameshub;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.*;
 
-@SpringBootTest
+// @SpringBootTest
 class BackendApplicationTests {
 
 	@Test

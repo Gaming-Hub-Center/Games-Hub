@@ -1,10 +1,6 @@
 package com.gameshub.Model.Users.DAOs;
 
-
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 
 import java.time.*;
 
@@ -34,6 +30,18 @@ public class SellerDAO extends UserDAO {
         this.phone = phone;
         this.address = address;
         this.balance = balance;
+        this.nationalID = nationalID;
+        this.dateJoined = dateJoined;
+        this.sellerDescription = sellerDescription;
+        this.vatRegistrationNumber = vatRegistrationNumber;
+    }
+
+    public SellerDAO(String name, String email, String password, String phone, String address, String nationalID, LocalDate dateJoined, String sellerDescription, String vatRegistrationNumber) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
         this.nationalID = nationalID;
         this.dateJoined = dateJoined;
         this.sellerDescription = sellerDescription;

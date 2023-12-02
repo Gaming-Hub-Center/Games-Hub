@@ -1,7 +1,6 @@
 package com.gameshub.Model.Users.DAOs;
 
-
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "buyer")
@@ -17,6 +16,14 @@ public class BuyerDAO extends UserDAO {
         this.phone = phone;
         this.address = address;
         this.balance = balance;
+    }
+
+    public BuyerDAO(String name, String email, String password, String phone, String address) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
     }
 
 }
