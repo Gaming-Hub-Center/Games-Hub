@@ -18,6 +18,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(ResourceAlreadyFoundException.class)
+    public ResponseEntity<ErrorResponse> handleResourceAlreadyFoundException(ResourceNotFoundException ex) {
+        HttpStatus httpStatus = HttpStatus.FOUND;
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
+    }
+
     @ExceptionHandler(PasswordMismatchException.class)
     public ResponseEntity<ErrorResponse> handlePasswordMismatchException(PasswordMismatchException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.UNAUTHORIZED);
