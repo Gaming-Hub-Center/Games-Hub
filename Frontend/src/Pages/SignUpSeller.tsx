@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from "react";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import PhoneNumberInput from "../Components/PhoneNumberInputC";
@@ -16,7 +16,10 @@ import {
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../Components/SignUpNavbar";
-import { AuthService, SellerRegistrationData} from '../Register'; 
+import { SellerRegistrationDTO } from "../Controller/DTO/SellerRegistrationDTO";
+import { httpRequest } from "../Controller/HttpProxy";
+import { UserDTO } from "../Controller/DTO/UserDTO";
+import { setJwtToken } from "../CurrentSession";
 
 
 export function SignUpSeller() {
@@ -31,6 +34,7 @@ export function SignUpSeller() {
   const [nationalID, setnationalID] = useState("");
   const [vatRegistrationNumber, setVatRegistrationNumber] = useState("");
   const [description, setDescription] = useState("");
+  const navigate = useNavigate()
 
   const isValidUsername = (username: string) => {
     return /^[a-zA-Z][a-zA-Z0-9]*$/.test(username);
@@ -111,48 +115,41 @@ export function SignUpSeller() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (
-      form.checkValidity() === false ||
-      !isValidEmail(email) ||
-      !isValidPassword(password) ||
-      !isPasswordMatch(password, confirmPassword) ||
-      !isValidPhoneNumber(phoneNumber) ||
-      !isValidAddress(address) ||
-      !isValidNationalID(nationalID) ||
-      !isValidVRN(vatRegistrationNumber)
+        form.checkValidity() === false ||
+        !isValidEmail(email) ||
+        !isValidPassword(password) ||
+        !isPasswordMatch(password, confirmPassword) ||
+        !isValidPhoneNumber(phoneNumber) ||
+        !isValidAddress(address)
     ) {
-      event.preventDefault();
       event.stopPropagation();
     }
 
-    const sellerData: SellerRegistrationData = {
-      userName: username,
+    event.preventDefault();
+
+    const sellerRegistrationDTO: SellerRegistrationDTO = {
+      name: username,
       email: email,
       password: password,
-      imageID: '', // Assuming you're handling imageID elsewhere
       phone: phoneNumber,
       address: address,
       description: description,
       nationalID: nationalID,
-      vatRegistrationNumber: vatRegistrationNumber,
-    };
-    
-    try{
-      const response = await AuthService.registerSeller(sellerData);
-      // Handle the successful response, e.g., user feedback or redirection
-      setValidated(true);
-      console.log('Signup successful:', response);
-      alert("Signup successful")
-
-    }catch(error){
-      setValidated(false);
-      console.error('Signup failed:', error);
-      alert("Signup failed")
-
+      vatRegistrationNumber: vatRegistrationNumber
     }
-    
-    // aw hna grb enta
-    //setValidated(true);
-    // rabt hna
+
+    httpRequest('POST', 'registration/seller', sellerRegistrationDTO)
+    .then((response) => {
+      const responseData = response.data as UserDTO
+      setJwtToken(responseData.token)
+      setValidated(true)
+      navigate('/welcome')
+      console.log(responseData)
+    })
+    .catch((error) => {
+      console.log(error)
+      alert("The email address you have entered is already associated with an account. Please use a different email address or sign in to your existing account.")
+    })
   };
 
   return (

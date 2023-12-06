@@ -26,7 +26,6 @@ public class OAuth2Controller implements ErrorController {
 
     @GetMapping("/buyer")
     public ResponseEntity<?> signupPageBuyer(@AuthenticationPrincipal OAuth2User oAuth2User) {
-        System.out.println("wawa");
         try {
             OidcIdToken idToken = ((DefaultOidcUser) oAuth2User).getIdToken();
             System.out.println(idToken.getTokenValue());
