@@ -1,9 +1,9 @@
 package com.gameshub.controller;
 
 import com.gameshub.exception.*;
-import com.gameshub.service.authentication.BuyerServiceOAuth2;
-import com.gameshub.service.authentication.CreateUserProxy;
-import com.gameshub.service.authentication.SellerServiceOAuth2;
+import com.gameshub.service.user.BuyerServiceOAuth2;
+import com.gameshub.service.user.CreateUserProxy;
+import com.gameshub.service.user.SellerServiceOAuth2;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import lombok.*;
