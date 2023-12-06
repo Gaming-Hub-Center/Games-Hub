@@ -7,7 +7,7 @@ import org.springframework.http.*;
 import org.springframework.security.core.context.*;
 import org.springframework.web.filter.*;
 
-import java.io.IOException;
+import java.io.*;
 
 @RequiredArgsConstructor
 public class JWTAuthenticationFilter extends OncePerRequestFilter {

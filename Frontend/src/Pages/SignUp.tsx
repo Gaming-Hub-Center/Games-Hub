@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from "react";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import PhoneNumberInput from "../Components/PhoneNumberInputC";
@@ -13,7 +13,10 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../Components/SignUpNavbar";
-import { AuthService, UserRegistrationData  } from '../Register'; 
+import { httpRequest } from "../Controller/HttpProxy";
+import { UserDTO } from "../Controller/DTO/UserDTO";
+import { setJwtToken } from "../CurrentSession";
+import {BuyerRegistrationDTO} from "../Controller/DTO/BuyerRegistrationDTO";
 
 export function SignUp() {
   const [validated, setValidated] = useState(false);
@@ -24,6 +27,7 @@ export function SignUp() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneInvalid, setPhoneInvalid] = useState(false); // State for phone number validation
   const [address, setAddress] = useState("");
+  const navigate = useNavigate()
 
   const isValidUsername = (username: string) => {
     return /^[a-zA-Z][a-zA-Z0-9]*$/.test(username);
@@ -85,33 +89,31 @@ export function SignUp() {
       !isValidPhoneNumber(phoneNumber) ||
       !isValidAddress(address)
     ) {
-      event.preventDefault();
       event.stopPropagation();
     }
-    const userData: UserRegistrationData = {
-      userName: username,
+
+    event.preventDefault();
+
+    const buyerRegistrationDTO: BuyerRegistrationDTO = {
+      name: username,
       email: email,
       password: password,
-      imageID: '', 
       phone: phoneNumber,
       address: address,
-    };
-    
-    try{
-      const response = await AuthService.registerUser(userData);
-      console.log('Signup successful:', response);
-      setValidated(true);
-      alert('Signup successful:')
-    }catch(error){
-      console.error('Signup failed:', error);
-      setValidated(false);
-      alert('Signup failed:')
     }
 
-
-    // aw hna grb enta
-    //setValidated(true);
-    // rabt hna 
+    httpRequest('POST', 'registration/buyer', buyerRegistrationDTO)
+    .then((response) => {
+      const responseData = response.data as UserDTO
+      setJwtToken(responseData.token)
+      setValidated(true)
+      navigate('/welcome')
+      console.log(responseData)
+    })
+    .catch((error) => {
+      console.log(error)
+      alert("The email address you have entered is already associated with an account. Please use a different email address or sign in to your existing account.")
+    })
   };
 
   return (
