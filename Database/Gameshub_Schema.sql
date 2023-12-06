@@ -127,8 +127,40 @@ INSERT INTO `seller` (`Vat_Registration_Number`, `Date_Joined`, `Name`, `Phone`,
 ('222333444J', '2023-10-10', 'Julia Redwood', '+0345678912', 'julia.redwood@example.com', '$2a$10$dwOZrATKkn5NAGZK.G./DeeBMaXO7gxtzQaVMe.okrfYjG47QUE1W', 'Description about Julia', 19000, 'ID222333J', '1010 Silver Street');
 /*!40000 ALTER TABLE `seller` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `price` INT,
+  `image` BLOB,
+  `description` TEXT,
+  `sellerID` INT NOT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`sellerID`) REFERENCES `seller` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seller`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` (`price`, `image`, `description`, `sellerID`) VALUES
+(100, null, 'this is a product', 1);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+SELECT * FROM product WHERE ID = 1;
+
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -137,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-14  2:37:23
+-- Dump completed on 2023-11-14  2:37:23
