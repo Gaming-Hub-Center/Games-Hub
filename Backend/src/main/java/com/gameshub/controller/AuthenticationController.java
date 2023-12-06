@@ -2,7 +2,7 @@ package com.gameshub.controller;
 
 import com.gameshub.config.*;
 import com.gameshub.model.user.*;
-import com.gameshub.service.*;
+import com.gameshub.service.authentication.UserService;
 import com.gameshub.utils.*;
 import com.gameshub.controller.DTO.*;
 import lombok.*;

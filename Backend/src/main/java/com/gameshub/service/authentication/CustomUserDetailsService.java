@@ -1,4 +1,4 @@
-package com.gameshub.service;
+package com.gameshub.service.authentication;
 
 import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
