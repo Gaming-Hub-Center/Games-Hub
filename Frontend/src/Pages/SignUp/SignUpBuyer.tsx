@@ -3,7 +3,7 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import PhoneNumberInput from "../Components/PhoneNumberInputC";
+import PhoneNumberInput from "../../Components/PhoneNumberInputC";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -12,25 +12,25 @@ import {
   faAddressCard,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import { SignUpNavbar } from "../Components/SignUpNavbar";
-import { httpRequest } from "../Controller/HttpProxy";
-import { UserDTO } from "../Controller/DTO/UserDTO";
-import { setJwtToken } from "../CurrentSession";
-import {BuyerRegistrationDTO} from "../Controller/DTO/BuyerRegistrationDTO";
+import { SignUpNavbar } from "../../Components/SignUpNavbar";
+import { httpRequest } from "../../Controller/HttpProxy";
+import { UserDTO } from "../../Controller/DTO/UserDTO";
+import { setJwtToken } from "../../CurrentSession";
+import { BuyerRegistrationDTO } from "../../Controller/DTO/BuyerRegistrationDTO";
 
-export function SignUp() {
+export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
-  const [username, setUsername] = useState("");
+  const [name, setname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneInvalid, setPhoneInvalid] = useState(false); // State for phone number validation
   const [address, setAddress] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const isValidUsername = (username: string) => {
-    return /^[a-zA-Z][a-zA-Z0-9]*$/.test(username);
+  const isValidname = (name: string) => {
+    return /^[a-zA-Z]*$/.test(name);
   };
 
   const isValidEmail = (email: string) => {
@@ -49,10 +49,10 @@ export function SignUp() {
     return address.length > 0;
   };
 
-  const handleUsernameChange = (event: {
+  const handlenameChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {
-    setUsername(event.target.value);
+    setname(event.target.value);
   };
 
   const handleEmailChange = (event: {
@@ -95,25 +95,27 @@ export function SignUp() {
     event.preventDefault();
 
     const buyerRegistrationDTO: BuyerRegistrationDTO = {
-      name: username,
+      name: name,
       email: email,
       password: password,
       phone: phoneNumber,
       address: address,
-    }
+    };
 
-    httpRequest('POST', 'registration/buyer', buyerRegistrationDTO)
-    .then((response) => {
-      const responseData = response.data as UserDTO
-      setJwtToken(responseData.token)
-      setValidated(true)
-      navigate('/welcome')
-      console.log(responseData)
-    })
-    .catch((error) => {
-      console.log(error)
-      alert("The email address you have entered is already associated with an account. Please use a different email address or sign in to your existing account.")
-    })
+    httpRequest("POST", "registration/buyer", buyerRegistrationDTO)
+      .then((response) => {
+        const responseData = response.data as UserDTO;
+        setJwtToken(responseData.token);
+        setValidated(true);
+        navigate("/welcome");
+        console.log(responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(
+          "The email address you have entered is already associated with an account. Please use a different email address or sign in to your existing account."
+        );
+      });
   };
 
   return (
@@ -141,7 +143,7 @@ export function SignUp() {
         <SignUpNavbar></SignUpNavbar>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationCustomName">
-            <Form.Label>Username</Form.Label>
+            <Form.Label>name</Form.Label>
             <Container fluid style={{ padding: 0 }}>
               <Row>
                 <Col md={1} style={{ paddingTop: 8 }}>
@@ -158,10 +160,10 @@ export function SignUp() {
                   <Form.Control
                     required
                     type="text"
-                    placeholder="Enter your Username"
-                    value={username}
-                    onChange={handleUsernameChange}
-                    isInvalid={!isValidUsername(username)}
+                    placeholder="Enter your name"
+                    value={name}
+                    onChange={handlenameChange}
+                    isInvalid={!isValidname(name)}
                   />
                 </Col>
               </Row>
@@ -333,7 +335,7 @@ export function SignUp() {
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <p style={{ paddingRight: "10px" }}>Have already an account? </p>
-          <Link to="/SignIn">Sign In</Link>
+          <Link to="/signin">Sign In</Link>
         </div>
       </Form>
     </div>

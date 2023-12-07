@@ -3,7 +3,7 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import PhoneNumberInput from "../Components/PhoneNumberInputC";
+import PhoneNumberInput from "../../Components/PhoneNumberInputC";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -15,16 +15,15 @@ import {
   faHashtag,
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
-import { SignUpNavbar } from "../Components/SignUpNavbar";
-import { SellerRegistrationDTO } from "../Controller/DTO/SellerRegistrationDTO";
-import { httpRequest } from "../Controller/HttpProxy";
-import { UserDTO } from "../Controller/DTO/UserDTO";
-import { setJwtToken } from "../CurrentSession";
-
+import { SignUpNavbar } from "../../Components/SignUpNavbar";
+import { SellerRegistrationDTO } from "../../Controller/DTO/SellerRegistrationDTO";
+import { httpRequest } from "../../Controller/HttpProxy";
+import { UserDTO } from "../../Controller/DTO/UserDTO";
+import { setJwtToken } from "../../CurrentSession";
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
-  const [username, setUsername] = useState("");
+  const [name, setname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -34,10 +33,10 @@ export function SignUpSeller() {
   const [nationalID, setnationalID] = useState("");
   const [vatRegistrationNumber, setVatRegistrationNumber] = useState("");
   const [description, setDescription] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const isValidUsername = (username: string) => {
-    return /^[a-zA-Z][a-zA-Z0-9]*$/.test(username);
+  const isValidname = (name: string) => {
+    return /^[a-zA-Z]*$/.test(name);
   };
 
   const isValidEmail = (email: string) => {
@@ -64,10 +63,10 @@ export function SignUpSeller() {
     return /^[0-9]+$/.test(vatRegistrationNumber);
   };
 
-  const handleUsernameChange = (event: {
+  const handlenameChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {
-    setUsername(event.target.value);
+    setname(event.target.value);
   };
 
   const handleEmailChange = (event: {
@@ -115,12 +114,12 @@ export function SignUpSeller() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (
-        form.checkValidity() === false ||
-        !isValidEmail(email) ||
-        !isValidPassword(password) ||
-        !isPasswordMatch(password, confirmPassword) ||
-        !isValidPhoneNumber(phoneNumber) ||
-        !isValidAddress(address)
+      form.checkValidity() === false ||
+      !isValidEmail(email) ||
+      !isValidPassword(password) ||
+      !isPasswordMatch(password, confirmPassword) ||
+      !isValidPhoneNumber(phoneNumber) ||
+      !isValidAddress(address)
     ) {
       event.stopPropagation();
     }
@@ -128,28 +127,30 @@ export function SignUpSeller() {
     event.preventDefault();
 
     const sellerRegistrationDTO: SellerRegistrationDTO = {
-      name: username,
+      name: name,
       email: email,
       password: password,
       phone: phoneNumber,
       address: address,
       description: description,
       nationalID: nationalID,
-      vatRegistrationNumber: vatRegistrationNumber
-    }
+      vatRegistrationNumber: vatRegistrationNumber,
+    };
 
-    httpRequest('POST', 'registration/seller', sellerRegistrationDTO)
-    .then((response) => {
-      const responseData = response.data as UserDTO
-      setJwtToken(responseData.token)
-      setValidated(true)
-      navigate('/welcome')
-      console.log(responseData)
-    })
-    .catch((error) => {
-      console.log(error)
-      alert("The email address you have entered is already associated with an account. Please use a different email address or sign in to your existing account.")
-    })
+    httpRequest("POST", "registration/seller", sellerRegistrationDTO)
+      .then((response) => {
+        const responseData = response.data as UserDTO;
+        setJwtToken(responseData.token);
+        setValidated(true);
+        navigate("/welcome");
+        console.log(responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(
+          "The email address you have entered is already associated with an account. Please use a different email address or sign in to your existing account."
+        );
+      });
   };
 
   return (
@@ -180,7 +181,7 @@ export function SignUpSeller() {
             <Col md={6}>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationCustomName">
-                  <Form.Label>Username</Form.Label>
+                  <Form.Label>name</Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -197,10 +198,10 @@ export function SignUpSeller() {
                         <Form.Control
                           required
                           type="text"
-                          placeholder="Enter your Username"
-                          value={username}
-                          onChange={handleUsernameChange}
-                          isInvalid={!isValidUsername(username)}
+                          placeholder="Enter your name"
+                          value={name}
+                          onChange={handlenameChange}
+                          isInvalid={!isValidname(name)}
                         />
                       </Col>
                     </Row>
@@ -481,7 +482,7 @@ export function SignUpSeller() {
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <p style={{ paddingRight: "10px" }}>Have already an account? </p>
-          <Link to="/SignIn">Sign In</Link>
+          <Link to="/signin">Sign In</Link>
         </div>
       </Form>
     </div>

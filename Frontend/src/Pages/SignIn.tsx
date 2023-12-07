@@ -189,7 +189,7 @@ export function SignIn() {
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <p style={{ paddingRight: "10px" }}>Don't have an account? </p>
-          <Link to="/SignUp">Sign Up</Link>
+          <Link to="/signup/buyer">Sign Up</Link>
         </div>
       </Form>
     </div>

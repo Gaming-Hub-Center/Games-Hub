@@ -21,7 +21,7 @@ export function SignUpNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto navbar-nav">
-            <Nav.Link to="/SignUp" as={NavLink}>
+            <Nav.Link to="/signup/buyer" as={NavLink}>
               Customer account
             </Nav.Link>
             <div
@@ -32,7 +32,7 @@ export function SignUpNavbar() {
                 margin: "0 10px",
               }}
             ></div>
-            <Nav.Link to="/SignUpSeller" as={NavLink}>
+            <Nav.Link to="/signup/seller" as={NavLink}>
               Seller account
             </Nav.Link>
           </Nav>
