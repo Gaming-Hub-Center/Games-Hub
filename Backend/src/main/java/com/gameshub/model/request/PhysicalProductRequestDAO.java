@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "physical_product_request")
-public class PhysicalProductRequestDAO extends ProductRequestDAO{ // TODO
+public class PhysicalProductRequestDAO extends ProductRequestDAO { // TODO
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
@@ -19,7 +19,7 @@ public class PhysicalProductRequestDAO extends ProductRequestDAO{ // TODO
     }
 
     @Override
-    public ProductDAO getProduct() {
+    public PhysicalProductDAO getProduct() {
         return this.physicalProductDAO;
     }
 

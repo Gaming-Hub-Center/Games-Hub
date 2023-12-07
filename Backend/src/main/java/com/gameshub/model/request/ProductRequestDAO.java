@@ -20,6 +20,9 @@ public abstract class ProductRequestDAO {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "request_type")
+    private String requestType;
+
     public abstract void setProduct(ProductDAO product);
 
     public abstract ProductDAO getProduct();

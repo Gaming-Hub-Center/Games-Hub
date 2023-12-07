@@ -12,6 +12,7 @@ public class ProductRequestDTO {
     private int requestId;
     private LocalDate dateReceived;
     private String status;
-    private ProductDTO product;
+    private String productType;
+    private String requestType;
 
 }

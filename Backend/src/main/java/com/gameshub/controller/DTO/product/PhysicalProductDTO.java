@@ -5,5 +5,6 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
+@NoArgsConstructor
 public class PhysicalProductDTO extends ProductDTO{
 }

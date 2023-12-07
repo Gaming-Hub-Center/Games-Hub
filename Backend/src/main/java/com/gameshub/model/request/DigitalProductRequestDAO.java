@@ -21,7 +21,7 @@ public class DigitalProductRequestDAO extends ProductRequestDAO { // TODO
     }
 
     @Override
-    public ProductDAO getProduct() {
+    public DigitalProductDAO getProduct() {
         return this.digitalProductDAO;
     }
 }

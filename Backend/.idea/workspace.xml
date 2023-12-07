@@ -5,20 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/DigitalProductRequestDAOTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/PhysicalProductRequestDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/DigitalProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/DigitalProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/PhysicalProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/PhysicalProductDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/DigitalProductRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/DigitalProductRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/PhysicalProductRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/PhysicalProductRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/ProductRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/ProductRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request_create_product/ProductController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/ProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/ProductRequestDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,15 +112,26 @@
     "JUnit.ProductRequestDAOTest.executor": "Run",
     "JUnit.ProductRequestDAOTest.testDigitalProductRequestDAO.executor": "Run",
     "JUnit.ProductRequestDAOTest.testPhysicalProductRequestDAO.executor": "Run",
+    "JUnit.ProductRequestManagerTest.saveDigitalProductRequest_Success.executor": "Run",
+    "JUnit.ProductRequestManagerTest.savePhysicalProductRequest_Success.executor": "Run",
+    "JUnit.ProductRequestMapperTest.executor": "Run",
     "JUnit.ProductRequestMapperTest.shouldMapDAOtoDTO.executor": "Run",
     "JUnit.ProductRequestMapperTest.shouldMapDigitalProductRequestDTOToDAO.executor": "Run",
     "JUnit.ProductRequestMapperTest.testDigitalProductRequestDTOToDAO.executor": "Run",
     "JUnit.ProductRequestMapperTest.testMappingPhysicalProductRequest.executor": "Run",
     "JUnit.ProductRequestMapperTest.testPhysicalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDAODigitalProductRequestDTOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDAOPhysicalProductRequestDTOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTODigitalProductRequestDAOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAONullTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAOValidTest.executor": "Run",
+    "JUnit.RequestMapperTest.testToDTOPhysicalProductRequestDAO.executor": "Run",
+    "JUnit.SignInTests.testBuyerValidSignIn.executor": "Run",
     "JUnit.com.gameshub in Backend.executor": "Run",
-    "JUnit.gameshub in Backend.executor": "Run",
+    "JUnit.gameshub in Backend.executor": "Coverage",
     "JUnit.java in Backend.executor": "Coverage",
     "JUnit.products in Backend.executor": "Run",
+    "JUnit.requests in Backend.executor": "Run",
     "Maven.Backend [clean].executor": "Run",
     "Maven.Backend [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -161,8 +173,8 @@
       <recent name="com.gameshub" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.products in Backend">
-    <configuration name="DigitalProductRequestDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.gameshub in Backend">
+    <configuration name="ProductRequestManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -171,55 +183,64 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.DigitalProductRequestDAOTest" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestManagerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductRequestDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRequestManagerTest.saveDigitalProductRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gameshub.model.request.*" />
+          <option name="PATTERN" value="com.gameshub.requests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.model.request" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.model.request.ProductRequestDAOTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductRequestMapperTest.testMappingPhysicalProductRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.utils" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.utils.ProductRequestMapperTest" />
-      <option name="METHOD_NAME" value="testMappingPhysicalProductRequest" />
+      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestManagerTest" />
+      <option name="METHOD_NAME" value="saveDigitalProductRequest_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="products in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRequestManagerTest.savePhysicalProductRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub/products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestManagerTest" />
+      <option name="METHOD_NAME" value="savePhysicalProductRequest_Success" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="requests in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SignInTests.testBuyerValidSignIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.SignInTests" />
+      <option name="METHOD_NAME" value="testBuyerValidSignIn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gameshub in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub/requests" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -236,20 +257,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.DigitalProductRequestDAOTest" />
-      <item itemvalue="JUnit.ProductRequestDAOTest" />
-      <item itemvalue="JUnit.ProductRequestMapperTest.testMappingPhysicalProductRequest" />
-      <item itemvalue="JUnit.products in Backend" />
-      <item itemvalue="JUnit.requests in Backend" />
+      <item itemvalue="JUnit.ProductRequestManagerTest" />
+      <item itemvalue="JUnit.ProductRequestManagerTest.saveDigitalProductRequest_Success" />
+      <item itemvalue="JUnit.ProductRequestManagerTest.savePhysicalProductRequest_Success" />
+      <item itemvalue="JUnit.SignInTests.testBuyerValidSignIn" />
+      <item itemvalue="JUnit.gameshub in Backend" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.products in Backend" />
-        <item itemvalue="JUnit.DigitalProductRequestDAOTest" />
-        <item itemvalue="JUnit.requests in Backend" />
-        <item itemvalue="JUnit.ProductRequestMapperTest.testMappingPhysicalProductRequest" />
-        <item itemvalue="JUnit.ProductRequestDAOTest" />
+        <item itemvalue="JUnit.gameshub in Backend" />
+        <item itemvalue="JUnit.ProductRequestManagerTest" />
+        <item itemvalue="JUnit.ProductRequestManagerTest.saveDigitalProductRequest_Success" />
+        <item itemvalue="JUnit.ProductRequestManagerTest.savePhysicalProductRequest_Success" />
+        <item itemvalue="JUnit.SignInTests.testBuyerValidSignIn" />
       </list>
     </recent_temporary>
   </component>
@@ -280,7 +301,7 @@
       <workItem from="1701532780159" duration="7907000" />
       <workItem from="1701539163106" duration="2011000" />
       <workItem from="1701551331281" duration="1112000" />
-      <workItem from="1701883373854" duration="42813000" />
+      <workItem from="1701883373854" duration="49649000" />
     </task>
     <servers />
   </component>
@@ -309,12 +330,12 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1701287147694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1701293951902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$java_in_Backend.ic" NAME="java in Backend Coverage Results" MODIFIED="1701286983531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1701346956764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$OAuth2BuyerSignUpUnitTest.ic" NAME="OAuth2BuyerSignUpUnitTest Coverage Results" MODIFIED="1701282281272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1701293951902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1701977914401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1701346956764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
