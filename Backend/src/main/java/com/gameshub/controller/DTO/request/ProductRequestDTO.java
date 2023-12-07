@@ -8,7 +8,10 @@ import java.time.LocalDate;
 
 @Data
 public class ProductRequestDTO {
-    private Long requestId;
+
+    private int requestId;
     private LocalDate dateReceived;
     private String status;
+    private ProductDTO product;
+
 }

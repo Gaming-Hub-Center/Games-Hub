@@ -38,4 +38,8 @@ public abstract class ProductDAO {
     @Column(name = "sellerid")
     private int sellerId;
 
+    @Lob
+    @Column(name = "image")
+    private Blob image;
+
 }

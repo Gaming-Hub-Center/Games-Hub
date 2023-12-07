@@ -1,11 +1,9 @@
 package com.gameshub.controller.DTO.request;
 
-import com.gameshub.controller.DTO.product.DigitalProductDTO;
-import com.gameshub.controller.DTO.product.ProductDTO;
+import com.gameshub.model.product.DigitalProductDAO;
 import lombok.*;
 
 @Data
 public class DigitalProductRequestDTO extends ProductRequestDTO {
-    private String code;
-    private DigitalProductDTO digitalProductDTO;
+
 }

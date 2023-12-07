@@ -6,8 +6,7 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
-@Entity
-@Table(name = "product_request")
+@MappedSuperclass
 public abstract class ProductRequestDAO {
 
     @Id
@@ -21,7 +20,8 @@ public abstract class ProductRequestDAO {
     @Column(name = "status")
     private String status;
 
-    public abstract void setProduct(ProductDAO product); // Abstract method to be implemented by child classes
+    public abstract void setProduct(ProductDAO product);
 
     public abstract ProductDAO getProduct();
+
 }
