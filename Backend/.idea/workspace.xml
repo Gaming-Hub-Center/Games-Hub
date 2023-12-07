@@ -5,32 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductRequestDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/DigitalProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/PhysicalProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/base_code_test/DigitalProductDAOTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/base_code_test/PhysicalProductDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/DigitalProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/PhysicalProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/DigitalProductRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/PhysicalProductRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/ProductRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/user/UserSigninDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request_create_product/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/factories/product_factory/IProductFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/factories/product_factory/ProductFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/ProductRequestDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/DigitalProductRequestRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/PhysicalProductRequestRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ConcreteProductFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/DigitalProductDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/DigitalProductDTOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/PhysicalProductDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/PhysicalProductDTOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/config/JWTGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/JWTGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/OAuth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/OAuth2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/authentication/BuyerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/BuyerServiceOAuth2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/authentication/CreateUserProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/CreateUserProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/authentication/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/authentication/SellerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/SellerServiceOAuth2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/authentication/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/seller_products/product_factory/ConcreteProductFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/seller_products/product_factory/ProductFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/auth/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthorizedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/auth/AuthorizedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/BuyerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/user/BuyerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/BuyerRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/user/BuyerRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/SellerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/user/SellerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/SellerRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/user/SellerRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/user/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/UserSignInDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/UserSignInDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/OAuth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/auth/OAuth2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/auth/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductRequestDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/BuyerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/user/BuyerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/DigitalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/PhysicalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/PhysicalProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/user/SellerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/BuyerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/BuyerServiceOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/CreateUserProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/CreateUserProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/SellerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/SellerServiceOAuth2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/base_code_test/DigitalProductDAOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/base_code_test/PhysicalProductDAOTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +75,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -74,7 +107,10 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JUnit.ConcreteProductFactoryTest.executor": "Run",
+    "JUnit.DigitalProductDAOTest.executor": "Run",
     "JUnit.DigitalProductDAOTest.testBuilder.executor": "Run",
+    "JUnit.DigitalProductDTOTest.testDigitalProductDTO.executor": "Run",
     "JUnit.OAuth2BuyerSignUpUnitTest.executor": "Coverage",
     "JUnit.OAuth2BuyerSignUpUnitTest.findByEmailTests.executor": "Run",
     "JUnit.OAuth2BuyerSignUpUnitTest.testCreateUser.executor": "Run",
@@ -100,9 +136,31 @@
     "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller.executor": "Run",
     "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailExistsSeller.executor": "Run",
     "JUnit.OAuthServiceUnitTest.executor": "Run",
+    "JUnit.PhysicalProductDAOTest.executor": "Run",
+    "JUnit.PhysicalProductDTOTest (1).executor": "Run",
+    "JUnit.PhysicalProductDTOTest.executor": "Debug",
+    "JUnit.PhysicalProductDTOTest.testPhysicalProductDTO_.executor": "Run",
+    "JUnit.ProductDTOTest.executor": "Run",
+    "JUnit.ProductDTOTest.testProductRequestDTO.executor": "Run",
+    "JUnit.ProductDTOTest.testProductRequestDTOGettersAndSetters.executor": "Run",
+    "JUnit.ProductManagerTest.executor": "Run",
+    "JUnit.ProductManagerTest.saveDigitalProductTest.executor": "Run",
+    "JUnit.ProductManagerTest.savePhysicalProductTest.executor": "Run",
+    "JUnit.ProductManagerTest.testCreatePhysicalProduct.executor": "Run",
+    "JUnit.ProductMapperTest.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTOConversion.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTO_DigitalProductDAO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTO_PhysicalProductDAO.executor": "Run",
+    "JUnit.ProductRequestDAOTest.testDigitalProductRequestDAO.executor": "Run",
+    "JUnit.ProductRequestDAOTest.testPhysicalProductRequestDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.shouldMapDAOtoDTO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.shouldMapDigitalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testDigitalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testPhysicalProductRequestDTOToDAO.executor": "Run",
     "JUnit.com.gameshub in Backend.executor": "Run",
     "JUnit.gameshub in Backend.executor": "Coverage",
     "JUnit.java in Backend.executor": "Coverage",
+    "JUnit.products in Backend.executor": "Run",
     "Maven.Backend [clean].executor": "Run",
     "Maven.Backend [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -113,7 +171,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.BackendApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "GH-209-Seller-Create-Product",
+    "git-widget-placeholder": "Rebasing GH-209-Seller-Create-Product",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/CSED/semester5/SWE/Games-Hub/Backend/src/main/java/com/gameshub",
@@ -128,6 +186,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.gameshub.service.product" />
       <recent name="com.gameshub.Model.Users.DAOs" />
       <recent name="com.gameshub.google_oauth2.service.proxy" />
     </key>
@@ -143,50 +202,50 @@
       <recent name="com.gameshub" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DigitalProductDAOTest.testBuilder">
-    <configuration name="DigitalProductDAOTest.testBuilder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.gameshub in Backend">
+    <configuration name="DigitalProductDTOTest.testDigitalProductDTO_" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gameshub.base_code_test.*" />
+          <option name="PATTERN" value="com.gameshub.products.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.base_code_test" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.base_code_test.DigitalProductDAOTest" />
-      <option name="METHOD_NAME" value="testBuilder" />
+      <option name="PACKAGE_NAME" value="com.gameshub.products" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.products.DigitalProductDTOTest" />
+      <option name="METHOD_NAME" value="testDigitalProductDTO_" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OAuthServiceUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PhysicalProductDTOTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gameshub.DataAccessLayer.*" />
+          <option name="PATTERN" value="com.gameshub.products.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.OAuthServiceUnitTest" />
+      <option name="PACKAGE_NAME" value="com.gameshub.products" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.products.PhysicalProductDTOTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.gameshub in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PhysicalProductDTOTest.testPhysicalProductDTO_" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gameshub.DataAccessLayer.*" />
+          <option name="PATTERN" value="com.gameshub.products.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="com.gameshub.products" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.products.PhysicalProductDTOTest" />
+      <option name="METHOD_NAME" value="testPhysicalProductDTO_" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,10 +258,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="products in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub/products" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -219,20 +278,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.DigitalProductDAOTest.testBuilder" />
-      <item itemvalue="JUnit.OAuthServiceUnitTest" />
-      <item itemvalue="JUnit.com.gameshub in Backend" />
+      <item itemvalue="JUnit.DigitalProductDTOTest.testDigitalProductDTO_" />
+      <item itemvalue="JUnit.PhysicalProductDTOTest (1)" />
+      <item itemvalue="JUnit.PhysicalProductDTOTest.testPhysicalProductDTO_" />
+      <item itemvalue="JUnit.products in Backend" />
       <item itemvalue="JUnit.gameshub in Backend" />
-      <item itemvalue="JUnit.java in Backend" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DigitalProductDAOTest.testBuilder" />
-        <item itemvalue="JUnit.com.gameshub in Backend" />
         <item itemvalue="JUnit.gameshub in Backend" />
-        <item itemvalue="JUnit.java in Backend" />
-        <item itemvalue="JUnit.OAuthServiceUnitTest" />
+        <item itemvalue="JUnit.products in Backend" />
+        <item itemvalue="JUnit.DigitalProductDTOTest.testDigitalProductDTO_" />
+        <item itemvalue="JUnit.PhysicalProductDTOTest.testPhysicalProductDTO_" />
+        <item itemvalue="JUnit.PhysicalProductDTOTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +322,7 @@
       <workItem from="1701532780159" duration="7907000" />
       <workItem from="1701539163106" duration="2011000" />
       <workItem from="1701551331281" duration="1112000" />
-      <workItem from="1701883373854" duration="16519000" />
+      <workItem from="1701883373854" duration="33814000" />
     </task>
     <servers />
   </component>

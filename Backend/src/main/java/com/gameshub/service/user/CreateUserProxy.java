@@ -3,8 +3,8 @@ package com.gameshub.service.user;
 
 import com.gameshub.exception.ResourceNotFoundException;
 import com.gameshub.exception.UserAlreadyExistsException;
-import com.gameshub.repository.BuyerRepository;
-import com.gameshub.repository.SellerRepository;
+import com.gameshub.repository.user.BuyerRepository;
+import com.gameshub.repository.user.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.stereotype.Component;

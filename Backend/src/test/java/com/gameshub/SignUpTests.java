@@ -1,13 +1,14 @@
 package com.gameshub;
 
-import com.gameshub.controller.*;
+import com.gameshub.controller.DTO.user.BuyerRegistrationDTO;
+import com.gameshub.controller.DTO.user.SellerRegistrationDTO;
+import com.gameshub.controller.auth.RegistrationController;
 import com.gameshub.exception.*;
 import com.gameshub.model.user.BuyerDAO;
 import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.BuyerRepository;
 import com.gameshub.repository.SellerRepository;
 import com.gameshub.utils.*;
-import com.gameshub.controller.DTO.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;

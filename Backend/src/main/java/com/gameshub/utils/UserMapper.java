@@ -1,7 +1,7 @@
 package com.gameshub.utils;
 
+import com.gameshub.controller.DTO.user.*;
 import com.gameshub.model.user.*;
-import com.gameshub.controller.DTO.*;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")

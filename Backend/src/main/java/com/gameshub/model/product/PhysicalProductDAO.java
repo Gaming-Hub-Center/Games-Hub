@@ -1,23 +1,15 @@
 package com.gameshub.model.product;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@Builder
+@Entity
+@Table(name = "physical_product")
 public class PhysicalProductDAO extends ProductDAO {
 
-    public static abstract class PhysicalProductDAOBuilder extends ProductDAOBuilder<PhysicalProductDAOBuilder, PhysicalProductDAO> {
-        @Override
-        protected PhysicalProductDAO createProduct() {
-            return new PhysicalProductDAO();
-        }
-
-        @Override
-        protected PhysicalProductDAOBuilder self() {
-            return this;
-        }
-    }
 }
