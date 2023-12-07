@@ -23,7 +23,7 @@ public class JWTGenerator {
 
     private final UserService userService;
 
-    @Value("${security.jwt.token.secret-key}")
+    @Value("${security.jwt.token.secret-key:secret-key}")
     private String secretKey;
 
     @PostConstruct

@@ -1,11 +1,4 @@
-CREATE TABLE admin (
-    AdminID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    AdminName varchar(255),
-    ContactNumber varchar(15),
-    EmailAddress varchar(255) UNIQUE
-);
-
-CREATE TABLE buyer (
+CREATE TABLE "buyer" (
     ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Name varchar(255),
     Phone varchar(15),
@@ -15,7 +8,7 @@ CREATE TABLE buyer (
     Balance float
 );
 
-CREATE TABLE seller (
+CREATE TABLE "seller" (
     ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Vat_Registration_Number varchar(255),
     Date_Joined date,

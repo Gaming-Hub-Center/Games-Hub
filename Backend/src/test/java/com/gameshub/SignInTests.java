@@ -1,75 +1,94 @@
 package com.gameshub;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import com.gameshub.controller.*;
+import com.gameshub.controller.DTO.*;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.*;
 import org.springframework.boot.test.context.*;
 import org.springframework.http.*;
-import org.springframework.test.web.servlet.*;
-import org.springframework.test.web.servlet.request.*;
+import org.springframework.security.authentication.*;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import java.time.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 public class SignInTests {
 
     @Autowired
-    private MockMvc mockMvc;
+    AuthenticationController authenticationController;
+
+    @Autowired
+    BuyerRepository buyerRepository;
+
+    @Autowired
+    SellerRepository sellerRepository;
+
+    @BeforeEach
+    public void setup() {
+        buyerRepository.deleteAll();
+        sellerRepository.deleteAll();
+        BuyerDAO buyerDAO = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 3000);
+        SellerDAO sellerDAO = new SellerDAO("Alice Blue", "alice.blue@example.com", "$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.parse("2023-01-01"), "Description about Alice", "123456789A");
+        buyerRepository.save(buyerDAO);
+        sellerRepository.save(sellerDAO);
+    }
 
     @Test
     public void testBuyerValidSignIn() throws Exception {
-        String signInRequestJson = "{\"email\":\"john.doe@example.com\",\"password\":\"password123\"}";
+        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        userSigninDTO.setEmail("john.doe@example.com");
+        userSigninDTO.setPassword("password123");
+        ResponseEntity<?> responseEntity = authenticationController.signin(userSigninDTO);
 
-        mockMvc.perform(MockMvcRequestBuilders
-                        .post("/auth/signin")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(signInRequestJson))
-                .andExpect(status().isOk());
+        assert responseEntity.getStatusCode().equals(HttpStatus.OK);
     }
 
     @Test
     public void testSellerValidSignIn() throws Exception {
-        String signInRequestJson = "{\"email\":\"alice.blue@example.com\",\"password\":\"alicepass\"}";
+        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        userSigninDTO.setEmail("alice.blue@example.com");
+        userSigninDTO.setPassword("alicepass");
+        ResponseEntity<?> responseEntity = authenticationController.signin(userSigninDTO);
 
-        mockMvc.perform(MockMvcRequestBuilders
-                        .post("/auth/signin")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(signInRequestJson))
-                .andExpect(status().isOk());
+        assert responseEntity.getStatusCode().equals(HttpStatus.OK);
     }
 
     @Test
     public void testInvalidEmail() throws Exception {
-        String signInRequestJson = "{\"email\":\"invalid.email@example.com\",\"password\":\"password123\"}";
+        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        userSigninDTO.setEmail("invalid.email@example.com");
+        userSigninDTO.setPassword("password123");
 
-        mockMvc.perform(MockMvcRequestBuilders
-                        .post("/auth/signin")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(signInRequestJson))
-                .andExpect(status().isInternalServerError());
+        assertThrows(InternalAuthenticationServiceException.class, () -> {
+            authenticationController.signin(userSigninDTO);
+        });
     }
 
     @Test
     public void testBuyerInvalidPassword() throws Exception {
-        String signInRequestJson = "{\"email\":\"john.doe@example.com\",\"password\":\"invalid_password\"}";
+        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        userSigninDTO.setEmail("john.doe@example.com");
+        userSigninDTO.setPassword("invalid_password");
 
-        mockMvc.perform(MockMvcRequestBuilders
-                        .post("/auth/signin")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(signInRequestJson))
-                .andExpect(status().isInternalServerError());
+        assertThrows(BadCredentialsException.class, () -> {
+            authenticationController.signin(userSigninDTO);
+        });
     }
 
     @Test
     public void testSellerInvalidPassword() throws Exception {
-        String signInRequestJson = "{\"email\":\"alice.blue@example.com\",\"password\":\"invalid_password\"}";
+        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        userSigninDTO.setEmail("alice.blue@example.com");
+        userSigninDTO.setPassword("invalid_password");
 
-        mockMvc.perform(MockMvcRequestBuilders
-                        .post("/auth/signin")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(signInRequestJson))
-                .andExpect(status().isInternalServerError());
+        assertThrows(BadCredentialsException.class, () -> {
+            authenticationController.signin(userSigninDTO);
+        });
     }
 
 }
