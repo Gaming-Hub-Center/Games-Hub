@@ -5,10 +5,10 @@ import com.gameshub.model.product.*;
 import com.gameshub.repository.product.*;
 import com.gameshub.utils.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class ProductManager {
+@Service
+public class ProductService {
 
     @Autowired
     private PhysicalProductRepository physicalProductRepository;

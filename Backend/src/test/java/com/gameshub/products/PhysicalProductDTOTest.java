@@ -17,7 +17,6 @@ public class PhysicalProductDTOTest {
         physicalProductDTO.setTitle("Sample Physical Product");
         physicalProductDTO.setPrice(25.0f);
         physicalProductDTO.setDescription("This is a physical product");
-        physicalProductDTO.setPhysicalOrDigital("physical");
         physicalProductDTO.setPostDate(LocalDate.now());
         physicalProductDTO.setCount(10);
 
@@ -26,7 +25,6 @@ public class PhysicalProductDTOTest {
         assertEquals("Sample Physical Product", physicalProductDTO.getTitle());
         assertEquals(25.0f, physicalProductDTO.getPrice());
         assertEquals("This is a physical product", physicalProductDTO.getDescription());
-        assertEquals("physical", physicalProductDTO.getPhysicalOrDigital());
         assertEquals(LocalDate.now(), physicalProductDTO.getPostDate());
         assertEquals(10, physicalProductDTO.getCount());
     }
@@ -39,7 +37,6 @@ public class PhysicalProductDTOTest {
         physicalProductDTO.setTitle("Sample Physical Product");
         physicalProductDTO.setPrice(25.0f);
         physicalProductDTO.setDescription("This is a physical product");
-        physicalProductDTO.setPhysicalOrDigital("physical");
         physicalProductDTO.setPostDate(LocalDate.now());
         physicalProductDTO.setCount(10);
 
@@ -48,7 +45,6 @@ public class PhysicalProductDTOTest {
         assertEquals("Sample Physical Product", physicalProductDTO.getTitle());
         assertEquals(25.0f, physicalProductDTO.getPrice());
         assertEquals("This is a physical product", physicalProductDTO.getDescription());
-        assertEquals("physical", physicalProductDTO.getPhysicalOrDigital());
         assertEquals(LocalDate.now(), physicalProductDTO.getPostDate());
         assertEquals(10, physicalProductDTO.getCount());
     }

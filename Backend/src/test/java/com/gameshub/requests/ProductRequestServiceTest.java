@@ -8,7 +8,7 @@ import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.repository.request.DigitalProductRequestRepository;
 import com.gameshub.repository.request.PhysicalProductRequestRepository;
-import com.gameshub.service.request.ProductRequestManager;
+import com.gameshub.service.request.ProductRequestService;
 import com.gameshub.utils.ProductRequestMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import java.time.LocalDate;
 
 import static org.mockito.Mockito.*;
 
-class ProductRequestManagerTest {
+class ProductRequestServiceTest {
 
     @Mock
     private PhysicalProductRequestRepository physicalProductRequestRepository;
@@ -32,7 +32,7 @@ class ProductRequestManagerTest {
     private ProductRequestMapper productRequestMapper;
 
     @InjectMocks
-    private ProductRequestManager productRequestManager;
+    private ProductRequestService productRequestService;
 
     @BeforeEach
     void setUp() {
@@ -54,7 +54,7 @@ class ProductRequestManagerTest {
 
         when(productRequestMapper.toDAO(physicalProductRequestDTO)).thenReturn(physicalProductRequestDAO);
 
-        productRequestManager.saveProductRequest(physicalProductRequestDTO);
+        productRequestService.saveProductRequest(physicalProductRequestDTO);
 
         verify(productRequestMapper, times(1)).toDAO(physicalProductRequestDTO);
         verify(physicalProductRequestRepository, times(1)).save(physicalProductRequestDAO);
@@ -76,7 +76,7 @@ class ProductRequestManagerTest {
 
         when(productRequestMapper.toDAO(digitalProductRequestDTO)).thenReturn(digitalProductRequestDAO);
 
-        productRequestManager.saveProductRequest(digitalProductRequestDTO);
+        productRequestService.saveProductRequest(digitalProductRequestDTO);
 
         verify(productRequestMapper, times(1)).toDAO(digitalProductRequestDTO);
         verify(digitalProductRequestRepository, times(1)).save(digitalProductRequestDAO);

@@ -7,8 +7,8 @@ import com.gameshub.utils.ProductRequestMapper;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
-@Component
-public class ProductRequestManager {
+@Service
+public class ProductRequestService {
 
     @Autowired
     private PhysicalProductRequestRepository physicalProductRequestRepository;

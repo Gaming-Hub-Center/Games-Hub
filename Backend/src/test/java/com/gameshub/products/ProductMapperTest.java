@@ -1,8 +1,9 @@
-package com.gameshub.utils;
+package com.gameshub.products;
 
 import com.gameshub.controller.DTO.product.*;
 import com.gameshub.model.product.*;
 
+import com.gameshub.utils.ProductMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import static org.junit.jupiter.api.Assertions.assertEquals;

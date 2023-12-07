@@ -2,6 +2,7 @@ package com.gameshub.controller.DTO.product;
 
 import lombok.*;
 
+import java.sql.Blob;
 import java.time.LocalDate;
 
 @Data
@@ -10,7 +11,8 @@ public class ProductDTO {
     private String title;
     private float price;
     private String description;
-    private String physicalOrDigital;
     private LocalDate postDate;
     private int count;
+    private int sellerId;
+    private Blob image;
 }

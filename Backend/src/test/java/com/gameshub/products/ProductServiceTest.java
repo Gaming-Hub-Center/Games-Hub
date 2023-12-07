@@ -6,7 +6,7 @@ import com.gameshub.model.product.DigitalProductDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
 import com.gameshub.repository.product.DigitalProductRepository;
 import com.gameshub.repository.product.PhysicalProductRepository;
-import com.gameshub.service.product.ProductManager;
+import com.gameshub.service.product.ProductService;
 import com.gameshub.utils.ProductMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import java.time.LocalDate;
 
 import static org.mockito.Mockito.verify;
 
-public class ProductManagerTest {
+public class ProductServiceTest {
 
     @Mock
     private PhysicalProductRepository physicalProductRepository;
@@ -31,13 +31,7 @@ public class ProductManagerTest {
     private ProductMapper productMapper;
 
     @InjectMocks
-    private ProductManager productManager;
-
-    @Mock
-    private PhysicalProductDTO physicalProductDTO;
-
-    @Mock
-    private DigitalProductDTO digitalProductDTO;
+    private ProductService productService;
 
     @Mock
     private DigitalProductDAO digitalProductDAO;
@@ -57,7 +51,6 @@ public class ProductManagerTest {
         PhysicalProductDTO physicalProductDTO = new PhysicalProductDTO();
         physicalProductDTO.setTitle("Test Product");
         physicalProductDTO.setPrice(20.0f);
-        physicalProductDTO.setPhysicalOrDigital("physical");
         physicalProductDTO.setCount(2);
         physicalProductDTO.setId(122);
         physicalProductDTO.setDescription("Description");
@@ -67,7 +60,7 @@ public class ProductManagerTest {
         Mockito.when(productMapper.toProductDAO(physicalProductDTO)).thenReturn(physicalProductDAO);
 
         // Call the method under test
-        productManager.saveProduct(physicalProductDTO);
+        productService.saveProduct(physicalProductDTO);
 
         // Verify that the save method of PhysicalProductRepository is called with the corresponding DAO object
         verify(physicalProductRepository).save(physicalProductDAO);
@@ -79,7 +72,6 @@ public class ProductManagerTest {
         DigitalProductDTO digitalProductDTO = new DigitalProductDTO();
         digitalProductDTO.setTitle("Test Product");
         digitalProductDTO.setPrice(20.0f);
-        digitalProductDTO.setPhysicalOrDigital("physical");
         digitalProductDTO.setCount(2);
         digitalProductDTO.setId(122);
         digitalProductDTO.setDescription("Description");
@@ -88,7 +80,7 @@ public class ProductManagerTest {
 
         Mockito.when(productMapper.toProductDAO(digitalProductDTO)).thenReturn(digitalProductDAO);
 
-        productManager.saveProduct(digitalProductDTO);
+        productService.saveProduct(digitalProductDTO);
 
         // Verify that save method of DigitalProductRepository is called with the corresponding DAO object
         verify(digitalProductRepository).save(digitalProductDAO);

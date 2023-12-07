@@ -14,7 +14,6 @@ public class PhysicalProductDAOTest {
         // Set properties
         product.setTitle("Test Product");
         product.setPrice(20.0f);
-        product.setPhysicalOrDigital("physical");
         product.setCount(2);
         product.setId(122);
         product.setDescription("Description");
