@@ -16,7 +16,7 @@ public class PhysicalProductDAOTest {
         product.setPrice(20.0f);
         product.setPhysicalOrDigital("physical");
         product.setCount(2);
-        product.setProductId(122);
+        product.setId(122);
         product.setDescription("Description");
         product.setPostDate(LocalDate.now());
 

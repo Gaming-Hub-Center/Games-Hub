@@ -13,7 +13,7 @@ public class PhysicalProductRequestDAOTest {
     public void testPhysicalProductRequestDAO() {
         // Create a PhysicalProductDAO object
         PhysicalProductDAO physicalProductDAO = new PhysicalProductDAO();
-        physicalProductDAO.setProductId(2);
+        physicalProductDAO.setId(2);
         // Set PhysicalProductRequestDAO object
         PhysicalProductRequestDAO physicalProductRequestDAO = new PhysicalProductRequestDAO();
         physicalProductRequestDAO.setDateReceived(LocalDate.now());

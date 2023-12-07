@@ -11,7 +11,7 @@ public class ProductFactory implements IProductFactory {
                                     String physicalOrDigital, LocalDate postDate, int count, String code) throws NotSupportedException {
         if (type == ProductType.PHYSICAL) {
             PhysicalProductDAO physicalProduct = new PhysicalProductDAO();
-            physicalProduct.setProductId(productId);
+            physicalProduct.setId(productId);
             physicalProduct.setTitle(title);
             physicalProduct.setPrice(price);
             physicalProduct.setDescription(description);
@@ -21,7 +21,7 @@ public class ProductFactory implements IProductFactory {
             return physicalProduct;
         } else if (type == ProductType.DIGITAL) {
             DigitalProductDAO digitalProduct = new DigitalProductDAO();
-            digitalProduct.setProductId(productId);
+            digitalProduct.setId(productId);
             digitalProduct.setTitle(title);
             digitalProduct.setPrice(price);
             digitalProduct.setDescription(description);

@@ -47,7 +47,7 @@ class ProductRequestMapperTest {
 
         // Mocking behavior for productMapper
         PhysicalProductDTO physicalProductDTO = new PhysicalProductDTO();
-        physicalProductDTO.setProductId(123);
+        physicalProductDTO.setId(123);
         when(productMapper.toProductDTO(physicalProductRequestDAO.getProduct()))
                 .thenReturn(physicalProductDTO);
 
@@ -60,7 +60,7 @@ class ProductRequestMapperTest {
         assertEquals(LocalDate.now(), result.getDateReceived());
         assertEquals("Pending", result.getStatus());
         assertNotNull(result.getPhysicalProductDTO());
-        assertEquals(123, result.getPhysicalProductDTO().getProductId());
+        assertEquals(123, result.getPhysicalProductDTO().getId());
     }
 
     @Test
@@ -76,7 +76,7 @@ class ProductRequestMapperTest {
 
         // Mocking behavior for productMapper
         DigitalProductDTO digitalProductDTO = new DigitalProductDTO();
-        digitalProductDTO.setProductId(456);
+        digitalProductDTO.setId(456);
         when(productMapper.toProductDTO(digitalProductRequestDAO.getProduct()))
                 .thenReturn(digitalProductDTO);
 
@@ -89,7 +89,7 @@ class ProductRequestMapperTest {
         assertEquals(LocalDate.now(), result.getDateReceived());
         assertEquals("Pending", result.getStatus());
         assertNotNull(result.getDigitalProductDTO());
-        assertEquals(456, result.getDigitalProductDTO().getProductId());
+        assertEquals(456, result.getDigitalProductDTO().getId());
     }
 
     @Test
@@ -98,7 +98,7 @@ class ProductRequestMapperTest {
         // Creating a PhysicalProductRequestDTO object for testing
         PhysicalProductRequestDTO physicalProductRequestDTO = new PhysicalProductRequestDTO();
         PhysicalProductDTO physicalProductDTO = new PhysicalProductDTO();
-        physicalProductDTO.setProductId(123);
+        physicalProductDTO.setId(123);
         physicalProductRequestDTO.setPhysicalProductDTO(physicalProductDTO);
         physicalProductRequestDTO.setRequestId(1);
         physicalProductRequestDTO.setDateReceived(LocalDate.now());
@@ -127,7 +127,7 @@ class ProductRequestMapperTest {
         // Creating a DigitalProductRequestDTO object for testing
         DigitalProductRequestDTO digitalProductRequestDTO = new DigitalProductRequestDTO();
         DigitalProductDTO digitalProductDTO = new DigitalProductDTO();
-        digitalProductDTO.setProductId(456);
+        digitalProductDTO.setId(456);
         digitalProductRequestDTO.setDigitalProductDTO(digitalProductDTO);
         digitalProductRequestDTO.setRequestId(2);
         digitalProductRequestDTO.setDateReceived(LocalDate.now());

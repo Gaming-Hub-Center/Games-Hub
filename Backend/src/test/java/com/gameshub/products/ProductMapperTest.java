@@ -16,7 +16,7 @@ public class ProductMapperTest {
     public void testToProductDTOConversion() {
         // Create a sample DigitalProductDAO
         DigitalProductDAO digitalProductDAO = new DigitalProductDAO();
-        digitalProductDAO.setProductId(1);
+        digitalProductDAO.setId(1);
         digitalProductDAO.setTitle("Sample Digital Product");
         digitalProductDAO.setPrice(29);
 
@@ -24,21 +24,21 @@ public class ProductMapperTest {
         DigitalProductDTO digitalProductDTO = productMapper.toProductDTO(digitalProductDAO);
 
         assertNotNull(digitalProductDTO);
-        assertEquals(digitalProductDTO.getProductId(), digitalProductDAO.getProductId());
+        assertEquals(digitalProductDTO.getId(), digitalProductDAO.getId());
         assertEquals(digitalProductDTO.getTitle(), digitalProductDAO.getTitle());
         assertEquals(digitalProductDTO.getPrice(), digitalProductDAO.getPrice());
         // Add more assertions based on your fields
 
         // Create a sample PhysicalProductDAO
         PhysicalProductDAO physicalProductDAO = new PhysicalProductDAO();
-        physicalProductDAO.setProductId(2);
+        physicalProductDAO.setId(2);
         physicalProductDAO.setTitle("Sample Physical Product");
 
         // Convert PhysicalProductDAO to PhysicalProductDTO
         PhysicalProductDTO physicalProductDTO = productMapper.toProductDTO(physicalProductDAO);
 
         assertNotNull(physicalProductDTO);
-        assertEquals(physicalProductDTO.getProductId(), physicalProductDAO.getProductId());
+        assertEquals(physicalProductDTO.getId(), physicalProductDAO.getId());
         assertEquals(physicalProductDTO.getTitle(), physicalProductDAO.getTitle());
         // Add more assertions based on your fields
     }
@@ -47,7 +47,7 @@ public class ProductMapperTest {
     public void testToProductDAOConversion() {
         // Create a sample DigitalProductDTO
         DigitalProductDTO digitalProductDTO = new DigitalProductDTO();
-        digitalProductDTO.setProductId(1);
+        digitalProductDTO.setId(1);
         digitalProductDTO.setTitle("Sample Digital Product");
         digitalProductDTO.setPrice(29);
 
@@ -55,21 +55,21 @@ public class ProductMapperTest {
         DigitalProductDAO digitalProductDAO = productMapper.toProductDAO(digitalProductDTO);
 
         assertNotNull(digitalProductDAO);
-        assertEquals(digitalProductDAO.getProductId(), digitalProductDTO.getProductId());
+        assertEquals(digitalProductDAO.getId(), digitalProductDTO.getId());
         assertEquals(digitalProductDAO.getTitle(), digitalProductDTO.getTitle());
         assertEquals(digitalProductDAO.getPrice(), digitalProductDTO.getPrice());
         // Add more assertions based on your fields
 
         // Create a sample PhysicalProductDTO
         PhysicalProductDTO physicalProductDTO = new PhysicalProductDTO();
-        physicalProductDTO.setProductId(2);
+        physicalProductDTO.setId(2);
         physicalProductDTO.setTitle("Sample Physical Product");
 
         // Convert PhysicalProductDTO to PhysicalProductDAO
         PhysicalProductDAO physicalProductDAO = productMapper.toProductDAO(physicalProductDTO);
 
         assertNotNull(physicalProductDAO);
-        assertEquals(physicalProductDAO.getProductId(), physicalProductDTO.getProductId());
+        assertEquals(physicalProductDAO.getId(), physicalProductDTO.getId());
         assertEquals(physicalProductDAO.getTitle(), physicalProductDTO.getTitle());
         // Add more assertions based on your fields
     }

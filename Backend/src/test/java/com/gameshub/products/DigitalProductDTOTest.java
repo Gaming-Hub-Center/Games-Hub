@@ -14,7 +14,7 @@ public class DigitalProductDTOTest {
     public void testDigitalProductDTO() {
         // Create a DigitalProductDTO object
         DigitalProductDTO digitalProductDTO = new DigitalProductDTO();
-        digitalProductDTO.setProductId(2);
+        digitalProductDTO.setId(2);
         digitalProductDTO.setTitle("Sample Digital Product");
         digitalProductDTO.setPrice(15.0f);
         digitalProductDTO.setDescription("This is a digital product");
@@ -24,7 +24,7 @@ public class DigitalProductDTOTest {
         digitalProductDTO.setCode("ABC123");
 
         // Verify the values set in the DTO object
-        assertEquals(2, digitalProductDTO.getProductId());
+        assertEquals(2, digitalProductDTO.getId());
         assertEquals("Sample Digital Product", digitalProductDTO.getTitle());
         assertEquals(15.0f, digitalProductDTO.getPrice());
         assertEquals("This is a digital product", digitalProductDTO.getDescription());
@@ -38,7 +38,7 @@ public class DigitalProductDTOTest {
     public void testDigitalProductDTO_() {
         // Create a PhysicalProductDTO object
         ProductDTO physicalProductDTO = new PhysicalProductDTO();
-        physicalProductDTO.setProductId(1);
+        physicalProductDTO.setId(1);
         physicalProductDTO.setTitle("Sample Physical Product");
         physicalProductDTO.setPrice(25.0f);
         physicalProductDTO.setDescription("This is a physical product");
@@ -47,7 +47,7 @@ public class DigitalProductDTOTest {
         physicalProductDTO.setCount(10);
 
         // Verify the values set in the DTO object
-        assertEquals(1, physicalProductDTO.getProductId());
+        assertEquals(1, physicalProductDTO.getId());
         assertEquals("Sample Physical Product", physicalProductDTO.getTitle());
         assertEquals(25.0f, physicalProductDTO.getPrice());
         assertEquals("This is a physical product", physicalProductDTO.getDescription());

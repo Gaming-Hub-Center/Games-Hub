@@ -13,7 +13,7 @@ public class DigitalProductRequestDAOTest {
     public void testDigitalProductRequestDAO() {
         // Create a DigitalProductDAO object
         DigitalProductDAO digitalProductDAO = new DigitalProductDAO();
-        digitalProductDAO.setProductId(1);
+        digitalProductDAO.setId(1);
         // Set DigitalProductRequestDAO object
         DigitalProductRequestDAO digitalProductRequestDAO = new DigitalProductRequestDAO();
         digitalProductRequestDAO.setDateReceived(LocalDate.now());

@@ -59,7 +59,7 @@ public class ProductManagerTest {
         physicalProductDTO.setPrice(20.0f);
         physicalProductDTO.setPhysicalOrDigital("physical");
         physicalProductDTO.setCount(2);
-        physicalProductDTO.setProductId(122);
+        physicalProductDTO.setId(122);
         physicalProductDTO.setDescription("Description");
         physicalProductDTO.setPostDate(LocalDate.now());
 
@@ -81,7 +81,7 @@ public class ProductManagerTest {
         digitalProductDTO.setPrice(20.0f);
         digitalProductDTO.setPhysicalOrDigital("physical");
         digitalProductDTO.setCount(2);
-        digitalProductDTO.setProductId(122);
+        digitalProductDTO.setId(122);
         digitalProductDTO.setDescription("Description");
         digitalProductDTO.setPostDate(LocalDate.now());
         digitalProductDTO.setCode("Code");

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Data
 public class ProductDTO {
-    private int productId;
+    private int id;
     private String title;
     private float price;
     private String description;

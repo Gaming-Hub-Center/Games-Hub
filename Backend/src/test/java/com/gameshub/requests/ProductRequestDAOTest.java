@@ -38,7 +38,7 @@ public class ProductRequestDAOTest {
     void testDigitalProductRequestDAO() {
         // Create a DigitalProductDAO object
         DigitalProductDAO digitalProductDAO = new DigitalProductDAO();
-        digitalProductDAO.setProductId(2);
+        digitalProductDAO.setId(2);
         // Set other properties...
 
         // Create a DigitalProductRequestDAO object

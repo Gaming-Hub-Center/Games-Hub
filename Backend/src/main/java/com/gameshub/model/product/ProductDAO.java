@@ -15,7 +15,7 @@ public abstract class ProductDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    private int productId;
+    private int id;
 
     @Column(name = "title")
     private String title;
@@ -25,9 +25,6 @@ public abstract class ProductDAO {
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "physicalordigital")
-    private String physicalOrDigital;
 
     @Column(name = "postdate")
     private LocalDate postDate;
