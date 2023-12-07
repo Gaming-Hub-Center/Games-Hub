@@ -5,7 +5,8 @@ import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.oauth2.client.registration.*;
 import org.springframework.security.oauth2.core.*;
 import org.springframework.security.oauth2.core.oidc.*;
-@Configuration
+
+//@Configuration
 @EnableWebSecurity
 public class OAuth2LoginConfigGoogle {
 

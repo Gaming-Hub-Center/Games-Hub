@@ -17,6 +17,6 @@ public interface UserMapper {
     BuyerDAO toUserDAO(BuyerRegistrationDTO buyerRegistrationDTO);
 
     @Mapping(target = "password", ignore = true)
-    SellerRegistrationDTO toUserDAO(SellerRegistrationDTO sellerRegistrationDTO);
+    SellerDAO toUserDAO(SellerRegistrationDTO sellerRegistrationDTO);
 
 }

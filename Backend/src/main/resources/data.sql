@@ -1,11 +1,5 @@
-INSERT INTO admin VALUES
-(1,'Alice Johnson','1234567890','alice.johnson@example.com'),
-(2,'Bob Smith','0987654321','bob.smith@example.com'),
-(3,'Carol White','1122334455','carol.white@example.com'),
-(4,'David Brown','2233445566','david.brown@example.com');
-
-INSERT INTO buyer (Name, Phone, Email, Address, Password, Balance) VALUES
-('John Doe', '+1234567890', 'john.doe@example.com', '123 Elm Street', 'password123', 3000),
+INSERT INTO "buyer" (Name, Phone, Email, Address, Password, Balance) VALUES
+('John Doe', '+1234567890', 'john.doe@example.com', '123 Elm Street', '$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG', 3000),
 ('Jane Smith', '+9876543210', 'jane.smith@example.com', '456 Oak Avenue', 'mypassword', 4000),
 ('Emily Johnson', '+1122334455', 'emily.johnson@example.com', '789 Pine Road', 'emilypass', 3500),
 ('Michael Brown', '+1231231234', 'michael.brown@example.com', '101 Maple Drive', 'michaelpass', 5000),
@@ -16,7 +10,7 @@ INSERT INTO buyer (Name, Phone, Email, Address, Password, Balance) VALUES
 ('Susan Lewis', '+1818181818', 'susan.lewis@example.com', '606 Walnut Circle', 'susanpass', 7000),
 ('James Hall', '+1919191919', 'james.hall@example.com', '707 Pine Nut Ave', 'jamespass', 7500);
 
-INSERT INTO seller (Vat_Registration_Number, Date_Joined, Name, Phone, Email, Password, SellerDescription, Balance, NationalID, Address) VALUES
+INSERT INTO "seller" (Vat_Registration_Number, Date_Joined, Name, Phone, Email, Password, SellerDescription, Balance, NationalID, Address) VALUES
 ('123456789A', '2023-01-01', 'Alice Blue', '+1029384756', 'alice.blue@example.com', 'alicepass', 'Description about Alice', 10000, 'ID12345A', '101 Red Street'),
 ('987654321B', '2023-02-02', 'Bob Green', '+5647382910', 'bob.green@example.com', 'bobpassword', 'Description about Bob', 15000, 'ID67890B', '202 Green Lane'),
 ('111222333C', '2023-03-03', 'Charlie Yellow', '+1239874560', 'charlie.yellow@example.com', 'charliepass', 'Description about Charlie', 12000, 'ID112233C', '303 Blue Boulevard'),

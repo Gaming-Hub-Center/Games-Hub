@@ -12,6 +12,7 @@ import org.springframework.security.config.http.*;
 import org.springframework.security.crypto.password.*;
 import org.springframework.security.web.*;
 import org.springframework.security.web.authentication.*;
+import org.springframework.security.web.util.matcher.*;
 
 import java.util.*;
 
@@ -33,9 +34,12 @@ public class SecurityConfig {
                 .csrf(customizer -> customizer.disable())
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/oauth2/**", "/login/**", "/logout/**", "/auth/**", "/registration/**").permitAll()
-                        .anyRequest().authenticated())
-                .oauth2Login(Customizer.withDefaults());
+                        .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/registration/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
+                        .anyRequest().authenticated());
+//                .oauth2Login(Customizer.withDefaults());
 
         return http.build();
     }
