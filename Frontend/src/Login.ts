@@ -1,4 +1,3 @@
-// src/services/AuthService.ts
 import axios from 'axios';
 
 export interface LoginCredentials {
@@ -6,13 +5,11 @@ export interface LoginCredentials {
   password: string;
 }
 
-const login = async (credentials: LoginCredentials) => {
+const login = (credentials: LoginCredentials) => {
   try {
-    const response = await axios.post('/localhost:8080/auth/signin', credentials);
-    // You might want to handle token storage or other actions here
-    return response.data;
+    const response = axios.post('http://localhost:8080/auth/signin', credentials);
+    return response; // Return the response data
   } catch (error) {
-    // Error handling logic
     throw error;
   }
 };
