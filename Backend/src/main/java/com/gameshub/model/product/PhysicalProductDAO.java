@@ -1,23 +1,14 @@
 package com.gameshub.model.product;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.time.*;
-
+@Data
 @Entity
-@Table(name = "physicalproduct")
+@Table(name = "product")
 @NoArgsConstructor
 public class PhysicalProductDAO extends ProductDAO {
-
-    public PhysicalProductDAO(String title, float price, String description, int sellerID, int count, String category, LocalDate postDate) {
-        this.title = title;
-        this.price = price;
-        this.description = description;
-        this.sellerID = sellerID;
-        this.count = count;
-        this.category = category;
-        this.postDate = postDate;
-    }
 
 }
