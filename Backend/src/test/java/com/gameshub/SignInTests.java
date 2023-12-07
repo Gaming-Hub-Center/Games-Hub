@@ -8,7 +8,6 @@ import com.gameshub.model.user.*;
 import com.gameshub.repository.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.test.autoconfigure.web.servlet.*;
 import org.springframework.boot.test.context.*;
 import org.springframework.http.*;
 import org.springframework.security.authentication.*;
@@ -16,7 +15,6 @@ import org.springframework.security.authentication.*;
 import java.time.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc
 public class SignInTests {
 
     @Autowired
@@ -40,7 +38,7 @@ public class SignInTests {
 
     @Test
     public void testBuyerValidSignIn() throws Exception {
-        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        UserSignInDTO userSigninDTO = new UserSignInDTO();
         userSigninDTO.setEmail("john.doe@example.com");
         userSigninDTO.setPassword("password123");
         ResponseEntity<?> responseEntity = authenticationController.signin(userSigninDTO);
@@ -50,7 +48,7 @@ public class SignInTests {
 
     @Test
     public void testSellerValidSignIn() throws Exception {
-        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        UserSignInDTO userSigninDTO = new UserSignInDTO();
         userSigninDTO.setEmail("alice.blue@example.com");
         userSigninDTO.setPassword("alicepass");
         ResponseEntity<?> responseEntity = authenticationController.signin(userSigninDTO);
@@ -60,7 +58,7 @@ public class SignInTests {
 
     @Test
     public void testInvalidEmail() throws Exception {
-        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        UserSignInDTO userSigninDTO = new UserSignInDTO();
         userSigninDTO.setEmail("invalid.email@example.com");
         userSigninDTO.setPassword("password123");
 
@@ -71,7 +69,7 @@ public class SignInTests {
 
     @Test
     public void testBuyerInvalidPassword() throws Exception {
-        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        UserSignInDTO userSigninDTO = new UserSignInDTO();
         userSigninDTO.setEmail("john.doe@example.com");
         userSigninDTO.setPassword("invalid_password");
 
@@ -82,7 +80,7 @@ public class SignInTests {
 
     @Test
     public void testSellerInvalidPassword() throws Exception {
-        UserSigninDTO userSigninDTO = new UserSigninDTO();
+        UserSignInDTO userSigninDTO = new UserSignInDTO();
         userSigninDTO.setEmail("alice.blue@example.com");
         userSigninDTO.setPassword("invalid_password");
 
