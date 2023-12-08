@@ -1,21 +1,24 @@
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SetStateAction, useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { Link } from "react-router-dom";
-import { AuthService, LoginCredentials  } from '../Login'; 
-
+import {Link, useNavigate} from "react-router-dom";
+import { UserSignInDTO } from "../Controller/DTO/UserSignInDTO";
+import { UserDTO } from "../Controller/DTO/UserDTO";
+import { httpRequest } from "../Controller/HttpProxy";
+import {clearCurrentSession, setJwtToken} from "../CurrentSession";
 
 
 export function SignIn() {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
@@ -24,30 +27,34 @@ export function SignIn() {
       !isValidEmail(email) ||
       !isValidPassword(password)
     ) {
-      event.preventDefault();
       event.stopPropagation();
     }
-    try{
-      const credentials: LoginCredentials = { email, password };
-      const response = await AuthService.login(credentials);
-      
-      console.log('Login successful:', response);
-      setValidated(true);
-      alert('Login successful:')
-    }catch(error){
-      setValidated(false);
-      console.error('Signup failed:', error);
-      alert('Login failed:')
+
+    event.preventDefault();
+
+    const userSignInDTO: UserSignInDTO = {
+      email: email,
+      password: password
     }
-    // aw hna grb enta
-   // setValidated(true);
-    // rabt hna
-   
-    
+
+    clearCurrentSession()
+
+    httpRequest('POST', 'auth/signin', userSignInDTO)
+    .then((response) => {
+      const responseData = response.data as UserDTO
+      setJwtToken(responseData.token)
+      setValidated(true)
+      navigate('/welcome')
+      console.log(responseData)
+    })
+    .catch((error) => {
+      console.log(error)
+      alert("The email or password you entered is incorrect. Please re-check your credentials and try again.")
+    })
   };
 
   const isValidEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[c][o][m]$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.com$/.test(email);
   };
 
   const isValidPassword = (password: string | any[]) => {

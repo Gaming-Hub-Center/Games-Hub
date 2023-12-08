@@ -28,9 +28,9 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("signin")
-    public ResponseEntity<UserDTO> signin(@RequestBody UserSigninDTO userSigninDTO) {
+    public ResponseEntity<UserDTO> signin(@RequestBody UserSignInDTO userSignInDTO) {
         Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(userSigninDTO.getEmail(), userSigninDTO.getPassword())
+            new UsernamePasswordAuthenticationToken(userSignInDTO.getEmail(), userSignInDTO.getPassword())
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.createToken(authentication.getName());
