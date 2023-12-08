@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class PhysicalProductRequestDAO extends ProductRequestDAO { // TODO
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "physical-product_id", referencedColumnName = "id", nullable = false)
     private PhysicalProductDAO physicalProductDAO;
 
     @Override

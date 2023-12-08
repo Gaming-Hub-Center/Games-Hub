@@ -16,7 +16,7 @@ public class DigitalProductDTOTest {
         DigitalProductDTO digitalProductDTO = new DigitalProductDTO();
         digitalProductDTO.setId(2);
         digitalProductDTO.setTitle("Sample Digital Product");
-        digitalProductDTO.setPrice(15.0f);
+        digitalProductDTO.setPrice(15);
         digitalProductDTO.setDescription("This is a digital product");
         digitalProductDTO.setPostDate(LocalDate.now());
         digitalProductDTO.setCount(5);
@@ -38,7 +38,7 @@ public class DigitalProductDTOTest {
         ProductDTO physicalProductDTO = new PhysicalProductDTO();
         physicalProductDTO.setId(1);
         physicalProductDTO.setTitle("Sample Physical Product");
-        physicalProductDTO.setPrice(25.0f);
+        physicalProductDTO.setPrice(25);
         physicalProductDTO.setDescription("This is a physical product");
         physicalProductDTO.setPostDate(LocalDate.now());
         physicalProductDTO.setCount(10);

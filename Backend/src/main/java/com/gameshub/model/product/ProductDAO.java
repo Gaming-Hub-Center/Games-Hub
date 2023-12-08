@@ -5,11 +5,12 @@ import jakarta.persistence.*;
 
 import java.sql.Blob;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class ProductDAO {
 
     @Id
@@ -21,13 +22,13 @@ public abstract class ProductDAO {
     private String title;
 
     @Column(name = "price")
-    private float price;
+    private int price;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "postdate")
-    private LocalDate postDate;
+    private LocalDate postDate; // Date Approved
 
     @Column(name = "count")
     private int count;
@@ -35,8 +36,8 @@ public abstract class ProductDAO {
     @Column(name = "sellerid")
     private int sellerId;
 
-    @Lob
-    @Column(name = "image")
-    private Blob image;
+//    @Lob
+//    @Column(name = "image_id")
+//    private ArrayList<Integer> image;
 
 }

@@ -8,11 +8,8 @@ import jakarta.persistence.*;
 @Table(name = "digital_product_request")
 public class DigitalProductRequestDAO extends ProductRequestDAO { // TODO
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "digital_product_id", referencedColumnName = "id", nullable = false)
     private DigitalProductDAO digitalProductDAO;
-
-    @Column(name = "code")
-    private String code;
 
     @Override
     public void setProduct(ProductDAO digitalProductDAO) {

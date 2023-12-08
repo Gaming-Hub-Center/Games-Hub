@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class ProductDTO {
     private int id;
     private String title;
-    private float price;
+    private int price;
     private String description;
     private LocalDate postDate;
     private int count;

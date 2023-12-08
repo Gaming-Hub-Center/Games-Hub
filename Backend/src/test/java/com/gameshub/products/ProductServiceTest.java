@@ -50,7 +50,7 @@ public class ProductServiceTest {
         // Create a corresponding PhysicalProductDAO
         PhysicalProductDTO physicalProductDTO = new PhysicalProductDTO();
         physicalProductDTO.setTitle("Test Product");
-        physicalProductDTO.setPrice(20.0f);
+        physicalProductDTO.setPrice(20);
         physicalProductDTO.setCount(2);
         physicalProductDTO.setId(122);
         physicalProductDTO.setDescription("Description");
@@ -71,7 +71,7 @@ public class ProductServiceTest {
 
         DigitalProductDTO digitalProductDTO = new DigitalProductDTO();
         digitalProductDTO.setTitle("Test Product");
-        digitalProductDTO.setPrice(20.0f);
+        digitalProductDTO.setPrice(20);
         digitalProductDTO.setCount(2);
         digitalProductDTO.setId(122);
         digitalProductDTO.setDescription("Description");
