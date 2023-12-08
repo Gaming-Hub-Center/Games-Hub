@@ -11,7 +11,7 @@ import {Link, useNavigate} from "react-router-dom";
 import { UserSignInDTO } from "../Controller/DTO/UserSignInDTO";
 import { UserDTO } from "../Controller/DTO/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
-import {clearCurrentSession, setJwtToken} from "../CurrentSession";
+import { setJwtToken } from "../CurrentSession";
 
 
 export function SignIn() {
@@ -36,8 +36,6 @@ export function SignIn() {
       email: email,
       password: password
     }
-
-    clearCurrentSession()
 
     httpRequest('POST', 'auth/signin', userSignInDTO)
     .then((response) => {
@@ -191,7 +189,7 @@ export function SignIn() {
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <p style={{ paddingRight: "10px" }}>Don't have an account? </p>
-          <Link to="/SignUp">Sign Up</Link>
+          <Link to="/signup/buyer">Sign Up</Link>
         </div>
       </Form>
     </div>
