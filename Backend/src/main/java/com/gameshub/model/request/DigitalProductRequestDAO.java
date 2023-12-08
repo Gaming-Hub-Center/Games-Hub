@@ -9,7 +9,6 @@ import jakarta.persistence.*;
 public class DigitalProductRequestDAO extends ProductRequestDAO { // TODO
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", nullable = false)
-    @Column(name = "product_id")
     private DigitalProductDAO digitalProductDAO;
 
     @Column(name = "code")

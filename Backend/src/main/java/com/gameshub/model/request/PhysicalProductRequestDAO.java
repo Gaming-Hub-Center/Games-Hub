@@ -10,7 +10,6 @@ public class PhysicalProductRequestDAO extends ProductRequestDAO { // TODO
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
-    @Column(name = "product_id")
     private PhysicalProductDAO physicalProductDAO;
 
     @Override

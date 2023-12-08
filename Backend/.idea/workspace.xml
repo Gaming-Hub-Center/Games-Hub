@@ -6,22 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/factories/product_factory/IProductFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/factories/product_factory/ProductFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/SignInTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/SignInTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ConcreteProductFactoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/DigitalProductDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/DigitalProductDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/PhysicalProductDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/PhysicalProductDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/PhysicalProductDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/PhysicalProductDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +166,7 @@
       <recent name="com.gameshub" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.requests in Backend">
+  <component name="RunManager" selected="JUnit.gameshub in Backend">
     <configuration name="DigitalProductRequestDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
@@ -248,10 +235,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.gameshub in Backend" />
         <item itemvalue="JUnit.requests in Backend" />
         <item itemvalue="JUnit.DigitalProductRequestDAOTest" />
         <item itemvalue="JUnit.products in Backend" />
-        <item itemvalue="JUnit.gameshub in Backend" />
         <item itemvalue="JUnit.utils in Backend" />
       </list>
     </recent_temporary>
@@ -284,7 +271,7 @@
       <workItem from="1701539163106" duration="2011000" />
       <workItem from="1701551331281" duration="1112000" />
       <workItem from="1701883373854" duration="51334000" />
-      <workItem from="1701980380100" duration="1851000" />
+      <workItem from="1701980380100" duration="4148000" />
     </task>
     <servers />
   </component>
@@ -318,7 +305,7 @@
     <SUITE FILE_PATH="coverage/Backend$OAuth2BuyerSignUpUnitTest.ic" NAME="OAuth2BuyerSignUpUnitTest Coverage Results" MODIFIED="1701282281272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1701978229275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1702023310466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1701346956764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
