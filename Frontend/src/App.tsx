@@ -1,12 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { Container, Navbar } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Welcome } from "./Pages/Welcome";
-import { SignUp } from "./Pages/SignUp";
-import { NavbarC } from "./Components/NavbarC";
-import { SignUpNavbar } from "./Components/SignUpNavbar";
-
 import { SignIn } from "./Pages/SignIn";
-import { SignUpSeller } from "./Pages/SignUpSeller";
+import { SignUpSeller } from "./Pages/SignUp/SignUpSeller";
+import { SignUpBuyer } from "./Pages/SignUp/SignUpBuyer";
 
 function App() {
   return (
@@ -22,9 +19,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
         <Route path="/welcome" element={<Welcome />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
-        <Route path="/signupseller" element={<SignUpSeller />}></Route>
+        <Route path="/signup/buyer" element={<SignUpBuyer />}></Route>
+        <Route path="/signup/seller" element={<SignUpSeller />}></Route>
       </Routes>
     </Container>
   );
