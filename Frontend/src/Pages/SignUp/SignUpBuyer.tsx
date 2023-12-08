@@ -15,7 +15,7 @@ import {
 import { SignUpNavbar } from "../../Components/SignUpNavbar";
 import { httpRequest } from "../../Controller/HttpProxy";
 import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { setJwtToken } from "../../CurrentSession";
+import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
 import { BuyerRegistrationDTO } from "../../Controller/DTO/BuyerRegistrationDTO";
 
 export function SignUpBuyer() {
@@ -101,6 +101,8 @@ export function SignUpBuyer() {
       phone: phoneNumber,
       address: address,
     };
+
+    clearCurrentSession()
 
     httpRequest("POST", "registration/buyer", buyerRegistrationDTO)
       .then((response) => {

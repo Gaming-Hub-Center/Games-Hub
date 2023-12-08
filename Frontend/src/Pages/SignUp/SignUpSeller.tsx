@@ -19,7 +19,7 @@ import { SignUpNavbar } from "../../Components/SignUpNavbar";
 import { SellerRegistrationDTO } from "../../Controller/DTO/SellerRegistrationDTO";
 import { httpRequest } from "../../Controller/HttpProxy";
 import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { setJwtToken } from "../../CurrentSession";
+import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
@@ -136,6 +136,8 @@ export function SignUpSeller() {
       nationalID: nationalID,
       vatRegistrationNumber: vatRegistrationNumber,
     };
+
+    clearCurrentSession()
 
     httpRequest("POST", "registration/seller", sellerRegistrationDTO)
       .then((response) => {
