@@ -1,5 +1,6 @@
 package com.gameshub.model.request;
 
+import com.gameshub.model.user.SellerDAO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -37,10 +38,11 @@ public abstract class ProductRequestDAO {
     @Column(name = "count")
     private int count;
 
-    @JoinColumn(name = "seller_id")
-    private int sellerId;
-
     @Column(name = "category")
     private String category;
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id", referencedColumnName = "ID")
+    private SellerDAO seller;
 
 }
