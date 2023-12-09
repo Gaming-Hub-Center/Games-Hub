@@ -1,7 +1,5 @@
 package com.gameshub.controller.DTO.request;
 
-import com.gameshub.controller.DTO.product.ProductDTO;
-import com.gameshub.model.product.ProductDAO;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -9,10 +7,14 @@ import java.time.LocalDate;
 @Data
 public class ProductRequestDTO {
 
-    private int requestId;
     private LocalDate dateReceived;
     private String status;
-    private String productType;
     private String requestType;
+    private String title;
+    private int price;
+    private String description;
+    private LocalDate postDate;
+    private int count;
+    private int sellerId;
 
 }

@@ -6,5 +6,5 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 public class PhysicalProductRequestDTO extends ProductRequestDTO {
-    PhysicalProductDTO physicalProductDTO;
+
 }

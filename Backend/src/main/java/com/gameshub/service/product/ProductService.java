@@ -42,4 +42,5 @@ public class ProductService {
         DigitalProductDAO digitalProductDAO = productMapper.toProductDAO(digitalProductDTO);
         digitalProductRepository.save(digitalProductDAO);
     }
+
 }

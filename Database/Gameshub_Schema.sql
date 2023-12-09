@@ -193,7 +193,7 @@ DROP TABLE IF EXISTS `physical_product_image`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE physical_product_image (
-    `id` INT PRIMARY KEY,
+    `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `url` VARCHAR(255),
     `physical_product_id` INT,
     FOREIGN KEY (physical_product_id) REFERENCES physical_product(id)
@@ -203,7 +203,7 @@ DROP TABLE IF EXISTS `digital_product_image`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE digital_product_image (
-    `id` INT PRIMARY KEY,
+    `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `url` VARCHAR(255),
     `digital_product_id` INT,
     FOREIGN KEY (digital_product_id) REFERENCES digital_product(id)
@@ -214,10 +214,10 @@ DROP TABLE IF EXISTS `physical_product_request`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE physical_product_request (
-    `id` INT PRIMARY KEY,
+    `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `date_received` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `status` VARCHAR(50),
-    `request_type` VARCHAR(50),
+    `status` VARCHAR(10),
+    `request_type` VARCHAR(8),
     `physical_product_id` INT,
     FOREIGN KEY (physical_product_id) REFERENCES physical_product(id)
 );
@@ -226,10 +226,10 @@ DROP TABLE IF EXISTS `digital_product_request`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE digital_product_request (
-    `id` INT PRIMARY KEY,
+    `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `date_received` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `status` VARCHAR(50),
-    `request_type` VARCHAR(50),
+    `status` VARCHAR(10),
+    `request_type` VARCHAR(8),
     `digital_product_id` INT,
     FOREIGN KEY (digital_product_id) REFERENCES digital_product(id)
 );

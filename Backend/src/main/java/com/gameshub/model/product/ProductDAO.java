@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public abstract class ProductDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
@@ -35,6 +35,9 @@ public abstract class ProductDAO {
 
     @Column(name = "sellerid")
     private int sellerId;
+
+    @Column(name = "category")
+    private String category;
 
 //    @Lob
 //    @Column(name = "image_id")

@@ -14,5 +14,4 @@ public class ProductDTO {
     private LocalDate postDate;
     private int count;
     private int sellerId;
-    private Blob image;
 }

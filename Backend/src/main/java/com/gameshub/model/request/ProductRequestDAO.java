@@ -1,6 +1,5 @@
 package com.gameshub.model.request;
 
-import com.gameshub.model.product.ProductDAO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -10,9 +9,9 @@ import java.time.LocalDate;
 public abstract class ProductRequestDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "request_id")
-    private int requestId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "date_received")
     private LocalDate dateReceived;
@@ -23,8 +22,25 @@ public abstract class ProductRequestDAO {
     @Column(name = "request_type")
     private String requestType;
 
-    public abstract void setProduct(ProductDAO product);
+    @Column(name = "title")
+    private String title;
 
-    public abstract ProductDAO getProduct();
+    @Column(name = "price")
+    private int price;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "post_date")
+    private LocalDate postDate;
+
+    @Column(name = "count")
+    private int count;
+
+    @JoinColumn(name = "seller_id")
+    private int sellerId;
+
+    @Column(name = "category")
+    private String category;
 
 }

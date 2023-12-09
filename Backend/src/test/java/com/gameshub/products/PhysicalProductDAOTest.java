@@ -19,8 +19,8 @@ public class PhysicalProductDAOTest {
     public void setup() {
         MockitoAnnotations.openMocks(this);
         physicalProductRepository.deleteAll();
-        PhysicalProductDAO physicalProductDAO = new PhysicalProductDAO(124, "Title1", 12, "Description1",LocalDate.now(), 10, 1235);
-        PhysicalProductDAO physicalProductDAO1 = new PhysicalProductDAO(125, "Title1", 12, "Description1",LocalDate.now(), 10, 1235);
+        PhysicalProductDAO physicalProductDAO = new PhysicalProductDAO(124, "Title1", 12, "Description1",LocalDate.now(), 10, 1235, "CAT");
+        PhysicalProductDAO physicalProductDAO1 = new PhysicalProductDAO(125, "Title1", 12, "Description1",LocalDate.now(), 10, 1235, "CAT");
         physicalProductRepository.save(physicalProductDAO1);
         physicalProductRepository.save(physicalProductDAO);
     }

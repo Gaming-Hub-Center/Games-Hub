@@ -20,14 +20,13 @@ public class ProductRequestService {
     @Autowired
     private ProductRequestMapper productRequestMapper;
 
-
     public void saveProductRequest(ProductRequestDTO productRequestDTO) {
         if (productRequestDTO instanceof PhysicalProductRequestDTO) {
-            PhysicalProductRequestDAO physicalProductRequestDAO = productRequestMapper.toDAO((PhysicalProductRequestDTO) productRequestDTO);
-            physicalProductRequestRepository.save(physicalProductRequestDAO);
+            PhysicalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((PhysicalProductRequestDTO) productRequestDTO);
+            physicalProductRequestRepository.save(productRequestDAO);
         } else if (productRequestDTO instanceof DigitalProductRequestDTO) {
-            DigitalProductRequestDAO digitalProductRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
-            digitalProductRequestRepository.save(digitalProductRequestDAO);
+            DigitalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
+            digitalProductRequestRepository.save(productRequestDAO);
         }
     }
 

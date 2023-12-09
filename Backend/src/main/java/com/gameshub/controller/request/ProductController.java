@@ -9,19 +9,15 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/request-create-product")
+@RequestMapping("/product-request")
 public class ProductController {
-
-    @Autowired
-    private ProductService productService;
 
     @Autowired
     private ProductRequestService productRequestService;
 
-    @PostMapping("/digital")
+    @PostMapping("/create/digital")
     public ResponseEntity<String> createDigitalProduct(@Valid @RequestBody DigitalProductRequestDTO digitalProductRequestDTO) {
         try {
-            productService.saveProduct(digitalProductRequestDTO.getDigitalProductDTO());
             productRequestService.saveProductRequest(digitalProductRequestDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Digital product is done!");
         } catch (Exception e) {
@@ -29,16 +25,14 @@ public class ProductController {
         }
     }
 
-    @PostMapping("/physical")
+    @PostMapping("/create/physical")
     public ResponseEntity<String> createPhysicalProduct(@Valid @RequestBody PhysicalProductRequestDTO physicalProductRequestDTO) {
         try {
-            productService.saveProduct(physicalProductRequestDTO.getPhysicalProductDTO());
             productRequestService.saveProductRequest(physicalProductRequestDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Physical product is done!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating Physical product");
         }
     }
-
 
 }
