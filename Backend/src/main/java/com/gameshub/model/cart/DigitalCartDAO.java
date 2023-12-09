@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "`digital_cart`")
+@Table(name = "digital_cart")
 @NoArgsConstructor
 public class DigitalCartDAO extends CartDAO {
 
@@ -14,7 +14,7 @@ public class DigitalCartDAO extends CartDAO {
     @JoinColumn(name = "productID", insertable = false, updatable = false)
     protected DigitalProductDAO product;
 
-    public DigitalCartDAO(CartKey id, int count, BuyerDAO buyer, DigitalProductDAO product) {
+    public DigitalCartDAO(CartKey id, int count) {
         this.id = id;
         this.count = count;
         this.buyer = buyer;

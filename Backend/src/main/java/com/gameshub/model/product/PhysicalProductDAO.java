@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Entity
-@Table(name = "PhysicalProduct")
+@Table(name = "physicalproduct")
 @NoArgsConstructor
 public class PhysicalProductDAO extends ProductDAO {
 

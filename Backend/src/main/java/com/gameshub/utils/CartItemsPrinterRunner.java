@@ -1,6 +1,7 @@
 package com.gameshub.utils;
 
 import com.gameshub.model.cart.CartDAO;
+import com.gameshub.model.cart.DigitalCartDAO;
 import com.gameshub.model.cart.PhysicalCartDAO;
 import com.gameshub.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,14 @@ public class CartItemsPrinterRunner implements CommandLineRunner {
     public void run(String... args) {
         int buyerId = 2; // Replace with actual buyer ID if needed
         int productId = 1; // Replace with actual product ID if needed
-        int count = 500; // Replace with desired count
+        int count = 200; // Replace with desired count
 
         // Add an item to the physical cart
         CartDAO.CartKey newCartItemKey = new CartDAO.CartKey(buyerId, productId);
-        PhysicalCartDAO newCartItem = new PhysicalCartDAO(newCartItemKey, count, null, null);
-        cartService.addOrUpdatePhysicalCartItem(newCartItem);
+        DigitalCartDAO newCartItem = new DigitalCartDAO(newCartItemKey, count);
+        cartService.addOrUpdateDigitalCartItem(newCartItem);
 
-//        List<PhysicalCartDAO> cartItems = cartService.getPhysicalCartItems(2); // Replace with actual buyer ID if needed
+//        List<PhysicalCartDAO> cartItems = cartService.getPhysicalCartItems(1); // Replace with actual buyer ID if needed
 //
 //        //cartService.removePhysicalCartItem(buyerId,productId);
 //

@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Table(name = "DigitalProduct")
+@Table(name = "digitalproduct")
 @Getter
 @Setter
 @NoArgsConstructor // No-argument constructor for JPA

@@ -4,6 +4,7 @@ import com.gameshub.model.cart.DigitalCartDAO;
 import com.gameshub.model.cart.PhysicalCartDAO;
 import com.gameshub.repository.DigitalCartRepository;
 import com.gameshub.repository.PhysicalCartRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,17 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class CartService {
 
     private final PhysicalCartRepository physicalCartRepository;
     private final DigitalCartRepository digitalCartRepository;
 
-    @Autowired
-    public CartService(PhysicalCartRepository physicalCartRepository, DigitalCartRepository digitalCartRepository) {
-        this.physicalCartRepository = physicalCartRepository;
-        this.digitalCartRepository = digitalCartRepository;
-    }
+
 
     // Add or update a physical cart item
     @Transactional
