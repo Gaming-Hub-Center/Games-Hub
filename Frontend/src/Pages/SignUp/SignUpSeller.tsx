@@ -3,7 +3,6 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -15,11 +14,12 @@ import {
   faHashtag,
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
-import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
-import { SellerRegistrationDTO } from "../../Controller/DTO/RegisterationDTO/SellerRegistrationDTO";
 import { httpRequest } from "../../Controller/HttpProxy";
 import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
+import { setJwtToken } from "../../CurrentSession";
+import { SellerRegistrationDTO } from "../../Controller/DTO/RegisterationDTO/SellerRegistrationDTO";
+import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
+import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
@@ -35,8 +35,8 @@ export function SignUpSeller() {
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
-  const isValidname = (name: string) => {
-    return /^[a-zA-Z]*$/.test(name);
+  const isValidName = (name: string) => {
+    return name.length > 0 && /^[a-zA-Z]*$/.test(name);
   };
 
   const isValidEmail = (email: string) => {
@@ -134,14 +134,12 @@ export function SignUpSeller() {
       vatRegistrationNumber: vatRegistrationNumber,
     };
 
-    clearCurrentSession();
-
     httpRequest("POST", "registration/seller", sellerRegistrationDTO)
       .then((response) => {
         const responseData = response.data as UserDTO;
         setJwtToken(responseData.token);
         setValidated(true);
-        navigate("/welcome");
+        navigate("/");
         console.log(responseData);
       })
       .catch((error) => {
@@ -195,12 +193,11 @@ export function SignUpSeller() {
                       </Col>
                       <Col md={11}>
                         <Form.Control
-                          required
                           type="text"
                           placeholder="Enter your name"
                           value={name}
                           onChange={handleNameChange}
-                          isInvalid={!isValidname(name)}
+                          isInvalid={!isValidName(name)}
                         />
                       </Col>
                     </Row>
@@ -436,6 +433,7 @@ export function SignUpSeller() {
                       <Col md={11}>
                         <Form.Control
                           as="textarea"
+                          required
                           rows={9}
                           placeholder="Enter your Description"
                           value={description}
@@ -465,6 +463,7 @@ export function SignUpSeller() {
           <Button
             type="submit"
             disabled={
+              !isValidName(name) ||
               !isValidEmail(email) ||
               !isValidPassword(password) ||
               !isPasswordMatch(password, confirmPassword) ||

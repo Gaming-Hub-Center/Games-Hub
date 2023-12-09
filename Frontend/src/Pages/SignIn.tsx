@@ -43,7 +43,7 @@ export function SignIn() {
         const responseData = response.data as UserDTO;
         setJwtToken(responseData.token);
         setValidated(true);
-        navigate("/welcome");
+        navigate("/");
         console.log(responseData);
       })
       .catch((error) => {

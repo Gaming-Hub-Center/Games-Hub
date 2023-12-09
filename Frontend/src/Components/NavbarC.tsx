@@ -38,14 +38,14 @@ export function NavbarC() {
           <Nav.Link
             as={NavLink}
             to="/signin"
-            style={{ marginTop: "10px" , marginRight: "5px", borderRadius: "50px" }}
+            style={{ marginTop: "10px" , marginRight: "10px", borderRadius: "50px" }}
           >
             Sign In
           </Nav.Link>
           <Nav.Link
             as={NavLink}
             to="/signup/buyer"
-            style={{ marginTop: "10px" , marginRight: "5px", borderRadius: "50px" }}
+            style={{ marginTop: "10px" , marginRight: "10px", borderRadius: "50px" }}
           >
             Sign Up
           </Nav.Link>

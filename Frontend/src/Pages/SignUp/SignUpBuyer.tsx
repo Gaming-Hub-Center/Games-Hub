@@ -3,7 +3,7 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -12,15 +12,16 @@ import {
   faAddressCard,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
 import { httpRequest } from "../../Controller/HttpProxy";
 import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
+import { setJwtToken } from "../../CurrentSession";
 import { BuyerRegistrationDTO } from "../../Controller/DTO/RegisterationDTO/BuyerRegistrationDTO";
+import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
+import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
-  const [name, setname] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -29,8 +30,8 @@ export function SignUpBuyer() {
   const [address, setAddress] = useState("");
   const navigate = useNavigate();
 
-  const isValidname = (name: string) => {
-    return /^[a-zA-Z]*$/.test(name);
+  const isValidName = (name: string) => {
+    return name.length > 0 && /^[a-zA-Z]*$/.test(name);
   };
 
   const isValidEmail = (email: string) => {
@@ -52,7 +53,7 @@ export function SignUpBuyer() {
   const handlenameChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {
-    setname(event.target.value);
+    setName(event.target.value);
   };
 
   const handleEmailChange = (event: {
@@ -81,14 +82,7 @@ export function SignUpBuyer() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
-    if (
-      form.checkValidity() === false ||
-      !isValidEmail(email) ||
-      !isValidPassword(password) ||
-      !isPasswordMatch(password, confirmPassword) ||
-      !isValidPhoneNumber(phoneNumber) ||
-      !isValidAddress(address)
-    ) {
+    if (form.checkValidity() === false) {
       event.stopPropagation();
     }
 
@@ -102,14 +96,12 @@ export function SignUpBuyer() {
       address: address,
     };
 
-    clearCurrentSession();
-
     httpRequest("POST", "registration/buyer", buyerRegistrationDTO)
       .then((response) => {
         const responseData = response.data as UserDTO;
         setJwtToken(responseData.token);
         setValidated(true);
-        navigate("/welcome");
+        navigate("/");
         console.log(responseData);
       })
       .catch((error) => {
@@ -165,7 +157,7 @@ export function SignUpBuyer() {
                     placeholder="Enter your name"
                     value={name}
                     onChange={handlenameChange}
-                    isInvalid={!isValidname(name)}
+                    isInvalid={!isValidName(name)}
                   />
                 </Col>
               </Row>
@@ -322,6 +314,7 @@ export function SignUpBuyer() {
           <Button
             type="submit"
             disabled={
+              !isValidName(name) ||
               !isValidEmail(email) ||
               !isValidPassword(password) ||
               !isPasswordMatch(password, confirmPassword) ||
