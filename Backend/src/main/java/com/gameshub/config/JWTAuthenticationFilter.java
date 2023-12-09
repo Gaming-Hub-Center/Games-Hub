@@ -30,9 +30,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(
                             jwtGenerator.validateToken(authElements[1])
                     );
-                } catch (Exception e) {
+                } catch (RuntimeException e) {
                     SecurityContextHolder.clearContext();
-                    httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid JWT token");
                     return;
                 }
             }

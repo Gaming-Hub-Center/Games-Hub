@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "product")
+@Table(name = "physical_product")
 @NoArgsConstructor
-public class PhysicalProductDAO extends ProductDAO {
-
-}
+public class PhysicalProductDAO extends ProductDAO { }

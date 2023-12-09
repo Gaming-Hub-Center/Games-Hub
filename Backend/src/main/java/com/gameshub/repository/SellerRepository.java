@@ -3,7 +3,6 @@ package com.gameshub.repository;
 import com.gameshub.model.user.*;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
-
 import java.util.*;
 
 @Repository
