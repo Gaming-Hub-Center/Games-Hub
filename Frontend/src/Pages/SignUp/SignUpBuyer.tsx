@@ -14,9 +14,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../../Components/SignUpNavbar";
 import { httpRequest } from "../../Controller/HttpProxy";
-import { UserDTO } from "../../Controller/DTO/UserDTO";
+import { UserDTO } from "../../Controller/DTO/user/UserDTO";
 import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
-import { BuyerRegistrationDTO } from "../../Controller/DTO/BuyerRegistrationDTO";
+import { BuyerRegistrationDTO } from "../../Controller/DTO/user/BuyerRegistrationDTO";
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);

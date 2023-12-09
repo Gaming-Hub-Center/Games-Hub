@@ -16,9 +16,9 @@ import {
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../../Components/SignUpNavbar";
-import { SellerRegistrationDTO } from "../../Controller/DTO/SellerRegistrationDTO";
+import { SellerRegistrationDTO } from "../../Controller/DTO/user/SellerRegistrationDTO";
 import { httpRequest } from "../../Controller/HttpProxy";
-import { UserDTO } from "../../Controller/DTO/UserDTO";
+import { UserDTO } from "../../Controller/DTO/user/UserDTO";
 import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
 
 export function SignUpSeller() {

@@ -16,5 +16,6 @@ public class ProductRequestDTO {
     private LocalDate postDate;
     private int count;
     private int sellerId;
+    private String category;
 
 }

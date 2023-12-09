@@ -2,7 +2,7 @@ package com.gameshub.controller.auth;
 
 import com.gameshub.config.*;
 import com.gameshub.controller.DTO.user.UserDTO;
-import com.gameshub.controller.DTO.user.UserSigninDTO;
+import com.gameshub.controller.DTO.user.UserSignInDTO;
 import com.gameshub.model.user.*;
 import com.gameshub.service.user.UserService;
 import com.gameshub.utils.*;

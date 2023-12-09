@@ -2,10 +2,7 @@ package com.gameshub.model.product;
 
 import lombok.*;
 import jakarta.persistence.*;
-
-import java.sql.Blob;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Data
 @MappedSuperclass
@@ -38,9 +35,5 @@ public abstract class ProductDAO {
 
     @Column(name = "category")
     private String category;
-
-//    @Lob
-//    @Column(name = "image_id")
-//    private ArrayList<Integer> image;
 
 }

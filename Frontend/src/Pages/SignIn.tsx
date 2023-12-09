@@ -8,8 +8,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import {Link, useNavigate} from "react-router-dom";
-import { UserSignInDTO } from "../Controller/DTO/UserSignInDTO";
-import { UserDTO } from "../Controller/DTO/UserDTO";
+import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
+import { UserDTO } from "../Controller/DTO/user/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
 import { clearCurrentSession, setJwtToken } from "../CurrentSession";
 

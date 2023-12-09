@@ -2,7 +2,7 @@ package com.gameshub;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.gameshub.controller.DTO.user.UserSigninDTO;
+import com.gameshub.controller.DTO.user.UserSignInDTO;
 import com.gameshub.controller.auth.AuthenticationController;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.BuyerRepository;
@@ -39,54 +39,54 @@ public class SignInTests {
 
     @Test
     public void testBuyerValidSignIn() throws Exception {
-        UserSignInDTO userSigninDTO = new UserSignInDTO();
-        userSigninDTO.setEmail("john.doe@example.com");
-        userSigninDTO.setPassword("password123");
-        ResponseEntity<?> responseEntity = authenticationController.signin(userSigninDTO);
+        UserSignInDTO userSignInDTO = new UserSignInDTO();
+        userSignInDTO.setEmail("john.doe@example.com");
+        userSignInDTO.setPassword("password123");
+        ResponseEntity<?> responseEntity = authenticationController.signin(userSignInDTO);
 
         assert responseEntity.getStatusCode().equals(HttpStatus.OK);
     }
 
     @Test
     public void testSellerValidSignIn() throws Exception {
-        UserSignInDTO userSigninDTO = new UserSignInDTO();
-        userSigninDTO.setEmail("alice.blue@example.com");
-        userSigninDTO.setPassword("alicepass");
-        ResponseEntity<?> responseEntity = authenticationController.signin(userSigninDTO);
+        UserSignInDTO userSignInDTO = new UserSignInDTO();
+        userSignInDTO.setEmail("alice.blue@example.com");
+        userSignInDTO.setPassword("alicepass");
+        ResponseEntity<?> responseEntity = authenticationController.signin(userSignInDTO);
 
         assert responseEntity.getStatusCode().equals(HttpStatus.OK);
     }
 
     @Test
     public void testInvalidEmail() throws Exception {
-        UserSignInDTO userSigninDTO = new UserSignInDTO();
-        userSigninDTO.setEmail("invalid.email@example.com");
-        userSigninDTO.setPassword("password123");
+        UserSignInDTO userSignInDTO = new UserSignInDTO();
+        userSignInDTO.setEmail("invalid.email@example.com");
+        userSignInDTO.setPassword("password123");
 
         assertThrows(InternalAuthenticationServiceException.class, () -> {
-            authenticationController.signin(userSigninDTO);
+            authenticationController.signin(userSignInDTO);
         });
     }
 
     @Test
     public void testBuyerInvalidPassword() throws Exception {
-        UserSignInDTO userSigninDTO = new UserSignInDTO();
-        userSigninDTO.setEmail("john.doe@example.com");
-        userSigninDTO.setPassword("invalid_password");
+        UserSignInDTO userSignInDTO = new UserSignInDTO();
+        userSignInDTO.setEmail("john.doe@example.com");
+        userSignInDTO.setPassword("invalid_password");
 
         assertThrows(BadCredentialsException.class, () -> {
-            authenticationController.signin(userSigninDTO);
+            authenticationController.signin(userSignInDTO);
         });
     }
 
     @Test
     public void testSellerInvalidPassword() throws Exception {
-        UserSignInDTO userSigninDTO = new UserSignInDTO();
-        userSigninDTO.setEmail("alice.blue@example.com");
-        userSigninDTO.setPassword("invalid_password");
+        UserSignInDTO userSignInDTO = new UserSignInDTO();
+        userSignInDTO.setEmail("alice.blue@example.com");
+        userSignInDTO.setPassword("invalid_password");
 
         assertThrows(BadCredentialsException.class, () -> {
-            authenticationController.signin(userSigninDTO);
+            authenticationController.signin(userSignInDTO);
         });
     }
 
