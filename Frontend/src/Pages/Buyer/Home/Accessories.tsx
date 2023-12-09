@@ -6,33 +6,15 @@ import { Route, Routes } from "react-router-dom";
 export function HomeAccessories() {
   return (
     <>
-      <Container
-        fluid
-        style={{ height: "100vh", overflow: "hidden", padding: 0 }}
-      >
-        <Row style={{ height: "8vh", margin: 0 }}>
+      <Container fluid style={{ height: "100vh", padding: 0 }}>
+        <Row style={{ height: "5vh", margin: 0 }}>
           <Col
-            md={1}
+            md={12}
             style={{
               backgroundColor: "rgb(0, 0, 0)",
-              display: "flex",
-              maxHeight: "100%",
+              maxHeight: "5vh",
               padding: 0,
-            }}
-          >
-            <Image
-              src="/src/data/logo.png"
-              alt="Logo"
-              style={{ maxWidth: "100%", maxHeight: "100%" }}
-            />
-          </Col>
-          <Col
-            md={11}
-            style={{
-              backgroundColor: "rgb(0, 0, 0)",
-              maxHeight: "100%",
-              padding: 0,
-              margin: 0
+              margin: 0,
             }}
           >
             <NavbarC></NavbarC>

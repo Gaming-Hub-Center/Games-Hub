@@ -27,7 +27,10 @@ function App() {
         <Route path="/signup/buyer" element={<SignUpBuyer />}></Route>
         <Route path="/signup/seller" element={<SignUpSeller />}></Route>
         <Route path="/buyer/home/games" element={<HomeGames />}></Route>
-        <Route path="/buyer/home/accessories" element={<HomeAccessories />}></Route>
+        <Route
+          path="/buyer/home/accessories"
+          element={<HomeAccessories />}
+        ></Route>
       </Routes>
     </Container>
   );

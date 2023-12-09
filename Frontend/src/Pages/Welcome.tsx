@@ -1,16 +1,20 @@
-import React from "react"
+import React from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export function Welcome() {
   const navigate = useNavigate();
 
-  function goToGamesStore(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    navigate("buyer/home/games")
+  function goToGamesStore(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    navigate("buyer/home/games");
   }
 
-  function goToAccessoriesStore(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    navigate("buyer/home/accessories")
+  function goToAccessoriesStore(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    navigate("buyer/home/accessories");
   }
 
   return (
@@ -43,9 +47,9 @@ export function Welcome() {
           }}
         >
           <Image
-            src="/src/data/logo.png"
+            src="/src/data/logo4.png"
             alt="Logo"
-            style={{ maxWidth: "100%", maxHeight: "100%" }}
+            style={{ maxWidth: "100%", maxHeight: "5vh", marginTop: "15px" }}
           />
         </Col>
       </Row>
@@ -105,7 +109,7 @@ export function Welcome() {
               onMouseLeave={(e) =>
                 (e.currentTarget.style.backgroundColor = "rgb(0, 0, 0)")
               }
-              onClick = {goToGamesStore}
+              onClick={goToGamesStore}
             >
               Games Store
             </button>
@@ -166,7 +170,7 @@ export function Welcome() {
               onMouseLeave={(e) =>
                 (e.currentTarget.style.backgroundColor = "rgb(0, 0, 0)")
               }
-              onClick = {goToAccessoriesStore}
+              onClick={goToAccessoriesStore}
             >
               Gaming Accessories Store
             </button>
