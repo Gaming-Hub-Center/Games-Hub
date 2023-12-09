@@ -3,7 +3,7 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import PhoneNumberInput from "../../Components/PhoneNumberInputC";
+import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -15,15 +15,15 @@ import {
   faHashtag,
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
-import { SignUpNavbar } from "../../Components/SignUpNavbar";
-import { SellerRegistrationDTO } from "../../Controller/DTO/SellerRegistrationDTO";
+import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
+import { SellerRegistrationDTO } from "../../Controller/DTO/RegisterationDTO/SellerRegistrationDTO";
 import { httpRequest } from "../../Controller/HttpProxy";
 import { UserDTO } from "../../Controller/DTO/UserDTO";
 import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
-  const [name, setname] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -63,10 +63,14 @@ export function SignUpSeller() {
     return /^[0-9]+$/.test(vatRegistrationNumber);
   };
 
-  const handlenameChange = (event: {
+  const isValidDescription = (description: string) => {
+    return description.length > 0;
+  };
+
+  const handleNameChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {
-    setname(event.target.value);
+    setName(event.target.value);
   };
 
   const handleEmailChange = (event: {
@@ -113,14 +117,7 @@ export function SignUpSeller() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
-    if (
-      form.checkValidity() === false ||
-      !isValidEmail(email) ||
-      !isValidPassword(password) ||
-      !isPasswordMatch(password, confirmPassword) ||
-      !isValidPhoneNumber(phoneNumber) ||
-      !isValidAddress(address)
-    ) {
+    if (form.checkValidity() === false) {
       event.stopPropagation();
     }
 
@@ -137,7 +134,7 @@ export function SignUpSeller() {
       vatRegistrationNumber: vatRegistrationNumber,
     };
 
-    clearCurrentSession()
+    clearCurrentSession();
 
     httpRequest("POST", "registration/seller", sellerRegistrationDTO)
       .then((response) => {
@@ -202,7 +199,7 @@ export function SignUpSeller() {
                           type="text"
                           placeholder="Enter your name"
                           value={name}
-                          onChange={handlenameChange}
+                          onChange={handleNameChange}
                           isInvalid={!isValidname(name)}
                         />
                       </Col>
@@ -443,6 +440,7 @@ export function SignUpSeller() {
                           placeholder="Enter your Description"
                           value={description}
                           onChange={handleDescriptionChange}
+                          isInvalid={!isValidDescription(description)}
                         />
                       </Col>
                     </Row>
@@ -473,7 +471,8 @@ export function SignUpSeller() {
               !isValidPhoneNumber(phoneNumber) ||
               !isValidAddress(address) ||
               !isValidNationalID(nationalID) ||
-              !isValidVRN(vatRegistrationNumber)
+              !isValidVRN(vatRegistrationNumber) ||
+              !isValidDescription(description)
             }
             style={{ width: "100%" }}
           >

@@ -20,7 +20,7 @@ export function Welcome() {
       >
         <source src="/src/data/Welcome.mp4" type="video/mp4" />
       </video>
-      <Row style={{ height: "10vh", margin: 0 }}>
+      <Row style={{ height: "8vh", margin: 0 }}>
         <Col
           md={12}
           style={{
@@ -31,13 +31,13 @@ export function Welcome() {
           }}
         >
           <Image
-            src="/src/data/featured-s.png"
+            src="/src/data/logo.png"
             alt="Logo"
             style={{ maxWidth: "100%", maxHeight: "100%" }}
           />
         </Col>
       </Row>
-      <Row style={{ height: "90vh", margin: 0 }}>
+      <Row style={{ height: "92vh", margin: 0 }}>
         <Col
           md={6}
           className="d-flex align-items-center justify-content-center"

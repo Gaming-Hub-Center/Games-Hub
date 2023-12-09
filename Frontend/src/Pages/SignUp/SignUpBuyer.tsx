@@ -3,7 +3,7 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import PhoneNumberInput from "../../Components/PhoneNumberInputC";
+import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -12,11 +12,11 @@ import {
   faAddressCard,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import { SignUpNavbar } from "../../Components/SignUpNavbar";
+import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
 import { httpRequest } from "../../Controller/HttpProxy";
 import { UserDTO } from "../../Controller/DTO/UserDTO";
 import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
-import { BuyerRegistrationDTO } from "../../Controller/DTO/BuyerRegistrationDTO";
+import { BuyerRegistrationDTO } from "../../Controller/DTO/RegisterationDTO/BuyerRegistrationDTO";
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
@@ -102,7 +102,7 @@ export function SignUpBuyer() {
       address: address,
     };
 
-    clearCurrentSession()
+    clearCurrentSession();
 
     httpRequest("POST", "registration/buyer", buyerRegistrationDTO)
       .then((response) => {
