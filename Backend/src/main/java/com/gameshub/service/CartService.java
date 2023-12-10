@@ -1,5 +1,6 @@
 package com.gameshub.service;
 
+import com.gameshub.model.cart.CartDAO;
 import com.gameshub.model.cart.DigitalCartDAO;
 import com.gameshub.model.cart.PhysicalCartDAO;
 import com.gameshub.repository.DigitalCartRepository;
@@ -23,14 +24,18 @@ public class CartService {
 
     // Add or update a physical cart item
     @Transactional
-    public void addOrUpdatePhysicalCartItem(PhysicalCartDAO item) {
-        physicalCartRepository.save(item);
+    public void addOrUpdatePhysicalCartItem(int buyerID, int productID, int count) {
+        CartDAO.CartKey newCartItemKey = new CartDAO.CartKey(buyerID, productID);
+        PhysicalCartDAO newCartItem = new PhysicalCartDAO(newCartItemKey, count);
+        physicalCartRepository.save(newCartItem);
     }
 
     // Add or update a digital cart item
     @Transactional
-    public void addOrUpdateDigitalCartItem(DigitalCartDAO item) {
-        digitalCartRepository.save(item);
+    public void addOrUpdateDigitalCartItem(int buyerID, int productID, int count) {
+        CartDAO.CartKey newCartItemKey = new CartDAO.CartKey(buyerID, productID);
+        DigitalCartDAO newCartItem = new DigitalCartDAO(newCartItemKey, count);
+        digitalCartRepository.save(newCartItem);
     }
 
     // Remove a physical cart item

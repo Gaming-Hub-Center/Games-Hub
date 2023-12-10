@@ -13,23 +13,22 @@ import java.util.List;
 @Component
 public class CartItemsPrinterRunner implements CommandLineRunner {
 
-//    private final CartService cartService;
-//
-//    @Autowired
-//    public CartItemsPrinterRunner(CartService cartService) {
-//        this.cartService = cartService;
-//    }
+    private final CartService cartService;
+
+    @Autowired
+    public CartItemsPrinterRunner(CartService cartService) {
+        this.cartService = cartService;
+    }
 
     @Override
     public void run(String... args) {
-//        int buyerId = 2; // Replace with actual buyer ID if needed
-//        int productId = 1; // Replace with actual product ID if needed
-//        int count = 200; // Replace with desired count
-//
-//        // Add an item to the physical cart
-//        CartDAO.CartKey newCartItemKey = new CartDAO.CartKey(buyerId, productId);
-//        DigitalCartDAO newCartItem = new DigitalCartDAO(newCartItemKey, count);
-//        cartService.addOrUpdateDigitalCartItem(newCartItem);
+        int buyerId = 2; // Replace with actual buyer ID if needed
+        int productId = 1; // Replace with actual product ID if needed
+        int count = 2; // Replace with desired count
+
+        // Add an item to the physical cart
+
+        cartService.addOrUpdateDigitalCartItem(buyerId,productId,count);
 
 //        List<PhysicalCartDAO> cartItems = cartService.getPhysicalCartItems(1); // Replace with actual buyer ID if needed
 //
