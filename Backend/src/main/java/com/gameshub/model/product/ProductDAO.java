@@ -24,7 +24,7 @@ public abstract class ProductDAO {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "postdate")
+    @Column(name = "post_date")
     private LocalDate postDate; // Date Approved
 
     @Column(name = "count")

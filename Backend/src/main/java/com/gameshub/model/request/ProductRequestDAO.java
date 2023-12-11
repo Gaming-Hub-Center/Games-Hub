@@ -11,36 +11,36 @@ public abstract class ProductRequestDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    protected int id;
 
     @Column(name = "date_received")
-    private LocalDate dateReceived;
+    protected LocalDate dateReceived;
 
     @Column(name = "status")
-    private String status;
+    protected String status;
 
     @Column(name = "request_type")
-    private String requestType;
+    protected String requestType;
 
     @Column(name = "title")
-    private String title;
+    protected String title;
 
     @Column(name = "price")
-    private int price;
+    protected int price;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "post_date")
-    private LocalDate postDate;
+    protected LocalDate postDate;
 
     @Column(name = "count")
-    private int count;
+    protected int count;
 
     @JoinColumn(name = "seller_id")
-    private int sellerId;
+    protected int sellerId;
 
     @Column(name = "category")
-    private String category;
+    protected String category;
 
 }

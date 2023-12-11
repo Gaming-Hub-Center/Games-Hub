@@ -1,5 +1,6 @@
 package com.gameshub.model.request;
 
+import com.gameshub.model.product.DigitalProductDAO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,4 +12,18 @@ import lombok.NoArgsConstructor;
 public class DigitalProductRequestDAO extends ProductRequestDAO {
     @Column(name = "code")
     private String code;
+
+    public DigitalProductDAO getProduct() {
+        return new DigitalProductDAO(
+                this.id,
+                this.title,
+                this.price,
+                this.description,
+                this.postDate,
+                this.count,
+                this.sellerId,
+                this.code,
+                this.category
+        );
+    }
 }
