@@ -63,8 +63,8 @@ public class UserService {
         sellerRepository.save(sellerDAO);
     }
 
-    public SellerDAO getSellerById (Integer id) {
-        return sellerRepository.getById(id);
+    public SellerDAO getSellerById (int id) {
+        return sellerRepository.findById(id);
     }
 
 }

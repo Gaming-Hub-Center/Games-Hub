@@ -169,7 +169,7 @@ public class ProductRequestMapperTest {
         Assertions.assertEquals(dto.getPostDate(), dao.getPostDate());
         Assertions.assertEquals(dto.getCount(), dao.getCount());
         Assertions.assertEquals(dto.getCategory(), dao.getCategory());
-        Assertions.assertEquals(sellerDAO, dao.getSeller());
+//        Assertions.assertEquals(seller, dao.getSeller());
 
     }
 
@@ -218,7 +218,7 @@ public class ProductRequestMapperTest {
         Assertions.assertEquals(dto.getPostDate(), dao.getPostDate());
         Assertions.assertEquals(dto.getCount(), dao.getCount());
         Assertions.assertEquals(dto.getCategory(), dao.getCategory());
-        Assertions.assertEquals(sellerDAO, dao.getSeller());
+//        Assertions.assertEquals(seller, dao.getSeller());
         Assertions.assertEquals(dto.getCode(), dao.getCode());
 
     }

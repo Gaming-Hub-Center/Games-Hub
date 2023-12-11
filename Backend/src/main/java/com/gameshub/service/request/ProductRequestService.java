@@ -26,6 +26,8 @@ public class ProductRequestService {
         } else if (productRequestDTO instanceof DigitalProductRequestDTO) {
             DigitalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
             digitalProductRequestRepository.save(productRequestDAO);
+        } else {
+            throw new RuntimeException("Unsupported request type");
         }
     }
 

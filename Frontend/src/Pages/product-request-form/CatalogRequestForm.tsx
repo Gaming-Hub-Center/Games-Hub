@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './CatalogRequestForm.css';
 import { PhysicalProductRequestDTO } from '../../Controller/DTO/request-dto/PhysicalProductRequestDTO';
+import { httpRequest } from '../../Controller/HttpProxy';
+import { getId } from '../../CurrentSession';
 
 // Assuming the PhysicalProductRequestDTO interface has been updated to include images and categories
 interface EnhancedPhysicalProductRequestDTO extends PhysicalProductRequestDTO {
@@ -17,7 +19,7 @@ const CatalogRequestForm: React.FC = () => {
     description: '',
     postDate: '',
     count: 0,
-    sellerId: 0,
+    sellerId: getId(),
     category: ''
   });
 
@@ -32,10 +34,17 @@ const CatalogRequestForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit =  async (e: React.FormEvent) => {
     e.preventDefault();
-    // Submit form logic here
-    console.log(physicalProductRequest);
+    
+    httpRequest("POST", "/product-request/create/physical", physicalProductRequest)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+    
   };
 
   return (
