@@ -68,13 +68,14 @@ public class ProductRequestService {
         return pendingPhysicalProducts;
     }
 
-    public List<DigitalProductDAO> getAllPendingDigitalProductsBySellerID(int sellerID) {
+    public List<DigitalProductRequestDAO> getAllPendingDigitalProductsBySellerID(int sellerID) {
         List<DigitalProductRequestDAO> allDigitalProductRequests = digitalProductRequestRepository.findBySellerId(sellerID);
-        List<DigitalProductDAO> pendingDigitalProductRequests = new ArrayList<DigitalProductDAO>(allDigitalProductRequests.size());
+        List<DigitalProductRequestDAO> pendingDigitalProductRequests = new ArrayList<DigitalProductRequestDAO>(allDigitalProductRequests.size());
 
         for (DigitalProductRequestDAO productRequest : allDigitalProductRequests){
+            System.out.println(productRequest.toString());
             if(productRequest.getStatus().equals("Pending"))
-                pendingDigitalProductRequests.add(productRequest.getProduct());
+                pendingDigitalProductRequests.add(productRequest);
         }
 
         return pendingDigitalProductRequests;

@@ -4,13 +4,14 @@ import '../ProductCatalog/ProductCatalogItem.css';
 import "./EditableProductDetailsItem.css";
 import '../../../Components/UI_Components/GH_Btn.css'
 import { ProductDAO } from "../../../Models/product/ProductDAO";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { getProduct, updateProduct } from "../../../Controller/API/SellerAPI";
 import EditableProductDetailsItem from "./EditableProductDetailsItem";
 import { ProductPatchDTO } from "../../../Controller/DTO/ProductPatchDTO";
 import { ProductPatch } from "./Model/ProductPatch";
 
 export function ProductEdit(props){
+    const navigate = useNavigate();
     
     const { sellerId, productType, productId, inCatalog } = useParams();
 
@@ -67,6 +68,10 @@ export function ProductEdit(props){
             return
         console.log(productPatch.getType())
         updateProduct(sellerId, productType, productId, inCatalog != 'true', productPatch.getType())
+        setTimeout(() => {
+            // Navigate to the specified route
+            navigate(`/seller/${sellerId}/product/${productType}/${productId}/${inCatalog}`)
+          }, 100);
         //save in db
     }
 

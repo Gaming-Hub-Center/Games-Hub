@@ -5,29 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/ProductPatchDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/PhysicalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/PhysicalProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/DigitalProductRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/DigitalProductRequestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/PhysicalProductRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/PhysicalProductRequestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductServiceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Controller/API/SellerAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Controller/API/SellerAPI.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Models/product/DigitalProductDAO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Models/product/DigitalProductDAO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Models/product/ProductDAO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Models/product/ProductDAO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Models/product_request/DigitalProductRequestDAO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Models/product_request/DigitalProductRequestDAO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Models/product_request/PhysicalProductRequestDAO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Models/product_request/PhysicalProductRequestDAO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Models/product_request/ProductRequestDAO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Models/product_request/ProductRequestDAO.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalogItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalogItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductEdit/ProductEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductEdit/ProductEdit.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
