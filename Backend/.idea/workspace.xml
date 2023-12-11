@@ -6,20 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/user/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/user/SellerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/DigitalProductRequestRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/PhysicalProductRequestRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Controller/HttpProxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Controller/HttpProxy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/CurrentSession.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/CurrentSession.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/SignIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/SignUp/SignUpBuyer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/SignUp/SignUpBuyer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/SignUp/SignUpSeller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/SignUp/SignUpSeller.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/product-request-form/CatalogRequestForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/product-request-form/CatalogRequestForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,7 +323,7 @@
       <workItem from="1702134226474" duration="118000" />
       <workItem from="1702153202706" duration="3402000" />
       <workItem from="1702162432319" duration="388000" />
-      <workItem from="1702283175787" duration="24548000" />
+      <workItem from="1702283175787" duration="26942000" />
     </task>
     <servers />
   </component>
