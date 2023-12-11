@@ -1,0 +1,18 @@
+.editable-product-details-item{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.editable-product-details-item .GH_Btn.edit,
+.editable-product-details-item .GH_Btn.trash{
+    position: relative;
+    background-color: transparent;
+    padding: 1px;
+    top: -10px;
+    align-self: flex-start;
+}
+
+.custom-editor-button{
+    background-color: transparent; 
+    padding: 1px;
+}

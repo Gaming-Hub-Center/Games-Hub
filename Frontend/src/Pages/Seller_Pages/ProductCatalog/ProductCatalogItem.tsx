@@ -7,11 +7,12 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 interface ProductCatalogItemProps{
     item: ProductDAO | ProductRequestDAO;
+    onClickHandler: (event) => void;
     onDeleteHandler: (event) => void;
     onEditHandler: (event) => void;
 }
 
-export function ProductCatalogItem({item, onDeleteHandler, onEditHandler}: ProductCatalogItemProps){
+export function ProductCatalogItem({item, onClickHandler, onDeleteHandler, onEditHandler}: ProductCatalogItemProps){
 
 
     return (
@@ -19,7 +20,7 @@ export function ProductCatalogItem({item, onDeleteHandler, onEditHandler}: Produ
             {/* <div className="product-image">
                 <img src={item.imageURLs[0]} alt={"7amada helal"} />
             </div> */}
-            <div className="product-details">
+            <div onClick={onClickHandler} className="product-details">
                 <h5 className="product-details-title">{item.title}</h5> 
                 <p><span className="product-details-type">Stock:</span> {item.count}</p>
                 <p><span className="product-details-type">Product ID:</span> {item.id}</p>

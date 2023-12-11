@@ -1,5 +1,6 @@
 package com.gameshub.controller.request;
 
+import com.gameshub.controller.DTO.ProductPatchDTO;
 import com.gameshub.controller.DTO.request.*;
 import com.gameshub.model.product.DigitalProductDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product-request")
+@CrossOrigin(origins = "http://localhost:5173", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.PATCH, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class ProductController {
 
     @Autowired
@@ -61,13 +63,33 @@ public class ProductController {
     }
 
     @GetMapping("/{sellerID}/products/pending/physical")
-    public ResponseEntity<List<PhysicalProductDAO>> getAllPendingPhysicalProductsBySellerID (@PathVariable(value = "sellerID") int sellerID){
+    public ResponseEntity<List<PhysicalProductRequestDAO>> getAllPendingPhysicalProductsBySellerID (@PathVariable(value = "sellerID") int sellerID){
         return new ResponseEntity<>(productRequestService.getAllPendingPhysicalProductsBySellerID(sellerID), HttpStatus.OK);
     }
 
     @GetMapping("/{sellerID}/products/pending/digital")
     public ResponseEntity<List<DigitalProductDAO>> getAllPendingDigitalProductsBySellerID (@PathVariable(value = "sellerID") int sellerID){
         return new ResponseEntity<>(productRequestService.getAllPendingDigitalProductsBySellerID(sellerID), HttpStatus.OK);
+    }
+
+    @GetMapping("/{sellerID}/product/physical/{productID}")
+    public ResponseEntity<PhysicalProductDAO> getPhysicalProductBySellerIDAndProductID (@PathVariable(value = "sellerID") int sellerID, @PathVariable(value = "productID") int productID){
+        return new ResponseEntity<>(productService.getPhysicalProductByProductID(productID), HttpStatus.OK);
+    }
+
+    @GetMapping("/{sellerID}/product/digital/{productID}")
+    public ResponseEntity<DigitalProductDAO> getDigitalProductBySellerIDAndProductID (@PathVariable(value = "sellerID") int sellerID, @PathVariable(value = "productID") int productID){
+        return new ResponseEntity<>(productService.getDigitalProductByProductID(productID), HttpStatus.OK);
+    }
+
+    @GetMapping("/{sellerID}/product/pending/physical/{productID}")
+    public ResponseEntity<PhysicalProductRequestDAO> getPendingPhysicalProductBySellerIDAndProductID (@PathVariable(value = "sellerID") int sellerID, @PathVariable(value = "productID") int productID){
+        return new ResponseEntity<>(productRequestService.getPhysicalProductByProductID(productID), HttpStatus.OK);
+    }
+
+    @GetMapping("/{sellerID}/product/pending/digital/{productID}")
+    public ResponseEntity<DigitalProductRequestDAO> getPendingDigitalProductBySellerIDAndProductID (@PathVariable(value = "sellerID") int sellerID, @PathVariable(value = "productID") int productID){
+        return new ResponseEntity<>(productRequestService.getDigitalProductByProductID(productID), HttpStatus.OK);
     }
 
     @DeleteMapping("/{sellerID}/product/digital/{productID}")
@@ -94,6 +116,34 @@ public class ProductController {
     @DeleteMapping("/{sellerID}/product/pending/physical/{productID}")
     public ResponseEntity<Void> deletePendingPhysicalProductOfSellerByProductID(@PathVariable(value = "sellerID") int sellerID, @PathVariable(value = "productID") int productID){
         if(productRequestService.deletePhysicalProductBySellerIdAndProductID(sellerID, productID))
+            return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("/{sellerID}/product/digital/{productID}")
+    public ResponseEntity<Void> updateDigitalProductOfSellerByProductID(@PathVariable(value = "productID") int productID, @RequestBody ProductPatchDTO patch){
+        if(productService.updateDigitalProductByProductID(productID, patch))
+            return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("/{sellerID}/product/physical/{productID}")
+    public ResponseEntity<Void> updatePhysicalProductOfSellerByProductID(@PathVariable(value = "productID") int productID, @RequestBody ProductPatchDTO patch){
+        if(productService.updatePhysicalProductByProductID(productID, patch))
+            return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("/{sellerID}/product/pending/digital/{productID}")
+    public ResponseEntity<Void> updatePendingDigitalProductOfSellerByProductID(@PathVariable(value = "productID") int productID, @RequestBody ProductPatchDTO patch){
+        if(productRequestService.updateDigitalProductByProductID(productID, patch))
+            return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("/{sellerID}/product/pending/physical/{productID}")
+    public ResponseEntity<Void> updatePendingPhysicalProductOfSellerByProductID(@PathVariable(value = "productID") int productID, @RequestBody ProductPatchDTO patch){
+        if(productRequestService.updatePhysicalProductByProductID(productID, patch))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

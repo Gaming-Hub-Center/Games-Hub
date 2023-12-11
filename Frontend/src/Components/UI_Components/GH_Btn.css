@@ -1,0 +1,30 @@
+.GH_Btn {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    font-size: small;
+    font-weight: bold;
+}
+  
+.GH_Btn.active {
+    border: 0.5px solid rgb(228, 222, 220);
+}
+  
+.GH_Btn *:hover::before{
+    color: blueviolet;
+    transition: 200ms;
+    scale: 1.2;
+}
+  
+.GH_Btn.edit:hover .bi.bi-pencil::before{
+    content: '\F4C9';
+}
+  
+.GH_Btn.trash:hover .bi.bi-trash::before{
+    content: '\F5DD';
+}
+
+.GH_Btn.save:hover .bi.bi-floppy::before{
+    content: '\F7C5';
+}
