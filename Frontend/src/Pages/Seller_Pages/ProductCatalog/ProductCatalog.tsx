@@ -6,6 +6,7 @@ import { DigitalProductDAO } from "../../../Models/product/DigitalProductDAO";
 import { ProductDAO } from "../../../Models/product/ProductDAO";
 import { ProductRequestDAO } from "../../../Models/product_request/ProductRequestDAO";
 import { useNavigate, useParams } from "react-router-dom";
+import { right } from "@popperjs/core";
 
 interface ProductCatalogProps{
   sellerId: number
@@ -121,6 +122,11 @@ export function ProductCatalog() {
 
     fetchData(); // Call the async function
   }, []);
+
+  const handleCreateNewProduct = (event) => {
+    console.log('navigate')
+    //navigate to create new product
+  } 
   
   return (
       <>
@@ -133,9 +139,10 @@ export function ProductCatalog() {
           </button>
       </div>
       <div className="tab-content">
-          <div>
+          <div style={{position: 'relative', display: 'flex', width: '600px'}}>
               <button  type="button" className={`GH_Btn ${activeProductType === 'Digital' ? `active` : ''}`}onClick={() => setActiveProductType('Digital')}>Digital Products</button>
               <button  type="button" className={`GH_Btn ${activeProductType === 'Physical' ? `active` : ''}`}onClick={() => setActiveProductType('Physical')}>Physical products</button>
+              <button onClick={handleCreateNewProduct} style={{marginLeft: 'auto'}} className="GH_Btn add create-new-product">Add</button>
           </div>
           <ul className={`list-group ${(activeTab === 'Catalog' && activeProductType === 'Digital') ? 'fade-in' : 'fade-out'}`}>
               {catalogDigitalProducts.map((item: DigitalProductDAO) => <ProductCatalogItem item={item} onDeleteHandler={handleDeleteCatalogDigitalProduct(item)} onEditHandler={handleEditCatalogDigitalProduct}/>)}
