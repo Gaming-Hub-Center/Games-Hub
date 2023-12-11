@@ -37,7 +37,8 @@ export function HomeGames() {
     },
     {
       title: "GTA IV",
-      description: "Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
+      description:
+        "Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
       images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
     },
     {
@@ -69,30 +70,40 @@ export function HomeGames() {
 
   return (
     <>
-      <Container fluid style={{ height: "100vh", padding: 0 }}>
-        <Row style={{ height: "5vh", margin: 0 }}>
+      <Container
+        fluid
+        style={{
+          height: "200vh",
+          padding: 0,
+          backgroundColor: "#121212"
+        }}
+      >
+      <NavbarC></NavbarC>
+        <Row style={{ display: "flex" , flexDirection: "row"}}>
           <Col
-            md={12}
+            md={2}
             style={{
-              backgroundColor: "rgb(0, 0, 0)",
-              maxHeight: "5vh",
-              padding: 0,
-              margin: 0,
+              height: "77vh",
+              marginTop: "30px",
+              marginLeft: "55px",
+              backgroundColor: "white",
+            }}
+          ></Col>
+          <Col
+            style={{
+              height: "80vh",
+              marginTop: "30px",
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "flex-start",
             }}
           >
-            <NavbarC></NavbarC>
+             {productCardPropsList.map((productCardProps, index) => (
+              <ProductCard key={index} {...productCardProps} />
+            ))}
+           
           </Col>
-        </Row>
-        <Row style={{ display: "flex", height: "95vh" }}>
-          <Col md={2} >
-          
-          
-          </Col>
-          <Col md={10} style={{ height: "5vh" }}></Col>
-          {productCardPropsList.map((productCardProps, index) => (
-            <ProductCard key={index} {...productCardProps} />
-          ))}
-          <Col></Col>
         </Row>
       </Container>
     </>

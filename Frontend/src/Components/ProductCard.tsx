@@ -8,8 +8,16 @@ interface cardProps {
 }
 
 export function ProductCard({ title, description, images }: cardProps) {
+  function goToViewProduct(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {}
+
+  function addToCart(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {}
+
   return (
-    <Card style={{ width: "18rem", height: "38vh", marginRight: "10px" }}>
+    <Card style={{ width: "18rem", height: "38vh", marginRight: "10px" , marginBottom: "10px", backgroundColor: "black" ,color: "#f0f0f0"}}>
       <Card.Img
         variant="top"
         src={images[0]}
@@ -38,8 +46,44 @@ export function ProductCard({ title, description, images }: cardProps) {
             justifyContent: "space-between",
           }}
         >
-          <Button variant="primary">View</Button>
-          <Button variant="primary">Add to cart</Button>
+          <Button
+            style={{
+              backgroundColor: "#733BC0",
+              color: "#f0f0f0",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
+            onClick={goToViewProduct}
+          >
+            View
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "#733BC0",
+              color: "#f0f0f0",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
+            onClick={addToCart}
+          >
+            Add to cart
+          </Button>
         </div>
       </Card.Body>
     </Card>

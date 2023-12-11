@@ -3,7 +3,7 @@ import { NavbarC } from "../Components/NavbarC";
 
 export function About() {
   return (
-    <Container fluid style={{ height: "100vh", padding: 0 }}>
+    <Container fluid style={{ height: "200vh", padding: 0 }}>
       <Row>
         <Col md={12}>
           <NavbarC></NavbarC>
