@@ -9,6 +9,7 @@ export function NavbarC() {
       className="bg-black text-white shadow-sm"
       variant="dark"
       style={{ backgroundColor: "black" }}
+      sticky="top"
     >
       <Container fluid style={{ padding: 0 }}>
         <Navbar.Brand href="/">
@@ -53,14 +54,13 @@ export function NavbarC() {
             About
           </Nav.Link>
         </Nav>
-
         <Nav>
           <Nav.Link
             as={NavLink}
             to="/signin"
             style={{
               marginTop: "3px",
-              marginRight: "3px",
+              marginRight: "10px",
               borderRadius: "50px",
             }}
           >
@@ -71,7 +71,7 @@ export function NavbarC() {
             to="/signup/buyer"
             style={{
               marginTop: "3px",
-              marginRight: "3px",
+              marginRight: "10px",
               borderRadius: "50px",
             }}
           >
@@ -81,4 +81,19 @@ export function NavbarC() {
       </Container>
     </Navbar>
   );
+}
+
+{
+  /* <NavDropdown
+            title={""}
+            style={{ marginTop: "3px", marginRight: "20px", paddingRight: "0" }}
+            align="end"
+          >
+            <NavDropdown.Item as={NavLink} to="/signup/buyer">
+              Sign up
+            </NavDropdown.Item>
+            <NavDropdown.Item as={NavLink} to="/signin">
+              Sign in
+            </NavDropdown.Item>
+          </NavDropdown> */
 }

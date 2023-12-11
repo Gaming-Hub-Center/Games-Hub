@@ -1,17 +1,46 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-export function ProductCard() {
+interface cardProps {
+  title: string;
+  description: string;
+  images: string[];
+}
+
+export function ProductCard({ title, description, images }: cardProps) {
   return (
     <Card style={{ width: "18rem", height: "38vh", marginRight: "10px" }}>
-      <Card.Img variant="top" src="/src/data/GTAV.jpg" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+      <Card.Img
+        variant="top"
+        src={images[0]}
+        style={{ height: "40%", objectFit: "cover" }}
+      />
+      <Card.Body
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <Card.Title>{title}</Card.Title>
+        <Card.Text
+          style={{
+            height: "10vh",
+            overflow: "auto",
+          }}
+        >
+          {description}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button variant="primary">View</Button>
+          <Button variant="primary">Add to cart</Button>
+        </div>
       </Card.Body>
     </Card>
   );

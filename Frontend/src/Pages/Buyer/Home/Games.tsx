@@ -4,6 +4,69 @@ import { NavbarC } from "../../../Components/NavbarC";
 import { ProductCard } from "../../../Components/ProductCard";
 
 export function HomeGames() {
+  const productCardPropsList = [
+    {
+      title: "GTA IV",
+      description: "Trevor is gonna kill u :)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA V",
+      description: "Trevor is gonna kill u :)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA VI",
+      description: "Trevor is gonna kill u bardo:)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA IV",
+      description: "Trevor is gonna kill u :)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA V",
+      description: "Trevor is gonna kill u :)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA VI",
+      description: "Trevor is gonna kill u bardo:)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA IV",
+      description: "Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA V",
+      description: "Trevor is gonna kill u :)",
+      images: ["/src/data/logo4.png"],
+    },
+    {
+      title: "GTA VI",
+      description: "Trevor is gonna kill u bardo:)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA IV",
+      description: "Trevor is gonna kill u :)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA V",
+      description: "Trevor is gonna kill u :)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+    {
+      title: "GTA VI",
+      description: "Trevor is gonna kill u bardo:)",
+      images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
+    },
+  ];
+
   return (
     <>
       <Container fluid style={{ height: "100vh", padding: 0 }}>
@@ -21,12 +84,14 @@ export function HomeGames() {
           </Col>
         </Row>
         <Row style={{ display: "flex", height: "95vh" }}>
-          <Col md={12} style={{ height: "5vh" }}></Col>
-          {/* Add more columns with games cards for the grid layout */}
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
+          <Col md={2} >
+          
+          
+          </Col>
+          <Col md={10} style={{ height: "5vh" }}></Col>
+          {productCardPropsList.map((productCardProps, index) => (
+            <ProductCard key={index} {...productCardProps} />
+          ))}
           <Col></Col>
         </Row>
       </Container>

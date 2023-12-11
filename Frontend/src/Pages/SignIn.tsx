@@ -22,9 +22,7 @@ export function SignIn() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (
-      form.checkValidity() === false ||
-      !isValidEmail(email) ||
-      !isValidPassword(password)
+      form.checkValidity() === false
     ) {
       event.stopPropagation();
     }
