@@ -7,6 +7,9 @@ import com.gameshub.utils.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ProductService {
 
@@ -41,6 +44,43 @@ public class ProductService {
     private void saveDigitalProduct(DigitalProductDTO digitalProductDTO) {
         DigitalProductDAO digitalProductDAO = productMapper.toProductDAO(digitalProductDTO);
         digitalProductRepository.save(digitalProductDAO);
+    }
+
+    public List<ProductDAO> getAllProductsBySellerID(int sellerID) {
+        List<? extends ProductDAO> physicalProducts = physicalProductRepository.findBySellerId(sellerID);
+        List<? extends ProductDAO> digitalProducts = digitalProductRepository.findBySellerId(sellerID);
+
+        List<ProductDAO> allProducts = new ArrayList<>(physicalProducts.size() + digitalProducts.size());
+        allProducts.addAll(physicalProducts);
+        allProducts.addAll(digitalProducts);
+
+        return allProducts;
+    }
+
+    public List<PhysicalProductDAO> getAllPhysicalProductsBySellerID(int sellerID) {
+        return physicalProductRepository.findBySellerId(sellerID);
+    }
+
+    public List<DigitalProductDAO> getAllDigitalProductsBySellerID(int sellerID) {
+        return digitalProductRepository.findBySellerId(sellerID);
+    }
+
+    public DigitalProductDAO getDigitalProductByProductID(int productID){
+        return digitalProductRepository.findById(productID);
+    }
+
+    public PhysicalProductDAO getPhysicalProductByProductID(int productID){
+        return physicalProductRepository.findById(productID);
+    }
+
+    public boolean deleteDigitalProductBySellerIdAndProductID(int sellerID, int productId){
+        long numberOfDeletedProducts = digitalProductRepository.deleteByIdAndSellerId(productId, sellerID);
+        return numberOfDeletedProducts != 0;
+    }
+
+    public boolean deletePhysicalProductBySellerIdAndProductID(int sellerID, int productId){
+        long numberOfDeletedProducts = physicalProductRepository.deleteByIdAndSellerId(productId, sellerID);
+        return numberOfDeletedProducts != 0;
     }
 
 }

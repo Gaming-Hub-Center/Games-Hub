@@ -9,3 +9,7 @@ export const setJwtToken = (jwtToken: string) => {
 export const clearCurrentSession = () => {
     window.sessionStorage.clear()
 }
+
+export const getUserID = () => {
+    
+}
