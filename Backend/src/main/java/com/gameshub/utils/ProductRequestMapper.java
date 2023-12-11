@@ -18,14 +18,8 @@ import java.util.Optional;
 @Component
 public class ProductRequestMapper {
 
-//    @Autowired
-//    private SellerRepository sellerRepository;
-
     @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private UserService userService;
+    public UserService userService;
 
     public DigitalProductRequestDAO toDAO(DigitalProductRequestDTO digitalProductRequestDTO) {
         if ( digitalProductRequestDTO == null ) {
@@ -43,8 +37,8 @@ public class ProductRequestMapper {
         digitalProductRequestDAO.setPostDate( digitalProductRequestDTO.getPostDate() );
         digitalProductRequestDAO.setCount( digitalProductRequestDTO.getCount() );
 
-        Optional<SellerDAO> seller = Optional.ofNullable(userService.getSellerById(digitalProductRequestDTO.getSellerId()));
-        seller.ifPresent(digitalProductRequestDAO::setSeller);
+        SellerDAO sellerDAO = userService.getSellerById(digitalProductRequestDTO.getSellerId());
+        digitalProductRequestDAO.setSeller(sellerDAO);
 
         digitalProductRequestDAO.setCategory( digitalProductRequestDTO.getCategory() );
         digitalProductRequestDAO.setCode( digitalProductRequestDTO.getCode() );
@@ -93,8 +87,8 @@ public class ProductRequestMapper {
         physicalProductRequestDAO.setPostDate( physicalProductRequestDTO.getPostDate() );
         physicalProductRequestDAO.setCount( physicalProductRequestDTO.getCount() );
 
-        Optional<SellerDAO> seller = Optional.ofNullable(userService.getSellerById(physicalProductRequestDTO.getSellerId()));
-        seller.ifPresent(physicalProductRequestDAO::setSeller);
+        SellerDAO sellerDAO = userService.getSellerById(physicalProductRequestDTO.getSellerId());
+        physicalProductRequestDAO.setSeller(sellerDAO);
 
         physicalProductRequestDAO.setCategory( physicalProductRequestDTO.getCategory() );
 
@@ -124,4 +118,5 @@ public class ProductRequestMapper {
 
         return physicalProductRequestDTO;
     }
+
 }

@@ -7,6 +7,8 @@ import java.time.LocalDate;
 
 @Data
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class ProductRequestDAO {
 
     @Id
@@ -42,7 +44,7 @@ public abstract class ProductRequestDAO {
     private String category;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id", referencedColumnName = "ID")
+    @JoinColumn(name = "seller_id", referencedColumnName = "id")
     private SellerDAO seller;
 
 }

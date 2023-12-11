@@ -1,9 +1,7 @@
 package com.gameshub.utils;
 
-import com.gameshub.controller.DTO.product.DigitalProductDTO;
-import com.gameshub.controller.DTO.product.PhysicalProductDTO;
-import com.gameshub.model.product.DigitalProductDAO;
-import com.gameshub.model.product.PhysicalProductDAO;
+import com.gameshub.controller.DTO.product.*;
+import com.gameshub.model.product.*;
 import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.user.SellerRepository;
 import lombok.Data;
@@ -35,7 +33,7 @@ public class ProductMapper {
         digitalProductDTO.setCategory(digitalProductDAO.getCategory() );
 
         if(digitalProductDAO.getSeller() != null)
-            digitalProductDTO.setSellerId( digitalProductDAO.getSeller().getId() );
+            digitalProductDTO.setSellerEmail( digitalProductDAO.getSeller().getEmail() );
 
         digitalProductDTO.setCode( digitalProductDAO.getCode() );
 
@@ -58,7 +56,7 @@ public class ProductMapper {
         physicalProductDTO.setCategory(physicalProductDAO.getCategory() );
 
         if(physicalProductDAO.getSeller() != null)
-            physicalProductDTO.setSellerId( physicalProductDAO.getSeller().getId() );
+            physicalProductDTO.setSellerEmail( physicalProductDAO.getSeller().getEmail() );
 
         return physicalProductDTO;
     }
@@ -78,7 +76,7 @@ public class ProductMapper {
         digitalProductDAO.setCount( digitalProductDTO.getCount() );
         digitalProductDAO.setCategory(digitalProductDTO.getCategory() );
 
-        Optional<SellerDAO> seller = repository.findById(digitalProductDTO.getSellerId());
+        Optional<SellerDAO> seller = repository.findByEmail(digitalProductDTO.getSellerEmail());
 
         seller.ifPresent(digitalProductDAO::setSeller);
 
@@ -102,7 +100,7 @@ public class ProductMapper {
         physicalProductDAO.setCount( physicalProductDTO.getCount() );
         physicalProductDAO.setCategory(physicalProductDTO.getCategory() );
 
-        Optional<SellerDAO> seller = repository.findById(physicalProductDTO.getSellerId());
+        Optional<SellerDAO> seller = repository.findByEmail(physicalProductDTO.getSellerEmail());
 
         seller.ifPresent(physicalProductDAO::setSeller);
 

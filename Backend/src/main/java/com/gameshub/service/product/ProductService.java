@@ -43,11 +43,4 @@ public class ProductService {
         digitalProductRepository.save(digitalProductDAO);
     }
 
-    public PhysicalProductDAO getPhysicalProduct (Integer id) {
-        return physicalProductRepository.getReferenceById(id);
-    }
-
-    public DigitalProductDAO getDigitalProduct (Integer id) {
-        return digitalProductRepository.getReferenceById(id);
-    }
 }

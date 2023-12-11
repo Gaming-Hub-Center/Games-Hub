@@ -32,7 +32,7 @@ public abstract class ProductDAO {
     private int count;
 
     @ManyToOne
-    @JoinColumn(name = "sellerid", referencedColumnName = "ID")
+    @JoinColumn(name = "seller_id", referencedColumnName = "ID")
     private SellerDAO seller;
 
     @Column(name = "category")

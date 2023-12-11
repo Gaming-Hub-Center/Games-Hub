@@ -5,21 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/PhysicalProductRequestRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperInteractionWithSellerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/ProductRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/ProductRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/ProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/ProductRequestDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/user/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/user/SellerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/user/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/DigitalProductRequestRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/DigitalProductRequestRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/PhysicalProductRequestRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/PhysicalProductRequestRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +110,9 @@
     "JUnit.PhysicalProductDTOTest.executor": "Debug",
     "JUnit.PhysicalProductDTOTest.testPhysicalProductDTO_.executor": "Run",
     "JUnit.PhysicalProductRequestRepositoryTest.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.getAllRequestsTest.executor": "Debug",
     "JUnit.PhysicalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest.executor": "Run",
     "JUnit.ProductDTOTest.executor": "Run",
     "JUnit.ProductDTOTest.testProductRequestDTO.executor": "Run",
     "JUnit.ProductDTOTest.testProductRequestDTOGettersAndSetters.executor": "Run",
@@ -128,7 +133,16 @@
     "JUnit.ProductRequestManagerTest.executor": "Run",
     "JUnit.ProductRequestManagerTest.saveDigitalProductRequest_Success.executor": "Run",
     "JUnit.ProductRequestManagerTest.savePhysicalProductRequest_Success.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.getAllSellersFromUserServiceInMapper.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.getOneSellerFromUserServiceInMapper.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.DigitalProductRequestFromDTOtoDAOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.DigitalProductRequestMapperFromDAOtoDTOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.PhysicalProductRequestFromDTOtoDAOTest.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.PhysicalProductRequestMapperFromDAOtoDTOTest.executor": "Run",
     "JUnit.ProductRequestMapperTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.getAllSellersFromUserServiceInMapper.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.getOneSellerFromUserServiceInMapper.executor": "Run",
     "JUnit.ProductRequestMapperTest.shouldMapDAOtoDTO.executor": "Run",
     "JUnit.ProductRequestMapperTest.shouldMapDigitalProductRequestDTOToDAO.executor": "Run",
     "JUnit.ProductRequestMapperTest.testDigitalProductRequestDTOToDAO.executor": "Run",
@@ -158,7 +172,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.BackendApplication.executor": "Debug",
+    "Spring Boot.BackendApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "GH-209-Seller-Create-Product",
     "ignore.virus.scanning.warn.message": "true",
@@ -192,38 +206,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BackendApplication">
-    <configuration name="DigitalProductRequestRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.DigitalProductRequestRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.DigitalProductRequestRepositoryTest" />
-      <option name="METHOD_NAME" value="testUpdateDigitalProductRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PhysicalProductRequestRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -233,31 +216,70 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.gameshub.requests" />
       <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.PhysicalProductRequestRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductMapperTest.testToProductDAODigitalProductDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.products.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.products" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.products.ProductMapperTest" />
-      <option name="METHOD_NAME" value="testToProductDAODigitalProductDTO" />
+      <option name="METHOD_NAME" value="testSavePhysicalProductRequest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="requests in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRequestMapperInteractionWithSellerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub/requests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestMapperInteractionWithSellerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRequestMapperInteractionWithSellerTest.getAllSellersFromUserServiceInMapper" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestMapperInteractionWithSellerTest" />
+      <option name="METHOD_NAME" value="getAllSellersFromUserServiceInMapper" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRequestMapperInteractionWithSellerTest.getOneSellerFromUserServiceInMapper" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestMapperInteractionWithSellerTest" />
+      <option name="METHOD_NAME" value="getOneSellerFromUserServiceInMapper" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRequestMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestMapperTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -274,20 +296,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.requests in Backend" />
-      <item itemvalue="JUnit.DigitalProductRequestRepositoryTest" />
-      <item itemvalue="JUnit.DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest" />
-      <item itemvalue="JUnit.PhysicalProductRequestRepositoryTest" />
-      <item itemvalue="JUnit.ProductMapperTest.testToProductDAODigitalProductDTO" />
+      <item itemvalue="JUnit.PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest" />
+      <item itemvalue="JUnit.ProductRequestMapperInteractionWithSellerTest" />
+      <item itemvalue="JUnit.ProductRequestMapperInteractionWithSellerTest.getAllSellersFromUserServiceInMapper" />
+      <item itemvalue="JUnit.ProductRequestMapperInteractionWithSellerTest.getOneSellerFromUserServiceInMapper" />
+      <item itemvalue="JUnit.ProductRequestMapperTest" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.requests in Backend" />
-        <item itemvalue="JUnit.PhysicalProductRequestRepositoryTest" />
-        <item itemvalue="JUnit.DigitalProductRequestRepositoryTest" />
-        <item itemvalue="JUnit.DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest" />
-        <item itemvalue="JUnit.ProductMapperTest.testToProductDAODigitalProductDTO" />
+        <item itemvalue="JUnit.ProductRequestMapperInteractionWithSellerTest.getOneSellerFromUserServiceInMapper" />
+        <item itemvalue="JUnit.ProductRequestMapperInteractionWithSellerTest.getAllSellersFromUserServiceInMapper" />
+        <item itemvalue="JUnit.PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest" />
+        <item itemvalue="JUnit.ProductRequestMapperInteractionWithSellerTest" />
+        <item itemvalue="JUnit.ProductRequestMapperTest" />
       </list>
     </recent_temporary>
   </component>
@@ -324,7 +346,9 @@
       <workItem from="1702047541962" duration="306000" />
       <workItem from="1702047857239" duration="7696000" />
       <workItem from="1702134226474" duration="118000" />
-      <workItem from="1702153202706" duration="2904000" />
+      <workItem from="1702153202706" duration="3402000" />
+      <workItem from="1702162432319" duration="388000" />
+      <workItem from="1702283175787" duration="15761000" />
     </task>
     <servers />
   </component>
@@ -346,6 +370,30 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/gameshub/requests/PhysicalProductRequestRepositoryTest.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="((OidcIdToken)((DefaultOidcUser)principal).idToken).tokenValue" language="JAVA" custom="org.springframework.security.oauth2.core.oidc.OidcIdToken,org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser" />

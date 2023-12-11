@@ -4,7 +4,7 @@ import { Welcome } from "./Pages/Welcome";
 import { SignIn } from "./Pages/SignIn";
 import { SignUpSeller } from "./Pages/SignUp/SignUpSeller";
 import { SignUpBuyer } from "./Pages/SignUp/SignUpBuyer";
-import CatalogRequestForm from "./Components/product-request-form/CatalogRequestForm";
+import CatalogRequestForm from "./Pages/product-request-form/CatalogRequestForm";
 
 function App() {
   return (

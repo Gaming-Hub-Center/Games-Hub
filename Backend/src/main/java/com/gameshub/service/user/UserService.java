@@ -64,7 +64,7 @@ public class UserService {
     }
 
     public SellerDAO getSellerById (Integer id) {
-        return sellerRepository.getReferenceById(id);
+        return sellerRepository.getById(id);
     }
 
 }

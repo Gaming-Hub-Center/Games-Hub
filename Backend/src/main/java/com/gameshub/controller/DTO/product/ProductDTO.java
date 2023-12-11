@@ -13,6 +13,6 @@ public class ProductDTO {
     private String description;
     private LocalDate postDate;
     private int count;
-    private int sellerId;
+    private String sellerEmail;
     private String category;
 }
