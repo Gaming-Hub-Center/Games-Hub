@@ -68,7 +68,7 @@ public class ProductController {
     }
 
     @GetMapping("/{sellerID}/products/pending/digital")
-    public ResponseEntity<List<DigitalProductDAO>> getAllPendingDigitalProductsBySellerID (@PathVariable(value = "sellerID") int sellerID){
+    public ResponseEntity<List<DigitalProductRequestDAO>> getAllPendingDigitalProductsBySellerID (@PathVariable(value = "sellerID") int sellerID){
         return new ResponseEntity<>(productRequestService.getAllPendingDigitalProductsBySellerID(sellerID), HttpStatus.OK);
     }
 

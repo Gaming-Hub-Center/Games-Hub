@@ -57,7 +57,7 @@ export function ProductCatalog() {
   };
 
   let handleEditCatalogPhysicalProduct = (item: PhysicalProductDAO) => (event) => {
-    navigate(`/seller/${sellerId}/edit/product/digital/${item.id}/true`) 
+    navigate(`/seller/${sellerId}/edit/product/physical/${item.id}/true`) 
   };
 
   let handleEditPendingDigitalProduct = (item: DigitalProductRequestDAO) => (event) => {
@@ -65,7 +65,7 @@ export function ProductCatalog() {
   };
 
   let handleEditPendingPhysicalProduct = (item: PhysicalProductRequestDAO) => (event) => {
-    navigate(`/seller/${sellerId}/edit/product/digital/${item.id}/false`)
+    navigate(`/seller/${sellerId}/edit/product/physical/${item.id}/false`)
   };
 
   // Go To View______________________________________________________________
