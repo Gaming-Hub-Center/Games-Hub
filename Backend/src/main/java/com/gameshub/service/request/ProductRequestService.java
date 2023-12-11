@@ -1,5 +1,6 @@
 package com.gameshub.service.request;
 
+import com.gameshub.controller.DTO.ProductPatchDTO;
 import com.gameshub.controller.DTO.request.*;
 import com.gameshub.model.product.DigitalProductDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductRequestService {
@@ -36,13 +38,31 @@ public class ProductRequestService {
         }
     }
 
-    public List<PhysicalProductDAO> getAllPendingPhysicalProductsBySellerID(int sellerID) {
+    public DigitalProductRequestDAO getDigitalProductByProductID(int productID){
+        Optional<DigitalProductRequestDAO> foundProduct = digitalProductRequestRepository.findById(productID);
+
+        if(foundProduct.isPresent())
+            return foundProduct.get();
+
+        return new DigitalProductRequestDAO();
+    }
+
+    public PhysicalProductRequestDAO getPhysicalProductByProductID(int productID){
+        Optional<PhysicalProductRequestDAO> foundProduct = physicalProductRequestRepository.findById(productID);
+
+        if(foundProduct.isPresent())
+            return foundProduct.get();
+
+        return new PhysicalProductRequestDAO();
+    }
+
+    public List<PhysicalProductRequestDAO> getAllPendingPhysicalProductsBySellerID(int sellerID) {
         List<PhysicalProductRequestDAO> allPhysicalProductRequests = physicalProductRequestRepository.findBySellerId(sellerID);
-        List<PhysicalProductDAO> pendingPhysicalProducts = new ArrayList<PhysicalProductDAO>(allPhysicalProductRequests.size());
+        List<PhysicalProductRequestDAO> pendingPhysicalProducts = new ArrayList<PhysicalProductRequestDAO>(allPhysicalProductRequests.size());
 
         for (PhysicalProductRequestDAO productRequest : allPhysicalProductRequests){
             if(productRequest.getStatus().equals("Pending"))
-                pendingPhysicalProducts.add(productRequest.getProduct());
+                pendingPhysicalProducts.add(productRequest);
         }
 
         return pendingPhysicalProducts;
@@ -68,6 +88,16 @@ public class ProductRequestService {
     public boolean deletePhysicalProductBySellerIdAndProductID(int sellerID, int productId){
         long numberOfDeletedProducts = physicalProductRequestRepository.deleteByIdAndSellerId(productId, sellerID);
         return numberOfDeletedProducts != 0;
+    }
+
+    public boolean updateDigitalProductByProductID(int productId, ProductPatchDTO patch){
+        int numberOfUpdatedProducts = digitalProductRequestRepository.updateById(productId, patch);
+        return numberOfUpdatedProducts != 0;
+    }
+
+    public boolean updatePhysicalProductByProductID(int productId, ProductPatchDTO patch){
+        int numberOfUpdatedProducts = physicalProductRequestRepository.updateById(productId, patch);
+        return numberOfUpdatedProducts != 0;
     }
 
 }

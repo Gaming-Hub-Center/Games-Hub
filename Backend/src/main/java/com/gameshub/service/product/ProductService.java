@@ -1,7 +1,9 @@
 package com.gameshub.service.product;
 
+import com.gameshub.controller.DTO.ProductPatchDTO;
 import com.gameshub.controller.DTO.product.*;
 import com.gameshub.model.product.*;
+import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.repository.product.*;
 import com.gameshub.utils.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -66,11 +69,21 @@ public class ProductService {
     }
 
     public DigitalProductDAO getDigitalProductByProductID(int productID){
-        return digitalProductRepository.findById(productID);
+        Optional<DigitalProductDAO> foundProduct = digitalProductRepository.findById(productID);
+
+        if(foundProduct.isPresent())
+            return foundProduct.get();
+
+        return new DigitalProductDAO();
     }
 
     public PhysicalProductDAO getPhysicalProductByProductID(int productID){
-        return physicalProductRepository.findById(productID);
+        Optional<PhysicalProductDAO> foundProduct = physicalProductRepository.findById(productID);
+
+        if(foundProduct.isPresent())
+            return foundProduct.get();
+
+        return new PhysicalProductDAO();
     }
 
     public boolean deleteDigitalProductBySellerIdAndProductID(int sellerID, int productId){
@@ -82,5 +95,16 @@ public class ProductService {
         long numberOfDeletedProducts = physicalProductRepository.deleteByIdAndSellerId(productId, sellerID);
         return numberOfDeletedProducts != 0;
     }
+
+    public boolean updateDigitalProductByProductID(int productId, ProductPatchDTO patch){
+        int numberOfUpdatedProducts = digitalProductRepository.updateById(productId, patch);
+        return numberOfUpdatedProducts != 0;
+    }
+
+    public boolean updatePhysicalProductByProductID(int productId, ProductPatchDTO patch){
+        int numberOfUpdatedProducts = physicalProductRepository.updateById(productId, patch);
+        return numberOfUpdatedProducts != 0;
+    }
+
 
 }
