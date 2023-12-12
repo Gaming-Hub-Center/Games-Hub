@@ -1,6 +1,6 @@
 package com.gameshub.config;
 
-import com.gameshub.service.*;
+import com.gameshub.service.user.CustomUserDetailsService;
 import lombok.*;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.*;

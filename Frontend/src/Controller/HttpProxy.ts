@@ -10,6 +10,7 @@ export const httpRequest = (method: string, url: string, data?: any) => {
     if (getJwtToken() !== null && getJwtToken() !== 'null')
         headers = {"Authorization": `Bearer ${getJwtToken()}`}
 
+    console.log(headers)
     return axios({
         method: method,
         headers: headers,

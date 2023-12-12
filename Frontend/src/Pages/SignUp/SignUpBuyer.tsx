@@ -14,9 +14,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../../Components/SignUpNavbar";
 import { httpRequest } from "../../Controller/HttpProxy";
-import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
-import { BuyerRegistrationDTO } from "../../Controller/DTO/BuyerRegistrationDTO";
+import { UserDTO } from "../../Controller/DTO/user/UserDTO";
+import { clearCurrentSession, storeUserData } from "../../CurrentSession";
+import { BuyerRegistrationDTO } from "../../Controller/DTO/user/BuyerRegistrationDTO";
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
@@ -107,7 +107,7 @@ export function SignUpBuyer() {
     httpRequest("POST", "registration/buyer", buyerRegistrationDTO)
       .then((response) => {
         const responseData = response.data as UserDTO;
-        setJwtToken(responseData.token);
+        storeUserData(responseData);
         setValidated(true);
         navigate("/welcome");
         console.log(responseData);

@@ -8,10 +8,10 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import {Link, useNavigate} from "react-router-dom";
-import { UserSignInDTO } from "../Controller/DTO/UserSignInDTO";
-import { UserDTO } from "../Controller/DTO/UserDTO";
+import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
+import { UserDTO } from "../Controller/DTO/user/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
-import { clearCurrentSession, setJwtToken } from "../CurrentSession";
+import { clearCurrentSession, storeUserData } from "../CurrentSession";
 
 
 export function SignIn() {
@@ -42,7 +42,7 @@ export function SignIn() {
     httpRequest('POST', 'auth/signin', userSignInDTO)
     .then((response) => {
       const responseData = response.data as UserDTO
-      setJwtToken(responseData.token)
+      storeUserData(responseData)
       setValidated(true)
       navigate('/welcome')
       console.log(responseData)

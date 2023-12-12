@@ -5,7 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.*;
 import com.auth0.jwt.interfaces.*;
 import com.gameshub.model.user.*;
-import com.gameshub.service.*;
+import com.gameshub.service.user.UserService;
 import jakarta.annotation.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
