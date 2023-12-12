@@ -2,8 +2,7 @@ package com.gameshub.service.user;
 
 import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
-import com.gameshub.repository.user.BuyerRepository;
-import com.gameshub.repository.user.SellerRepository;
+import com.gameshub.repository.user.*;
 import lombok.*;
 import org.springframework.stereotype.*;
 

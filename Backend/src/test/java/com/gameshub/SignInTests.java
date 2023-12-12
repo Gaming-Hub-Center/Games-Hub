@@ -1,13 +1,11 @@
 package com.gameshub;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.gameshub.controller.DTO.user.UserSignInDTO;
 import com.gameshub.controller.auth.AuthenticationController;
 import com.gameshub.model.user.*;
-import com.gameshub.repository.user.BuyerRepository;
-import com.gameshub.repository.user.SellerRepository;
-import org.junit.After;
+import com.gameshub.repository.user.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
