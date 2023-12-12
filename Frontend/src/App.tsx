@@ -5,9 +5,9 @@ import { SignIn } from "./Pages/SignIn";
 import { SignUpSeller } from "./Pages/SignUp/SignUpSeller";
 import { SignUpBuyer } from "./Pages/SignUp/SignUpBuyer";
 import { HomeGames } from "./Pages/Buyer/Home/Games";
-import { NavbarC } from "./Components/NavbarC";
 import { About } from "./Pages/About";
 import { HomeAccessories } from "./Pages/Buyer/Home/Accessories";
+import "./App.css";
 
 function App() {
   return (

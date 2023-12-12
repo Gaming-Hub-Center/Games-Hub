@@ -17,7 +17,16 @@ export function ProductCard({ title, description, images }: cardProps) {
   ): void {}
 
   return (
-    <Card style={{ width: "18rem", height: "38vh", marginRight: "10px" , marginBottom: "10px", backgroundColor: "black" ,color: "#f0f0f0"}}>
+    <Card
+      style={{
+        width: "18rem",
+        height: "38vh",
+        marginRight: "10px",
+        marginBottom: "10px",
+        backgroundColor: "black",
+        color: "#f0f0f0",
+      }}
+    >
       <Card.Img
         variant="top"
         src={images[0]}

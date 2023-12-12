@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Pagination } from "react-bootstrap";
-import { NavbarC } from "../../../Components/NavbarC";
-import { ProductCard } from "../../../Components/ProductCard";
-import "./PaginationC.css";
+import { useState } from "react";
+import { Pagination } from "react-bootstrap";
+import "./PaginationC.css"
 
-export function HomeGames() {
+export function PaginationC() {
   const productCardPropsList = [
     {
       title: "GTA IV",
@@ -1826,6 +1824,7 @@ export function HomeGames() {
       images: ["/src/data/GTAV.jpg", "/src/data/logo4.png"],
     },
   ];
+
   const itemsPerPage = 20;
   const maxVisiblePages = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -1867,69 +1866,20 @@ export function HomeGames() {
   };
 
   return (
-    <>
-      <Container
-        fluid
-        style={{
-          height: "170vh",
-          padding: 0,
-          backgroundColor: "#121212",
-        }}
-      >
-        <NavbarC></NavbarC>
-        <Row style={{ display: "flex", flexDirection: "row", height: "160vh" }}>
-          <Col
-            md={2}
-            style={{
-              height: "77vh",
-              marginTop: "30px",
-              marginLeft: "55px",
-              backgroundColor: "white",
-            }}
-          ></Col>
-          <Col
-            style={{
-              height: "82vh",
-              marginTop: "30px",
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "flex-start",
-            }}
-          >
-            {currentProductCards.map((productCardProps, index) => (
-              <ProductCard key={startIndex + index} {...productCardProps} />
-            ))}
-          </Col>
-        </Row>
-        <Row style={{ height: "8vh", backgroundColor: "black" }}>
-          <Col
-            style={{
-              height: "8vh",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Pagination style={{ marginTop: "20px", color: "black" }}>
-              <Pagination.First onClick={() => handlePageChange(1)} />
-              <Pagination.Prev
-                onClick={() =>
-                  handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
-                }
-              />
-              {renderPaginationItems()}
-              <Pagination.Next
-                onClick={() =>
-                  handlePageChange(
-                    currentPage < totalPages ? currentPage + 1 : totalPages
-                  )
-                }
-              />
-              <Pagination.Last onClick={() => handlePageChange(totalPages)} />
-            </Pagination>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Pagination style={{ marginTop: "20px" }}>
+      <Pagination.First onClick={() => handlePageChange(1)} />
+      <Pagination.Prev
+        onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)}
+      />
+      {renderPaginationItems()}
+      <Pagination.Next
+        onClick={() =>
+          handlePageChange(
+            currentPage < totalPages ? currentPage + 1 : totalPages
+          )
+        }
+      />
+      <Pagination.Last onClick={() => handlePageChange(totalPages)} />
+    </Pagination>
   );
 }

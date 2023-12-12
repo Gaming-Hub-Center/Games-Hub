@@ -2,11 +2,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { SetStateAction, useState } from "react";
-import { Container } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { UserSignInDTO } from "../Controller/DTO/SignInDTO/UserSignInDTO";
 import { UserDTO } from "../Controller/DTO/UserDTO";
@@ -21,9 +17,7 @@ export function SignIn() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
-    if (
-      form.checkValidity() === false
-    ) {
+    if (form.checkValidity() === false) {
       event.stopPropagation();
     }
 
