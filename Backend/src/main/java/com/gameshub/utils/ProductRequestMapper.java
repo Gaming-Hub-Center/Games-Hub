@@ -4,11 +4,8 @@ import com.gameshub.controller.DTO.request.DigitalProductRequestDTO;
 import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
 import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
-import javax.annotation.processing.Generated;
 
 import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.user.SellerRepository;
-import com.gameshub.service.product.ProductService;
 import com.gameshub.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

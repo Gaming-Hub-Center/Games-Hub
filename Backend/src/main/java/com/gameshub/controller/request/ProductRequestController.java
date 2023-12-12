@@ -1,17 +1,15 @@
 package com.gameshub.controller.request;
 
 import com.gameshub.controller.DTO.request.*;
-import com.gameshub.service.product.ProductService;
 import com.gameshub.service.request.ProductRequestService;
-import jakarta.validation.Valid;
+import jakarta.validation.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/product-request")
-public class ProductController {
+public class ProductRequestController {
 
     @Autowired
     private ProductRequestService productRequestService;
