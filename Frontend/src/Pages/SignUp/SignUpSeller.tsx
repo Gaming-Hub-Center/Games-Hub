@@ -16,10 +16,10 @@ import {
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { SignUpNavbar } from "../../Components/SignUpNavbar";
-import { SellerRegistrationDTO } from "../../Controller/DTO/SellerRegistrationDTO";
+import { SellerRegistrationDTO } from "../../Controller/DTO/user/SellerRegistrationDTO";
 import { httpRequest } from "../../Controller/HttpProxy";
-import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { clearCurrentSession, setJwtToken } from "../../CurrentSession";
+import { UserDTO } from "../../Controller/DTO/user/UserDTO";
+import { clearCurrentSession, storeUserData } from "../../CurrentSession";
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
@@ -142,7 +142,7 @@ export function SignUpSeller() {
     httpRequest("POST", "registration/seller", sellerRegistrationDTO)
       .then((response) => {
         const responseData = response.data as UserDTO;
-        setJwtToken(responseData.token);
+        storeUserData(responseData);
         setValidated(true);
         navigate("/welcome");
         console.log(responseData);
