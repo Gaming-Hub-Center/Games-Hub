@@ -1,5 +1,7 @@
 package com.gameshub.controller;
 
+
+
 import com.gameshub.controller.DTO.CartDTO;
 import com.gameshub.model.cart.DigitalCartDAO;
 import com.gameshub.model.cart.PhysicalCartDAO;
@@ -17,45 +19,64 @@ public class CartController {
 
     private final CartService cartService;
 
-    // Add or update a physical cart item
     @PostMapping("/physical/addOrUpdate")
     public ResponseEntity<?> addOrUpdatePhysicalCartItem(@RequestBody CartDTO cartDTO) {
-        cartService.addOrUpdatePhysicalCartItem(cartDTO.getBuyerID(), cartDTO.getProductID(), cartDTO.getCount());
-        return ResponseEntity.ok("Physical cart item added/updated successfully");
+        try {
+            cartService.addOrUpdatePhysicalCartItem(cartDTO.getBuyerID(), cartDTO.getProductID(), cartDTO.getCount());
+            return ResponseEntity.ok("Physical cart item added/updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error: No buyer or Physical_Product exits with that ID");
+        }
     }
 
-    // Add or update a digital cart item
     @PostMapping("/digital/addOrUpdate")
     public ResponseEntity<?> addOrUpdateDigitalCartItem(@RequestBody CartDTO cartDTO) {
-        cartService.addOrUpdateDigitalCartItem(cartDTO.getBuyerID(), cartDTO.getProductID(), cartDTO.getCount());
-        return ResponseEntity.ok("Digital cart item added/updated successfully");
+        try {
+            cartService.addOrUpdateDigitalCartItem(cartDTO.getBuyerID(), cartDTO.getProductID(), cartDTO.getCount());
+            return ResponseEntity.ok("Digital cart item added/updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error: No buyer or Digital_Product exits with that ID");
+        }
     }
 
-    // Remove a physical cart item
     @DeleteMapping("/physical/remove")
     public ResponseEntity<?> removePhysicalCartItem(@RequestParam int buyerId, @RequestParam int productId) {
-        cartService.removePhysicalCartItem(buyerId, productId);
-        return ResponseEntity.ok("Physical cart item removed successfully");
+        try {
+            cartService.removePhysicalCartItem(buyerId, productId);
+            return ResponseEntity.ok("Physical cart item removed successfully");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error: Failed to remove Cart item ");
+        }
     }
 
-    // Remove a digital cart item
     @DeleteMapping("/digital/remove")
     public ResponseEntity<?> removeDigitalCartItem(@RequestParam int buyerId, @RequestParam int productId) {
-        cartService.removeDigitalCartItem(buyerId, productId);
-        return ResponseEntity.ok("Digital cart item removed successfully");
+        try {
+            cartService.removeDigitalCartItem(buyerId, productId);
+            return ResponseEntity.ok("Digital cart item removed successfully");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error: Failed to remove Cart item ");
+        }
     }
 
-    // Get all physical cart items for a buyer
     @GetMapping("/physical")
     public ResponseEntity<List<PhysicalCartDAO>> getPhysicalCartItems(@RequestParam int buyerId) {
-        return ResponseEntity.ok(cartService.getPhysicalCartItems(buyerId));
+        try {
+            return ResponseEntity.ok(cartService.getPhysicalCartItems(buyerId));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(null);
+        }
     }
 
-    // Get all digital cart items for a buyer
     @GetMapping("/digital")
     public ResponseEntity<List<DigitalCartDAO>> getDigitalCartItems(@RequestParam int buyerId) {
-        return ResponseEntity.ok(cartService.getDigitalCartItems(buyerId));
+        try {
+            return ResponseEntity.ok(cartService.getDigitalCartItems(buyerId));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(null);
+        }
     }
 
-    // Additional cart related functionalities can be implemented as needed.
+
 }
+

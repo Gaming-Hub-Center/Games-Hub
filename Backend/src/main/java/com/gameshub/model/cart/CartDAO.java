@@ -11,8 +11,7 @@ import java.util.Objects;
 @MappedSuperclass
 public abstract class CartDAO {
 
-    @Getter
-    @Setter
+    @Data
     @Embeddable
     public static class CartKey {
         @Column(name = "buyerID")
