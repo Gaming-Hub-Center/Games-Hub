@@ -1,7 +1,7 @@
 package com.gameshub.DataAccessLayer;
 
 import com.gameshub.model.user.*;
-import com.gameshub.repository.*;
+import com.gameshub.repository.user.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;

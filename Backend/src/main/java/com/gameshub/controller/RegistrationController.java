@@ -18,11 +18,8 @@ import java.time.*;
 public class RegistrationController {
 
     private final UserService userService;
-
     private final UserMapper userMapper;
-
     private final JWTGenerator jwtGenerator;
-
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/buyer")
@@ -48,16 +45,16 @@ public class RegistrationController {
     public ResponseEntity<UserDTO> registerNewSeller(@RequestBody SellerRegistrationDTO sellerRegistrationDTO){
         userService.saveNewSeller(
             new SellerDAO(
-                    sellerRegistrationDTO.getName(),
-                    sellerRegistrationDTO.getEmail(),
-                    passwordEncoder.encode(sellerRegistrationDTO.getPassword()),
-                    sellerRegistrationDTO.getPhone(),
-                    sellerRegistrationDTO.getAddress(),
-                    0,
-                    sellerRegistrationDTO.getNationalID(),
-                    LocalDate.now(),
-                    sellerRegistrationDTO.getDescription(),
-                    sellerRegistrationDTO.getVatRegistrationNumber()
+                sellerRegistrationDTO.getName(),
+                sellerRegistrationDTO.getEmail(),
+                passwordEncoder.encode(sellerRegistrationDTO.getPassword()),
+                sellerRegistrationDTO.getPhone(),
+                sellerRegistrationDTO.getAddress(),
+                0,
+                sellerRegistrationDTO.getNationalID(),
+                LocalDate.now(),
+                sellerRegistrationDTO.getDescription(),
+                sellerRegistrationDTO.getVatRegistrationNumber()
             )
         );
         String token = jwtGenerator.createToken(sellerRegistrationDTO.getEmail());
