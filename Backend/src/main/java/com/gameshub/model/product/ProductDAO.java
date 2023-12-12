@@ -2,7 +2,6 @@ package com.gameshub.model.product;
 
 import lombok.*;
 import jakarta.persistence.*;
-import java.sql.Blob;
 import java.time.LocalDate;
 
 @Data
@@ -16,10 +15,6 @@ public abstract class ProductDAO {
 
     @Column(name = "price")
     private float price;
-
-    /*@Lob
-    @Column(name = "image")
-    private Blob image;*/
 
     @Column(name = "description")
     private String description;
@@ -35,4 +30,7 @@ public abstract class ProductDAO {
 
     @Column(name = "created_date")
     private LocalDate created_date;
+
+    @Column(name = "category")
+    private String category;
 }
