@@ -4,6 +4,7 @@ import com.gameshub.controller.DTO.DigitalProductDTO;
 import com.gameshub.controller.DTO.PhysicalProductDTO;
 import com.gameshub.controller.DTO.ProductBriefDTO;
 import com.gameshub.exception.ResourceNotFoundException;
+import com.gameshub.model.product.DigitalImageDAO;
 import com.gameshub.model.product.DigitalProductDAO;
 import com.gameshub.model.product.PhysicalImageDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
@@ -12,13 +13,14 @@ import com.gameshub.repository.DigitalProductRepository;
 import com.gameshub.repository.PhysicalImageRepository;
 import com.gameshub.repository.PhysicalProductRepository;
 import com.gameshub.utils.ProductMapper;
+import jakarta.persistence.EntityManager;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-import java.sql.Blob;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -29,6 +31,7 @@ public class ProductService {
     private final PhysicalImageRepository physicalImageRepository;
     private final DigitalImageRepository digitalImageRepository;
     private final ProductMapper productMapper;
+
 
     public PhysicalProductDTO getPhysicalByID(int id) {
         PhysicalProductDAO productDAO = physicalProductRepository.findById(id).orElse(null);
@@ -54,32 +57,7 @@ public class ProductService {
         return productDTO;
     }
 
-    public void save(PhysicalProductDAO physicalProductDAO, List<PhysicalImageDAO> list) {
-        physicalProductRepository.save(physicalProductDAO);
-        for (PhysicalImageDAO imageDAO: list) {
-            imageDAO.setProduct_id(physicalProductDAO.getId());
-            physicalImageRepository.save(imageDAO);
-        }
-    }
-
-    public void save(PhysicalProductDAO physicalProductDAO) {
-        physicalProductRepository.save(physicalProductDAO);
-    }
-
-    /*public List<PhysicalProductDTO> searchByTitle(String key) {
-        List<PhysicalProductDAO> productsDAOs = physicalProductRepository.findAllByTitleContainingIgnoreCase(key).orElse(null);
-        if(productsDAOs == null) return null;
-        List<PhysicalProductDTO> productDTOS = new ArrayList<>();
-        for(PhysicalProductDAO productDAO: productsDAOs) {
-            List<byte[]> imagesList = physicalImageRepository.findAllByProduct_id(productDAO.getId()).orElse(null);
-            PhysicalProductDTO productDTO = productMapper.toPhysicalProductDTO(productDAO);
-            productDTO.setImages(imagesList);
-            productDTOS.add(productDTO);
-        }
-        return productDTOS;
-    }*/
-
-    public List<ProductBriefDTO> searchByTitle(String key) {
+    public List<ProductBriefDTO> searchPhysicalByTitle(String key) {
         List<ProductBriefDTO> productDTOs = physicalProductRepository.findAllByTitleContainingIgnoreCase(key).orElse(null);
         if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
@@ -90,4 +68,52 @@ public class ProductService {
         return productDTOs;
     }
 
+    public List<ProductBriefDTO> searchDigitalByTitle(String key) {
+        List<ProductBriefDTO> productDTOs = digitalProductRepository.findAllByTitleContainingIgnoreCase(key).orElse(null);
+        if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
+        for(ProductBriefDTO productDTO: productDTOs) {
+            List<byte[]> images = digitalImageRepository.findAllByProduct_id(productDTO.getId()).orElse(null);
+            if(images == null || images.isEmpty()) continue;
+            productDTO.setImage(images.get(0));
+        }
+        return productDTOs;
+    }
+
+    public List<ProductBriefDTO> filterPhysical(float lowerBound, float upperBound, String category) {
+        category = (category == null) ? null : category.toLowerCase();
+        List<ProductBriefDTO> productDTOs = physicalProductRepository.filterPhysical(lowerBound, upperBound, category);
+        for(ProductBriefDTO productDTO: productDTOs) {
+            List<byte[]> images = physicalImageRepository.findAllByProduct_id(productDTO.getId()).orElse(null);
+            if(images == null || images.isEmpty()) continue;
+            productDTO.setImage(images.get(0));
+        }
+        return productDTOs;
+    }
+
+    public List<ProductBriefDTO> filterDigital(float lowerBound, float upperBound, String category) {
+        category = (category == null) ? null : category.toLowerCase();
+        List<ProductBriefDTO> productDTOs = digitalProductRepository.filterPhysical(lowerBound, upperBound, category);
+        for(ProductBriefDTO productDTO: productDTOs) {
+            List<byte[]> images = digitalImageRepository.findAllByProduct_id(productDTO.getId()).orElse(null);
+            if(images == null || images.isEmpty()) continue;
+            productDTO.setImage(images.get(0));
+        }
+        return productDTOs;
+    }
+
+   /* public void save(PhysicalProductDAO physicalProductDAO, List<PhysicalImageDAO> list) {
+        physicalProductRepository.save(physicalProductDAO);
+        for (PhysicalImageDAO imageDAO: list) {
+            imageDAO.setProduct_id(physicalProductDAO.getId());
+            physicalImageRepository.save(imageDAO);
+        }
+    }*/
+
+    /*public void save(DigitalProductDAO digitalProductDAO, List<DigitalImageDAO> list) {
+        digitalProductRepository.save(digitalProductDAO);
+        for (DigitalImageDAO imageDAO: list) {
+            imageDAO.setProduct_id(digitalProductDAO.getId());
+            digitalImageRepository.save(imageDAO);
+        }
+    }*/
 }

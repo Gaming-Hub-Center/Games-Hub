@@ -5,6 +5,7 @@ import com.gameshub.controller.DTO.PhysicalProductDTO;
 import com.gameshub.model.product.DigitalProductDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface ProductMapper {

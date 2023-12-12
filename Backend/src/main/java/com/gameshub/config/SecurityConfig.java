@@ -38,6 +38,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/registration/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/product/**")).permitAll()
                         .anyRequest().authenticated());
 //                .oauth2Login(Customizer.withDefaults());
 

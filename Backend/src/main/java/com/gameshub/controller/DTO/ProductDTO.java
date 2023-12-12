@@ -13,5 +13,6 @@ public class ProductDTO {
     private int count;
     private int sellerID;
     private LocalDate created_date;
+    private String category;
     private List<byte[]> images;
 }
