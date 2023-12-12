@@ -157,12 +157,16 @@ export function SignUpSeller() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        backgroundImage: `url("/src/data/back2.jpg")`, // Replace with the path to your background image
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <Form
         style={{
           width: "50%",
-          backgroundColor: "#f8f9fa",
+          backgroundColor: "#121212",
+          color: "#f0f0f0",
           padding: "20px",
           borderRadius: "8px",
           boxShadow: "0 0 10px rgba(0,0,0,0.1)",
@@ -178,14 +182,14 @@ export function SignUpSeller() {
             <Col md={6}>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationCustomName">
-                  <Form.Label>name</Form.Label>
+                  <Form.Label>Name</Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
                         <FontAwesomeIcon
                           icon={faUser}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -213,7 +217,7 @@ export function SignUpSeller() {
                         <FontAwesomeIcon
                           icon={faEnvelope}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -242,7 +246,7 @@ export function SignUpSeller() {
                         <FontAwesomeIcon
                           icon={faLock}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -261,7 +265,6 @@ export function SignUpSeller() {
                     </Row>
                   </Container>
                   <Form.Control.Feedback type="invalid">
-                    Password must be at least 8 characters.
                   </Form.Control.Feedback>
                 </Form.Group>
               </Row>
@@ -277,7 +280,7 @@ export function SignUpSeller() {
                         <FontAwesomeIcon
                           icon={faLock}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -295,7 +298,6 @@ export function SignUpSeller() {
                           }
                         />
                         <Form.Control.Feedback type="invalid">
-                          Passwords should match.
                         </Form.Control.Feedback>
                       </Col>
                     </Row>
@@ -308,7 +310,7 @@ export function SignUpSeller() {
                     <FontAwesomeIcon
                       icon={faPhone}
                       style={{
-                        color: "black",
+                        color: "#733BC0",
                         fontSize: "20px",
                         marginRight: "10px",
                       }}
@@ -332,7 +334,7 @@ export function SignUpSeller() {
                         <FontAwesomeIcon
                           icon={faAddressCard}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -363,7 +365,7 @@ export function SignUpSeller() {
                         <FontAwesomeIcon
                           icon={faIdCard}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -395,7 +397,7 @@ export function SignUpSeller() {
                         <FontAwesomeIcon
                           icon={faHashtag}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -424,7 +426,7 @@ export function SignUpSeller() {
                         <FontAwesomeIcon
                           icon={faAlignJustify}
                           style={{
-                            color: "black",
+                            color: "#733BC0",
                             fontSize: "20px",
                             marginRight: "10px",
                           }}
@@ -473,7 +475,7 @@ export function SignUpSeller() {
               !isValidVRN(vatRegistrationNumber) ||
               !isValidDescription(description)
             }
-            style={{ width: "100%" }}
+            style={{ width: "100%", borderColor: "#733BC0" , backgroundColor: "#733BC0"}}
           >
             Submit
           </Button>

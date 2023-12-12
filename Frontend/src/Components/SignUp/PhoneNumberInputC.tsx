@@ -10,12 +10,12 @@ interface PhoneNumberInputProps {
   setInvalid: (value: boolean) => void;
 }
 
-const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
+function PhoneNumberInput({
   value,
   onChange,
   invalid,
   setInvalid,
-}) => {
+}: PhoneNumberInputProps) {
   const handlePhoneNumberChange = (phoneNumber: string) => {
     onChange(phoneNumber);
     setInvalid(!isValidPhoneNumber(phoneNumber));
@@ -31,6 +31,6 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
       className={invalid ? "is-invalid" : ""}
     />
   );
-};
+}
 
 export default PhoneNumberInput;
