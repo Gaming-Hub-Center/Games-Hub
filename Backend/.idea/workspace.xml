@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/PhysicalProductRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/PhysicalProductRequestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/product-request-form/CatalogRequestForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/product-request-form/CatalogRequestForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +153,7 @@
     &quot;JUnit.SignInTests.testBuyerValidSignIn.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SignUpTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.com.gameshub in Backend.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.gameshub in Backend.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.gameshub in Backend.executor&quot;: &quot;Coverage&quot;,
     &quot;JUnit.java in Backend.executor&quot;: &quot;Coverage&quot;,
     &quot;JUnit.products in Backend.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.requests in Backend.executor&quot;: &quot;Run&quot;,
@@ -326,6 +327,7 @@
       <workItem from="1702153202706" duration="3402000" />
       <workItem from="1702162432319" duration="388000" />
       <workItem from="1702283175787" duration="26942000" />
+      <workItem from="1702370868623" duration="6762000" />
     </task>
     <servers />
   </component>
@@ -350,9 +352,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestMapperTest.java</url>
-          <line>219</line>
-          <option name="timeStamp" value="47" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -369,7 +371,7 @@
     <SUITE FILE_PATH="coverage/Backend$OAuth2BuyerSignUpUnitTest.ic" NAME="OAuth2BuyerSignUpUnitTest Coverage Results" MODIFIED="1701282281272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1702023310466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1702325270528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1701346956764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

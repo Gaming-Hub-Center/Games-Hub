@@ -20,7 +20,7 @@ public abstract class ProductDAO {
     private String title;
 
     @Column(name = "price")
-    private int price;
+    private float price;
 
     @Column(name = "description")
     private String description;

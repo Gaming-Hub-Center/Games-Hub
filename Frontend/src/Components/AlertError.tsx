@@ -15,7 +15,7 @@ function AlertError() {
       </Alert>
     );
   }
-  return <Button onClick={() => setShow(true)}>Show Alert</Button>;
+  // return <Button onClick={() => setShow(true)}>Show Alert</Button>;
 }
 
 export default AlertError;

@@ -58,3 +58,9 @@
     background-color: #6a45b8;
   }
   
+  /* YourComponent.css */
+
+.error-message {
+  color: red; /* Change the color to red (or any other color you prefer) */
+  font-size: 16px; /* Set the font size */
+}
