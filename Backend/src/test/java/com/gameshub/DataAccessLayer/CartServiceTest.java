@@ -9,6 +9,8 @@ import com.gameshub.model.product.PhysicalProductDAO;
 import com.gameshub.model.user.BuyerDAO;
 import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.*;
+import com.gameshub.repository.user.BuyerRepository;
+import com.gameshub.repository.user.SellerRepository;
 import com.gameshub.service.CartService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
