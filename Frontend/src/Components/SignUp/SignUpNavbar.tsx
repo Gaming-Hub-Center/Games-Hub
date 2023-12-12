@@ -25,8 +25,13 @@ export function SignUpNavbar() {
 
   return (
     <Navbar
-      className="bg-white shadow-sm mb-3"
-      style={{ borderRadius: "8px", marginBottom: "8px" }}
+      variant="dark"
+      className="shadow-sm"
+      style={{
+        borderRadius: "8px",
+        marginBottom: "8px",
+        backgroundColor: "#733BC0",
+      }}
     >
       <Container
         fluid
@@ -39,14 +44,17 @@ export function SignUpNavbar() {
           <Nav.Link
             to="/signup/buyer"
             as={NavLink}
-            style={{ textAlign: "center", width: "50%", color: "black" }}
+            style={{ textAlign: "center", width: "50%" }}
           >
             Customer account
           </Nav.Link>
+          <div
+            style={{ width: "1px", height: "38px", backgroundColor: "#f0f0f0" }}
+          ></div>
           <Nav.Link
             to="/signup/seller"
             as={NavLink}
-            style={{ textAlign: "center", width: "50%", color: "black" }}
+            style={{ textAlign: "center", width: "50%" }}
           >
             Seller account
           </Nav.Link>
