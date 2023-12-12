@@ -5,25 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/LocalDateAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/PhysicalProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/DigitalProductApprovalStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/PhysicalProductApprovalStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/ProductApprovalStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/ProductRequestApproveService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/approve/DigitalProductApprovalStrategyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/approve/PhysicalProductApprovalStrategyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/approve/ProductRequestApproveServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/DigitalProductDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/PhysicalProductDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/product/ProductDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/DigitalProductRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/DigitalProductRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/PhysicalProductRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/request/PhysicalProductRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/PhysicalProductRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/ProductRequestMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/products/ProductMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/LocalDateAdapter.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +67,8 @@
     "JUnit.BuyerRepositoryTests.findByEmailTests.executor": "Run",
     "JUnit.ConcreteProductFactoryTest.executor": "Run",
     "JUnit.DataAccessLayer in Backend.executor": "Run",
+    "JUnit.DigitalProductApprovalStrategyTest.approveAndCreateProduct_Success.executor": "Run",
+    "JUnit.DigitalProductApprovalStrategyTest.executor": "Run",
     "JUnit.DigitalProductDAOTest.executor": "Run",
     "JUnit.DigitalProductDAOTest.testBuilder.executor": "Run",
     "JUnit.DigitalProductDTOTest.testDigitalProductDTO.executor": "Run",
@@ -106,6 +103,8 @@
     "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller.executor": "Run",
     "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailExistsSeller.executor": "Run",
     "JUnit.OAuthServiceUnitTest.executor": "Run",
+    "JUnit.PhysicalProductApprovalStrategyTest.executor": "Run",
+    "JUnit.PhysicalProductApprovalStrategyTest.testSuccessfulApprovalAndUpdate.executor": "Run",
     "JUnit.PhysicalProductDAOTest.executor": "Run",
     "JUnit.PhysicalProductDTOTest (1).executor": "Run",
     "JUnit.PhysicalProductDTOTest.executor": "Debug",
@@ -115,6 +114,7 @@
     "JUnit.PhysicalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor": "Run",
     "JUnit.PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest.executor": "Run",
     "JUnit.ProductControllerTest.createDigitalProduct_Success.executor": "Run",
+    "JUnit.ProductControllerTest.executor": "Run",
     "JUnit.ProductDTOTest.executor": "Run",
     "JUnit.ProductDTOTest.testProductRequestDTO.executor": "Run",
     "JUnit.ProductDTOTest.testProductRequestDTOGettersAndSetters.executor": "Run",
@@ -129,6 +129,7 @@
     "JUnit.ProductMapperTest.testToProductDTOPhysicalProductDAO.executor": "Run",
     "JUnit.ProductMapperTest.testToProductDTO_DigitalProductDAO.executor": "Run",
     "JUnit.ProductMapperTest.testToProductDTO_PhysicalProductDAO.executor": "Run",
+    "JUnit.ProductRequestApproveServiceTest.executor": "Run",
     "JUnit.ProductRequestDAOTest.executor": "Run",
     "JUnit.ProductRequestDAOTest.testDigitalProductRequestDAO.executor": "Run",
     "JUnit.ProductRequestDAOTest.testPhysicalProductRequestDAO.executor": "Run",
@@ -168,6 +169,7 @@
     "JUnit.SignInTests.executor": "Run",
     "JUnit.SignInTests.testBuyerValidSignIn.executor": "Run",
     "JUnit.SignUpTests.executor": "Run",
+    "JUnit.approve in Backend.executor": "Run",
     "JUnit.com.gameshub in Backend.executor": "Run",
     "JUnit.gameshub in Backend.executor": "Coverage",
     "JUnit.java in Backend.executor": "Coverage",
@@ -184,7 +186,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.BackendApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "GH-209-Seller-Create-Product",
+    "git-widget-placeholder": "GH-225-Product-Creation-Approve",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/CSED/semester5/SWE/Games-Hub/Backend",
@@ -215,7 +217,69 @@
       <recent name="com.gameshub" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.gameshub in Backend">
+  <component name="RunManager" selected="JUnit.ProductControllerTest">
+    <configuration name="DigitalProductApprovalStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.approve.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests.approve" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.approve.DigitalProductApprovalStrategyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DigitalProductApprovalStrategyTest.approveAndCreateProduct_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.approve.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests.approve" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.approve.DigitalProductApprovalStrategyTest" />
+      <option name="METHOD_NAME" value="approveAndCreateProduct_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PhysicalProductApprovalStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.approve.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests.approve" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.approve.PhysicalProductApprovalStrategyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PhysicalProductApprovalStrategyTest.testSuccessfulApprovalAndUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.approve.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests.approve" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.approve.PhysicalProductApprovalStrategyTest" />
+      <option name="METHOD_NAME" value="testSuccessfulApprovalAndUpdate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
@@ -227,54 +291,6 @@
       <option name="PACKAGE_NAME" value="com.gameshub.requests" />
       <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductControllerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductControllerTest.createDigitalProduct_Error" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductControllerTest" />
-      <option name="METHOD_NAME" value="createDigitalProduct_Error" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductControllerTest.createDigitalProduct_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductControllerTest" />
-      <option name="METHOD_NAME" value="createDigitalProduct_Success" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gameshub in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="requests in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub/requests" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -291,20 +307,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.DigitalProductApprovalStrategyTest" />
+      <item itemvalue="JUnit.DigitalProductApprovalStrategyTest.approveAndCreateProduct_Success" />
+      <item itemvalue="JUnit.PhysicalProductApprovalStrategyTest" />
+      <item itemvalue="JUnit.PhysicalProductApprovalStrategyTest.testSuccessfulApprovalAndUpdate" />
       <item itemvalue="JUnit.ProductControllerTest" />
-      <item itemvalue="JUnit.ProductControllerTest.createDigitalProduct_Error" />
-      <item itemvalue="JUnit.ProductControllerTest.createDigitalProduct_Success" />
-      <item itemvalue="JUnit.gameshub in Backend" />
-      <item itemvalue="JUnit.requests in Backend" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.gameshub in Backend" />
         <item itemvalue="JUnit.ProductControllerTest" />
-        <item itemvalue="JUnit.ProductControllerTest.createDigitalProduct_Error" />
-        <item itemvalue="JUnit.ProductControllerTest.createDigitalProduct_Success" />
-        <item itemvalue="JUnit.requests in Backend" />
+        <item itemvalue="JUnit.DigitalProductApprovalStrategyTest.approveAndCreateProduct_Success" />
+        <item itemvalue="JUnit.DigitalProductApprovalStrategyTest" />
+        <item itemvalue="JUnit.PhysicalProductApprovalStrategyTest" />
+        <item itemvalue="JUnit.PhysicalProductApprovalStrategyTest.testSuccessfulApprovalAndUpdate" />
       </list>
     </recent_temporary>
   </component>
