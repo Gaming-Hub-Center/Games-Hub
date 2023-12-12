@@ -127,6 +127,33 @@ public class ProductServiceTests {
     }
 
     @Test
+    public void getProduct(){
+        //Digital Product
+        DigitalProductDAO originalDigital = productService.getDigitalProductByProductID(1);
+        assert originalDigital.getTitle().equals("sample digital product") && originalDigital.getDescription().isEmpty();
+
+        assert productService.getDigitalProductByProductID(2).toString().equals(new DigitalProductDAO().toString());
+
+        //Physical Product
+        PhysicalProductDAO originalPhysical = productService.getPhysicalProductByProductID(1);
+        assert originalPhysical.getTitle().equals("sample physical product") && originalPhysical.getDescription().isEmpty();
+
+        assert productService.getPhysicalProductByProductID(2).toString().equals(new PhysicalProductDAO().toString());
+
+        //Digital Product Request
+        DigitalProductRequestDAO originalDigitalRequest = productRequestService.getDigitalProductByProductID(1);
+        assert originalDigitalRequest.getTitle().equals("sample Game") && originalDigitalRequest.getDescription().isEmpty();
+
+        assert productRequestService.getDigitalProductByProductID(2).toString().equals(new DigitalProductRequestDAO().toString());
+
+        //Physical Product Request
+        PhysicalProductRequestDAO originalPhysicalRequest = productRequestService.getPhysicalProductByProductID(1);
+        assert originalPhysicalRequest.getTitle().equals("sample Keyboard") && originalPhysicalRequest.getDescription().isEmpty();
+
+        assert productRequestService.getPhysicalProductByProductID(2).toString().equals(new PhysicalProductRequestDAO().toString());
+    }
+
+    @Test
     public void deleteProduct(){
         assert !productService.deleteDigitalProductBySellerIdAndProductID(1, 2);
         assert productService.deleteDigitalProductBySellerIdAndProductID(1, 1);
@@ -141,60 +168,48 @@ public class ProductServiceTests {
     @Test
     public void editProduct(){
         //Digital Product
-        Optional<DigitalProductDAO> originalDigital = digitalProductRepository.findById(1);
-        assert originalDigital.isPresent();
-        assert originalDigital.get().getTitle().equals("sample digital product") && originalDigital.get().getDescription().isEmpty();
+        DigitalProductDAO originalDigital = productService.getDigitalProductByProductID(1);
+        assert originalDigital.getTitle().equals("sample digital product") && originalDigital.getDescription().isEmpty();
 
         assert productService.updateDigitalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
-        Optional<DigitalProductDAO> newDigital = digitalProductRepository.findById(1);
-        assert newDigital.isPresent();
+        DigitalProductDAO updatedDigitalProduct = productService.getDigitalProductByProductID(1);
 
-        DigitalProductDAO updatedDigitalProduct = newDigital.get();
         assert updatedDigitalProduct.getTitle().equals("new name") && updatedDigitalProduct.getDescription().equals("new Description");
-        assert !originalDigital.get().getTitle().equals(updatedDigitalProduct.getTitle()) && !originalDigital.get().getDescription().equals(updatedDigitalProduct.getDescription());
+        assert !originalDigital.getTitle().equals(updatedDigitalProduct.getTitle()) && !originalDigital.getDescription().equals(updatedDigitalProduct.getDescription());
 
         //Physical Product
-        Optional<PhysicalProductDAO> originalPhysical = physicalProductRepository.findById(1);
-        assert originalPhysical.isPresent();
-        assert originalPhysical.get().getTitle().equals("sample physical product") && originalPhysical.get().getDescription().isEmpty();
+        PhysicalProductDAO originalPhysical = productService.getPhysicalProductByProductID(1);
+        assert originalPhysical.getTitle().equals("sample physical product") && originalPhysical.getDescription().isEmpty();
 
         assert productService.updatePhysicalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
-        Optional<PhysicalProductDAO> newPhysical = physicalProductRepository.findById(1);
-        assert newPhysical.isPresent();
+        PhysicalProductDAO updatedPhysicalProduct = productService.getPhysicalProductByProductID(1);
 
-        DigitalProductDAO updatedPhysicalProduct = newDigital.get();
         assert updatedPhysicalProduct.getTitle().equals("new name") && updatedPhysicalProduct.getDescription().equals("new Description");
-        assert !originalPhysical.get().getTitle().equals(updatedPhysicalProduct.getTitle()) && !originalPhysical.get().getDescription().equals(updatedPhysicalProduct.getDescription());
+        assert !originalPhysical.getTitle().equals(updatedPhysicalProduct.getTitle()) && !originalPhysical.getDescription().equals(updatedPhysicalProduct.getDescription());
 
         //Digital Product Request
-        Optional<DigitalProductRequestDAO> originalDigitalRequest = digitalProductRequestRepository.findById(1);
-        assert originalDigitalRequest.isPresent();
-        assert originalDigitalRequest.get().getTitle().equals("sample Game") && originalDigitalRequest.get().getDescription().isEmpty();
+        DigitalProductRequestDAO originalDigitalRequest = productRequestService.getDigitalProductByProductID(1);
+        assert originalDigitalRequest.getTitle().equals("sample Game") && originalDigitalRequest.getDescription().isEmpty();
 
         assert productRequestService.updateDigitalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
-        Optional<DigitalProductRequestDAO> newDigitalRequest = digitalProductRequestRepository.findById(1);
-        assert newDigitalRequest.isPresent();
+        DigitalProductRequestDAO updatedDigitalProductRequest = productRequestService.getDigitalProductByProductID(1);
 
-        DigitalProductRequestDAO updatedDigitalProductRequest = newDigitalRequest.get();
         assert updatedDigitalProductRequest.getTitle().equals("new name") && updatedDigitalProductRequest.getDescription().equals("new Description");
-        assert !originalDigitalRequest.get().getTitle().equals(updatedDigitalProductRequest.getTitle()) && !originalDigitalRequest.get().getDescription().equals(updatedDigitalProductRequest.getDescription());
+        assert !originalDigitalRequest.getTitle().equals(updatedDigitalProductRequest.getTitle()) && !originalDigitalRequest.getDescription().equals(updatedDigitalProductRequest.getDescription());
 
         //Physical Product Request
-        Optional<PhysicalProductRequestDAO> originalPhysicalRequest = physicalProductRequestRepository.findById(1);
-        assert originalPhysicalRequest.isPresent();
-        assert originalPhysicalRequest.get().getTitle().equals("sample Keyboard") && originalPhysicalRequest.get().getDescription().isEmpty();
+        PhysicalProductRequestDAO originalPhysicalRequest = productRequestService.getPhysicalProductByProductID(1);
+        assert originalPhysicalRequest.getTitle().equals("sample Keyboard") && originalPhysicalRequest.getDescription().isEmpty();
 
         assert productRequestService.updatePhysicalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
-        Optional<DigitalProductRequestDAO> newPhysicalRequest = digitalProductRequestRepository.findById(1);
-        assert newPhysicalRequest.isPresent();
+        PhysicalProductRequestDAO updatedPhysicalProductRequest = productRequestService.getPhysicalProductByProductID(1);
 
-        DigitalProductRequestDAO updatedPhysicalProductRequest = newPhysicalRequest.get();
         assert updatedPhysicalProductRequest.getTitle().equals("new name") && updatedPhysicalProductRequest.getDescription().equals("new Description");
-        assert !originalPhysicalRequest.get().getTitle().equals(updatedPhysicalProductRequest.getTitle()) && !originalPhysicalRequest.get().getDescription().equals(updatedPhysicalProductRequest.getDescription());
+        assert !originalPhysicalRequest.getTitle().equals(updatedPhysicalProductRequest.getTitle()) && !originalPhysicalRequest.getDescription().equals(updatedPhysicalProductRequest.getDescription());
     }
 
 }
