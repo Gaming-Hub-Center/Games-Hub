@@ -21,8 +21,6 @@ public class DigitalCartDAO extends CartDAO {
     public DigitalCartDAO(CartKey id, int count) {
         this.id = id;
         this.count = count;
-        this.buyer = buyer;
-        this.product = product;
     }
 
 

@@ -29,7 +29,7 @@ public abstract class CartDAO {
             this.productID = productID;
         }
 
-        // Getters and setters...
+
 
         @Override
         public boolean equals(Object o) {
