@@ -51,12 +51,13 @@ class CartServiceTest {
 
     @BeforeEach
     void setUp() {
+
         // Create a test seller
         testSeller = new SellerDAO("Test Seller", "seller@example.com", "password", "1234567890", "Seller Address", 100.0f, "123456789", LocalDate.now(), "Test Description", "VAT123456");
         sellerRepository.save(testSeller);
 
         // Create a test buyer
-        testBuyer = new BuyerDAO(123,"buyer","buyer","email@gmail.com","pw","0100",50);
+        testBuyer = new BuyerDAO(1,"buyer","buyer","email@gmail.com","pw","0100",50);
         buyerRepository.save(testBuyer);
         LocalDate localDate = LocalDate.now();
         Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -71,6 +72,7 @@ class CartServiceTest {
     void add_update_delete_Physical_Cart_item() {
         int initialCount = 5;
         cartService.addOrUpdatePhysicalCartItem(testBuyer.getId(), testProductPhysical.getProductID(), initialCount);
+        System.out.println("buyer id"+testBuyer.getId());
 
         // Fetch the cart item
         PhysicalCartDAO.CartKey cartKey = new PhysicalCartDAO.CartKey(testBuyer.getId(), testProductPhysical.getProductID());
