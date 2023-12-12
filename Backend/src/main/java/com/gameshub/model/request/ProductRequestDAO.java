@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 @Data
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class ProductRequestDAO {
 
     @Id
