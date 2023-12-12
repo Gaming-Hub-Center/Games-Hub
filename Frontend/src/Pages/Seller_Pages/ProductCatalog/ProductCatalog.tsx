@@ -155,19 +155,19 @@ export function ProductCatalog() {
   
   return (
       <>
-      <div>
-          <button type="button" className={`GH_Btn ${activeTab === 'Catalog' ? 'active' : ''}`} onClick={() => {setActiveTab('Catalog'); setActiveProductType('Digital')}}>
+      <div style={{ width: '600px'}} className="GH_Btn_series">
+          <button type="button" className={`GH_Btn general ${activeTab === 'Catalog' ? 'active' : 'inactive'} left`} onClick={() => {setActiveTab('Catalog'); setActiveProductType('Digital')}}>
           Catalog
           </button>
-          <button type="button" className={`GH_Btn ${activeTab === 'Pending' ? 'active' : ''}`} onClick={() => {setActiveTab('Pending'); setActiveProductType('Digital')}}>
+          <button type="button" className={`GH_Btn general ${activeTab === 'Pending' ? 'active' : 'inactive'} right`} onClick={() => {setActiveTab('Pending'); setActiveProductType('Digital')}}>
           Pending
           </button>
       </div>
       <div className="tab-content">
-          <div style={{position: 'relative', display: 'flex', width: '600px'}}>
-              <button  type="button" className={`GH_Btn ${activeProductType === 'Digital' ? `active` : ''}`}onClick={() => setActiveProductType('Digital')}>Digital Products</button>
-              <button  type="button" className={`GH_Btn ${activeProductType === 'Physical' ? `active` : ''}`}onClick={() => setActiveProductType('Physical')}>Physical products</button>
-              <button onClick={handleCreateNewProduct} style={{marginLeft: 'auto'}} className="GH_Btn add create-new-product">Add</button>
+          <div className="GH_Btn_series" style={{width: '600px'}}>
+              <button style={{whiteSpace: 'nowrap'}} type="button" className={`GH_Btn general ${activeProductType === 'Digital' ? `active` : 'inactive'} left`}onClick={() => setActiveProductType('Digital')}>Digital Products</button>
+              <button style={{whiteSpace: 'nowrap', overflowWrap: 'normal'}} type="button" className={`GH_Btn general ${activeProductType === 'Physical' ? `active` : 'inactive'} right`}onClick={() => setActiveProductType('Physical')}>Physical products</button>
+              <button onClick={handleCreateNewProduct} style={{paddingLeft: '30px', paddingRight: '30px'}} className="GH_Btn general add"><i className="bi bi-plus-lg"></i></button>
           </div>
           <ul className={`list-group ${(activeTab === 'Catalog' && activeProductType === 'Digital') ? 'fade-in' : 'fade-out'}`}>
               {catalogDigitalProducts.map((item: DigitalProductDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewCatalogDigitalProduct(item)} onDeleteHandler={handleDeleteCatalogDigitalProduct(item)} onEditHandler={handleEditCatalogDigitalProduct(item)}/>)}

@@ -44,15 +44,9 @@
   font-weight: bold;
 }
 
-.catalog-actions > *:nth-child(n) {
-  background-color: transparent;
-  float: right;
-  margin-top: 2px;
-  padding-top: 0px;
+.catalog-actions{
+  flex-direction: column;
 }
-
-
-
 
 .list-group {
   position: absolute;

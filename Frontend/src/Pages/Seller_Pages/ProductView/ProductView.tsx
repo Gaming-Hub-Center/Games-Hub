@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import '../ProductCatalog/ProductCatalogItem.css'
+import '../../../Components/UI_Components/GH_Btn.css'
 import '../ProductEdit/ProductEdit.css'
 import { ProductDAO } from "../../../Models/product/ProductDAO";
 import { useParams } from "react-router";
@@ -39,7 +40,7 @@ export function ProductView(props){
                 }
                 src={imageURL} alt={"7amada helal"} />)} */}
                 <div>
-                    <i className="bi bi-plus-lg"></i>
+                    
                 </div>
             </div>
             <div style={{ marginRight: '10px' }} className="product-displayed-image-container">

@@ -77,15 +77,15 @@ export function ProductEdit(props){
 
     return(
         <div className="product-details-form">
-            <div className="product-images-column">
+            <div style={{width: '50px'}} className="product-images-column">
                 {/* {displayedImageURLs.map((imageURL, index) => index === 0? null : <img key={imageURL} 
                 onMouseOver={
                     () => setDisplayedImageIDX(index)
                 } 
             src={imageURL} alt={"7amada helal"} />)}*/}
-                <div>
-                    <i className="bi bi-plus-lg"></i>
-                </div>
+                <button className="add-image-button GH_Btn general add">
+                <i style={{position: 'absolute', justifySelf: 'center', alignSelf: 'center'}} className="bi bi-plus-lg"></i>
+                </button>             
             </div>
             
             <div className="editable-product-details-item">
@@ -118,7 +118,7 @@ export function ProductEdit(props){
                 <p className="product-details-type">Description:</p>
                 <EditableProductDetailsItem onChange={handleDescriptionChange} item={productPatch.description} documentEdit={true} fontSize="14px"/>
             </div>
-            <button onClick={handleSaveEdit} className="GH_Btn save save-edits"><i className="bi bi-floppy"></i></button>
+            <button style={{paddingLeft: '30px', paddingRight: '30px'}} onClick={handleSaveEdit} className="GH_Btn general save"><i className="bi bi-floppy"></i></button>
         </div>
     )
 

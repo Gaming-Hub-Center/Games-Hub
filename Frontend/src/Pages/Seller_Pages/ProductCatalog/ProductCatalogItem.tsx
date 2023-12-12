@@ -27,9 +27,9 @@ export function ProductCatalogItem({item, onClickHandler, onDeleteHandler, onEdi
                 {item.postDate != null ? <p><span className="product-details-type">Date Added:</span> {item.postDate[2]}-{item.postDate[1]}-{item.postDate[0]}</p> : <></>}
             </div>
             <span className="product-price">${item.price}</span>
-            <div className="catalog-actions">
-                <button onClick={onDeleteHandler} className="GH_Btn trash"><i className="bi bi-trash"></i></button><br />
-                <button onClick={onEditHandler} className="GH_Btn edit"><i className="bi bi-pencil"></i></button>
+            <div className="GH_Btn_series catalog-actions">
+                <button onClick={onDeleteHandler} className="GH_Btn trash series top"><i className="bi bi-trash"></i></button>
+                <button onClick={onEditHandler} className="GH_Btn edit series bottom"><i className="bi bi-pencil"></i></button>
             </div>
         </div> 
     );

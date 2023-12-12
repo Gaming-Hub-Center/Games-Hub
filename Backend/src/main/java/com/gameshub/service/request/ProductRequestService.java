@@ -73,7 +73,6 @@ public class ProductRequestService {
         List<DigitalProductRequestDAO> pendingDigitalProductRequests = new ArrayList<DigitalProductRequestDAO>(allDigitalProductRequests.size());
 
         for (DigitalProductRequestDAO productRequest : allDigitalProductRequests){
-            System.out.println(productRequest.toString());
             if(productRequest.getStatus().equals("Pending"))
                 pendingDigitalProductRequests.add(productRequest);
         }
