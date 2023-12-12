@@ -1,8 +1,10 @@
 package com.gameshub.controller.DTO;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ProductBriefDTO {
     int id;
     float price;
