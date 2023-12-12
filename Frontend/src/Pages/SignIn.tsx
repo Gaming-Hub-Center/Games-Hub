@@ -161,7 +161,15 @@ export function SignIn() {
               width: "100%",
               backgroundColor: "#733BC0",
               borderColor: "#733BC0",
+              transition: "background-color 0.3s",
             }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor =
+                "rgba(115, 59, 192, 0.6)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
           >
             Submit
           </Button>

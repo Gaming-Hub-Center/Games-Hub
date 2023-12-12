@@ -1,16 +1,25 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
+import { formatCurrency } from "../Utilities/formatCurrency";
 
-interface cardProps {
+export interface cardProps {
   title: string;
   description: string;
   images: string[];
+  price: number;
 }
 
-export function ProductCard({ title, description, images }: cardProps) {
+export function ProductCard({ title, description, images, price }: cardProps) {
+  const navigate = useNavigate();
+
   function goToViewProduct(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {}
+  ): void {
+    navigate("/buyer/productview", {
+      state: { title, description, images, price },
+    });
+  }
 
   function addToCart(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -39,7 +48,10 @@ export function ProductCard({ title, description, images }: cardProps) {
           justifyContent: "space-between",
         }}
       >
-        <Card.Title>{title}</Card.Title>
+        <Card.Title className="d-flex justify-content-between align-items-baseline">
+          <span>{title}</span>
+          <span className="ms-2 text-muted ">{formatCurrency(price)}</span>
+        </Card.Title>
         <Card.Text
           style={{
             height: "10vh",
@@ -59,7 +71,7 @@ export function ProductCard({ title, description, images }: cardProps) {
             style={{
               backgroundColor: "#733BC0",
               color: "#f0f0f0",
-              border: "none",
+              borderColor: "#733BC0",
               borderRadius: "5px",
               cursor: "pointer",
               transition: "background-color 0.3s",
@@ -78,7 +90,7 @@ export function ProductCard({ title, description, images }: cardProps) {
             style={{
               backgroundColor: "#733BC0",
               color: "#f0f0f0",
-              border: "none",
+              borderColor: "#733BC0",
               borderRadius: "5px",
               cursor: "pointer",
               transition: "background-color 0.3s",

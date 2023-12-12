@@ -253,8 +253,7 @@ export function SignUpBuyer() {
                     onChange={handleConfirmPasswordChange}
                     isInvalid={!isPasswordMatch(password, confirmPassword)}
                   />
-                  <Form.Control.Feedback type="invalid">
-                  </Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Col>
               </Row>
             </Container>
@@ -324,7 +323,19 @@ export function SignUpBuyer() {
               !isValidPhoneNumber(phoneNumber) ||
               !isValidAddress(address)
             }
-            style={{ width: "100%", borderColor: "#733BC0" , backgroundColor: "#733BC0"}}
+            style={{
+              width: "100%",
+              borderColor: "#733BC0",
+              backgroundColor: "#733BC0",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor =
+                "rgba(115, 59, 192, 0.6)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
           >
             Submit
           </Button>
