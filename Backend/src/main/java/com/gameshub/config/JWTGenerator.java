@@ -47,8 +47,7 @@ public class JWTGenerator {
     public Authentication validateToken(String token) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
-        JWTVerifier verifier = JWT.require(algorithm)
-                .build();
+        JWTVerifier verifier = JWT.require(algorithm).build();
 
         DecodedJWT decoded = verifier.verify(token);
 

@@ -1,7 +1,7 @@
 package com.gameshub.controller.request;
 
 import com.gameshub.exception.ResourceNotFoundException;
-import com.gameshub.service.request.approve_product_update_and_create.ProductRequestApproveService;
+import com.gameshub.service.request.approve.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

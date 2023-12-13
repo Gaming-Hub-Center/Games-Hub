@@ -5,7 +5,7 @@ import com.gameshub.model.product.PhysicalProductDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.repository.product.PhysicalProductRepository;
 import com.gameshub.repository.request.PhysicalProductRequestRepository;
-import com.gameshub.service.request.approve_product_update_and_create.PhysicalProductApprovalStrategy;
+import com.gameshub.service.request.approve.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -98,5 +98,5 @@ class PhysicalProductApprovalStrategyTest {
         assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
     }
 
-
 }
+

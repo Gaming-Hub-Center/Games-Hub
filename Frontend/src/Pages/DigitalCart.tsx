@@ -19,7 +19,7 @@ type Product = {
   productID: number;
   price: number;
   count: number;
-  name: string;
+  title: string;
   description: string;
   category: string;
   sellerID: number;
@@ -152,7 +152,7 @@ const DigitalCart = () => {
                   <tbody>
                     {cartItems.map((item) => (
                       <tr key={item.id.productID}>
-                        <td>{item.product.name}</td>
+                        <td>{item.product.title}</td>
                         <td>${item.product.price.toFixed(2)}</td>
                         <td>{item.count}</td>
                         <td>${(item.product.price * item.count).toFixed(2)}</td>

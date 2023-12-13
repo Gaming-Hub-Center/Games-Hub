@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public interface DigitalProductRequestRepository extends JpaRepository<DigitalProductRequestDAO, Integer> {
     boolean existsByDescriptionAndTitle(String description, String title);
 
+    boolean existsByDescriptionAndTitleAndSellerIdAndStatus(String description, String title, int sellerId, String status);
+
     @Transactional
     @Modifying
-    @Query(value = "ALTER TABLE digital_product_request ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
+    @Query(value = "ALTER TABLE digitalproductrequest ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
     void resetAutoIncrement();
 
 }

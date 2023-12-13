@@ -8,7 +8,7 @@ import java.time.*;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "digital_product")
+@Table(name = "digitalproduct")
 public class DigitalProductDAO extends ProductDAO {
 
     @Column(name = "Code")
@@ -26,3 +26,4 @@ public class DigitalProductDAO extends ProductDAO {
     }
 
 }
+

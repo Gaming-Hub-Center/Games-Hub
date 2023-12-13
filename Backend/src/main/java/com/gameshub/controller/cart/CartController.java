@@ -1,16 +1,13 @@
-package com.gameshub.controller;
+package com.gameshub.controller.cart;
 
-
-
-import com.gameshub.controller.DTO.CartDTO;
-import com.gameshub.model.cart.DigitalCartDAO;
-import com.gameshub.model.cart.PhysicalCartDAO;
-import com.gameshub.service.CartService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import com.gameshub.controller.DTO.cart.*;
+import com.gameshub.model.cart.*;
+import com.gameshub.service.cart.*;
+import lombok.*;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -77,6 +74,4 @@ public class CartController {
         }
     }
 
-
 }
-

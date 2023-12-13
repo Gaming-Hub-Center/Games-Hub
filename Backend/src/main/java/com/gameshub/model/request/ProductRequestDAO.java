@@ -1,50 +1,49 @@
 package com.gameshub.model.request;
 
-import com.gameshub.model.user.SellerDAO;
+import com.gameshub.model.user.*;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDate;
+import java.time.*;
 
 @Data
-@MappedSuperclass
-@AllArgsConstructor
 @NoArgsConstructor
+@MappedSuperclass
 public abstract class ProductRequestDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "Id")
+    protected int id;
 
-    @Column(name = "date_received")
-    private LocalDate dateReceived;
+    @Column(name = "Datereceived")
+    protected LocalDate dateReceived;
 
-    @Column(name = "status")
-    private String status;
+    @Column(name = "Status")
+    protected String status;
 
-    @Column(name = "request_type")
-    private String requestType;
+    @Column(name = "Requesttype")
+    protected String requestType;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "Title")
+    protected String title;
 
-    @Column(name = "price")
-    private int price;
+    @Column(name = "Price")
+    protected int price;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "Description")
+    protected String description;
 
-    @Column(name = "post_date")
-    private LocalDate postDate;
+    @Column(name = "Postdate")
+    protected LocalDate postDate;
 
-    @Column(name = "count")
-    private int count;
+    @Column(name = "Count")
+    protected int count;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "Category")
+    protected String category;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id", referencedColumnName = "id")
-    private SellerDAO seller;
+    @JoinColumn(name = "Sellerid")
+    protected SellerDAO seller;
 
 }

@@ -1,8 +1,6 @@
 package com.gameshub.requests.approve;
 
-import com.gameshub.service.request.approve_product_update_and_create.DigitalProductApprovalStrategy;
-import com.gameshub.service.request.approve_product_update_and_create.PhysicalProductApprovalStrategy;
-import com.gameshub.service.request.approve_product_update_and_create.ProductRequestApproveService;
+import com.gameshub.service.request.approve.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;

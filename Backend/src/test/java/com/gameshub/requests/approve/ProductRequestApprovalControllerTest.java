@@ -1,8 +1,8 @@
 package com.gameshub.requests.approve;
 
-import com.gameshub.controller.request.ProductRequestApprovalController;
+import com.gameshub.controller.request.*;
 import com.gameshub.exception.ResourceNotFoundException;
-import com.gameshub.service.request.approve_product_update_and_create.ProductRequestApproveService;
+import com.gameshub.service.request.approve.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -98,5 +98,5 @@ public class ProductRequestApprovalControllerTest {
                 .andExpect(content().string("Bad Request"));
     }
 
-
 }
+
