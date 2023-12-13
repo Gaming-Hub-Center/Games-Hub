@@ -4,14 +4,12 @@ import com.gameshub.controller.DTO.*;
 import com.gameshub.exception.ResourceNotFoundException;
 import com.gameshub.model.product.*;
 import com.gameshub.repository.*;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 

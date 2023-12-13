@@ -14,6 +14,13 @@ public interface DigitalImageRepository extends JpaRepository<DigitalImageDAO, I
     @Query("SELECT d.image FROM DigitalImageDAO d WHERE d.product_id = :productId")
     Optional<List<byte[]>> findAllByProduct_id(@Param("productId") int product_id);
 
+//    @Query(value = "SELECT p.image FROM digital_product_image WHERE p.digital_product_id = :product_id LIMIT 1", nativeQuery = true)
+//    Optional<byte[]> findByProduct_id(@Param("productId") int product_id);
+
+    @Query(value = "SELECT p.image FROM digital_product_image p WHERE p.digital_product_id = :product_id LIMIT 1", nativeQuery = true)
+    Optional<byte[]> findByProduct_id(@Param("product_id") int product_id);
+
+
     @Transactional
     @Modifying
     @Query(value = "ALTER TABLE digital_product_image ALTER COLUMN id RESTART WITH 1", nativeQuery = true)

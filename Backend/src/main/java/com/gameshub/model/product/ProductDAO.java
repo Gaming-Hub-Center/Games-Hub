@@ -3,6 +3,7 @@ package com.gameshub.model.product;
 import lombok.*;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @MappedSuperclass
