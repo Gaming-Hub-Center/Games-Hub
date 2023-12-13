@@ -671,7 +671,8 @@ export function HomeGames() {
               marginLeft: "55px",
               backgroundColor: "white",
             }}
-          ></Col>
+          >
+          </Col>
           <Col
             style={{
               height: "82vh",

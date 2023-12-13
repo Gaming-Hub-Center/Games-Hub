@@ -1,9 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { Form, NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { Container, Image } from "react-bootstrap";
+import { Button, Col, Container, FormControl, Image } from "react-bootstrap";
+import { SetStateAction, useState } from "react";
 
 export function NavbarC() {
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchTextChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {};
+
   return (
     <Navbar
       className="bg-black text-white shadow-sm"
@@ -11,7 +22,7 @@ export function NavbarC() {
       style={{ backgroundColor: "black" }}
       sticky="top"
     >
-      <Container fluid style={{ padding: 0 }}>
+      <Container fluid style={{ paddingLeft: 0 }}>
         <Navbar.Brand href="/">
           <Image
             src="/src/data/logo4.png"
@@ -54,6 +65,26 @@ export function NavbarC() {
             About
           </Nav.Link>
         </Nav>
+        <Col
+          style={{ marginLeft: "20px", display: "flex", flexDirection: "row" }}
+        >
+          <FormControl
+            style={{ width: "800px" }}
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+            value={searchText}
+            onChange={handleSearchTextChange}
+          />
+          <Button
+            style={{ marginLeft: "10px" }}
+            variant="outline-success"
+            // onClick={handleSubmit}
+          >
+            Search
+          </Button>
+        </Col>
+
         <Nav>
           <Nav.Link
             as={NavLink}
