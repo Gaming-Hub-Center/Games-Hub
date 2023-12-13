@@ -1,20 +1,14 @@
 package com.gameshub.model.cart;
 
-
 import com.gameshub.model.product.*;
-import com.gameshub.model.user.BuyerDAO;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Data
-@Entity
-@Table(name = "digital_cart")
 @NoArgsConstructor
+@Entity
+@Table(name = "digitalcart")
 public class DigitalCartDAO extends CartDAO {
-
-    @ManyToOne
-    @JoinColumn(name = "productID", insertable = false, updatable = false)
-    protected DigitalProductDAO product;
 
     public DigitalCartDAO(CartKey id, int count) {
         this.id = id;
@@ -25,5 +19,9 @@ public class DigitalCartDAO extends CartDAO {
         this.id = new CartKey(buyerID, productID);
         this.count = count;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "Productid", insertable = false, updatable = false)
+    protected DigitalProductDAO product;
 
 }

@@ -1,7 +1,7 @@
 package com.gameshub;
 
-import com.gameshub.controller.*;
-import com.gameshub.controller.DTO.*;
+import com.gameshub.controller.DTO.order.*;
+import com.gameshub.controller.order.*;
 import com.gameshub.exception.*;
 import com.gameshub.model.cart.*;
 import com.gameshub.model.order.*;
@@ -15,12 +15,10 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
 import org.springframework.http.*;
-import org.springframework.jdbc.core.*;
 
 import java.time.*;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
@@ -47,34 +45,19 @@ public class DigitalOrderTests {
     @Autowired
     DigitalProductRepository digitalProductRepository;
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    private void resetAutoIncrement(String tableName) {
-        jdbcTemplate.execute("ALTER TABLE " + tableName + " ALTER COLUMN ID RESTART WITH 1");
-    }
-
     @BeforeEach
     public void setup() {
         digitalOrderItemRepository.deleteAll();
-
         orderRepository.deleteAll();
-
         digitalCartRepository.deleteAll();
-
         digitalProductRepository.deleteAll();
-
         sellerRepository.deleteAll();
-
         buyerRepository.deleteAll();
 
-        resetAutoIncrement("buyer");
-
-        resetAutoIncrement("seller");
-
-        resetAutoIncrement("digitalproduct");
-
         orderRepository.resetAutoIncrement();
+        digitalProductRepository.resetAutoIncrement();
+        sellerRepository.resetAutoIncrement();
+        buyerRepository.resetAutoIncrement();
 
         BuyerDAO buyerDAO1 = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 1000);
         BuyerDAO buyerDAO2 = new BuyerDAO("Jane Smith", "+9876543210", "jane.smith@example.com", "456 Oak Avenue", "$2a$10$GMRwzM/Li/rDwHDw4RNbBeQFRHEcwVSEBZ18D4NkUo5BiHd/oawP6", 4000);
@@ -82,11 +65,11 @@ public class DigitalOrderTests {
         SellerDAO sellerDAO1 = new SellerDAO("Alice Blue", "alice.blue@example.com", "$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.parse("2023-01-01"), "Description about Alice", "123456789A");
         SellerDAO sellerDAO2 = new SellerDAO("Bob Green", "+5647382910", "bob.green@example.com", "$2a$10$bM/Om9b6r/7qklzXJCCAauNotDkmKEsD2W.BA32PvOw5nIcOsRc3q", "202 Green Lane", 15000, "ID67890B", LocalDate.parse("2023-02-02"), "Description about Bob", "987654321B");
 
-        DigitalProductDAO digitalProductDAO1 = new DigitalProductDAO("Digital Game Bundle", 300, "Get the latest digital game bundle with multiple titles.", LocalDate.parse("2023-12-08"), 10, 1);
-        DigitalProductDAO digitalProductDAO2 = new DigitalProductDAO("Virtual Reality Gaming Experience", 200, "Immersive VR gaming with a high-resolution headset.", LocalDate.parse("2023-12-08"), 15, 1);
-        DigitalProductDAO digitalProductDAO3 = new DigitalProductDAO("Wireless Gaming Controller Pack", 60, "Bundle of ergonomic wireless controllers for various gaming platforms.", LocalDate.parse("2023-12-08"), 25, 2);
-        DigitalProductDAO digitalProductDAO4 = new DigitalProductDAO("High-Performance Gaming Laptop", 1000, "Top-notch gaming laptop for an exceptional gaming experience.", LocalDate.parse("2023-12-08"), 5, 2);
-        DigitalProductDAO digitalProductDAO5 = new DigitalProductDAO("Epic Quests Strategy Game", 50, "Embark on epic quests with our latest strategy game.", LocalDate.parse("2023-12-08"), 2, 2);
+        DigitalProductDAO digitalProductDAO1 = new DigitalProductDAO("Digital Game Bundle", 300.00f, "Get the latest digital game bundle with multiple titles.", 1, 10, "Games", "DG001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO2 = new DigitalProductDAO("Virtual Reality Gaming Experience", 200.00f, "Immersive VR gaming with a high-resolution headset.", 1, 15, "VR Games", "VR001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO3 = new DigitalProductDAO("Wireless Gaming Controller Pack", 60.00f, "Bundle of ergonomic wireless controllers for various gaming platforms.", 2, 25, "Accessories", "WG001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO4 = new DigitalProductDAO("High-Performance Gaming Laptop", 1000.00f, "Top-notch gaming laptop for an exceptional gaming experience.", 2, 5, "Computers", "HL001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO5 = new DigitalProductDAO("Epic Quests Strategy Game", 50.00f, "Embark on epic quests with our latest strategy game.", 2, 2, "Games", "EQ001", LocalDate.parse("2023-12-08"));
 
         DigitalCartDAO digitalCartDAO1 = new DigitalCartDAO(1, 1, 5);
         DigitalCartDAO digitalCartDAO2 = new DigitalCartDAO(1, 3, 2);
@@ -114,26 +97,18 @@ public class DigitalOrderTests {
     }
 
     @AfterEach
-    public void teardown() {
+    public void finish() {
         digitalOrderItemRepository.deleteAll();
-
         orderRepository.deleteAll();
-
         digitalCartRepository.deleteAll();
-
         digitalProductRepository.deleteAll();
-
         sellerRepository.deleteAll();
-
         buyerRepository.deleteAll();
 
-        resetAutoIncrement("buyer");
-
-        resetAutoIncrement("seller");
-
-        resetAutoIncrement("digitalproduct");
-
         orderRepository.resetAutoIncrement();
+        digitalProductRepository.resetAutoIncrement();
+        sellerRepository.resetAutoIncrement();
+        buyerRepository.resetAutoIncrement();
     }
 
     @Test

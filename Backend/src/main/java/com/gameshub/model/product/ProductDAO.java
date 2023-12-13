@@ -1,39 +1,38 @@
 package com.gameshub.model.product;
 
-import com.gameshub.model.user.*;
-import jakarta.persistence.*;
 import lombok.*;
+import jakarta.persistence.*;
 
 import java.time.*;
 
 @Data
 @MappedSuperclass
-@AllArgsConstructor
-@NoArgsConstructor
 public abstract class ProductDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "Id")
     protected int id;
 
-    @Column(name = "title")
+    @Column(name = "Title")
     protected String title;
 
-    @Column(name = "price")
+    @Column(name = "Price")
     protected float price;
 
-    @Column(name = "description")
+    @Column(name = "Description")
     protected String description;
 
-    @Column(name = "postdate")
-    protected LocalDate postDate; // Date Approved
+    @Column(name = "Sellerid")
+    protected int sellerID;
 
-    @Column(name = "count")
+    @Column(name = "Count")
     protected int count;
 
-    @ManyToOne
-    @JoinColumn(name = "sellerid", referencedColumnName = "ID")
-    protected SellerDAO sellerDAO;
+    @Column(name = "Category")
+    protected String category;
+
+    @Column(name = "Postdate")
+    protected LocalDate postDate;
 
 }

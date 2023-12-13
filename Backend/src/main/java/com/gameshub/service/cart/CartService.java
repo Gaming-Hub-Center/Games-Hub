@@ -1,17 +1,12 @@
-package com.gameshub.service;
+package com.gameshub.service.cart;
 
-import com.gameshub.model.cart.CartDAO;
-import com.gameshub.model.cart.DigitalCartDAO;
-import com.gameshub.model.cart.PhysicalCartDAO;
-import com.gameshub.repository.DigitalCartRepository;
-import com.gameshub.repository.PhysicalCartRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.gameshub.model.cart.*;
+import com.gameshub.repository.cart.*;
+import lombok.*;
+import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service

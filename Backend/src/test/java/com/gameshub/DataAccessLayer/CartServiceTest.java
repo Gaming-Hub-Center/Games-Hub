@@ -1,28 +1,19 @@
 package com.gameshub.DataAccessLayer;
 
+import com.gameshub.model.cart.*;
+import com.gameshub.model.product.*;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.cart.*;
+import com.gameshub.repository.product.*;
+import com.gameshub.repository.user.*;
+import com.gameshub.service.cart.*;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
+import org.springframework.transaction.annotation.*;
 
-
-import com.gameshub.model.cart.DigitalCartDAO;
-import com.gameshub.model.cart.PhysicalCartDAO;
-import com.gameshub.model.product.DigitalProductDAO;
-import com.gameshub.model.product.PhysicalProductDAO;
-import com.gameshub.model.user.BuyerDAO;
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.*;
-import com.gameshub.repository.user.BuyerRepository;
-import com.gameshub.repository.user.SellerRepository;
-import com.gameshub.service.CartService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.*;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,13 +50,12 @@ class CartServiceTest {
         sellerRepository.save(testSeller);
 
         // Create a test buyer
-        testBuyer = new BuyerDAO(1,"buyer","buyer","email@gmail.com","pw","0100",50);
+        testBuyer = new BuyerDAO("buyer","buyer","email@gmail.com","pw","0100",50);
         buyerRepository.save(testBuyer);
         LocalDate localDate = LocalDate.now();
-        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         // Create a test product and associate it with the test seller
-        testProductPhysical = new PhysicalProductDAO(0, 50.0f, 10, "Test Product", "Description", "Category", testSeller.getId(), date);
-        testProductDigital = new DigitalProductDAO(0, 50.0f, 10, "Test Product", "Description", "Category", testSeller.getId(), date,"123");
+        testProductPhysical = new PhysicalProductDAO("Test Product", 50.0f, "Description", testSeller.getId(), 10, "Category", localDate);
+        testProductDigital = new DigitalProductDAO("Test Product", 50.0f, "Description", testSeller.getId(), 10, "Category", "123", localDate);
         physicalProductRepository.save(testProductPhysical);
         digitalProductRepository.save(testProductDigital);
     }
@@ -73,11 +63,11 @@ class CartServiceTest {
     @Test
     void add_update_delete_Physical_Cart_item() {
         int initialCount = 5;
-        cartService.addOrUpdatePhysicalCartItem(testBuyer.getId(), testProductPhysical.getProductID(), initialCount);
+        cartService.addOrUpdatePhysicalCartItem(testBuyer.getId(), testProductPhysical.getId(), initialCount);
         System.out.println("buyer id"+testBuyer.getId());
 
         // Fetch the cart item
-        PhysicalCartDAO.CartKey cartKey = new PhysicalCartDAO.CartKey(testBuyer.getId(), testProductPhysical.getProductID());
+        PhysicalCartDAO.CartKey cartKey = new PhysicalCartDAO.CartKey(testBuyer.getId(), testProductPhysical.getId());
         PhysicalCartDAO savedCartItem = physicalCartRepository.findById(cartKey).orElse(null);
 
         assertNotNull(savedCartItem, "Cart item should not be null");
@@ -85,13 +75,13 @@ class CartServiceTest {
 
         // Test updating the same cart item
         int updatedCount = 10;
-        cartService.addOrUpdatePhysicalCartItem(testBuyer.getId(), testProductPhysical.getProductID(), updatedCount);
+        cartService.addOrUpdatePhysicalCartItem(testBuyer.getId(), testProductPhysical.getId(), updatedCount);
         savedCartItem = physicalCartRepository.findById(cartKey).orElse(null);
 
         assertNotNull(savedCartItem, "Cart item should still not be null after update");
         assertEquals(updatedCount, savedCartItem.getCount(), "Cart item count should match the updated count");
 
-        cartService.removePhysicalCartItem(testBuyer.getId(), testProductPhysical.getProductID());
+        cartService.removePhysicalCartItem(testBuyer.getId(), testProductPhysical.getId());
         PhysicalCartDAO removedCartItem = physicalCartRepository.findById(cartKey).orElse(null);
 
         assertNull(removedCartItem, "Cart item should be null after removal");
@@ -107,15 +97,15 @@ class CartServiceTest {
         // Add 50 products and cart items
         for (int i = 0; i < 50; i++) {
             // Create a new product for each cart item
-            PhysicalProductDAO product = new PhysicalProductDAO(0, 50.0f, 10, "Test Product " + i, "Description " + i, "Category", testSeller.getId(), new Date());
+            PhysicalProductDAO product = new PhysicalProductDAO("Test Product " + i, 50.0f, "Description " + i, testSeller.getId(), 10, "Category", LocalDate.now());
             physicalProductRepository.save(product);
             products.add(product);
 
             // Add to cart
-            cartService.addOrUpdatePhysicalCartItem(testBuyer.getId(), product.getProductID(), countPerItem);
+            cartService.addOrUpdatePhysicalCartItem(testBuyer.getId(), product.getId(), countPerItem);
 
             // Store cart key for later checks
-            PhysicalCartDAO.CartKey cartKey = new PhysicalCartDAO.CartKey(testBuyer.getId(), product.getProductID());
+            PhysicalCartDAO.CartKey cartKey = new PhysicalCartDAO.CartKey(testBuyer.getId(), product.getId());
             cartKeys.add(cartKey);
 
             // Verify the cart item is added
@@ -131,7 +121,7 @@ class CartServiceTest {
         // Delete each cart item and verify removal
         for (int i = 0; i < cartKeys.size(); i++) {
             // Remove cart item
-            cartService.removePhysicalCartItem(testBuyer.getId(), products.get(i).getProductID());
+            cartService.removePhysicalCartItem(testBuyer.getId(), products.get(i).getId());
 
             // Verify the cart item is removed
             PhysicalCartDAO removedCartItem = physicalCartRepository.findById(cartKeys.get(i)).orElse(null);
@@ -151,15 +141,15 @@ class CartServiceTest {
         // Add 50 products and cart items
         for (int i = 0; i < 50; i++) {
             // Create a new product for each cart item
-            DigitalProductDAO product = new DigitalProductDAO(0, 50.0f, 10, "Test Product " + i, "Description " + i, "Category", testSeller.getId(), new Date(),"123");
+            DigitalProductDAO product = new DigitalProductDAO("Test Product " + i, 50.0f, "Description " + i, testSeller.getId(), 10, "Category", "123", LocalDate.now());
             digitalProductRepository.save(product);
             products.add(product);
 
             // Add to cart
-            cartService.addOrUpdateDigitalCartItem(testBuyer.getId(), product.getProductID(), countPerItem);
+            cartService.addOrUpdateDigitalCartItem(testBuyer.getId(), product.getId(), countPerItem);
 
             // Store cart key for later checks
-            DigitalCartDAO.CartKey cartKey = new DigitalCartDAO.CartKey(testBuyer.getId(), product.getProductID());
+            DigitalCartDAO.CartKey cartKey = new DigitalCartDAO.CartKey(testBuyer.getId(), product.getId());
             cartKeys.add(cartKey);
 
             // Verify the cart item is added
@@ -175,7 +165,7 @@ class CartServiceTest {
         // Delete each cart item and verify removal
         for (int i = 0; i < cartKeys.size(); i++) {
             // Remove cart item
-            cartService.removeDigitalCartItem(testBuyer.getId(), products.get(i).getProductID());
+            cartService.removeDigitalCartItem(testBuyer.getId(), products.get(i).getId());
 
             // Verify the cart item is removed
             DigitalCartDAO removedCartItem = digitalCartRepository.findById(cartKeys.get(i)).orElse(null);
@@ -190,10 +180,10 @@ class CartServiceTest {
     @Test
     void add_update_delete_Digital_Cart_item() {
         int initialCount = 5;
-        cartService.addOrUpdateDigitalCartItem(testBuyer.getId(), testProductDigital.getProductID(), initialCount);
+        cartService.addOrUpdateDigitalCartItem(testBuyer.getId(), testProductDigital.getId(), initialCount);
 
         // Fetch the cart item
-        DigitalCartDAO.CartKey cartKey = new PhysicalCartDAO.CartKey(testBuyer.getId(), testProductDigital.getProductID());
+        DigitalCartDAO.CartKey cartKey = new PhysicalCartDAO.CartKey(testBuyer.getId(), testProductDigital.getId());
         DigitalCartDAO savedCartItem = digitalCartRepository.findById(cartKey).orElse(null);
 
         assertNotNull(savedCartItem, "Cart item should not be null");
@@ -201,13 +191,13 @@ class CartServiceTest {
 
         // Test updating the same cart item
         int updatedCount = 10;
-        cartService.addOrUpdateDigitalCartItem(testBuyer.getId(), testProductDigital.getProductID(), updatedCount);
+        cartService.addOrUpdateDigitalCartItem(testBuyer.getId(), testProductDigital.getId(), updatedCount);
         savedCartItem = digitalCartRepository.findById(cartKey).orElse(null);
 
         assertNotNull(savedCartItem, "Cart item should still not be null after update");
         assertEquals(updatedCount, savedCartItem.getCount(), "Cart item count should match the updated count");
 
-        cartService.removeDigitalCartItem(testBuyer.getId(), testProductDigital.getProductID());
+        cartService.removeDigitalCartItem(testBuyer.getId(), testProductDigital.getId());
         DigitalCartDAO removedCartItem = digitalCartRepository.findById(cartKey).orElse(null);
 
         assertNull(removedCartItem, "Cart item should be null after removal");

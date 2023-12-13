@@ -1,27 +1,21 @@
 package com.gameshub;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gameshub.controller.CartController;
-import com.gameshub.controller.DTO.CartDTO;
-import com.gameshub.model.cart.DigitalCartDAO;
-import com.gameshub.model.cart.PhysicalCartDAO;
-import com.gameshub.service.CartService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import com.fasterxml.jackson.databind.*;
+import com.gameshub.controller.cart.*;
+import com.gameshub.controller.DTO.cart.*;
+import com.gameshub.service.cart.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+import org.mockito.*;
+import org.mockito.junit.jupiter.*;
+import org.springframework.test.web.servlet.*;
+import org.springframework.test.web.servlet.setup.*;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 class CartControllerIntegrationTest {

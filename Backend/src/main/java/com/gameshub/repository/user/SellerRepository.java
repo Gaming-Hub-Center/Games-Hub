@@ -9,9 +9,9 @@ import java.util.*;
 
 @Repository
 public interface SellerRepository extends JpaRepository<SellerDAO, Integer> {
+    Optional<SellerDAO> findById (int id);
     Optional<SellerDAO> findByEmail(String email);
     Boolean existsByEmail(String email);
-    SellerDAO findById (int id);
 
     @Transactional
     @Modifying

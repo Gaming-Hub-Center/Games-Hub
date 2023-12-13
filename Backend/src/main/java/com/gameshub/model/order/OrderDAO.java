@@ -8,9 +8,9 @@ import java.time.*;
 import java.util.*;
 
 @Data
-@Entity
 @NoArgsConstructor
-@Table(name = "`Order`")
+@Entity
+@Table(name = "`order`")
 public class OrderDAO {
 
     public OrderDAO(BuyerDAO buyerDAO, LocalDate orderDate, float orderPrice, String orderStatus) {
@@ -22,28 +22,28 @@ public class OrderDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderID")
-    private int orderID;
+    @Column(name = "Id")
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "buyerID", referencedColumnName = "ID")
+    @JoinColumn(name = "Buyerid")
     private BuyerDAO buyerDAO;
 
-    @Column(name = "orderdate")
+    @Column(name = "Orderdate")
     private LocalDate orderDate;
 
-    @Column(name = "order_price")
+    @Column(name = "Orderprice")
     private float orderPrice;
 
-    @Column(name = "order_status")
+    @Column(name = "Orderstatus")
     private String orderStatus;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderID")
+    @JoinColumn(name = "Orderid")
     private List<PhysicalOrderItemDAO> physicalOrderItemDAOs;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderID")
+    @JoinColumn(name = "Orderid")
     private List<DigitalOrderItemDAO> digitalOrderItemDAOs;
 
 }

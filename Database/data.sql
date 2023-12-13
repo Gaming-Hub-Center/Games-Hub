@@ -4,15 +4,15 @@
 -- MySQL Workbench Forward Engineering
 
 -- -----------------------------------------------------
--- Schema gameshub
+-- Schema GamesHub
 -- -----------------------------------------------------
-USE `gameshub` ;
+USE `GamesHub` ;
 
 
 -- -----------------------------------------------------
--- Inserting dummy data into `buyer`
+-- Inserting dummy data into `Buyer`
 -- -----------------------------------------------------
-INSERT INTO `buyer` (`Name`, `Phone`, `Email`, `Address`, `Password`, `Balance`) VALUES
+INSERT INTO `Buyer` (`Name`, `Phone`, `Email`, `Address`, `Password`, `Balance`) VALUES
 ('John Doe', '+1234567890', 'john.doe@example.com', '123 Elm Street', '$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG', 1000),
 ('Jane Smith', '+9876543210', 'jane.smith@example.com', '456 Oak Avenue', '$2a$10$GMRwzM/Li/rDwHDw4RNbBeQFRHEcwVSEBZ18D4NkUo5BiHd/oawP6', 4000),
 ('Emily Johnson', '+1122334455', 'emily.johnson@example.com', '789 Pine Road', '$2a$10$FbE4XSzchqlJEwCE08.t7O4f77XE81uezyeA9cw4sHVIZc86YNiU.', 3500),
@@ -26,9 +26,9 @@ INSERT INTO `buyer` (`Name`, `Phone`, `Email`, `Address`, `Password`, `Balance`)
 
 
 -- -----------------------------------------------------
--- Inserting dummy data into `seller`
+-- Inserting dummy data into `Seller`
 -- -----------------------------------------------------
-INSERT INTO `seller` (`Vat_Registration_Number`, `Date_Joined`, `Name`, `Phone`, `Email`, `Password`, `SellerDescription`, `Balance`, `NationalID`, `Address`) VALUES
+INSERT INTO `Seller` (`VatRegistrationNumber`, `DateJoined`, `Name`, `Phone`, `Email`, `Password`, `SellerDescription`, `Balance`, `NationalId`, `Address`) VALUES
 ('123456789A', '2023-01-01', 'Alice Blue', '+1029384756', 'alice.blue@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG', 'Description about Alice', 10000, 'ID12345A', '101 Red Street'),
 ('987654321B', '2023-02-02', 'Bob Green', '+5647382910', 'bob.green@example.com', '$2a$10$bM/Om9b6r/7qklzXJCCAauNotDkmKEsD2W.BA32PvOw5nIcOsRc3q', 'Description about Bob', 15000, 'ID67890B', '202 Green Lane'),
 ('111222333C', '2023-03-03', 'Charlie Yellow', '+1239874560', 'charlie.yellow@example.com', '$2a$10$pl2u29r6.o8BauM/IGZu2e7E2PqMwKj9VnNiRe.9LiMccgQzF.lsS', 'Description about Charlie', 12000, 'ID112233C', '303 Blue Boulevard'),
@@ -42,9 +42,9 @@ INSERT INTO `seller` (`Vat_Registration_Number`, `Date_Joined`, `Name`, `Phone`,
 
 
 -- -----------------------------------------------------
--- Inserting dummy data into `admin`
+-- Inserting dummy data into `Admin`
 -- -----------------------------------------------------
-INSERT INTO `admin` (`Name`, `phone`, `email`, `password`) VALUES
+INSERT INTO `Admin` (`Name`, `Phone`, `Email`, `Password`) VALUES
 ('Alice Johnson','1234567890','alice.johnson@example.com', 'alicepass'),
 ('Bob Smith','0987654321','bob.smith@example.com', 'bobpass'),
 ('Carol White','1122334455','carol.white@example.com', 'carolpass'),
@@ -54,40 +54,40 @@ INSERT INTO `admin` (`Name`, `phone`, `email`, `password`) VALUES
 -- -----------------------------------------------------
 -- Inserting dummy data into `PhysicalProduct`
 -- -----------------------------------------------------
-INSERT INTO `gameshub`.`PhysicalProduct` (`title`, `price`, `description`, `sellerID`, `count`, `postDate`) VALUES
-('Game Console', 300.00, 'Latest model of our popular game console.', 1, 10, '2023-12-08'),
-('Virtual Reality Headset', 200.00, 'Immersive VR experience with high resolution.', 1, 15, '2023-12-08'),
-('Wireless Gaming Controller', 60.00, 'Ergonomic wireless controller for various gaming platforms.', 2, 25, '2023-12-08'),
-('Gaming Laptop', 1000.00, 'High-performance laptop designed for gaming.', 2, 5, '2023-12-08'),
-('Strategy Game', 50.00, 'A new strategy game with epic quests.', 2, 2, '2023-12-08');
+INSERT INTO `PhysicalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Count`, `Category`, `PostDate`) VALUES
+('Game Console', 300.00, 'Latest model of our popular game console.', 1, 10, 'Electronics', '2023-12-08'),
+('Virtual Reality Headset', 200.00, 'Immersive VR experience with high resolution.', 1, 15, 'Electronics', '2023-12-08'),
+('Wireless Gaming Controller', 60.00, 'Ergonomic wireless controller for various gaming platforms.', 2, 25, 'Accessories', '2023-12-08'),
+('Gaming Laptop', 1000.00, 'High-performance laptop designed for gaming.', 2, 5, 'Computers', '2023-12-08'),
+('Strategy Game', 50.00, 'A new strategy game with epic quests.', 2, 2, 'Games', '2023-12-08');
 
 
 -- -----------------------------------------------------
 -- Inserting dummy data into `DigitalProduct`
 -- -----------------------------------------------------
-INSERT INTO `gameshub`.`DigitalProduct` (`title`, `price`, `description`, `sellerID`, `count`, `postDate`) VALUES
-('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 1, 10, '2023-12-08'),
-('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 1, 15, '2023-12-08'),
-('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 2, 25, '2023-12-08'),
-('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 2, 5, '2023-12-08'),
-('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 2, 2, '2023-12-08');
+INSERT INTO `DigitalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Count`, `Category`, `Code`, `PostDate`) VALUES
+('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 1, 10, 'Games', 'DG001', '2023-12-08'),
+('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 1, 15, 'VR Games', 'VR001', '2023-12-08'),
+('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 2, 25, 'Accessories', 'WG001', '2023-12-08'),
+('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 2, 5, 'Computers', 'HL001', '2023-12-08'),
+('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 2, 2, 'Games', 'EQ001', '2023-12-08');
 
 
 -- -----------------------------------------------------
--- Inserting dummy data into `Physical_Cart`
+-- Inserting dummy data into `PhysicalCart`
 -- -----------------------------------------------------
-INSERT INTO `gameshub`.`Physical_Cart` (`buyerID`, `productID`, `Count`) VALUES
+INSERT INTO `PhysicalCart` (`BuyerId`, `ProductId`, `Count`) VALUES
 (1, 1, 5),
 (1, 3, 2),
 (1, 5, 2),
 (2, 2, 2),
-(2, 4, 7);
+(2, 4, 7); 
 
 
 -- -----------------------------------------------------
--- Inserting dummy data into `Digital_Cart`
+-- Inserting dummy data into `DigitalCart`
 -- -----------------------------------------------------
-INSERT INTO `gameshub`.`Digital_Cart` (`buyerID`, `productID`, `Count`) VALUES
+INSERT INTO `DigitalCart` (`BuyerId`, `ProductId`, `Count`) VALUES
 (1, 1, 5),
 (1, 3, 2),
 (1, 5, 2),
@@ -98,7 +98,7 @@ INSERT INTO `gameshub`.`Digital_Cart` (`buyerID`, `productID`, `Count`) VALUES
 -- -----------------------------------------------------
 -- Inserting dummy data into `Order`
 -- -----------------------------------------------------
-INSERT INTO `gameshub`.`Order` (`buyerID`, `orderDate`, `order_price`, `order_status`) VALUES
+INSERT INTO `Order` (`BuyerId`, `OrderDate`, `OrderPrice`, `OrderStatus`) VALUES
 (1, '2023-01-15', 800.00, 'Shipped'),
 (2, '2023-02-20', 300.00, 'Returned'),
 (1, '2023-01-15', 800.00, 'Shipped'),
@@ -108,7 +108,7 @@ INSERT INTO `gameshub`.`Order` (`buyerID`, `orderDate`, `order_price`, `order_st
 -- -----------------------------------------------------
 -- Inserting dummy data into `PhysicalOrderItem`
 -- -----------------------------------------------------
-INSERT INTO `gameshub`.`PhysicalOrderItem` (`orderID`, `productID`, `Count`, `unit_price`, `total_price`) VALUES
+INSERT INTO `PhysicalOrderItem` (`OrderId`, `ProductId`, `Count`, `UnitPrice`, `TotalPrice`) VALUES
 (1, 1, 2, 300.00, 600.00),
 (1, 2, 1, 200.00, 200.00),
 (2, 3, 5, 60.00, 300.00);
@@ -117,10 +117,26 @@ INSERT INTO `gameshub`.`PhysicalOrderItem` (`orderID`, `productID`, `Count`, `un
 -- -----------------------------------------------------
 -- Inserting dummy data into `DigitalOrderItem`
 -- -----------------------------------------------------
-INSERT INTO `gameshub`.`DigitalOrderItem` (`orderID`, `productID`, `Count`, `unit_price`, `total_price`) VALUES
+INSERT INTO `DigitalOrderItem` (`OrderId`, `ProductId`, `Count`, `UnitPrice`, `TotalPrice`) VALUES
 (3, 1, 2, 300.00, 600.00),
 (3, 2, 1, 200.00, 200.00),
 (4, 3, 5, 60.00, 300.00);
+
+
+-- -----------------------------------------------------
+-- Inserting dummy data into `PhysicalProductRequest`
+-- -----------------------------------------------------
+INSERT INTO `PhysicalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`) VALUES
+('2023-12-08', 'Review', 'New', 'Board Game', 40, 'Family board game for all ages.', 1, 20, '2023-12-15', 'Games'),
+('2023-12-09', 'Denied', 'Update', 'Cycling Helmet', 150, 'High-quality helmet for cycling enthusiasts.', 2, 10, '2023-12-16', 'Sports');
+
+
+-- -----------------------------------------------------
+-- Inserting dummy data into `DigitalProductRequest`
+-- -----------------------------------------------------
+INSERT INTO `DigitalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`, `Code`) VALUES
+('2023-12-10', 'Pending', 'New', 'Digital Artwork', 500, 'High-quality digital art for game development.', 1, 5, '2023-12-12', 'Art', 'ART001'),
+('2023-12-11', 'Approved', 'Update', 'E-book Collection', 300, 'Collection of fantasy e-books.', 2, 10, '2023-12-13', 'Books', 'EBK002');
 
 
 -- -----------------------------------------------------

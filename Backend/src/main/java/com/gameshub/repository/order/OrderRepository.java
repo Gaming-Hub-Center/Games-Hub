@@ -10,7 +10,7 @@ public interface OrderRepository extends JpaRepository<OrderDAO, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "ALTER TABLE `Order` ALTER COLUMN orderID RESTART WITH  1", nativeQuery = true)
+    @Query(value = "ALTER TABLE `order` ALTER COLUMN id RESTART WITH  1", nativeQuery = true)
     void resetAutoIncrement();
 
 }

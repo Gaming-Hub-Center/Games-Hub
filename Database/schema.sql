@@ -4,209 +4,253 @@
 -- MySQL Workbench Forward Engineering
 
 -- -----------------------------------------------------
--- Schema gameshub
+-- Schema GamesHub
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `gameshub` DEFAULT CHARACTER SET utf8 ;
-USE `gameshub` ;
+CREATE SCHEMA IF NOT EXISTS `GamesHub` DEFAULT CHARACTER SET utf8 ;
+USE `GamesHub` ;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`buyer`
+-- Table `GamesHub`.`Buyer`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`buyer` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `GamesHub`.`Buyer` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
-  `phone` VARCHAR(15) NULL,
-  `email` VARCHAR(255) NOT NULL,
-  `address` VARCHAR(255) NULL,
-  `password` VARCHAR(72) NOT NULL,
-  `balance` FLOAT NOT NULL,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-  PRIMARY KEY (`ID`)
+  `Phone` VARCHAR(15) NULL,
+  `Email` VARCHAR(255) NOT NULL,
+  `Address` VARCHAR(255) NULL,
+  `Password` VARCHAR(72) NOT NULL,
+  `Balance` FLOAT NOT NULL,
+  UNIQUE INDEX `EmailUnique` (`Email` ASC) VISIBLE,
+  PRIMARY KEY (`Id`)
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`seller`
+-- Table `GamesHub`.`Seller`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`seller` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `GamesHub`.`Seller` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
-  `phone` VARCHAR(15) NULL,
-  `email` VARCHAR(255) NOT NULL,
-  `address` VARCHAR(255) NULL,
-  `password` VARCHAR(72) NOT NULL,
-  `balance` FLOAT NOT NULL,
-  `NationalID` VARCHAR(20) NOT NULL,
-  `Vat_Registration_Number` VARCHAR(255) NOT NULL,
-  `Date_Joined` DATE NULL,
+  `Phone` VARCHAR(15) NULL,
+  `Email` VARCHAR(255) NOT NULL,
+  `Address` VARCHAR(255) NULL,
+  `Password` VARCHAR(72) NOT NULL,
+  `Balance` FLOAT NOT NULL,
+  `NationalId` VARCHAR(20) NOT NULL,
+  `VatRegistrationNumber` VARCHAR(255) NOT NULL,
+  `DateJoined` DATE NULL,
   `SellerDescription` MEDIUMTEXT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
+  PRIMARY KEY (`Id`),
+  UNIQUE INDEX `EmailUnique` (`Email` ASC) VISIBLE
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`admin`
+-- Table `GamesHub`.`Admin`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`admin` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `GamesHub`.`Admin` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
-  `phone` VARCHAR(15) NULL,
-  `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(72) NOT NULL,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-  PRIMARY KEY (`ID`)
+  `Phone` VARCHAR(15) NULL,
+  `Email` VARCHAR(255) NOT NULL,
+  `Password` VARCHAR(72) NOT NULL,
+  UNIQUE INDEX `EmailUnique` (`Email` ASC) VISIBLE,
+  PRIMARY KEY (`Id`)
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`PhysicalProduct`
+-- Table `GamesHub`.`PhysicalProduct`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`PhysicalProduct` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(255),
-  `price` FLOAT,
-  `description` TEXT,
-  `sellerID` INT NOT NULL,
-  `count` INT,
-  `postDate` DATE NOT NULL,
-  PRIMARY KEY (`ID`),
-  INDEX `SellerID2_idx` (`SellerID` ASC) VISIBLE,
-  CONSTRAINT `SellerID2`
-    FOREIGN KEY (`SellerID`)
-    REFERENCES `gameshub`.`seller` (`ID`)
+CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProduct` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Title` VARCHAR(255),
+  `Price` FLOAT,
+  `Description` TEXT,
+  `SellerId` INT NOT NULL,
+  `Count` INT,
+  `Category` VARCHAR(20),
+  `PostDate` DATE NOT NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `SellerIdIdx` (`SellerId` ASC) VISIBLE,
+  CONSTRAINT `SellerIdFK1`
+    FOREIGN KEY (`SellerId`)
+    REFERENCES `GamesHub`.`Seller` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`DigitalProduct`
+-- Table `GamesHub`.`DigitalProduct`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`DigitalProduct` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(255),
-  `price` FLOAT,
-  `description` TEXT,
-  `sellerID` INT NOT NULL,
-  `count` INT,
-  `postDate` DATE NOT NULL,
-  PRIMARY KEY (`ID`),
-  INDEX `SellerID2_idx` (`SellerID` ASC) VISIBLE,
-  CONSTRAINT `SellerID3`
-    FOREIGN KEY (`SellerID`)
-    REFERENCES `gameshub`.`seller` (`ID`)
+CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProduct` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Title` VARCHAR(255),
+  `Price` FLOAT,
+  `Description` TEXT,
+  `SellerId` INT NOT NULL,
+  `Count` INT,
+  `Category` VARCHAR(20),
+  `Code` VARCHAR(100) NOT NULL,
+  `PostDate` DATE NOT NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `SellerIdIdx` (`SellerId` ASC) VISIBLE,
+  CONSTRAINT `SellerIdFK2`
+    FOREIGN KEY (`SellerId`)
+    REFERENCES `GamesHub`.`Seller` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`Physical_Cart`
+-- Table `GamesHub`.`PhysicalCart`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`Physical_Cart` (
-  `buyerID` INT NOT NULL,
-  `productID` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalCart` (
+  `BuyerId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
   `Count` INT NOT NULL,
-  PRIMARY KEY (`buyerID`, `productID`),
-  INDEX `PhysicalID1_idx` (`productID` ASC) VISIBLE,
-  CONSTRAINT `PhysicalID1`
-    FOREIGN KEY (`productID`)
-    REFERENCES `gameshub`.`PhysicalProduct` (`ID`)
+  PRIMARY KEY (`BuyerId`, `ProductId`),
+  INDEX `ProductIdIdx` (`ProductId` ASC) VISIBLE,
+  CONSTRAINT `ProductIdFK1`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `GamesHub`.`PhysicalProduct` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `buyerID2`
-    FOREIGN KEY (`buyerID`)
-    REFERENCES `gameshub`.`buyer` (`ID`)
+  CONSTRAINT `BuyerIdFK1`
+    FOREIGN KEY (`BuyerId`)
+    REFERENCES `GamesHub`.`Buyer` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`Digital_Cart`
+-- Table `GamesHub`.`DigitalCart`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`Digital_Cart` (
-  `buyerID` INT NOT NULL,
-  `productID` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalCart` (
+  `BuyerId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
   `Count` INT NOT NULL,
-  PRIMARY KEY (`buyerID`, `productID`),
-  INDEX `DigitalID1_idx` (`productID` ASC) VISIBLE,
-  CONSTRAINT `DigitalID1`
-    FOREIGN KEY (`productID`)
-    REFERENCES `gameshub`.`DigitalProduct` (`ID`)
+  PRIMARY KEY (`BuyerId`, `ProductId`),
+  INDEX `ProductIdIdx` (`ProductId` ASC) VISIBLE,
+  CONSTRAINT `ProductIdFK2`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `GamesHub`.`DigitalProduct` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `buyerID3`
-    FOREIGN KEY (`buyerID`)
-    REFERENCES `gameshub`.`buyer` (`ID`)
+  CONSTRAINT `BuyerIdFK2`
+    FOREIGN KEY (`BuyerId`)
+    REFERENCES `GamesHub`.`Buyer` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`Order`
+-- Table `GamesHub`.`Order`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`Order` (
-  `orderID` INT NOT NULL AUTO_INCREMENT,
-  `buyerID` INT NOT NULL,
-  `orderDate` DATE,
-  `order_price` FLOAT NOT NULL,
-  `order_status` VARCHAR(45),
-  PRIMARY KEY (`orderID`),
-  CONSTRAINT `orderBuyerID`
-    FOREIGN KEY (`buyerID`)
-    REFERENCES `gameshub`.`buyer` (`ID`)
+CREATE TABLE IF NOT EXISTS `GamesHub`.`Order` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `BuyerId` INT NOT NULL,
+  `OrderDate` DATE,
+  `OrderPrice` FLOAT NOT NULL,
+  `OrderStatus` VARCHAR(45),
+  PRIMARY KEY (`Id`),
+  CONSTRAINT `OrderBuyerIdFK1`
+    FOREIGN KEY (`BuyerId`)
+    REFERENCES `GamesHub`.`Buyer` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`PhysicalOrderItem`
+-- Table `GamesHub`.`PhysicalOrderItem`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`PhysicalOrderItem` (
-  `orderID` INT NOT NULL,
-  `productID` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalOrderItem` (
+  `OrderId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
   `Count` INT NOT NULL,
-  `unit_price` FLOAT NOT NULL,
-  `total_price` FLOAT NOT NULL,
-  PRIMARY KEY (`orderID`, `productID`),
-  CONSTRAINT `physicalOrderID`
-    FOREIGN KEY (`orderID`)
-    REFERENCES `gameshub`.`Order` (`orderID`)
+  `UnitPrice` FLOAT NOT NULL,
+  `TotalPrice` FLOAT NOT NULL,
+  PRIMARY KEY (`OrderId`, `ProductId`),
+  CONSTRAINT `PhysicalOrderIdFK1`
+    FOREIGN KEY (`OrderId`)
+    REFERENCES `GamesHub`.`Order` (`Id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `physicalProductID`
-    FOREIGN KEY (`productID`)
-    REFERENCES `gameshub`.`PhysicalProduct` (`ID`)
+  CONSTRAINT `PhysicalProductIdFK1`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `GamesHub`.`PhysicalProduct` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gameshub`.`DigitalOrderItem`
+-- Table `GamesHub`.`DigitalOrderItem`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gameshub`.`DigitalOrderItem` (
-  `orderID` INT NOT NULL,
-  `productID` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalOrderItem` (
+  `OrderId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
   `Count` INT NOT NULL,
-  `unit_price` FLOAT NOT NULL,
-  `total_price` FLOAT NOT NULL,
-  PRIMARY KEY (`orderID`, `productID`),
-  CONSTRAINT `digitalOrderID`
-    FOREIGN KEY (`orderID`)
-    REFERENCES `gameshub`.`Order` (`orderID`)
+  `UnitPrice` FLOAT NOT NULL,
+  `TotalPrice` FLOAT NOT NULL,
+  PRIMARY KEY (`OrderId`, `ProductId`),
+  CONSTRAINT `DigitalOrderIdFK2`
+    FOREIGN KEY (`OrderId`)
+    REFERENCES `GamesHub`.`Order` (`Id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `digitalProductID`
-    FOREIGN KEY (`productID`)
-    REFERENCES `gameshub`.`DigitalProduct` (`ID`)
+  CONSTRAINT `DigitalProductIdFK2`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `GamesHub`.`DigitalProduct` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
+) ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `GamesHub`.`PhysicalProductRequest`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProductRequest` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `DateReceived` DATE NOT NULL,
+  `Status` VARCHAR(10) NOT NULL,
+  `RequestType` VARCHAR(8) NOT NULL,
+  `Title` VARCHAR(255) NOT NULL,
+  `Price` INT NOT NULL,
+  `Description` TEXT,
+  `SellerId` INT,
+  `Count` INT NOT NULL,
+  `PostDate` DATE,
+  `Category` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`Id`),
+  FOREIGN KEY (`SellerId`) REFERENCES `GamesHub`.`Seller` (`Id`)
+) ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `GamesHub`.`DigitalProductRequest`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProductRequest` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `DateReceived` DATE NOT NULL,
+  `Status` VARCHAR(10) NOT NULL,
+  `RequestType` VARCHAR(8) NOT NULL,
+  `Title` VARCHAR(255) NOT NULL,
+  `Price` INT NOT NULL,
+  `Description` TEXT,
+  `SellerId` INT,
+  `Count` INT NOT NULL,
+  `PostDate` DATE,
+  `Category` VARCHAR(20) NOT NULL,
+  `Code` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`Id`),
+  FOREIGN KEY (`SellerId`) REFERENCES `GamesHub`.`Seller` (`Id`)
 ) ENGINE = InnoDB;
 
 

@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/cart/**")).permitAll()
 //                        .requestMatchers(new AntPathRequestMatcher("/product-request/create/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/order/**")).permitAll()  // TODO: remove
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()

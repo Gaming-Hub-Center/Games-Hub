@@ -9,7 +9,7 @@ import java.io.*;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "Digitalorderitem")
+@Table(name = "digitalorderitem")
 public class DigitalOrderItemDAO {
 
     public DigitalOrderItemDAO(DigitalOrderItemId digitalOrderItemId, int count, float unitPrice, float totalPrice) {
@@ -24,14 +24,12 @@ public class DigitalOrderItemDAO {
     @NoArgsConstructor
     @Embeddable
     public static class DigitalOrderItemId implements Serializable {
-
-        @Column(name = "orderID")
-        private int orderID;
+        @Column(name = "Orderid")
+        private int orderId;
 
         @ManyToOne
-        @JoinColumn(name = "productID", referencedColumnName = "ID")
+        @JoinColumn(name = "Productid")
         private DigitalProductDAO digitalProductDAO;
-
     }
 
     @EmbeddedId
@@ -40,10 +38,10 @@ public class DigitalOrderItemDAO {
     @Column(name = "Count")
     private int count;
 
-    @Column(name = "unit_price")
+    @Column(name = "Unitprice")
     private float unitPrice;
 
-    @Column(name = "total_price")
+    @Column(name = "Totalprice")
     private float totalPrice;
 
 }

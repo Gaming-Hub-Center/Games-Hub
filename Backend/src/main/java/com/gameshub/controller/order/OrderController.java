@@ -1,9 +1,9 @@
-package com.gameshub.controller;
+package com.gameshub.controller.order;
 
-import com.gameshub.controller.DTO.*;
+import com.gameshub.controller.DTO.order.*;
 import com.gameshub.model.order.*;
 import com.gameshub.repository.order.*;
-import com.gameshub.service.*;
+import com.gameshub.service.order.*;
 import lombok.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;

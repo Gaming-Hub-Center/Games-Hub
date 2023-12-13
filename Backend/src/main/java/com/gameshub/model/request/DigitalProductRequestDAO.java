@@ -1,22 +1,32 @@
 package com.gameshub.model.request;
 
-import com.gameshub.model.user.SellerDAO;
+import com.gameshub.model.user.*;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.time.LocalDate;
+import java.time.*;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "digital_product_request")
+@Table(name = "digitalproductrequest")
 public class DigitalProductRequestDAO extends ProductRequestDAO {
-    @Column(name = "code")
+
+    @Column(name = "Code")
     private String code;
 
-    public DigitalProductRequestDAO(int id, LocalDate date, String status, String requestType, String title, int price, String description, LocalDate postDate, int count, String category, SellerDAO seller, String code) {
-        super(id, date, status, requestType, title, price, description, postDate, count, category, seller);
+    public DigitalProductRequestDAO(LocalDate dateReceived, String status, String requestType, String title, int price, String description, LocalDate postDate, int count, String category, SellerDAO seller, String code) {
+        this.dateReceived = dateReceived;
+        this.status = status;
+        this.requestType = requestType;
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.postDate = postDate;
+        this.count = count;
+        this.category = category;
+        this.seller = seller;
         this.code = code;
     }
+
 }

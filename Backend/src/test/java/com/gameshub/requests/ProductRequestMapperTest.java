@@ -4,10 +4,10 @@ import com.gameshub.controller.DTO.request.DigitalProductRequestDTO;
 import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
 import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
-import com.gameshub.model.user.SellerDAO;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.user.*;
 import com.gameshub.utils.ProductRequestMapper;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,10 +22,33 @@ public class ProductRequestMapperTest {
     @Autowired
     ProductRequestMapper productRequestMapper;
 
+    @Autowired
+    BuyerRepository buyerRepository;
+
+    @Autowired
+    SellerRepository sellerRepository;
+
+    @BeforeEach
+    public void setup() {
+        buyerRepository.deleteAll();
+        sellerRepository.deleteAll();
+
+        sellerRepository.resetAutoIncrement();
+        buyerRepository.resetAutoIncrement();
+    }
+
+    @AfterEach
+    public void finish() {
+        buyerRepository.deleteAll();
+        sellerRepository.deleteAll();
+
+        sellerRepository.resetAutoIncrement();
+        buyerRepository.resetAutoIncrement();
+    }
+
     @Test
     void PhysicalProductRequestMapperFromDAOtoDTOTest() {
         SellerDAO seller = new SellerDAO(
-                1,
                 "Name",
                 "Email",
                 "Password",
@@ -39,7 +62,6 @@ public class ProductRequestMapperTest {
         );
 
         PhysicalProductRequestDAO dao = new PhysicalProductRequestDAO(
-                2,
                 LocalDate.now(),
                 "Status",
                 "Type",
@@ -73,7 +95,6 @@ public class ProductRequestMapperTest {
     @Test
     void DigitalProductRequestMapperFromDAOtoDTOTest() {
         SellerDAO seller = new SellerDAO(
-                1,
                 "Name",
                 "Email",
                 "Password",
@@ -87,7 +108,6 @@ public class ProductRequestMapperTest {
         );
 
         DigitalProductRequestDAO dao = new DigitalProductRequestDAO(
-                2,
                 LocalDate.now(),
                 "Status",
                 "Type",
@@ -123,7 +143,6 @@ public class ProductRequestMapperTest {
     @Test
     void PhysicalProductRequestFromDTOtoDAOTest() {
         SellerDAO seller = new SellerDAO(
-                1,
                 "Name",
                 "Email",
                 "Password",
@@ -171,7 +190,6 @@ public class ProductRequestMapperTest {
     @Test
     void DigitalProductRequestFromDTOtoDAOTest() {
         SellerDAO seller = new SellerDAO(
-                1,
                 "Name",
                 "Email2",
                 "Password",

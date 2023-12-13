@@ -1,4 +1,4 @@
-package com.gameshub.service;
+package com.gameshub.service.order;
 
 import com.gameshub.exception.*;
 import com.gameshub.model.cart.*;
@@ -6,6 +6,8 @@ import com.gameshub.model.order.*;
 import com.gameshub.model.product.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.order.*;
+import com.gameshub.service.cart.*;
+import com.gameshub.service.user.*;
 import lombok.*;
 import org.springframework.stereotype.*;
 
@@ -68,7 +70,7 @@ public class OrderService {
         orderRepository.save(orderDAO);
 
         for (PhysicalOrderItemDAO physicalOrderItemDAO : physicalOrderItemDAOs)
-            physicalOrderItemDAO.getId().setOrderID(orderDAO.getOrderID());
+            physicalOrderItemDAO.getId().setOrderID(orderDAO.getId());
 
         physicalOrderItemRepository.saveAll(physicalOrderItemDAOs);
 
@@ -120,7 +122,7 @@ public class OrderService {
         orderRepository.save(orderDAO);
 
         for (DigitalOrderItemDAO physicalOrderItemDAO : digitalOrderItemDAOs)
-            physicalOrderItemDAO.getId().setOrderID(orderDAO.getOrderID());
+            physicalOrderItemDAO.getId().setOrderId(orderDAO.getId());
 
         digitalOrderItemRepository.saveAll(digitalOrderItemDAOs);
 
