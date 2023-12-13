@@ -18,7 +18,7 @@ const CatalogRequestForm: React.FC = () => {
     postDate: '',
     count: 0,
     sellerId: getId(),
-    category: ''
+    category: 'Physical Category 1'
   });
 
   const [digitalProductRequest, setDigitalProductRequest] = useState<DigitalProductRequestDTO>({ 
@@ -31,7 +31,7 @@ const CatalogRequestForm: React.FC = () => {
     postDate: '',
     count: 0,
     sellerId: getId(),
-    category: '',
+    category: 'Digital Category 1',
     code: ''
   });
 
@@ -95,6 +95,8 @@ const CatalogRequestForm: React.FC = () => {
         if (numericValue < 0) return; // Don't update the state if the value is negative
     }
 
+    console.log(digitalProductRequest.description)
+
     if (productType === 'physical') {
         setPhysicalProductRequest(prevState => ({
             ...prevState,
@@ -105,6 +107,7 @@ const CatalogRequestForm: React.FC = () => {
             ...prevState,
             [name]: value
         }));
+        console.log(digitalProductRequest)
     }
 };
 
@@ -113,6 +116,23 @@ const CatalogRequestForm: React.FC = () => {
     // if (e.target.files) {
     //   setPhysicalProductRequest({ ...physicalProductRequest, images: Array.from(e.target.files) });
     // }
+  };
+
+  const clearForm = () => {
+    physicalProductRequest.category = 'Physical Category 1'
+    physicalProductRequest.count = 0
+    physicalProductRequest.description = ''
+    physicalProductRequest.price = 0
+    physicalProductRequest.title = ''
+    
+    digitalProductRequest.category = 'Digital Category 1'
+    digitalProductRequest.count = 0
+    digitalProductRequest.price = 0
+    digitalProductRequest.description = ''
+    digitalProductRequest.title = ''
+  
+    setPhysicalProductRequest(physicalProductRequest)
+    setDigitalProductRequest(digitalProductRequest)
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -125,12 +145,14 @@ const CatalogRequestForm: React.FC = () => {
   
     const requestPayload = productType === 'physical' ? physicalProductRequest : digitalProductRequest;  
   
+    console.log(digitalProductRequest)
     console.log(requestPayload)
     console.log(productType)
     httpRequest("POST", `/product-request/create/${productType}`, requestPayload)
       .then((response) => {
         console.log(response);
         setShowSuccessAlert(true);
+        clearForm();
       })
       .catch((error) => {
         console.log(error);
