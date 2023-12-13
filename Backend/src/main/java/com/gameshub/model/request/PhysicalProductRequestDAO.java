@@ -27,19 +27,6 @@ public class PhysicalProductRequestDAO extends ProductRequestDAO {
         super(id, dateReceived, status, requestType, title, price, description, postDate, count, sellerId, category);
     }
 
-    public PhysicalProductDAO getProduct() {
-        return new PhysicalProductDAO(
-                this.id,
-                this.title,
-                this.price,
-                this.description,
-                this.postDate,
-                this.count,
-                this.sellerId,
-                this.category
-        );
-    }
-
     public PhysicalProductRequestDAO(){
         this.title = "";
         this.dateReceived = LocalDate.now();

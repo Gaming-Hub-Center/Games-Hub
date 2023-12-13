@@ -31,21 +31,6 @@ public class DigitalProductRequestDAO extends ProductRequestDAO {
         this.code = code;
     }
 
-
-    public DigitalProductDAO getProduct() {
-        return new DigitalProductDAO(
-                this.id,
-                this.title,
-                this.price,
-                this.description,
-                this.postDate,
-                this.count,
-                this.sellerId,
-                this.code,
-                this.category
-        );
-    }
-
     public DigitalProductRequestDAO(){
         this.title = "";
         this.dateReceived = LocalDate.now();
