@@ -74,6 +74,8 @@ public class PhysicalOrderTests {
 
         resetAutoIncrement("physicalproduct");
 
+        orderRepository.resetAutoIncrement();
+
         BuyerDAO buyerDAO1 = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 1000);
         BuyerDAO buyerDAO2 = new BuyerDAO("Jane Smith", "+9876543210", "jane.smith@example.com", "456 Oak Avenue", "$2a$10$GMRwzM/Li/rDwHDw4RNbBeQFRHEcwVSEBZ18D4NkUo5BiHd/oawP6", 4000);
 
@@ -130,6 +132,8 @@ public class PhysicalOrderTests {
         resetAutoIncrement("seller");
 
         resetAutoIncrement("physicalproduct");
+
+        orderRepository.resetAutoIncrement();
     }
 
     @Test
