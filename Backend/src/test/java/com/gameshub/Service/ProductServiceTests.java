@@ -170,6 +170,7 @@ public class ProductServiceTests {
         assert productRequestService.getPhysicalProductByProductID(2).toString().equals(new PhysicalProductRequestDAO().toString());
     }
 
+
     @Test
     public void deleteProduct(){
         assert !productService.deleteDigitalProductBySellerIdAndProductID(1, 2);
