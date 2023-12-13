@@ -11,7 +11,6 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@NoArgsConstructor
 @Table(name = "physical_product_request")
 public class PhysicalProductRequestDAO extends ProductRequestDAO {
 
@@ -42,6 +41,18 @@ public class PhysicalProductRequestDAO extends ProductRequestDAO {
                 this.sellerId,
                 this.category
         );
+    }
+
+    public PhysicalProductRequestDAO(){
+        this.title = "";
+        this.dateReceived = LocalDate.now();
+        this.status = "";
+        this.requestType = "";
+        this.price = 0;
+        this.description = "";
+        this.postDate = LocalDate.now();
+        this.count = 0;
+        this.category = "";
     }
 
 

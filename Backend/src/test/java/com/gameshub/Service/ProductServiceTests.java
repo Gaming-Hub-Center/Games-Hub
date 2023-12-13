@@ -14,13 +14,14 @@ import com.gameshub.repository.request.PhysicalProductRequestRepository;
 import com.gameshub.repository.user.SellerRepository;
 import com.gameshub.service.product.ProductService;
 import com.gameshub.service.request.ProductRequestService;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @SpringBootTest
 public class ProductServiceTests {
@@ -46,11 +47,27 @@ public class ProductServiceTests {
     @Autowired
     SellerRepository sellerRepository;
 
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    public void resetAutoIncrement(String tableName) {
+        jdbcTemplate.execute("ALTER TABLE " + tableName + " ALTER COLUMN ID RESTART WITH 1");
+    }
+
+    @Transactional
     @BeforeEach
     public void setup(){
         digitalProductRepository.deleteAll();
+        resetAutoIncrement("digital_product");
         physicalProductRepository.deleteAll();
+        resetAutoIncrement("physical_product");
+        digitalProductRequestRepository.deleteAll();
+        resetAutoIncrement("digital_product_request");
+        physicalProductRequestRepository.deleteAll();
+        resetAutoIncrement("physical_product_request");
         sellerRepository.deleteAll();
+        resetAutoIncrement("seller");
+
         sellerRepository.save(
                 new SellerDAO(
                         "Marwan",
@@ -75,7 +92,7 @@ public class ProductServiceTests {
                         1,
                         "",
                         "Game"
-                        )
+                )
         );
 
         physicalProductRepository.save(

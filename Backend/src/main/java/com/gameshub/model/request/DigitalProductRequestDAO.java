@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
 @Entity
 @Table(name = "digital_product_request")
 public class DigitalProductRequestDAO extends ProductRequestDAO {
@@ -46,5 +45,18 @@ public class DigitalProductRequestDAO extends ProductRequestDAO {
                 this.code,
                 this.category
         );
+    }
+
+    public DigitalProductRequestDAO(){
+        this.title = "";
+        this.dateReceived = LocalDate.now();
+        this.status = "";
+        this.requestType = "";
+        this.price = 0;
+        this.description = "";
+        this.postDate = LocalDate.now();
+        this.count = 0;
+        this.category = "";
+        this.code = "";
     }
 }
