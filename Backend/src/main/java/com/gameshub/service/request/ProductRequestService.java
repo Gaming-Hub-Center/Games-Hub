@@ -2,9 +2,6 @@ package com.gameshub.service.request;
 
 import com.gameshub.controller.DTO.ProductPatchDTO;
 import com.gameshub.controller.DTO.request.*;
-import com.gameshub.model.product.DigitalProductDAO;
-import com.gameshub.model.product.PhysicalProductDAO;
-import com.gameshub.model.product.ProductDAO;
 import com.gameshub.model.request.*;
 import com.gameshub.repository.request.*;
 import com.gameshub.utils.ProductRequestMapper;
@@ -90,12 +87,12 @@ public class ProductRequestService {
         return numberOfDeletedProducts != 0;
     }
 
-    public boolean updateDigitalProductByProductID(int productId, ProductPatchDTO patch){
+    public boolean updateDigitalProductRequestByProductID(int productId, ProductPatchDTO patch){
         int numberOfUpdatedProducts = digitalProductRequestRepository.updateById(productId, patch);
         return numberOfUpdatedProducts != 0;
     }
 
-    public boolean updatePhysicalProductByProductID(int productId, ProductPatchDTO patch){
+    public boolean updatePhysicalProductRequestByProductID(int productId, ProductPatchDTO patch){
         int numberOfUpdatedProducts = physicalProductRequestRepository.updateById(productId, patch);
         return numberOfUpdatedProducts != 0;
     }

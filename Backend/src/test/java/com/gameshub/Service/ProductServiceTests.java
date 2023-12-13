@@ -210,7 +210,7 @@ public class ProductServiceTests {
         DigitalProductRequestDAO originalDigitalRequest = productRequestService.getDigitalProductByProductID(1);
         assert originalDigitalRequest.getTitle().equals("sample Game") && originalDigitalRequest.getDescription().isEmpty();
 
-        assert productRequestService.updateDigitalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
+        assert productRequestService.updateDigitalProductRequestByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
         DigitalProductRequestDAO updatedDigitalProductRequest = productRequestService.getDigitalProductByProductID(1);
 
@@ -221,7 +221,7 @@ public class ProductServiceTests {
         PhysicalProductRequestDAO originalPhysicalRequest = productRequestService.getPhysicalProductByProductID(1);
         assert originalPhysicalRequest.getTitle().equals("sample Keyboard") && originalPhysicalRequest.getDescription().isEmpty();
 
-        assert productRequestService.updatePhysicalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
+        assert productRequestService.updatePhysicalProductRequestByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
         PhysicalProductRequestDAO updatedPhysicalProductRequest = productRequestService.getPhysicalProductByProductID(1);
 

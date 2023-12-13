@@ -136,14 +136,14 @@ public class ProductController {
 
     @PatchMapping("/{sellerID}/product/pending/digital/{productID}")
     public ResponseEntity<Void> updatePendingDigitalProductOfSellerByProductID(@PathVariable(value = "productID") int productID, @RequestBody ProductPatchDTO patch){
-        if(productRequestService.updateDigitalProductByProductID(productID, patch))
+        if(productRequestService.updateDigitalProductRequestByProductID(productID, patch))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PatchMapping("/{sellerID}/product/pending/physical/{productID}")
     public ResponseEntity<Void> updatePendingPhysicalProductOfSellerByProductID(@PathVariable(value = "productID") int productID, @RequestBody ProductPatchDTO patch){
-        if(productRequestService.updatePhysicalProductByProductID(productID, patch))
+        if(productRequestService.updatePhysicalProductRequestByProductID(productID, patch))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
