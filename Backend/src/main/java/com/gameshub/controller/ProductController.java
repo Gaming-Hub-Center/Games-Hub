@@ -58,4 +58,14 @@ public class ProductController {
         else if (lowerBound == null) lowerBound = (float) 0;
         return ResponseEntity.ok(productService.filterDigital(lowerBound, upperBound, category));
     }
+
+    @GetMapping("physical/sort")
+    public ResponseEntity<List<ProductBriefDTO>> sortPhysical(boolean ascending) {
+        return ResponseEntity.ok(productService.sortPhysical(ascending));
+    }
+
+    @GetMapping("digital/sort")
+    public ResponseEntity<List<ProductBriefDTO>> sortDigital(@RequestParam boolean ascending) {
+        return ResponseEntity.ok(productService.sortDigital(ascending));
+    }
 }

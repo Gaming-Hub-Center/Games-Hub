@@ -80,6 +80,7 @@ public class ProductService {
     public List<ProductBriefDTO> filterPhysical(float lowerBound, float upperBound, String category) {
         category = (category == null) ? null : category.toLowerCase();
         List<ProductBriefDTO> productDTOs = physicalProductRepository.filterPhysical(lowerBound, upperBound, category);
+        if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
@@ -90,11 +91,32 @@ public class ProductService {
     public List<ProductBriefDTO> filterDigital(float lowerBound, float upperBound, String category) {
         category = (category == null) ? null : category.toLowerCase();
         List<ProductBriefDTO> productDTOs = digitalProductRepository.filterPhysical(lowerBound, upperBound, category);
+        if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
         }
         return productDTOs;
+    }
+
+    public List<ProductBriefDTO> sortPhysical(boolean ascending) {
+        List<ProductBriefDTO> productDTOs = physicalProductRepository.getOrderedByPrice().orElse(null);
+        if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
+        for(ProductBriefDTO productDTO: productDTOs) {
+            byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
+        }
+        return ascending ? productDTOs : productDTOs.reversed();
+    }
+
+    public List<ProductBriefDTO> sortDigital(boolean ascending) {
+        List<ProductBriefDTO> productDTOs = digitalProductRepository.getOrderedByPrice().orElse(null);
+        if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
+        for(ProductBriefDTO productDTO: productDTOs) {
+            byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
+        }
+        return ascending ? productDTOs : productDTOs.reversed();
     }
 
    /* public void save(PhysicalProductDAO physicalProductDAO, List<PhysicalImageDAO> list) {
