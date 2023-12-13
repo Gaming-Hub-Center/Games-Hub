@@ -127,8 +127,59 @@ INSERT INTO `seller` (`Vat_Registration_Number`, `Date_Joined`, `Name`, `Phone`,
 ('222333444J', '2023-10-10', 'Julia Redwood', '+0345678912', 'julia.redwood@example.com', '$2a$10$dwOZrATKkn5NAGZK.G./DeeBMaXO7gxtzQaVMe.okrfYjG47QUE1W', 'Description about Julia', 19000, 'ID222333J', '1010 Silver Street');
 /*!40000 ALTER TABLE `seller` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `physical_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `physical_product` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255),
+  `price` INT,
+  `description` TEXT,
+  `sellerID` INT NOT NULL,
+  `count` INT,
+  `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`sellerID`) REFERENCES `seller` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+DROP TABLE IF EXISTS `digital_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product_product` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255),
+  `price` INT,
+  `description` TEXT,
+  `sellerID` INT NOT NULL,
+  `count` INT,
+  `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `code` VARCHAR(255),
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`sellerID`) REFERENCES `seller` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seller`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` (`price`, `image`, `description`, `sellerID`) VALUES
+(100, null, 'this is a product', 1);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+SELECT * FROM product WHERE ID = 1;
+
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -137,4 +188,64 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-14  2:37:23
+
+DROP TABLE IF EXISTS `physical_product_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE physical_product_image (
+    `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `url` VARCHAR(255),
+    `physical_product_id` INT,
+    FOREIGN KEY (physical_product_id) REFERENCES physical_product(id)
+);
+
+DROP TABLE IF EXISTS `digital_product_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE digital_product_image (
+    `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `url` VARCHAR(255),
+    `digital_product_id` INT,
+    FOREIGN KEY (digital_product_id) REFERENCES digital_product(id)
+);
+
+
+
+DROP TABLE IF EXISTS `physical_product_request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE physical_product_request (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `date_received` DATE NOT NULL,
+  `status` VARCHAR(10) DEFAULT '',
+  `request_type` VARCHAR(8) DEFAULT '',
+	`title` VARCHAR(255) DEFAULT '',
+	`price` INT DEFAULT 0,
+	`description` TEXT DEFAULT '',
+	`seller_id` INT DEFAULT NULL,
+	`count` INT DEFAULT 0,
+	`post_date` DATE,
+    `category` VARCHAR(50) DEFAULT '',
+    FOREIGN KEY (`seller_id`) REFERENCES `seller`(`id`)
+);
+
+DROP TABLE IF EXISTS `digital_product_request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE digital_product_request (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `date_received` DATE NOT NULL,
+  `status` VARCHAR(10) DEFAULT '',
+  `request_type` VARCHAR(8) DEFAULT '',
+	`title` VARCHAR(255) DEFAULT '',
+	`price` INT DEFAULT 0,
+	`description` TEXT DEFAULT '',
+	`seller_id` INT DEFAULT NULL,
+	`count` INT DEFAULT 0,
+	`post_date` DATE,
+    `category` VARCHAR(50) DEFAULT '',
+    `code` VARCHAR(255) DEFAULT '',
+    FOREIGN KEY (`seller_id`) REFERENCES `seller`(`id`)
+);
+
+-- Dump completed on 2023-11-14  2:37:23

@@ -1,6 +1,6 @@
 package com.gameshub.config;
 
-import com.gameshub.service.*;
+import com.gameshub.service.user.CustomUserDetailsService;
 import lombok.*;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.*;
@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                        //.requestMatchers(new AntPathRequestMatcher("/cart/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/registration/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()

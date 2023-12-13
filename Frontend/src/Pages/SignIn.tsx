@@ -2,12 +2,16 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { SetStateAction, useState } from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { UserSignInDTO } from "../Controller/DTO/SignInDTO/UserSignInDTO";
-import { UserDTO } from "../Controller/DTO/UserDTO";
+import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import {Link, useNavigate} from "react-router-dom";
+import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
+import { UserDTO } from "../Controller/DTO/user/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
-import { clearCurrentSession, setJwtToken } from "../CurrentSession";
+import { clearCurrentSession, storeUserData } from "../CurrentSession";
 
 export function SignIn() {
   const [validated, setValidated] = useState(false);
@@ -30,20 +34,18 @@ export function SignIn() {
 
     clearCurrentSession();
 
-    httpRequest("POST", "auth/signin", userSignInDTO)
-      .then((response) => {
-        const responseData = response.data as UserDTO;
-        setJwtToken(responseData.token);
-        setValidated(true);
-        navigate("/");
-        console.log(responseData);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert(
-          "The email or password you entered is incorrect. Please re-check your credentials and try again."
-        );
-      });
+    httpRequest('POST', 'auth/signin', userSignInDTO)
+    .then((response) => {
+      const responseData = response.data as UserDTO
+      storeUserData(responseData)
+      setValidated(true)
+      navigate('/welcome')
+      console.log(responseData)
+    })
+    .catch((error) => {
+      console.log(error)
+      alert("The email or password you entered is incorrect. Please re-check your credentials and try again.")
+    })
   };
 
   const isValidEmail = (email: string) => {

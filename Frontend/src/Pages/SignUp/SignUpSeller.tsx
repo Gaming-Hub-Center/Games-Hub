@@ -14,12 +14,12 @@ import {
   faHashtag,
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
-import { httpRequest } from "../../Controller/HttpProxy";
-import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { setJwtToken } from "../../CurrentSession";
-import { SellerRegistrationDTO } from "../../Controller/DTO/RegisterationDTO/SellerRegistrationDTO";
-import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
 import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
+import { SellerRegistrationDTO } from "../../Controller/DTO/user/SellerRegistrationDTO";
+import { httpRequest } from "../../Controller/HttpProxy";
+import { UserDTO } from "../../Controller/DTO/user/UserDTO";
+import { clearCurrentSession, storeUserData } from "../../CurrentSession";
+import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
@@ -137,7 +137,7 @@ export function SignUpSeller() {
     httpRequest("POST", "registration/seller", sellerRegistrationDTO)
       .then((response) => {
         const responseData = response.data as UserDTO;
-        setJwtToken(responseData.token);
+        storeUserData(responseData);
         setValidated(true);
         navigate("/");
         console.log(responseData);

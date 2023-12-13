@@ -8,6 +8,7 @@ import { HomeGames } from "./Pages/Buyer/Home/Games";
 import { About } from "./Pages/About";
 import { HomeAccessories } from "./Pages/Buyer/Home/Accessories";
 import "./App.css";
+import CatalogRequestForm from "./Pages/product-request-form/CatalogRequestForm";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           path="/buyer/home/accessories"
           element={<HomeAccessories />}
         ></Route>
+        <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
       </Routes>
     </Container>
   );

@@ -13,11 +13,12 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { httpRequest } from "../../Controller/HttpProxy";
-import { UserDTO } from "../../Controller/DTO/UserDTO";
-import { setJwtToken } from "../../CurrentSession";
-import { BuyerRegistrationDTO } from "../../Controller/DTO/RegisterationDTO/BuyerRegistrationDTO";
+
 import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
 import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
+import { UserDTO } from "../../Controller/DTO/user/UserDTO";
+import { clearCurrentSession, storeUserData } from "../../CurrentSession";
+import { BuyerRegistrationDTO } from "../../Controller/DTO/user/BuyerRegistrationDTO";
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
@@ -99,7 +100,7 @@ export function SignUpBuyer() {
     httpRequest("POST", "registration/buyer", buyerRegistrationDTO)
       .then((response) => {
         const responseData = response.data as UserDTO;
-        setJwtToken(responseData.token);
+        storeUserData(responseData);
         setValidated(true);
         navigate("/");
         console.log(responseData);
