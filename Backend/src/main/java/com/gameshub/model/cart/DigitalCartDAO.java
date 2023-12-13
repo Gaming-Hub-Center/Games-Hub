@@ -4,12 +4,9 @@ package com.gameshub.model.cart;
 import com.gameshub.model.product.*;
 import com.gameshub.model.user.BuyerDAO;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Setter
-@Getter
+@Data
 @Entity
 @Table(name = "digital_cart")
 @NoArgsConstructor

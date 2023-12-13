@@ -6,8 +6,7 @@ import lombok.*;
 
 import java.util.Objects;
 
-@Getter
-@Setter
+@Data
 @MappedSuperclass
 public abstract class CartDAO {
 
