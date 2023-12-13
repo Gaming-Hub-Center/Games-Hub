@@ -26,6 +26,7 @@ export const getBalance = () => {
 
 export const getNationalID = () => {
     return window.sessionStorage.getItem("nationalID")
+
 }
 
 export const getDateJoined = () => {
@@ -59,5 +60,5 @@ export const storeUserData = (userDTO: UserDTO) => {
 }
 
 export const clearCurrentSession = () => {
-    window.sessionStorage.clear()
-}
+  window.sessionStorage.clear();
+};
