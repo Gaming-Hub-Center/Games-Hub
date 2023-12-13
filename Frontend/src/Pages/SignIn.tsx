@@ -39,7 +39,7 @@ export function SignIn() {
       const responseData = response.data as UserDTO
       storeUserData(responseData)
       setValidated(true)
-      navigate('/welcome')
+      navigate('/')
       console.log(responseData)
     })
     .catch((error) => {

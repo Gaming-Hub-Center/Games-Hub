@@ -8,7 +8,7 @@ import { getId } from "../CurrentSession";
 // Define the types for the data structure
 type Buyer = {
   id: number;
-  name: string;
+  title: string;
   email: string;
   phone: string;
   address: string;
@@ -152,7 +152,7 @@ const PhysicalCart = () => {
                   <tbody>
                     {cartItems.map((item) => (
                       <tr key={item.id.productID}>
-                        <td>{item.product.name}</td>
+                        <td>{item.product.title}</td>
                         <td>${item.product.price.toFixed(2)}</td>
                         <td>{item.count}</td>
                         <td>${(item.product.price * item.count).toFixed(2)}</td>
