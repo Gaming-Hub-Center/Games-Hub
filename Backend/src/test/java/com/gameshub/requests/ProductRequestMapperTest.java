@@ -22,11 +22,6 @@ public class ProductRequestMapperTest {
     @Autowired
     ProductRequestMapper productRequestMapper;
 
-//    @AfterEach
-//    void afterEach() {
-//        productRequestMapper.userService.();
-//    }
-
     @Test
     void PhysicalProductRequestMapperFromDAOtoDTOTest() {
         SellerDAO seller = new SellerDAO(
