@@ -8,18 +8,23 @@ import com.gameshub.repository.request.PhysicalProductRequestRepository;
 import com.gameshub.service.request.approve_product_update_and_create.PhysicalProductApprovalStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class PhysicalProductApprovalStrategyTest {
+@SpringBootTest
+class PhysicalProductApprovalStrategyTest {
+
     @Mock
     private PhysicalProductRequestRepository physicalProductRequestRepository;
 
@@ -29,59 +34,69 @@ public class PhysicalProductApprovalStrategyTest {
     @InjectMocks
     private PhysicalProductApprovalStrategy strategy;
 
+    @Captor
+    private ArgumentCaptor<PhysicalProductDAO> productCaptor;
+
+    private PhysicalProductRequestDAO requestDAO;
+    private PhysicalProductDAO productDAO;
+
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        requestDAO = new PhysicalProductRequestDAO();
+        productDAO = new PhysicalProductDAO();
+        // Setup the initial state of requestDAO and productDAO
     }
 
     @Test
-    void approveAndCreateProduct_Success() {
-        int requestId = 1;
-        PhysicalProductRequestDAO mockRequest = new PhysicalProductRequestDAO();
-        when(physicalProductRequestRepository.findById(requestId)).thenReturn(Optional.of(mockRequest));
+    void approveAndCreateProduct_NormalOperation() {
+        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
 
-        strategy.approveAndCreateProduct(requestId);
+        strategy.approveAndCreateProduct(1);
 
-        verify(physicalProductRequestRepository).save(mockRequest);
-        verify(physicalProductRepository).save(any(PhysicalProductDAO.class));
+        verify(physicalProductRepository).save(productCaptor.capture());
+        PhysicalProductDAO capturedProduct = productCaptor.getValue();
+
+        // Assertions to check if capturedProduct has the right properties
+        assertEquals(requestDAO.getTitle(), capturedProduct.getTitle());
+        // ...other assertions
     }
 
     @Test
-    void approvedAndUpdateProduct_Success() {
-        int requestId = 1;
-        int productId = 2;
-        PhysicalProductRequestDAO mockRequest = new PhysicalProductRequestDAO();
-        PhysicalProductDAO mockProduct = new PhysicalProductDAO();
-        when(physicalProductRequestRepository.findById(requestId)).thenReturn(Optional.of(mockRequest));
-        when(physicalProductRepository.findById(productId)).thenReturn(Optional.of(mockProduct));
+    void approveAndCreateProduct_RequestNotFound() {
+        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.empty());
 
-        strategy.approvedAndUpdateProduct(requestId, productId);
-
-        verify(physicalProductRequestRepository).save(mockRequest);
-        verify(physicalProductRepository).save(mockProduct);
+        assertThrows(ResourceNotFoundException.class, () -> strategy.approveAndCreateProduct(1));
     }
 
     @Test
-    void approveAndCreateProduct_RequestNotFound_ThrowsException() {
-        int requestId = 1;
-        when(physicalProductRequestRepository.findById(requestId)).thenReturn(Optional.empty());
+    void approveAndUpdateProduct_NormalOperation() {
+        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
+        when(physicalProductRepository.findById(anyInt())).thenReturn(Optional.of(productDAO));
 
-        assertThrows(ResourceNotFoundException.class, () -> {
-            strategy.approveAndCreateProduct(requestId);
-        });
+        strategy.approvedAndUpdateProduct(1, 1);
+
+        verify(physicalProductRepository).save(productCaptor.capture());
+        PhysicalProductDAO capturedProduct = productCaptor.getValue();
+
+        // Assertions to check if capturedProduct has been updated correctly
+        assertEquals(requestDAO.getTitle(), capturedProduct.getTitle());
+        // ...other assertions
     }
 
     @Test
-    void approvedAndUpdateProduct_ProductNotFound_ThrowsException() {
-        int requestId = 1;
-        int productId = 2;
-        PhysicalProductRequestDAO mockRequest = new PhysicalProductRequestDAO();
-        when(physicalProductRequestRepository.findById(requestId)).thenReturn(Optional.of(mockRequest));
-        when(physicalProductRepository.findById(productId)).thenReturn(Optional.empty());
+    void approveAndUpdateProduct_RequestNotFound() {
+        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.empty());
 
-        assertThrows(ResourceNotFoundException.class, () -> {
-            strategy.approvedAndUpdateProduct(requestId, productId);
-        });
+        assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
     }
+
+    @Test
+    void approveAndUpdateProduct_ProductNotFound() {
+        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
+        when(physicalProductRepository.findById(anyInt())).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
+    }
+
 
 }

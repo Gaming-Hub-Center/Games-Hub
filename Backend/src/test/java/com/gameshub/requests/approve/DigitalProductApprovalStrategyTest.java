@@ -2,26 +2,34 @@ package com.gameshub.requests.approve;
 
 import com.gameshub.exception.ResourceNotFoundException;
 import com.gameshub.model.product.DigitalProductDAO;
+import com.gameshub.model.product.PhysicalProductDAO;
 import com.gameshub.model.request.DigitalProductRequestDAO;
+import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.repository.product.DigitalProductRepository;
+import com.gameshub.repository.product.PhysicalProductRepository;
 import com.gameshub.repository.request.DigitalProductRequestRepository;
+import com.gameshub.repository.request.PhysicalProductRequestRepository;
 import com.gameshub.service.request.approve_product_update_and_create.DigitalProductApprovalStrategy;
+import com.gameshub.service.request.approve_product_update_and_create.PhysicalProductApprovalStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class DigitalProductApprovalStrategyTest {
+class DigitalProductApprovalStrategyTest {
+
     @Mock
     private DigitalProductRequestRepository digitalProductRequestRepository;
 
@@ -31,58 +39,69 @@ public class DigitalProductApprovalStrategyTest {
     @InjectMocks
     private DigitalProductApprovalStrategy strategy;
 
+    @Captor
+    private ArgumentCaptor<DigitalProductDAO> productCaptor;
+
+    private DigitalProductRequestDAO requestDAO;
+    private DigitalProductDAO productDAO;
+
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        requestDAO = new DigitalProductRequestDAO();
+        productDAO = new DigitalProductDAO();
+        // Setup the initial state of requestDAO and productDAO
     }
 
     @Test
-    void approveAndCreateProduct_Success() {
-        int requestId = 1;
-        DigitalProductRequestDAO mockRequest = new DigitalProductRequestDAO();
-        when(digitalProductRequestRepository.findById(requestId)).thenReturn(Optional.of(mockRequest));
+    void approveAndCreateProduct_NormalOperation() {
+        when(digitalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
 
-        strategy.approveAndCreateProduct(requestId);
+        strategy.approveAndCreateProduct(1);
 
-        verify(digitalProductRequestRepository).save(mockRequest);
-        verify(digitalProductRepository).save(any(DigitalProductDAO.class));
+        verify(digitalProductRepository).save(productCaptor.capture());
+        DigitalProductDAO capturedProduct = productCaptor.getValue();
+
+        // Assertions to check if capturedProduct has the right properties
+        assertEquals(requestDAO.getTitle(), capturedProduct.getTitle());
+        // ...other assertions
     }
 
     @Test
-    void approvedAndUpdateProduct_Success() {
-        int requestId = 1;
-        int productId = 2;
-        DigitalProductRequestDAO mockRequest = new DigitalProductRequestDAO();
-        DigitalProductDAO mockProduct = new DigitalProductDAO();
-        when(digitalProductRequestRepository.findById(requestId)).thenReturn(Optional.of(mockRequest));
-        when(digitalProductRepository.findById(productId)).thenReturn(Optional.of(mockProduct));
+    void approveAndCreateProduct_RequestNotFound() {
+        when(digitalProductRequestRepository.findById(anyInt())).thenReturn(Optional.empty());
 
-        strategy.approvedAndUpdateProduct(requestId, productId);
-
-        verify(digitalProductRequestRepository).save(mockRequest);
-        verify(digitalProductRepository).save(mockProduct);
+        assertThrows(ResourceNotFoundException.class, () -> strategy.approveAndCreateProduct(1));
     }
 
     @Test
-    void approveAndCreateProduct_RequestNotFound_ThrowsException() {
-        int requestId = 1;
-        when(digitalProductRequestRepository.findById(requestId)).thenReturn(Optional.empty());
+    void approveAndUpdateProduct_NormalOperation() {
+        when(digitalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
+        when(digitalProductRepository.findById(anyInt())).thenReturn(Optional.of(productDAO));
 
-        assertThrows(ResourceNotFoundException.class, () -> {
-            strategy.approveAndCreateProduct(requestId);
-        });
+        strategy.approvedAndUpdateProduct(1, 1);
+
+        verify(digitalProductRepository).save(productCaptor.capture());
+        DigitalProductDAO capturedProduct = productCaptor.getValue();
+
+        // Assertions to check if capturedProduct has been updated correctly
+        assertEquals(requestDAO.getTitle(), capturedProduct.getTitle());
+        // ...other assertions
     }
 
     @Test
-    void approvedAndUpdateProduct_ProductNotFound_ThrowsException() {
-        int requestId = 1;
-        int productId = 2;
-        DigitalProductRequestDAO mockRequest = new DigitalProductRequestDAO();
-        when(digitalProductRequestRepository.findById(requestId)).thenReturn(Optional.of(mockRequest));
-        when(digitalProductRepository.findById(productId)).thenReturn(Optional.empty());
+    void approveAndUpdateProduct_RequestNotFound() {
+        when(digitalProductRequestRepository.findById(anyInt())).thenReturn(Optional.empty());
 
-        assertThrows(ResourceNotFoundException.class, () -> {
-            strategy.approvedAndUpdateProduct(requestId, productId);
-        });
+        assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
     }
+
+    @Test
+    void approveAndUpdateProduct_ProductNotFound() {
+        when(digitalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
+        when(digitalProductRepository.findById(anyInt())).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
+    }
+
+
 }

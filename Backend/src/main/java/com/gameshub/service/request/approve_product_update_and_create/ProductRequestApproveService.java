@@ -15,20 +15,12 @@ public class ProductRequestApproveService {
 
     public void approveProductCreation(String productType, int requestId) {
         ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
-        try {
-            strategy.approveAndCreateProduct(requestId);
-        } catch (ResourceNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+        strategy.approveAndCreateProduct(requestId);
     }
 
     public void approveProductUpdate(String productType, int requestId, int productId) {
         ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
-        try {
-            strategy.approvedAndUpdateProduct(requestId, productId);
-        } catch (ResourceNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+        strategy.approvedAndUpdateProduct(requestId, productId);
     }
 
     // Factory of strategies
