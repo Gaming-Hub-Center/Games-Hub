@@ -4,22 +4,15 @@ import com.gameshub.controller.DTO.DigitalProductDTO;
 import com.gameshub.controller.DTO.PhysicalProductDTO;
 import com.gameshub.controller.DTO.ProductBriefDTO;
 import com.gameshub.exception.ResourceNotFoundException;
-import com.gameshub.model.product.DigitalImageDAO;
 import com.gameshub.model.product.DigitalProductDAO;
-import com.gameshub.model.product.PhysicalImageDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
 import com.gameshub.repository.DigitalImageRepository;
 import com.gameshub.repository.DigitalProductRepository;
 import com.gameshub.repository.PhysicalImageRepository;
 import com.gameshub.repository.PhysicalProductRepository;
 import com.gameshub.utils.ProductMapper;
-import jakarta.persistence.EntityManager;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @RequiredArgsConstructor
