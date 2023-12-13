@@ -19,13 +19,13 @@ public class OrderController {
     private final PhysicalOrderItemRepository physicalOrderItemRepository;
     private final OrderService orderService;
 
-    @PostMapping("physical/checkout")
+    @PostMapping("checkout/physical")
     public ResponseEntity<String> physicalCheckout(@RequestBody OrderCheckoutDTO orderCheckoutDTO) {
         orderService.orderPhysical(orderCheckoutDTO.getBuyerID(), orderCheckoutDTO.isWallet());
         return ResponseEntity.ok("Ordered Successfully!");
     }
 
-    @PostMapping("digital/checkout")
+    @PostMapping("checkout/digital")
     public ResponseEntity<String> digitalCheckout(@RequestBody OrderCheckoutDTO orderCheckoutDTO) {
         orderService.orderDigital(orderCheckoutDTO.getBuyerID(), orderCheckoutDTO.isWallet());
         return ResponseEntity.ok("Ordered Successfully!");
