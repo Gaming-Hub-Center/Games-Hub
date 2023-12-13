@@ -61,9 +61,8 @@ public class ProductService {
         List<ProductBriefDTO> productDTOs = physicalProductRepository.findAllByTitleContainingIgnoreCase(key).orElse(null);
         if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
-            List<byte[]> images = physicalImageRepository.findAllByProduct_id(productDTO.getId()).orElse(null);
-            if(images == null || images.isEmpty()) continue;
-            productDTO.setImage(images.get(0));
+            byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
         }
         return productDTOs;
     }
@@ -72,9 +71,8 @@ public class ProductService {
         List<ProductBriefDTO> productDTOs = digitalProductRepository.findAllByTitleContainingIgnoreCase(key).orElse(null);
         if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
-            List<byte[]> images = digitalImageRepository.findAllByProduct_id(productDTO.getId()).orElse(null);
-            if(images == null || images.isEmpty()) continue;
-            productDTO.setImage(images.get(0));
+            byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
         }
         return productDTOs;
     }
@@ -83,9 +81,8 @@ public class ProductService {
         category = (category == null) ? null : category.toLowerCase();
         List<ProductBriefDTO> productDTOs = physicalProductRepository.filterPhysical(lowerBound, upperBound, category);
         for(ProductBriefDTO productDTO: productDTOs) {
-            List<byte[]> images = physicalImageRepository.findAllByProduct_id(productDTO.getId()).orElse(null);
-            if(images == null || images.isEmpty()) continue;
-            productDTO.setImage(images.get(0));
+            byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
         }
         return productDTOs;
     }
@@ -94,9 +91,8 @@ public class ProductService {
         category = (category == null) ? null : category.toLowerCase();
         List<ProductBriefDTO> productDTOs = digitalProductRepository.filterPhysical(lowerBound, upperBound, category);
         for(ProductBriefDTO productDTO: productDTOs) {
-            List<byte[]> images = digitalImageRepository.findAllByProduct_id(productDTO.getId()).orElse(null);
-            if(images == null || images.isEmpty()) continue;
-            productDTO.setImage(images.get(0));
+            byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
         }
         return productDTOs;
     }
