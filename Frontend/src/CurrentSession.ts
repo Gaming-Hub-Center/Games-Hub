@@ -26,6 +26,7 @@ export const getBalance = () => {
 
 export const getNationalID = () => {
     return window.sessionStorage.getItem("nationalID")
+
 }
 
 export const getDateJoined = () => {
@@ -41,8 +42,8 @@ export const getVatRegistrationNumber = () => {
 }
 
 export const getJwtToken = () => {
-  return window.sessionStorage.getItem("jwtToken");
-};
+    return window.sessionStorage.getItem("jwtToken")
+}
 
 export const storeUserData = (userDTO: UserDTO) => {
     window.sessionStorage.setItem("id", userDTO.id.toString())

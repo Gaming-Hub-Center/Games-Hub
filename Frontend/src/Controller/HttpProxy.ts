@@ -17,4 +17,3 @@ export const httpRequest = (method: string, url: string, data?: any) => {
     data: data,
   });
 };
-
