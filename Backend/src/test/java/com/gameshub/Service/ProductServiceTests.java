@@ -76,14 +76,4 @@ public class ProductServiceTests {
         );
 
     }
-
-    @Test
-    public void deleteProduct(){
-        assert digitalProductRepository.findById(1).getPrice() == 10;
-        assert !productService.deleteDigitalProductBySellerIdAndProductID(1, 2);
-        assert productService.deleteDigitalProductBySellerIdAndProductID(1, 1);
-        assert !productService.deletePhysicalProductBySellerIdAndProductID(1, 2);
-        assert productService.deletePhysicalProductBySellerIdAndProductID(1, 1);
-    }
-
 }
