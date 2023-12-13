@@ -9,13 +9,21 @@ import java.time.LocalDate;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
 @Entity
 @Table(name = "physical_product")
 public class PhysicalProductDAO extends ProductDAO {
 
     public PhysicalProductDAO(int id, String title, int price, String description, LocalDate postDate, int count, int sellerId, String category) {
         super(id, title, price, description, postDate, count, sellerId, category);
+    }
+
+    public PhysicalProductDAO(){
+        this.title = "";
+        this.price = 0;
+        this.description = "";
+        this.postDate = LocalDate.now();
+        this.count = 0;
+        this.category = "";
     }
 
 }

@@ -6,6 +6,8 @@ import { SignUpSeller } from "./Pages/SignUp/SignUpSeller";
 import { SignUpBuyer } from "./Pages/SignUp/SignUpBuyer";
 import CatalogRequestForm from "./Components/product-request-form/CatalogRequestForm";
 import { ProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/ProductCatalog";
+import { ProductView } from "./Pages/Seller_Pages/ProductView/ProductView";
+import { ProductEdit } from "./Pages/Seller_Pages/ProductEdit/ProductEdit";
 
 function App() {
   return (
@@ -26,7 +28,8 @@ function App() {
         <Route path="/signup/seller" element={<SignUpSeller />}></Route>
         <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
         <Route path="/seller/:sellerId/catalog" element={<ProductCatalog />}></Route>
-        <Route path="/seller/:sellerId/edit/:productId" element={<ProductCatalog />}></Route>
+        <Route path="/seller/:sellerId/product/:productType/:productId/:inCatalog" element={<ProductView />}></Route>
+        <Route path="/seller/:sellerId/edit/product/:productType/:productId/:inCatalog" element={<ProductEdit />}></Route>
       </Routes>
     </Container>
   );

@@ -1,18 +1,21 @@
-export class ProductRequestDAO {
+import { ProductDAO } from "../product/ProductDAO"
+
+export class ProductRequestDAO extends ProductDAO{
     constructor(
-        public id: number,
-        public sellerId: number,
-        public title: string,
-        // public imageURLs: string[],
-        public price: number,
-        public description: string,
-        public postDate: Date,
-        public count: number,
-        public productType: string,
-        public category: string,
+        id: number,
+        sellerId: number,
+        title: string,
+        // imageURLs: string[],
+        price: number,
+        description: string,
+        postDate: number[],
+        count: number,
+        productType: string,
+        category: string,
         public status: string,
         public requestType: string
         ){
+            super(id, sellerId, title, price, description, postDate, count, productType, category)
     }
 
 }

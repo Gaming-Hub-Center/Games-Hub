@@ -6,24 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/request/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/DigitalProductRequestDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/PhysicalProductRequestDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/ProductRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/request/ProductRequestDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/DigitalProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/PhysicalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/product/PhysicalProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/DigitalProductRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/DigitalProductRequestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/PhysicalProductRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/request/PhysicalProductRequestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/product/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/CurrentSession.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/CurrentSession.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/Components/UI_Components/GH_Btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Components/UI_Components/GH_Btn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalogItem.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductCatalog/ProductCatalogItem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductEdit/ProductEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductEdit/ProductEdit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductView/ProductView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/Seller_Pages/ProductView/ProductView.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +146,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.BackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;GH-178-Seller-Views-Products-Catalog&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;GH-176-Seller-Update-Product-details&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/CSED/semester5/SWE/Games-Hub/Backend&quot;,
@@ -219,22 +207,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.DigitalProductRequestRepositoryTest" />
-      <option name="METHOD_NAME" value="testUpdateDigitalProductRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ProductServiceTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
@@ -266,6 +238,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProductServiceTests.editProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.Service.ProductServiceTests" />
+      <option name="METHOD_NAME" value="editProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <envs>
         <env name="security.jwt.token.secret-key" value="H67t1MCP/ZB2Z40xPPgqaucMdrDu+h/K5stVCctqkZk=" />
@@ -279,18 +267,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.BackendApplication" />
+      <item itemvalue="JUnit.ProductServiceTests.editProduct" />
       <item itemvalue="JUnit.ProductServiceTests" />
       <item itemvalue="JUnit.ProductServiceTests.deleteProduct" />
       <item itemvalue="JUnit.DigitalProductRequestRepositoryTest.testDeleteDigitalProductRequest" />
-      <item itemvalue="JUnit.DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.BackendApplication" />
+        <item itemvalue="JUnit.ProductServiceTests.editProduct" />
         <item itemvalue="JUnit.ProductServiceTests.deleteProduct" />
         <item itemvalue="JUnit.ProductServiceTests" />
         <item itemvalue="JUnit.DigitalProductRequestRepositoryTest.testDeleteDigitalProductRequest" />
-        <item itemvalue="JUnit.DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest" />
       </list>
     </recent_temporary>
   </component>

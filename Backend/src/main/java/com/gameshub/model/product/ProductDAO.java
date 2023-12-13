@@ -13,27 +13,27 @@ public abstract class ProductDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    protected int id;
 
     @Column(name = "title")
-    private String title;
+    protected String title;
 
     @Column(name = "price")
-    private int price;
+    protected int price;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "post_date")
-    private LocalDate postDate; // Date Approved
+    protected LocalDate postDate; // Date Approved
 
     @Column(name = "count")
-    private int count;
+    protected int count;
 
     @Column(name = "sellerid")
-    private int sellerId;
+    protected int sellerId;
 
     @Column(name = "category")
-    private String category;
+    protected String category;
 
 }

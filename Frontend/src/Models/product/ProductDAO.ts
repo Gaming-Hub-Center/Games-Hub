@@ -6,7 +6,7 @@ export class ProductDAO {
         // public imageURLs: string[],
         public price: number,
         public description: string,
-        public postDate: Date,
+        public postDate: number[],
         public count: number,
         public productType: string,
         public category: string

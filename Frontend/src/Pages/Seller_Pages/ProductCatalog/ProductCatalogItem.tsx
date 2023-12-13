@@ -7,11 +7,12 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 interface ProductCatalogItemProps{
     item: ProductDAO | ProductRequestDAO;
+    onClickHandler: (event) => void;
     onDeleteHandler: (event) => void;
     onEditHandler: (event) => void;
 }
 
-export function ProductCatalogItem({item, onDeleteHandler, onEditHandler}: ProductCatalogItemProps){
+export function ProductCatalogItem({item, onClickHandler, onDeleteHandler, onEditHandler}: ProductCatalogItemProps){
 
 
     return (
@@ -19,16 +20,16 @@ export function ProductCatalogItem({item, onDeleteHandler, onEditHandler}: Produ
             {/* <div className="product-image">
                 <img src={item.imageURLs[0]} alt={"7amada helal"} />
             </div> */}
-            <div className="product-details">
+            <div onClick={onClickHandler} className="product-details">
                 <h5 className="product-details-title">{item.title}</h5> 
                 <p><span className="product-details-type">Stock:</span> {item.count}</p>
                 <p><span className="product-details-type">Product ID:</span> {item.id}</p>
                 {item.postDate != null ? <p><span className="product-details-type">Date Added:</span> {item.postDate[2]}-{item.postDate[1]}-{item.postDate[0]}</p> : <></>}
             </div>
             <span className="product-price">${item.price}</span>
-            <div className="catalog-actions">
-                <button onClick={onDeleteHandler} className="GH_Btn trash"><i className="bi bi-trash"></i></button><br />
-                <button onClick={onEditHandler} className="GH_Btn edit"><i className="bi bi-pencil"></i></button>
+            <div className="GH_Btn_series catalog-actions">
+                <button onClick={onDeleteHandler} className="GH_Btn trash series top"><i className="bi bi-trash"></i></button>
+                <button onClick={onEditHandler} className="GH_Btn edit series bottom"><i className="bi bi-pencil"></i></button>
             </div>
         </div> 
     );
