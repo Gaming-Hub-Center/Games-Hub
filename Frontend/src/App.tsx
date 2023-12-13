@@ -9,7 +9,12 @@ import { About } from "./Pages/About";
 import { HomeAccessories } from "./Pages/Buyer/Home/Accessories";
 import "./App.css";
 import CatalogRequestForm from "./Pages/product-request-form/CatalogRequestForm";
+
+import PhysicalCart from './Pages/PhysicalCart';
+import DigitalCart from "./Pages/DigitalCart";
+
 import { ProductView } from "./Components/ProductView";
+
 
 function App() {
   return (
@@ -28,6 +33,11 @@ function App() {
         <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/signup/buyer" element={<SignUpBuyer />}></Route>
         <Route path="/signup/seller" element={<SignUpSeller />}></Route>
+
+        <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
+        <Route path="/physical-cart" element={<PhysicalCart />}></Route>
+        <Route path="/digital-cart" element={<DigitalCart />}></Route>
+
         <Route path="/buyer/home/games" element={<HomeGames />}></Route>
         <Route
           path="/buyer/home/accessories"
@@ -38,6 +48,7 @@ function App() {
           element={<CatalogRequestForm />}
         ></Route>
         <Route path="/buyer/ProductView" element={<ProductView />}></Route>
+
       </Routes>
     </Container>
   );
