@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalImageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalImageDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/DigitalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/DigitalProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/PhysicalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/PhysicalProductRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/CartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/CartServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,140 +49,140 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;JUnit.BackendApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BuyerRepositoryTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BuyerRepositoryTests.findByEmailTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ConcreteProductFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DataAccessLayer in Backend.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductDAOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductDAOTest.testBuilder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductDTOTest.testDigitalProductDTO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductDTOTest.testDigitalProductDTO_.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductRequestDAOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductRequestRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductRequestRepositoryTest.testDeleteDigitalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.findByEmailTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testCreateUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessBuyerCreation_Success.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessBuyerCreation_UserAlreadyExists.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessSellerCreation_UserAlreadyExists.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_MissingUserID.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_NullOAuth2User.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_Success.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_UserExists.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_UserExists_.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2BuyerSignUpUnitTest.testSignupPageBuyer_SuccessfulSignup.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2ControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2ControllerTest.testSignupPageBuyer_EmailAlreadyExists.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2ControllerTest.testSignupPageBuyer_ExistingBuyerLogin.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2ControllerTest.testSignupPageBuyer_NotExistingBuyerLogin.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2ControllerTest.testSignupPageBuyer_SuccessfulSignup.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2ControllerTest.testSignupPageSeller_EmailAlreadyExists.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2ControllerTest.testSignupPageSeller_SuccessfulSignup.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuth2SignUpUnitTest.testProcessUserCreation_NullOAuth2User.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuthServiceUnitTest.creatSeller_SuccessfulCreation.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuthServiceUnitTest.createUser_SuccessfulCreation.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailExistsSeller.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OAuthServiceUnitTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PhysicalProductDAOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PhysicalProductDTOTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PhysicalProductDTOTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.PhysicalProductDTOTest.testPhysicalProductDTO_.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PhysicalProductRequestRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PhysicalProductRequestRepositoryTest.getAllRequestsTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.PhysicalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductControllerTest.createDigitalProduct_Success.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDTOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDTOTest.testProductRequestDTO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDTOTest.testProductRequestDTOGettersAndSetters.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductManagerTest.saveDigitalProductTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductManagerTest.savePhysicalProductTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductManagerTest.testCreatePhysicalProduct.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductMapperTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductMapperTest.testToProductDAODigitalProductDTO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductMapperTest.testToProductDTOConversion.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductMapperTest.testToProductDTODigitalProductDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductMapperTest.testToProductDTOPhysicalProductDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductMapperTest.testToProductDTO_DigitalProductDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductMapperTest.testToProductDTO_PhysicalProductDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestDAOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestDAOTest.testDigitalProductRequestDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestDAOTest.testPhysicalProductRequestDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestManagerTest.saveDigitalProductRequest_Success.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestManagerTest.savePhysicalProductRequest_Success.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperInteractionWithSellerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperInteractionWithSellerTest.getAllSellersFromUserServiceInMapper.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperInteractionWithSellerTest.getOneSellerFromUserServiceInMapper.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.ProductRequestMapperTest.DigitalProductRequestFromDTOtoDAOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.DigitalProductRequestMapperFromDAOtoDTOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.PhysicalProductRequestFromDTOtoDAOTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.ProductRequestMapperTest.PhysicalProductRequestMapperFromDAOtoDTOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.getAllSellersFromUserServiceInMapper.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.ProductRequestMapperTest.getOneSellerFromUserServiceInMapper.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.shouldMapDAOtoDTO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.shouldMapDigitalProductRequestDTOToDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.testDigitalProductRequestDTOToDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.testMappingPhysicalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.testPhysicalProductRequestDTOToDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.toDAODigitalProductRequestDTOValidTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.toDAOPhysicalProductRequestDTOValidTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.toDTODigitalProductRequestDAOValidTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAONullTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAOValidTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestRepositoryTest.testSavePhysicalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestServiceTest.testEndToEndDigitalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestServiceTest.testEndToEndPhysicalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestServiceTest.testSaveDigitalProductRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestServiceTest.testSaveProductRequestWithNullInput.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductRequestServiceTest.testSaveProductRequestWithUnrecognizedDTO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RequestMapperTest.testToDTOPhysicalProductRequestDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SellerRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SignInTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SignInTests.testBuyerValidSignIn.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SignUpTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.com.gameshub in Backend.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.gameshub in Backend.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.java in Backend.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.products in Backend.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.requests in Backend.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.utils in Backend.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Backend [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Backend [install].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.BackendApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;GH-209-Seller-Create-Product&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CSED/semester5/SWE/Games-Hub/Backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JUnit.BackendApplicationTests.executor": "Run",
+    "JUnit.BuyerRepositoryTests.executor": "Run",
+    "JUnit.BuyerRepositoryTests.findByEmailTests.executor": "Run",
+    "JUnit.ConcreteProductFactoryTest.executor": "Run",
+    "JUnit.DataAccessLayer in Backend.executor": "Run",
+    "JUnit.DigitalProductDAOTest.executor": "Run",
+    "JUnit.DigitalProductDAOTest.testBuilder.executor": "Run",
+    "JUnit.DigitalProductDTOTest.testDigitalProductDTO.executor": "Run",
+    "JUnit.DigitalProductDTOTest.testDigitalProductDTO_.executor": "Run",
+    "JUnit.DigitalProductRequestDAOTest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.testDeleteDigitalProductRequest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.executor": "Coverage",
+    "JUnit.OAuth2BuyerSignUpUnitTest.findByEmailTests.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testCreateUser.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessBuyerCreation_Success.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessBuyerCreation_UserAlreadyExists.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessSellerCreation_UserAlreadyExists.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_MissingUserID.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_NullOAuth2User.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_Success.executor": "Debug",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_UserExists.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testProcessUserCreation_UserExists_.executor": "Run",
+    "JUnit.OAuth2BuyerSignUpUnitTest.testSignupPageBuyer_SuccessfulSignup.executor": "Run",
+    "JUnit.OAuth2ControllerTest.executor": "Run",
+    "JUnit.OAuth2ControllerTest.testSignupPageBuyer_EmailAlreadyExists.executor": "Run",
+    "JUnit.OAuth2ControllerTest.testSignupPageBuyer_ExistingBuyerLogin.executor": "Run",
+    "JUnit.OAuth2ControllerTest.testSignupPageBuyer_NotExistingBuyerLogin.executor": "Run",
+    "JUnit.OAuth2ControllerTest.testSignupPageBuyer_SuccessfulSignup.executor": "Run",
+    "JUnit.OAuth2ControllerTest.testSignupPageSeller_EmailAlreadyExists.executor": "Run",
+    "JUnit.OAuth2ControllerTest.testSignupPageSeller_SuccessfulSignup.executor": "Run",
+    "JUnit.OAuth2SignUpUnitTest.testProcessUserCreation_NullOAuth2User.executor": "Run",
+    "JUnit.OAuthServiceUnitTest.creatSeller_SuccessfulCreation.executor": "Run",
+    "JUnit.OAuthServiceUnitTest.createUser_SuccessfulCreation.executor": "Run",
+    "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller.executor": "Run",
+    "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailExistsSeller.executor": "Run",
+    "JUnit.OAuthServiceUnitTest.executor": "Run",
+    "JUnit.PhysicalProductDAOTest.executor": "Run",
+    "JUnit.PhysicalProductDTOTest (1).executor": "Run",
+    "JUnit.PhysicalProductDTOTest.executor": "Debug",
+    "JUnit.PhysicalProductDTOTest.testPhysicalProductDTO_.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.getAllRequestsTest.executor": "Debug",
+    "JUnit.PhysicalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest.executor": "Run",
+    "JUnit.ProductControllerTest.createDigitalProduct_Success.executor": "Run",
+    "JUnit.ProductDTOTest.executor": "Run",
+    "JUnit.ProductDTOTest.testProductRequestDTO.executor": "Run",
+    "JUnit.ProductDTOTest.testProductRequestDTOGettersAndSetters.executor": "Run",
+    "JUnit.ProductManagerTest.executor": "Run",
+    "JUnit.ProductManagerTest.saveDigitalProductTest.executor": "Run",
+    "JUnit.ProductManagerTest.savePhysicalProductTest.executor": "Run",
+    "JUnit.ProductManagerTest.testCreatePhysicalProduct.executor": "Run",
+    "JUnit.ProductMapperTest.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDAODigitalProductDTO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTOConversion.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTODigitalProductDAO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTOPhysicalProductDAO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTO_DigitalProductDAO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTO_PhysicalProductDAO.executor": "Run",
+    "JUnit.ProductRequestDAOTest.executor": "Run",
+    "JUnit.ProductRequestDAOTest.testDigitalProductRequestDAO.executor": "Run",
+    "JUnit.ProductRequestDAOTest.testPhysicalProductRequestDAO.executor": "Run",
+    "JUnit.ProductRequestManagerTest.executor": "Run",
+    "JUnit.ProductRequestManagerTest.saveDigitalProductRequest_Success.executor": "Run",
+    "JUnit.ProductRequestManagerTest.savePhysicalProductRequest_Success.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.getAllSellersFromUserServiceInMapper.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.getOneSellerFromUserServiceInMapper.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.DigitalProductRequestFromDTOtoDAOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.DigitalProductRequestMapperFromDAOtoDTOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.PhysicalProductRequestFromDTOtoDAOTest.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.PhysicalProductRequestMapperFromDAOtoDTOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.getAllSellersFromUserServiceInMapper.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.getOneSellerFromUserServiceInMapper.executor": "Run",
+    "JUnit.ProductRequestMapperTest.shouldMapDAOtoDTO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.shouldMapDigitalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testDigitalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testMappingPhysicalProductRequest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testPhysicalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDAODigitalProductRequestDTOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDAOPhysicalProductRequestDTOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTODigitalProductRequestDAOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAONullTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAOValidTest.executor": "Run",
+    "JUnit.ProductRequestRepositoryTest.executor": "Run",
+    "JUnit.ProductRequestRepositoryTest.testSavePhysicalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testEndToEndDigitalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testEndToEndPhysicalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSaveDigitalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSaveProductRequestWithNullInput.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSaveProductRequestWithUnrecognizedDTO.executor": "Run",
+    "JUnit.RequestMapperTest.testToDTOPhysicalProductRequestDAO.executor": "Run",
+    "JUnit.SellerRepositoryTest.executor": "Run",
+    "JUnit.SignInTests.executor": "Run",
+    "JUnit.SignInTests.testBuyerValidSignIn.executor": "Run",
+    "JUnit.SignUpTests.executor": "Run",
+    "JUnit.com.gameshub in Backend.executor": "Run",
+    "JUnit.gameshub in Backend.executor": "Coverage",
+    "JUnit.java in Backend.executor": "Coverage",
+    "JUnit.products in Backend.executor": "Run",
+    "JUnit.requests in Backend.executor": "Run",
+    "JUnit.utils in Backend.executor": "Run",
+    "Maven.Backend [clean].executor": "Run",
+    "Maven.Backend [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BackendApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "GH-254-Buyer-Sort-products-by-price",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/CSED/semester5/SWE/Games-Hub/Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.gameshub.service.product" />
@@ -195,8 +201,24 @@
       <recent name="com.gameshub" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in Backend (1)">
+  <component name="RunManager" selected="JUnit.All in Backend (3)">
     <configuration name="All in Backend (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Backend (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Backend (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -208,37 +230,6 @@
       <module name="Backend" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductControllerTest.createDigitalProduct_Error" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductControllerTest" />
-      <option name="METHOD_NAME" value="createDigitalProduct_Error" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -263,19 +254,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.All in Backend (2)" />
+      <item itemvalue="JUnit.All in Backend (3)" />
       <item itemvalue="JUnit.All in Backend" />
       <item itemvalue="JUnit.All in Backend (1)" />
-      <item itemvalue="JUnit.ProductControllerTest" />
-      <item itemvalue="JUnit.ProductControllerTest.createDigitalProduct_Error" />
       <item itemvalue="JUnit.gameshub in Backend" />
+      <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Backend (3)" />
+        <item itemvalue="JUnit.All in Backend (2)" />
         <item itemvalue="JUnit.All in Backend (1)" />
         <item itemvalue="JUnit.All in Backend" />
         <item itemvalue="JUnit.gameshub in Backend" />
-        <item itemvalue="JUnit.ProductControllerTest" />
-        <item itemvalue="JUnit.ProductControllerTest.createDigitalProduct_Error" />
       </list>
     </recent_temporary>
   </component>
@@ -345,19 +337,23 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__5_.ic" NAME="All in Backend (5) Coverage Results" MODIFIED="1702395898901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1701287147694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$ProductControllerTest.ic" NAME="ProductControllerTest Coverage Results" MODIFIED="1702289405413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.gameshub.Controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1702397539392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1702398394979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$CartServiceTest.ic" NAME="CartServiceTest Coverage Results" MODIFIED="1702327845552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.DataAccessLayer.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__4_.ic" NAME="All in Backend (4) Coverage Results" MODIFIED="1702411430317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Backend$java_in_Backend.ic" NAME="java in Backend Coverage Results" MODIFIED="1701286983531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1702381257061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1702396802750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__2_.ic" NAME="All in Backend (2) Coverage Results" MODIFIED="1702396997133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$OAuth2BuyerSignUpUnitTest.ic" NAME="OAuth2BuyerSignUpUnitTest Coverage Results" MODIFIED="1701282281272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__3_.ic" NAME="All in Backend (3) Coverage Results" MODIFIED="1702411329328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1702396519304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__3_.ic" NAME="All in Backend (3) Coverage Results" MODIFIED="1702472976429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$___and_19_more.ic" NAME=".* and 19 more Coverage Results" MODIFIED="1702439468351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__2_.ic" NAME="All in Backend (2) Coverage Results" MODIFIED="1702397855063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$java_in_Backend.ic" NAME="java in Backend Coverage Results" MODIFIED="1701286983531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__4_.ic" NAME="All in Backend (4) Coverage Results" MODIFIED="1702411430317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__5_.ic" NAME="All in Backend (5) Coverage Results" MODIFIED="1702392470688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
