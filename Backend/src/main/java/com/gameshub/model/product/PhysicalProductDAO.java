@@ -6,7 +6,7 @@ import lombok.*;
 import java.time.*;
 
 @Entity
-@Table(name = "physicalproduct")
+@Table(name = "physical_product")
 @NoArgsConstructor
 public class PhysicalProductDAO extends ProductDAO {
 

@@ -6,7 +6,6 @@ import { getId } from '../../CurrentSession';
 import AlertOk from '../../Components/AlertDisnissible';
 import AlertError from '../../Components/AlertError';
 import { DigitalProductRequestDTO } from '../../Controller/DTO/request-dto/DigitalProductRequestDTO';
-import AlertAleadyExists from '../../Components/AlertAleadyExists';
 
 const CatalogRequestForm: React.FC = () => {
   const [physicalProductRequest, setPhysicalProductRequest] = useState<PhysicalProductRequestDTO>({
@@ -38,7 +37,6 @@ const CatalogRequestForm: React.FC = () => {
 
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
-  const [showAlertAleadyExists, setAlertAleadyExists] = useState(false);
   const [errors, setErrors] = useState({ title: '', description: '', count: '', price: '' });
   const [categories, setCategories] = useState([]);
   const [productType, setProductType] = useState<'physical' | 'digital'>('physical');
@@ -141,14 +139,15 @@ const CatalogRequestForm: React.FC = () => {
     e.preventDefault();
     setShowSuccessAlert(false);
     setShowErrorAlert(false);
-    setAlertAleadyExists(false);
     
     const isValid = validate(); // Make sure validate function is updated to validate based on productType
     if (!isValid) return;
   
-    
     const requestPayload = productType === 'physical' ? physicalProductRequest : digitalProductRequest;  
   
+    console.log(digitalProductRequest)
+    console.log(requestPayload)
+    console.log(productType)
     httpRequest("POST", `/product-request/create/${productType}`, requestPayload)
       .then((response) => {
         console.log(response);
@@ -156,12 +155,8 @@ const CatalogRequestForm: React.FC = () => {
         clearForm();
       })
       .catch((error) => {
-        console.log(error.response.status);
-        if(error.response.status === 406) {
-            setAlertAleadyExists(true)
-        } else {
-          setShowErrorAlert(true);
-        }
+        console.log(error);
+        setShowErrorAlert(true);
       });
   };
 
@@ -178,12 +173,6 @@ const CatalogRequestForm: React.FC = () => {
         <AlertError />
       </div>
     )}
-
-     {showAlertAleadyExists && (
-        <div>
-          <AlertAleadyExists />
-        </div>
-      )}
 
       <form onSubmit={handleSubmit} className='form-container'>
           <h2 className='form-title'>Catalog Request Form</h2>
@@ -251,7 +240,7 @@ const CatalogRequestForm: React.FC = () => {
                 className='form-input' 
                 value={productType === 'physical' ? physicalProductRequest.count : digitalProductRequest.count}
                 onChange={handleInputChange} 
-                min="0"
+                min="0" // HTML5 attribute to prevent negative numbers
               />
           </label>
           <div className='error-message'>{errors.count}</div>
@@ -263,7 +252,7 @@ const CatalogRequestForm: React.FC = () => {
                 className='form-input' 
                 value={productType === 'physical' ? physicalProductRequest.price : digitalProductRequest.price}
                 onChange={handleInputChange} 
-                min="0"
+                min="0" // HTML5 attribute to prevent negative numbers
               />
           </label>
           <div className='error-message'>{errors.price}</div>

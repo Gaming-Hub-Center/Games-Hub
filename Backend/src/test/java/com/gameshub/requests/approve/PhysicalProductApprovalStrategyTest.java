@@ -98,5 +98,5 @@ class PhysicalProductApprovalStrategyTest {
         assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
     }
 
-
 }
+

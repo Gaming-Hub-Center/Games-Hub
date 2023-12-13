@@ -101,5 +101,5 @@ class DigitalProductApprovalStrategyTest {
         assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
     }
 
-
 }
+
