@@ -10,6 +10,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
 import org.springframework.http.*;
+import org.springframework.jdbc.core.*;
 import org.springframework.security.authentication.*;
 
 import java.time.*;
@@ -26,11 +27,18 @@ public class SignInTests {
     @Autowired
     SellerRepository sellerRepository;
 
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    private void resetAutoIncrement(String tableName) {
+        jdbcTemplate.execute("ALTER TABLE " + tableName + " ALTER COLUMN ID RESTART WITH 1");
+    }
+
     @BeforeEach
     public void setup() {
         buyerRepository.deleteAll();
         sellerRepository.deleteAll();
-        BuyerDAO buyerDAO = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 3000);
+        BuyerDAO buyerDAO = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 1000);
         SellerDAO sellerDAO = new SellerDAO("Alice Blue", "alice.blue@example.com", "$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.parse("2023-01-01"), "Description about Alice", "123456789A");
         buyerRepository.save(buyerDAO);
         sellerRepository.save(sellerDAO);

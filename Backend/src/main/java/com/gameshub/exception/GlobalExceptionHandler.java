@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ResourceAlreadyFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceAlreadyFoundException(ResourceNotFoundException ex) {
+    public ResponseEntity<ErrorResponse> handleResourceAlreadyFoundException(ResourceAlreadyFoundException ex) {
         HttpStatus httpStatus = HttpStatus.FOUND;
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
         return new ResponseEntity<>(errorResponse, httpStatus);
@@ -35,6 +35,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
         HttpStatus httpStatus = HttpStatus.FOUND;
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
+    }
+
+    @ExceptionHandler(OutOfStockException.class)
+    public ResponseEntity<ErrorResponse> handleOutOfStockException(OutOfStockException ex) {
+        HttpStatus httpStatus = HttpStatus.NOT_ACCEPTABLE;
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
+    }
+
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<ErrorResponse> handleBalanceShortageException(InsufficientBalanceException ex) {
+        HttpStatus httpStatus = HttpStatus.NOT_ACCEPTABLE;
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
         return new ResponseEntity<>(errorResponse, httpStatus);
     }

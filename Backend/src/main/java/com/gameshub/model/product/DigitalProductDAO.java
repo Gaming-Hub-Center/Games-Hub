@@ -10,10 +10,10 @@ import java.time.*;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "physicalproduct")
-public class PhysicalProductDAO extends ProductDAO {
+@Table(name = "digitalproduct")
+public class DigitalProductDAO extends ProductDAO {
 
-    public PhysicalProductDAO(String title, float price, String description, LocalDate postDate, int count, int sellerID) {
+    public DigitalProductDAO(String title, float price, String description, LocalDate postDate, int count, int sellerID) {
         this.title = title;
         this.price = price;
         this.description = description;

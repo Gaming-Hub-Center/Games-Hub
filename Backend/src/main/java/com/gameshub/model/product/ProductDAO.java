@@ -15,25 +15,25 @@ public abstract class ProductDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    protected int id;
 
     @Column(name = "title")
-    private String title;
+    protected String title;
 
     @Column(name = "price")
-    private float price;
+    protected float price;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "postdate")
-    private LocalDate postDate; // Date Approved
+    protected LocalDate postDate; // Date Approved
 
     @Column(name = "count")
-    private int count;
+    protected int count;
 
     @ManyToOne
     @JoinColumn(name = "sellerid", referencedColumnName = "ID")
-    private SellerDAO sellerDAO;
+    protected SellerDAO sellerDAO;
 
 }
