@@ -1,6 +1,7 @@
 package com.gameshub.controller.request;
 
 import com.gameshub.controller.DTO.request.*;
+import com.gameshub.exception.ResourceAlreadyFoundException;
 import com.gameshub.service.request.ProductRequestService;
 import jakarta.validation.*;
 import org.springframework.beans.factory.annotation.*;
@@ -19,7 +20,9 @@ public class ProductRequestController {
         try {
             productRequestService.saveProductRequest(digitalProductRequestDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Digital product is done!"); // Seller Not Found
-        } catch (Exception e) {
+        } catch (ResourceAlreadyFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
+        }  catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating Digital product");
         }
     }
@@ -29,6 +32,8 @@ public class ProductRequestController {
         try {
             productRequestService.saveProductRequest(physicalProductRequestDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Physical product is done!");
+        } catch (ResourceAlreadyFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating Physical product");
         }

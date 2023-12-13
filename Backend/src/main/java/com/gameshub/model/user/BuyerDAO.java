@@ -5,7 +5,7 @@ import lombok.*;
 
 @Data
 @Entity
-@Table(name = "`buyer`")
+@Table(name = "buyer")
 @NoArgsConstructor
 public class BuyerDAO extends UserDAO {
 
