@@ -1,33 +1,28 @@
 package com.gameshub.model.product;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-import java.time.LocalDate;
+import java.time.*;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "digital_product")
-@NoArgsConstructor
 public class DigitalProductDAO extends ProductDAO {
-    @Column(name = "code")
+
+    @Column(name = "Code")
     private String code;
 
-    public DigitalProductDAO(
-            int productID, 
-            float price, 
-            int count, 
-            String title, 
-            String description, 
-            String category,  
-            int sellerID, 
-            Date created_date, 
-            String code
-    ) {
-        super(productID, price, description, title, count, sellerID, created_date, category);
+    public DigitalProductDAO(String title, float price, String description, int sellerID, int count, String category, String code, LocalDate postDate) {
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.sellerID = sellerID;
+        this.count = count;
+        this.category = category;
         this.code = code;
+        this.postDate = postDate;
     }
+
 }
