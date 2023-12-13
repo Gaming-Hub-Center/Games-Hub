@@ -9,6 +9,7 @@ import { About } from "./Pages/About";
 import { HomeAccessories } from "./Pages/Buyer/Home/Accessories";
 import "./App.css";
 import CatalogRequestForm from "./Pages/product-request-form/CatalogRequestForm";
+import { ProductView } from "./Components/ProductView";
 
 function App() {
   return (
@@ -32,7 +33,11 @@ function App() {
           path="/buyer/home/accessories"
           element={<HomeAccessories />}
         ></Route>
-        <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
+        <Route
+          path="/seller/create-product"
+          element={<CatalogRequestForm />}
+        ></Route>
+        <Route path="/buyer/ProductView" element={<ProductView />}></Route>
       </Routes>
     </Container>
   );
