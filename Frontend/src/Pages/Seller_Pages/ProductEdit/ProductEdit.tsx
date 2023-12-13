@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import './ProductEdit.css';
-import '../ProductCatalog/ProductCatalogItem.css';
-import "./EditableProductDetailsItem.css";
-import '../../../Components/UI_Components/GH_Btn.css'
-import { ProductDAO } from "../../../Models/product/ProductDAO";
 import { useNavigate, useParams } from "react-router";
+import '../../../Components/UI_Components/GH_Btn.css';
 import { getProduct, updateProduct } from "../../../Controller/API/SellerAPI";
+import { ProductDAO } from "../../../Models/product/ProductDAO";
+import '../ProductCatalog/ProductCatalogItem.css';
 import EditableProductDetailsItem from "./EditableProductDetailsItem";
-import { ProductPatchDTO } from "../../../Controller/DTO/ProductPatchDTO";
+import "./EditableProductDetailsItem.css";
 import { ProductPatch } from "./Model/ProductPatch";
+import './ProductEdit.css';
 
 export function ProductEdit(props){
     const navigate = useNavigate();
@@ -49,7 +48,6 @@ export function ProductEdit(props){
     //     else
     //         setDisplayedImageIDX(displayedImageIDX - 1);
     //     setDisplayedImagesURLs(displayedImageURLs);
-    //     console.log(displayedImageURLs);
     // }
 
     const handleUploadImage = (e: any) => {}
@@ -63,10 +61,8 @@ export function ProductEdit(props){
     }
 
     const handleSaveEdit = (event) => {
-        console.log(`${productPatch.title} == ${product.title} && ${productPatch.description} == ${product.description}`)
         if(productPatch.title == product.title && productPatch.description == product.description)
             return
-        console.log(productPatch.getType())
         updateProduct(sellerId, productType, productId, inCatalog != 'true', productPatch.getType())
         setTimeout(() => {
             // Navigate to the specified route

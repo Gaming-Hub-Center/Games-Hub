@@ -20,11 +20,10 @@ export function ProductView(props){
                 setProduct(response.data);
           } catch (error) {
             console.error('Error fetching product info:', error.message);
-            // Handle errors as needed
           }
         };
     
-        fetchData(); // Call the async function
+        fetchData();
       }, []);
 
     //retrieve images

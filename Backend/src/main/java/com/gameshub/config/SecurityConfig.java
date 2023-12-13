@@ -5,7 +5,6 @@ import lombok.*;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.*;
 import org.springframework.security.authentication.dao.*;
-import org.springframework.security.config.*;
 import org.springframework.security.config.annotation.web.builders.*;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.config.http.*;

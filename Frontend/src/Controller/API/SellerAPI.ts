@@ -1,23 +1,6 @@
-import axios from "axios";
-import { getUserID } from "../../CurrentSession";
-import { ProductDAO } from "../../Models/product/ProductDAO";
-import { DigitalProductDAO } from "../../Models/product/DigitalProductDAO";
-import { PhysicalProductDAO } from "../../Models/product/PhysicalProductDAO";
-import { httpRequest } from "../HttpProxy";
 import { ProductPatchDTO } from "../DTO/ProductPatchDTO";
+import { httpRequest } from "../HttpProxy";
 
-const apiUrl = 'http://localhost:8080/';
-
-async function GETRequest(api: string){
-    try {
-        const response = await axios.get(`${apiUrl}${api}`);
-        console.log('Data received:', response.data);
-        return response.data;
-    } catch (error) {
-        console.error('Error:', error.message);
-        throw error;
-    }
-}
 
 export async function getAllPhysicalProductsBySellerID(sellerId: string){
     return httpRequest('GET', `/product-request/${sellerId}/products/physical`);

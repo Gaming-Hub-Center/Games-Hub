@@ -3,7 +3,6 @@ package com.gameshub.service.product;
 import com.gameshub.controller.DTO.ProductPatchDTO;
 import com.gameshub.controller.DTO.product.*;
 import com.gameshub.model.product.*;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.repository.product.*;
 import com.gameshub.utils.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;

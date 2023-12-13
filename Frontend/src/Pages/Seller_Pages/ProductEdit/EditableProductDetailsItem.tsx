@@ -1,8 +1,8 @@
-import { MouseEvent, useEffect, useState } from "react";
-import TextEditor from './TextEditor/TextEditor'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import'./EditableProductDetailsItem.css'
-import '../../../Components/UI_Components/GH_Btn.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useEffect, useState } from "react";
+import '../../../Components/UI_Components/GH_Btn.css';
+import './EditableProductDetailsItem.css';
+import TextEditor from './TextEditor/TextEditor';
 
 interface EditableProductDetailsItemProps{
     item: string;

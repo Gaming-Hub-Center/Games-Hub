@@ -158,16 +158,16 @@ public class ProductServiceTests {
         assert productService.getPhysicalProductByProductID(2).toString().equals(new PhysicalProductDAO().toString());
 
         //Digital Product Request
-        DigitalProductRequestDAO originalDigitalRequest = productRequestService.getDigitalProductByProductID(1);
+        DigitalProductRequestDAO originalDigitalRequest = productRequestService.getDigitalProductRequestByProductID(1);
         assert originalDigitalRequest.getTitle().equals("sample Game") && originalDigitalRequest.getDescription().isEmpty();
 
-        assert productRequestService.getDigitalProductByProductID(2).toString().equals(new DigitalProductRequestDAO().toString());
+        assert productRequestService.getDigitalProductRequestByProductID(2).toString().equals(new DigitalProductRequestDAO().toString());
 
         //Physical Product Request
-        PhysicalProductRequestDAO originalPhysicalRequest = productRequestService.getPhysicalProductByProductID(1);
+        PhysicalProductRequestDAO originalPhysicalRequest = productRequestService.getPhysicalProductRequestByProductID(1);
         assert originalPhysicalRequest.getTitle().equals("sample Keyboard") && originalPhysicalRequest.getDescription().isEmpty();
 
-        assert productRequestService.getPhysicalProductByProductID(2).toString().equals(new PhysicalProductRequestDAO().toString());
+        assert productRequestService.getPhysicalProductRequestByProductID(2).toString().equals(new PhysicalProductRequestDAO().toString());
     }
 
 
@@ -177,10 +177,10 @@ public class ProductServiceTests {
         assert productService.deleteDigitalProductBySellerIdAndProductID(1, 1);
         assert !productService.deletePhysicalProductBySellerIdAndProductID(1, 2);
         assert productService.deletePhysicalProductBySellerIdAndProductID(1, 1);
-        assert !productRequestService.deleteDigitalProductBySellerIdAndProductID(1, 2);
-        assert productRequestService.deleteDigitalProductBySellerIdAndProductID(1, 1);
-        assert !productRequestService.deletePhysicalProductBySellerIdAndProductID(1, 2);
-        assert productRequestService.deletePhysicalProductBySellerIdAndProductID(1, 1);
+        assert !productRequestService.deleteDigitalProductRequestBySellerIdAndProductID(1, 2);
+        assert productRequestService.deleteDigitalProductRequestBySellerIdAndProductID(1, 1);
+        assert !productRequestService.deletePhysicalProductRequestBySellerIdAndProductID(1, 2);
+        assert productRequestService.deletePhysicalProductRequestBySellerIdAndProductID(1, 1);
     }
 
     @Test
@@ -208,23 +208,23 @@ public class ProductServiceTests {
         assert !originalPhysical.getTitle().equals(updatedPhysicalProduct.getTitle()) && !originalPhysical.getDescription().equals(updatedPhysicalProduct.getDescription());
 
         //Digital Product Request
-        DigitalProductRequestDAO originalDigitalRequest = productRequestService.getDigitalProductByProductID(1);
+        DigitalProductRequestDAO originalDigitalRequest = productRequestService.getDigitalProductRequestByProductID(1);
         assert originalDigitalRequest.getTitle().equals("sample Game") && originalDigitalRequest.getDescription().isEmpty();
 
         assert productRequestService.updateDigitalProductRequestByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
-        DigitalProductRequestDAO updatedDigitalProductRequest = productRequestService.getDigitalProductByProductID(1);
+        DigitalProductRequestDAO updatedDigitalProductRequest = productRequestService.getDigitalProductRequestByProductID(1);
 
         assert updatedDigitalProductRequest.getTitle().equals("new name") && updatedDigitalProductRequest.getDescription().equals("new Description");
         assert !originalDigitalRequest.getTitle().equals(updatedDigitalProductRequest.getTitle()) && !originalDigitalRequest.getDescription().equals(updatedDigitalProductRequest.getDescription());
 
         //Physical Product Request
-        PhysicalProductRequestDAO originalPhysicalRequest = productRequestService.getPhysicalProductByProductID(1);
+        PhysicalProductRequestDAO originalPhysicalRequest = productRequestService.getPhysicalProductRequestByProductID(1);
         assert originalPhysicalRequest.getTitle().equals("sample Keyboard") && originalPhysicalRequest.getDescription().isEmpty();
 
         assert productRequestService.updatePhysicalProductRequestByProductID(1, new ProductPatchDTO("new name", "new Description"));
 
-        PhysicalProductRequestDAO updatedPhysicalProductRequest = productRequestService.getPhysicalProductByProductID(1);
+        PhysicalProductRequestDAO updatedPhysicalProductRequest = productRequestService.getPhysicalProductRequestByProductID(1);
 
         assert updatedPhysicalProductRequest.getTitle().equals("new name") && updatedPhysicalProductRequest.getDescription().equals("new Description");
         assert !originalPhysicalRequest.getTitle().equals(updatedPhysicalProductRequest.getTitle()) && !originalPhysicalRequest.getDescription().equals(updatedPhysicalProductRequest.getDescription());

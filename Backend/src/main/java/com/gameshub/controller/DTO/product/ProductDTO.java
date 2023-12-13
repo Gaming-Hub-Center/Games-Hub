@@ -2,7 +2,6 @@ package com.gameshub.controller.DTO.product;
 
 import lombok.*;
 
-import java.sql.Blob;
 import java.time.LocalDate;
 
 @Data

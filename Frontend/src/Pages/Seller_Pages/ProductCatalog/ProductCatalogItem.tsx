@@ -1,9 +1,7 @@
-import { deleteProduct } from '../../../Controller/API/SellerAPI';
-import { DigitalProductDAO } from '../../../Models/product/DigitalProductDAO';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ProductDAO } from '../../../Models/product/ProductDAO';
 import { ProductRequestDAO } from '../../../Models/product_request/ProductRequestDAO';
-import './ProductCatalogItem.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import './ProductCatalogItem.css';
 
 interface ProductCatalogItemProps{
     item: ProductDAO | ProductRequestDAO;

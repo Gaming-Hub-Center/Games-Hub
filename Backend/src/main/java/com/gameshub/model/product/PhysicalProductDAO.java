@@ -2,8 +2,8 @@ package com.gameshub.model.product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 

@@ -35,7 +35,7 @@ public class ProductRequestService {
         }
     }
 
-    public DigitalProductRequestDAO getDigitalProductByProductID(int productID){
+    public DigitalProductRequestDAO getDigitalProductRequestByProductID(int productID){
         Optional<DigitalProductRequestDAO> foundProduct = digitalProductRequestRepository.findById(productID);
 
         if(foundProduct.isPresent())
@@ -44,7 +44,7 @@ public class ProductRequestService {
         return new DigitalProductRequestDAO();
     }
 
-    public PhysicalProductRequestDAO getPhysicalProductByProductID(int productID){
+    public PhysicalProductRequestDAO getPhysicalProductRequestByProductID(int productID){
         Optional<PhysicalProductRequestDAO> foundProduct = physicalProductRequestRepository.findById(productID);
 
         if(foundProduct.isPresent())
@@ -53,7 +53,7 @@ public class ProductRequestService {
         return new PhysicalProductRequestDAO();
     }
 
-    public List<PhysicalProductRequestDAO> getAllPendingPhysicalProductsBySellerID(int sellerID) {
+    public List<PhysicalProductRequestDAO> getAllPendingPhysicalProductRequestsBySellerID(int sellerID) {
         List<PhysicalProductRequestDAO> allPhysicalProductRequests = physicalProductRequestRepository.findBySellerId(sellerID);
         List<PhysicalProductRequestDAO> pendingPhysicalProducts = new ArrayList<PhysicalProductRequestDAO>(allPhysicalProductRequests.size());
 
@@ -65,7 +65,7 @@ public class ProductRequestService {
         return pendingPhysicalProducts;
     }
 
-    public List<DigitalProductRequestDAO> getAllPendingDigitalProductsBySellerID(int sellerID) {
+    public List<DigitalProductRequestDAO> getAllPendingDigitalProductRequestsBySellerID(int sellerID) {
         List<DigitalProductRequestDAO> allDigitalProductRequests = digitalProductRequestRepository.findBySellerId(sellerID);
         List<DigitalProductRequestDAO> pendingDigitalProductRequests = new ArrayList<DigitalProductRequestDAO>(allDigitalProductRequests.size());
 
@@ -77,12 +77,12 @@ public class ProductRequestService {
         return pendingDigitalProductRequests;
     }
 
-    public boolean deleteDigitalProductBySellerIdAndProductID(int sellerID, int productId){
+    public boolean deleteDigitalProductRequestBySellerIdAndProductID(int sellerID, int productId){
         long numberOfDeletedProducts = digitalProductRequestRepository.deleteByIdAndSellerId(productId, sellerID);
         return numberOfDeletedProducts != 0;
     }
 
-    public boolean deletePhysicalProductBySellerIdAndProductID(int sellerID, int productId){
+    public boolean deletePhysicalProductRequestBySellerIdAndProductID(int sellerID, int productId){
         long numberOfDeletedProducts = physicalProductRequestRepository.deleteByIdAndSellerId(productId, sellerID);
         return numberOfDeletedProducts != 0;
     }

@@ -1,11 +1,12 @@
 package com.gameshub.model.product;
 
-import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
