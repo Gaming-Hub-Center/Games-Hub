@@ -32,6 +32,16 @@ public class DigitalProductDAO extends ProductDAO {
         this.code = code;
     }
 
+    public DigitalProductDAO(String title, float price, String description, LocalDate postDate, int count, int sellerID) {
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.postDate = postDate;
+        this.count = count;
+        this.sellerDAO = new SellerDAO();
+        this.sellerDAO.setId(sellerID);
+    }
+
 
     // Getters and setters
 }

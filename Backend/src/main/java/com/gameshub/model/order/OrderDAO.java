@@ -4,6 +4,7 @@ import com.gameshub.model.user.*;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.*;
 import java.util.*;
 
 @Data
@@ -11,6 +12,13 @@ import java.util.*;
 @NoArgsConstructor
 @Table(name = "`Order`")
 public class OrderDAO {
+
+    public OrderDAO(BuyerDAO buyerDAO, LocalDate orderDate, float orderPrice, String orderStatus) {
+        this.buyerDAO = buyerDAO;
+        this.orderDate = orderDate;
+        this.orderPrice = orderPrice;
+        this.orderStatus = orderStatus;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +29,8 @@ public class OrderDAO {
     @JoinColumn(name = "buyerID", referencedColumnName = "ID")
     private BuyerDAO buyerDAO;
 
-    @Column(name = "orderDate")
-    private Date orderDate;
+    @Column(name = "orderdate")
+    private LocalDate orderDate;
 
     @Column(name = "order_price")
     private float orderPrice;
@@ -30,8 +38,12 @@ public class OrderDAO {
     @Column(name = "order_status")
     private String orderStatus;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "orderID")
-    private List<PhysicalOrderDAO> physicalOrderDAOs;
+    private List<PhysicalOrderItemDAO> physicalOrderItemDAOs;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderID")
+    private List<DigitalOrderItemDAO> digitalOrderItemDAOs;
 
 }

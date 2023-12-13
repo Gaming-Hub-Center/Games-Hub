@@ -13,9 +13,9 @@ public abstract class CartDAO {
 
     @Data
     @Embeddable
-    public static class CartKey {
+    public static class CartKey implements Serializable {
         @Column(name = "buyerID")
-        protected int buyerID;
+        protected int buyerId;
 
         @Column(name = "productID")
         protected int productID;

@@ -46,6 +46,24 @@ public class UserService {
             throw new ResourceNotFoundException("User not found with email: " + email);
     }
 
+    public BuyerDAO getBuyerById(int buyerID) {
+        Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findById(buyerID);
+
+        if (buyerDAOOptional.isPresent())
+            return buyerDAOOptional.get();
+        else
+            throw new ResourceNotFoundException("User not found with id: " + buyerID);
+    }
+
+    public SellerDAO getSellerById(int sellerID) {
+        Optional<SellerDAO> sellerDAOOptional = sellerRepository.findById(sellerID);
+
+        if (sellerDAOOptional.isPresent())
+            return sellerDAOOptional.get();
+        else
+            throw new ResourceNotFoundException("User not found with id: " + sellerID);
+    }
+
     public Boolean userExists(String email) {
         return buyerRepository.existsByEmail(email) || sellerRepository.existsByEmail(email);
     }

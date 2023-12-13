@@ -1,6 +1,7 @@
 package com.gameshub.model.cart;
 
-import com.gameshub.model.product.DigitalProductDAO;
+
+import com.gameshub.model.product.*;
 import com.gameshub.model.user.BuyerDAO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,6 +24,9 @@ public class DigitalCartDAO extends CartDAO {
         this.count = count;
     }
 
-
+    public DigitalCartDAO(int buyerID, int productID, int count) {
+        this.id = new CartKey(buyerID, productID);
+        this.count = count;
+    }
 
 }

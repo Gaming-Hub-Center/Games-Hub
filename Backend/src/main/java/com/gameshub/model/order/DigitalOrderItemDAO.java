@@ -1,42 +1,41 @@
 package com.gameshub.model.order;
 
 import com.gameshub.model.product.*;
-import com.gameshub.model.user.*;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.*;
-import java.util.*;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "Physicalorder")
-public class PhysicalOrderDAO {
+@Table(name = "Digitalorderitem")
+public class DigitalOrderItemDAO {
+
+    public DigitalOrderItemDAO(DigitalOrderItemId digitalOrderItemId, int count, float unitPrice, float totalPrice) {
+        this.id = digitalOrderItemId;
+        this.count = count;
+        this.unitPrice = unitPrice;
+        this.totalPrice = totalPrice;
+    }
 
     @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     @Embeddable
-    public static class PhysicalOrderId implements Serializable {
+    public static class DigitalOrderItemId implements Serializable {
 
         @Column(name = "orderID")
         private int orderID;
 
         @ManyToOne
         @JoinColumn(name = "productID", referencedColumnName = "ID")
-        private PhysicalProductDAO physicalProductDAO;
+        private DigitalProductDAO digitalProductDAO;
 
     }
 
     @EmbeddedId
-    private PhysicalOrderId id;
-
-//    @ManyToOne
-//    @JoinColumn(name = "orderID", insertable = false, updatable = false)
-//    private OrderDAO orderDAO;
-
-//    @ManyToOne
-//    @JoinColumn(name = "productID", referencedColumnName = "ID")
-//    private PhysicalProductDAO physicalProductDAO;
+    private DigitalOrderItemId id;
 
     @Column(name = "Count")
     private int count;

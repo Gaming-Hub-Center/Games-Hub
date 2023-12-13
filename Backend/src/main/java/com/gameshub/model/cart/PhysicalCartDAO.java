@@ -24,5 +24,9 @@ public class PhysicalCartDAO extends CartDAO {
         this.count = count;
     }
 
+    public PhysicalCartDAO(int buyerID, int productID, int count) {
+        this.id = new CartKey(buyerID, productID);
+        this.count = count;
+    }
 
 }
