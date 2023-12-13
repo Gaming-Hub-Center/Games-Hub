@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "physical_product_image")
 @NoArgsConstructor
 public class PhysicalImageDAO extends ImageDAO {
-    // TODO on deletion cascaded deletion
     @Column(name = "physical_product_id")
     int product_id;
 
