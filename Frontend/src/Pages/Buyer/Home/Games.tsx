@@ -1,8 +1,17 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Pagination } from "react-bootstrap";
+import React, { ChangeEvent, SetStateAction, useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Pagination,
+  Button,
+  FormControl,
+  Dropdown,
+} from "react-bootstrap";
 import { NavbarC } from "../../../Components/NavbarC";
 import { ProductCard } from "../../../Components/ProductCard";
 import "./PaginationC.css";
+import { Form } from "react-bootstrap";
 
 export function HomeGames() {
   const productCardPropsList = [
@@ -611,6 +620,45 @@ export function HomeGames() {
       price: 100,
     },
   ];
+
+  const [minPrice, setMinPrice] = useState(0);
+  // # default max price...
+  const [maxPrice, setMaxPrice] = useState(1000);
+  const [sortOption, setSortOption] = useState("Ascendingly");
+
+  const handleMinCostChange = (event: ChangeEvent<HTMLInputElement>) => {
+    // Extract the numeric value from the input
+    const minValue = parseFloat(event.target.value);
+
+    if (!isNaN(minValue) && minValue >= 0 && minValue <= maxPrice) {
+      setMinPrice(minValue);
+    } else if (!isNaN(minValue) && minValue >= 0) {
+      // If minValue is greater than maxPrice, set minPrice to maxPrice
+      setMinPrice(maxPrice);
+    } else {
+      setMinPrice(0);
+    }
+  };
+
+  const handleMaxCostChange = (event: ChangeEvent<HTMLInputElement>) => {
+    // Extract the numeric value from the input
+    const maxValue = parseFloat(event.target.value);
+
+    // Check if the input is a valid number
+    if (!isNaN(maxValue) && maxValue >= 0 && maxValue >= minPrice) {
+      setMaxPrice(maxValue);
+    } else if (!isNaN(maxValue) && maxValue >= 0) {
+      // If maxValue is less than minPrice, set maxPrice to minPrice
+      setMaxPrice(minPrice);
+    } else {
+      setMaxPrice(0);
+    }
+  };
+
+  const handleSortChange = (selectedOption) => {
+    setSortOption(selectedOption);
+  };
+
   const itemsPerPage = 20;
   const maxVisiblePages = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -670,8 +718,105 @@ export function HomeGames() {
               marginTop: "30px",
               marginLeft: "55px",
               backgroundColor: "white",
+              display: "flex",
+              flexDirection: "column",
             }}
           >
+            <Row style={{ height: "30%" }}>
+              <div
+                style={{
+                  maxHeight: "30%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <span className="fs-3">Filter</span>
+                <span className="fs-5">Category</span>
+              </div>
+              <div
+                style={{
+                  marginTop: "1vh",
+                  maxHeight: "70%",
+                  overflowY: "auto",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Form.Check type="checkbox" label="Action" />
+                <Form.Check type="checkbox" label="Sports" />
+              </div>
+            </Row>
+            <Row style={{ height: "10%" }}>
+              <span className="fs-5">Price</span>
+              <Col
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  height: "50%",
+                }}
+              >
+                <FormControl
+                  style={{ width: "40%" }}
+                  type="number"
+                  placeholder="Min"
+                  className="mr-sm-2"
+                  value={minPrice}
+                  onChange={handleMinCostChange}
+                />
+                <span style={{ margin: "5px 5px" }}>to</span>
+                <FormControl
+                  style={{ width: "40%" }}
+                  type="number"
+                  placeholder="Max"
+                  className="mr-sm-2"
+                  value={maxPrice}
+                  onChange={handleMaxCostChange}
+                />
+                <Button
+                  style={{ marginLeft: "10px" }}
+                  variant="outline-success"
+                  // onClick={handleSubmit}
+                >
+                  Go
+                </Button>
+              </Col>
+            </Row>
+            <Row style={{ height: "30%" }}>
+              <div
+                style={{
+                  maxHeight: "30%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <hr
+                  style={{
+                    borderColor: "gray",
+                    margin: "10px 0",
+                    width: "100%",
+                  }}
+                />{" "}
+                <span className="fs-3">Sort</span>
+                <Dropdown style={{ marginTop: "5px" }}>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Sort by price
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      onClick={() => handleSortChange("Ascendingly")}
+                      active={sortOption === "Ascendingly"}
+                    >
+                      Ascendingly
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => handleSortChange("Descendingly")}
+                      active={sortOption === "Descendingly"}
+                    >
+                      Descendingly
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+            </Row>
           </Col>
           <Col
             style={{
