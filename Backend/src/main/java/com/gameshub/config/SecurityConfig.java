@@ -39,6 +39,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/registration/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/products/approve/**")).permitAll()
+//                        .requestMatchers(new AntPathRequestMatcher("/product-request/create/**")).permitAll()
                         .anyRequest().authenticated());
 //                .oauth2Login(Customizer.withDefaults());
 
