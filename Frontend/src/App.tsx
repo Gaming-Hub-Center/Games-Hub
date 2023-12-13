@@ -5,6 +5,8 @@ import { SignIn } from "./Pages/SignIn";
 import { SignUpSeller } from "./Pages/SignUp/SignUpSeller";
 import { SignUpBuyer } from "./Pages/SignUp/SignUpBuyer";
 import CatalogRequestForm from "./Pages/product-request-form/CatalogRequestForm";
+import PhysicalCart from './Pages/PhysicalCart';
+import DigitalCart from "./Pages/DigitalCart";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/signup/buyer" element={<SignUpBuyer />}></Route>
         <Route path="/signup/seller" element={<SignUpSeller />}></Route>
         <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
+        <Route path="/physical-cart" element={<PhysicalCart />}></Route>
+        <Route path="/digital-cart" element={<DigitalCart />}></Route>
       </Routes>
     </Container>
   );
