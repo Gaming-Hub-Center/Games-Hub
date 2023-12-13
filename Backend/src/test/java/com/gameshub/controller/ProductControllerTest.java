@@ -339,8 +339,4 @@ public class ProductControllerTest {
 
         verify(productService, times(1)).filterDigital(100.5F, (float) Integer.MAX_VALUE, "action");
     }
-
-
-
-
 }
