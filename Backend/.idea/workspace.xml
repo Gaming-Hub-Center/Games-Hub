@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalImageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalImageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/DigitalProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/PhysicalProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/product/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/DigitalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/DigitalProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/PhysicalProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/PhysicalProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/CartServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/CartServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/ProductController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +195,7 @@
       <recent name="com.gameshub" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in Backend (3)">
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
     <configuration name="All in Backend (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <option name="PACKAGE_NAME" value="" />

@@ -46,7 +46,7 @@ public class ProductController {
                                                                 @RequestParam(required = false) Float lowerBound,
                                                                 @RequestParam(required = false) Float upperBound) {
         if(upperBound == null) upperBound = (float) Integer.MAX_VALUE;
-        else if (lowerBound == null) lowerBound = (float) 0;
+        if(lowerBound == null) lowerBound = (float) 0;
         return ResponseEntity.ok(productService.filterPhysical(lowerBound, upperBound, category));
     }
 
@@ -55,7 +55,7 @@ public class ProductController {
                                                                @RequestParam(required = false) Float lowerBound,
                                                                @RequestParam(required = false) Float upperBound) {
         if(upperBound == null) upperBound = (float) Integer.MAX_VALUE;
-        else if (lowerBound == null) lowerBound = (float) 0;
+        if(lowerBound == null) lowerBound = (float) 0;
         return ResponseEntity.ok(productService.filterDigital(lowerBound, upperBound, category));
     }
 

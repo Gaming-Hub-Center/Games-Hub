@@ -5,6 +5,7 @@ import { SignIn } from "./Pages/SignIn";
 import { SignUpSeller } from "./Pages/SignUp/SignUpSeller";
 import { SignUpBuyer } from "./Pages/SignUp/SignUpBuyer";
 import CatalogRequestForm from "./Pages/product-request-form/CatalogRequestForm";
+import ViewProduct from "./Pages/product/ViewProduct";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signup/buyer" element={<SignUpBuyer />}></Route>
         <Route path="/signup/seller" element={<SignUpSeller />}></Route>
         <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
+        <Route path="/product" element={<ViewProduct/>}></Route>
       </Routes>
     </Container>
   );
