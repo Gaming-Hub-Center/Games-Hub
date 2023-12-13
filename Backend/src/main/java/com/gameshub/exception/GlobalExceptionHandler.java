@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ResourceAlreadyFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceAlreadyFoundException(ResourceNotFoundException ex) {
+    public ResponseEntity<ErrorResponse> handleResourceAlreadyFoundException(ResourceAlreadyFoundException ex) {
         HttpStatus httpStatus = HttpStatus.FOUND;
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
         return new ResponseEntity<>(errorResponse, httpStatus);
@@ -27,20 +27,30 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(PasswordMismatchException.class)
     public ResponseEntity<ErrorResponse> handlePasswordMismatchException(PasswordMismatchException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.UNAUTHORIZED);
-        return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
+        HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponse> UserAlreadyExistsException(PasswordMismatchException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.FOUND);
-        return new ResponseEntity<>(errorResponse, HttpStatus.FOUND);
+    public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
+        HttpStatus httpStatus = HttpStatus.FOUND;
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGeneralException(Exception ex) {
-        ErrorResponse errorResponse = new ErrorResponse("An error occurred: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler(OutOfStockException.class)
+    public ResponseEntity<ErrorResponse> handleOutOfStockException(OutOfStockException ex) {
+        HttpStatus httpStatus = HttpStatus.NOT_ACCEPTABLE;
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
+    }
+
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<ErrorResponse> handleBalanceShortageException(InsufficientBalanceException ex) {
+        HttpStatus httpStatus = HttpStatus.NOT_ACCEPTABLE;
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
     }
 
 }

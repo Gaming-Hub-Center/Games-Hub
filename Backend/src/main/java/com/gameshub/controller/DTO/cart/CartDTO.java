@@ -1,4 +1,4 @@
-package com.gameshub.controller.DTO;
+package com.gameshub.controller.DTO.cart;
 import lombok.*;
 
 @Data

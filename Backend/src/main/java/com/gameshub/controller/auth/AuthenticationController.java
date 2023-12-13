@@ -13,19 +13,14 @@ import org.springframework.security.core.*;
 import org.springframework.security.core.context.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
-
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("auth")
 public class AuthenticationController {
 
     private final UserService userService;
-
     private final UserMapper userMapper;
-
     private final JWTGenerator jwtGenerator;
-
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("signin")
@@ -41,32 +36,4 @@ public class AuthenticationController {
         return ResponseEntity.ok(userDTO);
     }
 
-    @GetMapping("/")
-    public String home() {
-        return ("<h1>Welcome</h1>");
-    }
-
-    // =========== Testing ===========
-
-    @GetMapping("user")
-    public UserDAO getUser(@RequestParam String email) {
-        return userService.getByEmail(email);
-    }
-
-    @GetMapping("users")
-    public List<UserDAO> getAllUsers() {
-        return userService.getAllUsers();
-    }
-
-    @GetMapping("buyers")
-    public List<BuyerDAO> getAllBuyers() {
-        return userService.getAllBuyers();
-    }
-
-    @GetMapping("sellers")
-    public List<SellerDAO> getAllSellers() {
-        return userService.getAllSellers();
-    }
-  
-    // ===============================
 }

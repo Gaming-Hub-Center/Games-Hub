@@ -24,16 +24,11 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         if (header != null) {
             String[] authElements = header.split(" ");
 
-            if (authElements.length == 2
-                    && "Bearer".equals(authElements[0])) {
+            if (authElements.length == 2 && "Bearer".equals(authElements[0])) {
                 try {
-                    SecurityContextHolder.getContext().setAuthentication(
-                            jwtGenerator.validateToken(authElements[1])
-                    );
+                    SecurityContextHolder.getContext().setAuthentication(jwtGenerator.validateToken(authElements[1]));
                 } catch (Exception e) {
                     SecurityContextHolder.clearContext();
-                    httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid JWT token");
-                    return;
                 }
             }
         }

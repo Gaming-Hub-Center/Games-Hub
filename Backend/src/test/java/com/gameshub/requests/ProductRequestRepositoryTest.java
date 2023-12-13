@@ -54,7 +54,6 @@ public class ProductRequestRepositoryTest {
 
         // Create a PhysicalProductRequestDAO
         PhysicalProductRequestDAO dao = new PhysicalProductRequestDAO(
-                2,
                 LocalDate.now(),
                 "Status",
                 "Type",
@@ -111,7 +110,6 @@ public class ProductRequestRepositoryTest {
 
         // Create a PhysicalProductRequestDAO
         DigitalProductRequestDAO dao = new DigitalProductRequestDAO(
-                2,
                 LocalDate.now(),
                 "Status",
                 "Type",

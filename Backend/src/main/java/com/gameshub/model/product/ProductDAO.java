@@ -1,45 +1,38 @@
 package com.gameshub.model.product;
 
+import lombok.*;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.Date;
+import java.time.*;
 
+@Data
 @MappedSuperclass
-@Getter
-@Setter
-@NoArgsConstructor
 public abstract class ProductDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int productID;
+    @Column(name = "Id")
+    protected int id;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "Title")
+    protected String title;
+
+    @Column(name = "Price")
     protected float price;
 
-    @Column(name = "count", nullable = false)
-    protected int count;
-
-    @Column(name = "name")
-    protected String name;
-
-    @Column(name = "Description", columnDefinition = "MEDIUMTEXT")
+    @Column(name = "Description")
     protected String description;
 
-    @Column(name = "category", nullable = false)
-    protected String category;
-
-    @Column(name = "SellerID", nullable = false)
+    @Column(name = "Sellerid")
     protected int sellerID;
 
-    @Column(name = "date")
-    @Temporal(TemporalType.DATE)
-    protected Date date;
+    @Column(name = "Count")
+    protected int count;
 
+    @Column(name = "Category")
+    protected String category;
 
+    @Column(name = "Postdate")
+    protected LocalDate postDate;
 
-    // Constructors, getters, and setters
 }

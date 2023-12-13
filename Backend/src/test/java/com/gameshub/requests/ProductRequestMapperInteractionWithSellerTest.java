@@ -98,7 +98,7 @@ public class ProductRequestMapperInteractionWithSellerTest {
         Assertions.assertNotNull(productRequestMapper.userService.getSellerById(sellerDAO.getId()), "Seller with ID 1 should exist");
 
         // JUST to see the values in debugging
-        Optional <SellerDAO> sellerDAO1 = Optional.ofNullable(sellerRepository.findById(sellerDAO.getId()));
+        Optional <SellerDAO> sellerDAO1 = sellerRepository.findById(sellerDAO.getId());
         Optional <SellerDAO> sellerDAO2 = sellerRepository.findByEmail(sellerDAO.getEmail());
 
         // CLEAR

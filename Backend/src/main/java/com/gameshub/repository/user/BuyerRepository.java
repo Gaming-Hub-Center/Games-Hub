@@ -9,6 +9,7 @@ import java.util.*;
 
 @Repository
 public interface BuyerRepository extends JpaRepository<BuyerDAO, Integer> {
+    Optional<BuyerDAO> findById(int id);
     Optional<BuyerDAO> findByEmail(String email);
     Boolean existsByEmail(String email);
 

@@ -1,13 +1,10 @@
 package com.gameshub;
 
-import com.gameshub.controller.DTO.user.BuyerRegistrationDTO;
-import com.gameshub.controller.DTO.user.SellerRegistrationDTO;
-import com.gameshub.controller.auth.RegistrationController;
+import com.gameshub.controller.DTO.user.*;
+import com.gameshub.controller.auth.*;
 import com.gameshub.exception.*;
-import com.gameshub.model.user.BuyerDAO;
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.user.BuyerRepository;
-import com.gameshub.repository.user.SellerRepository;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.user.*;
 import com.gameshub.utils.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
@@ -15,7 +12,7 @@ import org.springframework.boot.test.context.*;
 import org.springframework.http.*;
 import org.springframework.security.crypto.password.*;
 
-import java.time.LocalDate;
+import java.time.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,10 +35,24 @@ public class SignUpTests {
     public void setup() {
         buyerRepository.deleteAll();
         sellerRepository.deleteAll();
-        BuyerDAO buyerDAO = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 3000);
+
+        sellerRepository.resetAutoIncrement();
+        buyerRepository.resetAutoIncrement();
+
+        BuyerDAO buyerDAO = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 1000);
         SellerDAO sellerDAO = new SellerDAO("Alice Blue", "alice.blue@example.com", "$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.parse("2023-01-01"), "Description about Alice", "123456789A");
+
         buyerRepository.save(buyerDAO);
         sellerRepository.save(sellerDAO);
+    }
+
+    @AfterEach
+    public void finish() {
+        buyerRepository.deleteAll();
+        sellerRepository.deleteAll();
+
+        sellerRepository.resetAutoIncrement();
+        buyerRepository.resetAutoIncrement();
     }
 
     @Test
