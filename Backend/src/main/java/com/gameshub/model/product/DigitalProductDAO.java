@@ -17,17 +17,17 @@ public class DigitalProductDAO extends ProductDAO {
     private String code;
 
     public DigitalProductDAO(
-            int id,
-            float price,
-            String description,
-            String title,
-            int count,
-            int sellerID,
-            LocalDate created_date,
-            String category,
+            int productID, 
+            float price, 
+            int count, 
+            String title, 
+            String description, 
+            String category,  
+            int sellerID, 
+            Date created_date, 
             String code
     ) {
-        super(id, price, description, title, count, sellerID, created_date, category);
+        super(productID, price, description, title, count, sellerID, created_date, category);
         this.code = code;
     }
 }

@@ -8,7 +8,7 @@ function AlertError() {
   if (show) {
     return (
       <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-        <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+        <Alert.Heading>You got an error!</Alert.Heading>
         <p>
           Encountered problem on submitting your request. Please try again.
         </p>

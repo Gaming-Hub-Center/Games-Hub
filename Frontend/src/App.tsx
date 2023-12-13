@@ -4,7 +4,12 @@ import { Welcome } from "./Pages/Welcome";
 import { SignIn } from "./Pages/SignIn";
 import { SignUpSeller } from "./Pages/SignUp/SignUpSeller";
 import { SignUpBuyer } from "./Pages/SignUp/SignUpBuyer";
+import { HomeGames } from "./Pages/Buyer/Home/Games";
+import { About } from "./Pages/About";
+import { HomeAccessories } from "./Pages/Buyer/Home/Accessories";
+import "./App.css";
 import CatalogRequestForm from "./Pages/product-request-form/CatalogRequestForm";
+import { ProductView } from "./Components/ProductView";
 
 function App() {
   return (
@@ -19,11 +24,20 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
-        <Route path="/welcome" element={<Welcome />}></Route>
+        <Route path="/about" element={<About />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/signup/buyer" element={<SignUpBuyer />}></Route>
         <Route path="/signup/seller" element={<SignUpSeller />}></Route>
-        <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
+        <Route path="/buyer/home/games" element={<HomeGames />}></Route>
+        <Route
+          path="/buyer/home/accessories"
+          element={<HomeAccessories />}
+        ></Route>
+        <Route
+          path="/seller/create-product"
+          element={<CatalogRequestForm />}
+        ></Route>
+        <Route path="/buyer/ProductView" element={<ProductView />}></Route>
       </Routes>
     </Container>
   );

@@ -1,6 +1,7 @@
 package com.gameshub.service.request;
 
 import com.gameshub.controller.DTO.request.*;
+import com.gameshub.exception.ResourceAlreadyFoundException;
 import com.gameshub.model.request.*;
 import com.gameshub.repository.request.*;
 import com.gameshub.utils.ProductRequestMapper;
@@ -22,13 +23,22 @@ public class ProductRequestService {
     public void saveProductRequest(ProductRequestDTO productRequestDTO) {
         if (productRequestDTO instanceof PhysicalProductRequestDTO) {
             PhysicalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((PhysicalProductRequestDTO) productRequestDTO);
-            physicalProductRequestRepository.save(productRequestDAO);
+            if (!physicalProductRequestRepository.existsByDescriptionAndTitle(productRequestDAO.getDescription(), productRequestDAO.getTitle())) {
+                physicalProductRequestRepository.save(productRequestDAO);
+            } else {
+                throw new ResourceAlreadyFoundException("Duplicate request found");
+            }
         } else if (productRequestDTO instanceof DigitalProductRequestDTO) {
             DigitalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
-            digitalProductRequestRepository.save(productRequestDAO);
+            if (!digitalProductRequestRepository.existsByDescriptionAndTitle(productRequestDAO.getDescription(), productRequestDAO.getTitle())) {
+                digitalProductRequestRepository.save(productRequestDAO);
+            } else {
+                throw new ResourceAlreadyFoundException("Duplicate request found");
+            }
         } else {
             throw new RuntimeException("Unsupported request type");
         }
     }
+
 
 }

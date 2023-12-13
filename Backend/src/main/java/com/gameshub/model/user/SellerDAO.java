@@ -7,7 +7,7 @@ import java.time.*;
 
 @Data
 @Entity
-@Table(name = "`seller`")
+@Table(name = "seller")
 @NoArgsConstructor
 public class SellerDAO extends UserDAO {
 

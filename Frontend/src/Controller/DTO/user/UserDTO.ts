@@ -10,4 +10,4 @@ export type UserDTO = {
     sellerDescription: string
     vatRegistrationNumber: string
     token: string
-}
+};

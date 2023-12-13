@@ -13,20 +13,15 @@ import { UserDTO } from "../Controller/DTO/user/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
 import { clearCurrentSession, storeUserData } from "../CurrentSession";
 
-
 export function SignIn() {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
-    if (
-      form.checkValidity() === false ||
-      !isValidEmail(email) ||
-      !isValidPassword(password)
-    ) {
+    if (form.checkValidity() === false) {
       event.stopPropagation();
     }
 
@@ -34,10 +29,10 @@ export function SignIn() {
 
     const userSignInDTO: UserSignInDTO = {
       email: email,
-      password: password
-    }
+      password: password,
+    };
 
-    clearCurrentSession()
+    clearCurrentSession();
 
     httpRequest('POST', 'auth/signin', userSignInDTO)
     .then((response) => {
@@ -80,15 +75,19 @@ export function SignIn() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        backgroundImage: `url("/src/data/back2.jpg")`, // Replace with the path to your background image
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <Form
         style={{
           width: "30%",
-          backgroundColor: "#f8f9fa",
+          backgroundColor: "#121212",
           padding: "20px",
           borderRadius: "8px",
           boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+          color: "#f0f0f0",
         }}
         noValidate
         validated={validated}
@@ -104,7 +103,7 @@ export function SignIn() {
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     style={{
-                      color: "black",
+                      color: "#733BC0",
                       fontSize: "20px",
                       marginRight: "10px",
                     }}
@@ -133,7 +132,7 @@ export function SignIn() {
                   <FontAwesomeIcon
                     icon={faLock}
                     style={{
-                      color: "black",
+                      color: "#733BC0",
                       fontSize: "20px",
                       marginRight: "10px",
                     }}
@@ -160,7 +159,19 @@ export function SignIn() {
           <Button
             type="submit"
             disabled={!isValidEmail(email) || !isValidPassword(password)}
-            style={{ width: "100%" }}
+            style={{
+              width: "100%",
+              backgroundColor: "#733BC0",
+              borderColor: "#733BC0",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor =
+                "rgba(115, 59, 192, 0.6)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
           >
             Submit
           </Button>
