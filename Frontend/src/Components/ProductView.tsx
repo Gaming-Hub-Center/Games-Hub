@@ -134,7 +134,14 @@ export function ProductView() {
               style={{ width: "90%" }}
               className="d-flex justify-content-between align-items-baseline"
             >
-              <span className="fs-1" style={{ color: "#f0f0f0" }}>
+              <span
+                  className="fs-1"
+                  style={{
+                      color: "#f0f0f0",
+                      maxHeight: "13vh",
+                      overflow: "hidden",
+                  }}
+              >
                 {response.title}
               </span>
               <span className="fs-3 text-muted ">{formatCurrency(response.price)}</span>
