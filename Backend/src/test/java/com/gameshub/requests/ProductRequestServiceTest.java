@@ -1,27 +1,21 @@
 package com.gameshub.requests;
 
-import com.gameshub.controller.DTO.request.DigitalProductRequestDTO;
-import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
-import com.gameshub.controller.DTO.request.ProductRequestDTO;
-import com.gameshub.exception.ResourceAlreadyFoundException;
-import com.gameshub.model.product.PhysicalProductDAO;
-import com.gameshub.model.request.DigitalProductRequestDAO;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.request.DigitalProductRequestRepository;
-import com.gameshub.repository.request.PhysicalProductRequestRepository;
-import com.gameshub.repository.user.SellerRepository;
-import com.gameshub.service.request.ProductRequestService;
-import com.gameshub.utils.ProductRequestMapper;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import java.time.LocalDate;
-import java.util.List;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.exception.*;
+import com.gameshub.model.request.*;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.request.*;
+import com.gameshub.repository.user.*;
+import com.gameshub.service.request.*;
+import com.gameshub.utils.*;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
+import java.time.*;
+import java.util.*;
+
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -199,8 +193,8 @@ class ProductRequestServiceTest {
         assertEquals(savedDao.getCode(), dto.getCode());
     }
 
-//    @Test
-//    void testSavePhysicalProductRequest_WithDuplicate_Title_and_Description() {
+    @Test
+    void testSavePhysicalProductRequest_WithDuplicate_Title_and_Description() {
 //        // Create a PhysicalProductRequestDTO with a duplicate title
 //        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
 //        dto.setRequestType("Pending");
@@ -240,11 +234,11 @@ class ProductRequestServiceTest {
 //            productRequestService.saveProductRequest(dto);
 //        });
 //        assertTrue(exception.getMessage().contains("Duplicate request found"));
-//    }
-//
-//    @Test
-//    void testSaveDigitalProductRequest_WithDuplicate_Title_and_Description() {
-//        // Create a PhysicalProductRequestDTO with a duplicate title
+    }
+
+    @Test
+    void testSaveDigitalProductRequest_WithDuplicate_Title_and_Description() {
+        // Create a PhysicalProductRequestDTO with a duplicate title
 //        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
 //        dto.setRequestType("Pending");
 //        dto.setCategory("CAT");
@@ -284,7 +278,7 @@ class ProductRequestServiceTest {
 //            productRequestService.saveProductRequest(dto);
 //        });
 //        assertTrue(exception.getMessage().contains("Duplicate request found"));
-//    }
+    }
 
     @Test
     void testSaveProductRequestWithNullInput() {

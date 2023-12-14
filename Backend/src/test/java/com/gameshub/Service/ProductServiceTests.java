@@ -1,22 +1,18 @@
 package com.gameshub.Service;
 
 
-import com.gameshub.controller.DTO.ProductPatchDTO;
-import com.gameshub.model.product.DigitalProductDAO;
-import com.gameshub.model.product.PhysicalProductDAO;
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.product.DigitalProductRepository;
-import com.gameshub.repository.product.PhysicalProductRepository;
-import com.gameshub.repository.user.SellerRepository;
-import com.gameshub.service.product.ProductService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.model.product.*;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.product.*;
+import com.gameshub.repository.user.*;
+import com.gameshub.service.product.*;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
+import java.time.*;
+import java.util.*;
 
 @SpringBootTest
 public class ProductServiceTests {
@@ -30,11 +26,8 @@ public class ProductServiceTests {
     @Autowired
     PhysicalProductRepository physicalProductRepository;
 
-
     @Autowired
     SellerRepository sellerRepository;
-
-
 
     @BeforeEach
     public void setup(){
@@ -67,7 +60,7 @@ public class ProductServiceTests {
                         "sample digital product",
                         10,
                         "",
-                        seller,
+                        seller.getId(),
                         1,
                         "Game",
                         "",
@@ -80,7 +73,7 @@ public class ProductServiceTests {
                         "sample physical product",
                         10,
                         "",
-                        seller,
+                        seller.getId(),
                         20,
                         "Mouse",
                         LocalDate.now()
@@ -94,7 +87,7 @@ public class ProductServiceTests {
                             "Digital Product " + i,
                             10 + i * 5,
                             "Description for Digital Product " + i,
-                            seller,
+                            seller.getId(),
                             2 + i,
                             "Software",
                             "https://example.com/digital-product-" + i,
@@ -110,7 +103,7 @@ public class ProductServiceTests {
                             "Physical Product " + i,
                             15 + i * 5,
                             "Description for Physical Product " + i,
-                            seller,
+                            seller.getId(),
                             20 + i * 5,
                             "Electronics",
                             LocalDate.now()
@@ -118,6 +111,16 @@ public class ProductServiceTests {
             );
         }
 
+    }
+
+    @AfterEach
+    void finish() {
+        digitalProductRepository.deleteAll();
+        digitalProductRepository.resetAutoIncrement();
+        physicalProductRepository.deleteAll();
+        physicalProductRepository.resetAutoIncrement();
+        sellerRepository.deleteAll();
+        sellerRepository.resetAutoIncrement();
     }
 
     @Test
@@ -191,7 +194,7 @@ public class ProductServiceTests {
             // Add specific assertions based on your data
             assert(digitalProduct.getTitle().startsWith("Digital Product"));
             assert(digitalProduct.getPrice() > 0);
-            assert(digitalProduct.getSeller() != null);
+            assert(digitalProduct.getSellerID() != 0);
             // Add more assertions as needed
         }
     }
@@ -207,7 +210,7 @@ public class ProductServiceTests {
             // Add specific assertions based on your data
             assert(physicalProduct.getTitle().startsWith("Physical Product"));
             assert(physicalProduct.getPrice() > 0);
-            assert(physicalProduct.getSeller() != null);
+            assert(physicalProduct.getSellerID() != 0);
             // Add more assertions as needed
         }
     }

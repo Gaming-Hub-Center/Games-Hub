@@ -1,12 +1,10 @@
 package com.gameshub.repository.cart;
 
-import com.gameshub.model.cart.PhysicalCartDAO;
-import com.gameshub.model.user.*;
+import com.gameshub.model.cart.*;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
 
-import java.util.List;
-
+import java.util.*;
 
 @Repository
 public interface PhysicalCartRepository extends JpaRepository<PhysicalCartDAO, PhysicalCartDAO.CartKey> {

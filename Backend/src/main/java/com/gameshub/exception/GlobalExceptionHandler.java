@@ -6,11 +6,6 @@ import org.springframework.web.bind.annotation.*;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(InvalidFormatException.class)
-    public ResponseEntity<String> handleInvalidFormatException(InvalidFormatException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
@@ -18,16 +13,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceAlreadyFoundException.class)
     public ResponseEntity<String> handleResourceAlreadyFoundException(ResourceAlreadyFoundException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FOUND);
-    }
-
-    @ExceptionHandler(PasswordMismatchException.class)
-    public ResponseEntity<String> handlePasswordMismatchException(PasswordMismatchException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
-    }
-
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<String> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.FOUND);
     }
 

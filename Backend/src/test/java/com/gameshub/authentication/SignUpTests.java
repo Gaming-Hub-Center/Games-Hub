@@ -1,11 +1,10 @@
-package com.gameshub;
+package com.gameshub.authentication;
 
 import com.gameshub.controller.DTO.user.*;
 import com.gameshub.controller.auth.*;
 import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;
-import com.gameshub.utils.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
@@ -13,6 +12,7 @@ import org.springframework.http.*;
 import org.springframework.security.crypto.password.*;
 
 import java.time.*;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,6 +30,11 @@ public class SignUpTests {
 
     @Autowired
     SellerRepository sellerRepository;
+
+    public static int generateRandomIntegerInRange(int min, int max){
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
+    }
 
     @BeforeEach
     public void setup() {
@@ -58,7 +63,7 @@ public class SignUpTests {
     @Test
     public void testNewBuyer(){
         BuyerRegistrationDTO newUserData = new BuyerRegistrationDTO();
-        int newUserNumber = RandomIntegerGenerator.generateRandomIntegerInRange(1, Integer.MAX_VALUE);
+        int newUserNumber = generateRandomIntegerInRange(1, Integer.MAX_VALUE);
         newUserData.setName("user" + newUserNumber);
         newUserData.setPassword(passwordEncoder.encode("password" + newUserNumber));
         newUserData.setEmail("user" + newUserNumber + "@example.com");
@@ -69,7 +74,7 @@ public class SignUpTests {
     @Test
     public void testNewSeller(){
         SellerRegistrationDTO newUserData = new SellerRegistrationDTO();
-        int newUserNumber = RandomIntegerGenerator.generateRandomIntegerInRange(1, Integer.MAX_VALUE);
+        int newUserNumber = generateRandomIntegerInRange(1, Integer.MAX_VALUE);
         newUserData.setName("user" + newUserNumber);
         newUserData.setPassword(passwordEncoder.encode("password" + newUserNumber));
         newUserData.setEmail("user" + newUserNumber + "@example.com");

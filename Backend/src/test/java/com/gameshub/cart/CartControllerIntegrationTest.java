@@ -1,4 +1,4 @@
-package com.gameshub;
+package com.gameshub.cart;
 
 import com.fasterxml.jackson.databind.*;
 import com.gameshub.controller.cart.*;
@@ -202,4 +202,5 @@ class CartControllerIntegrationTest {
 
         verify(cartService).getDigitalCartItems(1);
     }
+
 }

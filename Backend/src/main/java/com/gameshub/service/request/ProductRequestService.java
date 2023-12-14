@@ -1,29 +1,22 @@
 package com.gameshub.service.request;
 
-import com.gameshub.controller.DTO.ProductPatchDTO;
 import com.gameshub.controller.DTO.request.*;
 import com.gameshub.exception.ResourceAlreadyFoundException;
 import com.gameshub.model.request.*;
 import com.gameshub.repository.request.*;
 import com.gameshub.utils.ProductRequestMapper;
-import org.springframework.beans.factory.annotation.*;
+import lombok.*;
 import org.springframework.stereotype.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+@RequiredArgsConstructor
 @Service
 public class ProductRequestService {
 
-    @Autowired
-    private PhysicalProductRequestRepository physicalProductRequestRepository;
-
-    @Autowired
-    private DigitalProductRequestRepository digitalProductRequestRepository;
-
-    @Autowired
-    private ProductRequestMapper productRequestMapper;
+    private final PhysicalProductRequestRepository physicalProductRequestRepository;
+    private final DigitalProductRequestRepository digitalProductRequestRepository;
+    private final ProductRequestMapper productRequestMapper;
 
     public void saveProductRequest(ProductRequestDTO productRequestDTO) {
         if (productRequestDTO instanceof PhysicalProductRequestDTO) {

@@ -34,4 +34,3 @@ public abstract class CartDAO {
     protected BuyerDAO buyer;
 
 }
-

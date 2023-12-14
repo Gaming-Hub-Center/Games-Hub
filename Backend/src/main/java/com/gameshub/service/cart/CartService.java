@@ -15,8 +15,6 @@ public class CartService {
     private final PhysicalCartRepository physicalCartRepository;
     private final DigitalCartRepository digitalCartRepository;
 
-
-
     // Add or update a physical cart item
     @Transactional
     public void addOrUpdatePhysicalCartItem(int buyerID, int productID, int count) {
@@ -57,5 +55,4 @@ public class CartService {
         return digitalCartRepository.findByBuyerId(buyerId);
     }
 
-    // Additional functionalities can be added as required.
 }

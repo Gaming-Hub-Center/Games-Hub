@@ -1,4 +1,4 @@
-package com.gameshub.DataAccessLayer;
+package com.gameshub.user;
 
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;

@@ -1,24 +1,20 @@
 package com.gameshub.service.request.approve;
 
-import com.gameshub.exception.ResourceNotFoundException;
-import com.gameshub.model.product.DigitalProductDAO;
-import com.gameshub.model.request.DigitalProductRequestDAO;
-import com.gameshub.repository.product.DigitalProductRepository;
-import com.gameshub.repository.request.DigitalProductRequestRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Component;
+import com.gameshub.exception.*;
+import com.gameshub.model.product.*;
+import com.gameshub.model.request.*;
+import com.gameshub.repository.product.*;
+import com.gameshub.repository.request.*;
+import lombok.*;
+import org.springframework.transaction.annotation.*;
+import org.springframework.stereotype.*;
 
-// ... other necessary imports ...
-
+@RequiredArgsConstructor
 @Component
 public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
 
-    @Autowired
-    private DigitalProductRequestRepository digitalProductRequestRepository;
-
-    @Autowired
-    private DigitalProductRepository digitalProductRepository;
+    private final DigitalProductRequestRepository digitalProductRequestRepository;
+    private final DigitalProductRepository digitalProductRepository;
 
     @Override
     @Transactional
@@ -65,10 +61,11 @@ public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
         product.setCount(request.getCount());
         product.setCategory(request.getCategory());
         try {
-            product.setSeller(request.getSeller());
+            product.setSellerID(request.getSeller().getId());
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
         product.setCode(request.getCode());
     }
+
 }

@@ -1,26 +1,19 @@
 package com.gameshub.requests;
 
-import com.gameshub.controller.DTO.request.DigitalProductRequestDTO;
-import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
-import com.gameshub.controller.request.ProductRequestController;
-import com.gameshub.service.request.ProductRequestService;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
+import com.fasterxml.jackson.databind.*;
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.controller.request.*;
+import com.gameshub.service.request.*;
+import org.junit.jupiter.api.*;
+import org.mockito.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.autoconfigure.web.servlet.*;
+import org.springframework.boot.test.mock.mockito.*;
+import org.springframework.test.web.servlet.*;
+import org.springframework.http.*;
 
-import org.springframework.http.MediaType;
-
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @WebMvcTest(ProductRequestController.class)
 public class ProductRequestControllerTest {

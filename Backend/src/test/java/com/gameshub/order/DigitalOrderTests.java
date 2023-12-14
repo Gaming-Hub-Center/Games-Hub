@@ -1,4 +1,4 @@
-package com.gameshub;
+package com.gameshub.order;
 
 import com.gameshub.controller.DTO.order.*;
 import com.gameshub.controller.order.*;
@@ -19,7 +19,7 @@ import org.springframework.http.*;
 import java.time.*;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class DigitalOrderTests {
@@ -65,11 +65,11 @@ public class DigitalOrderTests {
         SellerDAO sellerDAO1 = new SellerDAO("Alice Blue", "alice.blue@example.com", "$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.parse("2023-01-01"), "Description about Alice", "123456789A");
         SellerDAO sellerDAO2 = new SellerDAO("Bob Green", "+5647382910", "bob.green@example.com", "$2a$10$bM/Om9b6r/7qklzXJCCAauNotDkmKEsD2W.BA32PvOw5nIcOsRc3q", "202 Green Lane", 15000, "ID67890B", LocalDate.parse("2023-02-02"), "Description about Bob", "987654321B");
 
-        DigitalProductDAO digitalProductDAO1 = new DigitalProductDAO("Digital Game Bundle", 300.00f, "Get the latest digital game bundle with multiple titles.", sellerDAO1, 10, "Games", "DG001", LocalDate.parse("2023-12-08"));
-        DigitalProductDAO digitalProductDAO2 = new DigitalProductDAO("Virtual Reality Gaming Experience", 200.00f, "Immersive VR gaming with a high-resolution headset.", sellerDAO1, 15, "VR Games", "VR001", LocalDate.parse("2023-12-08"));
-        DigitalProductDAO digitalProductDAO3 = new DigitalProductDAO("Wireless Gaming Controller Pack", 60.00f, "Bundle of ergonomic wireless controllers for various gaming platforms.", sellerDAO2, 25, "Accessories", "WG001", LocalDate.parse("2023-12-08"));
-        DigitalProductDAO digitalProductDAO4 = new DigitalProductDAO("High-Performance Gaming Laptop", 1000.00f, "Top-notch gaming laptop for an exceptional gaming experience.", sellerDAO2, 5, "Computers", "HL001", LocalDate.parse("2023-12-08"));
-        DigitalProductDAO digitalProductDAO5 = new DigitalProductDAO("Epic Quests Strategy Game", 50.00f, "Embark on epic quests with our latest strategy game.", sellerDAO2, 2, "Games", "EQ001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO1 = new DigitalProductDAO("Digital Game Bundle", 300.00f, "Get the latest digital game bundle with multiple titles.", 1, 10, "Games", "DG001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO2 = new DigitalProductDAO("Virtual Reality Gaming Experience", 200.00f, "Immersive VR gaming with a high-resolution headset.", 1, 15, "VR Games", "VR001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO3 = new DigitalProductDAO("Wireless Gaming Controller Pack", 60.00f, "Bundle of ergonomic wireless controllers for various gaming platforms.", 2, 25, "Accessories", "WG001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO4 = new DigitalProductDAO("High-Performance Gaming Laptop", 1000.00f, "Top-notch gaming laptop for an exceptional gaming experience.", 2, 5, "Computers", "HL001", LocalDate.parse("2023-12-08"));
+        DigitalProductDAO digitalProductDAO5 = new DigitalProductDAO("Epic Quests Strategy Game", 50.00f, "Embark on epic quests with our latest strategy game.", 2, 2, "Games", "EQ001", LocalDate.parse("2023-12-08"));
 
         DigitalCartDAO digitalCartDAO1 = new DigitalCartDAO(1, 1, 5);
         DigitalCartDAO digitalCartDAO2 = new DigitalCartDAO(1, 3, 2);

@@ -1,22 +1,17 @@
 package com.gameshub.Service;
 
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.model.request.*;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.request.*;
+import com.gameshub.repository.user.*;
+import com.gameshub.service.request.*;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
 
-import com.gameshub.controller.DTO.ProductPatchDTO;
-import com.gameshub.model.request.DigitalProductRequestDAO;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.request.DigitalProductRequestRepository;
-import com.gameshub.repository.request.PhysicalProductRequestRepository;
-import com.gameshub.repository.user.SellerRepository;
-import com.gameshub.service.request.ProductRequestService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
+import java.time.*;
+import java.util.*;
 
 @SpringBootTest
 public class ProductRequestServiceTests {
@@ -130,6 +125,16 @@ public class ProductRequestServiceTests {
             );
         }
 
+    }
+
+    @AfterEach
+    void finish() {
+        digitalProductRequestRepository.deleteAll();
+        digitalProductRequestRepository.resetAutoIncrement();
+        physicalProductRequestRepository.deleteAll();
+        physicalProductRequestRepository.resetAutoIncrement();
+        sellerRepository.deleteAll();
+        sellerRepository.resetAutoIncrement();
     }
 
     @Test

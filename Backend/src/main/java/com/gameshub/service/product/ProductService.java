@@ -1,33 +1,26 @@
 package com.gameshub.service.product;
 
-import com.gameshub.controller.DTO.ProductPatchDTO;
-import com.gameshub.model.product.DigitalProductDAO;
-import com.gameshub.model.product.PhysicalProductDAO;
-import com.gameshub.model.product.ProductDAO;
-import com.gameshub.repository.product.DigitalProductRepository;
-import com.gameshub.repository.product.PhysicalProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.model.product.*;
+import com.gameshub.repository.product.*;
+import lombok.*;
+import org.springframework.stereotype.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+@RequiredArgsConstructor
 @Service
 public class ProductService {
 
-    @Autowired
-    private PhysicalProductRepository physicalProductRepository;
-
-    @Autowired
-    private DigitalProductRepository digitalProductRepository;
+    private final PhysicalProductRepository physicalProductRepository;
+    private final DigitalProductRepository digitalProductRepository;
 
     public List<PhysicalProductDAO> getAllPhysicalProductsBySellerID(int sellerID) {
-        return physicalProductRepository.findBySellerId(sellerID);
+        return physicalProductRepository.findBySellerID(sellerID);
     }
 
     public List<DigitalProductDAO> getAllDigitalProductsBySellerID(int sellerID) {
-        return digitalProductRepository.findBySellerId(sellerID);
+        return digitalProductRepository.findBySellerID(sellerID);
     }
 
     public DigitalProductDAO getDigitalProductByProductID(int productID){
@@ -49,12 +42,12 @@ public class ProductService {
     }
 
     public boolean deleteDigitalProductBySellerIdAndProductID(int sellerID, int productId){
-        long numberOfDeletedProducts = digitalProductRepository.deleteByIdAndSellerId(productId, sellerID);
+        long numberOfDeletedProducts = digitalProductRepository.deleteByIdAndSellerID(productId, sellerID);
         return numberOfDeletedProducts != 0;
     }
 
     public boolean deletePhysicalProductBySellerIdAndProductID(int sellerID, int productId){
-        long numberOfDeletedProducts = physicalProductRepository.deleteByIdAndSellerId(productId, sellerID);
+        long numberOfDeletedProducts = physicalProductRepository.deleteByIdAndSellerID(productId, sellerID);
         return numberOfDeletedProducts != 0;
     }
 
@@ -67,6 +60,5 @@ public class ProductService {
         int numberOfUpdatedProducts = physicalProductRepository.updateById(productId, patch);
         return numberOfUpdatedProducts != 0;
     }
-
 
 }

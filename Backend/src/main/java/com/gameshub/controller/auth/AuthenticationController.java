@@ -1,10 +1,9 @@
 package com.gameshub.controller.auth;
 
 import com.gameshub.config.*;
-import com.gameshub.controller.DTO.user.UserDTO;
-import com.gameshub.controller.DTO.user.UserSignInDTO;
+import com.gameshub.controller.DTO.user.*;
 import com.gameshub.model.user.*;
-import com.gameshub.service.user.UserService;
+import com.gameshub.service.user.*;
 import com.gameshub.utils.*;
 import lombok.*;
 import org.springframework.http.*;

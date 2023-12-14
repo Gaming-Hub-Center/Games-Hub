@@ -1,9 +1,9 @@
-package com.gameshub;
+package com.gameshub.authentication;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.gameshub.controller.DTO.user.UserSignInDTO;
-import com.gameshub.controller.auth.AuthenticationController;
+import com.gameshub.controller.DTO.user.*;
+import com.gameshub.controller.auth.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;
 import org.junit.jupiter.api.*;

@@ -1,18 +1,15 @@
 package com.gameshub.requests;
 
-import com.gameshub.model.request.DigitalProductRequestDAO;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.request.DigitalProductRequestRepository;
-import com.gameshub.repository.request.PhysicalProductRequestRepository;
-import com.gameshub.repository.user.SellerRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import com.gameshub.model.request.*;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.request.*;
+import com.gameshub.repository.user.*;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.autoconfigure.orm.jpa.*;
 
-import java.time.LocalDate;
-import java.util.Optional;
+import java.time.*;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 

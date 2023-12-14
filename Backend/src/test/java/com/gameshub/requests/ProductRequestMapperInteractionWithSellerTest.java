@@ -1,18 +1,14 @@
 package com.gameshub.requests;
 
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.repository.user.SellerRepository;
-import com.gameshub.utils.ProductRequestMapper;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.gameshub.model.user.*;
+import com.gameshub.repository.user.*;
+import com.gameshub.utils.*;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import java.time.*;
+import java.util.*;
 
 @SpringBootTest
 public class ProductRequestMapperInteractionWithSellerTest {

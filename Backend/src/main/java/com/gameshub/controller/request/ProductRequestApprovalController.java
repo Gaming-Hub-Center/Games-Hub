@@ -1,16 +1,16 @@
 package com.gameshub.controller.request;
 
-import com.gameshub.exception.ResourceNotFoundException;
+import com.gameshub.exception.*;
 import com.gameshub.service.request.approve.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import lombok.*;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/products")
 public class ProductRequestApprovalController {
 
-    @Autowired
     private ProductRequestApproveService productRequestApproveService;
 
     @PostMapping("/approve/create")
@@ -36,4 +36,5 @@ public class ProductRequestApprovalController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 }

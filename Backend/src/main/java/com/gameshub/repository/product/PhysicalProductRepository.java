@@ -1,24 +1,23 @@
 package com.gameshub.repository.product;
 
-import com.gameshub.controller.DTO.ProductPatchDTO;
+import com.gameshub.controller.DTO.request.*;
 import com.gameshub.model.product.*;
 import org.springframework.data.jpa.repository.*;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.query.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public interface PhysicalProductRepository extends JpaRepository<PhysicalProductDAO, Integer> {
 
-    List<PhysicalProductDAO> findBySellerId(int sellerId);
-    boolean existsBySellerId(int sellerId);
+    List<PhysicalProductDAO> findBySellerID(int sellerId);
+    boolean existsBySellerID(int sellerId);
     Optional<PhysicalProductDAO> findById(int id);
 
     @Transactional
-    long deleteByIdAndSellerId(int id, int sellerId);
+    long deleteByIdAndSellerID(int id, int sellerId);
 
     @Transactional
     @Modifying
@@ -27,7 +26,7 @@ public interface PhysicalProductRepository extends JpaRepository<PhysicalProduct
 
     @Transactional
     @Modifying
-    @Query(value = "ALTER TABLE physicalproduct ALTER COLUMN Id RESTART WITH 1", nativeQuery = true)
+    @Query(value = "ALTER TABLE physicalproduct ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
     void resetAutoIncrement();
 
 }

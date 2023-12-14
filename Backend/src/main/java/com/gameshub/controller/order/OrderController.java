@@ -1,7 +1,6 @@
 package com.gameshub.controller.order;
 
 import com.gameshub.controller.DTO.order.*;
-import com.gameshub.model.order.*;
 import com.gameshub.repository.order.*;
 import com.gameshub.service.order.*;
 import lombok.*;
@@ -15,8 +14,6 @@ import java.util.*;
 @RequestMapping("order")
 public class OrderController {
 
-    private final OrderRepository orderRepository;
-    private final PhysicalOrderItemRepository physicalOrderItemRepository;
     private final OrderService orderService;
 
     @PostMapping("checkout/physical")
@@ -33,15 +30,15 @@ public class OrderController {
 
     // ------------- Testing ------------- //
 
-    @GetMapping("orders")
-    public ResponseEntity<List<OrderDAO>> getAllOrders() {
-        return ResponseEntity.ok(orderRepository.findAll());
-    }
-
-    @GetMapping("physical/orders")
-    public ResponseEntity<List<PhysicalOrderItemDAO>> getAllPhysicalOrders() {
-        return ResponseEntity.ok(physicalOrderItemRepository.findAll());
-    }
+//    @GetMapping("orders")
+//    public ResponseEntity<List<OrderDAO>> getAllOrders() {
+//        return ResponseEntity.ok(orderRepository.findAll());
+//    }
+//
+//    @GetMapping("physical/orders")
+//    public ResponseEntity<List<PhysicalOrderItemDAO>> getAllPhysicalOrders() {
+//        return ResponseEntity.ok(physicalOrderItemRepository.findAll());
+//    }
 
     // ------------- Testing ------------- //
 

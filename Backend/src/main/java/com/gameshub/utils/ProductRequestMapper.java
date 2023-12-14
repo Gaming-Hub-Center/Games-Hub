@@ -1,22 +1,17 @@
 package com.gameshub.utils;
 
-import com.gameshub.controller.DTO.request.DigitalProductRequestDTO;
-import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
-import com.gameshub.model.request.DigitalProductRequestDAO;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.model.request.*;
+import com.gameshub.model.user.*;
+import com.gameshub.service.user.*;
+import lombok.*;
+import org.springframework.stereotype.*;
 
-import com.gameshub.model.user.SellerDAO;
-import com.gameshub.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.Optional;
-
+@RequiredArgsConstructor
 @Component
 public class ProductRequestMapper {
 
-    @Autowired
-    public UserService userService;
+    public final UserService userService;
 
     public DigitalProductRequestDAO toDAO(DigitalProductRequestDTO digitalProductRequestDTO) {
         if ( digitalProductRequestDTO == null ) {

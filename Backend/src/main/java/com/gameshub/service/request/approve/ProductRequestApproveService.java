@@ -1,17 +1,14 @@
 package com.gameshub.service.request.approve;
 
-import com.gameshub.exception.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import lombok.*;
+import org.springframework.stereotype.*;
 
+@RequiredArgsConstructor
 @Service
 public class ProductRequestApproveService {
 
-    @Autowired
-    private DigitalProductApprovalStrategy digitalProductApprovalStrategy;
-
-    @Autowired
-    private PhysicalProductApprovalStrategy physicalProductApprovalStrategy;
+    private final DigitalProductApprovalStrategy digitalProductApprovalStrategy;
+    private final PhysicalProductApprovalStrategy physicalProductApprovalStrategy;
 
     public void approveProductCreation(String productType, int requestId) {
         ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);

@@ -1,24 +1,20 @@
 package com.gameshub.service.request.approve;
 
-import com.gameshub.exception.ResourceNotFoundException;
-import com.gameshub.model.product.PhysicalProductDAO;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
-import com.gameshub.repository.product.PhysicalProductRepository;
-import com.gameshub.repository.request.PhysicalProductRequestRepository;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.gameshub.exception.*;
+import com.gameshub.model.product.*;
+import com.gameshub.model.request.*;
+import com.gameshub.repository.product.*;
+import com.gameshub.repository.request.*;
+import jakarta.transaction.*;
+import lombok.*;
+import org.springframework.stereotype.*;
 
-import java.util.Optional;
-
+@RequiredArgsConstructor
 @Component
 public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
 
-    @Autowired
-    private PhysicalProductRequestRepository physicalProductRequestRepository;
-
-    @Autowired
-    private PhysicalProductRepository physicalProductRepository;
+    private final PhysicalProductRequestRepository physicalProductRequestRepository;
+    private final PhysicalProductRepository physicalProductRepository;
 
     @Override
     @Transactional
@@ -64,10 +60,11 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
         product.setPrice(request.getPrice());
         product.setCount(request.getCount());
         try {
-            product.setSeller(request.getSeller());
+            product.setSellerID(request.getSeller().getId());
         } catch (NullPointerException e) {
             System.out.println("NULL :(");
         }
         product.setCategory(request.getCategory());
     }
+
 }

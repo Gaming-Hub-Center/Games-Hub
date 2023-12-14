@@ -1,4 +1,4 @@
-package com.gameshub;
+package com.gameshub.order;
 
 import com.gameshub.controller.DTO.order.*;
 import com.gameshub.controller.order.*;
@@ -19,7 +19,7 @@ import org.springframework.http.*;
 import java.time.*;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class PhysicalOrderTests {
@@ -65,11 +65,11 @@ public class PhysicalOrderTests {
         SellerDAO sellerDAO1 = new SellerDAO("Alice Blue", "alice.blue@example.com", "$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.parse("2023-01-01"), "Description about Alice", "123456789A");
         SellerDAO sellerDAO2 = new SellerDAO("Bob Green", "+5647382910", "bob.green@example.com", "$2a$10$bM/Om9b6r/7qklzXJCCAauNotDkmKEsD2W.BA32PvOw5nIcOsRc3q", "202 Green Lane", 15000, "ID67890B", LocalDate.parse("2023-02-02"), "Description about Bob", "987654321B");
 
-        PhysicalProductDAO physicalProductDAO1 = new PhysicalProductDAO("Game Console", 300.0f, "Latest model of our popular game console.", sellerDAO1, 10, "Electronics", LocalDate.parse("2023-12-08"));
-        PhysicalProductDAO physicalProductDAO2 = new PhysicalProductDAO("Virtual Reality Headset", 200.0f, "Immersive VR experience with high resolution.", sellerDAO1, 15, "Electronics", LocalDate.parse("2023-12-08"));
-        PhysicalProductDAO physicalProductDAO3 = new PhysicalProductDAO("Wireless Gaming Controller", 60.0f, "Ergonomic wireless controller for various gaming platforms.", sellerDAO2, 25, "Accessories", LocalDate.parse("2023-12-08"));
-        PhysicalProductDAO physicalProductDAO4 = new PhysicalProductDAO("Gaming Laptop", 1000.0f, "High-performance laptop designed for gaming.", sellerDAO2, 5, "Computers", LocalDate.parse("2023-12-08"));
-        PhysicalProductDAO physicalProductDAO5 = new PhysicalProductDAO("Strategy Game", 50.0f, "A new strategy game with epic quests.", sellerDAO2, 2, "Games", LocalDate.parse("2023-12-08"));
+        PhysicalProductDAO physicalProductDAO1 = new PhysicalProductDAO("Game Console", 300.0f, "Latest model of our popular game console.", 1, 10, "Electronics", LocalDate.parse("2023-12-08"));
+        PhysicalProductDAO physicalProductDAO2 = new PhysicalProductDAO("Virtual Reality Headset", 200.0f, "Immersive VR experience with high resolution.", 1, 15, "Electronics", LocalDate.parse("2023-12-08"));
+        PhysicalProductDAO physicalProductDAO3 = new PhysicalProductDAO("Wireless Gaming Controller", 60.0f, "Ergonomic wireless controller for various gaming platforms.", 2, 25, "Accessories", LocalDate.parse("2023-12-08"));
+        PhysicalProductDAO physicalProductDAO4 = new PhysicalProductDAO("Gaming Laptop", 1000.0f, "High-performance laptop designed for gaming.", 2, 5, "Computers", LocalDate.parse("2023-12-08"));
+        PhysicalProductDAO physicalProductDAO5 = new PhysicalProductDAO("Strategy Game", 50.0f, "A new strategy game with epic quests.", 2, 2, "Games", LocalDate.parse("2023-12-08"));
 
         PhysicalCartDAO physicalCartDAO1 = new PhysicalCartDAO(1, 1, 5);
         PhysicalCartDAO physicalCartDAO2 = new PhysicalCartDAO(1, 3, 2);

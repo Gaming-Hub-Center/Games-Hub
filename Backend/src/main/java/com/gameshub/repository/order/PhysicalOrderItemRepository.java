@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
 
 @Repository
-public interface PhysicalOrderItemRepository extends JpaRepository<PhysicalOrderItemDAO, PhysicalOrderItemDAO.PhysicalOrderItemId> {
-}
+public interface PhysicalOrderItemRepository extends JpaRepository<PhysicalOrderItemDAO, PhysicalOrderItemDAO.PhysicalOrderItemId> { }

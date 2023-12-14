@@ -15,17 +15,6 @@ public class UserService {
     private final BuyerRepository buyerRepository;
     private final SellerRepository sellerRepository;
 
-    public List<UserDAO> getAllUsers() {
-        List<BuyerDAO> buyerDAOS = buyerRepository.findAll();
-        List<SellerDAO> sellerDAOS = sellerRepository.findAll();
-
-        List<UserDAO> allUsers = new ArrayList<>();
-        allUsers.addAll(buyerDAOS);
-        allUsers.addAll(sellerDAOS);
-
-        return allUsers;
-    }
-
     public List<BuyerDAO> getAllBuyers() {
         return buyerRepository.findAll();
     }

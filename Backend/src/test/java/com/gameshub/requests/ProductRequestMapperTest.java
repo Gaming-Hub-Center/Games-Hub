@@ -1,17 +1,15 @@
 package com.gameshub.requests;
 
-import com.gameshub.controller.DTO.request.DigitalProductRequestDTO;
-import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
-import com.gameshub.model.request.DigitalProductRequestDAO;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.model.request.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;
-import com.gameshub.utils.ProductRequestMapper;
+import com.gameshub.utils.*;
 import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
 
-import java.time.LocalDate;
+import java.time.*;
 
 /*
 *  Tests that ensures Mapping is done as it is supposed to be
@@ -19,6 +17,7 @@ import java.time.LocalDate;
 
 @SpringBootTest
 public class ProductRequestMapperTest {
+
     @Autowired
     ProductRequestMapper productRequestMapper;
 
@@ -189,6 +188,7 @@ public class ProductRequestMapperTest {
 
     @Test
     void DigitalProductRequestFromDTOtoDAOTest() {
+
         SellerDAO seller = new SellerDAO(
                 "Name",
                 "Email2",
