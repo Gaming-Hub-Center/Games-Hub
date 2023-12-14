@@ -115,7 +115,7 @@ public class PhysicalOrderTests {
     void testPhysicalOrderSuccessful() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(1);
-        orderCheckoutDTO.setWallet(false);
+        orderCheckoutDTO.setPaymentMethod("cod");
         ResponseEntity<?> responseEntity = orderController.physicalCheckout(orderCheckoutDTO);
 
         assert responseEntity.getStatusCode().equals(HttpStatus.OK);
@@ -125,7 +125,7 @@ public class PhysicalOrderTests {
     void testPhysicalOrderOutOfStock() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(2);
-        orderCheckoutDTO.setWallet(false);
+        orderCheckoutDTO.setPaymentMethod("cod");
 
         assertThrows(OutOfStockException.class, () -> {
             orderController.physicalCheckout(orderCheckoutDTO);
@@ -136,7 +136,7 @@ public class PhysicalOrderTests {
     void testPhysicalOrderInsufficientBalance() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(1);
-        orderCheckoutDTO.setWallet(true);
+        orderCheckoutDTO.setPaymentMethod("wallet");
 
         assertThrows(InsufficientBalanceException.class, () -> {
             orderController.physicalCheckout(orderCheckoutDTO);
@@ -147,7 +147,7 @@ public class PhysicalOrderTests {
     void testPhysicalOrderValidData() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(1);
-        orderCheckoutDTO.setWallet(false);
+        orderCheckoutDTO.setPaymentMethod("cod");
         ResponseEntity<?> responseEntity = orderController.physicalCheckout(orderCheckoutDTO);
 
         OrderDAO orderDAO = orderRepository.findById(1).orElse(null);
@@ -166,25 +166,25 @@ public class PhysicalOrderTests {
         assert physicalOrderItemDAOs.get(1).getId().getPhysicalProductDAO().getId() == 3;
         assert physicalOrderItemDAOs.get(2).getId().getPhysicalProductDAO().getId() == 5;
     }
-//
-//    @Test
-//    void testPhysicalOrderUpdateBuyerBalance() {
-//
-//    }
-//
-//    @Test
-//    void testPhysicalOrderUpdateSellersBalances() {
-//
-//    }
-//
-//    @Test
-//    void testPhysicalOrderUpdateStockCount() {
-//
-//    }
-//
-//    @Test
-//    void testPhysicalOrderClearBuyerCart() {
-//
-//    }
+
+    @Test
+    void testPhysicalOrderUpdateBuyerBalance() {
+
+    }
+
+    @Test
+    void testPhysicalOrderUpdateSellersBalances() {
+
+    }
+
+    @Test
+    void testPhysicalOrderUpdateStockCount() {
+
+    }
+
+    @Test
+    void testPhysicalOrderClearBuyerCart() {
+
+    }
 
 }

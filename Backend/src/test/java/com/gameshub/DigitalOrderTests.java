@@ -115,7 +115,7 @@ public class DigitalOrderTests {
     void testDigitalOrderSuccessful() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(1);
-        orderCheckoutDTO.setWallet(false);
+        orderCheckoutDTO.setPaymentMethod("cod");
         ResponseEntity<?> responseEntity = orderController.digitalCheckout(orderCheckoutDTO);
 
         assert responseEntity.getStatusCode().equals(HttpStatus.OK);
@@ -125,7 +125,7 @@ public class DigitalOrderTests {
     void testDigitalOrderOutOfStock() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(2);
-        orderCheckoutDTO.setWallet(false);
+        orderCheckoutDTO.setPaymentMethod("cod");
 
         assertThrows(OutOfStockException.class, () -> {
             orderController.digitalCheckout(orderCheckoutDTO);
@@ -136,7 +136,7 @@ public class DigitalOrderTests {
     void testDigitalOrderInsufficientBalance() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(1);
-        orderCheckoutDTO.setWallet(true);
+        orderCheckoutDTO.setPaymentMethod("wallet");
 
         assertThrows(InsufficientBalanceException.class, () -> {
             orderController.digitalCheckout(orderCheckoutDTO);
@@ -147,7 +147,7 @@ public class DigitalOrderTests {
     void testDigitalOrderValidData() {
         OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
         orderCheckoutDTO.setBuyerID(1);
-        orderCheckoutDTO.setWallet(false);
+        orderCheckoutDTO.setPaymentMethod("cod");
         ResponseEntity<?> responseEntity = orderController.digitalCheckout(orderCheckoutDTO);
 
         OrderDAO orderDAO = orderRepository.findById(1).orElse(null);

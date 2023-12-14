@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/DigitalProductApprovalStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/PhysicalProductApprovalStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/ProductApprovalStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/approve_product_update_and_create/ProductRequestApproveService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/order/OrderCheckoutDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/order/OrderCheckoutDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/order/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/order/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DigitalOrderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DigitalOrderTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/PhysicalOrderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/PhysicalOrderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/Pages/PhysicalCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Pages/PhysicalCart.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +34,29 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="GH-264-Proceed-to-purchase-frontend" />
+                    <option name="lastUsedInstant" value="1702527141" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="GH-170-Buyer-Proceed-Purchase-and-Checks-out" />
+                    <option name="lastUsedInstant" value="1702527140" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -181,7 +206,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.BackendApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Milestone-2",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "GH-264-Proceed-to-purchase-frontend",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/CSED/semester5/SWE/Games-Hub/Backend",
@@ -212,74 +238,12 @@
       <recent name="com.gameshub" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.gameshub in Backend">
-    <configuration name="PhysicalOrderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.PhysicalOrderTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PhysicalOrderTests,testPhysicalOrderUpdateBuyerBalance and 3 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="com.gameshub.PhysicalOrderTests,testPhysicalOrderUpdateBuyerBalance" />
-        <pattern testClass="com.gameshub.PhysicalOrderTests,testPhysicalOrderUpdateSellersBalances" />
-        <pattern testClass="com.gameshub.PhysicalOrderTests,testPhysicalOrderUpdateStockCount" />
-        <pattern testClass="com.gameshub.PhysicalOrderTests,testPhysicalOrderClearBuyerCart" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductRequestServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductRequestServiceTest.testSavePhysicalProductRequest_NoDuplicates" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.requests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestServiceTest" />
-      <option name="METHOD_NAME" value="testSavePhysicalProductRequest_NoDuplicates" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gameshub in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean package" />
+    </option>
+  </component>
+  <component name="RunManager">
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <envs>
         <env name="security.jwt.token.secret-key" value="H67t1MCP/ZB2Z40xPPgqaucMdrDu+h/K5stVCctqkZk=" />
@@ -291,27 +255,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.PhysicalOrderTests" />
-      <item itemvalue="JUnit.PhysicalOrderTests,testPhysicalOrderUpdateBuyerBalance and 3 more" />
-      <item itemvalue="JUnit.ProductRequestServiceTest" />
-      <item itemvalue="JUnit.ProductRequestServiceTest.testSavePhysicalProductRequest_NoDuplicates" />
-      <item itemvalue="JUnit.gameshub in Backend" />
-      <item itemvalue="Spring Boot.BackendApplication" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.gameshub in Backend" />
-        <item itemvalue="JUnit.PhysicalOrderTests" />
-        <item itemvalue="JUnit.PhysicalOrderTests,testPhysicalOrderUpdateBuyerBalance and 3 more" />
-        <item itemvalue="JUnit.ProductRequestServiceTest" />
-        <item itemvalue="JUnit.ProductRequestServiceTest.testSavePhysicalProductRequest_NoDuplicates" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
         <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
       </set>
     </attachedChunks>

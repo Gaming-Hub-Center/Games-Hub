@@ -21,13 +21,13 @@ public class OrderController {
 
     @PostMapping("checkout/physical")
     public ResponseEntity<String> physicalCheckout(@RequestBody OrderCheckoutDTO orderCheckoutDTO) {
-        orderService.orderPhysical(orderCheckoutDTO.getBuyerID(), orderCheckoutDTO.isWallet());
+        orderService.orderPhysical(orderCheckoutDTO.getBuyerID(), Objects.equals(orderCheckoutDTO.getPaymentMethod(), "wallet"));
         return ResponseEntity.ok("Ordered Successfully!");
     }
 
     @PostMapping("checkout/digital")
     public ResponseEntity<String> digitalCheckout(@RequestBody OrderCheckoutDTO orderCheckoutDTO) {
-        orderService.orderDigital(orderCheckoutDTO.getBuyerID(), orderCheckoutDTO.isWallet());
+        orderService.orderDigital(orderCheckoutDTO.getBuyerID(), Objects.equals(orderCheckoutDTO.getPaymentMethod(), "wallet"));
         return ResponseEntity.ok("Ordered Successfully!");
     }
 
