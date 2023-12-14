@@ -6,14 +6,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ProductBriefDTO {
-    int id;
-    float price;
-    String title;
-    byte[] image;
+    private int id;
+    private float price;
+    private String title;
+    private String description;
+    private byte[] image;
+    private String productType;
 
-    public ProductBriefDTO(int id, float price, String title) {
+
+    public ProductBriefDTO(int id, float price, String title, String description) {
         this.id = id;
         this.price = price;
         this.title = title;
+        this.description = description;
     }
 }

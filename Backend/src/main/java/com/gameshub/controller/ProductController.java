@@ -17,6 +17,16 @@ public class ProductController {
     private final ProductService productService;
     private final ProductMapper productMapper;
 
+    @GetMapping("/physical/getall")
+    public ResponseEntity<List<ProductBriefDTO>> getAllPhysical() {
+        return ResponseEntity.ok(productService.getAllPhysical());
+    }
+
+    @GetMapping("/digital/getall")
+    public ResponseEntity<List<ProductBriefDTO>> getAllDigital() {
+        return ResponseEntity.ok(productService.getAllDigital());
+    }
+
     @GetMapping("/physical/getdetails")
     public ResponseEntity<PhysicalProductDTO> getPhysicalProductByID(@RequestParam int ID) {
         PhysicalProductDTO productDTO = productService.getPhysicalByID(ID);
@@ -46,7 +56,7 @@ public class ProductController {
                                                                 @RequestParam(required = false) Float lowerBound,
                                                                 @RequestParam(required = false) Float upperBound) {
         if(upperBound == null) upperBound = (float) Integer.MAX_VALUE;
-        else if (lowerBound == null) lowerBound = (float) 0;
+        if(lowerBound == null) lowerBound = (float) 0;
         return ResponseEntity.ok(productService.filterPhysical(lowerBound, upperBound, category));
     }
 
@@ -55,7 +65,17 @@ public class ProductController {
                                                                @RequestParam(required = false) Float lowerBound,
                                                                @RequestParam(required = false) Float upperBound) {
         if(upperBound == null) upperBound = (float) Integer.MAX_VALUE;
-        else if (lowerBound == null) lowerBound = (float) 0;
+        if(lowerBound == null) lowerBound = (float) 0;
         return ResponseEntity.ok(productService.filterDigital(lowerBound, upperBound, category));
+    }
+
+    @GetMapping("physical/sort")
+    public ResponseEntity<List<ProductBriefDTO>> sortPhysical(boolean ascending) {
+        return ResponseEntity.ok(productService.sortPhysical(ascending));
+    }
+
+    @GetMapping("digital/sort")
+    public ResponseEntity<List<ProductBriefDTO>> sortDigital(@RequestParam boolean ascending) {
+        return ResponseEntity.ok(productService.sortDigital(ascending));
     }
 }

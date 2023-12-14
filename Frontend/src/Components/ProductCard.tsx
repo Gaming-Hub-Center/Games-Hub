@@ -4,22 +4,23 @@ import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../Utilities/formatCurrency";
 
 export interface cardProps {
+  id: number;
   title: string;
   description: string;
-  images: string[];
+  image: string;
   price: number;
+  productType: string;
 }
 
-export function ProductCard({ title, description, images, price }: cardProps) {
+
+export function ProductCard({ id, title, description, image, price, productType }: cardProps) {
   const navigate = useNavigate();
 
-  function goToViewProduct(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {
-    navigate("/buyer/productview", {
-      state: { title, description, images, price },
-    });
-  }
+    function goToViewProduct(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+        navigate(`/buyer/productview/${id}`, {
+            state: { productType }
+        });
+    }
 
   function addToCart(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -38,7 +39,7 @@ export function ProductCard({ title, description, images, price }: cardProps) {
     >
       <Card.Img
         variant="top"
-        src={images[0]}
+        src={`data:image/jpeg;base64,${image}`}
         style={{ height: "40%", objectFit: "cover" }}
       />
       <Card.Body

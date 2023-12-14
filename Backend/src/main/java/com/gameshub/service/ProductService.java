@@ -32,7 +32,6 @@ public class ProductService {
     private final DigitalImageRepository digitalImageRepository;
     private final ProductMapper productMapper;
 
-
     public PhysicalProductDTO getPhysicalByID(int id) {
         PhysicalProductDAO productDAO = physicalProductRepository.findById(id).orElse(null);
         PhysicalProductDTO productDTO = productMapper.toPhysicalProductDTO(productDAO);
@@ -63,6 +62,7 @@ public class ProductService {
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
+            productDTO.setProductType("physical");
         }
         return productDTOs;
     }
@@ -73,6 +73,7 @@ public class ProductService {
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
+            productDTO.setProductType("digital");
         }
         return productDTOs;
     }
@@ -83,6 +84,7 @@ public class ProductService {
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
+            productDTO.setProductType("physical");
         }
         return productDTOs;
     }
@@ -93,8 +95,49 @@ public class ProductService {
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
+            productDTO.setProductType("digital");
         }
         return productDTOs;
+    }
+
+    public List<ProductBriefDTO> getAllPhysical() {
+        List<ProductBriefDTO> productDTOs = physicalProductRepository.findAllProducts().orElse(null);
+        for(ProductBriefDTO productDTO: productDTOs) {
+            byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
+            productDTO.setProductType("physical");
+        }
+        return productDTOs;
+    }
+
+    public List<ProductBriefDTO> getAllDigital() {
+        List<ProductBriefDTO> productDTOs = digitalProductRepository.findAllProducts().orElse(null);
+        for(ProductBriefDTO productDTO: productDTOs) {
+            byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
+            productDTO.setProductType("digital");
+        }
+        return productDTOs;
+    }
+
+    public List<ProductBriefDTO> sortPhysical(boolean ascending) {
+        List<ProductBriefDTO> productDTOs = physicalProductRepository.getOrderedByPrice().orElse(null);
+        if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
+        for(ProductBriefDTO productDTO: productDTOs) {
+            byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
+        }
+        return ascending ? productDTOs : productDTOs.reversed();
+    }
+
+    public List<ProductBriefDTO> sortDigital(boolean ascending) {
+        List<ProductBriefDTO> productDTOs = digitalProductRepository.getOrderedByPrice().orElse(null);
+        if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
+        for(ProductBriefDTO productDTO: productDTOs) {
+            byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setImage(image);
+        }
+        return ascending ? productDTOs : productDTOs.reversed();
     }
 
    /* public void save(PhysicalProductDAO physicalProductDAO, List<PhysicalImageDAO> list) {

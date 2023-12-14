@@ -15,7 +15,10 @@ import java.util.Optional;
 public interface PhysicalProductRepository extends JpaRepository<PhysicalProductDAO, Integer> {
     Optional<PhysicalProductDAO> findById(Integer ID);
 
-    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title) FROM PhysicalProductDAO p WHERE LOWER(p.title) LIKE LOWER(CONCAT('%', :key, '%'))")
+    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM PhysicalProductDAO p")
+    Optional<List<ProductBriefDTO>> findAllProducts();
+
+    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM PhysicalProductDAO p WHERE LOWER(p.title) LIKE LOWER(CONCAT('%', :key, '%'))")
     Optional<List<ProductBriefDTO>> findAllByTitleContainingIgnoreCase(@Param("key") String key);
 
     @Transactional
@@ -23,7 +26,7 @@ public interface PhysicalProductRepository extends JpaRepository<PhysicalProduct
     @Query(value = "ALTER TABLE physical_product ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
     void resetAutoIncrement();
 
-    @Query(value = "SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title) " +
+    @Query(value = "SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
             "FROM PhysicalProductDAO p " +
             "WHERE (p.price >= :lowerBound) " +
             "AND (p.price < :upperBound) " +
@@ -33,4 +36,8 @@ public interface PhysicalProductRepository extends JpaRepository<PhysicalProduct
             @Param("upperBound") float upperBound,
             @Param("category") String category
     );
+
+    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
+            "FROM PhysicalProductDAO p ORDER BY p.price ASC")
+    Optional<List<ProductBriefDTO>> getOrderedByPrice();
 }

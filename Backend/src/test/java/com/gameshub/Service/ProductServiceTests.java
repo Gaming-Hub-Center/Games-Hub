@@ -266,4 +266,64 @@ public class ProductServiceTests {
         assertNotNull(results);
         assertTrue(results.isEmpty());
     }
+
+    @Test
+    void testSortPhysicalAscending() {
+        List<ProductBriefDTO> result = productService.sortPhysical(true);
+
+        assertNotNull(result);
+        assertFalse(result.isEmpty());
+        assertEquals(3, result.size());
+        assertEquals(1, result.get(0).getId());
+        assertEquals(2, result.get(1).getId());
+        assertEquals(3, result.get(2).getId());
+        assertEquals(100, result.get(0).getPrice());
+        assertEquals(200, result.get(1).getPrice());
+        assertEquals(300, result.get(2).getPrice());
+    }
+
+    @Test
+    void testSortPhysicalDescending() {
+        List<ProductBriefDTO> result = productService.sortPhysical(false);
+
+        assertNotNull(result);
+        assertFalse(result.isEmpty());
+        assertEquals(3, result.size());
+        assertEquals(3, result.get(0).getId());
+        assertEquals(2, result.get(1).getId());
+        assertEquals(1, result.get(2).getId());
+        assertEquals(300, result.get(0).getPrice());
+        assertEquals(200, result.get(1).getPrice());
+        assertEquals(100, result.get(2).getPrice());
+    }
+
+    @Test
+    void testSortDigitalAscending() {
+        List<ProductBriefDTO> result = productService.sortDigital(true);
+
+        assertNotNull(result);
+        assertFalse(result.isEmpty());
+        assertEquals(3, result.size());
+        assertEquals(1, result.get(0).getId());
+        assertEquals(2, result.get(1).getId());
+        assertEquals(3, result.get(2).getId());
+        assertEquals(100, result.get(0).getPrice());
+        assertEquals(200, result.get(1).getPrice());
+        assertEquals(300, result.get(2).getPrice());
+    }
+
+    @Test
+    void testSortDigitalDescending() {
+        List<ProductBriefDTO> result = productService.sortDigital(false);
+
+        assertNotNull(result);
+        assertFalse(result.isEmpty());
+        assertEquals(3, result.size());
+        assertEquals(3, result.get(0).getId());
+        assertEquals(2, result.get(1).getId());
+        assertEquals(1, result.get(2).getId());
+        assertEquals(300, result.get(0).getPrice());
+        assertEquals(200, result.get(1).getPrice());
+        assertEquals(100, result.get(2).getPrice());
+    }
 }

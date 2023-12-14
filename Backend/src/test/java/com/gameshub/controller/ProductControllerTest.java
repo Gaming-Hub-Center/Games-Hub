@@ -339,4 +339,86 @@ public class ProductControllerTest {
 
         verify(productService, times(1)).filterDigital(100.5F, (float) Integer.MAX_VALUE, "action");
     }
+
+    @Test
+    void testSortPhysical() throws Exception {
+        boolean ascending = true;
+        List<ProductBriefDTO> mockProductList = new ArrayList<>();
+
+        ProductBriefDTO mockProduct1 = new ProductBriefDTO();
+        mockProduct1.setId(1);
+        mockProduct1.setTitle("Mock Title 1");
+        mockProduct1.setPrice(50.5F);
+        mockProduct1.setImage(new byte[]{1, 2, 3});
+
+        ProductBriefDTO mockProduct2 = new ProductBriefDTO();
+        mockProduct2.setId(2);
+        mockProduct2.setTitle("Mock Title 2");
+        mockProduct2.setPrice(75.6F);
+        mockProduct2.setImage(new byte[]{4, 5, 6});
+
+        mockProductList.add(mockProduct1);
+        mockProductList.add(mockProduct2);
+
+        when(productService.sortPhysical(ascending)).thenReturn(mockProductList);
+        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
+
+        mockMvc.perform(get("/product/physical/sort")
+                        .param("ascending", String.valueOf(ascending))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.size()").value(2))
+                .andExpect(jsonPath("$[0].id").value(1))
+                .andExpect(jsonPath("$[0].title").value("Mock Title 1"))
+                .andExpect(jsonPath("$[0].price").value(50.5F))
+                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[1].id").value(2))
+                .andExpect(jsonPath("$[1].title").value("Mock Title 2"))
+                .andExpect(jsonPath("$[1].price").value(75.6F))
+                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
+
+        verify(productService, times(1)).sortPhysical(ascending);
+    }
+
+    @Test
+    void testSortDigital() throws Exception {
+        boolean ascending = true;
+        List<ProductBriefDTO> mockProductList = new ArrayList<>();
+
+        ProductBriefDTO mockProduct1 = new ProductBriefDTO();
+        mockProduct1.setId(1);
+        mockProduct1.setTitle("Digital Mock Title 1");
+        mockProduct1.setPrice(100.5F);
+        mockProduct1.setImage(new byte[]{10, 11, 12});
+
+        ProductBriefDTO mockProduct2 = new ProductBriefDTO();
+        mockProduct2.setId(2);
+        mockProduct2.setTitle("Digital Mock Title 2");
+        mockProduct2.setPrice(150.6F);
+        mockProduct2.setImage(new byte[]{13, 14, 15});
+
+        mockProductList.add(mockProduct1);
+        mockProductList.add(mockProduct2);
+
+        when(productService.sortDigital(ascending)).thenReturn(mockProductList);
+        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
+
+        mockMvc.perform(get("/product/digital/sort")
+                        .param("ascending", String.valueOf(ascending))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.size()").value(2))
+                .andExpect(jsonPath("$[0].id").value(1))
+                .andExpect(jsonPath("$[0].title").value("Digital Mock Title 1"))
+                .andExpect(jsonPath("$[0].price").value(100.5F))
+                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[1].id").value(2))
+                .andExpect(jsonPath("$[1].title").value("Digital Mock Title 2"))
+                .andExpect(jsonPath("$[1].price").value(150.6F))
+                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
+
+        verify(productService, times(1)).sortDigital(ascending);
+    }
 }

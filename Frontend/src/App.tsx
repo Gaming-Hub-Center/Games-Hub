@@ -54,8 +54,7 @@ function App() {
           path="/seller/create-product"
           element={<CatalogRequestForm />}
         ></Route>
-        <Route path="/buyer/ProductView" element={<ProductView />}></Route>
-
+        <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
       </Routes>
     </Container>
   );
