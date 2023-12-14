@@ -13,8 +13,12 @@ export function NavbarC() {
     setSearchText(event.target.value);
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {};
-
+  function handleSearchRequest(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    // # hna aho hat send searchText
+    console.log(searchText);
+  }
   return (
     <Navbar
       className="bg-black text-white shadow-sm"
@@ -69,7 +73,12 @@ export function NavbarC() {
           style={{ marginLeft: "20px", display: "flex", flexDirection: "row" }}
         >
           <FormControl
-            style={{ width: "800px" }}
+            style={{
+              width: "800px",
+              backgroundColor: "#121212",
+              color: "#f0f0f0",
+              borderColor: "#f0f0f0",
+            }}
             type="text"
             placeholder="Search"
             className="mr-sm-2"
@@ -79,12 +88,11 @@ export function NavbarC() {
           <Button
             style={{ marginLeft: "10px" }}
             variant="outline-success"
-            // onClick={handleSubmit}
+            onClick={handleSearchRequest}
           >
             Search
           </Button>
         </Col>
-
         <Nav>
           <Nav.Link
             as={NavLink}

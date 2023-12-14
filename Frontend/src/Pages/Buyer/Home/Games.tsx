@@ -26,540 +26,6 @@ export function HomeGames() {
       price: 100,
     },
     {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description:
-        "Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description:
-        "Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description:
-        "Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA San Andreas",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-san/1.jpg",
-        "/src/data/GTA-san/2.jpg",
-        "/src/data/GTA-san/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA V",
-      description: "Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-V/1.jpg",
-        "/src/data/GTA-V/2.jpg",
-        "/src/data/GTA-V/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description:
-        "Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
-      title: "GTA IV",
-      description: "Trevor is gonna kill u bardo:)",
-      images: [
-        "/src/data/GTA-IV/1.png",
-        "/src/data/GTA-IV/2.jpg",
-        "/src/data/GTA-IV/3.jpg",
-      ],
-      price: 100,
-    },
-    {
       title: "GTA IV",
       description: "Trevor is gonna kill u bardo:)",
       images: [
@@ -625,6 +91,7 @@ export function HomeGames() {
   // # default max price...
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sortOption, setSortOption] = useState("Ascendingly");
+  const [categoryFilterOption, setCategoryFilterOption] = useState(null);
 
   const handleMinCostChange = (event: ChangeEvent<HTMLInputElement>) => {
     // Extract the numeric value from the input
@@ -655,8 +122,20 @@ export function HomeGames() {
     }
   };
 
-  const handleSortChange = (selectedOption) => {
+  function handlePriceFilterRequest(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    // # hna aho
+  }
+
+  const handleSortChange = (selectedOption: string) => {
     setSortOption(selectedOption);
+    // # hna aho
+  };
+
+  const handleCategoryCheckboxClick = (category: string) => {
+    setCategoryFilterOption(category);
+    // # hna aho
   };
 
   const itemsPerPage = 20;
@@ -741,8 +220,16 @@ export function HomeGames() {
                   alignItems: "flex-start",
                 }}
               >
-                <Form.Check type="checkbox" label="Action" />
-                <Form.Check type="checkbox" label="Sports" />
+                <Form.Check
+                  type="checkbox"
+                  label="Action"
+                  onClick={() => handleCategoryCheckboxClick("Action")}
+                />
+                <Form.Check
+                  type="checkbox"
+                  label="Sports"
+                  onClick={() => handleCategoryCheckboxClick("Sports")}
+                />
               </div>
             </Row>
             <Row style={{ height: "10%" }}>
@@ -774,7 +261,7 @@ export function HomeGames() {
                 <Button
                   style={{ marginLeft: "10px" }}
                   variant="outline-success"
-                  // onClick={handleSubmit}
+                  onClick={handlePriceFilterRequest}
                 >
                   Go
                 </Button>
