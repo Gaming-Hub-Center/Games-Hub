@@ -1,4 +1,4 @@
-package com.gameshub.Service;
+package com.gameshub.service;
 
 import com.gameshub.controller.DTO.*;
 import com.gameshub.exception.ResourceNotFoundException;

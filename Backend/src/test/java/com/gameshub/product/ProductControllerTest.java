@@ -1,5 +1,6 @@
-package com.gameshub.controller;
+package com.gameshub.product;
 
+import com.gameshub.controller.*;
 import com.gameshub.controller.DTO.*;
 import com.gameshub.service.product.ProductService;
 import org.junit.jupiter.api.*;

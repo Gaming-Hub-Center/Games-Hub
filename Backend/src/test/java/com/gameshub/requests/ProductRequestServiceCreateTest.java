@@ -122,7 +122,7 @@ class ProductRequestServiceCreateTest {
     @Test
     void testSavePhysicalProductRequest_NoDuplicates() {
         PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
-        dto.setRequestType("Pending");
+        dto.setRequestType("pending");
         dto.setCategory("CAT");
         dto.setStatus("STAT");
         dto.setDateReceived(LocalDate.now());
@@ -201,7 +201,7 @@ class ProductRequestServiceCreateTest {
 
 
 //    @Test
-//    void testSavePhysicalProductRequest_WithDuplicate_Title_and_Description_() {
+//    void testSavePhysicalProductRequest_WithDuplicate_Title_Description_Seller_Status() {
 //        // Prepare test data
 //        PhysicalProductRequestDTO existingDto = new PhysicalProductRequestDTO();
 //        existingDto.setTitle("Title 1");
@@ -225,8 +225,8 @@ class ProductRequestServiceCreateTest {
 //        assertTrue(exception.getMessage().contains("Duplicate Found"));
 //    }
 
-    @Test
-//    void testSaveDigitalProductRequest_WithDuplicate_Title_and_Description_() {
+//    @Test
+//    void testSaveDigitalProductRequest_WithDuplicate_Title_Description_Seller_Status() {
 //        // Prepare test data
 //        DigitalProductRequestDTO existingDto = new DigitalProductRequestDTO();
 //        existingDto.setTitle("Title 1");
@@ -250,21 +250,21 @@ class ProductRequestServiceCreateTest {
 //        assertTrue(exception.getMessage().contains("Duplicate Found"));
 //    }
 
-//    private DigitalProductRequestDTO createDTO(String title, String description, int sellerId, String status) {
-//        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
-//        dto.setRequestType("Pending");
-//        dto.setCategory("CAT");
-//        dto.setStatus(status);
-//        dto.setDateReceived(LocalDate.now());
-//        dto.setCount(10);
-//        dto.setDescription(description);
-//        dto.setPrice(100);
-//        dto.setTitle(title);
-//        dto.setSellerId(sellerId);
-//        dto.setPostDate(LocalDate.now());
-//        dto.setCode("CODE");
-//        return dto;
-//    }
+    private DigitalProductRequestDTO createDTO(String title, String description, int sellerId, String status) {
+        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
+        dto.setRequestType("pending");
+        dto.setCategory("CAT");
+        dto.setStatus(status);
+        dto.setDateReceived(LocalDate.now());
+        dto.setCount(10);
+        dto.setDescription(description);
+        dto.setPrice(100);
+        dto.setTitle(title);
+        dto.setSellerId(sellerId);
+        dto.setPostDate(LocalDate.now());
+        dto.setCode("CODE");
+        return dto;
+    }
 
     private void saveAndAssertNoException(DigitalProductRequestDTO dto) {
         assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
@@ -277,11 +277,11 @@ class ProductRequestServiceCreateTest {
         assertTrue(exception.getMessage().contains(expectedMessage));
     }
 
-//    @Test
-//    void testSaveDigitalProductRequest_NoDuplicate() {
-//        DigitalProductRequestDTO dto = createDTO("Unique Title", "Unique Description", 1, "Pending");
-//        saveAndAssertNoException(dto);
-//    }
+    @Test
+    void testSaveDigitalProductRequest_NoDuplicate() {
+        DigitalProductRequestDTO dto = createDTO("Unique Title", "Unique Description", 1, "Pending");
+        saveAndAssertNoException(dto);
+    }
 
     @Test
     public void whenSavePhysicalProductRequestWithNoDuplicates_thenSucceeds() {
@@ -289,7 +289,7 @@ class ProductRequestServiceCreateTest {
         dto.setTitle("Unique Title");
         dto.setDescription("Unique Description");
         dto.setSellerId(1); // Assuming seller with ID 1 exists
-        dto.setStatus("Pending");
+        dto.setStatus("pending");
 
         assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
 
@@ -307,7 +307,7 @@ class ProductRequestServiceCreateTest {
         dto.setTitle("Unique Title");
         dto.setDescription("Unique Description");
         dto.setSellerId(1); // Assuming seller with ID 1 exists
-        dto.setStatus("Pending");
+        dto.setStatus("pending");
 
         assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
 
