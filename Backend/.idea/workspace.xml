@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductRequestServiceCreateTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductRequestServiceCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductRequestServiceCreateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +173,7 @@
     "JUnit.ProductRequestRepositoryTest.executor": "Run",
     "JUnit.ProductRequestRepositoryTest.testSavePhysicalProductRequest.executor": "Run",
     "JUnit.ProductRequestServiceCreateTest.executor": "Run",
+    "JUnit.ProductRequestServiceCreateTest.testSavePhysicalProductRequest_WithDuplicate_Title_and_Description.executor": "Run",
     "JUnit.ProductRequestServiceTest.executor": "Run",
     "JUnit.ProductRequestServiceTest.testEndToEndDigitalProductRequest.executor": "Run",
     "JUnit.ProductRequestServiceTest.testEndToEndPhysicalProductRequest.executor": "Run",
@@ -192,7 +193,7 @@
     "JUnit.SignInTests.testBuyerValidSignIn.executor": "Run",
     "JUnit.SignUpTests.executor": "Run",
     "JUnit.com.gameshub in Backend.executor": "Run",
-    "JUnit.gameshub in Backend.executor": "Run",
+    "JUnit.gameshub in Backend.executor": "Coverage",
     "JUnit.java in Backend.executor": "Run",
     "JUnit.products in Backend.executor": "Run",
     "JUnit.requests in Backend.executor": "Run",
@@ -250,7 +251,7 @@
       <command value="mvn clean package" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendApplication">
+  <component name="RunManager" selected="JUnit.gameshub in Backend">
     <configuration name="All in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <option name="PACKAGE_NAME" value="" />
@@ -270,6 +271,22 @@
       <option name="PACKAGE_NAME" value="com.gameshub.Service" />
       <option name="MAIN_CLASS_NAME" value="com.gameshub.Service.ProductRequestServiceCreateTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRequestServiceCreateTest.testSavePhysicalProductRequest_WithDuplicate_Title_and_Description" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.Service.ProductRequestServiceCreateTest" />
+      <option name="METHOD_NAME" value="testSavePhysicalProductRequest_WithDuplicate_Title_and_Description" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -295,14 +312,16 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.ProductRequestServiceCreateTest" />
+      <item itemvalue="JUnit.ProductRequestServiceCreateTest.testSavePhysicalProductRequest_WithDuplicate_Title_and_Description" />
       <item itemvalue="JUnit.gameshub in Backend" />
       <item itemvalue="JUnit.All in Backend" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductRequestServiceCreateTest" />
         <item itemvalue="JUnit.gameshub in Backend" />
+        <item itemvalue="JUnit.ProductRequestServiceCreateTest" />
+        <item itemvalue="JUnit.ProductRequestServiceCreateTest.testSavePhysicalProductRequest_WithDuplicate_Title_and_Description" />
         <item itemvalue="JUnit.All in Backend" />
       </list>
     </recent_temporary>
@@ -383,7 +402,7 @@
     <SUITE FILE_PATH="coverage/Backend$OAuth2BuyerSignUpUnitTest.ic" NAME="OAuth2BuyerSignUpUnitTest Coverage Results" MODIFIED="1701282281272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1702549606070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1702556359572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$CartServiceTest.ic" NAME="CartServiceTest Coverage Results" MODIFIED="1702327845552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.DataAccessLayer.*</FILTER>
     </SUITE>

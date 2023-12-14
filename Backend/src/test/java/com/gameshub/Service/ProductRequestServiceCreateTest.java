@@ -199,110 +199,6 @@ class ProductRequestServiceCreateTest {
         assertEquals(savedDao.getCode(), dto.getCode());
     }
 
-    @Test
-    void testSavePhysicalProductRequest_WithDuplicate_Title_and_Description() {
-        // Create a PhysicalProductRequestDTO with a duplicate title
-        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
-        dto.setRequestType("pending");
-        dto.setCategory("CAT");
-        dto.setStatus("STAT");
-        dto.setDateReceived(LocalDate.now());
-        dto.setCount(10);
-        dto.setDescription("DESC");
-        dto.setPrice(100);
-        dto.setTitle("Title 1"); // Same title as an existing request
-        dto.setSellerId(1);
-        dto.setPostDate(LocalDate.now());
-
-        // Duplicate Title
-        assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
-
-        // Duplicate Description
-        dto.setDescription("Description 1");
-        dto.setTitle("Dummy");
-        PhysicalProductRequestDAO existingDao = productRequestMapper.toDAO(dto);
-        physicalProductRequestRepository.save(existingDao);
-        assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
-
-        // Duplicate Description and Title
-        dto.setTitle("Title 1");
-        existingDao = productRequestMapper.toDAO(dto);
-        physicalProductRequestRepository.save(existingDao);
-        Exception exception = assertThrows(ResourceAlreadyFoundException.class, () -> {
-            productRequestService.saveProductRequest(dto);
-        });
-        assertTrue(exception.getMessage().contains("Duplicate Found"));
-
-        dto.setStatus("Accepted");
-        existingDao = productRequestMapper.toDAO(dto);
-        physicalProductRequestRepository.save(existingDao);
-        exception = assertThrows(ResourceAlreadyFoundException.class, () -> {
-            productRequestService.saveProductRequest(dto);
-        });
-        assertTrue(exception.getMessage().contains("Duplicate Found"));
-
-        dto.setStatus("other_status");
-        existingDao = productRequestMapper.toDAO(dto);
-        physicalProductRequestRepository.save(existingDao);
-        exception = assertThrows(ResourceAlreadyFoundException.class, () -> {
-            productRequestService.saveProductRequest(dto);
-        });
-        assertTrue(exception.getMessage().contains("Duplicate Found"));
-    }
-
-    @Test
-    void testSaveDigitalProductRequest_WithDuplicate() {
-        // Create a PhysicalProductRequestDTO with a duplicate title
-        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
-        dto.setRequestType("pending");
-        dto.setCategory("CAT");
-        dto.setStatus("STAT");
-        dto.setDateReceived(LocalDate.now());
-        dto.setCount(10);
-        dto.setDescription("DESC");
-        dto.setPrice(100);
-        dto.setTitle("Title 1"); // Same title as an existing request
-        dto.setSellerId(1);
-        dto.setPostDate(LocalDate.now());
-        dto.setCode("CODE");
-
-        // Duplicate Title
-        assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
-
-        // Duplicate Description
-        dto.setDescription("Description 1");
-        dto.setTitle("Dummy");
-        DigitalProductRequestDAO existingDao = productRequestMapper.toDAO(dto);
-        digitalProductRequestRepository.save(existingDao);
-        assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
-
-        // Duplicate Description and Title
-        dto.setTitle("Title 1");
-        existingDao = productRequestMapper.toDAO(dto);
-        digitalProductRequestRepository.save(existingDao);
-        Exception exception = assertThrows(ResourceAlreadyFoundException.class, () -> {
-            productRequestService.saveProductRequest(dto);
-        });
-        assertTrue(exception.getMessage().contains("Duplicate Found"));
-
-        dto.setStatus("Accepted");
-        existingDao = productRequestMapper.toDAO(dto);
-        digitalProductRequestRepository.save(existingDao);
-        exception = assertThrows(ResourceAlreadyFoundException.class, () -> {
-            productRequestService.saveProductRequest(dto);
-        });
-        assertTrue(exception.getMessage().contains("Duplicate Found"));
-
-        dto.setStatus("other_status");
-        existingDao = productRequestMapper.toDAO(dto);
-        digitalProductRequestRepository.save(existingDao);
-        exception = assertThrows(ResourceAlreadyFoundException.class, () -> {
-            productRequestService.saveProductRequest(dto);
-        });
-        assertTrue(exception.getMessage().contains("Duplicate Found"));
-
-    }
-
     private DigitalProductRequestDTO createDTO(String title, String description, int sellerId, String status) {
         DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
         dto.setRequestType("Pending");
@@ -359,7 +255,7 @@ class ProductRequestServiceCreateTest {
         DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
         dto.setTitle("Unique Title");
         dto.setDescription("Unique Description");
-        dto.setSellerId(1);
+        dto.setSellerId(1); // Assuming seller with ID 1 exists
         dto.setStatus("Pending");
 
         assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));

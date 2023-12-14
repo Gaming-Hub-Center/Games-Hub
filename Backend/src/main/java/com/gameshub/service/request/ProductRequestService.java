@@ -55,7 +55,7 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "aending")
+                    "pending")
                     && !digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
