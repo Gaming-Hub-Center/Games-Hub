@@ -22,17 +22,15 @@ public class ProductRequestService {
         if (productRequestDTO instanceof PhysicalProductRequestDTO) {
             PhysicalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((PhysicalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
-                productRequestDAO.setStatus("Pending");
+                productRequestDAO.setRequestType("Pending");
                 physicalProductRequestRepository.save(productRequestDAO);
-            }  else
-                throw new ResourceAlreadyFoundException("Duplicate Found");
+            }
         } else if (productRequestDTO instanceof DigitalProductRequestDTO) {
             DigitalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
                 productRequestDAO.setStatus("Pending");
                 digitalProductRequestRepository.save(productRequestDAO);
-            }  else
-                throw new ResourceAlreadyFoundException("Duplicate Found");
+            }
         } else {
             throw new RuntimeException("Unsupported request type");
         }
@@ -44,25 +42,27 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "pending")
-                    && !physicalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
+                    "Pending")
+                    || physicalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "approved");
+                    "Approved");
         else if (productRequestDTO instanceof DigitalProductRequestDTO)
             return !digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "pending")
-                    && !digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
+                    "Pending")
+                    || digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "approved");
-        return false;
+                    "Approved");
+        else
+            throw new ResourceAlreadyFoundException("Duplicate Found");
     }
+
     public DigitalProductRequestDAO getDigitalProductRequestByProductID(int productID){
         Optional<DigitalProductRequestDAO> foundProduct = digitalProductRequestRepository.findById(productID);
 

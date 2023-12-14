@@ -1,7 +1,7 @@
 package com.gameshub.controller;
 
 import com.gameshub.controller.DTO.*;
-import com.gameshub.service.*;
+import com.gameshub.service.product.ProductService;
 import com.gameshub.utils.ProductMapper;
 import lombok.*;
 import org.springframework.http.*;

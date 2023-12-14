@@ -1,9 +1,13 @@
-package com.gameshub.service;
+package com.gameshub.Service;
 
 import com.gameshub.controller.DTO.*;
 import com.gameshub.exception.ResourceNotFoundException;
 import com.gameshub.model.product.*;
-import com.gameshub.repository.*;
+import com.gameshub.repository.product.DigitalImageRepository;
+import com.gameshub.repository.product.DigitalProductRepository;
+import com.gameshub.repository.product.PhysicalImageRepository;
+import com.gameshub.repository.product.PhysicalProductRepository;
+import com.gameshub.service.product.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,17 +47,17 @@ public class ProductServiceTests {
         digitalProductRepository.resetAutoIncrement();
         digitalImageRepository.resetAutoIncrement();
 
-        physicalProductRepository.save(new PhysicalProductDAO(1, 100, "physical test decription1", "physical test title1", 96, 2, LocalDate.parse("2023-12-08"), "pc"));
-        physicalProductRepository.save(new PhysicalProductDAO(2, 200, "physical test decription2", "physical test title2", 96, 2, LocalDate.parse("2023-12-08"), "mouse"));
-        physicalProductRepository.save(new PhysicalProductDAO(3, 300, "physical test decription3", "physical test title3", 96, 2, LocalDate.parse("2023-12-08"), "keyboard"));
+        physicalProductRepository.save(new PhysicalProductDAO("physical test title1", 100, "physical test decription1", 2, 96, "pc", LocalDate.parse("2023-12-08")));
+        physicalProductRepository.save(new PhysicalProductDAO("physical test title2", 200, "physical test decription2", 2, 96, "mouse", LocalDate.parse("2023-12-08")));
+        physicalProductRepository.save(new PhysicalProductDAO("physical test title3", 300, "physical test decription3", 2, 96, "keyboard", LocalDate.parse("2023-12-08")));
 
         physicalImageRepository.save(new PhysicalImageDAO(1, new byte[]{1, 2, 3}, 1));
         physicalImageRepository.save(new PhysicalImageDAO(2, new byte[]{4, 5, 6}, 2));
         physicalImageRepository.save(new PhysicalImageDAO(3, new byte[]{7, 8, 9}, 3));
 
-        digitalProductRepository.save(new DigitalProductDAO(1, 100, "digital test decription1", "digital test title1", 96, 2, LocalDate.parse("2023-12-08"), "action", "code1"));
-        digitalProductRepository.save(new DigitalProductDAO(2, 200, "digital test decription2", "digital test title2", 96, 2, LocalDate.parse("2023-12-08"), "arcade", "code2"));
-        digitalProductRepository.save(new DigitalProductDAO(3, 300, "digital test decription3", "digital test title3", 96, 2, LocalDate.parse("2023-12-08"), "sport", "code3"));
+        digitalProductRepository.save(new DigitalProductDAO("digital test title1", 100, "digital test decription1", 2, 96, "action", "code1", LocalDate.parse("2023-12-08")));
+        digitalProductRepository.save(new DigitalProductDAO("digital test title2", 200, "digital test decription2", 2, 96, "arcade", "code2", LocalDate.parse("2023-12-08")));
+        digitalProductRepository.save(new DigitalProductDAO("digital test title3", 300, "digital test decription3", 2, 96, "sport", "code3", LocalDate.parse("2023-12-08")));
 
         digitalImageRepository.save(new DigitalImageDAO(1, new byte[]{1, 2, 3}, 1));
         digitalImageRepository.save(new DigitalImageDAO(2, new byte[]{4, 5, 6}, 2));
@@ -73,7 +77,7 @@ public class ProductServiceTests {
         assertEquals("physical test title1", result.getTitle());
         assertEquals(96, result.getCount());
         assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getCreated_date());
+        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
     }
 
     @Test
@@ -88,7 +92,7 @@ public class ProductServiceTests {
         assertEquals("physical test title2", result.getTitle());
         assertEquals(96, result.getCount());
         assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getCreated_date());
+        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
     }
 
     @Test
@@ -110,7 +114,7 @@ public class ProductServiceTests {
         assertEquals("digital test title1", result.getTitle());
         assertEquals(96, result.getCount());
         assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getCreated_date());
+        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
     }
 
     @Test
@@ -125,7 +129,7 @@ public class ProductServiceTests {
         assertEquals("digital test title2", result.getTitle());
         assertEquals(96, result.getCount());
         assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getCreated_date());
+        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.gameshub.repository;
+package com.gameshub.repository.product;
 
 import com.gameshub.model.product.DigitalImageDAO;
 import jakarta.transaction.Transactional;

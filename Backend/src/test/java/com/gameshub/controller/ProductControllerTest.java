@@ -1,7 +1,7 @@
 package com.gameshub.controller;
 
 import com.gameshub.controller.DTO.*;
-import com.gameshub.service.ProductService;
+import com.gameshub.service.product.ProductService;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -43,7 +43,7 @@ public class ProductControllerTest {
         mockProductDTO.setTitle("Mock Title");
         mockProductDTO.setCount(5);
         mockProductDTO.setSellerID(6);
-        mockProductDTO.setCreated_date(LocalDate.parse("2023-12-08"));
+        mockProductDTO.setPostDate(LocalDate.parse("2023-12-08"));
 
         when(productService.getPhysicalByID(productId)).thenReturn(mockProductDTO);
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
@@ -59,7 +59,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.title").value("Mock Title"))
                 .andExpect(jsonPath("$.count").value(5))
                 .andExpect(jsonPath("$.sellerID").value(6))
-                .andExpect(jsonPath("$.created_date", hasItems(2023, 12, 8)))
+                .andExpect(jsonPath("$.postDate", hasItems(2023, 12, 8)))
                 .andExpect(jsonPath("$.image").doesNotExist());
 
         verify(productService, times(1)).getPhysicalByID(productId);
@@ -76,7 +76,7 @@ public class ProductControllerTest {
         mockProductDTO.setTitle("Mock Title");
         mockProductDTO.setCount(5);
         mockProductDTO.setSellerID(6);
-        mockProductDTO.setCreated_date(LocalDate.parse("2023-12-08"));
+        mockProductDTO.setPostDate(LocalDate.parse("2023-12-08"));
         mockProductDTO.setCode("Mock Code");
 
         when(productService.getDigitalByID(productId)).thenReturn(mockProductDTO);
@@ -93,7 +93,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.title").value("Mock Title"))
                 .andExpect(jsonPath("$.count").value(5))
                 .andExpect(jsonPath("$.sellerID").value(6))
-                .andExpect(jsonPath("$.created_date", hasItems(2023, 12, 8)))
+                .andExpect(jsonPath("$.postDate", hasItems(2023, 12, 8)))
                 .andExpect(jsonPath("$.image").doesNotExist())
                 .andExpect(jsonPath("$.code").value("Mock Code"));
 

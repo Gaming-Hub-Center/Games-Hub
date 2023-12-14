@@ -2,8 +2,8 @@ package com.gameshub.model.product;
 
 import lombok.*;
 import jakarta.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
+
+import java.time.*;
 
 @Data
 @MappedSuperclass
@@ -11,27 +11,28 @@ public abstract class ProductDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private int id;
+    @Column(name = "Id")
+    protected int id;
 
-    @Column(name = "price")
-    private float price;
+    @Column(name = "Title")
+    protected String title;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "Price")
+    protected float price;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "Description")
+    protected String description;
 
-    @Column(name = "count")
-    private int count;
+    @Column(name = "Sellerid")
+    protected int sellerID;
 
-    @Column(name = "sellerID")
-    private int sellerID;
+    @Column(name = "Count")
+    protected int count;
 
-    @Column(name = "created_date")
-    private LocalDate created_date;
+    @Column(name = "Category")
+    protected String category;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "Postdate")
+    protected LocalDate postDate;
+
 }

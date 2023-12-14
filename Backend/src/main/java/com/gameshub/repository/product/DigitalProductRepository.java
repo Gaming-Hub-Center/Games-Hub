@@ -1,5 +1,6 @@
 package com.gameshub.repository.product;
 
+import com.gameshub.controller.DTO.ProductBriefDTO;
 import com.gameshub.controller.DTO.request.*;
 import com.gameshub.model.product.*;
 import org.springframework.data.jpa.repository.*;
@@ -28,5 +29,28 @@ public interface DigitalProductRepository extends JpaRepository<DigitalProductDA
     @Modifying
     @Query(value = "ALTER TABLE digitalproduct ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
     void resetAutoIncrement();
+
+    Optional<DigitalProductDAO> findById(Integer ID);
+
+    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM DigitalProductDAO p")
+    Optional<List<ProductBriefDTO>> findAllProducts();
+
+    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM DigitalProductDAO p WHERE LOWER(p.title) LIKE LOWER(CONCAT('%', :key, '%'))")
+    Optional<List<ProductBriefDTO>> findAllByTitleContainingIgnoreCase(@Param("key") String key);
+
+    @Query(value = "SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
+            "FROM DigitalProductDAO p " +
+            "WHERE (p.price >= :lowerBound) " +
+            "AND (p.price < :upperBound) " +
+            "AND (:category IS NULL OR LOWER(p.category) = :category)")
+    List<ProductBriefDTO> filterPhysical(
+            @Param("lowerBound") float lowerBound,
+            @Param("upperBound") float upperBound,
+            @Param("category") String category
+    );
+
+    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
+            "FROM DigitalProductDAO p ORDER BY p.price ASC")
+    Optional<List<ProductBriefDTO>> getOrderedByPrice();
 
 }

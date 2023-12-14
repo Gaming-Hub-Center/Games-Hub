@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
 import { UserDTO } from "../Controller/DTO/user/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
@@ -34,39 +34,27 @@ export function SignIn() {
 
         clearCurrentSession();
 
-        httpRequest("POST", "auth/signin", userSignInDTO)
+        httpRequest('POST', 'auth/signin', userSignInDTO)
             .then((response) => {
-                const responseData = response.data as UserDTO;
-                storeUserData(responseData);
-                setValidated(true);
-                navigate("/welcome");
-                console.log(responseData);
+                const responseData = response.data as UserDTO
+                storeUserData(responseData)
+                setValidated(true)
+                navigate('/')
+                console.log(responseData)
             })
             .catch((error) => {
-                console.log(error);
-                alert(
-                    "The email or password you entered is incorrect. Please re-check your credentials and try again."
-                );
-            });
+                console.log(error)
+                alert("The email or password you entered is incorrect. Please re-check your credentials and try again.")
+            })
     };
 
     const isValidEmail = (email: string) => {
         return /^[^\s@]+@[^\s@]+\.com$/.test(email);
     };
 
-    httpRequest('POST', 'auth/signin', userSignInDTO)
-    .then((response) => {
-      const responseData = response.data as UserDTO
-      storeUserData(responseData)
-      setValidated(true)
-      navigate('/')
-      console.log(responseData)
-    })
-    .catch((error) => {
-      console.log(error)
-      alert("The email or password you entered is incorrect. Please re-check your credentials and try again.")
-    })
-  };
+    const isValidPassword = (password: string | any[]) => {
+        return password.length >= 8;
+    };
 
     const handleEmailChange = (event: {
         target: { value: SetStateAction<string> };
@@ -108,7 +96,7 @@ export function SignIn() {
                 <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Sign In</h2>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="validationCustomEmail">
-                        <Form.Label style={{ color: "#f0f0f0" }}>Email address</Form.Label>
+                        <Form.Label>Email address</Form.Label>
                         <Container fluid style={{ padding: 0 }}>
                             <Row>
                                 <Col md={1} style={{ paddingTop: 8 }}>
@@ -137,7 +125,7 @@ export function SignIn() {
                 </Row>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="validationCustomPassword">
-                        <Form.Label style={{ color: "#f0f0f0" }}>Password</Form.Label>
+                        <Form.Label>Password</Form.Label>
                         <Container fluid style={{ padding: 0 }}>
                             <Row>
                                 <Col md={1} style={{ paddingTop: 8 }}>
