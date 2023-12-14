@@ -166,25 +166,25 @@ public class PhysicalOrderTests {
         assert physicalOrderItemDAOs.get(1).getId().getPhysicalProductDAO().getId() == 3;
         assert physicalOrderItemDAOs.get(2).getId().getPhysicalProductDAO().getId() == 5;
     }
-
-    @Test
-    void testPhysicalOrderUpdateBuyerBalance() {
-
-    }
-
-    @Test
-    void testPhysicalOrderUpdateSellersBalances() {
-
-    }
-
-    @Test
-    void testPhysicalOrderUpdateStockCount() {
-
-    }
-
-    @Test
-    void testPhysicalOrderClearBuyerCart() {
-
-    }
+//
+//    @Test
+//    void testPhysicalOrderUpdateBuyerBalance() {
+//
+//    }
+//
+//    @Test
+//    void testPhysicalOrderUpdateSellersBalances() {
+//
+//    }
+//
+//    @Test
+//    void testPhysicalOrderUpdateStockCount() {
+//
+//    }
+//
+//    @Test
+//    void testPhysicalOrderClearBuyerCart() {
+//
+//    }
 
 }
