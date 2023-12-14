@@ -5,53 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthorizedController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/OAuth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/OAuth2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/ErrorResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/InvalidFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/InvalidFormatException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/PasswordMismatchException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/PasswordMismatchException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/ResourceAlreadyFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/ResourceAlreadyFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Exception/UserAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/exception/UserAlreadyExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/BuyerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/user/BuyerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/SellerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/user/SellerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/model/user/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/BuyerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/BuyerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/BuyerRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/BuyerRegistrationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/SellerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/SellerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/SellerRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/SellerRegistrationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Model/User/DTO/UserSigninDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/controller/DTO/UserSigninDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/BuyerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/BuyerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Repository/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/repository/SellerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/AuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/AuthenticationEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/JWTAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/JWTGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/JWTGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/PasswordConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/PasswordConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/ConfigConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Security/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/BuyerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/BuyerServiceOAuth2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/CreateUserProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/CreateUserProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/SellerServiceOAuth2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/SellerServiceOAuth2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/Utils/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/utils/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/config/OAuth2LoginConfigGoogle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/config/OAuth2LoginConfigGoogle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/DataAccessLayer/BuyerRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuth2ProxyUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/OAuthServiceUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/SignUpTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/Utils/RandomIntegerGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/utils/RandomIntegerGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceCreateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -70,8 +26,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/gameshub/google_oauth2/service/BuyerService.java" root0="FORCE_HIGHLIGHTING" />
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="GH-264-Proceed-to-purchase-frontend" />
+                    <option name="lastUsedInstant" value="1702527141" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="GH-170-Buyer-Proceed-Purchase-and-Checks-out" />
+                    <option name="lastUsedInstant" value="1702527140" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -83,7 +62,7 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2YmQcSFd4AuMEBVOFf8ralYgWWS" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -94,6 +73,26 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JUnit.All in Backend (1).executor": "Run",
+    "JUnit.All in Backend (2).executor": "Coverage",
+    "JUnit.All in Backend (3).executor": "Run",
+    "JUnit.All in Backend.executor": "Coverage",
+    "JUnit.AuthorizationTests.executor": "Run",
+    "JUnit.BackendApplicationTests.executor": "Run",
+    "JUnit.BuyerRepositoryTests.executor": "Run",
+    "JUnit.BuyerRepositoryTests.findByEmailTests.executor": "Run",
+    "JUnit.ConcreteProductFactoryTest.executor": "Run",
+    "JUnit.DataAccessLayer in Backend.executor": "Run",
+    "JUnit.DigitalOrderTests.executor": "Run",
+    "JUnit.DigitalProductDAOTest.executor": "Run",
+    "JUnit.DigitalProductDAOTest.testBuilder.executor": "Run",
+    "JUnit.DigitalProductDTOTest.testDigitalProductDTO.executor": "Run",
+    "JUnit.DigitalProductDTOTest.testDigitalProductDTO_.executor": "Run",
+    "JUnit.DigitalProductRequestDAOTest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.testDeleteDigitalProductRequest.executor": "Run",
+    "JUnit.DigitalProductRequestRepositoryTest.testUpdateDigitalProductRequest.executor": "Run",
     "JUnit.OAuth2BuyerSignUpUnitTest.executor": "Coverage",
     "JUnit.OAuth2BuyerSignUpUnitTest.findByEmailTests.executor": "Run",
     "JUnit.OAuth2BuyerSignUpUnitTest.testCreateUser.executor": "Run",
@@ -119,9 +118,86 @@
     "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller.executor": "Run",
     "JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailExistsSeller.executor": "Run",
     "JUnit.OAuthServiceUnitTest.executor": "Run",
+    "JUnit.PhysicalOrderTests,testPhysicalOrderUpdateBuyerBalance and 3 more.executor": "Run",
+    "JUnit.PhysicalOrderTests.executor": "Run",
+    "JUnit.PhysicalProductDAOTest.executor": "Run",
+    "JUnit.PhysicalProductDTOTest (1).executor": "Run",
+    "JUnit.PhysicalProductDTOTest.executor": "Debug",
+    "JUnit.PhysicalProductDTOTest.testPhysicalProductDTO_.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.getAllRequestsTest.executor": "Debug",
+    "JUnit.PhysicalProductRequestRepositoryTest.testCreateAndFindDigitalProductRequest.executor": "Run",
+    "JUnit.PhysicalProductRequestRepositoryTest.testSavePhysicalProductRequest.executor": "Run",
+    "JUnit.ProductControllerTest.createDigitalProduct_Success.executor": "Run",
+    "JUnit.ProductDTOTest.executor": "Run",
+    "JUnit.ProductDTOTest.testProductRequestDTO.executor": "Run",
+    "JUnit.ProductDTOTest.testProductRequestDTOGettersAndSetters.executor": "Run",
+    "JUnit.ProductManagerTest.executor": "Run",
+    "JUnit.ProductManagerTest.saveDigitalProductTest.executor": "Run",
+    "JUnit.ProductManagerTest.savePhysicalProductTest.executor": "Run",
+    "JUnit.ProductManagerTest.testCreatePhysicalProduct.executor": "Run",
+    "JUnit.ProductMapperTest.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDAODigitalProductDTO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTOConversion.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTODigitalProductDAO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTOPhysicalProductDAO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTO_DigitalProductDAO.executor": "Run",
+    "JUnit.ProductMapperTest.testToProductDTO_PhysicalProductDAO.executor": "Run",
+    "JUnit.ProductRequestControllerTest.executor": "Run",
+    "JUnit.ProductRequestDAOTest.executor": "Run",
+    "JUnit.ProductRequestDAOTest.testDigitalProductRequestDAO.executor": "Run",
+    "JUnit.ProductRequestDAOTest.testPhysicalProductRequestDAO.executor": "Run",
+    "JUnit.ProductRequestManagerTest.executor": "Run",
+    "JUnit.ProductRequestManagerTest.saveDigitalProductRequest_Success.executor": "Run",
+    "JUnit.ProductRequestManagerTest.savePhysicalProductRequest_Success.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.getAllSellersFromUserServiceInMapper.executor": "Run",
+    "JUnit.ProductRequestMapperInteractionWithSellerTest.getOneSellerFromUserServiceInMapper.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.DigitalProductRequestFromDTOtoDAOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.DigitalProductRequestMapperFromDAOtoDTOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.PhysicalProductRequestFromDTOtoDAOTest.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.PhysicalProductRequestMapperFromDAOtoDTOTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.getAllSellersFromUserServiceInMapper.executor": "Debug",
+    "JUnit.ProductRequestMapperTest.getOneSellerFromUserServiceInMapper.executor": "Run",
+    "JUnit.ProductRequestMapperTest.shouldMapDAOtoDTO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.shouldMapDigitalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testDigitalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testMappingPhysicalProductRequest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.testPhysicalProductRequestDTOToDAO.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDAODigitalProductRequestDTOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDAOPhysicalProductRequestDTOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTODigitalProductRequestDAOValidTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAONullTest.executor": "Run",
+    "JUnit.ProductRequestMapperTest.toDTOPhysicalProductRequestDAOValidTest.executor": "Run",
+    "JUnit.ProductRequestRepositoryTest.executor": "Run",
+    "JUnit.ProductRequestRepositoryTest.testSavePhysicalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceCreateTest.executor": "Run",
+    "JUnit.ProductRequestServiceCreateTest.testSavePhysicalProductRequest_WithDuplicate_Title_and_Description.executor": "Run",
+    "JUnit.ProductRequestServiceTest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testEndToEndDigitalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testEndToEndPhysicalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testMapperLogicForPhysicalProductRequestDTO.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSaveDigitalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSaveDigitalProductRequest_WithDuplicate_Title_and_Description.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSavePhysicalProductRequest.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSavePhysicalProductRequest_NoDuplicates.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSavePhysicalProductRequest_WithDuplicate_Title.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSavePhysicalProductRequest_WithDuplicate_Title_and_Description.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSaveProductRequestWithNullInput.executor": "Run",
+    "JUnit.ProductRequestServiceTest.testSaveProductRequestWithUnrecognizedDTO.executor": "Run",
+    "JUnit.ProductRequestServiceTests.executor": "Run",
+    "JUnit.RequestMapperTest.testToDTOPhysicalProductRequestDAO.executor": "Run",
+    "JUnit.SellerRepositoryTest.executor": "Run",
+    "JUnit.SignInTests.executor": "Run",
+    "JUnit.SignInTests.testBuyerValidSignIn.executor": "Run",
+    "JUnit.SignUpTests.executor": "Run",
     "JUnit.com.gameshub in Backend.executor": "Run",
     "JUnit.gameshub in Backend.executor": "Coverage",
-    "JUnit.java in Backend.executor": "Coverage",
+    "JUnit.java in Backend.executor": "Run",
+    "JUnit.products in Backend.executor": "Run",
+    "JUnit.requests in Backend.executor": "Run",
+    "JUnit.utils in Backend.executor": "Run",
     "Maven.Backend [clean].executor": "Run",
     "Maven.Backend [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -132,24 +208,33 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.BackendApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "Milestone-2",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/CSED/semester5/SWE/Games-Hub/Backend/src/main/java/com/gameshub",
+    "last_opened_file_path": "D:/Study/Semester 5/Software Engineering/Project/Submitted/Project Code/Games-Hub/Backend/src/test/java/com/gameshub",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.gameshub.service.product" />
       <recent name="com.gameshub.Model.Users.DAOs" />
       <recent name="com.gameshub.google_oauth2.service.proxy" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Study\Semester 5\Software Engineering\Project\Submitted\Project Code\Games-Hub\Backend\src\test\java\com\gameshub" />
       <recent name="D:\CSED\semester5\SWE\Games-Hub\Backend\src\main\java\com\gameshub" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -157,59 +242,44 @@
       <recent name="D:\CSED\semester5\SWE\Games-Hub\Backend\src\main\java\com\gameshub" />
       <recent name="D:\CSED\semester5\SWE\Project\Proj\Games-Hub\Backend\target" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.gameshub" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendApplication">
-    <configuration name="OAuthServiceUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean package" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.All in Backend (3)">
+    <configuration name="All in Backend (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.DataAccessLayer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.OAuthServiceUnitTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.DataAccessLayer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub" />
-      <option name="MAIN_CLASS_NAME" value="com.gameshub.OAuthServiceUnitTest" />
-      <option name="METHOD_NAME" value="emailAlreadyExist_EmailDoesNotExistSeller" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.gameshub in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gameshub.DataAccessLayer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gameshub" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gameshub in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in Backend (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/gameshub" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Backend (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -234,26 +304,27 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.OAuthServiceUnitTest" />
-      <item itemvalue="JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller" />
-      <item itemvalue="JUnit.com.gameshub in Backend" />
-      <item itemvalue="JUnit.gameshub in Backend" />
+      <item itemvalue="JUnit.All in Backend (1)" />
+      <item itemvalue="JUnit.All in Backend (2)" />
+      <item itemvalue="JUnit.All in Backend (3)" />
       <item itemvalue="JUnit.java in Backend" />
+      <item itemvalue="JUnit.All in Backend" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.com.gameshub in Backend" />
-        <item itemvalue="JUnit.gameshub in Backend" />
+        <item itemvalue="JUnit.All in Backend (3)" />
+        <item itemvalue="JUnit.All in Backend (2)" />
+        <item itemvalue="JUnit.All in Backend (1)" />
+        <item itemvalue="JUnit.All in Backend" />
         <item itemvalue="JUnit.java in Backend" />
-        <item itemvalue="JUnit.OAuthServiceUnitTest" />
-        <item itemvalue="JUnit.OAuthServiceUnitTest.emailAlreadyExist_EmailDoesNotExistSeller" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
         <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
       </set>
     </attachedChunks>
@@ -276,38 +347,66 @@
       <workItem from="1701500446736" duration="4516000" />
       <workItem from="1701514280250" duration="1448000" />
       <workItem from="1701532780159" duration="7907000" />
+      <workItem from="1701539163106" duration="2011000" />
+      <workItem from="1701551331281" duration="1112000" />
+      <workItem from="1701883373854" duration="51334000" />
+      <workItem from="1701980380100" duration="12691000" />
+      <workItem from="1702047110187" duration="417000" />
+      <workItem from="1702047541962" duration="306000" />
+      <workItem from="1702047857239" duration="7696000" />
+      <workItem from="1702134226474" duration="118000" />
+      <workItem from="1702153202706" duration="3402000" />
+      <workItem from="1702162432319" duration="388000" />
+      <workItem from="1702283175787" duration="26942000" />
+      <workItem from="1702370868623" duration="9712000" />
+      <workItem from="1702506479473" duration="951000" />
+      <workItem from="1702513590041" duration="693000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/gameshub/controller/OAuth2Controller.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="((OidcIdToken)((DefaultOidcUser)principal).idToken).tokenValue" language="JAVA" custom="org.springframework.security.oauth2.core.oidc.OidcIdToken,org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser" />
+        <watch expression="sellerDAO" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1701287147694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1702546717912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$___and_19_more.ic" NAME=".* and 19 more Coverage Results" MODIFIED="1702439468351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__2_.ic" NAME="All in Backend (2) Coverage Results" MODIFIED="1702564096539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__5_.ic" NAME="All in Backend (5) Coverage Results" MODIFIED="1702395898901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$java_in_Backend.ic" NAME="java in Backend Coverage Results" MODIFIED="1701286983531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1701346956764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$OAuth2BuyerSignUpUnitTest.ic" NAME="OAuth2BuyerSignUpUnitTest Coverage Results" MODIFIED="1701282281272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.gameshub.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1701293951902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__3_.ic" NAME="All in Backend (3) Coverage Results" MODIFIED="1702411329328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__1_.ic" NAME="All in Backend (1) Coverage Results" MODIFIED="1702539176648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$gameshub_in_Backend.ic" NAME="gameshub in Backend Coverage Results" MODIFIED="1702512505647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend__4_.ic" NAME="All in Backend (4) Coverage Results" MODIFIED="1702411430317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$ProductControllerTest.ic" NAME="ProductControllerTest Coverage Results" MODIFIED="1702289405413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.gameshub.Controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Backend$CartServiceTest.ic" NAME="CartServiceTest Coverage Results" MODIFIED="1702327845552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.gameshub.DataAccessLayer.*</FILTER>
+    </SUITE>
   </component>
 </project>
