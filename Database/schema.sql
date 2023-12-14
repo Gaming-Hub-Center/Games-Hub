@@ -6,6 +6,8 @@
 -- -----------------------------------------------------
 -- Schema GamesHub
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `GamesHub`;
+
 CREATE SCHEMA IF NOT EXISTS `GamesHub` DEFAULT CHARACTER SET utf8 ;
 USE `GamesHub` ;
 
@@ -117,8 +119,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalCart` (
   CONSTRAINT `ProductIdFK1`
     FOREIGN KEY (`ProductId`)
     REFERENCES `GamesHub`.`PhysicalProduct` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `BuyerIdFK1`
     FOREIGN KEY (`BuyerId`)
     REFERENCES `GamesHub`.`Buyer` (`Id`)
@@ -139,8 +141,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalCart` (
   CONSTRAINT `ProductIdFK2`
     FOREIGN KEY (`ProductId`)
     REFERENCES `GamesHub`.`DigitalProduct` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `BuyerIdFK2`
     FOREIGN KEY (`BuyerId`)
     REFERENCES `GamesHub`.`Buyer` (`Id`)
@@ -181,12 +183,12 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalOrderItem` (
     FOREIGN KEY (`OrderId`)
     REFERENCES `GamesHub`.`Order` (`Id`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION,
+    ON UPDATE CASCADE,
   CONSTRAINT `PhysicalProductIdFK1`
     FOREIGN KEY (`ProductId`)
     REFERENCES `GamesHub`.`PhysicalProduct` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 
@@ -204,12 +206,12 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalOrderItem` (
     FOREIGN KEY (`OrderId`)
     REFERENCES `GamesHub`.`Order` (`Id`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION,
+    ON UPDATE CASCADE,
   CONSTRAINT `DigitalProductIdFK2`
     FOREIGN KEY (`ProductId`)
     REFERENCES `GamesHub`.`DigitalProduct` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 

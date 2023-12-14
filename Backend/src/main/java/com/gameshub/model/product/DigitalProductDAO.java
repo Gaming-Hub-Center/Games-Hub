@@ -1,5 +1,6 @@
 package com.gameshub.model.product;
 
+import com.gameshub.model.user.SellerDAO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,11 +15,11 @@ public class DigitalProductDAO extends ProductDAO {
     @Column(name = "Code")
     private String code;
 
-    public DigitalProductDAO(String title, float price, String description, int sellerID, int count, String category, String code, LocalDate postDate) {
+    public DigitalProductDAO(String title, float price, String description, SellerDAO seller, int count, String category, String code, LocalDate postDate) {
         this.title = title;
         this.price = price;
         this.description = description;
-        this.sellerID = sellerID;
+        this.seller = seller;
         this.count = count;
         this.category = category;
         this.code = code;

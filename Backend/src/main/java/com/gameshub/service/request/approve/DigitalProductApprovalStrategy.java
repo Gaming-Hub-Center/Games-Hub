@@ -65,7 +65,7 @@ public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
         product.setCount(request.getCount());
         product.setCategory(request.getCategory());
         try {
-            product.setSellerID(request.getSeller().getId());
+            product.setSeller(request.getSeller());
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }

@@ -1,8 +1,12 @@
 package com.gameshub.model.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gameshub.model.user.*;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.time.*;
 
 @Data
@@ -44,6 +48,7 @@ public abstract class ProductRequestDAO {
 
     @ManyToOne
     @JoinColumn(name = "Sellerid")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     protected SellerDAO seller;
 
 }
