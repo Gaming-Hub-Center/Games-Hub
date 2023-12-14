@@ -1,5 +1,6 @@
 package com.gameshub.model.product;
 
+import com.gameshub.model.user.SellerDAO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,11 +11,11 @@ import java.time.*;
 @NoArgsConstructor
 public class PhysicalProductDAO extends ProductDAO {
 
-    public PhysicalProductDAO(String title, float price, String description, int sellerID, int count, String category, LocalDate postDate) {
+    public PhysicalProductDAO(String title, float price, String description, SellerDAO seller, int count, String category, LocalDate postDate) {
         this.title = title;
         this.price = price;
         this.description = description;
-        this.sellerID = sellerID;
+        this.seller = seller;
         this.count = count;
         this.category = category;
         this.postDate = postDate;

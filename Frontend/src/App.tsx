@@ -14,6 +14,9 @@ import PhysicalCart from './Pages/PhysicalCart';
 import DigitalCart from "./Pages/DigitalCart";
 
 import { ProductView } from "./Components/ProductView";
+import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/SellerProductCatalog";
+import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
+import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
 
 
 function App() {
@@ -37,6 +40,10 @@ function App() {
         <Route path="/seller/create-product" element={<CatalogRequestForm/>}></Route>
         <Route path="/physical-cart" element={<PhysicalCart />}></Route>
         <Route path="/digital-cart" element={<DigitalCart />}></Route>
+
+        <Route path="/seller/catalog" element={<SellerProductCatalog />}></Route>
+        <Route path="/seller/:sellerId/product/:productType/:productId/:inCatalog" element={<SellerProductView />}></Route>
+        <Route path="/seller/:sellerId/edit/product/:productType/:productId/:inCatalog" element={<SellerProductEdit />}></Route>
 
         <Route path="/buyer/home/games" element={<HomeGames />}></Route>
         <Route

@@ -54,8 +54,8 @@ class CartServiceTest {
         buyerRepository.save(testBuyer);
         LocalDate localDate = LocalDate.now();
         // Create a test product and associate it with the test seller
-        testProductPhysical = new PhysicalProductDAO("Test Product", 50.0f, "Description", testSeller.getId(), 10, "Category", localDate);
-        testProductDigital = new DigitalProductDAO("Test Product", 50.0f, "Description", testSeller.getId(), 10, "Category", "123", localDate);
+        testProductPhysical = new PhysicalProductDAO("Test Product", 50.0f, "Description", testSeller, 10, "Category", localDate);
+        testProductDigital = new DigitalProductDAO("Test Product", 50.0f, "Description", testSeller, 10, "Category", "123", localDate);
         physicalProductRepository.save(testProductPhysical);
         digitalProductRepository.save(testProductDigital);
     }
@@ -97,7 +97,7 @@ class CartServiceTest {
         // Add 50 products and cart items
         for (int i = 0; i < 50; i++) {
             // Create a new product for each cart item
-            PhysicalProductDAO product = new PhysicalProductDAO("Test Product " + i, 50.0f, "Description " + i, testSeller.getId(), 10, "Category", LocalDate.now());
+            PhysicalProductDAO product = new PhysicalProductDAO("Test Product " + i, 50.0f, "Description " + i, testSeller, 10, "Category", LocalDate.now());
             physicalProductRepository.save(product);
             products.add(product);
 
@@ -141,7 +141,7 @@ class CartServiceTest {
         // Add 50 products and cart items
         for (int i = 0; i < 50; i++) {
             // Create a new product for each cart item
-            DigitalProductDAO product = new DigitalProductDAO("Test Product " + i, 50.0f, "Description " + i, testSeller.getId(), 10, "Category", "123", LocalDate.now());
+            DigitalProductDAO product = new DigitalProductDAO("Test Product " + i, 50.0f, "Description " + i, testSeller, 10, "Category", "123", LocalDate.now());
             digitalProductRepository.save(product);
             products.add(product);
 

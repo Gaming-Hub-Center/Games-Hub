@@ -3,6 +3,8 @@ package com.gameshub.model.order;
 import com.gameshub.model.product.*;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.*;
 
@@ -29,6 +31,7 @@ public class DigitalOrderItemDAO {
 
         @ManyToOne
         @JoinColumn(name = "Productid")
+        @OnDelete(action = OnDeleteAction.CASCADE)
         private DigitalProductDAO digitalProductDAO;
     }
 

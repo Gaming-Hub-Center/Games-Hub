@@ -64,7 +64,7 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
         product.setPrice(request.getPrice());
         product.setCount(request.getCount());
         try {
-            product.setSellerID(request.getSeller().getId());
+            product.setSeller(request.getSeller());
         } catch (NullPointerException e) {
             System.out.println("NULL :(");
         }
