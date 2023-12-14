@@ -143,7 +143,7 @@ export function SignUpBuyer() {
         <SignUpNavbar></SignUpNavbar>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationCustomName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label style={{ color: "#f0f0f0" }}>Name</Form.Label>
             <Container fluid style={{ padding: 0 }}>
               <Row>
                 <Col md={1} style={{ paddingTop: 8 }}>
@@ -172,7 +172,7 @@ export function SignUpBuyer() {
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationCustomEmail">
-            <Form.Label>Email</Form.Label>
+            <Form.Label style={{ color: "#f0f0f0" }}>Email</Form.Label>
             <Container fluid style={{ padding: 0 }}>
               <Row>
                 <Col md={1} style={{ paddingTop: 8 }}>
@@ -201,7 +201,7 @@ export function SignUpBuyer() {
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationCustomPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label style={{ color: "#f0f0f0" }}>Password</Form.Label>
             <Container fluid style={{ padding: 0 }}>
               <Row>
                 <Col md={1} style={{ paddingTop: 8 }}>
@@ -226,14 +226,14 @@ export function SignUpBuyer() {
                 </Col>
               </Row>
             </Container>
-            <Form.Control.Feedback type="invalid">
-              Password must be at least 8 characters.
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
           </Form.Group>
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationCustomConfirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label style={{ color: "#f0f0f0" }}>
+              Confirm Password
+            </Form.Label>
             <Container fluid style={{ padding: 0 }}>
               <Row>
                 <Col md={1} style={{ paddingTop: 8 }}>
@@ -263,7 +263,7 @@ export function SignUpBuyer() {
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationPhone">
-            <Form.Label>
+            <Form.Label style={{ color: "#f0f0f0" }}>
               <FontAwesomeIcon
                 icon={faPhone}
                 style={{
@@ -284,7 +284,7 @@ export function SignUpBuyer() {
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="validationAddress">
-            <Form.Label>Address</Form.Label>
+            <Form.Label style={{ color: "#f0f0f0" }}>Address</Form.Label>
             <Container fluid style={{ padding: 0 }}>
               <Row>
                 <Col md={1} style={{ paddingTop: 8 }}>

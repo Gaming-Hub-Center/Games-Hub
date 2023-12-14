@@ -3,6 +3,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Button, Col, Container, FormControl, Image } from "react-bootstrap";
 import { SetStateAction, useState } from "react";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function NavbarC() {
   const [searchText, setSearchText] = useState("");
@@ -86,11 +88,24 @@ export function NavbarC() {
             onChange={handleSearchTextChange}
           />
           <Button
-            style={{ marginLeft: "10px" }}
-            variant="outline-success"
+            style={{
+              backgroundColor: "#733BC0",
+              color: "#f0f0f0",
+              borderColor: "#733BC0",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+              marginLeft: "10px",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
             onClick={handleSearchRequest}
           >
-            Search
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Button>
         </Col>
         <Nav>

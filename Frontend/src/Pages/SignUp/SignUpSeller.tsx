@@ -182,7 +182,7 @@ export function SignUpSeller() {
             <Col md={6}>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationCustomName">
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>Name</Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -210,7 +210,7 @@ export function SignUpSeller() {
               </Row>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationCustomEmail">
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>Email</Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -239,7 +239,7 @@ export function SignUpSeller() {
               </Row>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationCustomPassword">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>Password</Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -272,7 +272,9 @@ export function SignUpSeller() {
                   as={Col}
                   controlId="validationCustomConfirmPassword"
                 >
-                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>
+                    Confirm Password
+                  </Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -304,7 +306,7 @@ export function SignUpSeller() {
               </Row>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationPhone">
-                  <Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>
                     <FontAwesomeIcon
                       icon={faPhone}
                       style={{
@@ -325,7 +327,7 @@ export function SignUpSeller() {
               </Row>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationAddress">
-                  <Form.Label>Address</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>Address</Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -356,7 +358,10 @@ export function SignUpSeller() {
             <Col md={6} style={{ paddingLeft: 5 }}>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validation NationalID">
-                  <Form.Label> National ID</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>
+                    {" "}
+                    National ID
+                  </Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -388,7 +393,9 @@ export function SignUpSeller() {
                   as={Col}
                   controlId="validationVatRegistrationNumber"
                 >
-                  <Form.Label>Vat Registration Number</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>
+                    Vat Registration Number
+                  </Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>
@@ -417,7 +424,9 @@ export function SignUpSeller() {
               </Row>
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="validationDescription">
-                  <Form.Label>Description</Form.Label>
+                  <Form.Label style={{ color: "#f0f0f0" }}>
+                    Description
+                  </Form.Label>
                   <Container fluid style={{ padding: 0 }}>
                     <Row>
                       <Col md={1} style={{ paddingTop: 8 }}>

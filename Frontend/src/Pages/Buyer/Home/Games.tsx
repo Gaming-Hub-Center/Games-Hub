@@ -16,7 +16,8 @@ import { Form } from "react-bootstrap";
 export function HomeGames() {
   const productCardPropsList = [
     {
-      title: "GTA V",
+      title:
+        "GTA VTggrevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)Trevor is gonna kill u :)",
       description: "Trevor is gonna kill u :)",
       images: [
         "/src/data/GTA-V/1.jpg",
@@ -135,7 +136,6 @@ export function HomeGames() {
 
   const handleCategoryCheckboxClick = (category: string) => {
     setCategoryFilterOption(category);
-    // # hna aho
   };
 
   const itemsPerPage = 20;
@@ -193,10 +193,11 @@ export function HomeGames() {
           <Col
             md={2}
             style={{
-              height: "77vh",
+              height: "79vh",
               marginTop: "30px",
               marginLeft: "55px",
-              backgroundColor: "white",
+              backgroundColor: "black",
+              color: "#f0f0f0",
               display: "flex",
               flexDirection: "column",
             }}
@@ -214,7 +215,7 @@ export function HomeGames() {
               </div>
               <div
                 style={{
-                  marginTop: "1vh",
+                  marginTop: "0.5vh",
                   maxHeight: "70%",
                   overflowY: "auto",
                   alignItems: "flex-start",
@@ -233,7 +234,9 @@ export function HomeGames() {
               </div>
             </Row>
             <Row style={{ height: "10%" }}>
-              <span className="fs-5">Price</span>
+              <span className="fs-5" style={{ marginTop: "0.5vh" }}>
+                Price
+              </span>
               <Col
                 style={{
                   display: "flex",
@@ -242,16 +245,26 @@ export function HomeGames() {
                 }}
               >
                 <FormControl
-                  style={{ width: "40%" }}
+                  style={{
+                    width: "40%",
+                    backgroundColor: "#121212",
+                    color: "#f0f0f0",
+                    borderColor: "#f0f0f0",
+                  }}
                   type="number"
                   placeholder="Min"
                   className="mr-sm-2"
                   value={minPrice}
                   onChange={handleMinCostChange}
                 />
-                <span style={{ margin: "5px 5px" }}>to</span>
+                <span style={{ margin: "6px 5px" }}>to</span>
                 <FormControl
-                  style={{ width: "40%" }}
+                  style={{
+                    width: "40%",
+                    backgroundColor: "#121212",
+                    color: "#f0f0f0",
+                    borderColor: "#f0f0f0",
+                  }}
                   type="number"
                   placeholder="Max"
                   className="mr-sm-2"
@@ -259,8 +272,22 @@ export function HomeGames() {
                   onChange={handleMaxCostChange}
                 />
                 <Button
-                  style={{ marginLeft: "10px" }}
-                  variant="outline-success"
+                  style={{
+                    marginLeft: "10px",
+                    backgroundColor: "#733BC0",
+                    color: "#f0f0f0",
+                    borderColor: "#733BC0",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    transition: "background-color 0.3s",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor =
+                      "rgba(115,	59,	192 ,0.5)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#733BC0")
+                  }
                   onClick={handlePriceFilterRequest}
                 >
                   Go
@@ -284,19 +311,70 @@ export function HomeGames() {
                 />{" "}
                 <span className="fs-3">Sort</span>
                 <Dropdown style={{ marginTop: "5px" }}>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Sort by price
+                  <Dropdown.Toggle
+                    style={{
+                      backgroundColor: "#733BC0",
+                      color: "#f0f0f0",
+                      borderColor: "#733BC0",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                      transition: "background-color 0.3s",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.backgroundColor =
+                        "rgba(115,	59,	192 ,0.5)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#733BC0")
+                    }
+                  >
+                    Sort by price{" "}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item
                       onClick={() => handleSortChange("Ascendingly")}
                       active={sortOption === "Ascendingly"}
+                      style={{
+                        backgroundColor:
+                          sortOption === "Ascendingly" ? "#7b3cc0" : "white",
+                        color: sortOption === "Ascendingly" ? "white" : "black",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!sortOption || sortOption !== "Ascendingly") {
+                          e.currentTarget.style.backgroundColor =
+                            "rgba(115, 59, 192, 0.5)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!sortOption || sortOption !== "Ascendingly") {
+                          e.currentTarget.style.backgroundColor = "white";
+                          e.currentTarget.style.color = "black";
+                        }
+                      }}
                     >
                       Ascendingly
                     </Dropdown.Item>
                     <Dropdown.Item
                       onClick={() => handleSortChange("Descendingly")}
                       active={sortOption === "Descendingly"}
+                      style={{
+                        backgroundColor:
+                          sortOption === "Descendingly" ? "#7b3cc0" : "white",
+                        color:
+                          sortOption === "Descendingly" ? "white" : "black",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!sortOption || sortOption !== "Descendingly") {
+                          e.currentTarget.style.backgroundColor =
+                            "rgba(115, 59, 192, 0.5)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!sortOption || sortOption !== "Descendingly") {
+                          e.currentTarget.style.backgroundColor = "white";
+                          e.currentTarget.style.color = "black";
+                        }
+                      }}
                     >
                       Descendingly
                     </Dropdown.Item>

@@ -49,7 +49,17 @@ export function ProductCard({ title, description, images, price }: cardProps) {
         }}
       >
         <Card.Title className="d-flex justify-content-between align-items-baseline">
-          <span>{title}</span>
+          <span
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+              height: "2.6vh",
+              display: "inline-block",
+            }}
+          >
+            {title}
+          </span>
           <span className="ms-2 text-muted ">{formatCurrency(price)}</span>
         </Card.Title>
         <Card.Text
