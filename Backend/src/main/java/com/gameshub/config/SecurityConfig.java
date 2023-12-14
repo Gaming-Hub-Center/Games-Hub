@@ -37,6 +37,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/registration/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/product/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/products/approve/**")).permitAll()  //TODO Remove
                         .requestMatchers(new AntPathRequestMatcher("/product-request/**")).permitAll()  //TODO Remove
                         .requestMatchers(new AntPathRequestMatcher("/cart/**")).permitAll()  //TODO Remove

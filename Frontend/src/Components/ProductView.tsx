@@ -1,16 +1,60 @@
-import { useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { cardProps } from "./ProductCard";
 import { Container, Row, Col, Carousel, Image, Button } from "react-bootstrap";
 import { NavbarC } from "./NavbarC";
 import { formatCurrency } from "../Utilities/formatCurrency";
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import {ProductDTO} from "../Controller/DTO/ProductDTO/ProductDTO";
+import {httpRequest} from "../Controller/HttpProxy";
+
+interface ProductViewProps {
+    productType: string;
+}
 
 export function ProductView() {
-  const location = useLocation();
-  const { title, description, images, price } = location.state as cardProps;
 
-  // Function to add a product to the cart
-  const addToCart = () => {};
+    const { id } = useParams(); // Retrieve the product ID from the URL
+    const location = useLocation();
+    const { productType } = location.state || { productType: "defaultType" }; // Retrieve productType from state or set a default
+    const [response, setResponse] = useState<ProductDTO | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getProductDetails(parseInt(id, 10), productType);
+                setResponse(response);
+            } catch (error) {
+                console.error("Error fetching product details:", error);
+            }
+        };
+
+        fetchData();
+    }, [productType]);
+
+    const getProductDetails = async (productId: number, productType: string) => {
+        let response = null;
+        try {
+            response = await httpRequest(
+                "GET",
+                `/product/${productType}/getdetails?ID=${productId}`
+            );
+            console.log(response.data.count);
+            console.log(response.data.code);
+            console.log(response.data.category);
+            return response.data as ProductDTO;
+        } catch (error) {
+            console.error("Error fetching product details:", error);
+            throw error;
+        }
+    };
+
+    // Function to add a product to the cart
+    const addToCart = () => {};
+
+    if (!response) {
+        return null;
+    }
+
 
   return (
     <>
@@ -22,7 +66,7 @@ export function ProductView() {
           backgroundColor: "#121212",
         }}
       >
-        <NavbarC />
+        <NavbarC productType={undefined} updateProductCardPropsList={undefined} />
         <Row
           style={{
             display: "flex",
@@ -52,7 +96,7 @@ export function ProductView() {
               <Carousel.Item>
                 <Image
                   className="d-block"
-                  src={images[0]}
+                  src={`data:image/jpeg;base64,${response.images[0]}`}
                   alt="First slide"
                   style={{
                     objectFit: "cover",
@@ -64,7 +108,7 @@ export function ProductView() {
               <Carousel.Item>
                 <Image
                   className="d-block"
-                  src={images[1]}
+                  src={`data:image/jpeg;base64,${response.images[1]}`}
                   alt="Second slide"
                   style={{
                     objectFit: "cover",
@@ -76,7 +120,7 @@ export function ProductView() {
               <Carousel.Item>
                 <Image
                   className="d-block"
-                  src={images[2]}
+                  src={`data:image/jpeg;base64,${response.images[2]}`}
                   alt="Third slide"
                   style={{
                     objectFit: "cover",
@@ -90,10 +134,17 @@ export function ProductView() {
               style={{ width: "90%" }}
               className="d-flex justify-content-between align-items-baseline"
             >
-              <span className="fs-1" style={{ color: "#f0f0f0" }}>
-                {title}
+              <span
+                  className="fs-1"
+                  style={{
+                      color: "#f0f0f0",
+                      maxHeight: "13vh",
+                      overflow: "hidden",
+                  }}
+              >
+                {response.title}
               </span>
-              <span className="fs-3 text-muted ">{formatCurrency(price)}</span>
+              <span className="fs-3 text-muted ">{formatCurrency(response.price)}</span>
             </div>
             <span
               className="fs-5"
@@ -105,7 +156,7 @@ export function ProductView() {
                 marginBottom: "15px",
               }}
             >
-              {description}
+              {response.description}
             </span>
             <Button
               style={{
