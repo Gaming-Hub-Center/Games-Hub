@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e8a189-de18-40a3-aa4e-4b21b5ca41c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gameshub/service/request/ProductRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductRequestServiceCreateTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductRequestServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/service/ProductRequestServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/Service/ProductServiceTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/controller/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/product/ProductControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/requests/ProductRequestServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gameshub/service/ProductServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gameshub/service/ProductServiceTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +194,7 @@
     "JUnit.ProductRequestServiceTest.testSaveProductRequestWithNullInput.executor": "Run",
     "JUnit.ProductRequestServiceTest.testSaveProductRequestWithUnrecognizedDTO.executor": "Run",
     "JUnit.ProductRequestServiceTests.executor": "Run",
+    "JUnit.ProductServiceTests.executor": "Run",
     "JUnit.RequestMapperTest.testToDTOPhysicalProductRequestDAO.executor": "Run",
     "JUnit.SellerRepositoryTest.executor": "Run",
     "JUnit.SignInTests.executor": "Run",
@@ -251,16 +259,8 @@
       <command value="mvn clean package" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in Backend (3)">
+  <component name="RunManager" selected="JUnit.All in Backend (1)">
     <configuration name="All in Backend (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in Backend (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -284,10 +284,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in Backend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRequestServiceCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.Service.ProductRequestServiceCreateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRequestServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gameshub.requests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gameshub.requests" />
+      <option name="MAIN_CLASS_NAME" value="com.gameshub.requests.ProductRequestServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -305,19 +327,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.All in Backend (1)" />
-      <item itemvalue="JUnit.All in Backend (2)" />
       <item itemvalue="JUnit.All in Backend (3)" />
-      <item itemvalue="JUnit.java in Backend" />
+      <item itemvalue="JUnit.ProductRequestServiceCreateTest" />
+      <item itemvalue="JUnit.ProductRequestServiceTest" />
       <item itemvalue="JUnit.All in Backend" />
       <item itemvalue="Spring Boot.BackendApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in Backend (3)" />
-        <item itemvalue="JUnit.All in Backend (2)" />
         <item itemvalue="JUnit.All in Backend (1)" />
         <item itemvalue="JUnit.All in Backend" />
-        <item itemvalue="JUnit.java in Backend" />
+        <item itemvalue="JUnit.ProductRequestServiceTest" />
+        <item itemvalue="JUnit.ProductRequestServiceCreateTest" />
+        <item itemvalue="JUnit.All in Backend (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -390,7 +412,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1702546717912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Backend$All_in_Backend.ic" NAME="All in Backend Coverage Results" MODIFIED="1702566002964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$___and_19_more.ic" NAME=".* and 19 more Coverage Results" MODIFIED="1702439468351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$All_in_Backend__2_.ic" NAME="All in Backend (2) Coverage Results" MODIFIED="1702564096539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Backend$All_in_Backend__5_.ic" NAME="All in Backend (5) Coverage Results" MODIFIED="1702395898901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
