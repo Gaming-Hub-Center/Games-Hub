@@ -126,7 +126,8 @@ public class OrderService {
 
         digitalOrderItemRepository.saveAll(digitalOrderItemDAOs);
 
-        // cartService.clearDigitalCart(buyerID);
+        for (DigitalCartDAO cartProductItem : digitalCartDAOs)
+            cartService.removeDigitalCartItem(buyerID, cartProductItem.getProduct().getId());
     }
 
 }

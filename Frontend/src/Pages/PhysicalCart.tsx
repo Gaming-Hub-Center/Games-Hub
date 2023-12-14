@@ -8,7 +8,7 @@ import { getId } from "../CurrentSession";
 // Define the types for the data structure
 type Buyer = {
   id: number;
-  title: string;
+  name: string;
   email: string;
   phone: string;
   address: string;
@@ -19,7 +19,7 @@ type Product = {
   productID: number;
   price: number;
   count: number;
-  name: string;
+  title: string;
   description: string;
   category: string;
   sellerID: number;

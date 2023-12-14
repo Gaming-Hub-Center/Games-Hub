@@ -5,5 +5,5 @@ import lombok.*;
 @Data
 public class OrderCheckoutDTO {
     int buyerID;
-    boolean isWallet;
+    String paymentMethod;
 }
