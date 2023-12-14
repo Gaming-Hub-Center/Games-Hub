@@ -1,0 +1,94 @@
+//package com.gameshub;
+//
+//import static org.mockito.Mockito.*;
+//import static org.junit.jupiter.api.Assertions.*;
+//
+//import com.gameshub.Model.User.DAO.BuyerDAO;
+//import com.gameshub.Model.User.DAO.SellerDAO;
+//import com.gameshub.Repository.BuyerRepository;
+//import com.gameshub.Repository.SellerRepository;
+//import com.gameshub.Service.BuyerServiceOAuth2;
+//import com.gameshub.Service.SellerServiceOAuth2;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//import org.mockito.InjectMocks;
+//import org.mockito.Mock;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.security.oauth2.core.oidc.OidcIdToken;
+//
+//import java.util.Optional;
+//
+//@SpringBootTest
+//class OAuthServiceUnitTest {
+//
+//    @InjectMocks
+//    private BuyerServiceOAuth2 buyerService;
+//
+//    @Mock
+//    private BuyerRepository buyerRepository;
+//
+//    @InjectMocks
+//    private SellerServiceOAuth2 sellerService;
+//
+//    @Mock
+//    private SellerRepository sellerRepository;
+//
+//    @Mock
+//    private OidcIdToken oidcIdToken;
+//
+//    private static final String EMAIL = "test@example.com";
+//    private static final String NAME = "Test User";
+//    private static final String SUB = "123";
+//
+//    @BeforeEach
+//    void setUp() {
+//        when(oidcIdToken.getClaim("email")).thenReturn(EMAIL);
+//        when(oidcIdToken.getClaim("name")).thenReturn(NAME);
+//        when(oidcIdToken.getClaim("sub")).thenReturn(SUB);
+//    }
+//
+//    @Test
+//    void emailAlreadyExist_EmailExists() {
+//        BuyerDAO existingBuyer = new BuyerDAO();
+//        when(buyerRepository.findByEmail(EMAIL)).thenReturn(Optional.of(existingBuyer));
+//
+//        boolean exists = buyerService.emailAlreadyExist(oidcIdToken);
+//
+//        assertTrue(exists);
+//    }
+//
+//    @Test
+//    void emailAlreadyExist_EmailDoesNotExist() {
+//        // Arrange
+//        when(buyerRepository.findByEmail(EMAIL)).thenReturn(Optional.empty());
+//
+//        // Act
+//        boolean exists = buyerService.emailAlreadyExist(oidcIdToken);
+//
+//        // Assert
+//        assertFalse(exists);
+//    }
+//
+//
+//    @Test
+//    void emailAlreadyExist_EmailExistsSeller() {
+//        SellerDAO existingSeller = new SellerDAO();
+//        when(sellerRepository.findByEmail(EMAIL)).thenReturn(Optional.of(existingSeller));
+//
+//        boolean exists = sellerService.emailAlreadyExist(oidcIdToken);
+//
+//        assertTrue(exists);
+//    }
+//
+//    @Test
+//    void emailAlreadyExist_EmailDoesNotExistSeller() {
+//        // Arrange
+//        when(sellerRepository.findByEmail(EMAIL)).thenReturn(Optional.empty());
+//
+//        // Act
+//        boolean exists = sellerService.emailAlreadyExist(oidcIdToken);
+//
+//        // Assert
+//        assertFalse(exists);
+//    }
+//}
