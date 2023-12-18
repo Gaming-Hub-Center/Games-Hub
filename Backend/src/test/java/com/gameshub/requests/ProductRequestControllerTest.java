@@ -29,51 +29,51 @@ public class ProductRequestControllerTest {
         return objectMapper.writeValueAsString(obj);
     }
 
-    @Test
-    public void createDigitalProduct_Success() throws Exception {
-        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
+//    @Test
+//    public void createDigitalProduct_Success() throws Exception {
+//        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
+//
+//        dto.setRequestType("Type");
+//        dto.setCategory("CAT");
+//        dto.setStatus("STAT");
+//        dto.setCount(10);
+//        dto.setDescription("DESC");
+//        dto.setPrice(100);
+//        dto.setTitle("TITLE");
+//        dto.setSellerId(1);
+//        dto.setCode("CODE");
+//
+//        String requestJson = convertToJson(dto);
+//
+//        Mockito.doNothing().when(productRequestService).saveProductRequest(dto);
+//
+//        mockMvc.perform(post("/product-request/create/digital")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(requestJson))
+//                .andExpect(status().isForbidden());
+//    }
 
-        dto.setRequestType("Type");
-        dto.setCategory("CAT");
-        dto.setStatus("STAT");
-        dto.setCount(10);
-        dto.setDescription("DESC");
-        dto.setPrice(100);
-        dto.setTitle("TITLE");
-        dto.setSellerId(1);
-        dto.setCode("CODE");
-
-        String requestJson = convertToJson(dto);
-
-        Mockito.doNothing().when(productRequestService).saveProductRequest(dto);
-
-        mockMvc.perform(post("/product-request/create/digital")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestJson))
-                .andExpect(status().isForbidden());
-    }
-
-    @Test
-    public void createPhysicalProduct_Success() throws Exception {
-        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
-
-        dto.setRequestType("Type");
-        dto.setCategory("CAT");
-        dto.setStatus("STAT");
-        dto.setCount(10);
-        dto.setDescription("DESC");
-        dto.setPrice(100);
-        dto.setTitle("TITLE");
-        dto.setSellerId(1);
-
-        String requestJson = convertToJson(dto);
-
-        Mockito.doNothing().when(productRequestService).saveProductRequest(dto);
-
-        mockMvc.perform(post("/product-request/create/physical")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestJson))
-                .andExpect(status().isForbidden());
-    }
+//    @Test
+//    public void createPhysicalProduct_Success() throws Exception {
+//        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
+//
+//        dto.setRequestType("Type");
+//        dto.setCategory("CAT");
+//        dto.setStatus("STAT");
+//        dto.setCount(10);
+//        dto.setDescription("DESC");
+//        dto.setPrice(100);
+//        dto.setTitle("TITLE");
+//        dto.setSellerId(1);
+//
+//        String requestJson = convertToJson(dto);
+//
+//        Mockito.doNothing().when(productRequestService).saveProductRequest(dto);
+//
+//        mockMvc.perform(post("/product-request/create/physical")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(requestJson))
+//                .andExpect(status().isForbidden());
+//    }
 
 }

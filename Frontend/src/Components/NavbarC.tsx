@@ -1,16 +1,18 @@
-import { Form, NavLink } from "react-router-dom";
+import {Form, NavLink, useNavigate} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Button, Col, Container, FormControl, Image } from "react-bootstrap";
-import { SetStateAction, useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
-    const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
-    const handleSearchTextChange = (event: {
+
+  const handleSearchTextChange = (event: {
         target: { value: SetStateAction<string> };
     }) => {
         setSearchText(event.target.value);
@@ -32,7 +34,11 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
         updateProductCardPropsList(products);
     };
 
-    return (
+  function goToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    navigate("/digital-cart");
+  }
+
+  return (
         <Navbar
             className="bg-black text-white shadow-sm"
             variant="dark"
@@ -119,6 +125,29 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </Button>
                 </Col>
+              <Col>
+                <Button style={{
+                  backgroundColor: "#733BC0",
+                  color: "#f0f0f0",
+                  borderColor: "#733BC0",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s",
+                  marginLeft: "10px",
+                }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.backgroundColor = "#733BC0")
+                        }
+                        onClick={goToCart}
+                >
+                  <FontAwesomeIcon icon={faCartShopping} />
+                </Button>
+
+              </Col>
+
                 <Nav>
                     <Nav.Link
                         as={NavLink}
@@ -150,6 +179,7 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
 
 {
     /* <NavDropdown
+
               title={""}
               style={{ marginTop: "3px", marginRight: "20px", paddingRight: "0" }}
               align="end"

@@ -1,13 +1,15 @@
 package com.gameshub.controller;
 
 import com.gameshub.controller.DTO.*;
+import com.gameshub.model.product.*;
 import com.gameshub.service.product.ProductService;
 import com.gameshub.utils.ProductMapper;
 import lombok.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -77,5 +79,31 @@ public class ProductController {
     @GetMapping("digital/sort")
     public ResponseEntity<List<ProductBriefDTO>> sortDigital(@RequestParam boolean ascending) {
         return ResponseEntity.ok(productService.sortDigital(ascending));
+    }
+
+    @PostMapping("/physical/save")
+    public ResponseEntity<PhysicalProductDTO> savePhysicalProduct(@RequestBody PhysicalProductDTO physicalProductDTO) throws IOException, FileNotFoundException {
+        System.out.println("lklk");
+        PhysicalProductDAO physicalProductDAO = productMapper.toPhysicalProductDAO(physicalProductDTO);
+        System.out.println(physicalProductDAO.getId());
+        List<PhysicalImageDAO> list = new ArrayList<>();
+        File file = new File("C:/Users/Ehab/Downloads/images/1.jpg");
+        FileInputStream fis = new FileInputStream(file);
+        byte[] buffer = new byte[(int) file.length()];
+        fis.read(buffer);
+        PhysicalImageDAO obj = new PhysicalImageDAO();
+        obj.setProduct_id(90);
+        obj.setImage(buffer);
+        list.add(obj);
+        file = new File("C:/Users/Ehab/Downloads/images/2.jpg");
+        fis = new FileInputStream(file);
+        buffer = new byte[(int) file.length()];
+        fis.read(buffer);
+        obj = new PhysicalImageDAO();
+        obj.setProduct_id(90);
+        obj.setImage(buffer);
+        list.add(obj);
+        productService.save(physicalProductDAO, list);
+        return ResponseEntity.ok(productMapper.toPhysicalProductDTO(physicalProductDAO));
     }
 }

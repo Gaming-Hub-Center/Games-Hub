@@ -24,7 +24,7 @@ const CatalogRequestForm: React.FC = () => {
 
   const [digitalProductRequest, setDigitalProductRequest] = useState<DigitalProductRequestDTO>({ 
     dateReceived: new Date().toISOString().split('T')[0],
-    status: 'pending',
+    status: 'Pending',
     requestType: 'create',
     title: '',
     price: 0,

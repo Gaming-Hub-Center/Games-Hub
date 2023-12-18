@@ -34,22 +34,7 @@ public class OrderService {
 
         for (PhysicalCartDAO cartProductItem : physicalCartDAOs) {
 
-            PhysicalProductDAO product = cartProductItem.getProduct();
-
-            if (product == null)
-                throw new ResourceNotFoundException("Sorry, the product you are looking for is no longer available.");
-
-            if (product.getCount() < cartProductItem.getCount())
-                throw new OutOfStockException("The product " + product.getTitle() + " has only " + product.getCount() + " pieces left!");
-
-//            productService.updatePhysical(product.getId(), product.getCount() - physicalCartDAO.getCount());
-
-            PhysicalOrderItemDAO physicalOrderItemDAO = new PhysicalOrderItemDAO(
-                new PhysicalOrderItemDAO.PhysicalOrderItemId(0, product),
-                cartProductItem.getCount(),
-                product.getPrice(),
-                (float) cartProductItem.getCount() * product.getPrice()
-            );
+            PhysicalOrderItemDAO physicalOrderItemDAO = getPhysicalOrderItemDAO(cartProductItem);
 
             physicalOrderItemDAOs.add(physicalOrderItemDAO);
             orderPrice += physicalOrderItemDAO.getTotalPrice();
@@ -75,6 +60,25 @@ public class OrderService {
         physicalOrderItemRepository.saveAll(physicalOrderItemDAOs);
 
         // cartService.clearPhysicalCart(buyerID);
+    }
+
+    private static PhysicalOrderItemDAO getPhysicalOrderItemDAO(PhysicalCartDAO cartProductItem) {
+        PhysicalProductDAO product = cartProductItem.getProduct();
+
+        if (product == null)
+            throw new ResourceNotFoundException("Sorry, the product you are looking for is no longer available.");
+
+        if (product.getCount() < cartProductItem.getCount())
+            throw new OutOfStockException("The product " + product.getTitle() + " has only " + product.getCount() + " pieces left!");
+
+//            productService.updatePhysical(product.getId(), product.getCount() - physicalCartDAO.getCount());
+
+        return new PhysicalOrderItemDAO(
+            new PhysicalOrderItemDAO.PhysicalOrderItemId(0, product),
+            cartProductItem.getCount(),
+            product.getPrice(),
+            (float) cartProductItem.getCount() * product.getPrice()
+        );
     }
 
     public void orderDigital(int buyerID, boolean isWallet) {

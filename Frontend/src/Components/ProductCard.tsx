@@ -2,6 +2,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../Utilities/formatCurrency";
+import {httpRequest} from "../Controller/HttpProxy";
+import{getId} from "../CurrentSession";
 
 export interface cardProps {
   id: number;
@@ -23,8 +25,21 @@ export function ProductCard({ id, title, description, image, price, productType 
     }
 
   function addToCart(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {}
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void {
+    const cartDTO = {
+      buyerID: getId(),
+      productID: id,
+      count: 1
+    };
+    httpRequest('post', '/cart/digital/addOrUpdate', cartDTO)
+      .then(() => {
+
+      })
+      .catch(error => {
+        console.error('Error updating cart item:', error);
+      });
+  }
 
   return (
     <Card

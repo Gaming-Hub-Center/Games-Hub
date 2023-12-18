@@ -6,6 +6,7 @@ import { PhysicalProductDAO } from "../../../Models/product/PhysicalProductDAO";
 import { DigitalProductRequestDAO } from "../../../Models/product_request/DigitalProductRequestDAO";
 import { PhysicalProductRequestDAO } from "../../../Models/product_request/PhysicalProductRequestDAO";
 import { ProductCatalogItem } from "./SellerProductCatalogItem";
+import {getId} from "../../../CurrentSession";
 
 export function SellerProductCatalog() {
   const sellerId = window.sessionStorage.getItem("id");
@@ -17,15 +18,15 @@ export function SellerProductCatalog() {
   const [catalogDigitalProducts, setCatalogDigitalProducts] = useState<DigitalProductDAO[]>([]);
   const navigate = useNavigate();
 
-   // Delete______________________________________________________________
+   // Delete______9________________________________________________________
 
   const handleDeleteCatalogDigitalProduct = (item: DigitalProductDAO) => (event) => {
-    deleteProduct(String(item.seller.id), 'digital', String(item.id), false);
+    deleteProduct(getId().toString(), 'digital', String(item.id), false);
     setCatalogDigitalProducts(catalogDigitalProducts.filter(product => product !== item))
   }
 
   const handleDeleteCatalogPhysicalProduct = (item: PhysicalProductDAO) => (event) => {
-    deleteProduct(String(item.seller.id), 'physical', String(item.id), false);
+    deleteProduct(getId().toString(), 'physical', String(item.id), false);
     setCatalogPhysicalProducts(catalogPhysicalProducts.filter(product => product !== item))
   }
 

@@ -79,8 +79,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProduct` (
   CONSTRAINT `SellerIdFK1`
     FOREIGN KEY (`SellerId`)
     REFERENCES `GamesHub`.`Seller` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 
@@ -102,8 +102,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProduct` (
   CONSTRAINT `SellerIdFK2`
     FOREIGN KEY (`SellerId`)
     REFERENCES `GamesHub`.`Seller` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 
@@ -124,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalCart` (
   CONSTRAINT `BuyerIdFK1`
     FOREIGN KEY (`BuyerId`)
     REFERENCES `GamesHub`.`Buyer` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 
@@ -146,8 +146,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalCart` (
   CONSTRAINT `BuyerIdFK2`
     FOREIGN KEY (`BuyerId`)
     REFERENCES `GamesHub`.`Buyer` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 
@@ -164,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Order` (
   CONSTRAINT `OrderBuyerIdFK1`
     FOREIGN KEY (`BuyerId`)
     REFERENCES `GamesHub`.`Buyer` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 

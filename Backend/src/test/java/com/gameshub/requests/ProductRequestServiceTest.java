@@ -116,7 +116,7 @@ class ProductRequestServiceTest {
     @Test
     void testSavePhysicalProductRequest_NoDuplicates() {
         PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
-        dto.setRequestType("pending");
+        dto.setRequestType("Pending");
         dto.setCategory("CAT");
         dto.setStatus("STAT");
         dto.setDateReceived(LocalDate.now());

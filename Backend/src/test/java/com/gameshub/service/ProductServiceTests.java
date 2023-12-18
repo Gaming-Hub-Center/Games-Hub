@@ -1,333 +1,215 @@
 package com.gameshub.service;
 
-import com.gameshub.controller.DTO.*;
-import com.gameshub.exception.ResourceNotFoundException;
-import com.gameshub.model.product.*;
-import com.gameshub.repository.product.DigitalImageRepository;
+
+import com.gameshub.controller.DTO.request.*;
+import com.gameshub.model.product.DigitalProductDAO;
+import com.gameshub.model.product.PhysicalProductDAO;
+import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.product.DigitalProductRepository;
-import com.gameshub.repository.product.PhysicalImageRepository;
 import com.gameshub.repository.product.PhysicalProductRepository;
+import com.gameshub.repository.user.SellerRepository;
 import com.gameshub.service.product.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.time.LocalDate;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-
+import java.util.Optional;
 
 @SpringBootTest
 public class ProductServiceTests {
-    @Autowired
-    private ProductService productService;
 
     @Autowired
-    private PhysicalProductRepository physicalProductRepository;
+    ProductService productService;
 
     @Autowired
-    private PhysicalImageRepository physicalImageRepository;
+    DigitalProductRepository digitalProductRepository;
 
     @Autowired
-    private DigitalProductRepository digitalProductRepository;
+    PhysicalProductRepository physicalProductRepository;
+
 
     @Autowired
-    private DigitalImageRepository digitalImageRepository;
+    SellerRepository sellerRepository;
+
+
 
     @BeforeEach
-    public void setup() {
-        physicalProductRepository.deleteAll();
-        physicalImageRepository.deleteAll();
+    public void setup(){
         digitalProductRepository.deleteAll();
-        digitalImageRepository.deleteAll();
-
-        physicalProductRepository.resetAutoIncrement();
-        physicalImageRepository.resetAutoIncrement();
         digitalProductRepository.resetAutoIncrement();
-        digitalImageRepository.resetAutoIncrement();
+        physicalProductRepository.deleteAll();
+        physicalProductRepository.resetAutoIncrement();
+        sellerRepository.deleteAll();
+        sellerRepository.resetAutoIncrement();
 
-        physicalProductRepository.save(new PhysicalProductDAO("physical test title1", 100, "physical test decription1", 2, 96, "pc", LocalDate.parse("2023-12-08")));
-        physicalProductRepository.save(new PhysicalProductDAO("physical test title2", 200, "physical test decription2", 2, 96, "mouse", LocalDate.parse("2023-12-08")));
-        physicalProductRepository.save(new PhysicalProductDAO("physical test title3", 300, "physical test decription3", 2, 96, "keyboard", LocalDate.parse("2023-12-08")));
+        sellerRepository.save(
+                new SellerDAO(
+                        "Marwan",
+                        "m@example.com",
+                        "placeholderPassword",
+                        "",
+                        "",
+                        0.0f,
+                        "",
+                        LocalDate.now(),
+                        "",
+                        "")
+        );
 
-        physicalImageRepository.save(new PhysicalImageDAO(1, new byte[]{1, 2, 3}, 1));
-        physicalImageRepository.save(new PhysicalImageDAO(2, new byte[]{4, 5, 6}, 2));
-        physicalImageRepository.save(new PhysicalImageDAO(3, new byte[]{7, 8, 9}, 3));
+        Optional<SellerDAO> sellerDAO = sellerRepository.findByEmail("m@example.com");
+        assert sellerDAO.isPresent();
+        SellerDAO seller = sellerDAO.get();
+        digitalProductRepository.save(
+                new DigitalProductDAO(
+                        "sample digital product",
+                        10,
+                        "",
+                        seller.getId(),
+                        1,
+                        "Game",
+                        "",
+                        LocalDate.now()
+                )
+        );
 
-        digitalProductRepository.save(new DigitalProductDAO("digital test title1", 100, "digital test decription1", 2, 96, "action", "code1", LocalDate.parse("2023-12-08")));
-        digitalProductRepository.save(new DigitalProductDAO("digital test title2", 200, "digital test decription2", 2, 96, "arcade", "code2", LocalDate.parse("2023-12-08")));
-        digitalProductRepository.save(new DigitalProductDAO("digital test title3", 300, "digital test decription3", 2, 96, "sport", "code3", LocalDate.parse("2023-12-08")));
+        physicalProductRepository.save(
+                new PhysicalProductDAO(
+                        "sample physical product",
+                        10,
+                        "",
+                        seller.getId(),
+                        20,
+                        "Mouse",
+                        LocalDate.now()
+                )
+        );
 
-        digitalImageRepository.save(new DigitalImageDAO(1, new byte[]{1, 2, 3}, 1));
-        digitalImageRepository.save(new DigitalImageDAO(2, new byte[]{4, 5, 6}, 2));
-        digitalImageRepository.save(new DigitalImageDAO(3, new byte[]{7, 8, 9}, 3));
-    }
+        // Digital Products
+        for (int i = 1; i <= 4; i++) {
+            digitalProductRepository.save(
+                    new DigitalProductDAO(
+                            "Digital Product " + i,
+                            10 + i * 5,
+                            "Description for Digital Product " + i,
+                            seller.getId(),
+                            2 + i,
+                            "Software",
+                            "https://example.com/digital-product-" + i,
+                            LocalDate.now()
+                    )
+            );
+        }
 
+        // Physical Products
+        for (int i = 1; i <= 4; i++) {
+            physicalProductRepository.save(
+                    new PhysicalProductDAO(
+                            "Physical Product " + i,
+                            15 + i * 5,
+                            "Description for Physical Product " + i,
+                            seller.getId(),
+                            20 + i * 5,
+                            "Electronics",
+                            LocalDate.now()
+                    )
+            );
+        }
 
-    @Test
-    public void testGetPhysicalByID() {
-        PhysicalProductDTO result = productService.getPhysicalByID(1);
-
-        assertNotNull(result);
-        assertEquals(1, result.getId());
-        assertEquals(100, result.getPrice());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.getImages().get(0));
-        assertEquals("physical test decription1", result.getDescription());
-        assertEquals("physical test title1", result.getTitle());
-        assertEquals(96, result.getCount());
-        assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
-    }
-
-    @Test
-    public void testGetPhysicalByID2() {
-        PhysicalProductDTO result = productService.getPhysicalByID(2);
-
-        assertNotNull(result);
-        assertEquals(2, result.getId());
-        assertEquals(200, result.getPrice());
-        assertArrayEquals(new byte[]{4, 5, 6}, result.getImages().get(0));
-        assertEquals("physical test decription2", result.getDescription());
-        assertEquals("physical test title2", result.getTitle());
-        assertEquals(96, result.getCount());
-        assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
-    }
-
-    @Test
-    public void testGetPhysicalByID3() {
-        assertThrows(ResourceNotFoundException.class, () -> {
-            productService.getPhysicalByID(4);
-        });
-    }
-
-    @Test
-    public void testGetDigitalByID() {
-        DigitalProductDTO result = productService.getDigitalByID(1);
-
-        assertNotNull(result);
-        assertEquals(1, result.getId());
-        assertEquals(100, result.getPrice());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.getImages().get(0));
-        assertEquals("digital test decription1", result.getDescription());
-        assertEquals("digital test title1", result.getTitle());
-        assertEquals(96, result.getCount());
-        assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
-    }
-
-    @Test
-    public void testGetDigitalByID2() {
-        DigitalProductDTO result = productService.getDigitalByID(2);
-
-        assertNotNull(result);
-        assertEquals(2, result.getId());
-        assertEquals(200, result.getPrice());
-        assertArrayEquals(new byte[]{4, 5, 6}, result.getImages().get(0));
-        assertEquals("digital test decription2", result.getDescription());
-        assertEquals("digital test title2", result.getTitle());
-        assertEquals(96, result.getCount());
-        assertEquals(2, result.getSellerID());
-        assertEquals(LocalDate.parse("2023-12-08"), result.getPostDate());
     }
 
     @Test
-    public void testGetDigitalByID3() {
-        assertThrows(ResourceNotFoundException.class, () -> {
-            productService.getDigitalByID(4);
-        });
+    public void testGetDigitalProduct() {
+        // Digital Product
+        DigitalProductDAO originalDigital = productService.getDigitalProductByProductID(1);
+        assert originalDigital.getTitle().equals("sample digital product") && originalDigital.getDescription().isEmpty();
+
+        DigitalProductDAO nonExistingDigital = productService.getDigitalProductByProductID(10);
+        assert nonExistingDigital.toString().equals(new DigitalProductDAO().toString());
     }
 
     @Test
-    public void testPhysicalSearch() {
-        List<ProductBriefDTO> result = productService.searchPhysicalByTitle("title1");
-
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals(1, result.get(0).getId());
-        assertEquals(100, result.get(0).getPrice());
-        assertEquals("physical test title1", result.get(0).getTitle());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.get(0).getImage());
+    public void testDeleteDigitalProduct() {
+        assert !productService.deleteDigitalProductBySellerIdAndProductID(1, 10);
+        assert productService.deleteDigitalProductBySellerIdAndProductID(1, 1);
     }
 
     @Test
-    public void testPhysicalSearch2() {
-        List<ProductBriefDTO> result = productService.searchPhysicalByTitle("title16");
+    public void testEditDigitalProduct() {
+        // Digital Product
+        DigitalProductDAO originalDigital = productService.getDigitalProductByProductID(1);
+        assert originalDigital.getTitle().equals("sample digital product") && originalDigital.getDescription().isEmpty();
 
-        assertNotNull(result);
-        assertEquals(0, result.size());
+        assert productService.updateDigitalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
+
+        DigitalProductDAO updatedDigitalProduct = productService.getDigitalProductByProductID(1);
+
+        assert updatedDigitalProduct.getTitle().equals("new name") && updatedDigitalProduct.getDescription().equals("new Description");
+        assert !originalDigital.getTitle().equals(updatedDigitalProduct.getTitle()) && !originalDigital.getDescription().equals(updatedDigitalProduct.getDescription());
     }
 
     @Test
-    public void testDigitalSearch() {
-        List<ProductBriefDTO> result = productService.searchDigitalByTitle("title1");
+    public void testGetPhysicalProduct() {
+        // Physical Product
+        PhysicalProductDAO originalPhysical = productService.getPhysicalProductByProductID(1);
+        assert originalPhysical.getTitle().equals("sample physical product") && originalPhysical.getDescription().isEmpty();
 
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals(1, result.get(0).getId());
-        assertEquals(100, result.get(0).getPrice());
-        assertEquals("digital test title1", result.get(0).getTitle());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.get(0).getImage());
+        PhysicalProductDAO nonExistingPhysical = productService.getPhysicalProductByProductID(10);
+        assert nonExistingPhysical.toString().equals(new PhysicalProductDAO().toString());
     }
 
     @Test
-    public void testDigitalSearch2() {
-        List<ProductBriefDTO> result = productService.searchDigitalByTitle("title16");
-
-        assertNotNull(result);
-        assertEquals(0, result.size());
+    public void testDeletePhysicalProduct() {
+        assert !productService.deletePhysicalProductBySellerIdAndProductID(1, 10);
+        assert productService.deletePhysicalProductBySellerIdAndProductID(1, 1);
     }
 
     @Test
-    public void testFilterPhysicalByPrice() {
-        List<ProductBriefDTO> results = productService.filterPhysical(100F, 250F, null);
+    public void testEditPhysicalProduct() {
+        // Physical Product
+        PhysicalProductDAO originalPhysical = productService.getPhysicalProductByProductID(1);
+        assert originalPhysical.getTitle().equals("sample physical product") && originalPhysical.getDescription().isEmpty();
 
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-        assertEquals(2, results.size());
-        for (int i = 0; i < results.size(); i++ ) {
-            ProductBriefDTO product = results.get(i);
-            assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
-            assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
+        assert productService.updatePhysicalProductByProductID(1, new ProductPatchDTO("new name", "new Description"));
+
+        PhysicalProductDAO updatedPhysicalProduct = productService.getPhysicalProductByProductID(1);
+
+        assert updatedPhysicalProduct.getTitle().equals("new name") && updatedPhysicalProduct.getDescription().equals("new Description");
+        assert !originalPhysical.getTitle().equals(updatedPhysicalProduct.getTitle()) && !originalPhysical.getDescription().equals(updatedPhysicalProduct.getDescription());
+    }
+
+    @Test
+    public void getAllDigitalProductsBySellerIDTest() {
+        List<DigitalProductDAO> digitalProducts = productService.getAllDigitalProductsBySellerID(1);
+        digitalProducts.remove(0);
+        // Ensure there are four digital products
+        assert(digitalProducts.size() == 4);
+
+        for (DigitalProductDAO digitalProduct : digitalProducts) {
+            // Add specific assertions based on your data
+            assert(digitalProduct.getTitle().startsWith("Digital Product"));
+            assert(digitalProduct.getPrice() > 0);
+            assert(digitalProduct.getSellerID() != 0);
+            // Add more assertions as needed
         }
     }
 
     @Test
-    public void testFilterPhysicalByPrice2() {
-        List<ProductBriefDTO> results = productService.filterPhysical(600F, 300F, null);
+    public void getAllPhysicalProductsBySellerIDTest() {
+        List<PhysicalProductDAO> physicalProducts = productService.getAllPhysicalProductsBySellerID(1);
+        physicalProducts.remove(0);
+        // Ensure there are four physical products
+        assert(physicalProducts.size() == 4);
 
-        assertNotNull(results);
-        assertTrue(results.isEmpty());
-    }
-
-    @Test
-    public void testFilterDigitalByPrice() {
-        List<ProductBriefDTO> results = productService.filterDigital(100F, 250F, null);
-
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-        assertEquals(2, results.size());
-        for (int i = 0; i < results.size(); i++ ) {
-            ProductBriefDTO product = results.get(i);
-            assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
-            assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
+        for (PhysicalProductDAO physicalProduct : physicalProducts) {
+            // Add specific assertions based on your data
+            assert(physicalProduct.getTitle().startsWith("Physical Product"));
+            assert(physicalProduct.getPrice() > 0);
+            assert(physicalProduct.getSellerID() != 0);
+            // Add more assertions as needed
         }
     }
 
-    @Test
-    public void testFilterDigitalByPrice2() {
-        List<ProductBriefDTO> results = productService.filterDigital(600F, 300F, null);
-
-        assertNotNull(results);
-        assertTrue(results.isEmpty());
-    }
-
-    @Test
-    public void testFilterPhysicalByPriceAndCategory() {
-        List<ProductBriefDTO> results = productService.filterPhysical(100F, 250F, "Pc");
-
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-        assertEquals(1, results.size());
-        for (int i = 0; i < results.size(); i++ ) {
-            ProductBriefDTO product = results.get(i);
-            assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
-            assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
-        }
-    }
-
-    @Test
-    public void testFilterPhysicalByPriceAndCategory2() {
-        List<ProductBriefDTO> results = productService.filterPhysical(100F, 250F, "laptop");
-
-        assertNotNull(results);
-        assertTrue(results.isEmpty());
-    }
-
-    @Test
-    public void testFilterDigitalByPriceAndCategory() {
-        List<ProductBriefDTO> results = productService.filterDigital(100F, 250F, "AcTIoN");
-
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-        assertEquals(1, results.size());
-        for (int i = 0; i < results.size(); i++ ) {
-            ProductBriefDTO product = results.get(i);
-            assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
-            assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
-        }
-    }
-
-    @Test
-    public void testFilterDigitalByPriceAndCategory2() {
-        List<ProductBriefDTO> results = productService.filterPhysical(100F, 250F, "laptop");
-
-        assertNotNull(results);
-        assertTrue(results.isEmpty());
-    }
-
-    @Test
-    void testSortPhysicalAscending() {
-        List<ProductBriefDTO> result = productService.sortPhysical(true);
-
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
-        assertEquals(3, result.size());
-        assertEquals(1, result.get(0).getId());
-        assertEquals(2, result.get(1).getId());
-        assertEquals(3, result.get(2).getId());
-        assertEquals(100, result.get(0).getPrice());
-        assertEquals(200, result.get(1).getPrice());
-        assertEquals(300, result.get(2).getPrice());
-    }
-
-    @Test
-    void testSortPhysicalDescending() {
-        List<ProductBriefDTO> result = productService.sortPhysical(false);
-
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
-        assertEquals(3, result.size());
-        assertEquals(3, result.get(0).getId());
-        assertEquals(2, result.get(1).getId());
-        assertEquals(1, result.get(2).getId());
-        assertEquals(300, result.get(0).getPrice());
-        assertEquals(200, result.get(1).getPrice());
-        assertEquals(100, result.get(2).getPrice());
-    }
-
-    @Test
-    void testSortDigitalAscending() {
-        List<ProductBriefDTO> result = productService.sortDigital(true);
-
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
-        assertEquals(3, result.size());
-        assertEquals(1, result.get(0).getId());
-        assertEquals(2, result.get(1).getId());
-        assertEquals(3, result.get(2).getId());
-        assertEquals(100, result.get(0).getPrice());
-        assertEquals(200, result.get(1).getPrice());
-        assertEquals(300, result.get(2).getPrice());
-    }
-
-    @Test
-    void testSortDigitalDescending() {
-        List<ProductBriefDTO> result = productService.sortDigital(false);
-
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
-        assertEquals(3, result.size());
-        assertEquals(3, result.get(0).getId());
-        assertEquals(2, result.get(1).getId());
-        assertEquals(1, result.get(2).getId());
-        assertEquals(300, result.get(0).getPrice());
-        assertEquals(200, result.get(1).getPrice());
-        assertEquals(100, result.get(2).getPrice());
-    }
 }

@@ -14,6 +14,7 @@ import java.util.*;
 @Service
 public class ProductRequestService {
 
+    public static final String PENDING = "Pending";
     private final PhysicalProductRequestRepository physicalProductRequestRepository;
     private final DigitalProductRequestRepository digitalProductRequestRepository;
     private final ProductRequestMapper productRequestMapper;
@@ -22,14 +23,14 @@ public class ProductRequestService {
         if (productRequestDTO instanceof PhysicalProductRequestDTO) {
             PhysicalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((PhysicalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
-                productRequestDAO.setRequestType("pending");
+                productRequestDAO.setRequestType(PENDING);
                 physicalProductRequestRepository.save(productRequestDAO);
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");
         } else if (productRequestDTO instanceof DigitalProductRequestDTO) {
             DigitalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
-                productRequestDAO.setStatus("pending");
+                productRequestDAO.setStatus(PENDING);
                 digitalProductRequestRepository.save(productRequestDAO);
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");
@@ -44,8 +45,8 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "pending")
-                    || !physicalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
+                    PENDING)
+                    && !physicalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
@@ -55,8 +56,8 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "pending")
-                    || !digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
+                    PENDING)
+                    && !digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
@@ -67,10 +68,8 @@ public class ProductRequestService {
     public DigitalProductRequestDAO getDigitalProductRequestByProductID(int productID){
         Optional<DigitalProductRequestDAO> foundProduct = digitalProductRequestRepository.findById(productID);
 
-        if(foundProduct.isPresent())
-            return foundProduct.get();
+        return foundProduct.orElseGet(DigitalProductRequestDAO::new);
 
-        return new DigitalProductRequestDAO();
     }
 
     public PhysicalProductRequestDAO getPhysicalProductRequestByProductID(int productID){
@@ -87,7 +86,7 @@ public class ProductRequestService {
         List<PhysicalProductRequestDAO> pendingPhysicalProducts = new ArrayList<PhysicalProductRequestDAO>(allPhysicalProductRequests.size());
 
         for (PhysicalProductRequestDAO productRequest : allPhysicalProductRequests){
-            if(productRequest.getStatus().equals("Pending"))
+            if(PENDING.equals(productRequest.getStatus()))
                 pendingPhysicalProducts.add(productRequest);
         }
 
@@ -97,9 +96,9 @@ public class ProductRequestService {
     public List<DigitalProductRequestDAO> getAllPendingDigitalProductRequestsBySellerID(int sellerID) {
         List<DigitalProductRequestDAO> allDigitalProductRequests = digitalProductRequestRepository.findBySellerId(sellerID);
         List<DigitalProductRequestDAO> pendingDigitalProductRequests = new ArrayList<DigitalProductRequestDAO>(allDigitalProductRequests.size());
-
+        
         for (DigitalProductRequestDAO productRequest : allDigitalProductRequests){
-            if(productRequest.getStatus().equals("Pending"))
+            if(productRequest.getStatus().equals(PENDING))
                 pendingDigitalProductRequests.add(productRequest);
         }
 

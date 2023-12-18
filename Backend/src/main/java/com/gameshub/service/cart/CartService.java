@@ -6,7 +6,7 @@ import lombok.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
-import java.util.*;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
