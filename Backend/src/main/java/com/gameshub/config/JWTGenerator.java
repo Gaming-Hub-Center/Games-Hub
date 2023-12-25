@@ -5,7 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.*;
 import com.auth0.jwt.interfaces.*;
 import com.gameshub.model.user.*;
-import com.gameshub.service.*;
+import com.gameshub.service.user.UserService;
 import jakarta.annotation.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +23,7 @@ public class JWTGenerator {
 
     private final UserService userService;
 
-    @Value("${security.jwt.token.secret-key}")
+    @Value("${security.jwt.token.secret-key:secret-key}")
     private String secretKey;
 
     @PostConstruct
@@ -47,8 +47,7 @@ public class JWTGenerator {
     public Authentication validateToken(String token) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
-        JWTVerifier verifier = JWT.require(algorithm)
-                .build();
+        JWTVerifier verifier = JWT.require(algorithm).build();
 
         DecodedJWT decoded = verifier.verify(token);
 
