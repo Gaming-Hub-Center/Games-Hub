@@ -131,3 +131,4 @@ dist
 .pnp.*
 Backend/.idea/
 Backend/.idea/workspace.xml
+*/.idea
