@@ -9,7 +9,7 @@ public abstract class UserDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "Id")
     protected int id;
 
     @Column(name = "Name")
