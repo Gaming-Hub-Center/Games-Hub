@@ -1,4 +1,4 @@
-package com.gameshub.service.admin.approve;
+package com.gameshub.service.admin;
 
 public interface ProductApprovalStrategy {
 
