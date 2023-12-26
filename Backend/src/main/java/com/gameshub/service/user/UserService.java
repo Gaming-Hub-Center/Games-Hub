@@ -3,6 +3,7 @@ package com.gameshub.service.user;
 import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;
+import jakarta.transaction.Transactional;
 import lombok.*;
 import org.springframework.stereotype.*;
 
@@ -67,6 +68,27 @@ public class UserService {
         if (userExists(sellerDAO.getEmail()))
             throw new ResourceAlreadyFoundException("User already found with email: " + sellerDAO.getEmail());
         sellerRepository.save(sellerDAO);
+    }
+
+    public void updateBuyer(int id,String newName,String newEmail,String newPhone,String newAddress, float newBalance) {
+        BuyerDAO buyer = buyerRepository.findById(id).orElseThrow(() -> new RuntimeException("Buyer not found"));
+        buyer.setName(newName);
+        buyer.setEmail(newEmail);
+        buyer.setPhone(newPhone);
+        buyer.setAddress(newAddress);
+        buyer.setBalance(newBalance);
+        buyerRepository.save(buyer);
+    }
+
+    public void updateSeller(int id,String newName,String newEmail,String newPhone,String newAddress, String newDescription) {
+        SellerDAO seller = sellerRepository.findById(id).orElseThrow(() -> new RuntimeException("Seller not found"));
+        seller.setName(newName);
+        seller.setEmail(newEmail);
+        seller.setPhone(newPhone);
+        seller.setAddress(newAddress);
+        seller.setSellerDescription(newDescription);
+
+        sellerRepository.save(seller);
     }
 
 }
