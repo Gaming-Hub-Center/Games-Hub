@@ -1,6 +1,6 @@
 package com.gameshub.controller.request;
 
-import com.gameshub.service.admin.approve.ProductRequestApproveService;
+import com.gameshub.service.admin.AdminProductsService;
 import lombok.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
-    private final ProductRequestApproveService productRequestApproveService;
+    private final AdminProductsService productRequestApproveService;
 
     @PostMapping("/approve-product/create")
     public ResponseEntity<?> approveProductCreation(@RequestParam String productType, @RequestParam int requestId) {
