@@ -3,7 +3,7 @@ package com.gameshub.requests.approve;
 import com.gameshub.controller.request.AdminController;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.repository.request.PhysicalProductRequestRepository;
-import com.gameshub.service.admin.AdminProductsService;
+import com.gameshub.service.admin.ProductRequestApproveService;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class AdminControllerTest {
 
     @Autowired
-    private AdminProductsService productRequestApproveService;
+    private ProductRequestApproveService productRequestApproveService;
 
     @Autowired
     private AdminController adminController;
@@ -34,7 +34,10 @@ class AdminControllerTest {
 
         physicalProductRequestRepository.save(request);
     }
-    
+
+    // Your other tests
+    // ...
+
 //    @Test
 //    void testApproveProductCreation_Success() {
 //        // Arrange
