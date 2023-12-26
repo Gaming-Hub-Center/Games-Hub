@@ -1,4 +1,4 @@
-package com.gameshub.service.request.approve;
+package com.gameshub.service.admin;
 
 import com.gameshub.exception.*;
 import com.gameshub.model.product.*;
@@ -7,7 +7,6 @@ import com.gameshub.repository.product.*;
 import com.gameshub.repository.request.*;
 import com.sun.jdi.request.InvalidRequestStateException;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.*;
 import org.springframework.stereotype.*;
@@ -24,23 +23,12 @@ public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
 
     @Override
     @Transactional
-    public int approveAndCreateProduct(int requestId) {
+    public void approveAndCreateProduct(int requestId) {
         DigitalProductRequestDAO request = new DigitalProductRequestDAO();
-        try {
-            request = fetchAndValidateRequest(requestId);
-        } catch (ResourceNotFoundException e) {
-            System.out.println(e.getMessage());
-            return HttpStatus.NOT_FOUND.value();
-        } catch (
-            InvalidRequestStateException e) {
-            System.out.println(e.getMessage());
-            return HttpStatus.EXPECTATION_FAILED.value();
-        }
-
+        request = fetchAndValidateRequest(requestId);
         request.setStatus("Approved");
         DigitalProductDAO newProduct = mapToProductDAO(request);
         digitalProductRepository.save(newProduct);
-        return HttpStatus.OK.value();
     }
 
     private DigitalProductRequestDAO fetchAndValidateRequest(int requestId) {

@@ -1,4 +1,4 @@
-package com.gameshub.service.request.approve;
+package com.gameshub.service.admin;
 
 import com.gameshub.exception.*;
 import com.gameshub.model.product.*;
@@ -18,29 +18,19 @@ import java.time.LocalDate;
 @Component
 public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
 
-    @Autowired
-    private PhysicalProductRequestRepository physicalProductRequestRepository;
-    @Autowired
-    private PhysicalProductRepository physicalProductRepository;
+    private final PhysicalProductRequestRepository physicalProductRequestRepository;
+    private final PhysicalProductRepository physicalProductRepository;
 
     @Override
     @Transactional
-    public int approveAndCreateProduct(int requestId) {
+    public void approveAndCreateProduct(int requestId) {
         PhysicalProductRequestDAO request = new PhysicalProductRequestDAO();
-        try {
-             fetchAndValidateRequest(requestId);
-        } catch (ResourceNotFoundException e) {
-            System.out.println(e.getMessage());
-            return HttpStatus.NOT_FOUND.value();
-        } catch (InvalidRequestStateException e) {
-            System.out.println(e.getMessage());
-            return HttpStatus.EXPECTATION_FAILED.value();
-        }
+        fetchAndValidateRequest(requestId);
         request.setStatus("Approved");
         request.setPostDate(LocalDate.now());
         PhysicalProductDAO newProduct = mapToProductDAO(request);
         physicalProductRepository.save(newProduct);
-        return HttpStatus.OK.value();
+        HttpStatus.OK.value();
     }
 
     private PhysicalProductRequestDAO fetchAndValidateRequest(int requestId) {
