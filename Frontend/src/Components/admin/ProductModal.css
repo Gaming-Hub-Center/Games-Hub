@@ -1,0 +1,71 @@
+/* Style for the modal */
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value for transparency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it appears above other content */
+}
+
+.admin-modal-content {
+  background-color: #000; /* Modal content background color is now black */
+  color: #fff; /* Set text color to white for better readability on black background */
+  width: 50%; /* Set width to 50% of the viewport width */
+  max-width: 600px; /* Maximum width of the modal */
+  height: auto; /* Height based on content */
+  max-height: 80%; /* Maximum height of the modal */
+  overflow-y: auto; /* Add vertical scrollbar if needed */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+}
+
+.admin-modal-content h2 {
+  margin-bottom: 15px;
+}
+
+.admin-modal-content p {
+  margin-bottom: 10px;
+}
+
+.admin-modal-content button {
+  margin-top: 15px; /* Space between content and button */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; /* Blue button color */
+  color: #fff;
+  cursor: pointer;
+}
+
+.admin-modal-content button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Add this to your ProductModal.css */
+
+.admin-modal-content .image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: center; /* Center the images if they don't fill the full width */
+}
+
+.admin-modal-content .product-image-thumbnail {
+  width: 100px; /* Fixed width for thumbnails */
+  height: 100px; /* Fixed height for thumbnails */
+  margin: 10px; /* Space around thumbnails */
+  object-fit: cover; /* Ensure the images cover the area without distorting */
+  border-radius: 4px; /* Optional: rounded corners for aesthetics */
+  cursor: pointer; /* Indicate that the thumbnails are clickable */
+}
+
+.admin-modal-content .product-image-thumbnail:hover {
+  opacity: 0.7; /* Visual feedback on hover */
+}

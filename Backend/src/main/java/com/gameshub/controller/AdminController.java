@@ -1,6 +1,7 @@
 package com.gameshub.controller;
 
 import com.gameshub.controller.DTO.ProductBriefDTO;
+import com.gameshub.controller.DTO.request.ProductRequestDTO;
 import com.gameshub.controller.DTO.user.AdminDTO;
 import com.gameshub.controller.DTO.user.BuyerDTO;
 import com.gameshub.controller.DTO.user.SellerDTO;
@@ -17,11 +18,27 @@ import java.util.List;
 public class AdminController {
     private final AdminService adminService;
     private final AdminProductsService productRequestApproveService;
+    private final AdminProductsService adminProductsService;
 
     @PostMapping("/approve-product/create")
     public ResponseEntity<?> approveProductCreation(@RequestParam String productType, @RequestParam int requestId) {
         productRequestApproveService.approveProductCreation(productType, requestId);
         return ResponseEntity.ok("Product creation request approved successfully.");
+    }
+
+    @GetMapping("/products")
+    public ResponseEntity<List<ProductRequestDTO>> getAllProducts(
+            @RequestParam String productType,
+            @RequestParam String status) {
+        List<ProductRequestDTO> productsRequest = adminProductsService.getAdminProducts(productType, status);
+        return ResponseEntity.ok(productsRequest);
+    }
+
+    @GetMapping("/decline")
+    public ResponseEntity<List<ProductRequestDTO>> declineProductCreation(@RequestParam String productType, @RequestParam int requestId) {
+        adminProductsService.declineProductCreation(productType, requestId);
+        List<ProductRequestDTO> productsRequest = adminProductsService.getAdminProducts(productType, "Pending");
+        return ResponseEntity.ok(productsRequest);
     }
 
     @GetMapping("/view/buyers")
