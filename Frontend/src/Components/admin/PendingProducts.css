@@ -1,0 +1,63 @@
+.admin-pending-product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #1a1a1a; /* Dark background for each product row */
+    color: #fff; /* White text */
+    border-radius: 4px;
+}
+
+.admin-pending-product-row:nth-child(odd) {
+    background-color: #2c2c2c; /* Slightly lighter color for zebra striping */
+}
+
+.amdin-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.admin-pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #800080; /* Purple background for buttons */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.admin-pagination button:hover {
+    background-color: #a065a6; /* Lighter purple on hover */
+}
+
+.amdin-pagination button:disabled {
+    background-color: #555; /* Darker background for disabled state */
+    cursor: not-allowed;
+}
+
+.amdin-pagination span {
+    color: #fff; /* White text */
+}
+
+
+.admin-pending-product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Adjust margin, size, or other styles of icons as needed */
+  .approve-icon,
+  .decline-icon,
+  .details-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    /* Additional styling for icons */
+  }
+  

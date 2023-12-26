@@ -1,4 +1,4 @@
-package com.gameshub.service.request.approve;
+package com.gameshub.service.admin.approve;
 
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;

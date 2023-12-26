@@ -1,4 +1,4 @@
-package com.gameshub.service.request.approve;
+package com.gameshub.service.admin.approve;
 
 import com.gameshub.exception.*;
 import com.gameshub.model.product.*;

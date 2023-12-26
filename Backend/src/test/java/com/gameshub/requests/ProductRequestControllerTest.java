@@ -2,7 +2,7 @@ package com.gameshub.requests;
 
 import com.fasterxml.jackson.databind.*;
 import com.gameshub.controller.request.*;
-import com.gameshub.service.request.*;
+import com.gameshub.service.request.ProductRequestService;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.*;
 import org.springframework.boot.test.mock.mockito.*;
