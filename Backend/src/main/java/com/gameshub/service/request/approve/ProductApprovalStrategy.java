@@ -4,6 +4,4 @@ public interface ProductApprovalStrategy {
 
     void approveAndCreateProduct(int requestId);
 
-    void approvedAndUpdateProduct(int requestId, int productId);
-
 }

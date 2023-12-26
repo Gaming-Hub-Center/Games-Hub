@@ -68,35 +68,6 @@ class PhysicalProductApprovalStrategyTest {
         assertThrows(ResourceNotFoundException.class, () -> strategy.approveAndCreateProduct(1));
     }
 
-    @Test
-    void approveAndUpdateProduct_NormalOperation() {
-        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
-        when(physicalProductRepository.findById(anyInt())).thenReturn(Optional.of(productDAO));
-
-        strategy.approvedAndUpdateProduct(1, 1);
-
-        verify(physicalProductRepository).save(productCaptor.capture());
-        PhysicalProductDAO capturedProduct = productCaptor.getValue();
-
-        // Assertions to check if capturedProduct has been updated correctly
-        assertEquals(requestDAO.getTitle(), capturedProduct.getTitle());
-        // ...other assertions
-    }
-
-    @Test
-    void approveAndUpdateProduct_RequestNotFound() {
-        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.empty());
-
-        assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
-    }
-
-    @Test
-    void approveAndUpdateProduct_ProductNotFound() {
-        when(physicalProductRequestRepository.findById(anyInt())).thenReturn(Optional.of(requestDAO));
-        when(physicalProductRepository.findById(anyInt())).thenReturn(Optional.empty());
-
-        assertThrows(ResourceNotFoundException.class, () -> strategy.approvedAndUpdateProduct(1, 1));
-    }
 
 }
 

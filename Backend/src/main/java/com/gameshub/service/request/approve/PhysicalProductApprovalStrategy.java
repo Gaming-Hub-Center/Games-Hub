@@ -7,35 +7,28 @@ import com.gameshub.repository.product.*;
 import com.gameshub.repository.request.*;
 import jakarta.transaction.*;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
+
+import java.time.LocalDate;
 
 @RequiredArgsConstructor
 @Component
 public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
 
-    private final PhysicalProductRequestRepository physicalProductRequestRepository;
-    private final PhysicalProductRepository physicalProductRepository;
+    @Autowired
+    private PhysicalProductRequestRepository physicalProductRequestRepository;
+    @Autowired
+    private PhysicalProductRepository physicalProductRepository;
 
     @Override
     @Transactional
     public void approveAndCreateProduct(int requestId) {
         PhysicalProductRequestDAO request = fetchAndValidateRequest(requestId);
         request.setStatus("Approved");
+        request.setPostDate(LocalDate.now());
         PhysicalProductDAO newProduct = mapToProductDAO(request);
         physicalProductRepository.save(newProduct);
-    }
-
-    @Override
-    @Transactional
-    public void approvedAndUpdateProduct(int requestId, int productId) {
-        PhysicalProductRequestDAO request = fetchAndValidateRequest(requestId);
-        request.setStatus("Approved");
-
-        PhysicalProductDAO product = physicalProductRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Physical product not found with ID: " + productId));
-
-        mapToProductDAO(request, product);
-        physicalProductRepository.save(product);
     }
 
     private PhysicalProductRequestDAO fetchAndValidateRequest(int requestId) {
@@ -59,6 +52,8 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
         product.setCount(request.getCount());
+        product.setCategory(request.getCategory());
+        product.setPostDate(LocalDate.now());
         try {
             product.setSellerID(request.getSeller().getId());
         } catch (NullPointerException e) {
