@@ -1,10 +1,8 @@
 package com.gameshub.controller.request;
 
 import com.gameshub.controller.DTO.request.*;
-import com.gameshub.exception.*;
 import com.gameshub.model.product.DigitalProductDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
-import com.gameshub.model.product.ProductDAO;
 import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.service.product.ProductService;
@@ -17,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product-request")
-public class ProductRequestController {
+@RequestMapping("/seller")
+public class SellerController {
 
     @Autowired
     private ProductRequestService productRequestService;
@@ -26,29 +24,18 @@ public class ProductRequestController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/create/digital")
+    @PostMapping("/request/create/digital")
     public ResponseEntity<String> createDigitalProduct(@Valid @RequestBody DigitalProductRequestDTO digitalProductRequestDTO) {
-        try {
-            productRequestService.saveProductRequest(digitalProductRequestDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Digital product is done!"); // Seller Not Found
-        } catch (ResourceAlreadyFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
-        }  catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating Digital product");
-        }
+        productRequestService.saveProductRequest(digitalProductRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Digital product is done!"); // Seller Not Found
     }
 
-    @PostMapping("/create/physical")
+    @PostMapping("/request/create/physical")
     public ResponseEntity<String> createPhysicalProduct(@Valid @RequestBody PhysicalProductRequestDTO physicalProductRequestDTO) {
-        try {
-            productRequestService.saveProductRequest(physicalProductRequestDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Physical product is done!");
-        } catch (ResourceAlreadyFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating Physical product");
-        }
+        productRequestService.saveProductRequest(physicalProductRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Physical product is done!");
     }
+
     @GetMapping("/{sellerID}/products/physical")
     public ResponseEntity<List<PhysicalProductDAO>> getAllPhysicalProductsBySellerID (@PathVariable(value = "sellerID") int sellerID){
         return new ResponseEntity<>(productService.getAllPhysicalProductsBySellerID(sellerID), HttpStatus.OK);

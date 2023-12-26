@@ -3,45 +3,45 @@ import { httpRequest } from "../HttpProxy";
 
 
 export async function getAllPhysicalProductsBySellerID(sellerId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/products/physical`);
+    return httpRequest('GET', `/seller/${sellerId}/products/physical`);
 }
 
 export async function getAllDigitalProductsBySellerID(sellerId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/products/digital`);
+    return httpRequest('GET', `/seller/${sellerId}/products/digital`);
 }
 
 export async function getAllPendingPhysicalProductsBySellerID(sellerId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/products/pending/physical`);
+    return httpRequest('GET', `/seller/${sellerId}/products/pending/physical`);
 }
 
 export async function getAllPendingDigitalProductsBySellerID(sellerId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/products/pending/digital`);
+    return httpRequest('GET', `/seller/${sellerId}/products/pending/digital`);
 }
 
 export async function getCatalogDigtalProductBySellerId(sellerId: string, productId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/product/digital/${productId}`)
+    return httpRequest('GET', `/seller/${sellerId}/product/digital/${productId}`)
 }
 
 export async function getCatalogPhysicalProductBySellerId(sellerId: string, productId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/product/physical/${productId}`)
+    return httpRequest('GET', `/seller/${sellerId}/product/physical/${productId}`)
 }
 
 export async function getPhysicalDigtalProductBySellerId(sellerId: string, productId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/product/pending/digital/${productId}`)
+    return httpRequest('GET', `/seller/${sellerId}/product/pending/digital/${productId}`)
 }
 
 export async function getPhysicalPhysicalProductBySellerId(sellerId: string, productId: string){
-    return httpRequest('GET', `/product-request/${sellerId}/product/pending/physical/${productId}`)
+    return httpRequest('GET', `/seller/${sellerId}/product/pending/physical/${productId}`)
 }
 
 export async function getProduct(sellerId: string, productType: string, productId: string, isPending: boolean){
-    return httpRequest('GET', `/product-request/${sellerId}/product/${isPending? 'pending/' : ''}${productType}/${productId}`)
+    return httpRequest('GET', `/seller/${sellerId}/product/${isPending? 'pending/' : ''}${productType}/${productId}`)
 }
 
 export function deleteProduct(sellerID: string, productType: string, productID: string, isPending: boolean){
-    httpRequest('DELETE', `/product-request/${sellerID}/product/${isPending ? 'pending/' : ''}${productType}/${productID}`)
+    httpRequest('DELETE', `/seller/${sellerID}/product/${isPending ? 'pending/' : ''}${productType}/${productID}`)
 }
 
 export function updateProduct(sellerID: string, productType: string, productID: string, isPending: boolean, patch: ProductPatchDTO){
-    httpRequest('PATCH', `/product-request/${sellerID}/product/${isPending ? 'pending/' : ''}${productType}/${productID}`, patch)
+    httpRequest('PATCH', `/seller/${sellerID}/product/${isPending ? 'pending/' : ''}${productType}/${productID}`, patch)
 }
