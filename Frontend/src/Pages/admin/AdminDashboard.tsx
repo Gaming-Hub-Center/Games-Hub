@@ -26,7 +26,7 @@ const sectionsData: SectionsData = {
                                     productType="physical"
                                     iconVisibility={{ showApprove: true, showDecline: true, showDetails: true }}
                                     status='Pending'/>,
-    "Pending Digital Products":<AdminProductsComponent
+    "Pending Digital Products": <AdminProductsComponent
                                     productType="digital"
                                     iconVisibility={{ showApprove: true, showDecline: true, showDetails: true }}
                                     status='Pending'/>,

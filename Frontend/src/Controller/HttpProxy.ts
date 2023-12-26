@@ -34,7 +34,7 @@ export const httpRequest = async (method: string, url: string, data?: any) => {
   return sendHttpRequest(method, url, data);
 };
 
-export const sendHttpRequest = (method: string, url: string, data?: any) => {
+export const sendHttpRequest = (method: string, url: string, data?: any, params?: any) => {
   let headers = {};
 
   if (getToken() !== null && getToken() !== "null")
@@ -45,5 +45,6 @@ export const sendHttpRequest = (method: string, url: string, data?: any) => {
     headers: headers,
     url: url,
     data: data,
+    params: params
   });
 };

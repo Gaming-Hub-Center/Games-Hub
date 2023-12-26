@@ -3,6 +3,7 @@ import './PendingProducts.css'
 import { ProductDTO } from '../../Controller/DTO/ProductDTO/ProductDTO';
 import { FaInfoCircle, FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 import ProductDetailsModal from './ProductModat';
+import { httpRequest } from '../../Controller/HttpProxy';
 
 type PendingProductsProps = {
   productType: 'physical' | 'digital';
@@ -14,28 +15,6 @@ type PendingProductsProps = {
   status: 'Pending' | 'Approved' | 'Declined';
 };
 
-const fetchProducts = (productType: 'physical' | 'digital', page: number, statues: string): Promise<ProductDTO[]> => {
-  // Replace with actual data fetching logic based on productType
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const products: ProductDTO[] = Array.from({ length: 20 }, (_, index): ProductDTO => {
-        return {
-          id: page * 10 + index,
-          price: Math.random() * 100, // Mock price
-          description: `${productType === 'physical' ? 'Physical' : 'Digital'} product description`,
-          title: `${productType === 'physical' ? 'Physical' : 'Digital'} Product ${page * 20 + index}`,
-          count: Math.floor(Math.random() * 100), // Mock count
-          sellerID: Math.floor(Math.random() * 1000), // Mock seller ID
-          created_date: new Date().toISOString(),
-          category: productType === 'physical' ? 'Electronics' : 'Software', // Example categories
-          images: [`/images/${productType}_product_${index}.jpg`], // Mock images
-          code: `CODE${page * 10 + index}` // Mock code
-        };
-      });
-      resolve(products);
-    }, 1000);
-  });
-};
 
 const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, iconVisibility, status }) => {
   const [products, setProducts] = useState<ProductDTO[]>([]);
@@ -44,15 +23,34 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProductDetails, setSelectedProductDetails] = useState<ProductDTO | null>(null);
 
-  useEffect(() => {
-    setLoading(true);
-    fetchProducts(productType, currentPage, status)
-      .then(fetchedProducts => {
-        setProducts(fetchedProducts);
+  const fetchProducts = async (productType, page, status) => {
+    const url = "/admin/products";
+  
+    const requestData = {
+      productType: productType,
+      status: status
+      // page: page // If needed, include 'page' in the request data
+    };
+  
+    // Use the httpRequest function to make the GET API call
+    httpRequest("GET", url, null, requestData)
+      .then((response) => {
+        // Assuming response.data contains the array of ProductDTO
+        setProducts(response.data); 
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
         setLoading(false);
       });
-  }, [productType, currentPage, status]); // Added status to the dependency array
+  };
 
+  useEffect(() => {
+    setLoading(true); // Start loading
+    fetchProducts(productType, currentPage, status);
+  }, [productType, currentPage, status]); // Dependencies array
+
+  
   const handleApprove = (productId) => {
     console.log(`Product ${productId} approved.`);
     // Add your logic to handle approval
