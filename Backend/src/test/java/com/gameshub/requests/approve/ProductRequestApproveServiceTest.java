@@ -3,6 +3,7 @@ package com.gameshub.requests.approve;
 import com.gameshub.service.admin.DigitalProductApprovalStrategy;
 import com.gameshub.service.admin.PhysicalProductApprovalStrategy;
 import com.gameshub.service.admin.AdminProductsService;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;

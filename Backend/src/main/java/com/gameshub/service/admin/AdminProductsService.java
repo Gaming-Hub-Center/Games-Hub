@@ -21,9 +21,9 @@ public class AdminProductsService {
     private final PhysicalProductRequestRepository physicalProductRequestRepository;
 
 
-    public int approveProductCreation(String productType, int requestId) {
+    public void approveProductCreation(String productType, int requestId) {
         ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
-        return strategy.approveAndCreateProduct(requestId);
+        strategy.approveAndCreateProduct(requestId);
     }
 
     // Factory of strategies
