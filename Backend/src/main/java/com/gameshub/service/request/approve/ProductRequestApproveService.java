@@ -1,21 +1,23 @@
 package com.gameshub.service.request.approve;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 
 @RequiredArgsConstructor
 @Service
 public class ProductRequestApproveService {
 
-    @Autowired
-    private DigitalProductApprovalStrategy digitalProductApprovalStrategy;
-    @Autowired
-    private PhysicalProductApprovalStrategy physicalProductApprovalStrategy;
+    private final DigitalProductApprovalStrategy digitalProductApprovalStrategy;
+    private final PhysicalProductApprovalStrategy physicalProductApprovalStrategy;
 
-    public int approveProductCreation(String productType, int requestId) {
+    public void approveProductCreation(String productType, int requestId) {
         ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
-        return strategy.approveAndCreateProduct(requestId);
+        strategy.approveAndCreateProduct(requestId);
+    }
+
+    public void approveProductUpdate(String productType, int requestId, int productId) {
+        ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
+        strategy.approvedAndUpdateProduct(requestId, productId);
     }
 
     // Factory of strategies

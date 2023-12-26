@@ -1,14 +1,21 @@
 package com.gameshub.requests;
 
 import com.fasterxml.jackson.databind.*;
+import com.gameshub.controller.DTO.request.*;
 import com.gameshub.controller.request.*;
 import com.gameshub.service.request.*;
+import org.junit.jupiter.api.*;
+import org.mockito.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.*;
 import org.springframework.boot.test.mock.mockito.*;
 import org.springframework.test.web.servlet.*;
+import org.springframework.http.*;
 
-@WebMvcTest(SellerController.class)
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@WebMvcTest(ProductRequestController.class)
 public class ProductRequestControllerTest {
 
     @Autowired

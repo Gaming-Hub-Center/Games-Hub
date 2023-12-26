@@ -50,7 +50,7 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "Approved");
+                    "approved");
         else if (productRequestDTO instanceof DigitalProductRequestDTO)
             return !digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
@@ -61,7 +61,7 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-                    "Approved");
+                    "approved");
         return false;
     }
 
