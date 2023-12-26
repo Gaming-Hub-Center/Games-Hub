@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "digitalwishlist")
+@Table(name = "physicalwishlist")
 public class PhysicalWishlistDAO extends WishlistDAO {
 
     public PhysicalWishlistDAO(WishlistKey id) {
