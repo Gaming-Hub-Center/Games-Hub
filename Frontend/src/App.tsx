@@ -17,7 +17,6 @@ import { ProductView } from "./Components/ProductView";
 import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/SellerProductCatalog";
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
-import HomePageAdmin from "./Pages/admin/AdminDashboard";
 
 
 function App() {
@@ -56,8 +55,6 @@ function App() {
           element={<CatalogRequestForm />}
         ></Route>
         <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
-
-        <Route path="/admin/dashboard" element={<HomePageAdmin/>}></Route>
       </Routes>
     </Container>
   );

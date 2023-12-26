@@ -5,7 +5,6 @@ import com.gameshub.model.product.*;
 import com.gameshub.service.product.ProductService;
 import com.gameshub.utils.ProductMapper;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 

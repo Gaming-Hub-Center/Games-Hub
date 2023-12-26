@@ -1,29 +1,23 @@
-package com.gameshub.service.admin;
+package com.gameshub.service.request.approve;
 
-import com.gameshub.model.request.DigitalProductRequestDAO;
-import com.gameshub.model.request.PhysicalProductRequestDAO;
-import com.gameshub.model.request.ProductRequestDAO;
-import com.gameshub.repository.request.DigitalProductRequestRepository;
-import com.gameshub.repository.request.PhysicalProductRequestRepository;
 import lombok.*;
 import org.springframework.stereotype.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 @RequiredArgsConstructor
 @Service
-public class AdminProductsService {
+public class ProductRequestApproveService {
+
     private final DigitalProductApprovalStrategy digitalProductApprovalStrategy;
     private final PhysicalProductApprovalStrategy physicalProductApprovalStrategy;
-    private final DigitalProductRequestRepository digitalProductRequestRepository;
-    private final PhysicalProductRequestRepository physicalProductRequestRepository;
-
 
     public void approveProductCreation(String productType, int requestId) {
         ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
         strategy.approveAndCreateProduct(requestId);
+    }
+
+    public void approveProductUpdate(String productType, int requestId, int productId) {
+        ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
+        strategy.approvedAndUpdateProduct(requestId, productId);
     }
 
     // Factory of strategies
@@ -36,4 +30,5 @@ public class AdminProductsService {
             throw new IllegalArgumentException("Invalid product type");
         }
     }
+
 }
