@@ -5,8 +5,10 @@ import com.gameshub.model.product.*;
 import com.gameshub.model.request.*;
 import com.gameshub.repository.product.*;
 import com.gameshub.repository.request.*;
+import com.sun.jdi.request.InvalidRequestStateException;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.*;
 import org.springframework.stereotype.*;
 
@@ -16,23 +18,40 @@ import java.time.LocalDate;
 @Component
 public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
 
-    @Autowired
-    private DigitalProductRequestRepository digitalProductRequestRepository;
-    @Autowired
-    private DigitalProductRepository digitalProductRepository;
+    private final DigitalProductRequestRepository digitalProductRequestRepository;
+
+    private final DigitalProductRepository digitalProductRepository;
 
     @Override
     @Transactional
-    public void approveAndCreateProduct(int requestId) {
-        DigitalProductRequestDAO request = fetchAndValidateRequest(requestId);
+    public int approveAndCreateProduct(int requestId) {
+        DigitalProductRequestDAO request = new DigitalProductRequestDAO();
+        try {
+            request = fetchAndValidateRequest(requestId);
+        } catch (ResourceNotFoundException e) {
+            System.out.println(e.getMessage());
+            return HttpStatus.NOT_FOUND.value();
+        } catch (
+            InvalidRequestStateException e) {
+            System.out.println(e.getMessage());
+            return HttpStatus.EXPECTATION_FAILED.value();
+        }
+
         request.setStatus("Approved");
         DigitalProductDAO newProduct = mapToProductDAO(request);
         digitalProductRepository.save(newProduct);
+        return HttpStatus.OK.value();
     }
 
     private DigitalProductRequestDAO fetchAndValidateRequest(int requestId) {
-        return digitalProductRequestRepository.findById(requestId)
+        DigitalProductRequestDAO request = digitalProductRequestRepository.findById(requestId)
                 .orElseThrow(() -> new ResourceNotFoundException("Digital product request not found with ID: " + requestId));
+
+        if (!"Pending".equalsIgnoreCase(request.getStatus())) {
+            throw new InvalidRequestStateException("Request must be in Pending status, but was: " + request.getStatus());
+        }
+
+        return request;
     }
 
     private DigitalProductDAO mapToProductDAO(DigitalProductRequestDAO request) {

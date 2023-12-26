@@ -13,9 +13,9 @@ public class ProductRequestApproveService {
     @Autowired
     private PhysicalProductApprovalStrategy physicalProductApprovalStrategy;
 
-    public void approveProductCreation(String productType, int requestId) {
+    public int approveProductCreation(String productType, int requestId) {
         ProductApprovalStrategy strategy = getProductApprovalStrategy(productType);
-        strategy.approveAndCreateProduct(requestId);
+        return strategy.approveAndCreateProduct(requestId);
     }
 
     // Factory of strategies

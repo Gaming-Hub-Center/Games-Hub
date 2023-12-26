@@ -1,6 +1,8 @@
 package com.gameshub.controller.request;
 
+import com.gameshub.exception.ResourceNotFoundException;
 import com.gameshub.service.request.approve.*;
+import com.sun.jdi.request.InvalidRequestStateException;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -10,13 +12,20 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
-    @Autowired
-    private ProductRequestApproveService productRequestApproveService;
+    private final ProductRequestApproveService productRequestApproveService;
 
     @PostMapping("/approve-product/create")
     public ResponseEntity<?> approveProductCreation(@RequestParam String productType, @RequestParam int requestId) {
-        productRequestApproveService.approveProductCreation(productType, requestId);
-        return ResponseEntity.ok("Product creation request approved successfully.");
+        int status = productRequestApproveService.approveProductCreation(productType, requestId);
+        if (status == HttpStatus.OK.value()) {
+            return ResponseEntity.ok("Product creation request approved successfully.");
+        } else if (status == HttpStatus.NOT_FOUND.value()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product request not found.");
+        } else if (status == HttpStatus.EXPECTATION_FAILED.value()) {
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Product request validation failed.");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
     }
 
 }
