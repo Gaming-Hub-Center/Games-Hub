@@ -1,6 +1,9 @@
 package com.gameshub.requests.approve;
 
-import com.gameshub.service.request.approve.*;
+import com.gameshub.service.admin.DigitalProductApprovalStrategy;
+import com.gameshub.service.admin.PhysicalProductApprovalStrategy;
+import com.gameshub.service.admin.AdminProductsService;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -12,7 +15,7 @@ import static org.mockito.Mockito.verify;
 public class ProductRequestApproveServiceTest {
 
     @Autowired
-    private ProductRequestApproveService productRequestApproveService;
+    private AdminProductsService productRequestApproveService;
 
     @MockBean
     private DigitalProductApprovalStrategy digitalProductApprovalStrategy;

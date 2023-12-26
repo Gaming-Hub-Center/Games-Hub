@@ -5,9 +5,10 @@ import com.gameshub.model.product.DigitalProductDAO;
 import com.gameshub.model.product.PhysicalProductDAO;
 import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
+import com.gameshub.service.request.ProductRequestService;
 import com.gameshub.service.product.ProductService;
-import com.gameshub.service.request.*;
 import jakarta.validation.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +16,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/seller")
 public class SellerController {
 
-    @Autowired
-    private ProductRequestService productRequestService;
-
-    @Autowired
-    private ProductService productService;
+    private final ProductRequestService productRequestService;
+    private final ProductService productService;
 
     @PostMapping("/request/create/digital")
     public ResponseEntity<String> createDigitalProduct(@Valid @RequestBody DigitalProductRequestDTO digitalProductRequestDTO) {

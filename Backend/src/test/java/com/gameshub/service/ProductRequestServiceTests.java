@@ -5,7 +5,7 @@ import com.gameshub.model.request.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.request.*;
 import com.gameshub.repository.user.*;
-import com.gameshub.service.request.*;
+import com.gameshub.service.request.ProductRequestService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
