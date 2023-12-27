@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './PendingProducts.css'
 import { ProductDTO } from '../../Controller/DTO/ProductDTO/ProductDTO';
 import { FaInfoCircle, FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
-import ProductDetailsModal from './ProductModat';
+import ProductDetailsModal from './ProductModal';
 import { httpRequest } from '../../Controller/HttpProxy';
 
 type PendingProductsProps = {
@@ -15,7 +15,6 @@ type PendingProductsProps = {
   status: 'Pending' | 'Approved' | 'Declined';
 };
 
-
 const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, iconVisibility, status }) => {
   const [products, setProducts] = useState<ProductDTO[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +25,6 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
   const [paginatedProducts, setPaginatedProducts] = useState<ProductDTO[]>([]);
   
   //------------------ Pagination --------------------------------------
-
   useEffect(() => {
     // Calculate the index of the first and last items on the current page
     const firstPageIndex = (currentPage - 1) * pageSize;
@@ -41,8 +39,7 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(products.length / pageSize);
-
-  //-------------- End Of Pagination --------------------------------------
+  //------------------ End Of Pagination ----------------------------------
 
   const fetchProducts = async (productType, page, status) => {
     const url = "/admin/products";
@@ -50,13 +47,11 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
     const requestData = {
       productType: productType,
       status: status
-      // page: page // If needed, include 'page' in the request data
     };
   
     // Use the httpRequest function to make the GET API call
     httpRequest("GET", url, null, requestData)
       .then((response) => {
-        // Assuming response.data contains the array of ProductDTO
         setProducts(response.data); 
         setLoading(false);
       })
@@ -69,7 +64,7 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
   useEffect(() => {
     setLoading(true); // Start loading
     fetchProducts(productType, currentPage, status);
-  }, [productType, currentPage, status]); // Dependencies array
+  }, [productType, currentPage, status]);
 
   
   const handleApprove = (product) => {
@@ -79,15 +74,13 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
     const requestData = {
       productType: productType,
       requestId: product.id
-      // page: page // If needed, include 'page' in the request data
     };
 
     console.log(requestData)
 
     httpRequest("GET", "/admin/approve", null, requestData)
     .then((response) => {
-      // Assuming the response contains the updated list of products
-      setProducts(response.data); // Update the state with the updated list of products
+      setProducts(response.data);
     })
     .catch((error) => {
       console.error("Error Approving Products", error);
@@ -102,15 +95,13 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
     const requestData = {
       productType: productType,
       requestId: product.id
-      // page: page // If needed, include 'page' in the request data
     };
 
     console.log(requestData)
 
     httpRequest("GET", "/admin/decline", null, requestData)
     .then((response) => {
-      // Assuming the response contains the updated list of products
-      setProducts(response.data); // Update the state with the updated list of products
+      setProducts(response.data);
     })
     .catch((error) => {
       console.error("Error Declining Products", error);
@@ -118,11 +109,10 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
   };
 
   const handleShowDetails = (product: ProductDTO) => {
-    setSelectedProductDetails(product); // Set the selected product
-    setIsModalOpen(true); // Open the modal
+    setSelectedProductDetails(product);
+    setIsModalOpen(true);
   };
 
-  // Define the function to close the modal
   const handleCloseModal = () => {
       setIsModalOpen(false);
       setSelectedProductDetails(null);
