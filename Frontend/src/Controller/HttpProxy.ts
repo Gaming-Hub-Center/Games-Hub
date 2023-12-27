@@ -2,7 +2,7 @@ import axios from "axios";
 import { getJwtToken } from "../CurrentSession";
 
 
-axios.defaults.baseURL = "http://localhost:8081";
+axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 
