@@ -33,6 +33,7 @@ public class AuthenticationController {
         UserDAO userDAO = userService.getByEmail(authentication.getName());
         UserDTO userDTO = userMapper.toUserDTO(userDAO);
         userDTO.setToken(token);
+
         return ResponseEntity.ok(userDTO);
     }
 
