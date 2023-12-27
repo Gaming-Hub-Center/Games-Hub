@@ -17,9 +17,9 @@ import { ProductView } from "./Components/ProductView";
 import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/SellerProductCatalog";
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
-import {SellerView} from "./Pages/Admin/SellerView";
-import {BuyerView} from "./Pages/Admin/BuyerView";
-import {SellerCatalogView} from "./Pages/Admin/SellerCatalogView";
+import { SellerView } from "./Pages/Admin/SellerView";
+import { BuyerView } from "./Pages/Admin/BuyerView";
+import { SellerCatalogView } from "./Pages/Admin/SellerCatalogView";
 
 
 function App() {
