@@ -18,6 +18,7 @@ import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/Seller
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
 import BuyerOrders from "./Pages/BuyerOrders";
+import HomePageAdmin from "./Pages/admin/AdminDashboard";
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         ></Route>
         <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
         <Route path="/buyer/orders" element={<BuyerOrders />}></Route>
+        <Route path="/admin/dashboard" element={<HomePageAdmin/>}></Route>
       </Routes>
     </Container>
   );
