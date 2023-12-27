@@ -44,7 +44,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, isOp
                 <p>Created Date: {new Date(product.postDate).toLocaleDateString()}</p>
                 <p>Category: {product.category}</p>
 
-                {/* Image Gallery */}
+                {/* Image Gallery
                 <div className="image-gallery">
                     {product.images && product.images.map((image, index) => (
                         <img
@@ -56,7 +56,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, isOp
                         />
                     ))}
                 </div>
-                {selectedImage && <img src={selectedImage} alt="Selected Product" className="selected-image" />}
+                {selectedImage && <img src={selectedImage} alt="Selected Product" className="selected-image" />} */}
 
                 <button onClick={onClose}>Close</button>
             </div>
