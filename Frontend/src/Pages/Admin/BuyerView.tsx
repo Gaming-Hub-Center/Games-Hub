@@ -52,48 +52,43 @@ export function BuyerView() {
     };
 
     return (
-        <div style={{ backgroundColor: '#121212', height: '100vh' }}>
-            <Container className="mt-4" style={{ backgroundColor: 'rgba(169, 169, 169, 0.8)', color: 'white' }}>
-                <Row>
-                    {currentBuyers.map((buyer, index) => (
-                        <Col key={index} md={4} className="mb-4">
-                            <Card style={{ backgroundColor: 'black', color: 'white' }}>
-                                <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black' }}>{buyer.name}</Card.Header>
-                                <Card.Body>
-                                    <Card.Text><strong>Email:</strong> {buyer.email}</Card.Text>
-                                    <Card.Text><strong>Phone:</strong> {buyer.phone}</Card.Text>
-                                    <Card.Text><strong>Address:</strong> {buyer.address}</Card.Text>
-                                    <Card.Text><strong>balance:</strong> {buyer.balance}</Card.Text>
-                                    <Button
-                                        style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s",}}
-                                        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")}
-                                        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}
-                                        onClick={() => deleteBuyer(buyer.id)}
-                                    >
-                                        Remove From System
-                                    </Button>
-                                </Card.Body>
-                                <Card.Footer style={{ backgroundColor: 'white', color: 'black' }}>
-                                    <small className="text-muted">Joined: {new Date(buyer.dateJoined).toLocaleDateString('en-US')}</small>
-                                </Card.Footer>
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
-                <Row>
-                    <Col>
-                        <div className="d-flex justify-content-center my-4">
-                            <Pagination style={{ justifyContent: 'center' }}>
-                                <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1} />
-                                <Pagination.Prev onClick={() => handlePageChange(Math.max(1, currentPage - 1))} disabled={currentPage === 1} />
-                                {renderPagination()}
-                                <Pagination.Next onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} />
-                                <Pagination.Last onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} />
-                            </Pagination>
-                        </div>
+        <Container fluid style={{ backgroundColor: 'darkslateblue', color: 'white', height: '100vh', overflow: "hidden" }}>
+            <Row style={{width: '100%', height: '70vh', marginLeft:'170px'}}>
+                {currentBuyers.map((buyer, index) => (
+                    <Col key={index} md={3} style={{margin: '8px', width: '20%'}}>
+                        <Card style={{ backgroundColor: 'black', color: 'white' }}>
+                            <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black' }}>{buyer.name}</Card.Header>
+                            <Card.Body>
+                                <Card.Text><strong>Email:</strong> {buyer.email}</Card.Text>
+                                <Card.Text><strong>Phone:</strong> {buyer.phone}</Card.Text>
+                                <Card.Text><strong>Address:</strong> {buyer.address}</Card.Text>
+                                <Card.Text><strong>balance:</strong> {buyer.balance}</Card.Text>
+                                <Button
+                                    style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s",}}
+                                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")}
+                                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}
+                                    onClick={() => deleteBuyer(buyer.id)}
+                                >
+                                    <strong>Remove From System</strong>
+                                </Button>
+                            </Card.Body>
+                        </Card>
                     </Col>
-                </Row>
-            </Container>
-        </div>
+                ))}
+            </Row>
+            <Row>
+                <Col>
+                    <div className="d-flex justify-content-center my-4">
+                        <Pagination style={{ justifyContent: 'center' }}>
+                            <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1} />
+                            <Pagination.Prev onClick={() => handlePageChange(Math.max(1, currentPage - 1))} disabled={currentPage === 1} />
+                            {renderPagination()}
+                            <Pagination.Next onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} />
+                            <Pagination.Last onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} />
+                        </Pagination>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     );
 }

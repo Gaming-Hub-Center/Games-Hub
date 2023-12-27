@@ -80,7 +80,7 @@ export function SellerView() {
                                         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}
                                         onClick={() => deleteSeller(seller.id)}
                                     >
-                                        Remove From System
+                                        <strong>Remove From System</strong>
                                     </Button>
                                     <Button
                                         style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s", height: '4vh'}}
@@ -88,7 +88,7 @@ export function SellerView() {
                                         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}
                                         onClick={() => goToViewSellerProducts(seller.id)}
                                     >
-                                        View Products
+                                        <strong>View Products</strong>
                                     </Button>
                                 </div>
                             </Card.Body>
