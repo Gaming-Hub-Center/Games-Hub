@@ -18,9 +18,22 @@ import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/Seller
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
 import HomePageAdmin from "./Pages/admin/AdminDashboard";
+import { useEffect } from "react";
+import { gapi } from "gapi-script";
 
+const clientId = "922788866859-fv5d49j6cqd2orfai2c1dnte4c8v5ii8.apps.googleusercontent.com";
 
 function App() {
+  useEffect (() => {
+    
+      function start() {
+        gapi.client.init({
+        clientId: clientId,
+        scope: ""
+      })
+    };
+      gapi.load('client:auth2', start);
+  });
   return (
     <Container
       fluid
