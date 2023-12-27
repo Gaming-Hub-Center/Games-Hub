@@ -1,6 +1,6 @@
 package com.gameshub.requests.approve;
 
-import com.gameshub.controller.request.AdminController;
+import com.gameshub.controller.AdminController;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.repository.request.PhysicalProductRequestRepository;
 import com.gameshub.service.admin.AdminProductsService;
