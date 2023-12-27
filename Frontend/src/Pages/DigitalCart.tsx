@@ -1,10 +1,10 @@
 // DigitalCart.tsx
 import React, { useState, useEffect } from 'react';
-import { Button, Table } from 'react-bootstrap';
+import {Button, Container, Table} from 'react-bootstrap';
 import { httpRequest } from '../Controller/HttpProxy';
-import { getId } from "../CurrentSession";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
+import {getBalance, getEmail, getId, getName} from "../CurrentSession";
+import {useNavigate} from "react-router-dom";
+import {NavbarC} from "../Components/NavbarC";
 
 
 // Define the types for the data structure
@@ -47,7 +47,9 @@ type OrderCheckoutDTO = {
 
 const DigitalCart = () => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const [showSidebar, setShowSidebar] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState('wallet');
+    const navigate = useNavigate();
     const buyerId = getId();
 
     useEffect(() => {
@@ -115,20 +117,18 @@ const DigitalCart = () => {
       httpRequest('POST', 'order/checkout/digital', orderCheckoutDTO)
         .then((response) => {
           alert(response.data)
-          fetchCartItems()
+          navigate('/buyer/orders')
         })
         .catch((error) => {
           alert(error.response.data)
         })
     }
 
-          // State to manage the sidebar visibility
-    const [showSidebar, setShowSidebar] = useState(false);
-
-
     return (
-        <div style={{ backgroundColor: '#121212', minHeight: '100vh', color: 'white' }}>
-          <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+      <>
+        <div style={{ backgroundColor: '#121212', color: 'white' }}>
+          <NavbarC productType="your_product_type" updateProductCardPropsList={() => {}} />
+          <Container style={{ position: 'relative', maxWidth: '1200px', height: '92vh', margin: '0 auto', padding: '20px' }}>
 
             {/* User Info Sidebar */}
             <div style={{
@@ -143,22 +143,23 @@ const DigitalCart = () => {
               transition: 'right 0.3s',
               overflowY: 'auto',
               boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-              zIndex: 1000
+              zIndex: 1000,
+              marginTop: '8vh'
             }}>
               <h2 style={{
-                color: '#76B900',
+                color: '#733BC0',
                 textAlign: 'center',
                 marginBottom: '20px',
                 fontSize: '24px',
                 fontWeight: 'bold'
               }}>User Information</h2>
-              {cartItems[0] && (
+              {(
                 <>
-                  <p style={{color: '#CCC', marginBottom: '10px'}}><strong>Name:</strong> {cartItems[0].buyer.name}</p>
-                  <p style={{color: '#CCC', marginBottom: '10px'}}><strong>Email:</strong> {cartItems[0].buyer.email}
+                  <p style={{color: '#CCC', marginBottom: '10px'}}><strong>Name:</strong> {getName()}</p>
+                  <p style={{color: '#CCC', marginBottom: '10px'}}><strong>Email:</strong> {getEmail()}
                   </p>
                   <p style={{color: '#CCC', marginBottom: '20px'}}>
-                    <strong>Balance:</strong> ${cartItems[0].buyer.balance.toFixed(2)}</p>
+                    <strong>Balance:</strong> ${getBalance().toFixed(2)}</p>
                 </>
               )}
               {/* Payment Method Selection */}
@@ -171,7 +172,8 @@ const DigitalCart = () => {
                     name="paymentMethod"
                     value="wallet"
                     checked={paymentMethod === 'wallet'}
-                    onChange={() => setPaymentMethod('wallet')}/>
+                    onChange={() => setPaymentMethod('wallet')}
+                  />
                   <label htmlFor="wallet" style={{color: 'white', marginLeft: '8px'}}>Wallet</label>
                 </div>
                 <div style={{marginBottom: '20px'}}>
@@ -181,18 +183,19 @@ const DigitalCart = () => {
                     name="paymentMethod"
                     value="cod"
                     checked={paymentMethod === 'cod'}
-                    onChange={() => setPaymentMethod('cod')}/>
+                    onChange={() => setPaymentMethod('cod')}
+                  />
                   <label htmlFor="cod" style={{color: 'white', marginLeft: '8px'}}>Cash on Delivery</label>
                 </div>
                 <Button
                   variant="success"
-                  onClick={() => { checkout()
-                  }}
+                  onClick={() => checkout()}
                   style={{
                     marginTop: '10px',
                     width: '100%',
                     fontWeight: 'bold',
-                    letterSpacing: '1px'
+                    letterSpacing: '1px',
+                    backgroundColor: '#733BC0'
                   }}
                 >
                   Confirm
@@ -201,50 +204,51 @@ const DigitalCart = () => {
             </div>
 
             {/* Main Content */}
-            <h1 style={{ color: '#76B900', textAlign: 'center', marginBottom: '30px' }}>
+            <h1 style={{ color: '#733BC0', textAlign: 'center', marginBottom: '30px' }}>
               Digital Products Shopping Cart
             </h1>
             <Table striped bordered hover variant="dark" style={{ opacity: '0.85' }}>
             <thead>
-                    <tr>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Total</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cartItems.map((item) => (
-                      <tr key={item.id.productID}>
-                        <td>{item.product.title}</td>
-                        <td>${item.product.price.toFixed(2)}</td>
-                        <td>{item.count}</td>
-                        <td>${(item.product.price * item.count).toFixed(2)}</td>
-                        <td>
-                          <Button variant="success" onClick={() => onAddItem(item.id.productID)} className="me-2">
-                            +
-                          </Button>
-                          <Button variant="warning" onClick={() => onRemoveItem(item.id.productID)} disabled={item.count === 1} className="me-2">
-                            -
-                          </Button>
-                          <Button variant="danger" onClick={() => onDeleteItem(item.id.productID)}>
-                            Delete
-                          </Button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
+              <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+                {cartItems.map((item) => (
+                  <tr key={item.id.productID}>
+                    <td>{item.product.title}</td>
+                    <td>${item.product.price.toFixed(2)}</td>
+                    <td>{item.count}</td>
+                    <td>${(item.product.price * item.count).toFixed(2)}</td>
+                    <td>
+                      <Button variant="success" onClick={() => onAddItem(item.id.productID)} className="me-2">
+                        +
+                      </Button>
+                      <Button variant="warning" onClick={() => onRemoveItem(item.id.productID)} disabled={item.count === 1} className="me-2">
+                        -
+                      </Button>
+                      <Button variant="danger" onClick={() => onDeleteItem(item.id.productID)}>
+                        Delete
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </Table>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px', fontSize: '1.2rem' }}>
               <strong>Total Price: </strong>
               <span>${cartItems.reduce((acc, item) => acc + item.product.price * item.count, 0).toFixed(2)}</span>
-              <Button variant="primary" size="lg" onClick={() => setShowSidebar(!showSidebar)}>
+              <Button variant="success" size="lg" style={{ backgroundColor: "#733BC0" }} onClick={() => setShowSidebar(!showSidebar)}>
                 Checkout
               </Button>
             </div>
-          </div>
+          </Container>
         </div>
+      </>
       );
 
     };

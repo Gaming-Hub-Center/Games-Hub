@@ -69,4 +69,16 @@ public class UserService {
         sellerRepository.save(sellerDAO);
     }
 
+    public void decreaseBuyerBalance(int buyerID, float amount) {
+        BuyerDAO buyerDAO = getBuyerById(buyerID);
+        buyerDAO.setBalance(buyerDAO.getBalance() - amount);
+        buyerRepository.save(buyerDAO);
+    }
+
+    public void increaseSellerBalance(int sellerID, float amount) {
+        SellerDAO sellerDAO = getSellerById(sellerID);
+        sellerDAO.setBalance(sellerDAO.getBalance() + amount);
+        sellerRepository.save(sellerDAO);
+    }
+
 }
