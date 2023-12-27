@@ -90,7 +90,7 @@ public class UserService {
         seller.setSellerDescription(newDescription);
 
         sellerRepository.save(seller);
-
+    }
     public void decreaseBuyerBalance(int buyerID, float amount) {
         BuyerDAO buyerDAO = getBuyerById(buyerID);
         buyerDAO.setBalance(buyerDAO.getBalance() - amount);
