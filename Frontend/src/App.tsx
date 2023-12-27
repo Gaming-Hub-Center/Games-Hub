@@ -17,6 +17,9 @@ import { ProductView } from "./Components/ProductView";
 import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/SellerProductCatalog";
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
+import { SellerView } from "./Pages/Admin/SellerView";
+import { BuyerView } from "./Pages/Admin/BuyerView";
+import { SellerCatalogView } from "./Pages/Admin/SellerCatalogView";
 
 
 function App() {
@@ -55,6 +58,9 @@ function App() {
           element={<CatalogRequestForm />}
         ></Route>
         <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
+        <Route path="/admin/view/sellers" element={<SellerView />}></Route>
+        <Route path="/admin/view/buyers" element={<BuyerView />}></Route>
+        <Route path="/admin/view/seller/products/:sellerId" element={<SellerCatalogView />}></Route>
       </Routes>
     </Container>
   );

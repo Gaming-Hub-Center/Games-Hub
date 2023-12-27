@@ -107,6 +107,31 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProduct` (
 ) ENGINE = InnoDB;
 
 
+DROP TABLE IF EXISTS `physical_product_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE physical_product_image (
+	`ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `image` MEDIUMBLOB,
+    `physical_product_id` INT NOT NULL,
+    FOREIGN KEY (physical_product_id) REFERENCES physicalproduct(id)
+);
+
+select * from physical_product_image;
+
+DROP TABLE IF EXISTS `digital_product_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE digital_product_image (
+    `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `image` MEDIUMBLOB,
+    `digital_product_id` INT NOT NULL,
+    FOREIGN KEY (digital_product_id) REFERENCES digitalproduct(id)
+);
+
+select * from digital_product_image;
+
+
 -- -----------------------------------------------------
 -- Table `GamesHub`.`PhysicalCart`
 -- -----------------------------------------------------

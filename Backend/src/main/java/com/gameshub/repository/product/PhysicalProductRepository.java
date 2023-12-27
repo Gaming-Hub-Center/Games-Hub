@@ -53,4 +53,8 @@ public interface PhysicalProductRepository extends JpaRepository<PhysicalProduct
             "FROM PhysicalProductDAO p ORDER BY p.price ASC")
     Optional<List<ProductBriefDTO>> getOrderedByPrice();
 
+    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
+            "FROM PhysicalProductDAO p WHERE p.sellerID = :sellerId")
+    List<ProductBriefDTO> getAllBySellerID(@Param("sellerId") int sellerId);
+
 }
