@@ -30,6 +30,9 @@ export function BuyerView() {
     }
 
     const deleteBuyer = async (id: number) => {
+        const isConfirmed = window.confirm("Are you sure you want to remove this buyer from the system?");
+        if (!isConfirmed) return;
+
         try {
             const response = await httpRequest("DELETE", `/admin/delete/buyer/${id}`);
             alert(response.data);

@@ -4,11 +4,12 @@ import {httpRequest} from "../../Controller/HttpProxy";
 import {Card, Container, Pagination} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 
 export function SellerCatalogView() {
+    const navigate = useNavigate();
     const { sellerId } = useParams();
 
     const [physicalProducts, setPhysicalProducts] = useState<ProductBriefDTO[]>([]);
@@ -71,6 +72,9 @@ export function SellerCatalogView() {
     }
 
     const deleteProduct = async(productId: number, productType: string) => {
+        const isConfirmed = window.confirm("Are you sure you want to delete this product from the system?");
+        if (!isConfirmed) return;
+
         const response = await httpRequest("DELETE", `/admin/delete/${productType}/product/${productId}`)
         alert(response.data)
             if(productType === "physical")
@@ -79,11 +83,17 @@ export function SellerCatalogView() {
                 setDigitalProducts(digitalProducts.filter(product => product.id !== productId));
     }
 
+    // function goToViewProduct(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, productType: string, id: number): void {
+    //     navigate(`/buyer/productview/${id}`, {
+    //         state: { productType }
+    //     });
+    // }
+
     return (
         <Container fluid style={{ backgroundColor: 'darkslateblue', color: 'white', height: '100vh', overflow: "auto", padding: '20px' }}>
             <Row>
                 <Col md={6} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '45%'}}>
-                    <h3 style={{ width: '100%', textAlign: 'center' }} >Digital Products</h3>
+                    <h4 style={{ width: '100%', textAlign: 'center' }} >Digital Products</h4>
                     {currentDigitalProducts.reduce((acc, product, index) => {
                         const rowNumber = Math.floor(index / 2);
                         if (!acc[rowNumber]) { acc[rowNumber] = []; }
@@ -93,13 +103,13 @@ export function SellerCatalogView() {
                         <Row key={rowIndex}>
                             {productRow.map((product, productIndex) => (
                                 <Col md={6} key={productIndex} style={{width: '420px'}}>
-                                    <Card style={{ backgroundColor: 'black', color: 'white', height: '35vh', width: '100%', margin: '10px' }}>
+                                    <Card style={{ backgroundColor: 'black', color: 'white', height: '40vh', width: '100%', margin: '10px' }}>
                                         <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black', height: '4vh' }}>{product.title}</Card.Header>
                                         <Card.Body>
-                                            <Card.Img variant="top" src={`data:image/jpeg;base64,${product.image}`}></Card.Img>
+                                            <Card.Img variant="top" src={`data:image/jpeg;base64,${product.image}`} style={{height: '25vh'}}></Card.Img>
                                             <Card.Title>Price: {product.price}</Card.Title>
-                                            <Card.Text><strong>{product.description}</strong></Card.Text>
-                                            <Card.Text><strong>{product.id}</strong></Card.Text>
+                                            {/*<Card.Text><strong>{product.description}</strong></Card.Text>*/}
+                                            {/*<Card.Text><strong>{product.id}</strong></Card.Text>*/}
                                             <Button
                                                 style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s", height: '4vh'}}
                                                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")}
@@ -127,7 +137,7 @@ export function SellerCatalogView() {
                     </Row>
                 </Col>
                 <Col md={6} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' , width: '50%', marginLeft: '90px'}}>
-                    <h3 style={{ width: '100%', textAlign: 'center' }}>Physical Products</h3>
+                    <h4 style={{ width: '100%', textAlign: 'center' }}>Physical Products</h4>
                     {currentPhysicalProducts.reduce((acc, product, index) => {
                         const rowNumber = Math.floor(index / 2);
                         if (!acc[rowNumber]) { acc[rowNumber] = []; }
@@ -137,21 +147,31 @@ export function SellerCatalogView() {
                         <Row key={rowIndex}>
                             {productRow.map((product, productIndex) => (
                                 <Col md={6} key={productIndex} style={{width: '420px'}}>
-                                    <Card style={{ backgroundColor: 'black', color: 'white', height: '35vh', minWidth: '100%', maxWidth: '100%', margin: '10px' }}>
+                                    <Card style={{ backgroundColor: 'black', color: 'white', height: '40vh', minWidth: '100%', maxWidth: '100%', margin: '10px' }}>
                                         <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black', height: '4vh' }}>{product.title}</Card.Header>
                                         <Card.Body>
-                                            <Card.Img variant="top" src={`data:image/jpeg;base64,${product.image}`}></Card.Img>
+                                            <Card.Img variant="top" src={`data:image/jpeg;base64,${product.image}`} style={{height: '25vh'}}></Card.Img>
                                             <Card.Title>Price: {product.price}</Card.Title>
-                                            <Card.Text><strong>{product.description}</strong></Card.Text>
-                                            <Card.Text><strong>{product.id}</strong></Card.Text>
-                                            <Button
-                                                style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s", height: '4vh'}}
-                                                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")}
-                                                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}
-                                                onClick={() => deleteProduct(product.id, product.productType)}
-                                            >
-                                                Delete Product
-                                            </Button>
+                                            {/*<Card.Text><strong>{product.description}</strong></Card.Text>*/}
+                                            {/*<Card.Text><strong>{product.id}</strong></Card.Text>*/}
+                                            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between",}} >
+                                                <Button
+                                                    style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s", height: '4vh'}}
+                                                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")}
+                                                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}
+                                                    onClick={() => deleteProduct(product.id, product.productType)}
+                                                >
+                                                    Delete Product
+                                                </Button>
+                                                {/*<Button*/}
+                                                {/*    style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s",}}*/}
+                                                {/*    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")}*/}
+                                                {/*    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}*/}
+                                                {/*    onClick={(e) => goToViewProduct(e, product.productType, product.id )}*/}
+                                                {/*>*/}
+                                                {/*    View Product*/}
+                                                {/*</Button>*/}
+                                            </div>
                                         </Card.Body>
                                     </Card>
                                 </Col>
