@@ -1,6 +1,9 @@
 package com.gameshub.requests.approve;
 
-import com.gameshub.service.request.approve.*;
+import com.gameshub.service.admin.DigitalProductApprovalStrategy;
+import com.gameshub.service.admin.PhysicalProductApprovalStrategy;
+import com.gameshub.service.admin.AdminProductsService;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -12,7 +15,7 @@ import static org.mockito.Mockito.verify;
 public class ProductRequestApproveServiceTest {
 
     @Autowired
-    private ProductRequestApproveService productRequestApproveService;
+    private AdminProductsService productRequestApproveService;
 
     @MockBean
     private DigitalProductApprovalStrategy digitalProductApprovalStrategy;
@@ -28,26 +31,10 @@ public class ProductRequestApproveServiceTest {
     }
 
     @Test
-    void approveDigitalProductUpdate_Success() {
-        int requestId = 1;
-        int productId = 2;
-        productRequestApproveService.approveProductUpdate("digital", requestId, productId);
-        verify(digitalProductApprovalStrategy).approvedAndUpdateProduct(requestId, productId);
-    }
-
-    @Test
     void approvePhysicalProductCreation_Success() {
         int requestId = 1;
         productRequestApproveService.approveProductCreation("physical", requestId);
         verify(physicalProductApprovalStrategy).approveAndCreateProduct(requestId);
-    }
-
-    @Test
-    void approvePhysicalProductUpdate_Success() {
-        int requestId = 1;
-        int productId = 2;
-        productRequestApproveService.approveProductUpdate("physical", requestId, productId);
-        verify(physicalProductApprovalStrategy).approvedAndUpdateProduct(requestId, productId);
     }
 
     @Test

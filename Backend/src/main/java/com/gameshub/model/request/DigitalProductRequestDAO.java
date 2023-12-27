@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.*;
-
 @Data
 @NoArgsConstructor
 @Entity
