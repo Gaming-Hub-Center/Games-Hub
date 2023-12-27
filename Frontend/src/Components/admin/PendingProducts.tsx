@@ -22,6 +22,27 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProductDetails, setSelectedProductDetails] = useState<ProductDTO | null>(null);
+  const pageSize = 18; // Set the number of items you want per page
+  const [paginatedProducts, setPaginatedProducts] = useState<ProductDTO[]>([]);
+  
+  //------------------ Pagination --------------------------------------
+
+  useEffect(() => {
+    // Calculate the index of the first and last items on the current page
+    const firstPageIndex = (currentPage - 1) * pageSize;
+    const lastPageIndex = firstPageIndex + pageSize;
+    // Set products for the current page
+    setPaginatedProducts(products.slice(firstPageIndex, lastPageIndex));
+  }, [currentPage, products]); // Recalculate when currentPage or products change
+
+  // Handlers for pagination
+  const goToPreviousPage = () => setCurrentPage(currentPage => Math.max(1, currentPage - 1));
+  const goToNextPage = () => setCurrentPage(currentPage => Math.min(totalPages, currentPage + 1));
+
+  // Calculate the total number of pages
+  const totalPages = Math.ceil(products.length / pageSize);
+
+  //-------------- End Of Pagination --------------------------------------
 
   const fetchProducts = async (productType, page, status) => {
     const url = "/admin/products";
@@ -51,14 +72,49 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
   }, [productType, currentPage, status]); // Dependencies array
 
   
-  const handleApprove = (productId) => {
-    console.log(`Product ${productId} approved.`);
-    // Add your logic to handle approval
+  const handleApprove = (product) => {
+    console.log(product)
+    console.log(`Product ${product.id} approved.`);
+
+    const requestData = {
+      productType: productType,
+      requestId: product.id
+      // page: page // If needed, include 'page' in the request data
+    };
+
+    console.log(requestData)
+
+    httpRequest("GET", "/admin/approve", null, requestData)
+    .then((response) => {
+      // Assuming the response contains the updated list of products
+      setProducts(response.data); // Update the state with the updated list of products
+    })
+    .catch((error) => {
+      console.error("Error Approving Products", error);
+    });
+  
   };
   
-  const handleDecline = (productId) => {
-      console.log(`Product ${productId} declined.`);
-      // Add your logic to handle decline
+  const handleDecline = (product) => {
+    console.log(product)
+    console.log(`Product ${product.id} approved.`);
+
+    const requestData = {
+      productType: productType,
+      requestId: product.id
+      // page: page // If needed, include 'page' in the request data
+    };
+
+    console.log(requestData)
+
+    httpRequest("GET", "/admin/decline", null, requestData)
+    .then((response) => {
+      // Assuming the response contains the updated list of products
+      setProducts(response.data); // Update the state with the updated list of products
+    })
+    .catch((error) => {
+      console.error("Error Declining Products", error);
+    });
   };
 
   const handleShowDetails = (product: ProductDTO) => {
@@ -74,18 +130,22 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
 
   return (
     <div>
-      <h2>{productType === 'physical' ? 'Physical' : 'Digital'} {status} Products</h2> {/* Updated to use status */}
+      <h2>{productType === 'physical' ? 'Physical' : 'Digital'} {status} Products</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div>
-          {products.map(product => (
+          {paginatedProducts.map(product => ( // Change this line to use paginatedProducts
             <div key={product.id} className="admin-pending-product-row">
               <span>{product.title}</span>
-              <span>{new Date(product.created_date).toLocaleDateString()}</span>
+              <span>
+                {status === 'Pending' ? 
+                new Date(product.dateReceived).toLocaleDateString() : 
+                new Date(product.postDate).toLocaleDateString()}
+              </span>
               <div>
-                {iconVisibility.showApprove && <FaThumbsUp className="approve-icon" onClick={() => handleApprove(product.id)} />}
-                {iconVisibility.showDecline && <FaThumbsDown className="decline-icon" onClick={() => handleDecline(product.id)} />}
+                {iconVisibility.showApprove && <FaThumbsUp className="approve-icon" onClick={() => handleApprove(product)} />}
+                {iconVisibility.showDecline && <FaThumbsDown className="decline-icon" onClick={() => handleDecline(product)} />}
                 {iconVisibility.showDetails && (
                   <FaInfoCircle className="details-icon" onClick={() => handleShowDetails(product)} />
                 )}                  
@@ -94,24 +154,24 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
           ))}
         </div>
       )}
-
+  
       <ProductDetailsModal 
         product={selectedProductDetails} 
         isOpen={isModalOpen} 
         onClose={handleCloseModal}
       />
-
+  
       <div className="admin-pagination">
-        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+        <button onClick={goToPreviousPage} disabled={currentPage === 1}>
           Previous
         </button>
-        <span>Page {currentPage}</span>
-        <button onClick={() => setCurrentPage(currentPage + 1)}>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button onClick={goToNextPage} disabled={currentPage === totalPages}>
           Next
         </button>
       </div>
     </div>
   );
-};
+}
 
 export default AdminProductsComponent;

@@ -149,7 +149,7 @@ const CatalogRequestForm: React.FC = () => {
     
     const requestPayload = productType === 'physical' ? physicalProductRequest : digitalProductRequest;  
   
-    httpRequest("POST", `/product-request/create/${productType}`, requestPayload)
+    httpRequest("POST", `/product-request/create`, requestPayload)
       .then((response) => {
         console.log(response);
         setShowSuccessAlert(true);

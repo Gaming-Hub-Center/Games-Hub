@@ -6,6 +6,7 @@ import java.time.*;
 
 @Data
 public class ProductRequestDTO {
+    private int id;
     private LocalDate dateReceived;
     private String status;
     private String requestType;

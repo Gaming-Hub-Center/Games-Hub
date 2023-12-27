@@ -50,30 +50,6 @@ public class AdminProductsService {
         }
     }
 
-//    public List<ProductRequestDTO> getAdminProducts(String productType, String status) {
-//        List<? extends ProductRequestDAO> productRequests;
-//
-//        if ("digital".equalsIgnoreCase(productType)) {
-//            productRequests = digitalProductRequestRepository.findByStatus(status);
-//        } else if ("physical".equalsIgnoreCase(productType)) {
-//            productRequests = physicalProductRequestRepository.findByStatus(status);
-//        } else {
-//            throw new IllegalArgumentException("Invalid product type");
-//        }
-//
-//        return productRequests.stream()
-//                .map(dao -> {
-//                    if (dao instanceof DigitalProductRequestDAO) {
-//                        return productRequestMapper.toDTO((DigitalProductRequestDAO) dao);
-//                    } else if (dao instanceof PhysicalProductRequestDAO) {
-//                        return productRequestMapper.toDTO((PhysicalProductRequestDAO) dao);
-//                    } else {
-//                        throw new IllegalStateException("Unknown subclass of ProductRequestDAO");
-//                    }
-//                })
-//                .collect(Collectors.toList());
-//    }
-
 
     public List<ProductRequestDTO> getAdminProducts(String productType, String status) {
         List<? extends ProductRequestDAO> productRequests;

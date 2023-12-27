@@ -3,8 +3,10 @@ package com.gameshub.service.admin;
 import com.gameshub.exception.*;
 import com.gameshub.model.product.*;
 import com.gameshub.model.request.*;
+import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.product.*;
 import com.gameshub.repository.request.*;
+import com.gameshub.repository.user.SellerRepository;
 import com.sun.jdi.request.InvalidRequestStateException;
 import jakarta.transaction.*;
 import lombok.*;
@@ -20,18 +22,31 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
 
     private final PhysicalProductRequestRepository physicalProductRequestRepository;
     private final PhysicalProductRepository physicalProductRepository;
+    private final SellerRepository sellerRepository;
 
     @Override
     @Transactional
     public void approveAndCreateProduct(int requestId) {
-        PhysicalProductRequestDAO request = new PhysicalProductRequestDAO();
-        fetchAndValidateRequest(requestId);
+        // Fetch and validate the request first
+        PhysicalProductRequestDAO request = fetchAndValidateRequest(requestId);
+        validateSellerExists(request.getSeller());
         request.setStatus("Approved");
         request.setPostDate(LocalDate.now());
         PhysicalProductDAO newProduct = mapToProductDAO(request);
+        physicalProductRequestRepository.save(request);
         physicalProductRepository.save(newProduct);
-        HttpStatus.OK.value();
     }
+
+    private void validateSellerExists(SellerDAO seller) {
+        if(seller == null) {
+            throw new NullPointerException("No Seller");
+        }
+
+        if (!sellerRepository.existsById(seller.getId())) {
+            throw new ResourceNotFoundException("Seller not found with ID: " + seller.getId());
+        }
+    }
+
 
     private PhysicalProductRequestDAO fetchAndValidateRequest(int requestId) {
         PhysicalProductRequestDAO request = physicalProductRequestRepository.findById(requestId)
@@ -48,10 +63,6 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
         PhysicalProductDAO product = new PhysicalProductDAO();
         copyRequestToProduct(request, product);
         return product;
-    }
-
-    private void mapToProductDAO(PhysicalProductRequestDAO request, PhysicalProductDAO product) {
-        copyRequestToProduct(request, product);
     }
 
     private void copyRequestToProduct(PhysicalProductRequestDAO request, PhysicalProductDAO product) {
