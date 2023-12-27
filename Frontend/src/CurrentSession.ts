@@ -70,3 +70,7 @@ export const getCurrentProductPage = () => {
 export const clearCurrentSession = () => {
   window.sessionStorage.clear();
 };
+
+export const noCurrentSession = () => {
+    return window.sessionStorage == null;
+  };
