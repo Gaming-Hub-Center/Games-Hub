@@ -1,7 +1,7 @@
 package com.gameshub.config;
 
 public class ConfigConstants {
-    public static final long JWT_EXPIRATION = 3600000;
+    public static final long JWT_EXPIRATION = 36000000;
     public static final long MAX_AGE = 3600;
     public static final int CORS_FILTER_ORDER = -102;
 }

@@ -70,6 +70,7 @@ public class UserService {
         sellerRepository.save(sellerDAO);
     }
 
+
     public void updateBuyer(int id,String newName,String newEmail,String newPhone,String newAddress, float newBalance) {
         BuyerDAO buyer = buyerRepository.findById(id).orElseThrow(() -> new RuntimeException("Buyer not found"));
         buyer.setName(newName);
@@ -89,6 +90,18 @@ public class UserService {
         seller.setSellerDescription(newDescription);
 
         sellerRepository.save(seller);
+
+    public void decreaseBuyerBalance(int buyerID, float amount) {
+        BuyerDAO buyerDAO = getBuyerById(buyerID);
+        buyerDAO.setBalance(buyerDAO.getBalance() - amount);
+        buyerRepository.save(buyerDAO);
+    }
+
+    public void increaseSellerBalance(int sellerID, float amount) {
+        SellerDAO sellerDAO = getSellerById(sellerID);
+        sellerDAO.setBalance(sellerDAO.getBalance() + amount);
+        sellerRepository.save(sellerDAO);
+
     }
 
 }
