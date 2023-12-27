@@ -1,12 +1,13 @@
 package com.gameshub.service.cart;
 
 import com.gameshub.model.cart.*;
+import com.gameshub.model.user.*;
 import com.gameshub.repository.cart.*;
 import lombok.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -53,6 +54,16 @@ public class CartService {
     // Get all digital cart items for a buyer
     public List<DigitalCartDAO> getDigitalCartItems(int buyerId) {
         return digitalCartRepository.findByBuyerId(buyerId);
+    }
+
+    @Transactional
+    public void deletePhysicalCartItems(BuyerDAO buyer) {
+        physicalCartRepository.deleteByBuyer(buyer);
+    }
+
+    @Transactional
+    public void deleteDigitalCartItems(BuyerDAO buyer) {
+        digitalCartRepository.deleteByBuyer(buyer);
     }
 
 }

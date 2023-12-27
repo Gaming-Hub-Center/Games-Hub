@@ -59,6 +59,14 @@ export const storeUserData = (userDTO: UserDTO) => {
     window.sessionStorage.setItem("jwtToken", userDTO.token)
 }
 
+export const setCurrentProductPage = (currentPage: string) => {
+    window.sessionStorage.setItem("currentPage", currentPage)
+}
+
+export const getCurrentProductPage = () => {
+    return window.sessionStorage.getItem("currentPage")
+}
+
 export const clearCurrentSession = () => {
   window.sessionStorage.clear();
 };
