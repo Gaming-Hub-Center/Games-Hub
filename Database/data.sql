@@ -98,11 +98,11 @@ INSERT INTO `DigitalCart` (`BuyerId`, `ProductId`, `Count`) VALUES
 -- -----------------------------------------------------
 -- Inserting dummy data into `Order`
 -- -----------------------------------------------------
-INSERT INTO `Order` (`BuyerId`, `OrderDate`, `OrderPrice`, `OrderStatus`) VALUES
-(1, '2023-01-15', 800.00, 'Shipped'),
-(2, '2023-02-20', 300.00, 'Returned'),
-(1, '2023-01-15', 800.00, 'Shipped'),
-(2, '2023-02-20', 300.00, 'Returned');
+INSERT INTO `Order` (`BuyerId`, `OrderDate`, `OrderPrice`, `PaymentMethod`, `OrderStatus`) VALUES
+(1, '2023-01-15', 800.00, 'Wallet', 'Shipped'),
+(2, '2023-02-20', 300.00, 'COD', 'Returned'),
+(1, '2023-01-15', 800.00, 'COD', 'Shipped'),
+(2, '2023-02-20', 300.00, 'Wallet', 'Returned');
 
 
 -- -----------------------------------------------------
