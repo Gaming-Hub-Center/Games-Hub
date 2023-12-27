@@ -3,7 +3,8 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../Utilities/formatCurrency";
 import {httpRequest} from "../Controller/HttpProxy";
-import{getId} from "../CurrentSession";
+import {getCurrentProductPage, getId} from "../CurrentSession";
+import React from "react";
 
 export interface cardProps {
   id: number;
@@ -32,9 +33,11 @@ export function ProductCard({ id, title, description, image, price, productType 
       productID: id,
       count: 1
     };
-    httpRequest('post', '/cart/digital/addOrUpdate', cartDTO)
-      .then(() => {
-
+    const url = getCurrentProductPage() === 'Physical' ? '/cart/physical/addOrUpdate' : '/cart/digital/addOrUpdate'
+    httpRequest('post', url, cartDTO)
+      .then((response) => {
+        const count = response.data as number
+        console.log(count)
       })
       .catch(error => {
         console.error('Error updating cart item:', error);

@@ -159,6 +159,7 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Order` (
   `BuyerId` INT NOT NULL,
   `OrderDate` DATE,
   `OrderPrice` FLOAT NOT NULL,
+  `PaymentMethod` VARCHAR(10),
   `OrderStatus` VARCHAR(45),
   PRIMARY KEY (`Id`),
   CONSTRAINT `OrderBuyerIdFK1`

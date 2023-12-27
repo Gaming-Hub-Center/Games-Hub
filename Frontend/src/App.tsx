@@ -17,6 +17,7 @@ import { ProductView } from "./Components/ProductView";
 import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/SellerProductCatalog";
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
+import BuyerOrders from "./Pages/BuyerOrders";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           element={<CatalogRequestForm />}
         ></Route>
         <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
+        <Route path="/buyer/orders" element={<BuyerOrders />}></Route>
       </Routes>
     </Container>
   );
