@@ -33,7 +33,7 @@
 }
 
 .admin-pagination button:hover {
-    background-color: #a065a6; /* Lighter purple on hover */
+    background-color: hsl(294, 23%, 42%); /* Lighter purple on hover */
 }
 
 .amdin-pagination button:disabled {
