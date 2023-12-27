@@ -33,6 +33,9 @@ export function SellerView() {
     }
 
     const deleteSeller = async(id: number) => {
+        const isConfirmed = window.confirm("Are you sure you want to remove this seller from the system?");
+        if (!isConfirmed) return;
+
         try {
             const response = await httpRequest("DELETE", `/admin/delete/seller/${id}`);
             alert(response.data)
