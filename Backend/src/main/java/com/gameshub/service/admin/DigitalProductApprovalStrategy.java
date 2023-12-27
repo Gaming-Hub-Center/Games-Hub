@@ -3,8 +3,10 @@ package com.gameshub.service.admin;
 import com.gameshub.exception.*;
 import com.gameshub.model.product.*;
 import com.gameshub.model.request.*;
+import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.product.*;
 import com.gameshub.repository.request.*;
+import com.gameshub.repository.user.SellerRepository;
 import com.sun.jdi.request.InvalidRequestStateException;
 import lombok.*;
 import org.springframework.http.HttpStatus;
@@ -16,19 +18,30 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Component
 public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
-
     private final DigitalProductRequestRepository digitalProductRequestRepository;
-
     private final DigitalProductRepository digitalProductRepository;
+    private final SellerRepository sellerRepository;
 
     @Override
     @Transactional
     public void approveAndCreateProduct(int requestId) {
-        DigitalProductRequestDAO request = new DigitalProductRequestDAO();
-        request = fetchAndValidateRequest(requestId);
+        DigitalProductRequestDAO request = fetchAndValidateRequest(requestId);
+        validateSellerExists(request.getSeller());
         request.setStatus("Approved");
+        request.setPostDate(LocalDate.now());
         DigitalProductDAO newProduct = mapToProductDAO(request);
+        digitalProductRequestRepository.save(request);
         digitalProductRepository.save(newProduct);
+    }
+
+    private void validateSellerExists(SellerDAO seller) {
+        if(seller == null) {
+            throw new NullPointerException("No Seller");
+        }
+
+        if (!sellerRepository.existsById(seller.getId())) {
+            throw new ResourceNotFoundException("Seller not found with ID: " + seller.getId());
+        }
     }
 
     private DigitalProductRequestDAO fetchAndValidateRequest(int requestId) {

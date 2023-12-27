@@ -12,7 +12,7 @@ import java.time.*;
 @Table(name = "physicalproductrequest")
 public class PhysicalProductRequestDAO extends ProductRequestDAO {
 
-    public PhysicalProductRequestDAO(LocalDate dateReceived, String status, String requestType, String title, int price, String description, LocalDate postDate, int count, String category, SellerDAO seller) {
+    public PhysicalProductRequestDAO(LocalDate dateReceived, String status, String requestType, String title, float price, String description, LocalDate postDate, int count, String category, SellerDAO seller) {
         this.dateReceived = dateReceived;
         this.status = status;
         this.requestType = requestType;

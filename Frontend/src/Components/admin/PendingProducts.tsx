@@ -21,23 +21,19 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProductDetails, setSelectedProductDetails] = useState<ProductDTO | null>(null);
-  const pageSize = 18; // Set the number of items you want per page
+  const pageSize = 18;
   const [paginatedProducts, setPaginatedProducts] = useState<ProductDTO[]>([]);
   
   //------------------ Pagination --------------------------------------
   useEffect(() => {
-    // Calculate the index of the first and last items on the current page
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
-    // Set products for the current page
     setPaginatedProducts(products.slice(firstPageIndex, lastPageIndex));
-  }, [currentPage, products]); // Recalculate when currentPage or products change
+  }, [currentPage, products]);
 
-  // Handlers for pagination
   const goToPreviousPage = () => setCurrentPage(currentPage => Math.max(1, currentPage - 1));
   const goToNextPage = () => setCurrentPage(currentPage => Math.min(totalPages, currentPage + 1));
 
-  // Calculate the total number of pages
   const totalPages = Math.ceil(products.length / pageSize);
   //------------------ End Of Pagination ----------------------------------
 
@@ -49,7 +45,6 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
       status: status
     };
   
-    // Use the httpRequest function to make the GET API call
     httpRequest("GET", url, null, requestData)
       .then((response) => {
         setProducts(response.data); 
@@ -125,11 +120,11 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
         <p>Loading...</p>
       ) : (
         <div>
-          {paginatedProducts.map(product => ( // Change this line to use paginatedProducts
+          {paginatedProducts.map(product => (
             <div key={product.id} className="admin-pending-product-row">
               <span>{product.title}</span>
               <span>
-                {status === 'Pending' ? 
+                {(status === 'Pending' || status === 'Declined') ? 
                 new Date(product.dateReceived).toLocaleDateString() : 
                 new Date(product.postDate).toLocaleDateString()}
               </span>

@@ -73,11 +73,7 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
         product.setCount(request.getCount());
         product.setCategory(request.getCategory());
         product.setPostDate(LocalDate.now());
-        try {
-            product.setSellerID(request.getSeller().getId());
-        } catch (NullPointerException e) {
-            System.out.println("NULL :(");
-        }
+        product.setSellerID(request.getSeller().getId());
         product.setCategory(request.getCategory());
     }
 

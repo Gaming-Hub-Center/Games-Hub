@@ -28,7 +28,7 @@ public abstract class ProductRequestDAO {
     protected String title;
 
     @Column(name = "Price")
-    protected int price;
+    protected float price;
 
     @Column(name = "Description")
     protected String description;

@@ -11,7 +11,7 @@ public class ProductRequestDTO {
     private String status;
     private String requestType;
     private String title;
-    private int price;
+    private float price;
     private String description;
     private LocalDate postDate;
     private int count;
