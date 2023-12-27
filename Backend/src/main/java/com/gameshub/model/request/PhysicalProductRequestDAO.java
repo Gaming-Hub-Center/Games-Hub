@@ -1,10 +1,12 @@
 package com.gameshub.model.request;
 
+import com.gameshub.model.request.image.PhysicalProductRequestImage;
 import com.gameshub.model.user.*;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.*;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor

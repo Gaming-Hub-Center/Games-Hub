@@ -6,7 +6,7 @@ export function About() {
     <Container fluid style={{ height: "200vh", padding: 0 }}>
       <Row>
         <Col md={12}>
-          <NavbarC productType={undefined} updateProductCardPropsList={undefined}></NavbarC>
+          {/* <NavbarC ></NavbarC> // return ID */}
           <h1>About Page</h1>
           <p>Welcome to the about page. Here you can find out more about us.</p>
           <p>Welcome to the about page. Here you can find out more about us.</p>

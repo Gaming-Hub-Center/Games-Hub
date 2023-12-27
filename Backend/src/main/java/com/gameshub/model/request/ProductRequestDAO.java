@@ -4,6 +4,7 @@ import com.gameshub.model.user.*;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.*;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor

@@ -7,6 +7,8 @@ import AlertOk from '../../Components/AlertDisnissible';
 import AlertError from '../../Components/AlertError';
 import { DigitalProductRequestDTO } from '../../Controller/DTO/request-dto/DigitalProductRequestDTO';
 import AlertAleadyExists from '../../Components/AlertAleadyExists';
+import { cld } from '../../Utilities/cloudinaryConfig';
+import axios from 'axios';
 
 const CatalogRequestForm: React.FC = () => {
   const [physicalProductRequest, setPhysicalProductRequest] = useState<PhysicalProductRequestDTO>({
@@ -19,7 +21,8 @@ const CatalogRequestForm: React.FC = () => {
     postDate: '',
     count: 0,
     sellerId: getId(),
-    category: 'Physical Category 1'
+    category: 'Physical Category 1',
+    images: String['']
   });
 
   const [digitalProductRequest, setDigitalProductRequest] = useState<DigitalProductRequestDTO>({ 
@@ -33,7 +36,8 @@ const CatalogRequestForm: React.FC = () => {
     count: 0,
     sellerId: getId(),
     category: 'Digital Category 1',
-    code: ''
+    code: '',
+    images: String['']
   });
 
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
@@ -42,6 +46,7 @@ const CatalogRequestForm: React.FC = () => {
   const [errors, setErrors] = useState({ title: '', description: '', count: '', price: '' });
   const [categories, setCategories] = useState([]);
   const [productType, setProductType] = useState<'physical' | 'digital'>('physical');
+  const [image, setSelectedImage] = useState('');
 
   const validate = () => {
     let tempErrors = { title: '', description: '', count: '', price: '', images: '' };
@@ -113,11 +118,59 @@ const CatalogRequestForm: React.FC = () => {
     }
 };
 
+// React component pseudo-code
+const getSignature = async () => {
+  const response = await axios.get('/api/cloudinary_signature');
+  return response.data.signature;
+};
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // if (e.target.files) {
-    //   setPhysicalProductRequest({ ...physicalProductRequest, images: Array.from(e.target.files) });
-    // }
+  const uploadImage = async (file: File) => {
+    const formData = new FormData();
+    const timestamp = Math.round((new Date()).getTime() / 1000);
+    const signature = await getSignature();
+
+    formData.append('file', file);
+    formData.append('timestamp', timestamp.toString());
+    formData.append('api_key', '712766868742575');
+    formData.append('signature', signature);
+    // Include additional upload parameters, such as 'upload_preset' if needed
+
+    const uploadResponse = await axios.post(`https://api.cloudinary.com/v1_1/diqxjlzau/image/upload`, formData);
+    return uploadResponse.data; // Contains the URL of the uploaded image
+  };
+
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+
+    let imageUrls = [];
+    for (let i = 0; i < e.target.files.length; i++) {
+        const file = e.target.files[i];
+        const url = await uploadImage(file);
+        if (url) {
+            imageUrls.push(url);
+        }
+    }
+
+    if (productType === 'physical') {
+        setPhysicalProductRequest(prev => {
+            // Ensure prev.images is an array
+            const prevImagesArray = Array.isArray(prev.images) ? prev.images : [];
+            return {
+                ...prev,
+                images: [...prevImagesArray, ...imageUrls]
+            };
+        });
+    } else {
+        setDigitalProductRequest(prev => {
+            // Ensure prev.images is an array
+            const prevImagesArray = Array.isArray(prev.images) ? prev.images : [];
+            return {
+                ...prev,
+                images: [...prevImagesArray, ...imageUrls]
+            };
+        });
+    }
   };
 
   const clearForm = () => {
@@ -211,10 +264,11 @@ const CatalogRequestForm: React.FC = () => {
           <label className='form-label'>
               3. Do you have any images related to your product?
               <input 
-                type="file" 
-                name="images" 
-                className='form-input' 
-                multiple onChange={handleFileChange} 
+                  type="file" 
+                  name="images" 
+                  className='form-input' 
+                  multiple 
+                  onChange={handleFileChange} 
               />
           </label>
           <label className='form-label'>

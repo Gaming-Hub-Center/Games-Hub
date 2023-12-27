@@ -4,6 +4,7 @@ import { ProductDTO } from '../../Controller/DTO/ProductDTO/ProductDTO';
 import { FaInfoCircle, FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 import ProductDetailsModal from './ProductModal';
 import { httpRequest } from '../../Controller/HttpProxy';
+import { ProductRequestDTO } from '../../Controller/DTO/request-dto/ProductRequestDTO';
 
 type PendingProductsProps = {
   productType: 'physical' | 'digital';
@@ -16,13 +17,13 @@ type PendingProductsProps = {
 };
 
 const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, iconVisibility, status }) => {
-  const [products, setProducts] = useState<ProductDTO[]>([]);
+  const [products, setProducts] = useState<ProductRequestDTO[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProductDetails, setSelectedProductDetails] = useState<ProductDTO | null>(null);
+  const [selectedProductDetails, setSelectedProductDetails] = useState<ProductRequestDTO | null>(null);
   const pageSize = 18;
-  const [paginatedProducts, setPaginatedProducts] = useState<ProductDTO[]>([]);
+  const [paginatedProducts, setPaginatedProducts] = useState<ProductRequestDTO[]>([]);
   
   //------------------ Pagination --------------------------------------
   useEffect(() => {
@@ -103,7 +104,7 @@ const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, i
     });
   };
 
-  const handleShowDetails = (product: ProductDTO) => {
+  const handleShowDetails = (product: ProductRequestDTO) => {
     setSelectedProductDetails(product);
     setIsModalOpen(true);
   };
