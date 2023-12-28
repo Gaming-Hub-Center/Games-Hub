@@ -224,6 +224,24 @@ export function HomeAccessories() {
                       checked={categoryFilterOption === "Keyboard"}
                       onClick={() => handleCategoryCheckboxClick("Keyboard")}
                   />
+                  <Form.Check
+                        type="checkbox"
+                        label="Gaming PC"
+                        checked={categoryFilterOption === "Gaming PC"}
+                        onClick={() => handleCategoryCheckboxClick("Gaming PC")}
+                  />
+                    <Form.Check
+                        type="checkbox"
+                        label="Gaming Furniture"
+                        checked={categoryFilterOption === "Gaming Furniture"}
+                        onClick={() => handleCategoryCheckboxClick("Gaming Furniture")}
+                    />
+                    <Form.Check
+                        type="checkbox"
+                        label="Gaming LAPTOP"
+                        checked={categoryFilterOption === "Gaming LAPTOP"}
+                        onClick={() => handleCategoryCheckboxClick("Gaming LAPTOP")}
+                    />
                 </div>
               </Row>
               <Row style={{ height: "10%" }}>

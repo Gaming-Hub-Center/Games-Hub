@@ -228,6 +228,24 @@ export function HomeGames() {
                               checked={categoryFilterOption === "Sports"}
                               onClick={() => handleCategoryCheckboxClick("Sports")}
                           />
+                          <Form.Check
+                              type="checkbox"
+                              label="Mobile Gaming"
+                              checked={categoryFilterOption === "Mobile Gaming"}
+                              onClick={() => handleCategoryCheckboxClick("Mobile Gaming")}
+                          />
+                          <Form.Check
+                              type="checkbox"
+                              label="Software and Utilities"
+                              checked={categoryFilterOption === "Software and Utilities"}
+                              onClick={() => handleCategoryCheckboxClick("Software and Utilities")}
+                          />
+                          <Form.Check
+                              type="checkbox"
+                              label="VR Games"
+                              checked={categoryFilterOption === "VR Games"}
+                              onClick={() => handleCategoryCheckboxClick("VR Games")}
+                          />
                       </div>
                   </Row>
                   <Row style={{ height: "10%" }}>

@@ -62,7 +62,7 @@ export function SellerView() {
     };
 
     return (
-        <Container fluid style={{ backgroundColor: 'darkslateblue', color: 'white', height: '100vh', overflow: "hidden" }}>
+        <Container fluid style={{ backgroundColor: "#121212", color: 'white', height: '100vh', overflow: "hidden" }}>
             <Row style={{width: '100%', height: '95.5vh', marginLeft:'170px'}}>
                 {currentSellers.map((seller, index) => (
                     <Col key={index} md={3} style={{margin: '8px', width: '20%'}}  >

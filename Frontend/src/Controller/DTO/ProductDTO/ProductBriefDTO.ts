@@ -3,6 +3,6 @@ export interface ProductBriefDTO {
     price: number;
     title: string;
     description: string;
-    image: string;
+    url: string;
     productType: string;
 }

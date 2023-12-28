@@ -55,7 +55,9 @@ export function SellerCatalogView() {
         const fetchData = async () => {
             const response = await getAllPhysical()
             setPhysicalProducts(response)
+            console.log(response[0].url)
             const response2 = await getAllDigital()
+            console.log(response2[0].url)
             setDigitalProducts(response2);
         };
         fetchData();
@@ -90,7 +92,7 @@ export function SellerCatalogView() {
     // }
 
     return (
-        <Container fluid style={{ backgroundColor: 'darkslateblue', color: 'white', height: '100vh', overflow: "auto", padding: '20px' }}>
+        <Container fluid style={{ backgroundColor: "#121212", color: 'white', height: '100vh', overflow: "auto", padding: '20px' }}>
             <Row>
                 <Col md={6} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '45%'}}>
                     <h4 style={{ width: '100%', textAlign: 'center' }} >Digital Products</h4>
@@ -106,7 +108,7 @@ export function SellerCatalogView() {
                                     <Card style={{ backgroundColor: 'black', color: 'white', height: '40vh', width: '100%', margin: '10px' }}>
                                         <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black', height: '4vh' }}>{product.title}</Card.Header>
                                         <Card.Body>
-                                            <Card.Img variant="top" src={`data:image/jpeg;base64,${product.image}`} style={{height: '25vh'}}></Card.Img>
+                                            <Card.Img variant="top" src={product.url} style={{height: '25vh'}}></Card.Img>
                                             <Card.Title>Price: {product.price}</Card.Title>
                                             {/*<Card.Text><strong>{product.description}</strong></Card.Text>*/}
                                             {/*<Card.Text><strong>{product.id}</strong></Card.Text>*/}
@@ -150,7 +152,7 @@ export function SellerCatalogView() {
                                     <Card style={{ backgroundColor: 'black', color: 'white', height: '40vh', minWidth: '100%', maxWidth: '100%', margin: '10px' }}>
                                         <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black', height: '4vh' }}>{product.title}</Card.Header>
                                         <Card.Body>
-                                            <Card.Img variant="top" src={`data:image/jpeg;base64,${product.image}`} style={{height: '25vh'}}></Card.Img>
+                                            <Card.Img variant="top" src={product.url} style={{height: '25vh'}}></Card.Img>
                                             <Card.Title>Price: {product.price}</Card.Title>
                                             {/*<Card.Text><strong>{product.description}</strong></Card.Text>*/}
                                             {/*<Card.Text><strong>{product.id}</strong></Card.Text>*/}

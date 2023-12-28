@@ -4,6 +4,8 @@ import './AdminDashboard.css';
 import NavBarAdmin from '../../Components/admin/NavBarAdmin';
 import PendingProductsComponent from '../../Components/admin/PendingProducts';
 import {BuyerView} from "./BuyerView";
+import {SellerView} from "./SellerView";
+
 import {Navigate} from "react-router-dom";
 import {getId} from "../../CurrentSession";
 
@@ -22,7 +24,6 @@ type SectionsData = {
 
 // Define your sectionsData with the corresponding type
 const sectionsData: SectionsData = {
-
     "Pending Physical Products": <AdminProductsComponent
                                     productType="physical"
                                     iconVisibility={{ showApprove: true, showDecline: true, showDetails: true }}

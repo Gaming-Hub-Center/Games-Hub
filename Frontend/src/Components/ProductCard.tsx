@@ -10,19 +10,13 @@ export interface cardProps {
   id: number;
   title: string;
   description: string;
-  image: string;
+  url: string;
   price: number;
   productType: string;
 }
 
-export function ProductCard({
-  id,
-  title,
-  description,
-  image,
-  price,
-  productType,
-}: cardProps) {
+
+export function ProductCard({ id, title, description, url, price, productType }: cardProps) {
   const navigate = useNavigate();
 
   function goToViewProduct(
@@ -99,7 +93,7 @@ export function ProductCard({
     >
       <Card.Img
         variant="top"
-        src={`data:image/jpeg;base64,${image}`}
+        src={url}
         style={{ height: "40%", objectFit: "cover" }}
       />
       <Card.Body

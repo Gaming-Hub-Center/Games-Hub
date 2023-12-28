@@ -15,9 +15,14 @@ public class DigitalImageDAO extends ImageDAO {
     @Column(name = "digital_product_id")
     int product_id;
 
-    public DigitalImageDAO(int id, String image, int product_id) {
+    public DigitalImageDAO(int id, String url, int product_id) {
         setId(id);
-        setUrl(image);
+        setUrl(url);
+        this.product_id = product_id;
+    }
+
+    public DigitalImageDAO(String url, int product_id) {
+        setUrl(url);
         this.product_id = product_id;
     }
 }

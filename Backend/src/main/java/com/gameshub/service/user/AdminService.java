@@ -75,7 +75,7 @@ public class AdminService {
     public List<ProductBriefDTO> getSellerPhysicalProducts(int sellerId) {
         List<ProductBriefDTO> products = physicalProductRepository.getAllBySellerID(sellerId);
         for(ProductBriefDTO product: products) {
-            product.setImage(physicalImageRepository.findByProduct_id(product.getId()).orElse(null));
+            product.setUrl(physicalImageRepository.findByProduct_id(product.getId()).orElse(null));
             product.setProductType("physical");
         }
         return products;
@@ -84,7 +84,7 @@ public class AdminService {
     public List<ProductBriefDTO> getSellerDigitalProducts(int sellerId) {
         List<ProductBriefDTO> products = digitalProductRepository.getAllBySellerID(sellerId);
         for(ProductBriefDTO product: products) {
-            product.setImage(digitalImageRepository.findByProduct_id(product.getId()).orElse(null));
+            product.setUrl(digitalImageRepository.findByProduct_id(product.getId()).orElse(null));
             product.setProductType("digital");
         }
         return products;

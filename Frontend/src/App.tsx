@@ -25,6 +25,10 @@ import BuyerProfilePage from "./Pages/Profile-Page/buyer_profile_page";
 import SellerProfilePage from "./Pages/Profile-Page/seller_profile_page";
 
 
+
+import BuyerOrders from "./Pages/BuyerOrders";
+import HomePageAdmin from "./Pages/Admin/AdminDashboard";
+
 import {SellerView} from "./Pages/admin/SellerView";
 import {BuyerView} from "./Pages/admin/BuyerView";
 

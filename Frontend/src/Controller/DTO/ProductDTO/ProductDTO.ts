@@ -10,5 +10,6 @@ export interface ProductDTO {
   count: number;
   sellerId: number;
   category: string;
-  images: string[];
+  urls: string[];
+  code: string;
 }
