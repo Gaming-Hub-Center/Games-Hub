@@ -23,7 +23,7 @@ public class WishlistController {
             wishlistService.addPhysicalWishlistProduct(wishlistDTO.getBuyerID(), wishlistDTO.getProductID());
             return ResponseEntity.ok("Physical wishlist item added successfully");
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Error: No buyer or Physical_Product exits with that ID");
+            return ResponseEntity.internalServerError().body("Error: No buyer or Physical_Product exists with that ID");
         }
     }
 
@@ -33,7 +33,7 @@ public class WishlistController {
             wishlistService.addDigitalWishlistProduct(wishlistDTO.getBuyerID(), wishlistDTO.getProductID());
             return ResponseEntity.ok("Digital wishlist item added successfully");
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Error: No buyer or Digital_Product exits with that ID");
+            return ResponseEntity.internalServerError().body("Error: No buyer or Digital_Product exists with that ID");
         }
     }
 
@@ -43,7 +43,7 @@ public class WishlistController {
             wishlistService.deletePhysicalWishlistProduct(wishlistDTO.getBuyerID(), wishlistDTO.getProductID());
             return ResponseEntity.ok("Physical wishlist item deleted successfully");
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Error: No buyer or Physical_Product exits with that ID");
+            return ResponseEntity.internalServerError().body("Error: No buyer or Physical_Product exists with that ID");
         }
     }
 
@@ -53,7 +53,7 @@ public class WishlistController {
             wishlistService.deleteDigitalWishlistProduct(wishlistDTO.getBuyerID(), wishlistDTO.getProductID());
             return ResponseEntity.ok("Digital wishlist item deleted successfully");
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Error: No buyer or Digital_Product exits with that ID");
+            return ResponseEntity.internalServerError().body("Error: No buyer or Digital_Product exists with that ID");
         }
     }
 
