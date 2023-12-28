@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import { UserDTO } from "../../Controller/DTO/user/UserDTO";
+import { AdminDTO } from "../../Controller/DTO/user/AdminDTO"; // Assuming the path to your DTO
 import { httpRequest } from "../../Controller/HttpProxy";
 import { Card, Container, Row, Col, Pagination, Button } from 'react-bootstrap';
+import {useParams} from "react-router-dom";
 
-export function BuyerView() {
-    const [buyersList, setBuyersList] = useState<UserDTO[]>([]);
+export function AdminView() {
+    const { adminId } = useParams();
+    const [adminsList, setAdminsList] = useState<AdminDTO[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 8;
+    const itemsPerPage = 12;
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentBuyers = buyersList.slice(startIndex, endIndex);
-    const totalPages = Math.ceil(buyersList.length / itemsPerPage);
+    const currentAdmins = adminsList.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(adminsList.length / itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -18,27 +20,27 @@ export function BuyerView() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getAllBuyers()
-            setBuyersList(response)
+            const response = await getAllAdmins();
+            setAdminsList(response);
         };
         fetchData();
     }, []);
 
-    const getAllBuyers = async() => {
-        const response = await httpRequest("GET", `/admin/view/buyers`);
-        return response.data as UserDTO[]
+    const getAllAdmins = async() => {
+        const response = await httpRequest("GET", `/admin/view/admins/${adminId}`);
+        return response.data as AdminDTO[];
     }
 
-    const deleteBuyer = async (id: number) => {
-        const isConfirmed = window.confirm("Are you sure you want to remove this buyer from the system?");
+    const deleteAdmin = async (id: number) => {
+        const isConfirmed = window.confirm("Are you sure you want to remove this admin from the system?");
         if (!isConfirmed) return;
 
         try {
-            const response = await httpRequest("DELETE", `/admin/delete/buyer/${id}`);
+            const response = await httpRequest("DELETE", `/admin/delete/admin/${id}`);
             alert(response.data);
-            setBuyersList(buyersList.filter(buyer => buyer.id !== id));
+            setAdminsList(adminsList.filter(admin => admin.id !== id));
         } catch (error) {
-            console.error(`Error deleting buyer with ID ${id}:`, error);
+            console.error(`Error deleting admin with ID ${id}:`, error);
         }
     };
 
@@ -56,21 +58,19 @@ export function BuyerView() {
 
     return (
         <Container fluid style={{ backgroundColor: 'darkslateblue', color: 'white', height: '100vh', overflow: "hidden" }}>
-            <Row style={{width: '100%', height: '70vh', marginLeft:'170px'}}>
-                {currentBuyers.map((buyer, index) => (
+            <Row style={{width: '100%', height: '80vh', marginLeft:'170px'}}>
+                {currentAdmins.map((admin, index) => (
                     <Col key={index} md={3} style={{margin: '8px', width: '20%'}}>
                         <Card style={{ backgroundColor: 'black', color: 'white' }}>
-                            <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black' }}>{buyer.name}</Card.Header>
+                            <Card.Header as="h5" style={{ backgroundColor: '#733BC0', color: 'black' }}>{admin.name}</Card.Header>
                             <Card.Body>
-                                <Card.Text><strong>Email:</strong> {buyer.email}</Card.Text>
-                                <Card.Text><strong>Phone:</strong> {buyer.phone}</Card.Text>
-                                <Card.Text><strong>Address:</strong> {buyer.address}</Card.Text>
-                                <Card.Text><strong>balance:</strong> {buyer.balance}</Card.Text>
+                                <Card.Text><strong>Email:</strong> {admin.email}</Card.Text>
+                                <Card.Text><strong>Phone:</strong> {admin.phone}</Card.Text>
                                 <Button
                                     style={{backgroundColor: "#733BC0", color: "#f0f0f0", borderColor: "#733BC0", borderRadius: "5px", cursor: "pointer", transition: "background-color 0.3s",}}
                                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")}
                                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#733BC0")}
-                                    onClick={() => deleteBuyer(buyer.id)}
+                                    onClick={() => deleteAdmin(admin.id)}
                                 >
                                     <strong>Remove From System</strong>
                                 </Button>

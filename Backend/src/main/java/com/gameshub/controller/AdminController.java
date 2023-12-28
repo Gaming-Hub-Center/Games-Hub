@@ -1,6 +1,7 @@
 package com.gameshub.controller;
 
 import com.gameshub.controller.DTO.ProductBriefDTO;
+import com.gameshub.controller.DTO.user.AdminDTO;
 import com.gameshub.controller.DTO.user.BuyerDTO;
 import com.gameshub.controller.DTO.user.SellerDTO;
 import com.gameshub.service.user.AdminService;
@@ -25,6 +26,11 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllSellers());
     }
 
+    @GetMapping("/view/admins/{adminId}")
+    public ResponseEntity<List<AdminDTO>> getAllAdmins(@PathVariable int adminId) {
+        return ResponseEntity.ok(adminService.getAllAdmins(adminId));
+    }
+
     @DeleteMapping("/delete/buyer/{buyerId}")
     public ResponseEntity<String> deleteBuyer(@PathVariable int buyerId) {
         adminService.deleteBuyer(buyerId);
@@ -35,6 +41,12 @@ public class AdminController {
     public ResponseEntity<String> deleteSeller(@PathVariable int sellerId) {
         adminService.deleteSeller(sellerId);
         return ResponseEntity.ok("Seller " + sellerId + " deleted");
+    }
+
+    @DeleteMapping("/delete/admin/{adminId}")
+    public ResponseEntity<String> deleteAdmin(@PathVariable int adminId) {
+        adminService.deleteAdmin(adminId);
+        return ResponseEntity.ok("Admin " + adminId + " deleted");
     }
 
     @DeleteMapping("/delete/physical/product/{productId}")

@@ -15,6 +15,10 @@ public interface UserMapper {
 
     SellerDTO toUserDTO(SellerDAO sellerDAO);
 
+    AdminDTO toAdminDTO(AdminDAO adminDAO);
+
+    List<AdminDTO> toAdminDTOList(List<AdminDAO> adminDAOs);
+
     @Mapping(target = "password", ignore = true)
     BuyerDAO toUserDAO(BuyerRegistrationDTO buyerRegistrationDTO);
 

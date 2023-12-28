@@ -20,6 +20,7 @@ import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProduc
 import { SellerView } from "./Pages/Admin/SellerView";
 import { BuyerView } from "./Pages/Admin/BuyerView";
 import { SellerCatalogView } from "./Pages/Admin/SellerCatalogView";
+import {AdminView} from "./Pages/Admin/AdminView";
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
         <Route path="/admin/view/sellers" element={<SellerView />}></Route>
         <Route path="/admin/view/buyers" element={<BuyerView />}></Route>
+        <Route path="/admin/view/admins/:adminId" element={<AdminView />}></Route>
         <Route path="/admin/view/seller/products/:sellerId" element={<SellerCatalogView />}></Route>
       </Routes>
     </Container>
