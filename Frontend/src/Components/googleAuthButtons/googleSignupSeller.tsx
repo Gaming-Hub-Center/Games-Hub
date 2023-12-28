@@ -19,7 +19,7 @@ export function GoogleSignUpButtonSeller(){
 
   const sendTokenToServer = async (tokenId) => {
     try {
-      const response = await httpRequest('POST', 'http://localhost:8080/auth/verify-google-signup/seller', JSON.stringify({ idToken: tokenId }))
+      const response = await httpRequest('POST', '/auth/verify-google-signup/seller', JSON.stringify({ idToken: tokenId }))
 
       if (response.status == 200) {
         const result = await response.data;
