@@ -63,6 +63,7 @@ const CatalogRequestForm: React.FC = () => {
 
   const [tempImageUrl, setTempImageUrl] = useState('');
   const [imageFile, setImageFile] = useState(null)
+  const [uploadedFileName, setUploadedFileName] = useState(null);
 
   const validate = () => {
     let tempErrors = { title: '', description: '', count: '', price: '', images: '' };
@@ -200,6 +201,8 @@ const uploadImage = async () => {
 
 const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   if (e.target.files && e.target.files[0]) {
+    const fileName = e.target.files[0].name;
+    setUploadedFileName(fileName);
     console.log("Selected file:", e.target.files[0]);
     setTempImageUrl(URL.createObjectURL(e.target.files[0]));
     setImageFile(e.target.files[0]);
@@ -278,93 +281,103 @@ const submitRequestPayload = async (requestPayload) => {
       </div>
     )}
 
-     {showAlertAleadyExists && (
-        <div>
-          <AlertAleadyExists />
-        </div>
-      )}
+    {showAlertAleadyExists && (
+      <div>
+        <AlertAleadyExists />
+      </div>
+    )}
 
-      <form onSubmit={handleSubmit} className='form-container'>
-          <h2 className='form-title'>Catalog Request Form</h2>
-          <label className='form-label'>
-              1. Add title to your product
-              <input 
-                type="text" 
-                name="title" 
-                className='form-input' 
-                value={productType === 'physical' ? physicalProductRequest.title : digitalProductRequest.title}
-                onChange={handleInputChange} 
-              />
-          </label>
-          <div className='error-message'>{errors.title}</div>
-          <label className='form-label'>
-              2. Add description to your product
-              <textarea 
-                name="description" 
-                className='form-textarea' 
-                value={productType === 'physical' ? physicalProductRequest.description : digitalProductRequest.description}
-                onChange={handleInputChange} 
-              />
-          </label>
-          <div className='error-message'>{errors.description}</div>
-          <label className='form-label'>
-            3. Do you have any images related to your product?
-              <Button component="label" sx={{ margin:'1vh' }} variant="contained" startIcon={<CloudUploadIcon />}>
-                  Upload Image
-                  <Input sx={VisuallyHiddenStyle} type="file" onChange={handleFileChange}/>
-              </Button>
-          </label>
-          <label className='form-label'>
-              4. Choose Product Type
-              <select 
-                name="productType" 
-                className='form-select' 
-                value={productType} 
-                onChange={handleProductTypeChange}
-              >
-              <option value="physical">Physical</option>
-              <option value="digital">Digital</option>
-              </select>
-          </label>
-          <label className='form-label'>
-            5. Choose product category
-            <select
-              name="category"
-              className='form-select'
-              value={productType === 'physical' ? physicalProductRequest.category : digitalProductRequest.category}
-              onChange={handleInputChange}
+    <form onSubmit={handleSubmit} className='form-container'>
+        <h2 className='form-title'>Catalog Request Form</h2>
+        <label className='form-label'>
+            1. Add title to your product
+            <input 
+              type="text" 
+              name="title" 
+              className='form-input' 
+              value={productType === 'physical' ? physicalProductRequest.title : digitalProductRequest.title}
+              onChange={handleInputChange} 
+            />
+        </label>
+        <div className='error-message'>{errors.title}</div>
+        <label className='form-label'>
+            2. Add description to your product
+            <textarea 
+              name="description" 
+              className='form-textarea' 
+              value={productType === 'physical' ? physicalProductRequest.description : digitalProductRequest.description}
+              onChange={handleInputChange} 
+            />
+        </label>
+        <div className='error-message'>{errors.description}</div>
+        <label className='form-label'>
+          3. Do you have any images related to your product?
+          <Button component="label" sx={{ margin: '1vh' }} variant="contained" startIcon={<CloudUploadIcon />}>
+            Upload Image
+            <Input
+                sx={VisuallyHiddenStyle}
+                type="file"
+                onChange={handleFileChange}
+                inputProps={{ multiple: true }} // if you want to upload multiple files
+            />
+          </Button>
+          {uploadedFileName && (
+            <div>
+                {uploadedFileName}
+            </div>
+          )}
+        </label>
+        <label className='form-label'>
+            4. Choose Product Type
+            <select 
+              name="productType" 
+              className='form-select' 
+              value={productType} 
+              onChange={handleProductTypeChange}
             >
-              {categories.map((category, index) => (
-                  <option key={index} value={category}>{category}</option>
-              ))}
+            <option value="physical">Physical</option>
+            <option value="digital">Digital</option>
             </select>
+        </label>
+        <label className='form-label'>
+          5. Choose product category
+          <select
+            name="category"
+            className='form-select'
+            value={productType === 'physical' ? physicalProductRequest.category : digitalProductRequest.category}
+            onChange={handleInputChange}
+          >
+            {categories.map((category, index) => (
+                <option key={index} value={category}>{category}</option>
+            ))}
+          </select>
 
-          </label>
-          <label className='form-label'>
-              6. How many products are available?
-              <input 
-                type="number" 
-                name="count" 
-                className='form-input' 
-                value={productType === 'physical' ? physicalProductRequest.count : digitalProductRequest.count}
-                onChange={handleInputChange} 
-                min="0"
-              />
-          </label>
-          <div className='error-message'>{errors.count}</div>
-          <label className='form-label'>
-              7. Enter Price
-              <input 
-                type="number" 
-                name="price" 
-                className='form-input' 
-                value={productType === 'physical' ? physicalProductRequest.price : digitalProductRequest.price}
-                onChange={handleInputChange} 
-                min="0"
-              />
-          </label>
-          <div className='error-message'>{errors.price}</div>
-          <button type="submit" className="form-button">Submit</button>
+        </label>
+        <label className='form-label'>
+            6. How many products are available?
+            <input 
+              type="number" 
+              name="count" 
+              className='form-input' 
+              value={productType === 'physical' ? physicalProductRequest.count : digitalProductRequest.count}
+              onChange={handleInputChange} 
+              min="0"
+            />
+        </label>
+        <div className='error-message'>{errors.count}</div>
+        <label className='form-label'>
+            7. Enter Price
+            <input 
+              type="number" 
+              name="price" 
+              className='form-input' 
+              value={productType === 'physical' ? physicalProductRequest.price : digitalProductRequest.price}
+              onChange={handleInputChange} 
+              min="0"
+            />
+        </label>
+        <div className='error-message'>{errors.price}</div>
+        <button type="submit" className="form-button">Submit</button>
       </form>
     </div>
   );

@@ -32,11 +32,14 @@ public class ProductRequestService {
 
                 // Save image URLs
                 List<String> imageUrls = (productRequestDTO).getImages();
-                for (String imageUrl : imageUrls) {
-                    PhysicalProductRequestImage imageDAO = new PhysicalProductRequestImage();
-                    imageDAO.setImageUrl(imageUrl);
-                    imageDAO.setPhysicalProductRequest(productRequestDAO);
-                    physicalProductRequestImageRepository.save(imageDAO);
+                if(imageUrls!=null) {
+                    for (String imageUrl : imageUrls) {
+                        PhysicalProductRequestImage imageDAO = new PhysicalProductRequestImage();
+                        imageDAO.setImageUrl(imageUrl);
+                        productRequestDAO.setId(savedRequest.getId());
+                        imageDAO.setPhysicalProductRequest(productRequestDAO);
+                        physicalProductRequestImageRepository.save(imageDAO);
+                    }
                 }
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");
@@ -48,11 +51,14 @@ public class ProductRequestService {
 
                 // Save image URLs
                 List<String> imageUrls = (productRequestDTO).getImages();
-                for (String imageUrl : imageUrls) {
-                    DigitalProductRequestImage imageDAO = new DigitalProductRequestImage();
-                    imageDAO.setImageUrl(imageUrl);
-                    imageDAO.setDigitalProductRequest(savedRequest);
-                    digitalProductRequestImageRepository.save(imageDAO);
+                if (imageUrls != null) {
+                    for (String imageUrl : imageUrls) {
+                        DigitalProductRequestImage imageDAO = new DigitalProductRequestImage();
+                        imageDAO.setImageUrl(imageUrl);
+                        productRequestDAO.setId(savedRequest.getId());
+                        imageDAO.setDigitalProductRequest(savedRequest);
+                        digitalProductRequestImageRepository.save(imageDAO);
+                    }
                 }
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");

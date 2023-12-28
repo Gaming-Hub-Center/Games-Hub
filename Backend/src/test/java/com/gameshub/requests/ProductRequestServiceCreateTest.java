@@ -5,8 +5,10 @@ import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
 import com.gameshub.exception.ResourceAlreadyFoundException;
 import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
+import com.gameshub.model.request.image.PhysicalProductRequestImage;
 import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.request.DigitalProductRequestRepository;
+import com.gameshub.repository.request.PhysicalProductRequestImageRepository;
 import com.gameshub.repository.request.PhysicalProductRequestRepository;
 import com.gameshub.repository.user.SellerRepository;
 import com.gameshub.service.request.ProductRequestService;
@@ -42,6 +44,9 @@ class ProductRequestServiceCreateTest {
 
     @Autowired
     private ProductRequestService productRequestService;
+
+    @Autowired
+    private PhysicalProductRequestImageRepository physicalProductRequestImageRepository;
 
     @BeforeEach
     public void setup() {
@@ -120,85 +125,85 @@ class ProductRequestServiceCreateTest {
         sellerRepository.resetAutoIncrement();
     }
 
-//    @Test
-//    void testSavePhysicalProductRequest_NoDuplicates() {
-//        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
-//        dto.setRequestType("Pending");
-//        dto.setCategory("CAT");
-//        dto.setStatus("STAT");
-//        dto.setDateReceived(LocalDate.now());
-//        dto.setCount(10);
-//        dto.setDescription("DESC");
-//        dto.setPrice(100);
-//        dto.setTitle("TITLE");
-//        dto.setSellerId(1);
-//        dto.setPostDate(LocalDate.now());
-//
-//        PhysicalProductRequestDAO dao = productRequestMapper.toDAO(dto);
-//        assertNotNull(dao);
-//
-//        productRequestService.saveProductRequest(dto);
-//
-//        List<PhysicalProductRequestDAO> requests = physicalProductRequestRepository.findAll();
-//
-//        // One added :)
-//        assertEquals(5, requests.size());
-//
-//        PhysicalProductRequestDAO savedDao = requests.get(4);
-//
-//        assertNotNull(savedDao);
-//        assertEquals(savedDao.getDateReceived(), dto.getDateReceived());
-//        assertEquals(savedDao.getRequestType(), dto.getRequestType());
-//        assertEquals(savedDao.getCount(), dto.getCount());
-//        assertEquals(savedDao.getCategory(), dto.getCategory());
-//        assertEquals(savedDao.getDescription(), dto.getDescription());
-//        assertEquals(savedDao.getPrice(), dto.getPrice());
-//        assertEquals(savedDao.getTitle(), dto.getTitle());
-//        assertNotNull(savedDao.getSeller());
-//        assertEquals(savedDao.getSeller().getId(), dto.getSellerId());
-//        assertEquals(savedDao.getPostDate(), dto.getPostDate());
-//    }
+    @Test
+    void testSavePhysicalProductRequest_NoDuplicates() {
+        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
+        dto.setRequestType("Pending");
+        dto.setCategory("CAT");
+        dto.setStatus("STAT");
+        dto.setDateReceived(LocalDate.now());
+        dto.setCount(10);
+        dto.setDescription("DESC");
+        dto.setPrice(100);
+        dto.setTitle("TITLE");
+        dto.setSellerId(1);
+        dto.setPostDate(LocalDate.now());
 
-//    @Test
-//    void testSaveDigitalProductRequest_NoDuplicates() {
-//        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
-//        dto.setRequestType("Pending");
-//        dto.setCategory("CAT");
-//        dto.setStatus("STAT");
-//        dto.setDateReceived(LocalDate.now());
-//        dto.setCount(10);
-//        dto.setDescription("DESC");
-//        dto.setPrice(100);
-//        dto.setTitle("TITLE");
-//        dto.setSellerId(1);
-//        dto.setPostDate(LocalDate.now());
-//        dto.setCode("CODE");
-//
-//        DigitalProductRequestDAO dao = productRequestMapper.toDAO(dto);
-//        assertNotNull(dao);
-//
-//        productRequestService.saveProductRequest(dto);
-//
-//        List<DigitalProductRequestDAO> requests = digitalProductRequestRepository.findAll();
-//
-//        // One added :)
-//        assertEquals(5, requests.size());
-//
-//        DigitalProductRequestDAO savedDao = requests.get(4);
-//
-//        assertNotNull(savedDao);
-//        assertEquals(savedDao.getDateReceived(), dto.getDateReceived());
-//        assertEquals(savedDao.getRequestType(), dto.getRequestType());
-//        assertEquals(savedDao.getCount(), dto.getCount());
-//        assertEquals(savedDao.getCategory(), dto.getCategory());
-//        assertEquals(savedDao.getDescription(), dto.getDescription());
-//        assertEquals(savedDao.getPrice(), dto.getPrice());
-//        assertEquals(savedDao.getTitle(), dto.getTitle());
-//        assertNotNull(savedDao.getSeller());
-//        assertEquals(savedDao.getSeller().getId(), dto.getSellerId());
-//        assertEquals(savedDao.getPostDate(), dto.getPostDate());
-//        assertEquals(savedDao.getCode(), dto.getCode());
-//    }
+        PhysicalProductRequestDAO dao = productRequestMapper.toDAO(dto);
+        assertNotNull(dao);
+
+        productRequestService.saveProductRequest(dto);
+
+        List<PhysicalProductRequestDAO> requests = physicalProductRequestRepository.findAll();
+
+        // One added :)
+        assertEquals(5, requests.size());
+
+        PhysicalProductRequestDAO savedDao = requests.get(4);
+
+        assertNotNull(savedDao);
+        assertEquals(savedDao.getDateReceived(), dto.getDateReceived());
+        assertEquals(savedDao.getRequestType(), dto.getRequestType());
+        assertEquals(savedDao.getCount(), dto.getCount());
+        assertEquals(savedDao.getCategory(), dto.getCategory());
+        assertEquals(savedDao.getDescription(), dto.getDescription());
+        assertEquals(savedDao.getPrice(), dto.getPrice());
+        assertEquals(savedDao.getTitle(), dto.getTitle());
+        assertNotNull(savedDao.getSeller());
+        assertEquals(savedDao.getSeller().getId(), dto.getSellerId());
+        assertEquals(savedDao.getPostDate(), dto.getPostDate());
+    }
+
+    @Test
+    void testSaveDigitalProductRequest_NoDuplicates() {
+        DigitalProductRequestDTO dto = new DigitalProductRequestDTO();
+        dto.setRequestType("Pending");
+        dto.setCategory("CAT");
+        dto.setStatus("STAT");
+        dto.setDateReceived(LocalDate.now());
+        dto.setCount(10);
+        dto.setDescription("DESC");
+        dto.setPrice(100);
+        dto.setTitle("TITLE");
+        dto.setSellerId(1);
+        dto.setPostDate(LocalDate.now());
+        dto.setCode("CODE");
+
+        DigitalProductRequestDAO dao = productRequestMapper.toDAO(dto);
+        assertNotNull(dao);
+
+        productRequestService.saveProductRequest(dto);
+
+        List<DigitalProductRequestDAO> requests = digitalProductRequestRepository.findAll();
+
+        // One added :)
+        assertEquals(5, requests.size());
+
+        DigitalProductRequestDAO savedDao = requests.get(4);
+
+        assertNotNull(savedDao);
+        assertEquals(savedDao.getDateReceived(), dto.getDateReceived());
+        assertEquals(savedDao.getRequestType(), dto.getRequestType());
+        assertEquals(savedDao.getCount(), dto.getCount());
+        assertEquals(savedDao.getCategory(), dto.getCategory());
+        assertEquals(savedDao.getDescription(), dto.getDescription());
+        assertEquals(savedDao.getPrice(), dto.getPrice());
+        assertEquals(savedDao.getTitle(), dto.getTitle());
+        assertNotNull(savedDao.getSeller());
+        assertEquals(savedDao.getSeller().getId(), dto.getSellerId());
+        assertEquals(savedDao.getPostDate(), dto.getPostDate());
+        assertEquals(savedDao.getCode(), dto.getCode());
+    }
 
 
     @Test
@@ -278,29 +283,29 @@ class ProductRequestServiceCreateTest {
         assertTrue(exception.getMessage().contains(expectedMessage));
     }
 
-//    @Test
-//    void testSaveDigitalProductRequest_NoDuplicate() {
-//        DigitalProductRequestDTO dto = createDTO("Unique Title", "Unique Description", 1, "Pending");
-//        saveAndAssertNoException(dto);
-//    }
+    @Test
+    void testSaveDigitalProductRequest_NoDuplicate() {
+        DigitalProductRequestDTO dto = createDTO("Unique Title", "Unique Description", 1, "Pending");
+        saveAndAssertNoException(dto);
+    }
 
-//    @Test
-//    public void whenSavePhysicalProductRequestWithNoDuplicates_thenSucceeds() {
-//        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
-//        dto.setTitle("Unique Title");
-//        dto.setDescription("Unique Description");
-//        dto.setSellerId(1); // Assuming seller with ID 1 exists
-//        dto.setStatus("Pending");
-//
-//        assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
-//
-//        assertTrue(physicalProductRequestRepository
-//                .existsByDescriptionAndTitleAndSellerIdAndStatus(
-//                        dto.getDescription(),
-//                        dto.getTitle(),
-//                        dto.getSellerId(),
-//                        dto.getStatus()));
-//    }
+    @Test
+    public void whenSavePhysicalProductRequestWithNoDuplicates_thenSucceeds() {
+        PhysicalProductRequestDTO dto = new PhysicalProductRequestDTO();
+        dto.setTitle("Unique Title");
+        dto.setDescription("Unique Description");
+        dto.setSellerId(1); // Assuming seller with ID 1 exists
+        dto.setStatus("Pending");
+
+        assertDoesNotThrow(() -> productRequestService.saveProductRequest(dto));
+
+        assertTrue(physicalProductRequestRepository
+                .existsByDescriptionAndTitleAndSellerIdAndStatus(
+                        dto.getDescription(),
+                        dto.getTitle(),
+                        dto.getSellerId(),
+                        dto.getStatus()));
+    }
 
     @Test
     public void whenSaveDigitalProductRequestWithNoDuplicates_thenSucceeds() {
@@ -328,5 +333,29 @@ class ProductRequestServiceCreateTest {
 
         assertThat(exception.getMessage(), containsString("Unsupported request type"));
     }
+
+//    @Test
+//    public void whenSavingProductRequestWithoutImages_thenSaveSuccessfully() {
+//        // Arrange: Create a DTO without images
+//        PhysicalProductRequestDTO requestDTO = new PhysicalProductRequestDTO();
+//        // populate the DTO with your data but leave the image list empty or null
+//
+//        // Act: Save the product request
+//        productRequestService.saveProductRequest(requestDTO);
+//
+//        // Assert: Fetch the saved request from the database and verify it has no images
+//        PhysicalProductRequestDAO savedRequest = physicalProductRequestRepository.findById(requestDTO.getId()).orElse(null);
+//        assertNotNull(savedRequest);
+//        assertEquals(requestDTO.getTitle(), savedRequest.getTitle());
+//        // ... perform other assertions as necessary ...
+//
+//        // Verify that no images are associated with the saved request
+//        List<PhysicalProductRequestImage> images = physicalProductRequestImageRepository.findByPhysicalProductRequest_Id(savedRequest.getId());
+//        assertTrue(images.isEmpty());
+//
+//        // Cleanup: Remove the test data if necessary
+//        // Depending on your database setup, you may want to remove the inserted data to maintain a clean state
+//    }
+
 
 }
