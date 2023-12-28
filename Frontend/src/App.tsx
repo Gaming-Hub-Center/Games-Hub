@@ -18,6 +18,12 @@ import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/Seller
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
 
+import { SellerView } from "./Pages/Admin/SellerView";
+import { BuyerView } from "./Pages/Admin/BuyerView";
+import { SellerCatalogView } from "./Pages/Admin/SellerCatalogView";
+import {AdminView} from "./Pages/Admin/AdminView";
+
+
 
 import BuyerProfilePage from "./Pages/Profile-Page/buyer_profile_page";
 import SellerProfilePage from "./Pages/Profile-Page/seller_profile_page";
@@ -28,6 +34,7 @@ import {BuyerView} from "./Pages/Admin/BuyerView";
 import BuyerOrders from "./Pages/BuyerOrders";
 
 import HomePageAdmin from "./Pages/admin/AdminDashboard";
+
 
 
 
@@ -73,8 +80,13 @@ function App() {
         <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
         <Route path="/admin/view/sellers" element={<SellerView />}></Route>
         <Route path="/admin/view/buyers" element={<BuyerView />}></Route>
+
+        <Route path="/admin/view/admins/:adminId" element={<AdminView />}></Route>
+        <Route path="/admin/view/seller/products/:sellerId" element={<SellerCatalogView />}></Route>
+
         <Route path="/buyer/orders" element={<BuyerOrders />}></Route>
         <Route path="/admin/dashboard" element={<HomePageAdmin/>}></Route>
+
       </Routes>
     </Container>
   );

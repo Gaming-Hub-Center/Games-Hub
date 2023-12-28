@@ -177,21 +177,21 @@ public class ProductService {
         return ascending ? productDTOs : productDTOs.reversed();
     }
 
-    public void save(PhysicalProductDAO physicalProductDAO, List<PhysicalImageDAO> list) {
-        physicalProductRepository.save(physicalProductDAO);
-        for (PhysicalImageDAO imageDAO: list) {
-            imageDAO.setProduct_id(physicalProductDAO.getId());
-            physicalImageRepository.save(imageDAO);
-        }
-    }
-
-    public void save(DigitalProductDAO digitalProductDAO, List<DigitalImageDAO> list) {
-        digitalProductRepository.save(digitalProductDAO);
-        for (DigitalImageDAO imageDAO: list) {
-            imageDAO.setProduct_id(digitalProductDAO.getId());
-            digitalImageRepository.save(imageDAO);
-        }
-    }
+//    public void save(PhysicalProductDAO physicalProductDAO, List<PhysicalImageDAO> list) {
+//        physicalProductRepository.save(physicalProductDAO);
+//        for (PhysicalImageDAO imageDAO: list) {
+//            imageDAO.setProduct_id(physicalProductDAO.getId());
+//            physicalImageRepository.save(imageDAO);
+//        }
+//    }
+//
+//    public void save(DigitalProductDAO digitalProductDAO, List<DigitalImageDAO> list) {
+//        digitalProductRepository.save(digitalProductDAO);
+//        for (DigitalImageDAO imageDAO: list) {
+//            imageDAO.setProduct_id(digitalProductDAO.getId());
+//            digitalImageRepository.save(imageDAO);
+//        }
+//    }
 
     public void decreasePhysicalProductCount(int productID, int count) {
         PhysicalProductDAO productDAO = getPhysicalProductByProductID(productID);
