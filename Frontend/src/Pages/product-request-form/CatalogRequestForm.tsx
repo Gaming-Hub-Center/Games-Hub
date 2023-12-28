@@ -64,6 +64,8 @@ const CatalogRequestForm: React.FC = () => {
   const [tempImageUrl, setTempImageUrl] = useState('');
   const [imageFile, setImageFile] = useState(null)
   const [uploadedFileName, setUploadedFileName] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+
 
   const validate = () => {
     let tempErrors = { title: '', description: '', count: '', price: '', images: '' };
@@ -148,6 +150,7 @@ const clearForm = () => {
   digitalProductRequest.description = ''
   digitalProductRequest.title = ''
 
+  setUploadedFileName('');
   setPhysicalProductRequest(physicalProductRequest)
   setDigitalProductRequest(digitalProductRequest)
 };
@@ -158,6 +161,8 @@ const uploadImage = async () => {
     return;
   }
 
+  setIsUploading(true); // Start loading
+  
   const formData = new FormData();
   formData.append("file", imageFile);
   formData.append("upload_preset", "ml_default");
@@ -178,6 +183,7 @@ const uploadImage = async () => {
         }
       }
     );
+    setIsUploading(false); // Stop loading on success
     console.log(uploadResponse.data.secure_url + " before..")
     return uploadResponse.data;
   } catch (error) {
@@ -326,6 +332,11 @@ const submitRequestPayload = async (requestPayload) => {
                 {uploadedFileName}
             </div>
           )}
+          {isUploading && (
+            <div className="loading-indicator">
+              Uploading image, please wait...
+            </div>
+          )}
         </label>
         <label className='form-label'>
             4. Choose Product Type
@@ -377,7 +388,9 @@ const submitRequestPayload = async (requestPayload) => {
             />
         </label>
         <div className='error-message'>{errors.price}</div>
-        <button type="submit" className="form-button">Submit</button>
+        <button type="submit" className="form-button" disabled={isUploading}>
+          Submit
+        </button>
       </form>
     </div>
   );

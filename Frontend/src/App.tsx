@@ -76,19 +76,19 @@ function App() {
         <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/signup/buyer" element={<SignUpBuyer />}></Route>
         <Route path="/signup/seller" element={<SignUpSeller />}></Route>
-        <Route path="/physical-cart" element={<RoleBasedRoute allowedRoles={['buyer']}><PhysicalCart /></RoleBasedRoute>}></Route>
-        <Route path="/digital-cart" element={<RoleBasedRoute allowedRoles={['buyer']}><DigitalCart /></RoleBasedRoute>}></Route>
+        <Route path="/physical-cart" element={<RoleBasedRoute allowedRoles={['BUYER']}><PhysicalCart /></RoleBasedRoute>}></Route>
+        <Route path="/digital-cart" element={<RoleBasedRoute allowedRoles={['BUYER']}><DigitalCart /></RoleBasedRoute>}></Route>
         
-        <Route path="/seller/create-product" element={<RoleBasedRoute allowedRoles={['seller']}><CatalogRequestForm/></RoleBasedRoute>}></Route>
+        <Route path="/seller/create-product" element={<RoleBasedRoute allowedRoles={['SELLER']}><CatalogRequestForm/></RoleBasedRoute>}></Route>
         <Route path="/seller/catalog" element={
-          <RoleBasedRoute allowedRoles={['seller']}>
+          <RoleBasedRoute allowedRoles={['SELLER']}>
             <SellerProductCatalog/>
           </RoleBasedRoute>}>  
         </Route>
         
         {/* <Route path="/seller/catalog" element={<SellerProductCatalog />}></Route> */}
         <Route path="/seller/:sellerId/product/:productType/:productId/:inCatalog" element={
-          <RoleBasedRoute allowedRoles={['seller']}>
+          <RoleBasedRoute allowedRoles={['SELLER']}>
             <SellerProductView />
           </RoleBasedRoute>
         }></Route>
@@ -101,13 +101,13 @@ function App() {
         <Route path="/physical-cart" element={<PhysicalCart />}></Route>
         <Route path="/digital-cart" element={<DigitalCart />}></Route>
         <Route path="/seller/:sellerId/edit/product/:productType/:productId/:inCatalog" element={
-          <RoleBasedRoute allowedRoles={['seller']}>
+          <RoleBasedRoute allowedRoles={['SELLER']}>
             <SellerProductEdit />
           </RoleBasedRoute>
         }></Route>
 
         <Route path="/buyer/home/games" element={
-          <RoleBasedRoute allowedRoles={['buyer']}>
+          <RoleBasedRoute allowedRoles={['BUYER']}>
             <HomeGames />
           </RoleBasedRoute>
         }></Route>
@@ -131,26 +131,26 @@ function App() {
         <Route path="/buyer/orders" element={<BuyerOrders />}></Route>
         <Route path="/admin/dashboard" element={<HomePageAdmin/>}></Route>
         <Route path="/buyer/home/accessories" element={
-          <RoleBasedRoute allowedRoles={['buyer']}>
+          <RoleBasedRoute allowedRoles={['BUYER']}>
             <HomeAccessories />
           </RoleBasedRoute>
         }></Route>
 
         <Route path="/seller/create-product" element={
-          <RoleBasedRoute allowedRoles={['seller']}>
+          <RoleBasedRoute allowedRoles={['SELLER']}>
             <CatalogRequestForm />
           </RoleBasedRoute>
         }></Route>
 
         <Route path="/seller/catalog" element={
-          <RoleBasedRoute allowedRoles={['seller']}>
+          <RoleBasedRoute allowedRoles={['SELLER']}>
             <SellerProductCatalog />
           </RoleBasedRoute>
         }></Route>
 
-        <Route path="/buyer/productview/:id" element={<RoleBasedRoute allowedRoles={(['buyer'])}><ProductView /></RoleBasedRoute>}></Route>
+        <Route path="/buyer/productview/:id" element={<RoleBasedRoute allowedRoles={(['BUYER'])}><ProductView /></RoleBasedRoute>}></Route>
 
-        <Route path="/admin/dashboard" element={<RoleBasedRoute allowedRoles={['admin']}><HomePageAdmin/></RoleBasedRoute>}></Route>
+        <Route path="/admin/dashboard" element={<RoleBasedRoute allowedRoles={['ADMIN']}><HomePageAdmin/></RoleBasedRoute>}></Route>
         {/* <Route path="/test" element={<Profile />}></Route> */}
       </Routes>
     </Container>

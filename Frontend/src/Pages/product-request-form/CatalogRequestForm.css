@@ -64,3 +64,9 @@
   color: red; /* Change the color to red (or any other color you prefer) */
   font-size: 16px; /* Set the font size */
 }
+
+.loading-indicator {
+  color: #7e57c2;
+  text-align: center;
+  padding: 10px;
+}
