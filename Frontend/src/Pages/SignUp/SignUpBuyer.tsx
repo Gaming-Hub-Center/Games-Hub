@@ -20,6 +20,7 @@ import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 import { UserDTO } from "../../Controller/DTO/user/UserDTO";
 import { clearCurrentSession, storeUserData } from "../../CurrentSession";
 import { BuyerRegistrationDTO } from "../../Controller/DTO/user/BuyerRegistrationDTO";
+import { GoogleSignUpButtonBuyer } from "../../Components/googleAuthButtons/googleSignupBuyer";
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
@@ -342,6 +343,7 @@ export function SignUpBuyer() {
               Submit
             </Button>
           </div>
+          <GoogleSignUpButtonBuyer />
           <div
               style={{ width: "100%", display: "flex", justifyContent: "center" }}
           >
