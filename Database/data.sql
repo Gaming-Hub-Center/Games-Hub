@@ -45,10 +45,10 @@ INSERT INTO `Seller` (`VatRegistrationNumber`, `DateJoined`, `Name`, `Phone`, `E
 -- Inserting dummy data into `Admin`
 -- -----------------------------------------------------
 INSERT INTO `Admin` (`Name`, `Phone`, `Email`, `Password`) VALUES
-('Alice Johnson','1234567890','alice.johnson@example.com', 'alicepass'),
-('Bob Smith','0987654321','bob.smith@example.com', 'bobpass'),
-('Carol White','1122334455','carol.white@example.com', 'carolpass'),
-('David Brown','2233445566','david.brown@example.com', 'davidpass');
+('Alice Johnson','1234567890','alice.johnson@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG'),
+('Bob Smith','0987654321','bob.smith@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG'),
+('Carol White','1122334455','carol.white@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG'),
+('David Brown','2233445566','david.brown@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG');
 
 
 -- -----------------------------------------------------

@@ -4,4 +4,7 @@ import lombok.*;
 
 @Data
 @NoArgsConstructor
-public class BuyerDTO extends UserDTO { }
+public class BuyerDTO extends UserDTO {
+    private String address;
+    private float balance;
+}

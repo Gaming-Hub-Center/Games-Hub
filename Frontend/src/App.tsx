@@ -23,8 +23,8 @@ import BuyerProfilePage from "./Pages/Profile-Page/buyer_profile_page";
 import SellerProfilePage from "./Pages/Profile-Page/seller_profile_page";
 
 
-import {SellerView} from "./Pages/Admin/SellerView";
-import {BuyerView} from "./Pages/Admin/BuyerView";
+import {SellerView} from "./Pages/admin/SellerView";
+import {BuyerView} from "./Pages/admin/BuyerView";
 import BuyerOrders from "./Pages/BuyerOrders";
 
 import HomePageAdmin from "./Pages/admin/AdminDashboard";
