@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333; /* Dark grey (almost black) */
-    color: #fff; /* White text */
+    background-color: #333;
+    color: #fff;
     padding: 0 20px;
 }
 
@@ -19,7 +19,7 @@
 .admin-sign-out-button {
     padding: 10px 15px;
     cursor: pointer;
-    background-color: #733BC0; /* Purple background */
+    background-color: #733BC0;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -27,5 +27,5 @@
 }
 
 .admin-sign-out-button:hover {
-    background-color: #a065a6; /* Lighter purple on hover */
+    background-color: #392467;
 }

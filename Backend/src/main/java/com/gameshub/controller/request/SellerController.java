@@ -7,6 +7,7 @@ import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
 import com.gameshub.service.request.ProductRequestService;
 import com.gameshub.service.product.ProductService;
+import com.gameshub.service.user.UserService;
 import jakarta.validation.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.*;
@@ -22,6 +23,7 @@ public class SellerController {
 
     private final ProductRequestService productRequestService;
     private final ProductService productService;
+    private final UserService userService;
 
     @PostMapping("/request/create/digital")
     public ResponseEntity<String> createDigitalProduct(@Valid @RequestBody DigitalProductRequestDTO digitalProductRequestDTO) {
@@ -129,6 +131,12 @@ public class SellerController {
         if(productRequestService.updatePhysicalProductRequestByProductID(productID, patch))
             return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/name")
+    public ResponseEntity<String> getSellerName(@RequestParam int id) {
+        System.out.println(id);
+        return ResponseEntity.ok(userService.getSellerById(id).getName());
     }
 
 }

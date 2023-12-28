@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.*;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -14,7 +16,7 @@ public class DigitalProductRequestDAO extends ProductRequestDAO {
     @Column(name = "Code")
     private String code;
 
-    public DigitalProductRequestDAO(LocalDate dateReceived, String status, String requestType, String title, int price, String description, LocalDate postDate, int count, String category, SellerDAO seller, String code) {
+    public DigitalProductRequestDAO(LocalDate dateReceived, String status, String requestType, String title, float price, String description, LocalDate postDate, int count, String category, SellerDAO seller, String code) {
         this.dateReceived = dateReceived;
         this.status = status;
         this.requestType = requestType;

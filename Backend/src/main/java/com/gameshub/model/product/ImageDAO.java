@@ -13,6 +13,6 @@ public class ImageDAO {
     @Column(name = "ID")
     private int id;
 
-    @Column(name = "image")
-    private byte[] image;
+    @Column(name = "url")
+    private String url;
 }

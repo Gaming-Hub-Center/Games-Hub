@@ -1,15 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import './NavBarAdmin.css'; // Make sure you have the CSS file for styling
+import './NavBarAdmin.css';
+import { clearCurrentSession, getName } from '../../CurrentSession';
 
 const NavBarAdmin = () => {
   const navigate = useNavigate();
-  const adminName = "Admin Name"; // Replace with dynamic admin name if needed
-
+  const adminName = getName(); 
   const handleSignOut = () => {
-    // Perform sign out logic here
-    console.log('Signing out');
-
-    // Redirect to sign-in page or root after sign out
+    clearCurrentSession()
     navigate('/signin');
   };
 

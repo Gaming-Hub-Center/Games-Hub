@@ -38,10 +38,11 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/registration/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/product/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/admin/approve-product/create")).permitAll()  //TODO Remove
-                        .requestMatchers(new AntPathRequestMatcher("/product-request/**")).permitAll()  //TODO Remove
                         .requestMatchers(new AntPathRequestMatcher("/cart/**")).permitAll()  //TODO Remove
                         .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/seller/**")).permitAll()  //TODO Remove
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()  //TODO Remove
+                        .requestMatchers(new AntPathRequestMatcher("/seller/request/create/physical")).permitAll()
                         .anyRequest().authenticated());
 //                .oauth2Login(Customizer.withDefaults());
 

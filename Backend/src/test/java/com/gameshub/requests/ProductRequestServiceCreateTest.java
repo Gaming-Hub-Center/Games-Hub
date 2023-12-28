@@ -5,8 +5,10 @@ import com.gameshub.controller.DTO.request.PhysicalProductRequestDTO;
 import com.gameshub.exception.ResourceAlreadyFoundException;
 import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
+import com.gameshub.model.request.image.PhysicalProductRequestImage;
 import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.request.DigitalProductRequestRepository;
+import com.gameshub.repository.request.PhysicalProductRequestImageRepository;
 import com.gameshub.repository.request.PhysicalProductRequestRepository;
 import com.gameshub.repository.user.SellerRepository;
 import com.gameshub.service.request.ProductRequestService;
@@ -18,6 +20,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -41,6 +44,9 @@ class ProductRequestServiceCreateTest {
 
     @Autowired
     private ProductRequestService productRequestService;
+
+    @Autowired
+    private PhysicalProductRequestImageRepository physicalProductRequestImageRepository;
 
     @BeforeEach
     public void setup() {
@@ -327,5 +333,29 @@ class ProductRequestServiceCreateTest {
 
         assertThat(exception.getMessage(), containsString("Unsupported request type"));
     }
+
+//    @Test
+//    public void whenSavingProductRequestWithoutImages_thenSaveSuccessfully() {
+//        // Arrange: Create a DTO without images
+//        PhysicalProductRequestDTO requestDTO = new PhysicalProductRequestDTO();
+//        // populate the DTO with your data but leave the image list empty or null
+//
+//        // Act: Save the product request
+//        productRequestService.saveProductRequest(requestDTO);
+//
+//        // Assert: Fetch the saved request from the database and verify it has no images
+//        PhysicalProductRequestDAO savedRequest = physicalProductRequestRepository.findById(requestDTO.getId()).orElse(null);
+//        assertNotNull(savedRequest);
+//        assertEquals(requestDTO.getTitle(), savedRequest.getTitle());
+//        // ... perform other assertions as necessary ...
+//
+//        // Verify that no images are associated with the saved request
+//        List<PhysicalProductRequestImage> images = physicalProductRequestImageRepository.findByPhysicalProductRequest_Id(savedRequest.getId());
+//        assertTrue(images.isEmpty());
+//
+//        // Cleanup: Remove the test data if necessary
+//        // Depending on your database setup, you may want to remove the inserted data to maintain a clean state
+//    }
+
 
 }

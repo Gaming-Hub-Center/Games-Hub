@@ -1,98 +1,162 @@
 import React, { useState, useEffect } from 'react';
 import './PendingProducts.css'
-import { ProductDTO } from '../../Controller/DTO/ProductDTO/ProductDTO';
 import { FaInfoCircle, FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
+import ProductDetailsModal from './ProductModal';
+import { httpRequest } from '../../Controller/HttpProxy';
+import { ProductRequestDTO } from '../../Controller/DTO/request-dto/ProductRequestDTO';
 
-  type PendingProductsProps = {
-    productType: 'physical' | 'digital';
+type PendingProductsProps = {
+  productType: 'physical' | 'digital';
+  iconVisibility: {
+    showApprove: boolean;
+    showDecline: boolean;
+    showDetails: boolean;
+  };
+  status: 'Pending' | 'Approved' | 'Declined';
+};
+
+const AdminProductsComponent: React.FC<PendingProductsProps> = ({ productType, iconVisibility, status }) => {
+  const [products, setProducts] = useState<ProductRequestDTO[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProductDetails, setSelectedProductDetails] = useState<ProductRequestDTO | null>(null);
+  const pageSize = 18;
+  const [paginatedProducts, setPaginatedProducts] = useState<ProductRequestDTO[]>([]);
+  
+  //------------------ Pagination --------------------------------------
+  useEffect(() => {
+    const firstPageIndex = (currentPage - 1) * pageSize;
+    const lastPageIndex = firstPageIndex + pageSize;
+    setPaginatedProducts(products.slice(firstPageIndex, lastPageIndex));
+  }, [currentPage, products]);
+
+  const goToPreviousPage = () => setCurrentPage(currentPage => Math.max(1, currentPage - 1));
+  const goToNextPage = () => setCurrentPage(currentPage => Math.min(totalPages, currentPage + 1));
+
+  const totalPages = Math.ceil(products.length / pageSize);
+  //------------------ End Of Pagination ----------------------------------
+
+  const fetchProducts = async (productType, page, status) => {
+    const url = "/admin/products";
+  
+    const requestData = {
+      productType: productType,
+      status: status
+    };
+  
+    httpRequest("GET", url, null, requestData)
+      .then((response) => {
+        setProducts(response.data); 
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        setLoading(false);
+      });
   };
 
-  const fetchProducts = (productType: 'physical' | 'digital', page: number): Promise<ProductDTO[]> => {
-    // Replace with actual data fetching logic based on productType
-    return new Promise(resolve => {
-      setTimeout(() => {
-        const products: ProductDTO[] = Array.from({ length: 20 }, (_, index): ProductDTO => {
-          return {
-            id: page * 10 + index,
-            price: Math.random() * 100, // Mock price
-            description: `${productType === 'physical' ? 'Physical' : 'Digital'} product description`,
-            title: `${productType === 'physical' ? 'Physical' : 'Digital'} Product ${page * 20 + index}`,
-            count: Math.floor(Math.random() * 100), // Mock count
-            sellerID: Math.floor(Math.random() * 1000), // Mock seller ID
-            created_date: new Date().toISOString(),
-            category: productType === 'physical' ? 'Electronics' : 'Software', // Example categories
-            images: [`/images/${productType}_product_${index}.jpg`], // Mock images
-            code: `CODE${page * 10 + index}` // Mock code
-          };
-        });
-        resolve(products);
-      }, 1000);
+  useEffect(() => {
+    setLoading(true); // Start loading
+    fetchProducts(productType, currentPage, status);
+  }, [productType, currentPage, status]);
+
+  
+  const handleApprove = (product) => {
+    console.log(product)
+    console.log(`Product ${product.id} approved.`);
+
+    const requestData = {
+      productType: productType,
+      requestId: product.id
+    };
+
+    console.log(requestData)
+
+    httpRequest("GET", "/admin/approve", null, requestData)
+    .then((response) => {
+      setProducts(response.data);
+    })
+    .catch((error) => {
+      console.error("Error Approving Products", error);
+    });
+  
+  };
+  
+  const handleDecline = (product) => {
+    console.log(product)
+    console.log(`Product ${product.id} approved.`);
+
+    const requestData = {
+      productType: productType,
+      requestId: product.id
+    };
+
+    console.log(requestData)
+
+    httpRequest("GET", "/admin/decline", null, requestData)
+    .then((response) => {
+      setProducts(response.data);
+    })
+    .catch((error) => {
+      console.error("Error Declining Products", error);
     });
   };
-  
-  // Dummy handler functions - Replace these with your actual logic
-    const handleApprove = (productId) => {
-        console.log(`Product ${productId} approved.`);
-        // Add your logic to handle approval
-    };
-    
-    const handleDecline = (productId) => {
-        console.log(`Product ${productId} declined.`);
-        // Add your logic to handle decline
-    };
-    
-    const handleShowDetails = (productId) => {
-        console.log(`Show details for Product ${productId}.`);
-        // Add your logic to show details
-    };
-    
 
-  const PendingProductsComponent: React.FC<PendingProductsProps> = ({ productType }) => {
-    const [products, setProducts] = useState<ProductDTO[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [loading, setLoading] = useState(false);
-  
-    useEffect(() => {
-      setLoading(true);
-      fetchProducts(productType, currentPage)
-        .then(fetchedProducts => {
-          setProducts(fetchedProducts);
-          setLoading(false);
-        });
-    }, [productType, currentPage]);
-  
-    return (
-      <div>
-        <h2>{productType === 'physical' ? 'Physical' : 'Digital'} Pending Products</h2>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <div>
-            {products.map(product => (
-              <div key={product.id} className="admin-pending-product-row">
-                <span>{product.title}</span>
-                <span>{new Date(product.created_date).toLocaleDateString()}</span>
-                <div>
-                    <FaThumbsUp className="approve-icon" onClick={() => handleApprove(product.id)} />
-                    <FaThumbsDown className="decline-icon" onClick={() => handleDecline(product.id)} />
-                    <FaInfoCircle className="details-icon" onClick={() => handleShowDetails(product.id)} />
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-  
-        <div className="admin-pagination">
-          <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span>Page {currentPage}</span>
-          <button onClick={() => setCurrentPage(currentPage + 1)}>
-            Next
-          </button>
-        </div>
-      </div>
-    );
+  const handleShowDetails = (product: ProductRequestDTO) => {
+    setSelectedProductDetails(product);
+    setIsModalOpen(true);
   };
+
+  const handleCloseModal = () => {
+      setIsModalOpen(false);
+      setSelectedProductDetails(null);
+  };
+
+  return (
+    <div>
+      <h2>{productType === 'physical' ? 'Physical' : 'Digital'} {status} Products</h2>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          {paginatedProducts.map(product => (
+            <div key={product.id} className="admin-pending-product-row">
+              <span>{product.title}</span>
+              <span>
+                {(status === 'Pending' || status === 'Declined') ? 
+                new Date(product.dateReceived).toLocaleDateString() : 
+                new Date(product.postDate).toLocaleDateString()}
+              </span>
+              <div>
+                {iconVisibility.showApprove && <FaThumbsUp className="approve-icon" onClick={() => handleApprove(product)} />}
+                {iconVisibility.showDecline && <FaThumbsDown className="decline-icon" onClick={() => handleDecline(product)} />}
+                {iconVisibility.showDetails && (
+                  <FaInfoCircle className="details-icon" onClick={() => handleShowDetails(product)} />
+                )}                  
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
   
-  export default PendingProductsComponent;
+      <ProductDetailsModal 
+        product={selectedProductDetails} 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal}
+      />
+  
+      <div className="admin-pagination">
+        <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button onClick={goToNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default AdminProductsComponent;
