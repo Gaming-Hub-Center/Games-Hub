@@ -5,6 +5,7 @@ import { ProductCard } from "../../../Components/ProductCard";
 import "./PaginationC.css";
 import {httpRequest} from "../../../Controller/HttpProxy";
 import Button from "react-bootstrap/Button";
+import {setCurrentProductPage} from "../../../CurrentSession";
 
 export function HomeAccessories() {
 
@@ -16,6 +17,7 @@ export function HomeAccessories() {
 
   // Fetch all products when the component mounts
   useEffect(() => {
+    setCurrentProductPage("Physical")
     const fetchData = async () => {
       const products = await fetchAllProducts();
       setProductCardPropsList(products); // Update state with fetched data

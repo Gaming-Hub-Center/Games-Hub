@@ -1,7 +1,7 @@
 package com.gameshub.controller.order;
 
 import com.gameshub.controller.DTO.order.*;
-import com.gameshub.repository.order.*;
+import com.gameshub.model.order.*;
 import com.gameshub.service.order.*;
 import lombok.*;
 import org.springframework.http.*;
@@ -28,18 +28,9 @@ public class OrderController {
         return ResponseEntity.ok("Ordered Successfully!");
     }
 
-    // ------------- Testing ------------- //
-
-//    @GetMapping("orders")
-//    public ResponseEntity<List<OrderDAO>> getAllOrders() {
-//        return ResponseEntity.ok(orderRepository.findAll());
-//    }
-//
-//    @GetMapping("physical/orders")
-//    public ResponseEntity<List<PhysicalOrderItemDAO>> getAllPhysicalOrders() {
-//        return ResponseEntity.ok(physicalOrderItemRepository.findAll());
-//    }
-
-    // ------------- Testing ------------- //
+    @GetMapping("/orders/{buyerId}")
+    public ResponseEntity<List<OrderDAO>> getOrders(@PathVariable("buyerId") int buyerId) {
+        return ResponseEntity.ok(orderService.getOrders(buyerId));
+    }
 
 }

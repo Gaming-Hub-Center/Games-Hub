@@ -4,6 +4,8 @@ import com.gameshub.controller.DTO.user.*;
 import com.gameshub.model.user.*;
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
@@ -13,10 +15,18 @@ public interface UserMapper {
 
     SellerDTO toUserDTO(SellerDAO sellerDAO);
 
+    AdminDTO toAdminDTO(AdminDAO adminDAO);
+
+    List<AdminDTO> toAdminDTOList(List<AdminDAO> adminDAOs);
+
     @Mapping(target = "password", ignore = true)
     BuyerDAO toUserDAO(BuyerRegistrationDTO buyerRegistrationDTO);
 
     @Mapping(target = "password", ignore = true)
     SellerDAO toUserDAO(SellerRegistrationDTO sellerRegistrationDTO);
+
+    List<BuyerDTO> toBuyerDTOList(List<BuyerDAO> buyerDAOs);
+
+    List<SellerDTO> toSellerDTOList(List<SellerDAO> sellerDAOs);
 
 }

@@ -9,6 +9,7 @@ import lombok.*;
 import org.springframework.http.*;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.*;
+import org.springframework.security.core.annotation.*;
 import org.springframework.security.core.context.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,19 @@ public class AuthenticationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.createToken(authentication.getName());
         UserDAO userDAO = userService.getByEmail(authentication.getName());
+        UserDTO userDTO = userMapper.toUserDTO(userDAO);
+        userDTO.setToken(token);
+
+        return ResponseEntity.ok(userDTO);
+    }
+
+    @GetMapping("user")
+    public ResponseEntity<UserDTO> getUser(@AuthenticationPrincipal UserDAO userDAO) {
+        System.out.println();
+        if (userDAO == null)
+            return ResponseEntity.notFound().build();
+
+        String token = jwtGenerator.createToken(userDAO.getEmail());
         UserDTO userDTO = userMapper.toUserDTO(userDAO);
         userDTO.setToken(token);
         return ResponseEntity.ok(userDTO);
