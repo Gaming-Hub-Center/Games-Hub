@@ -115,6 +115,47 @@ INSERT INTO `DigitalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Coun
 ('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 4, 2, 'Mobile Gaming', 'EQ003', '2023-12-08');
 
 
+INSERT INTO `digital_product_image` (`url`, `digital_product_id`) VALUES
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764800/Games-Hub/wp883347-grand-theft-auto-v-wallpapers_kddzzs.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764800/Games-Hub/wp883347-grand-theft-auto-v-wallpapers_kddzzs.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764800/Games-Hub/wp883347-grand-theft-auto-v-wallpapers_kddzzs.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 11),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 11),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 12),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 12),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 13),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 13),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 14),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 15);
+
+
 -- -----------------------------------------------------
 -- Inserting dummy data into `PhysicalCart`
 -- -----------------------------------------------------
