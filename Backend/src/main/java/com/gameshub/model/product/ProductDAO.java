@@ -1,7 +1,8 @@
 package com.gameshub.model.product;
 
-import lombok.*;
+
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.*;
 

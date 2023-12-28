@@ -10,9 +10,10 @@ import {getId} from "../../CurrentSession";
 import AdminProductsComponent from '../../Components/admin/PendingProducts';
 
 // Define a type for the valid section keys
-type Section =  'Pending Physical Products' | 'Pending Digital Products' | 
-                'Approved Physical Products' | 'Approved Digital Products' | 'Admins' |
-                'Declined Physical Products' | 'Declined Digital Products' | 'Buyers' | 'Sellers';
+type Section =   'Pending Physical Products' |  'Pending Digital Products' | 
+                'Approved Physical Products' | 'Approved Digital Products' |
+                'Declined Physical Products' | 'Declined Digital Products' |
+                'Buyers' | 'Sellers' | 'Admins';
 
 // Define a type for the sections data with the above keys
 type SectionsData = {
@@ -97,7 +98,6 @@ const HomePageAdmin = () => {
         </aside>`
 
         <section className="admin-content">
-          {/* TypeScript now understands that activeSection can only be a key from sectionsData */}
           {sectionsData[activeSection]}
         </section>
       </div>

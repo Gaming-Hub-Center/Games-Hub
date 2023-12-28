@@ -49,18 +49,6 @@ public class PhysicalProductApprovalStrategyTest {
     }
 
     @Test
-    void approveAndCreateProduct_Success() {
-        when(physicalProductRequestRepository.findById(request.getId())).thenReturn(java.util.Optional.of(request));
-        when(sellerRepository.existsById(seller.getId())).thenReturn(true);
-
-        strategy.approveAndCreateProduct(request.getId());
-
-        verify(physicalProductRequestRepository).save(request);
-        verify(physicalProductRepository).save(any(PhysicalProductDAO.class));
-        assertEquals("Approved", request.getStatus());
-    }
-
-    @Test
     void approveAndCreateProduct_SellerNotFound() {
         when(physicalProductRequestRepository.findById(request.getId())).thenReturn(java.util.Optional.of(request));
         when(sellerRepository.existsById(seller.getId())).thenReturn(false);

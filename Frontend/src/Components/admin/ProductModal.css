@@ -1,4 +1,3 @@
-/* Style for the modal */
 .admin-modal-overlay {
   position: fixed;
   top: 0;
@@ -58,12 +57,12 @@
 }
 
 .admin-modal-content .product-image-thumbnail {
-  width: 100px; /* Fixed width for thumbnails */
-  height: 100px; /* Fixed height for thumbnails */
-  margin: 10px; /* Space around thumbnails */
-  object-fit: cover; /* Ensure the images cover the area without distorting */
-  border-radius: 4px; /* Optional: rounded corners for aesthetics */
-  cursor: pointer; /* Indicate that the thumbnails are clickable */
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .admin-modal-content .product-image-thumbnail:hover {

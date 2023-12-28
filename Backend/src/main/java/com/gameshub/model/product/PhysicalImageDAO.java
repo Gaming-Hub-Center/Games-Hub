@@ -14,9 +14,9 @@ public class PhysicalImageDAO extends ImageDAO {
     @Column(name = "physical_product_id")
     int product_id;
 
-    public PhysicalImageDAO(int id, byte[] image, int product_id) {
+    public PhysicalImageDAO(int id, String image, int product_id) {
         setId(id);
-        setImage(image);
+        setUrl(image);
         this.product_id = product_id;
     }
 }

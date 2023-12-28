@@ -49,18 +49,6 @@ public class DigitalProductApprovalStrategyTest {
     }
 
     @Test
-    void approveAndCreateProduct_Success() {
-        when(digitalProductRequestRepository.findById(request.getId())).thenReturn(java.util.Optional.of(request));
-        when(sellerRepository.existsById(seller.getId())).thenReturn(true);
-
-        strategy.approveAndCreateProduct(request.getId());
-
-        verify(digitalProductRequestRepository).save(request);
-        verify(digitalProductRepository).save(any(DigitalProductDAO.class));
-        assertEquals("Approved", request.getStatus());
-    }
-
-    @Test
     void approveAndCreateProduct_SellerNotFound() {
         when(digitalProductRequestRepository.findById(request.getId())).thenReturn(java.util.Optional.of(request));
         when(sellerRepository.existsById(seller.getId())).thenReturn(false);

@@ -1,5 +1,3 @@
-/* CatalogRequestForm.css */
-
 .form-container {
     max-width: 500px;
     margin: 0 auto;
@@ -31,7 +29,7 @@
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box; /* For IE and modern versions of Chrome */
+    box-sizing: border-box;
   }
   
   .form-input:focus,
@@ -58,11 +56,9 @@
     background-color: #6a45b8;
   }
   
-  /* YourComponent.css */
-
 .error-message {
-  color: red; /* Change the color to red (or any other color you prefer) */
-  font-size: 16px; /* Set the font size */
+  color: red; 
+  font-size: 16px;
 }
 
 .loading-indicator {

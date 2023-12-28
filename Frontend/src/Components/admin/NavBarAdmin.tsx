@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import './NavBarAdmin.css'; // Make sure you have the CSS file for styling
+import './NavBarAdmin.css';
 import { clearCurrentSession, getName } from '../../CurrentSession';
 
 const NavBarAdmin = () => {

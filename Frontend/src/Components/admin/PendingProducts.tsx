@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './PendingProducts.css'
-import { ProductDTO } from '../../Controller/DTO/ProductDTO/ProductDTO';
 import { FaInfoCircle, FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 import ProductDetailsModal from './ProductModal';
 import { httpRequest } from '../../Controller/HttpProxy';

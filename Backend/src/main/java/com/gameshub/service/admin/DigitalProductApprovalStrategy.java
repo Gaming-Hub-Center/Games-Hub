@@ -3,6 +3,8 @@ package com.gameshub.service.admin;
 import com.gameshub.exception.*;
 import com.gameshub.model.product.*;
 import com.gameshub.model.request.*;
+import com.gameshub.model.request.image.DigitalProductRequestImage;
+import com.gameshub.model.request.image.PhysicalProductRequestImage;
 import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.product.*;
 import com.gameshub.repository.request.*;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.*;
 import org.springframework.stereotype.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Component
@@ -21,6 +24,8 @@ public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
     private final DigitalProductRequestRepository digitalProductRequestRepository;
     private final DigitalProductRepository digitalProductRepository;
     private final SellerRepository sellerRepository;
+    private final DigitalProductRequestImageRepository digitalProductRequestImageRepository;
+    private final DigitalImageRepository digitalImageRepository;
 
     @Override
     @Transactional
@@ -31,7 +36,16 @@ public class DigitalProductApprovalStrategy implements ProductApprovalStrategy {
         request.setPostDate(LocalDate.now());
         DigitalProductDAO newProduct = mapToProductDAO(request);
         digitalProductRequestRepository.save(request);
-        digitalProductRepository.save(newProduct);
+        DigitalProductDAO savedProduct = digitalProductRepository.save(newProduct);
+
+        List<DigitalProductRequestImage> requestImages = digitalProductRequestImageRepository.findByDigitalProductRequest_Id(requestId);
+        // Map and save the images to the image repository
+        for (DigitalProductRequestImage requestImage : requestImages) {
+            DigitalImageDAO newImageDAO = new DigitalImageDAO();
+            newImageDAO.setUrl(requestImage.getImageUrl());
+            newImageDAO.setProduct_id(savedProduct.getId());
+            digitalImageRepository.save(newImageDAO);
+        }
     }
 
     private void validateSellerExists(SellerDAO seller) {

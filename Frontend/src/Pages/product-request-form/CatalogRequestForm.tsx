@@ -100,25 +100,40 @@ const CatalogRequestForm: React.FC = () => {
     console.log("Updated product type: ", productType); // This will log the current product type
   
     if (productType === 'physical') {
-      setCategories(['Physical Category 1', 'Physical Category 2']);
+      setCategories([
+        'Consoles',
+        'Accessories',
+        'Merchandise',
+        'Gaming Furniture',
+        'Physical Games',
+        'PC Hardware',
+        'Virtual Reality (VR)'
+      ]);
     } else if (productType === 'digital') {
-      setCategories(['Digital Category 1', 'Digital Category 2']);
+      setCategories([
+        'Digital Games',
+        'Game Subscriptions',
+        'Software and Utilities',
+        'Mobile Gaming',
+        'E-Books and Guides',
+        'Online Tournaments and Events'
+      ]);
     }
+    
   }, [productType]);
   
   const handleProductTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedProductType = e.target.value; // 'physical' or 'digital'
-    console.log("Selected product type: ", selectedProductType); // Add this line to check the selected value
+    const selectedProductType = e.target.value; 
+    console.log("Selected product type: ", selectedProductType); 
     setProductType(selectedProductType as 'physical' | 'digital');
   };  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     
-    // Prevent negative values for 'count' and 'price'
     if (name === "count" || name === "price") {
         const numericValue = parseFloat(value);
-        if (numericValue < 0) return; // Don't update the state if the value is negative
+        if (numericValue < 0) return;
     }
 
     console.log(digitalProductRequest.description)
@@ -161,7 +176,7 @@ const uploadImage = async () => {
     return;
   }
 
-  setIsUploading(true); // Start loading
+  setIsUploading(true); 
   
   const formData = new FormData();
   formData.append("file", imageFile);
@@ -188,16 +203,12 @@ const uploadImage = async () => {
     return uploadResponse.data;
   } catch (error) {
     if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
       console.error(error.response.data);
       console.error(error.response.status);
       console.error(error.response.headers);
     } else if (error.request) {
-      // The request was made but no response was received
       console.error(error.request);
     } else {
-      // Something happened in setting up the request that triggered an Error
       console.error('Error', error.message);
     }
     throw error;
@@ -232,10 +243,9 @@ const handleSubmit = async (e: React.FormEvent) => {
       const url = uploadResult.secure_url
       console.log(uploadResult)
       
-      // Set the image URL in the request payload
       const requestPayload = productType === 'physical' 
-        ? { ...physicalProductRequest, images: [url] } // Adjust this line to match how your API expects images
-        : { ...digitalProductRequest, images: [url] }; // Adjust this line accordingly for digital products
+        ? { ...physicalProductRequest, images: [url] }
+        : { ...digitalProductRequest, images: [url] }; 
       
       // Proceed to submit the request payload
       await submitRequestPayload(requestPayload);
@@ -324,17 +334,12 @@ const submitRequestPayload = async (requestPayload) => {
                 sx={VisuallyHiddenStyle}
                 type="file"
                 onChange={handleFileChange}
-                inputProps={{ multiple: true }} // if you want to upload multiple files
+                inputProps={{ multiple: true }} 
             />
           </Button>
           {uploadedFileName && (
             <div>
                 {uploadedFileName}
-            </div>
-          )}
-          {isUploading && (
-            <div className="loading-indicator">
-              Uploading image, please wait...
             </div>
           )}
         </label>
@@ -391,6 +396,11 @@ const submitRequestPayload = async (requestPayload) => {
         <button type="submit" className="form-button" disabled={isUploading}>
           Submit
         </button>
+        {isUploading && (
+            <div className="loading-indicator">
+              Processing, please wait...
+            </div>
+          )}
       </form>
     </div>
   );
