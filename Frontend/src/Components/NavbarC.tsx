@@ -6,12 +6,17 @@ import React, {SetStateAction, useCallback, useState} from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import {getCurrentProductPage, noCurrentSession} from "../CurrentSession";
+import {clearCurrentSession, getCurrentProductPage, noCurrentSession} from "../CurrentSession";
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
 
+  const handleLogOut = () => {
+      clearCurrentSession();
+    setTimeout(() => {
+      }, 100);
+  };
 
   const handleSearchTextChange = (event: {
         target: { value: SetStateAction<string> };
@@ -184,7 +189,21 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
                       }}
                   >
                       Profile
-                  </Nav.Link></>}
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={handleLogOut}
+                    as={NavLink}
+                    to="/"
+                    style={{
+                        marginTop: "3px",
+                        marginRight: "10px",
+                        borderRadius: "50px",
+                    }}
+                  >
+                    Log Out
+                  </Nav.Link>
+                  
+                  </>}
                 </Nav>
             </Container>
         </Navbar>

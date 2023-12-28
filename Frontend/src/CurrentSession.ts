@@ -72,5 +72,5 @@ export const clearCurrentSession = () => {
 };
 
 export const noCurrentSession = () => {
-    return window.sessionStorage == null;
+    return getJwtToken() === null || getJwtToken() === "null";
   };
