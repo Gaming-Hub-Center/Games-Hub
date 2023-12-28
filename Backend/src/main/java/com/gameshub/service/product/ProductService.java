@@ -193,4 +193,16 @@ public class ProductService {
 //        }
 //    }
 
+    public void decreasePhysicalProductCount(int productID, int count) {
+        PhysicalProductDAO productDAO = getPhysicalProductByProductID(productID);
+        productDAO.setCount(productDAO.getCount() - count);
+        physicalProductRepository.save(productDAO);
+    }
+
+    public void decreaseDigitalProductCount(int productID, int count) {
+        DigitalProductDAO productDAO = getDigitalProductByProductID(productID);
+        productDAO.setCount(productDAO.getCount() - count);
+        digitalProductRepository.save(productDAO);
+    }
+
 }

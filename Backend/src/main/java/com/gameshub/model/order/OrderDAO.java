@@ -13,10 +13,11 @@ import java.util.*;
 @Table(name = "`order`")
 public class OrderDAO {
 
-    public OrderDAO(BuyerDAO buyerDAO, LocalDate orderDate, float orderPrice, String orderStatus) {
-        this.buyerDAO = buyerDAO;
+    public OrderDAO(int buyerId, LocalDate orderDate, float orderPrice, String paymentMethod, String orderStatus) {
+        this.buyerId = buyerId;
         this.orderDate = orderDate;
         this.orderPrice = orderPrice;
+        this.paymentMethod = paymentMethod;
         this.orderStatus = orderStatus;
     }
 
@@ -25,15 +26,17 @@ public class OrderDAO {
     @Column(name = "Id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "Buyerid")
-    private BuyerDAO buyerDAO;
+    @Column(name = "Buyerid")
+    private int buyerId;
 
     @Column(name = "Orderdate")
     private LocalDate orderDate;
 
     @Column(name = "Orderprice")
     private float orderPrice;
+
+    @Column(name = "Paymentmethod")
+    private String paymentMethod;
 
     @Column(name = "Orderstatus")
     private String orderStatus;

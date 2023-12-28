@@ -1,5 +1,6 @@
 package com.gameshub.config;
 
+import com.gameshub.exception.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import lombok.*;
@@ -32,8 +33,11 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         }
-
-        filterChain.doFilter(httpServletRequest, httpServletResponse);
+        try {
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
+        } catch (Exception exception) {
+            throw new NotAuthorizedException("Invalid token");
+        }
     }
 
 }

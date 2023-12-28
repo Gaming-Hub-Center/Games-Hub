@@ -30,4 +30,6 @@ public interface DigitalProductRequestRepository extends JpaRepository<DigitalPr
     @Query(value = "ALTER TABLE digitalproductrequest ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
     void resetAutoIncrement();
 
+    List<DigitalProductRequestDAO> findByStatus(String status);
+
 }

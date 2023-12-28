@@ -1,11 +1,12 @@
-import {Form, NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Button, Col, Container, FormControl, Image } from "react-bootstrap";
-import React, { SetStateAction, useState } from "react";
+import React, {SetStateAction, useCallback, useState} from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {getCurrentProductPage} from "../CurrentSession";
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
   const [searchText, setSearchText] = useState("");
@@ -35,7 +36,8 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
     };
 
   function goToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    navigate("/digital-cart");
+    const path = getCurrentProductPage() === 'Physical' ? '/physical-cart' : '/digital-cart'
+    navigate(path);
   }
 
   return (

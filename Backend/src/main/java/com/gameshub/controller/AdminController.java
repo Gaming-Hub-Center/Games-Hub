@@ -4,6 +4,7 @@ import com.gameshub.controller.DTO.ProductBriefDTO;
 import com.gameshub.controller.DTO.user.AdminDTO;
 import com.gameshub.controller.DTO.user.BuyerDTO;
 import com.gameshub.controller.DTO.user.SellerDTO;
+import com.gameshub.service.admin.AdminProductsService;
 import com.gameshub.service.user.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,13 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
     private final AdminService adminService;
+    private final AdminProductsService productRequestApproveService;
+
+    @PostMapping("/approve-product/create")
+    public ResponseEntity<?> approveProductCreation(@RequestParam String productType, @RequestParam int requestId) {
+        productRequestApproveService.approveProductCreation(productType, requestId);
+        return ResponseEntity.ok("Product creation request approved successfully.");
+    }
 
     @GetMapping("/view/buyers")
     public ResponseEntity<List<BuyerDTO>> getAllBuyers() {
