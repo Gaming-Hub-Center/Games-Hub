@@ -41,7 +41,8 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
   }
 
   function goToWishlist(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    navigate("/digital-wishlist");
+    const path = getCurrentProductPage() === 'Physical' ? '/physical-wishlist' : '/digital-wishlist'
+    navigate(path);
   }
 
   return (

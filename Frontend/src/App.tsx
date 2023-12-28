@@ -19,23 +19,14 @@ import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProduc
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
 import PhysicalWishlist from "./Pages/Physical_wishList";
 import DigitalWishlist from "./Pages/Digital_wishList";
-
-import { SellerView } from "./Pages/Admin/SellerView";
-import { BuyerView } from "./Pages/Admin/BuyerView";
 import { SellerCatalogView } from "./Pages/Admin/SellerCatalogView";
 import {AdminView} from "./Pages/Admin/AdminView";
-
-
-
 import BuyerProfilePage from "./Pages/Profile-Page/buyer_profile_page";
 import SellerProfilePage from "./Pages/Profile-Page/seller_profile_page";
-
-
 import {SellerView} from "./Pages/Admin/SellerView";
 import {BuyerView} from "./Pages/Admin/BuyerView";
 import BuyerOrders from "./Pages/BuyerOrders";
-
-import HomePageAdmin from "./Pages/admin/AdminDashboard";
+import HomePageAdmin from "./Pages/Admin/AdminDashboard";
 
 
 
