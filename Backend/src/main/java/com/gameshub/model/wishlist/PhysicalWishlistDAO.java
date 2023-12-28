@@ -1,6 +1,5 @@
 package com.gameshub.model.wishlist;
 
-import com.gameshub.model.product.DigitalProductDAO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -22,5 +21,5 @@ public class PhysicalWishlistDAO extends WishlistDAO {
 
     @ManyToOne
     @JoinColumn(name = "Productid", insertable = false, updatable = false)
-    protected DigitalProductDAO product;
+    protected PhysicalWishlistDAO product;
 }
