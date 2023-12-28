@@ -33,11 +33,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         }
-        try {
-            filterChain.doFilter(httpServletRequest, httpServletResponse);
-        } catch (Exception exception) {
-            throw new NotAuthorizedException("Invalid token");
-        }
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 
 }

@@ -1,7 +1,6 @@
 package com.gameshub.controller.profile;
 
-import com.gameshub.controller.DTO.user.SellerDTO;
-import com.gameshub.controller.DTO.user.UserDTO;
+import com.gameshub.controller.DTO.user.*;
 import com.gameshub.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ public class UpdateProfileController {
     private final UserService userService;
 
     @PostMapping("/buyer")
-    public ResponseEntity<?> updateBuyerProfile(@RequestBody UserDTO updateBuyerDTO) {
+    public ResponseEntity<?> updateBuyerProfile(@RequestBody BuyerDTO updateBuyerDTO) {
         try {
             userService.updateBuyer(updateBuyerDTO.getId(),updateBuyerDTO.getName(),updateBuyerDTO.getEmail(),updateBuyerDTO.getPhone(), updateBuyerDTO.getAddress(), updateBuyerDTO.getBalance());
             return ResponseEntity.ok().body("Buyer profile updated successfully");

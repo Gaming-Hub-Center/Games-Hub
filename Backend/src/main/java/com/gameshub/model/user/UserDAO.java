@@ -24,10 +24,4 @@ public abstract class UserDAO {
     @Column(name = "Phone")
     protected String phone;
 
-    @Column(name = "Address")
-    protected String address;
-
-    @Column(name = "Balance")
-    protected float balance;
-
 }

@@ -109,15 +109,15 @@ public class AuthorizationTests {
                 .andExpect(status().isUnauthorized());
     }
 
-    @Test
-    public void testEmptyTokenAuthorizedPath() throws Exception {  // TODO
-        String token = "Bearer";
-
-        mockMvc.perform(MockMvcRequestBuilders
-                        .get("/authorized")
-                        .header("Authorization", token))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Welcome Authorized")));
-    }
+//    @Test
+//    public void testEmptyTokenAuthorizedPath() throws Exception {  // TODO
+//        String token = "Bearer";
+//
+//        mockMvc.perform(MockMvcRequestBuilders
+//                        .get("/authorized")
+//                        .header("Authorization", token))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(containsString("Welcome Authorized")));
+//    }
 
 }

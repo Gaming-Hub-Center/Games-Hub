@@ -34,7 +34,8 @@ const BuyerOrders = () => {
             description: item.id.digitalProductDAO.description,
             count: item.count,
             unitPrice: item.unitPrice,
-            totalPrice: item.totalPrice
+            totalPrice: item.totalPrice,
+            codes: item.codes
           }))}
           />
           ))

@@ -20,6 +20,7 @@ import { httpRequest } from "../../Controller/HttpProxy";
 import { UserDTO } from "../../Controller/DTO/user/UserDTO";
 import { clearCurrentSession, storeUserData } from "../../CurrentSession";
 import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
+import { GoogleSignUpButtonSeller } from "../../Components/googleAuthButtons/googleSignupSeller";
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
@@ -499,6 +500,7 @@ export function SignUpSeller() {
               Submit
             </Button>
           </div>
+          <GoogleSignUpButtonSeller />
           <div
               style={{ width: "100%", display: "flex", justifyContent: "center" }}
           >

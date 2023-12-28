@@ -41,32 +41,47 @@ export const getVatRegistrationNumber = () => {
     return window.sessionStorage.getItem("vatRegistrationNumber")
 }
 
-export const getJwtToken = () => {
-    return window.sessionStorage.getItem("jwtToken")
+export const getRole = () => {
+    return window.sessionStorage.getItem("role")
+}
+
+export const getToken = () => {
+    return window.sessionStorage.getItem("token")
+}
+
+function setSessionItem(key: string, value: any) {
+    if (value)
+        window.sessionStorage.setItem(key, value.toString());
 }
 
 export const storeUserData = (userDTO: UserDTO) => {
-    window.sessionStorage.setItem("id", userDTO.id.toString())
-    window.sessionStorage.setItem("name", userDTO.name)
-    window.sessionStorage.setItem("email", userDTO.email)
-    window.sessionStorage.setItem("phone", userDTO.phone)
-    window.sessionStorage.setItem("address", userDTO.address)
-    window.sessionStorage.setItem("balance", userDTO.balance.toString())
-    window.sessionStorage.setItem("nationalID", userDTO.nationalID)
-    window.sessionStorage.setItem("dateJoined", userDTO.dateJoined)
-    window.sessionStorage.setItem("sellerDescription", userDTO.sellerDescription)
-    window.sessionStorage.setItem("vatRegistrationNumber", userDTO.vatRegistrationNumber)
-    window.sessionStorage.setItem("jwtToken", userDTO.token)
+    setSessionItem("id", userDTO.id);
+    setSessionItem("name", userDTO.name);
+    setSessionItem("email", userDTO.email);
+    setSessionItem("phone", userDTO.phone);
+    setSessionItem("address", userDTO.address);
+    setSessionItem("balance", userDTO.balance);
+    setSessionItem("nationalID", userDTO.nationalID);
+    setSessionItem("dateJoined", userDTO.dateJoined);
+    setSessionItem("sellerDescription", userDTO.sellerDescription);
+    setSessionItem("vatRegistrationNumber", userDTO.vatRegistrationNumber);
+    setSessionItem("role", userDTO.role);
+    setSessionItem("token", userDTO.token);
 }
 
 export const setCurrentProductPage = (currentPage: string) => {
-    window.sessionStorage.setItem("currentPage", currentPage)
+    setSessionItem("currentPage", currentPage)
 }
 
 export const getCurrentProductPage = () => {
     return window.sessionStorage.getItem("currentPage")
+
 }
 
 export const clearCurrentSession = () => {
   window.sessionStorage.clear();
+};
+
+export const noCurrentSession = () => {
+    return getToken() === null || getToken() === "null";
 };

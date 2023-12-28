@@ -3,8 +3,11 @@ package com.gameshub.service.admin;
 import com.gameshub.exception.*;
 import com.gameshub.model.product.*;
 import com.gameshub.model.request.*;
+import com.gameshub.model.request.image.PhysicalProductRequestImage;
+import com.gameshub.model.user.SellerDAO;
 import com.gameshub.repository.product.*;
 import com.gameshub.repository.request.*;
+import com.gameshub.repository.user.SellerRepository;
 import com.sun.jdi.request.InvalidRequestStateException;
 import jakarta.transaction.*;
 import lombok.*;
@@ -13,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Component
@@ -20,18 +24,41 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
 
     private final PhysicalProductRequestRepository physicalProductRequestRepository;
     private final PhysicalProductRepository physicalProductRepository;
+    private final SellerRepository sellerRepository;
+    private final PhysicalProductRequestImageRepository physicalProductRequestImageRepository;
+    private final PhysicalImageRepository physicalImageRepository;
 
     @Override
     @Transactional
     public void approveAndCreateProduct(int requestId) {
-        PhysicalProductRequestDAO request = new PhysicalProductRequestDAO();
-        fetchAndValidateRequest(requestId);
+        // Fetch and validate the request first
+        PhysicalProductRequestDAO request = fetchAndValidateRequest(requestId);
+        validateSellerExists(request.getSeller());
         request.setStatus("Approved");
         request.setPostDate(LocalDate.now());
         PhysicalProductDAO newProduct = mapToProductDAO(request);
-        physicalProductRepository.save(newProduct);
-        HttpStatus.OK.value();
+        physicalProductRequestRepository.save(request);
+        PhysicalProductDAO savedProduct = physicalProductRepository.save(newProduct);
+        List<PhysicalProductRequestImage> requestImages = physicalProductRequestImageRepository.findByPhysicalProductRequest_Id(requestId);
+        // Map and save the images to the image repository
+        for (PhysicalProductRequestImage requestImage : requestImages) {
+            PhysicalImageDAO newImageDAO = new PhysicalImageDAO();
+            newImageDAO.setUrl(requestImage.getImageUrl());
+            newImageDAO.setProduct_id(savedProduct.getId());
+            physicalImageRepository.save(newImageDAO);
+        }
     }
+
+    private void validateSellerExists(SellerDAO seller) {
+        if(seller == null) {
+            throw new NullPointerException("No Seller");
+        }
+
+        if (!sellerRepository.existsById(seller.getId())) {
+            throw new ResourceNotFoundException("Seller not found with ID: " + seller.getId());
+        }
+    }
+
 
     private PhysicalProductRequestDAO fetchAndValidateRequest(int requestId) {
         PhysicalProductRequestDAO request = physicalProductRequestRepository.findById(requestId)
@@ -50,10 +77,6 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
         return product;
     }
 
-    private void mapToProductDAO(PhysicalProductRequestDAO request, PhysicalProductDAO product) {
-        copyRequestToProduct(request, product);
-    }
-
     private void copyRequestToProduct(PhysicalProductRequestDAO request, PhysicalProductDAO product) {
         // Update the product's fields with information from the request
         product.setTitle(request.getTitle());
@@ -62,11 +85,7 @@ public class PhysicalProductApprovalStrategy implements ProductApprovalStrategy{
         product.setCount(request.getCount());
         product.setCategory(request.getCategory());
         product.setPostDate(LocalDate.now());
-        try {
-            product.setSellerID(request.getSeller().getId());
-        } catch (NullPointerException e) {
-            System.out.println("NULL :(");
-        }
+        product.setSellerID(request.getSeller().getId());
         product.setCategory(request.getCategory());
     }
 

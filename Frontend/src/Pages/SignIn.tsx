@@ -12,6 +12,7 @@ import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
 import { UserDTO } from "../Controller/DTO/user/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
 import { clearCurrentSession, storeUserData } from "../CurrentSession";
+import { GoogleLoginButton } from "../Components/googleAuthButtons/googleLogin";
 
 export function SignIn() {
     const [validated, setValidated] = useState(false);
@@ -39,7 +40,12 @@ export function SignIn() {
                 const responseData = response.data as UserDTO
                 storeUserData(responseData)
                 setValidated(true)
-                navigate('/')
+                if (responseData.role === 'ADMIN')
+                  navigate('/admin/dashboard')
+                else if (responseData.role === 'SELLER')
+                  navigate('/seller/catalog')
+                else
+                  navigate('/')
                 console.log(responseData)
             })
             .catch((error) => {
@@ -176,30 +182,8 @@ export function SignIn() {
                         Submit
                     </Button>
                 </div>
-                {/* "Sign in with Google" button */}
-                <div
-                    className="mb-1"
-                    style={{ display: "flex", justifyContent: "center" }}
-                >
-                    <Button
-                        variant="danger"
-                        onClick={() => {
-                            // Handle Google Sign-In logic here
-                        }}
-                        style={{ width: "100%" }}
-                    >
-                        <FontAwesomeIcon
-                            icon={faGoogle}
-                            style={{
-                                color: "white",
-                                fontSize: "15px",
-                                marginRight: "10px",
-                                paddingRight: "5",
-                            }}
-                        />
-                        Sign in with Google
-                    </Button>
-                </div>
+                <GoogleLoginButton />
+                
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <p style={{ paddingRight: "10px" }}>Don't have an account? </p>
                     <Link to="/signup/buyer">Sign Up</Link>

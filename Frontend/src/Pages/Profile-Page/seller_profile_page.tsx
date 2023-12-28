@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getId, getName, getEmail, getPhone, getAddress, getBalance, getNationalID, getDateJoined,getSellerDescription, getVatRegistrationNumber } from '../../CurrentSession';
 import { httpRequest } from '../../Controller/HttpProxy';
+import { NavbarC } from '../../Components/NavbarC';
 
 interface SellerProfile {
   id: number;
@@ -25,57 +26,57 @@ const updateSessionStorage = (updatedFields) => {
 };
 
 const SellerProfileDetails: React.FC<{ profile: SellerProfile, onEdit: (field: keyof SellerProfile) => void }> = ({ profile, onEdit }) => {
-    return (
-      <div style={styles.details}>
-        <h2 style={styles.sectionTitle}>Profile Details</h2>
-  
-        <div style={styles.detailItem}>
-          <p><strong>ID:</strong> {profile.id}</p>
-        </div>
-  
-        <div style={styles.detailItem}>
-          <span><strong>Name:</strong> {profile.name}</span>
-          <button style={styles.editButton} onClick={() => onEdit('name')}>Edit</button>
-        </div>
-  
-        <div style={styles.detailItem}>
-          <span><strong>Email:</strong> {profile.email}</span>
-          <button style={styles.editButton} onClick={() => onEdit('email')}>Edit</button>
-        </div>
-  
-        <div style={styles.detailItem}>
-          <span><strong>Phone:</strong> {profile.phone}</span>
-          <button style={styles.editButton} onClick={() => onEdit('phone')}>Edit</button>
-        </div>
-  
-        <div style={styles.detailItem}>
-          <span><strong>Address:</strong> {profile.address}</span>
-          <button style={styles.editButton} onClick={() => onEdit('address')}>Edit</button>
-        </div>
-  
-        <div style={styles.detailItem}>
-          <span><strong>Seller Description:</strong> {profile.sellerDescription}</span>
-          <button style={styles.editButton} onClick={() => onEdit('sellerDescription')}>Edit</button>
-        </div>
-  
-        {/* Display non-editable fields without edit buttons */}
-        <div style={styles.detailItem}>
-          <p><strong>National ID:</strong> {profile.nationalID}</p>
-        </div>
-        
-        <div style={styles.detailItem}>
+  return (
+    <div style={styles.details}>
+      <h2 style={styles.sectionTitle}>Profile Details</h2>
+
+      <div style={styles.detailItem}>
+        <p><strong>ID:</strong> {profile.id}</p>
+      </div>
+
+      <div style={styles.detailItem}>
+        <span><strong>Name:</strong> {profile.name}</span>
+        <button style={styles.editButton} onClick={() => onEdit('name')}>Edit</button>
+      </div>
+
+      <div style={styles.detailItem}>
+        <span><strong>Email:</strong> {profile.email}</span>
+        <button style={styles.editButton} onClick={() => onEdit('email')}>Edit</button>
+      </div>
+
+      <div style={styles.detailItem}>
+        <span><strong>Phone:</strong> {profile.phone}</span>
+        <button style={styles.editButton} onClick={() => onEdit('phone')}>Edit</button>
+      </div>
+
+      <div style={styles.detailItem}>
+        <span><strong>Address:</strong> {profile.address}</span>
+        <button style={styles.editButton} onClick={() => onEdit('address')}>Edit</button>
+      </div>
+
+      <div style={styles.detailItem}>
+        <span><strong>Seller Description:</strong> {profile.sellerDescription}</span>
+        <button style={styles.editButton} onClick={() => onEdit('sellerDescription')}>Edit</button>
+      </div>
+
+      {/* Display non-editable fields without edit buttons */}
+      <div style={styles.detailItem}>
+        <p><strong>National ID:</strong> {profile.nationalID}</p>
+      </div>
+
+      <div style={styles.detailItem}>
         <p><strong>Date Joined:</strong> {profile.dateJoined.toLocaleDateString()}</p>
 
-        </div>
-  
-        <div style={styles.detailItem}>
-          <p><strong>VAT Registration Number:</strong> {profile.vatRegistrationNumber}</p>
-        </div>
-  
       </div>
-    );
-  };
-  
+
+      <div style={styles.detailItem}>
+        <p><strong>VAT Registration Number:</strong> {profile.vatRegistrationNumber}</p>
+      </div>
+
+    </div>
+  );
+};
+
 const SellerProfilePage: React.FC = () => {
   const [sellerProfile, setSellerProfile] = useState<SellerProfile>({
     id: getId(),
@@ -140,6 +141,7 @@ const SellerProfilePage: React.FC = () => {
 
   return (
     <div style={styles.page}>
+      <NavbarC productType="your_product_type" updateProductCardPropsList={() => {}} />
       <h1 style={styles.title}>Seller Profile</h1>
       <SellerProfileDetails profile={sellerProfile} onEdit={handleEdit} />
 
@@ -154,37 +156,38 @@ const SellerProfilePage: React.FC = () => {
 };
 
 const styles = {
-    page: {
-        display: 'flex' as 'flex',
-        flexDirection: 'column' as 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-start', // Adjust this for vertical alignment
-        height: '100vh',
-        backgroundColor: '#1a1a1a',
-        color: 'white',
-        fontFamily: 'Arial, sans-serif',
-        padding: '50px', // Reduced top padding
-      },
+  page: {
+    display: 'flex' as 'flex',
+    flexDirection: 'column' as 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start', // Adjust this for vertical alignment
+    height: '100vh',
+    backgroundColor: 'black',
+    color: 'white',
+    fontFamily: 'Arial, sans-serif',
+    padding: '0px', // Reduced top padding
+  },
   title: {
-    color: '#4CAF50',
+    color: '#733BC0',
     alignSelf: 'center',
     textAlign: 'center' as 'center',
     width: '100%',
     fontSize: '36px', // Increase font size for the title
     marginBottom: '30px', // Increase margin bottom to give more space below the title
+    padding: '10px', // Reduced top padding
   },
   details: {
     backgroundColor: '#333',
     borderRadius: '50px',
-    
+
     padding: '30px', // Increase padding inside the details box
     width: '100%',
     maxWidth: '800px', // Increase maxWidth to make the box wider
-    marginTop: '20px',
+    marginTop: '10px',
   },
-  
+
   sectionTitle: {
-    color: '#e91e63',
+    color: '#733BC0',
     fontSize: '30px', // Increase font size for section titles
   },
   detailItem: {
@@ -193,12 +196,12 @@ const styles = {
     alignItems: 'center',
     fontSize: '18px', // Increase font size for detail items
     marginBottom: '15px', // Increase spacing between detail items
-    // If you have a specific width in mind for your container, set it here, 
+    // If you have a specific width in mind for your container, set it here,
     // or else it will expand to the width of its parent container.
     width: '100%',
   },
   editButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#733BC0',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
@@ -230,7 +233,7 @@ const styles = {
   saveButton: {
     padding: '12px 20px', // Increase padding inside the save button
     fontSize: '16px', // Increase font size for button text
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#733BC0',
     color: 'white',
     border: 'none',
     borderRadius: '5px',

@@ -19,29 +19,65 @@ export interface cardProps {
 export function ProductCard({ id, title, description, url, price, productType }: cardProps) {
   const navigate = useNavigate();
 
-    function goToViewProduct(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-        navigate(`/buyer/productview/${id}`, {
-            state: { productType }
-        });
-    }
-
-  function addToCart(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  function goToViewProduct(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void {
+    navigate(`/buyer/productview/${id}`, {
+      state: { productType },
+    });
+  }
+
+  function addToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
     const cartDTO = {
       buyerID: getId(),
       productID: id,
-      count: 1
+      count: 1,
     };
-    const url = getCurrentProductPage() === 'Physical' ? '/cart/physical/addOrUpdate' : '/cart/digital/addOrUpdate'
-    httpRequest('post', url, cartDTO)
-      .then((response) => {
-        const count = response.data as number
-        console.log(count)
+    if(productType === "digital") {
+      httpRequest("post", "/cart/digital/addOrUpdate", cartDTO)
+      .then(() => {
+        alert("added successfully");
       })
-      .catch(error => {
-        console.error('Error updating cart item:', error);
+      .catch((error) => {
+        console.error("Error updating cart item:", error);
       });
+    }
+    else {
+      httpRequest("post", "/cart/physical/addOrUpdate", cartDTO)
+      .then(() => {
+        alert("added successfully");
+      })
+      .catch((error) => {
+        console.error("Error updating cart item:", error);
+      });
+    }
+  }
+
+  function addToWishlist(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    const wishlistDTO = {
+      buyerID: getId(),
+      productID: id,
+    };
+    if(productType === "digital") {
+      httpRequest("post", "/wishlist/digital/add", wishlistDTO)
+      .then(() => {
+        alert("added successfully");
+      })
+      .catch(() => {
+        alert("item is already added")
+      });
+    }
+    else {
+      httpRequest("post", "/wishlist/physical/add", wishlistDTO)
+      .then(() => {
+        alert("added successfully");
+      })
+      .catch((error) => {
+        alert("item is already added")
+      });
+    }
   }
 
   return (
@@ -69,13 +105,13 @@ export function ProductCard({ id, title, description, url, price, productType }:
       >
         <Card.Title className="d-flex justify-content-between align-items-baseline">
           <span
-              style={{
-                  overflow: "hidden",
-                  whiteSpace: "nowrap",
-                  textOverflow: "ellipsis",
-                  height: "2.6vh",
-                  display: "inline-block",
-              }}
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+              height: "2.6vh",
+              display: "inline-block",
+            }}
           >
             {title}
           </span>
@@ -133,6 +169,25 @@ export function ProductCard({ id, title, description, url, price, productType }:
             onClick={addToCart}
           >
             Add to cart
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "#733BC0",
+              color: "#f0f0f0",
+              borderColor: "#733BC0",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
+            onClick={addToWishlist}
+          >
+            Add to wishlist
           </Button>
         </div>
       </Card.Body>

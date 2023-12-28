@@ -25,9 +25,18 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final PhysicalOrderItemRepository physicalOrderItemRepository;
     private final DigitalOrderItemRepository digitalOrderItemRepository;
+    private final DigitalCodeRepository digitalCodeRepository;
 
     public List<OrderDAO> getOrders(int buyerID) {
-        return orderRepository.findByBuyerId(buyerID).reversed();
+        List<OrderDAO> orders =  orderRepository.findByBuyerId(buyerID).reversed();
+
+        for (OrderDAO order : orders)
+            for (DigitalOrderItemDAO item : order.getDigitalOrderItemDAOs()) {
+                List<DigitalCode> digitalCodes = digitalCodeRepository.findById_OrderIdAndId_ProductId(order.getId(), item.getId().getDigitalProductDAO().getId());
+                List<String> codeStrings = digitalCodes.stream().map(digitalCode -> digitalCode.getId().getCode()).toList();
+                item.setCodes(codeStrings);
+            }
+        return orders;
     }
 
     public void orderPhysical(int buyerID, boolean isWallet) {
@@ -37,7 +46,7 @@ public class OrderService {
 
         validateBuyerBalance(buyerID, isWallet, orderPrice);
         OrderDAO orderDAO = createOrder(buyerID, orderPrice, isWallet);
-        updatePhysicalOrderItemsWithOrderId(physicalOrderItemDAOs, orderDAO);
+        updatePhysicalOrderItemsWithOrderId(physicalOrderItemDAOs, orderDAO.getId());
         cartService.deletePhysicalCartItems(userService.getBuyerById(buyerID));
         updateBuyerBalance(buyerID, isWallet, orderPrice);
         updatePhysicalProductsCounts(physicalOrderItemDAOs);
@@ -77,9 +86,9 @@ public class OrderService {
         return orderPrice;
     }
 
-    private void updatePhysicalOrderItemsWithOrderId(List<PhysicalOrderItemDAO> physicalOrderItemDAOs, OrderDAO orderDAO) {
+    private void updatePhysicalOrderItemsWithOrderId(List<PhysicalOrderItemDAO> physicalOrderItemDAOs, int orderId) {
         for (PhysicalOrderItemDAO item : physicalOrderItemDAOs)
-            item.getId().setOrderId(orderDAO.getId());
+            item.getId().setOrderId(orderId);
         physicalOrderItemRepository.saveAll(physicalOrderItemDAOs);
     }
 
@@ -98,19 +107,21 @@ public class OrderService {
 
     public void orderDigital(int buyerID, boolean isWallet) {
         List<DigitalCartDAO> digitalCartDAOs = cartService.getDigitalCartItems(buyerID);
-        List<DigitalOrderItemDAO> digitalOrderItemDAOs = prepareOrderItems(digitalCartDAOs);
+        List<DigitalOrderItemDAO> digitalOrderItemDAOs = prepareDigitalOrderItems(digitalCartDAOs);
         float orderPrice = calculateTotalDigitalOrderPrice(digitalOrderItemDAOs);
 
         validateBuyerBalance(buyerID, isWallet, orderPrice);
         OrderDAO orderDAO = createOrder(buyerID, orderPrice, isWallet);
-        updateDigitalOrderItemsWithOrderId(digitalOrderItemDAOs, orderDAO);
+        updateDigitalOrderItemsWithOrderId(digitalOrderItemDAOs, orderDAO.getId());
         cartService.deleteDigitalCartItems(userService.getBuyerById(buyerID));
         updateBuyerBalance(buyerID, isWallet, orderPrice);
         updateDigitalProductsCounts(digitalOrderItemDAOs);
         updateDigitalSellersBalances(digitalOrderItemDAOs);
     }
 
-    private List<DigitalOrderItemDAO> prepareOrderItems(List<DigitalCartDAO> digitalCartDAOs) {
+    private List<DigitalOrderItemDAO> prepareDigitalOrderItems(List<DigitalCartDAO> digitalCartDAOs) {
+        if (digitalCartDAOs.isEmpty())
+            throw new BadRequestException("Sorry, your cart is empty!");
         List<DigitalOrderItemDAO> digitalOrderItemDAOs = new ArrayList<>();
         for (DigitalCartDAO cartProductItem : digitalCartDAOs) {
             DigitalProductDAO product = cartProductItem.getProduct();
@@ -141,10 +152,27 @@ public class OrderService {
         return orderPrice;
     }
 
-    private void updateDigitalOrderItemsWithOrderId(List<DigitalOrderItemDAO> digitalOrderItemDAOs, OrderDAO orderDAO) {
+    private void updateDigitalOrderItemsWithOrderId(List<DigitalOrderItemDAO> digitalOrderItemDAOs, int orderId) {
         for (DigitalOrderItemDAO item : digitalOrderItemDAOs)
-            item.getId().setOrderId(orderDAO.getId());
+            item.getId().setOrderId(orderId);
         digitalOrderItemRepository.saveAll(digitalOrderItemDAOs);
+
+        for (DigitalOrderItemDAO item : digitalOrderItemDAOs)
+            addDigitalCodes(orderId, item.getId().getDigitalProductDAO().getId(), item.getCount());
+    }
+
+    private void addDigitalCodes(int orderId, int productId, int count) {
+        for (int i = 0; i < count; i++) {
+            String code = generateDigitalCode();
+            digitalCodeRepository.save(new DigitalCode(orderId, productId, code));
+        }
+    }
+
+    private String generateDigitalCode() {
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < 8; i++)
+            code.append((char) (Math.random() * 26 + 'A'));
+        return code.toString();
     }
 
     void updateDigitalProductsCounts(List<DigitalOrderItemDAO> digitalOrderItemDAOs) {

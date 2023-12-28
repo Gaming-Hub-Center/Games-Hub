@@ -2,6 +2,7 @@ package com.gameshub.controller.auth;
 
 import com.gameshub.config.*;
 import com.gameshub.controller.DTO.user.*;
+import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
 import com.gameshub.service.user.*;
 import com.gameshub.utils.*;
@@ -13,13 +14,14 @@ import org.springframework.security.core.annotation.*;
 import org.springframework.security.core.context.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.*;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("auth")
 public class AuthenticationController {
 
     private final UserService userService;
-    private final UserMapper userMapper;
     private final JWTGenerator jwtGenerator;
     private final AuthenticationManager authenticationManager;
 
@@ -29,11 +31,9 @@ public class AuthenticationController {
             new UsernamePasswordAuthenticationToken(userSignInDTO.getEmail(), userSignInDTO.getPassword())
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = jwtGenerator.createToken(authentication.getName());
-        UserDAO userDAO = userService.getByEmail(authentication.getName());
-        UserDTO userDTO = userMapper.toUserDTO(userDAO);
-        userDTO.setToken(token);
-
+        String email = authentication.getName();
+        UserDTO userDTO = userService.getUserDTOByEmail(email);
+        userDTO.setToken(jwtGenerator.createToken(email));
         return ResponseEntity.ok(userDTO);
     }
 
@@ -43,9 +43,9 @@ public class AuthenticationController {
         if (userDAO == null)
             return ResponseEntity.notFound().build();
 
-        String token = jwtGenerator.createToken(userDAO.getEmail());
-        UserDTO userDTO = userMapper.toUserDTO(userDAO);
-        userDTO.setToken(token);
+        String email = userDAO.getEmail();
+        UserDTO userDTO = userService.getUserDTOByEmail(email);
+        userDTO.setToken(jwtGenerator.createToken(email));
         return ResponseEntity.ok(userDTO);
     }
 

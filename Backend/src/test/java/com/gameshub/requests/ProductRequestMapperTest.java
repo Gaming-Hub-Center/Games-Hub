@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
 
 import java.time.*;
+import java.util.HashSet;
 
 /*
 *  Tests that ensures Mapping is done as it is supposed to be

@@ -18,7 +18,7 @@ import com.gameshub.utils.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -44,8 +44,12 @@ public class AdminService {
 
     public List<AdminDTO> getAllAdmins(int adminId) {
         List<AdminDAO> adminDAOs = adminRepository.findAll();
-        adminDAOs.removeIf(admin -> admin.getId() == adminId);
-        return userMapper.toAdminDTOList(adminDAOs);
+        List<AdminDTO> adminDTOs = new ArrayList<>();
+        for (AdminDAO adminDAO : adminDAOs)
+            if (adminDAO.getId() != adminId)
+                adminDTOs.add(userMapper.toUserDTO(adminDAO));
+
+        return adminDTOs;
     }
 
     public void deleteBuyer(int buyerId) {

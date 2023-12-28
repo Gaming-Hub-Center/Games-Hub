@@ -11,6 +11,12 @@ import java.time.*;
 @Table(name = "seller")
 public class SellerDAO extends UserDAO {
 
+    @Column(name = "Address")
+    protected String address;
+
+    @Column(name = "Balance")
+    protected float balance;
+
     @Column(name = "Nationalid")
     private String nationalID;
 

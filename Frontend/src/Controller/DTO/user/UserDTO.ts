@@ -9,5 +9,6 @@ export type UserDTO = {
     dateJoined: string
     sellerDescription: string
     vatRegistrationNumber: string
+    role: string
     token: string
 };
