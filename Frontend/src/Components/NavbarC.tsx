@@ -211,6 +211,19 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
                   >
                       Profile
                   </Nav.Link>
+                  {getRole() === "BUYER" && (
+                    <Nav.Link
+                      as={NavLink}
+                      to="/buyer/orders"
+                      style={{
+                        marginTop: "3px",
+                        marginRight: "10px",
+                        borderRadius: "50px",
+                      }}
+                    >
+                      Orders
+                    </Nav.Link>
+                  )}
                   <Nav.Link
                     onClick={handleLogOut}
                     as={NavLink}
