@@ -34,29 +34,24 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, isOp
     return (
         <div className="admin-modal-overlay">
             <div className="admin-modal-content">
-                <h2>Product Details</h2>
-                {/* Display product details */}
-                <p>Title: {product.title}</p>
-                <p>Price: {product.price.toFixed(2)}</p>
-                <p>Description: {product.description}</p>
-                <p>Count: {product.count}</p>
-                <p>Seller Name: {sellerName}</p>
-                <p>Created Date: {new Date(product.postDate).toLocaleDateString()}</p>
-                <p>Category: {product.category}</p>
-
-                {/* Image Gallery
-                <div className="image-gallery">
-                    {product.images && product.images.map((image, index) => (
-                        <img
-                            key={index}
-                            src={image}
-                            alt={`Product Image ${index}`}
-                            className="thumbnail"
-                            onClick={() => setSelectedImage(image)}
-                        />
-                    ))}
+                <div className="modal-body">
+                    {/* Details Section */}
+                    <div className="details-section">
+                        <h2>Product Details</h2>
+                        <div className="image-section">
+                            {product.images && product.images[0] && (
+                                <img src={product.images[0]} alt="Product" className="product-image" />
+                            )}
+                        </div>
+                        <p>Title: {product.title}</p>
+                        <p>Price: {product.price.toFixed(2)}</p>
+                        <p>Description: {product.description}</p>
+                        <p>Count: {product.count}</p>
+                        <p>Seller Name: {sellerName}</p>
+                        <p>Created Date: {new Date(product.postDate).toLocaleDateString()}</p>
+                        <p>Category: {product.category}</p>
+                    </div>
                 </div>
-                {selectedImage && <img src={selectedImage} alt="Selected Product" className="selected-image" />} */}
 
                 <button onClick={onClose}>Close</button>
             </div>

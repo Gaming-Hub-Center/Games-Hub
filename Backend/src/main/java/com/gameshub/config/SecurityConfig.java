@@ -42,6 +42,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/seller/**")).permitAll()  //TODO Remove
                         .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()  //TODO Remove
+                        .requestMatchers(new AntPathRequestMatcher("/seller/request/create/physical")).permitAll()
                         .anyRequest().authenticated());
 //                .oauth2Login(Customizer.withDefaults());
 

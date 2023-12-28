@@ -21,7 +21,7 @@ public class PhysicalProductRequestImage {
     private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "requestId", referencedColumnName = "Id")
+    @JoinColumn(name = "requestid", referencedColumnName = "Id")
     private PhysicalProductRequestDAO physicalProductRequest;
 
     public PhysicalProductRequestImage(String imageUrl, PhysicalProductRequestDAO physicalProductRequestDAO) {

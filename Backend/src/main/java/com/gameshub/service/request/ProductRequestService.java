@@ -3,6 +3,8 @@ package com.gameshub.service.request;
 import com.gameshub.controller.DTO.request.*;
 import com.gameshub.exception.ResourceAlreadyFoundException;
 import com.gameshub.model.request.*;
+import com.gameshub.model.request.image.DigitalProductRequestImage;
+import com.gameshub.model.request.image.PhysicalProductRequestImage;
 import com.gameshub.repository.request.*;
 import com.gameshub.utils.ProductRequestMapper;
 import lombok.*;
@@ -18,26 +20,47 @@ public class ProductRequestService {
     private final PhysicalProductRequestRepository physicalProductRequestRepository;
     private final DigitalProductRequestRepository digitalProductRequestRepository;
     private final ProductRequestMapper productRequestMapper;
+    private final PhysicalProductRequestImageRepository physicalProductRequestImageRepository;
+    private final DigitalProductRequestImageRepository digitalProductRequestImageRepository;
 
     public void saveProductRequest(ProductRequestDTO productRequestDTO) {
         if (productRequestDTO instanceof PhysicalProductRequestDTO) {
             PhysicalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((PhysicalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
                 productRequestDAO.setRequestType(PENDING);
-                physicalProductRequestRepository.save(productRequestDAO);
+                PhysicalProductRequestDAO savedRequest = physicalProductRequestRepository.save(productRequestDAO);
+
+                // Save image URLs
+                List<String> imageUrls = (productRequestDTO).getImages();
+                for (String imageUrl : imageUrls) {
+                    PhysicalProductRequestImage imageDAO = new PhysicalProductRequestImage();
+                    imageDAO.setImageUrl(imageUrl);
+                    imageDAO.setPhysicalProductRequest(productRequestDAO);
+                    physicalProductRequestImageRepository.save(imageDAO);
+                }
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");
         } else if (productRequestDTO instanceof DigitalProductRequestDTO) {
             DigitalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
                 productRequestDAO.setStatus(PENDING);
-                digitalProductRequestRepository.save(productRequestDAO);
+                DigitalProductRequestDAO savedRequest = digitalProductRequestRepository.save(productRequestDAO);
+
+                // Save image URLs
+                List<String> imageUrls = (productRequestDTO).getImages();
+                for (String imageUrl : imageUrls) {
+                    DigitalProductRequestImage imageDAO = new DigitalProductRequestImage();
+                    imageDAO.setImageUrl(imageUrl);
+                    imageDAO.setDigitalProductRequest(savedRequest);
+                    digitalProductRequestImageRepository.save(imageDAO);
+                }
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");
         } else {
             throw new RuntimeException("Unsupported request type");
         }
     }
+
 
     private Boolean isNotDuplicate(ProductRequestDTO productRequestDTO) {
         if (productRequestDTO instanceof PhysicalProductRequestDTO)

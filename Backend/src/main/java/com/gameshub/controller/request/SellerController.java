@@ -33,7 +33,9 @@ public class SellerController {
 
     @PostMapping("/request/create/physical")
     public ResponseEntity<String> createPhysicalProduct(@Valid @RequestBody PhysicalProductRequestDTO physicalProductRequestDTO) {
+        System.out.println("Ahooooooooooooo");
         productRequestService.saveProductRequest(physicalProductRequestDTO);
+        System.out.println("Ahooooooooooooo");
         return ResponseEntity.status(HttpStatus.CREATED).body("Request to create Physical product is done!");
     }
 

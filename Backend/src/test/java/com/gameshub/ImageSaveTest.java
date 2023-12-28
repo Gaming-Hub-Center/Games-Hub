@@ -72,8 +72,8 @@ public class ImageSaveTest {
 
         List<PhysicalProductRequestImage> retrievedProductRequestImages = physicalImageRepo.findAll();
         List<DigitalProductRequestImage> retrievedProductRequestImages_ = digitalImageRepo.findAll();
-        List<DigitalProductRequestImage> retrievedProductRequestImagesByProduct = digitalImageRepo.findByDigitalProductRequest(digitalProductRequestDAO);
-        List<PhysicalProductRequestImage> retrievedProductRequestImagesByProduct_ = physicalImageRepo.findByPhysicalProductRequest(physicalProductRequestDAO);
+        List<DigitalProductRequestImage> retrievedProductRequestImagesByProduct = digitalImageRepo.findByDigitalProductRequest_Id(digitalProductRequestDAO.getId());
+        List<PhysicalProductRequestImage> retrievedProductRequestImagesByProduct_ = physicalImageRepo.findByPhysicalProductRequest_Id(physicalProductRequestDAO.getId());
 
         Assertions.assertEquals(retrievedProductRequestImages_.size(), 3);
         Assertions.assertEquals(retrievedProductRequestImages.size(), 3);

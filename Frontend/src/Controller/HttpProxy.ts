@@ -45,6 +45,6 @@ export const sendHttpRequest = (method: string, url: string, data?: any, params?
     headers: headers,
     url: url,
     data: data,
-    params: params
+    params: params,
   });
 };

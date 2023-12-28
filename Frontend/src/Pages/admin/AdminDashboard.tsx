@@ -47,9 +47,9 @@ const sectionsData: SectionsData = {
                                     iconVisibility={{ showApprove: false, showDecline: false, showDetails: true }}
                                     status='Declined'/>,
 
-      Buyers: <BuyerView></BuyerView>,
-      Sellers: <Navigate to={'/admin/view/sellers'}></Navigate>,
-      Admins: <Navigate to={`/admin/view/admins/${getId()}`}></Navigate>
+    Buyers: <BuyerView></BuyerView>,
+    Sellers: <Navigate to={'/admin/view/sellers'}></Navigate>,
+    Admins: <Navigate to={`/admin/view/admins/${getId()}`}></Navigate>
 };
 
 const HomePageAdmin = () => {
@@ -89,6 +89,9 @@ const HomePageAdmin = () => {
                 </li>
                 <li onClick={() => setActiveSection('Admins')}>
                   <FaStore className="admin-icon"/> Admins
+                </li>
+                <li onClick={() => setActiveSection('Admins')}>
+                    <FaStore className="admin-icon" /> Admins
                 </li>
             </ul>
         </aside>`

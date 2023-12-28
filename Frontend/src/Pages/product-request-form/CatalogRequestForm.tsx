@@ -7,8 +7,10 @@ import AlertOk from '../../Components/AlertDisnissible';
 import AlertError from '../../Components/AlertError';
 import { DigitalProductRequestDTO } from '../../Controller/DTO/request-dto/DigitalProductRequestDTO';
 import AlertAleadyExists from '../../Components/AlertAleadyExists';
-import { cld } from '../../Utilities/cloudinaryConfig';
 import axios from 'axios';
+import { Input, Button, Stack,  } from "@mui/material";
+import { FaStore } from 'react-icons/fa';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const CatalogRequestForm: React.FC = () => {
   const [physicalProductRequest, setPhysicalProductRequest] = useState<PhysicalProductRequestDTO>({
@@ -40,13 +42,27 @@ const CatalogRequestForm: React.FC = () => {
     images: String['']
   });
 
+  const VisuallyHiddenStyle ={
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+}
+
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
   const [showAlertAleadyExists, setAlertAleadyExists] = useState(false);
   const [errors, setErrors] = useState({ title: '', description: '', count: '', price: '' });
   const [categories, setCategories] = useState([]);
   const [productType, setProductType] = useState<'physical' | 'digital'>('physical');
-  const [image, setSelectedImage] = useState('');
+
+  const [tempImageUrl, setTempImageUrl] = useState('');
+  const [imageFile, setImageFile] = useState(null)
 
   const validate = () => {
     let tempErrors = { title: '', description: '', count: '', price: '', images: '' };
@@ -118,105 +134,135 @@ const CatalogRequestForm: React.FC = () => {
     }
 };
 
-// React component pseudo-code
-const getSignature = async () => {
-  const response = await axios.get('/api/cloudinary_signature');
-  return response.data.signature;
+const clearForm = () => {
+  physicalProductRequest.category = 'Physical Category 1'
+  physicalProductRequest.count = 0
+  physicalProductRequest.description = ''
+  physicalProductRequest.price = 0
+  physicalProductRequest.title = ''
+  
+  digitalProductRequest.category = 'Digital Category 1'
+  digitalProductRequest.count = 0
+  digitalProductRequest.price = 0
+  digitalProductRequest.description = ''
+  digitalProductRequest.title = ''
+
+  setPhysicalProductRequest(physicalProductRequest)
+  setDigitalProductRequest(digitalProductRequest)
 };
 
-  const uploadImage = async (file: File) => {
-    const formData = new FormData();
-    const timestamp = Math.round((new Date()).getTime() / 1000);
-    const signature = await getSignature();
+const uploadImage = async () => {
+  if (!(imageFile instanceof File)) {
+    console.error("The imageFile is not an instance of File.");
+    return;
+  }
 
-    formData.append('file', file);
-    formData.append('timestamp', timestamp.toString());
-    formData.append('api_key', '712766868742575');
-    formData.append('signature', signature);
-    // Include additional upload parameters, such as 'upload_preset' if needed
+  const formData = new FormData();
+  formData.append("file", imageFile);
+  formData.append("upload_preset", "ml_default");
+  formData.append("api_key", "941432731188379");
 
-    const uploadResponse = await axios.post(`https://api.cloudinary.com/v1_1/diqxjlzau/image/upload`, formData);
-    return uploadResponse.data; // Contains the URL of the uploaded image
-  };
+  // Log the file data
+  for (let [key, value] of formData.entries()) {
+    console.log(key, value);
+  }
 
-
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-
-    let imageUrls = [];
-    for (let i = 0; i < e.target.files.length; i++) {
-        const file = e.target.files[i];
-        const url = await uploadImage(file);
-        if (url) {
-            imageUrls.push(url);
+  try {
+    const uploadResponse = await axios.post(
+      "https://api.cloudinary.com/v1_1/dvnf3jmrz/image/upload",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data"
         }
-    }
-
-    if (productType === 'physical') {
-        setPhysicalProductRequest(prev => {
-            // Ensure prev.images is an array
-            const prevImagesArray = Array.isArray(prev.images) ? prev.images : [];
-            return {
-                ...prev,
-                images: [...prevImagesArray, ...imageUrls]
-            };
-        });
+      }
+    );
+    console.log(uploadResponse.data.secure_url + " before..")
+    return uploadResponse.data;
+  } catch (error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error(error.response.data);
+      console.error(error.response.status);
+      console.error(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error(error.request);
     } else {
-        setDigitalProductRequest(prev => {
-            // Ensure prev.images is an array
-            const prevImagesArray = Array.isArray(prev.images) ? prev.images : [];
-            return {
-                ...prev,
-                images: [...prevImagesArray, ...imageUrls]
-            };
-        });
+      // Something happened in setting up the request that triggered an Error
+      console.error('Error', error.message);
     }
-  };
+    throw error;
+  }
+};
 
-  const clearForm = () => {
-    physicalProductRequest.category = 'Physical Category 1'
-    physicalProductRequest.count = 0
-    physicalProductRequest.description = ''
-    physicalProductRequest.price = 0
-    physicalProductRequest.title = ''
-    
-    digitalProductRequest.category = 'Digital Category 1'
-    digitalProductRequest.count = 0
-    digitalProductRequest.price = 0
-    digitalProductRequest.description = ''
-    digitalProductRequest.title = ''
-  
-    setPhysicalProductRequest(physicalProductRequest)
-    setDigitalProductRequest(digitalProductRequest)
-  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setShowSuccessAlert(false);
-    setShowErrorAlert(false);
-    setAlertAleadyExists(false);
-    
-    const isValid = validate(); // Make sure validate function is updated to validate based on productType
-    if (!isValid) return;
-  
-    
-    const requestPayload = productType === 'physical' ? physicalProductRequest : digitalProductRequest;  
-  
-    httpRequest("POST", `/product-request/create`, requestPayload)
-      .then((response) => {
-        console.log(response);
-        setShowSuccessAlert(true);
-        clearForm();
-      })
-      .catch((error) => {
-        console.log(error.response.status);
-        if(error.response.status === 406) {
-            setAlertAleadyExists(true)
-        } else {
-          setShowErrorAlert(true);
-        }
-      });
-  };
+const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  if (e.target.files && e.target.files[0]) {
+    console.log("Selected file:", e.target.files[0]);
+    setTempImageUrl(URL.createObjectURL(e.target.files[0]));
+    setImageFile(e.target.files[0]);
+  } else {
+    console.error("No file selected");
+  }
+};
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setShowSuccessAlert(false);
+  setShowErrorAlert(false);
+  setAlertAleadyExists(false);
+
+  const isValid = validate();
+  if (!isValid) return;
+
+  if (imageFile) {
+    try {
+      const uploadResult = await uploadImage();
+      const url = uploadResult.secure_url
+      console.log(uploadResult)
+      
+      // Set the image URL in the request payload
+      const requestPayload = productType === 'physical' 
+        ? { ...physicalProductRequest, images: [url] } // Adjust this line to match how your API expects images
+        : { ...digitalProductRequest, images: [url] }; // Adjust this line accordingly for digital products
+      
+      // Proceed to submit the request payload
+      await submitRequestPayload(requestPayload);
+    } catch (error) {
+      // Handle image upload error
+      console.error("Error uploading image: ", error);
+      setShowErrorAlert(true);
+      return;
+    }
+  } else {
+    // Proceed without image upload
+    const requestPayload = productType === 'physical' 
+      ? physicalProductRequest 
+      : digitalProductRequest;
+    await submitRequestPayload(requestPayload);
+  }
+};
+
+const submitRequestPayload = async (requestPayload) => {
+  const endpoint = `/seller/request/create/${productType}`;
+  httpRequest("POST", endpoint, requestPayload)
+    .then((response) => {
+      console.log(response);
+      setShowSuccessAlert(true);
+      clearForm();
+    })
+    .catch((error) => {
+      console.log(error.response?.status);
+      if (error.response && error.response.status === 406) {
+        setAlertAleadyExists(true);
+      } else {
+        setShowErrorAlert(true);
+      }
+    });
+};
+
 
   return (
     <div>
@@ -262,14 +308,11 @@ const getSignature = async () => {
           </label>
           <div className='error-message'>{errors.description}</div>
           <label className='form-label'>
-              3. Do you have any images related to your product?
-              <input 
-                  type="file" 
-                  name="images" 
-                  className='form-input' 
-                  multiple 
-                  onChange={handleFileChange} 
-              />
+            3. Do you have any images related to your product?
+              <Button component="label" sx={{ margin:'1vh' }} variant="contained" startIcon={<CloudUploadIcon />}>
+                  Upload Image
+                  <Input sx={VisuallyHiddenStyle} type="file" onChange={handleFileChange}/>
+              </Button>
           </label>
           <label className='form-label'>
               4. Choose Product Type

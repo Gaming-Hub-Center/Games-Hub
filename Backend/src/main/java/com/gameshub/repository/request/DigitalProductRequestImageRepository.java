@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface DigitalProductRequestImageRepository extends JpaRepository<DigitalProductRequestImage, Integer> {
-    List<DigitalProductRequestImage> findByDigitalProductRequest(DigitalProductRequestDAO digitalProductRequest);
+    List<DigitalProductRequestImage> findByDigitalProductRequest_Id(int requestId);
 
 }

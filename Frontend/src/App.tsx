@@ -18,7 +18,6 @@ import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/Seller
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
 import HomePageAdmin from "./Pages/admin/AdminDashboard";
-import React, { useEffect } from "react";
 import { gapi } from "gapi-script";
 
 import PhysicalWishlist from "./Pages/Physical_wishList";
@@ -95,6 +94,7 @@ function App() {
         <Route path="/admin/view/seller/products/:sellerId" element={<SellerCatalogView />}></Route>
         <Route path="/buyer/orders" element={<BuyerOrders />}></Route>
         <Route path="/admin/dashboard" element={<HomePageAdmin/>}></Route>
+        {/* <Route path="/test" element={<Profile />}></Route> */}
       </Routes>
     </Container>
   );
