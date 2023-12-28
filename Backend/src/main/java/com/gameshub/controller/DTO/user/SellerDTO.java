@@ -7,6 +7,8 @@ import java.time.*;
 @Data
 @NoArgsConstructor
 public class SellerDTO extends UserDTO {
+    private String address;
+    private float balance;
     private String nationalID;
     private LocalDate dateJoined;
     private String sellerDescription;

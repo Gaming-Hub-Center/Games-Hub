@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.*;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -43,5 +44,8 @@ public class DigitalOrderItemDAO {
 
     @Column(name = "Totalprice")
     private float totalPrice;
+
+    @Transient
+    List<String> codes;
 
 }

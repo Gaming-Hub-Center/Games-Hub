@@ -40,7 +40,12 @@ export function SignIn() {
                 const responseData = response.data as UserDTO
                 storeUserData(responseData)
                 setValidated(true)
-                navigate('/')
+                if (responseData.role === 'ADMIN')
+                  navigate('/admin/dashboard')
+                else if (responseData.role === 'SELLER')
+                  navigate('/seller/catalog')
+                else
+                  navigate('/')
                 console.log(responseData)
             })
             .catch((error) => {

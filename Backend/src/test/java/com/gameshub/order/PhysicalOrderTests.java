@@ -60,7 +60,8 @@ public class PhysicalOrderTests {
         buyerRepository.resetAutoIncrement();
 
         BuyerDAO buyerDAO1 = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 1000);
-        BuyerDAO buyerDAO2 = new BuyerDAO("Jane Smith", "+9876543210", "jane.smith@example.com", "456 Oak Avenue", "$2a$10$GMRwzM/Li/rDwHDw4RNbBeQFRHEcwVSEBZ18D4NkUo5BiHd/oawP6", 4000);
+        BuyerDAO buyerDAO2 = new BuyerDAO("Jane Smith", "jane.smith@example.com", "$2a$10$GMRwzM/Li/rDwHDw4RNbBeQFRHEcwVSEBZ18D4NkUo5BiHd/oawP6", "+9876543210", "456 Oak Avenue", 4000);
+        BuyerDAO buyerDAO3 = new BuyerDAO("Emily Johnson", "emily.johnson@example.com", "$2a$10$FbE4XSzchqlJEwCE08.t7O4f77XE81uezyeA9cw4sHVIZc86YNiU", "+1122334455", "789 Pine Road", 3500);
 
         SellerDAO sellerDAO1 = new SellerDAO("Alice Blue", "alice.blue@example.com", "$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG", "+1029384756", "101 Red Street", 10000, "ID12345A", LocalDate.parse("2023-01-01"), "Description about Alice", "123456789A");
         SellerDAO sellerDAO2 = new SellerDAO("Bob Green", "+5647382910", "bob.green@example.com", "$2a$10$bM/Om9b6r/7qklzXJCCAauNotDkmKEsD2W.BA32PvOw5nIcOsRc3q", "202 Green Lane", 15000, "ID67890B", LocalDate.parse("2023-02-02"), "Description about Bob", "987654321B");
@@ -76,9 +77,12 @@ public class PhysicalOrderTests {
         PhysicalCartDAO physicalCartDAO3 = new PhysicalCartDAO(1, 5, 2);
         PhysicalCartDAO physicalCartDAO4 = new PhysicalCartDAO(2, 2, 2);
         PhysicalCartDAO physicalCartDAO5 = new PhysicalCartDAO(2, 4, 7);
+        PhysicalCartDAO physicalCartDAO6 = new PhysicalCartDAO(3, 2, 2);
+        PhysicalCartDAO physicalCartDAO7 = new PhysicalCartDAO(3, 4, 1);
 
         buyerRepository.save(buyerDAO1);
         buyerRepository.save(buyerDAO2);
+        buyerRepository.save(buyerDAO3);
 
         sellerRepository.save(sellerDAO1);
         sellerRepository.save(sellerDAO2);
@@ -94,6 +98,8 @@ public class PhysicalOrderTests {
         physicalCartRepository.save(physicalCartDAO3);
         physicalCartRepository.save(physicalCartDAO4);
         physicalCartRepository.save(physicalCartDAO5);
+        physicalCartRepository.save(physicalCartDAO6);
+        physicalCartRepository.save(physicalCartDAO7);
     }
 
     @AfterEach
@@ -169,22 +175,77 @@ public class PhysicalOrderTests {
 
     @Test
     void testPhysicalOrderUpdateBuyerBalance() {
+        OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
+        orderCheckoutDTO.setBuyerID(3);
+        orderCheckoutDTO.setPaymentMethod("wallet");
+        ResponseEntity<?> responseEntity = orderController.physicalCheckout(orderCheckoutDTO);
 
+        float originalBalance = 3500;
+        float orderPrice = 1400;
+
+        BuyerDAO updatedBuyer = buyerRepository.findById(3).orElse(null);
+        assertNotNull(updatedBuyer, "Updated buyer should not be null");
+
+        float expectedBalance = originalBalance - orderPrice;
+        assertEquals(expectedBalance, updatedBuyer.getBalance());
     }
 
     @Test
     void testPhysicalOrderUpdateSellersBalances() {
+        OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
+        orderCheckoutDTO.setBuyerID(3);
+        orderCheckoutDTO.setPaymentMethod("cod");
+        ResponseEntity<?> responseEntity = orderController.physicalCheckout(orderCheckoutDTO);
 
+        float originalBalance1 = 10000;
+        float originalBalance2 = 15000;
+        float orderPrice1 = 400;
+        float orderPrice2 = 1000;
+
+        SellerDAO updatedSeller1 = sellerRepository.findById(1).orElse(null);
+        SellerDAO updatedSeller2 = sellerRepository.findById(2).orElse(null);
+        assertNotNull(updatedSeller1, "Updated seller should not be null");
+        assertNotNull(updatedSeller2, "Updated seller should not be null");
+
+        float expectedBalance1 = originalBalance1 + orderPrice1;
+        float expectedBalance2 = originalBalance2 + orderPrice2;
+        assertEquals(expectedBalance1, updatedSeller1.getBalance());
+        assertEquals(expectedBalance2, updatedSeller2.getBalance());
     }
 
     @Test
     void testPhysicalOrderUpdateStockCount() {
+        OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
+        orderCheckoutDTO.setBuyerID(3);
+        orderCheckoutDTO.setPaymentMethod("wallet");
+        ResponseEntity<?> responseEntity = orderController.physicalCheckout(orderCheckoutDTO);
 
+        int originalStock1 = 15;
+        int originalStock2 = 5;
+        int count1 = 2;
+        int count2 = 1;
+
+        PhysicalProductDAO updatedDigital1 = physicalProductRepository.findById(2).orElse(null);
+        PhysicalProductDAO updatedDigital2 = physicalProductRepository.findById(4).orElse(null);
+        assertNotNull(updatedDigital1, "Updated product should not be null");
+        assertNotNull(updatedDigital2, "Updated product should not be null");
+
+        int expectedStock1 = originalStock1 - count1;
+        int expectedStock2 = originalStock2 - count2;
+        assertEquals(expectedStock1, updatedDigital1.getCount());
+        assertEquals(expectedStock2, updatedDigital2.getCount());
     }
 
     @Test
     void testPhysicalOrderClearBuyerCart() {
+        OrderCheckoutDTO orderCheckoutDTO = new OrderCheckoutDTO();
+        orderCheckoutDTO.setBuyerID(3);
+        orderCheckoutDTO.setPaymentMethod("wallet");
+        ResponseEntity<?> responseEntity = orderController.physicalCheckout(orderCheckoutDTO);
 
+        List<PhysicalCartDAO> updatedCart = physicalCartRepository.findByBuyerId(3);
+
+        assertTrue(updatedCart.isEmpty());
     }
 
 }

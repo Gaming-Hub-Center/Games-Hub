@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getJwtToken, storeUserData} from "../CurrentSession";
+import {getToken, storeUserData} from "../CurrentSession";
 import {UserDTO} from "./DTO/user/UserDTO";
 
 
@@ -18,7 +18,7 @@ const updateUserData = async () => {
   try {
     const response = await sendHttpRequest('GET', 'auth/user');
     const responseData = response.data as UserDTO;
-    console.log(responseData);
+    console.log('User data updated:', responseData)
     storeUserData(responseData);
   } catch (error) {
     console.error('Error updating user data:', error);
@@ -26,9 +26,8 @@ const updateUserData = async () => {
 };
 
 export const httpRequest = async (method: string, url: string, data?: any) => {
-  const jwtToken = getJwtToken();
+  const jwtToken = getToken();
   if (jwtToken && jwtToken !== "null") {
-    console.log(getJwtToken())
     await updateUserData();
   }
 
@@ -38,8 +37,8 @@ export const httpRequest = async (method: string, url: string, data?: any) => {
 export const sendHttpRequest = (method: string, url: string, data?: any) => {
   let headers = {};
 
-  if (getJwtToken() !== null && getJwtToken() !== "null")
-    headers = { Authorization: `Bearer ${getJwtToken()}` };
+  if (getToken() !== null && getToken() !== "null")
+    headers = { Authorization: `Bearer ${getToken()}` };
 
   return axios({
     method: method,

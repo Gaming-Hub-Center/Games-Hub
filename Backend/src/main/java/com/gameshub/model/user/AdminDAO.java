@@ -1,28 +1,19 @@
 package com.gameshub.model.user;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "admin")
-public class AdminDAO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    protected int id;
+public class AdminDAO extends UserDAO {
 
-    @Column(name = "Name")
-    protected String name;
+    public AdminDAO(String name, String email, String password, String phone) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+    }
 
-    @Column(name = "Email", unique = true)
-    protected String email;
-
-    @Column(name = "Password")
-    protected String password;
-
-    @Column(name = "Phone")
-    protected String phone;
 }

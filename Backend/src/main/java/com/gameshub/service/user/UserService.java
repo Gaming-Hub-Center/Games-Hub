@@ -1,9 +1,10 @@
 package com.gameshub.service.user;
 
+import com.gameshub.controller.DTO.user.*;
 import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;
-import jakarta.transaction.Transactional;
+import com.gameshub.utils.*;
 import lombok.*;
 import org.springframework.stereotype.*;
 
@@ -15,6 +16,8 @@ public class UserService {
 
     private final BuyerRepository buyerRepository;
     private final SellerRepository sellerRepository;
+    private final AdminRepository adminRepository;
+    private final UserMapper userMapper;
 
     public List<BuyerDAO> getAllBuyers() {
         return buyerRepository.findAll();
@@ -24,14 +27,21 @@ public class UserService {
         return sellerRepository.findAll();
     }
 
+    public List<AdminDAO> getAllAdmins() {
+        return adminRepository.findAll();
+    }
+
     public UserDAO getByEmail(String email) {
         Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findByEmail(email);
         Optional<SellerDAO> sellerDAOOptional = sellerRepository.findByEmail(email);
+        Optional<AdminDAO> adminDAOOptional = adminRepository.findByEmail(email);
 
         if (buyerDAOOptional.isPresent())
             return buyerDAOOptional.get();
         else if (sellerDAOOptional.isPresent())
             return sellerDAOOptional.get();
+        else if (adminDAOOptional.isPresent())
+            return adminDAOOptional.get();
         else
             throw new ResourceNotFoundException("User not found with email: " + email);
     }
@@ -54,8 +64,36 @@ public class UserService {
             throw new ResourceNotFoundException("User not found with id: " + sellerID);
     }
 
+    public AdminDAO getAdminById(int adminID) {
+        Optional<AdminDAO> adminDAOOptional = adminRepository.findById(adminID);
+
+        if (adminDAOOptional.isPresent())
+            return adminDAOOptional.get();
+        else
+            throw new ResourceNotFoundException("User not found with id: " + adminID);
+    }
+
+    public UserDTO getUserDTOByEmail(String email) {
+        Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findByEmail(email);
+        Optional<SellerDAO> sellerDAOOptional = sellerRepository.findByEmail(email);
+        Optional<AdminDAO> adminDAOOptional = adminRepository.findByEmail(email);
+
+        if (buyerDAOOptional.isPresent()) {
+            BuyerDAO buyerDAO = buyerDAOOptional.get();
+            return userMapper.toUserDTO(buyerDAO);
+        } else if (sellerDAOOptional.isPresent()) {
+            SellerDAO sellerDAO = sellerDAOOptional.get();
+            return userMapper.toUserDTO(sellerDAO);
+        } else if (adminDAOOptional.isPresent()) {
+            AdminDAO adminDAO = adminDAOOptional.get();
+            return userMapper.toUserDTO(adminDAO);
+        } else {
+            throw new ResourceNotFoundException("User not found with email " + email);
+        }
+    }
+
     public Boolean userExists(String email) {
-        return buyerRepository.existsByEmail(email) || sellerRepository.existsByEmail(email);
+        return buyerRepository.existsByEmail(email) || sellerRepository.existsByEmail(email) || adminRepository.existsByEmail(email);
     }
 
     public void saveNewBuyer(BuyerDAO buyerDAO) {
@@ -70,6 +108,11 @@ public class UserService {
         sellerRepository.save(sellerDAO);
     }
 
+    public void saveNewAdmin(AdminDAO adminDAO) {
+        if (userExists(adminDAO.getEmail()))
+            throw new ResourceAlreadyFoundException("User already found with email: " + adminDAO.getEmail());
+        adminRepository.save(adminDAO);
+    }
 
     public void updateBuyer(int id,String newName,String newEmail,String newPhone,String newAddress, float newBalance) {
         BuyerDAO buyer = buyerRepository.findById(id).orElseThrow(() -> new RuntimeException("Buyer not found"));
