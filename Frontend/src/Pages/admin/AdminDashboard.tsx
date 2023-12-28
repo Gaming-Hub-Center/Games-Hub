@@ -3,6 +3,8 @@ import { FaCheckCircle, FaFileAlt, FaHourglassHalf, FaHourglassStart, FaStore, F
 import './AdminDashboard.css';
 import NavBarAdmin from '../../Components/admin/NavBarAdmin';
 import PendingProductsComponent from '../../Components/admin/PendingProducts';
+import {BuyerView} from "./BuyerView";
+import {Navigate} from "react-router-dom";
 
 // Define a type for the valid section keys
 type Section = 'Pending Physical Products' | 'Pending Digital Products' | 'Approved Products' | 'Declined Products' | 'Buyers' | 'Sellers';
@@ -18,8 +20,8 @@ const sectionsData: SectionsData = {
     "Pending Digital Products":<PendingProductsComponent productType="digital" />,
     "Approved Products": <p></p>,
     "Declined Products": <p></p>,
-    Buyers: <p></p>,
-    Sellers: <p></p>
+    Buyers: <BuyerView></BuyerView>,
+    Sellers: <Navigate to={'/admin/view/sellers'}></Navigate>
 };
 
 const HomePageAdmin = () => {

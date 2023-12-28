@@ -82,5 +82,5 @@ export const clearCurrentSession = () => {
 };
 
 export const noCurrentSession = () => {
-    return getJwtToken() === null || getJwtToken() === "null";
-  };
+    return getToken() === null || getToken() === "null";
+};

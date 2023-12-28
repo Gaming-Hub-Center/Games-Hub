@@ -6,7 +6,7 @@ import React, {SetStateAction, useCallback, useState} from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import {clearCurrentSession, getCurrentProductPage, noCurrentSession} from "../CurrentSession";
+import {clearCurrentSession, getCurrentProductPage, getRole, noCurrentSession} from "../CurrentSession";
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
   const [searchText, setSearchText] = useState("");
@@ -202,7 +202,7 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
                       : 
                       <><Nav.Link
                       as={NavLink}
-                      to="/profile"
+                      to={getRole() === "BUYER" ? "/buyer/profile" : "/seller/profile"}
                       style={{
                           marginTop: "3px",
                           marginRight: "10px",
