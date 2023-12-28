@@ -5,9 +5,10 @@ import NavBarAdmin from '../../Components/admin/NavBarAdmin';
 import PendingProductsComponent from '../../Components/admin/PendingProducts';
 import {BuyerView} from "./BuyerView";
 import {Navigate} from "react-router-dom";
+import {getId} from "../../CurrentSession";
 
 // Define a type for the valid section keys
-type Section = 'Pending Physical Products' | 'Pending Digital Products' | 'Approved Products' | 'Declined Products' | 'Buyers' | 'Sellers';
+type Section = 'Pending Physical Products' | 'Pending Digital Products' | 'Approved Products' | 'Declined Products' | 'Buyers' | 'Sellers' | 'Admins'
 
 // Define a type for the sections data with the above keys
 type SectionsData = {
@@ -21,7 +22,8 @@ const sectionsData: SectionsData = {
     "Approved Products": <p></p>,
     "Declined Products": <p></p>,
     Buyers: <BuyerView></BuyerView>,
-    Sellers: <Navigate to={'/admin/view/sellers'}></Navigate>
+    Sellers: <Navigate to={'/admin/view/sellers'}></Navigate>,
+    Admins: <Navigate to={`/admin/view/admins/${getId()}`}></Navigate>
 };
 
 const HomePageAdmin = () => {
@@ -34,27 +36,31 @@ const HomePageAdmin = () => {
 
       <div className="admin-main-content">
         <aside className="admin-sidebar">
-            <ul>
-                <li onClick={() => setActiveSection('Pending Physical Products')}>
-                    <FaHourglassStart className="admin-icon" /> Pending Physical Products
-                </li>
-                <li onClick={() => setActiveSection('Pending Digital Products')}>
-                    <FaHourglassStart className="admin-icon" /> Pending Digital Products
-                </li>
-                <li onClick={() => setActiveSection('Approved Products')}>
-                    <FaCheckCircle className="admin-icon" /> Approved Products
-                </li>
-                <li onClick={() => setActiveSection('Declined Products')}>
-                    <FaTimesCircle className="admin-icon" /> Declined Products
-                </li>
-                <li onClick={() => setActiveSection('Buyers')}>
-                    <FaUser className="admin-icon" /> Buyers
-                </li>
-                <li onClick={() => setActiveSection('Sellers')}>
-                    <FaStore className="admin-icon" /> Sellers
-                </li>
-            </ul>
-        </aside>`
+          <ul>
+            <li onClick={() => setActiveSection('Pending Physical Products')}>
+              <FaHourglassStart className="admin-icon"/> Pending Physical Products
+            </li>
+            <li onClick={() => setActiveSection('Pending Digital Products')}>
+              <FaHourglassStart className="admin-icon"/> Pending Digital Products
+            </li>
+            <li onClick={() => setActiveSection('Approved Products')}>
+              <FaCheckCircle className="admin-icon"/> Approved Products
+            </li>
+            <li onClick={() => setActiveSection('Declined Products')}>
+              <FaTimesCircle className="admin-icon"/> Declined Products
+            </li>
+            <li onClick={() => setActiveSection('Buyers')}>
+              <FaUser className="admin-icon"/> Buyers
+            </li>
+            <li onClick={() => setActiveSection('Sellers')}>
+              <FaStore className="admin-icon"/> Sellers
+            </li>
+            <li onClick={() => setActiveSection('Admins')}>
+              <FaStore className="admin-icon"/> Admins
+            </li>
+          </ul>
+        </aside>
+        `
 
         <section className="admin-content">
           {/* TypeScript now understands that activeSection can only be a key from sectionsData */}
