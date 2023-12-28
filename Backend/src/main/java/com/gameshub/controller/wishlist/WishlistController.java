@@ -6,16 +6,16 @@ import com.gameshub.model.wishlist.PhysicalWishlistDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.gameshub.service.wishlist.wishlistService;
+import com.gameshub.service.wishlist.WishlistService;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/wishlist")
-public class wishlistController {
+public class WishlistController {
 
-    private final wishlistService wishlistService;
+    private final WishlistService wishlistService;
 
     @PostMapping("/physical/add")
     public ResponseEntity<?> addPhysicalWishlistProduct(@RequestBody WishlistDTO wishlistDTO) {

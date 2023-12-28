@@ -41,6 +41,8 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/products/approve/**")).permitAll()  //TODO Remove
                         .requestMatchers(new AntPathRequestMatcher("/product-request/**")).permitAll()  //TODO Remove
                         .requestMatchers(new AntPathRequestMatcher("/cart/**")).permitAll()  //TODO Remove
+                        .requestMatchers(new AntPathRequestMatcher("/wishlist/**")).permitAll()  //TODO Remove
+
                         .anyRequest().authenticated());
 //                .oauth2Login(Customizer.withDefaults());
 

@@ -5,7 +5,7 @@ import { Button, Col, Container, FormControl, Image } from "react-bootstrap";
 import React, { SetStateAction, useState } from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCartShopping, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
   const [searchText, setSearchText] = useState("");
@@ -36,6 +36,10 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
 
   function goToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
     navigate("/digital-cart");
+  }
+
+  function goToWishlist(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    navigate("/digital-wishlist");
   }
 
   return (
@@ -145,9 +149,26 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
                 >
                   <FontAwesomeIcon icon={faCartShopping} />
                 </Button>
-
+                <Button style={{
+                  backgroundColor: "#733BC0",
+                  color: "#f0f0f0",
+                  borderColor: "#733BC0",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s",
+                  marginLeft: "10px",
+                }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.backgroundColor = "#733BC0")
+                        }
+                        onClick={goToWishlist}
+                >
+                  <FontAwesomeIcon icon={faHeart} />
+                </Button>
               </Col>
-
                 <Nav>
                     <Nav.Link
                         as={NavLink}
@@ -175,20 +196,4 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
             </Container>
         </Navbar>
     );
-}
-
-{
-    /* <NavDropdown
-
-              title={""}
-              style={{ marginTop: "3px", marginRight: "20px", paddingRight: "0" }}
-              align="end"
-            >
-              <NavDropdown.Item as={NavLink} to="/signup/buyer">
-                Sign up
-              </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/signin">
-                Sign in
-              </NavDropdown.Item>
-            </NavDropdown> */
 }

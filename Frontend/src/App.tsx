@@ -17,6 +17,8 @@ import { ProductView } from "./Components/ProductView";
 import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/SellerProductCatalog";
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
+import PhysicalWishlist from "./Pages/Physical_wishList";
+import DigitalWishlist from "./Pages/Digital_wishList";
 
 
 function App() {
@@ -55,6 +57,8 @@ function App() {
           element={<CatalogRequestForm />}
         ></Route>
         <Route path="/buyer/productview/:id" element={<ProductView />}></Route>
+        <Route path="/physical-wishlist" element={<PhysicalWishlist />}></Route>
+        <Route path="/digital-wishlist" element={<DigitalWishlist />}></Route>
       </Routes>
     </Container>
   );

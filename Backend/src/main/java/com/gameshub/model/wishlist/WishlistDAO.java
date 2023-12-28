@@ -4,7 +4,10 @@ import com.gameshub.model.user.BuyerDAO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 @Data
 @MappedSuperclass
@@ -14,7 +17,7 @@ public abstract class WishlistDAO {
     @NoArgsConstructor
     @AllArgsConstructor
     @Embeddable
-    public static class WishlistKey {
+    public static class WishlistKey implements Serializable {
         protected int buyerID;
         protected int productID;
     }

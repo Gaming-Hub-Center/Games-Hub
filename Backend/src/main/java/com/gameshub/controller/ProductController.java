@@ -1,15 +1,22 @@
 package com.gameshub.controller;
 
-import com.gameshub.controller.DTO.*;
-import com.gameshub.model.product.*;
+import com.gameshub.controller.DTO.DigitalProductDTO;
+import com.gameshub.controller.DTO.PhysicalProductDTO;
+import com.gameshub.controller.DTO.ProductBriefDTO;
+import com.gameshub.model.product.PhysicalImageDAO;
+import com.gameshub.model.product.PhysicalProductDAO;
 import com.gameshub.service.product.ProductService;
 import com.gameshub.utils.ProductMapper;
-import lombok.*;
-import org.springframework.http.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
