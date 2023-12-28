@@ -25,7 +25,7 @@ public class PhysicalOrderItemDAO {
     @Embeddable
     public static class PhysicalOrderItemId implements Serializable {
         @Column(name = "Orderid")
-        private int orderID;
+        private int orderId;
 
         @ManyToOne
         @JoinColumn(name = "Productid")

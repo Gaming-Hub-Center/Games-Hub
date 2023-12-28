@@ -154,12 +154,12 @@ public class DigitalOrderTests {
 
         assert orderDAO != null;
 
-        BuyerDAO buyerDAO = orderDAO.getBuyerDAO();
+        int buyerId = orderDAO.getBuyerId();
         float price = orderDAO.getOrderPrice();
         String status = orderDAO.getOrderStatus();
         List<DigitalOrderItemDAO> digitalOrderItemDAOs = orderDAO.getDigitalOrderItemDAOs();
 
-        assert buyerDAO.getId() == 1;
+        assert buyerId == 1;
         assert price == 1720;
         assert Objects.equals(status, "Processing");
         assert digitalOrderItemDAOs.get(0).getId().getDigitalProductDAO().getId() == 1;

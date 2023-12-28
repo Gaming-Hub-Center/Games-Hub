@@ -238,12 +238,21 @@ const PhysicalCart = () => {
               variant="success"
               onClick={() => checkout()}
               style={{
-                marginTop: "10px",
-                width: "100%",
-                fontWeight: "bold",
-                letterSpacing: "1px",
                 backgroundColor: "#733BC0",
+                color: "#f0f0f0",
+                borderColor: "#733BC0",
+                borderRadius: "5px",
+                cursor: "pointer",
+                transition: "background-color 0.3s",
+                width: "100%"
               }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "rgba(115,	59,	192 ,0.5)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor = "#733BC0")
+              }
             >
               Confirm
             </Button>

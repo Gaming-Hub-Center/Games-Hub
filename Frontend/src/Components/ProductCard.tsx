@@ -2,8 +2,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../Utilities/formatCurrency";
-import { httpRequest } from "../Controller/HttpProxy";
-import { getId } from "../CurrentSession";
+import {httpRequest} from "../Controller/HttpProxy";
+import {getCurrentProductPage, getId} from "../CurrentSession";
+import React from "react";
 
 export interface cardProps {
   id: number;

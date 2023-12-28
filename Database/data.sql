@@ -98,11 +98,11 @@ INSERT INTO `DigitalCart` (`BuyerId`, `ProductId`, `Count`) VALUES
 -- -----------------------------------------------------
 -- Inserting dummy data into `Order`
 -- -----------------------------------------------------
-INSERT INTO `Order` (`BuyerId`, `OrderDate`, `OrderPrice`, `OrderStatus`) VALUES
-(1, '2023-01-15', 800.00, 'Shipped'),
-(2, '2023-02-20', 300.00, 'Returned'),
-(1, '2023-01-15', 800.00, 'Shipped'),
-(2, '2023-02-20', 300.00, 'Returned');
+INSERT INTO `Order` (`BuyerId`, `OrderDate`, `OrderPrice`, `PaymentMethod`, `OrderStatus`) VALUES
+(1, '2023-01-15', 800.00, 'Wallet', 'Shipped'),
+(2, '2023-02-20', 300.00, 'COD', 'Returned'),
+(1, '2023-01-15', 800.00, 'COD', 'Shipped'),
+(2, '2023-02-20', 300.00, 'Wallet', 'Returned');
 
 
 -- -----------------------------------------------------
@@ -127,7 +127,7 @@ INSERT INTO `DigitalOrderItem` (`OrderId`, `ProductId`, `Count`, `UnitPrice`, `T
 -- Inserting dummy data into `PhysicalProductRequest`
 -- -----------------------------------------------------
 INSERT INTO `PhysicalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`) VALUES
-('2023-12-08', 'Review', 'New', 'Board Game', 40, 'Family board game for all ages.', 1, 20, '2023-12-15', 'Games'),
+('2023-12-08', 'Pending', 'New', 'Board Game', 40, 'Family board game for all ages.', 1, 20, '2023-12-15', 'Games'),
 ('2023-12-09', 'Denied', 'Update', 'Cycling Helmet', 150, 'High-quality helmet for cycling enthusiasts.', 2, 10, '2023-12-16', 'Sports');
 
 

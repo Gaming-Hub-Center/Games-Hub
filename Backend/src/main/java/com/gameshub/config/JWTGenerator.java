@@ -3,7 +3,9 @@ package com.gameshub.config;
 import com.auth0.jwt.*;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.*;
+import com.auth0.jwt.exceptions.*;
 import com.auth0.jwt.interfaces.*;
+import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
 import com.gameshub.service.user.UserService;
 import jakarta.annotation.*;
@@ -45,15 +47,19 @@ public class JWTGenerator {
     }
 
     public Authentication validateToken(String token) {
-        Algorithm algorithm = Algorithm.HMAC256(secretKey);
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
-        JWTVerifier verifier = JWT.require(algorithm).build();
+            JWTVerifier verifier = JWT.require(algorithm).build();
 
-        DecodedJWT decoded = verifier.verify(token);
+            DecodedJWT decoded = verifier.verify(token);
 
-        UserDAO userDAO = userService.getByEmail(decoded.getSubject());
+            UserDAO userDAO = userService.getByEmail(decoded.getSubject());
 
-        return new UsernamePasswordAuthenticationToken(userDAO, null, Collections.emptyList());
+            return new UsernamePasswordAuthenticationToken(userDAO, null, Collections.emptyList());
+        } catch (Exception exception) {
+            throw new NotAuthorizedException("Invalid token");
+        }
     }
 
 }
