@@ -6,12 +6,17 @@ import React, {SetStateAction, useCallback, useState} from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import {getCurrentProductPage} from "../CurrentSession";
+import {clearCurrentSession, getCurrentProductPage, noCurrentSession} from "../CurrentSession";
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
 
+  const handleLogOut = () => {
+      clearCurrentSession();
+    setTimeout(() => {
+      }, 100);
+  };
 
   const handleSearchTextChange = (event: {
         target: { value: SetStateAction<string> };
@@ -149,30 +154,56 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
                 </Button>
 
               </Col>
+            
 
                 <Nav>
-                    <Nav.Link
-                        as={NavLink}
-                        to="/signin"
-                        style={{
-                            marginTop: "3px",
-                            marginRight: "10px",
-                            borderRadius: "50px",
-                        }}
-                    >
-                        Sign In
-                    </Nav.Link>
-                    <Nav.Link
-                        as={NavLink}
-                        to="/signup/buyer"
-                        style={{
-                            marginTop: "3px",
-                            marginRight: "10px",
-                            borderRadius: "50px",
-                        }}
-                    >
-                        Sign Up
-                    </Nav.Link>
+                    {noCurrentSession()? <><Nav.Link
+                      as={NavLink}
+                      to="/signin"
+                      style={{
+                          marginTop: "3px",
+                          marginRight: "10px",
+                          borderRadius: "50px",
+                      }}
+                  >
+                      Sign In
+                  </Nav.Link><Nav.Link
+                      as={NavLink}
+                      to="/signup/buyer"
+                      style={{
+                          marginTop: "3px",
+                          marginRight: "10px",
+                          borderRadius: "50px",
+                      }}
+                  >
+                          Sign Up
+                      </Nav.Link></> 
+                      : 
+                      <><Nav.Link
+                      as={NavLink}
+                      to="/profile"
+                      style={{
+                          marginTop: "3px",
+                          marginRight: "10px",
+                          borderRadius: "50px",
+                      }}
+                  >
+                      Profile
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={handleLogOut}
+                    as={NavLink}
+                    to="/"
+                    style={{
+                        marginTop: "3px",
+                        marginRight: "10px",
+                        borderRadius: "50px",
+                    }}
+                  >
+                    Log Out
+                  </Nav.Link>
+                  
+                  </>}
                 </Nav>
             </Container>
         </Navbar>
