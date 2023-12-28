@@ -75,6 +75,7 @@ export const setCurrentProductPage = (currentPage: string) => {
 
 export const getCurrentProductPage = () => {
     return window.sessionStorage.getItem("currentPage")
+
 }
 
 export const clearCurrentSession = () => {
