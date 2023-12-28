@@ -10,5 +10,6 @@ public class UserDTO {
     private String phone;
     private String address;
     private float balance;
+    private String role;
     private String token;
 }

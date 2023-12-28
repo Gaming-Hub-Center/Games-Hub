@@ -242,6 +242,22 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalOrderItem` (
 
 
 -- -----------------------------------------------------
+-- Table `GamesHub`.`DigitalCode`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalCode` (
+  `OrderId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
+  `Code` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`OrderId`, `ProductId`, `Code`),
+  CONSTRAINT `DigitalProductIdFK3`
+    FOREIGN KEY (`OrderId`, `ProductId`)
+    REFERENCES `GamesHub`.`DigitalOrderItem` (`OrderId`, `ProductId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `GamesHub`.`PhysicalProductRequest`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProductRequest` (

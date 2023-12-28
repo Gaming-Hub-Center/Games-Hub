@@ -124,6 +124,20 @@ INSERT INTO `DigitalOrderItem` (`OrderId`, `ProductId`, `Count`, `UnitPrice`, `T
 
 
 -- -----------------------------------------------------
+-- Inserting dummy data into `DigitalCode`
+-- -----------------------------------------------------
+INSERT INTO `DigitalCode` (`OrderId`, `ProductId`, `Code`) VALUES
+(3, 1, 'AAAAAAAA'),
+(3, 1, 'BBBBBBBB'),
+(3, 2, 'CCCCCCCC'),
+(4, 3, 'DDDDDDDD'),
+(4, 3, 'EEEEEEEE'),
+(4, 3, 'FFFFFFFF'),
+(4, 3, 'GGGGGGGG'),
+(4, 3, 'HHHHHHHH');
+
+
+-- -----------------------------------------------------
 -- Inserting dummy data into `PhysicalProductRequest`
 -- -----------------------------------------------------
 INSERT INTO `PhysicalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`) VALUES

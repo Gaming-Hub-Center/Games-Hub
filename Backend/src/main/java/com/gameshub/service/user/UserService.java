@@ -1,9 +1,10 @@
 package com.gameshub.service.user;
 
+import com.gameshub.controller.DTO.user.*;
 import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;
-import jakarta.transaction.Transactional;
+import com.gameshub.utils.*;
 import lombok.*;
 import org.springframework.stereotype.*;
 
@@ -15,6 +16,7 @@ public class UserService {
 
     private final BuyerRepository buyerRepository;
     private final SellerRepository sellerRepository;
+    private final UserMapper userMapper;
 
     public List<BuyerDAO> getAllBuyers() {
         return buyerRepository.findAll();
@@ -52,6 +54,21 @@ public class UserService {
             return sellerDAOOptional.get();
         else
             throw new ResourceNotFoundException("User not found with id: " + sellerID);
+    }
+
+    public UserDTO getUserDTOByEmail(String email) {
+        Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findByEmail(email);
+        Optional<SellerDAO> sellerDAOOptional = sellerRepository.findByEmail(email);
+
+        if (buyerDAOOptional.isPresent()) {
+            BuyerDAO buyerDAO = buyerDAOOptional.get();
+            return userMapper.toUserDTO(buyerDAO);
+        } else if (sellerDAOOptional.isPresent()) {
+            SellerDAO sellerDAO = sellerDAOOptional.get();
+            return userMapper.toUserDTO(sellerDAO);
+        } else {
+            throw new ResourceNotFoundException("User not found with email " + email);
+        }
     }
 
     public Boolean userExists(String email) {

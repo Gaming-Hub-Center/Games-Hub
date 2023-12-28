@@ -18,7 +18,6 @@ import java.time.*;
 public class RegistrationController {
 
     private final UserService userService;
-    private final UserMapper userMapper;
     private final JWTGenerator jwtGenerator;
     private final PasswordEncoder passwordEncoder;
 
@@ -34,10 +33,10 @@ public class RegistrationController {
                 0
             )
         );
-        String token = jwtGenerator.createToken(buyerRegistrationDTO.getEmail());
-        UserDAO userDAO = userService.getByEmail(buyerRegistrationDTO.getEmail());
-        UserDTO userDTO = userMapper.toUserDTO(userDAO);
-        userDTO.setToken(token);
+
+        String email = buyerRegistrationDTO.getEmail();
+        UserDTO userDTO = userService.getUserDTOByEmail(email);
+        userDTO.setToken(jwtGenerator.createToken(email));
         return ResponseEntity.ok(userDTO);
     }
 
@@ -57,10 +56,10 @@ public class RegistrationController {
                 sellerRegistrationDTO.getVatRegistrationNumber()
             )
         );
-        String token = jwtGenerator.createToken(sellerRegistrationDTO.getEmail());
-        UserDAO userDAO = userService.getByEmail(sellerRegistrationDTO.getEmail());
-        UserDTO userDTO = userMapper.toUserDTO(userDAO);
-        userDTO.setToken(token);
+
+        String email = sellerRegistrationDTO.getEmail();
+        UserDTO userDTO = userService.getUserDTOByEmail(email);
+        userDTO.setToken(jwtGenerator.createToken(email));
         return ResponseEntity.ok(userDTO);
     }
 

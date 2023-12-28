@@ -9,10 +9,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
+    @Mapping(target = "role", constant = "USER")
     UserDTO toUserDTO(UserDAO userDAO);
 
+    @Mapping(target = "role", constant = "BUYER")
     BuyerDTO toUserDTO(BuyerDAO buyerDAO);
 
+    @Mapping(target = "role", constant = "SELLER")
     SellerDTO toUserDTO(SellerDAO sellerDAO);
 
     @Mapping(target = "password", ignore = true)

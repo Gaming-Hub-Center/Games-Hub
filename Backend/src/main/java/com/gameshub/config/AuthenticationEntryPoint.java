@@ -21,7 +21,7 @@ public class AuthenticationEntryPoint implements org.springframework.security.we
             AuthenticationException authException) throws IOException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        OBJECT_MAPPER.writeValue(response.getOutputStream(), new ErrorResponse("Unauthorized path", HttpStatus.UNAUTHORIZED));
+        OBJECT_MAPPER.writeValue(response.getOutputStream(), new ErrorResponse("Unauthorized path: " + authException.getMessage(), HttpStatus.UNAUTHORIZED));
     }
 
 }

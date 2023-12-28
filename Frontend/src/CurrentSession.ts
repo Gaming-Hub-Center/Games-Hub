@@ -41,8 +41,12 @@ export const getVatRegistrationNumber = () => {
     return window.sessionStorage.getItem("vatRegistrationNumber")
 }
 
-export const getJwtToken = () => {
-    return window.sessionStorage.getItem("jwtToken")
+export const getRole = () => {
+    return window.sessionStorage.getItem("role")
+}
+
+export const getToken = () => {
+    return window.sessionStorage.getItem("token")
 }
 
 export const storeUserData = (userDTO: UserDTO) => {
@@ -56,7 +60,8 @@ export const storeUserData = (userDTO: UserDTO) => {
     window.sessionStorage.setItem("dateJoined", userDTO.dateJoined)
     window.sessionStorage.setItem("sellerDescription", userDTO.sellerDescription)
     window.sessionStorage.setItem("vatRegistrationNumber", userDTO.vatRegistrationNumber)
-    window.sessionStorage.setItem("jwtToken", userDTO.token)
+    window.sessionStorage.setItem("role", userDTO.role)
+    window.sessionStorage.setItem("token", userDTO.token)
 }
 
 export const setCurrentProductPage = (currentPage: string) => {
