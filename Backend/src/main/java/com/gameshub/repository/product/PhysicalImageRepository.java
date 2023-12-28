@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PhysicalImageRepository extends JpaRepository<PhysicalImageDAO, Integer> {
-    @Query("SELECT p.image FROM PhysicalImageDAO p WHERE p.product_id = :productId")
-    Optional<List<byte[]>> findAllByProduct_id(@Param("productId") int product_id);
+    @Query("SELECT p.url FROM PhysicalImageDAO p WHERE p.product_id = :productId")
+    Optional<List<String>> findAllByProduct_id(@Param("productId") int product_id);
 
 //    @Query(value = "SELECT p.image FROM physical_product_image WHERE p.physical_product_id = :product_id LIMIT 1", nativeQuery = true)
 //    Optional<byte[]> findByProduct_id(@Param("productId") int product_id);
 
-    @Query(value = "SELECT p.image FROM physical_product_image p WHERE p.physical_product_id = :product_id LIMIT 1", nativeQuery = true)
-    Optional<byte[]> findByProduct_id(@Param("product_id") int product_id);
+    @Query(value = "SELECT p.url FROM physical_product_image p WHERE p.physical_product_id = :product_id LIMIT 1", nativeQuery = true)
+    Optional<String> findByProduct_id(@Param("product_id") int product_id);
 
     @Transactional
     @Modifying

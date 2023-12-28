@@ -82,6 +82,18 @@ public class ProductController {
         return ResponseEntity.ok(productService.sortDigital(ascending));
     }
 
+//    @PostMapping("/physical/image")
+//    public ResponseEntity<?> savePhysicalImage(@RequestParam String url, @RequestParam int productId) {
+//        productService.savePhysicalImage(url, productId);
+//        return ResponseEntity.ok("saved");
+//    }
+//
+//    @PostMapping("/digital/image")
+//    public ResponseEntity<?> saveDigitalImage(@RequestParam String url, @RequestParam int productId) {
+//        productService.saveDigitalImage(url, productId);
+//        return ResponseEntity.ok("saved");
+//    }
+
 //    @PostMapping("/physical/save")
 //    public ResponseEntity<PhysicalProductDTO> savePhysicalProduct(@RequestBody PhysicalProductDTO physicalProductDTO) throws IOException, FileNotFoundException {
 //        System.out.println("lklk");

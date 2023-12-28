@@ -7,6 +7,6 @@ export interface ProductDTO {
   sellerID: number;
   created_date: string;
   category: string;
-  images: string[];
+  urls: string[];
   code: string;
 }

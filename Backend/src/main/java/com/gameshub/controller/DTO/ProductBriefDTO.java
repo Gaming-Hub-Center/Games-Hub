@@ -10,7 +10,7 @@ public class ProductBriefDTO {
     private float price;
     private String title;
     private String description;
-    private byte[] image;
+    private String url;
     private String productType;
 
 

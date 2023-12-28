@@ -14,5 +14,5 @@ public class ProductDTO {
     private int sellerID;
     private LocalDate postDate;
     private String category;
-    private List<byte[]> images;
+    private List<String> urls;
 }

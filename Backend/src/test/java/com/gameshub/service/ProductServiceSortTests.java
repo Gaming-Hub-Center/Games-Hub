@@ -51,17 +51,17 @@ public class ProductServiceSortTests {
         physicalProductRepository.save(new PhysicalProductDAO("physical test title2", 200, "physical test decription2", 2, 96, "mouse", LocalDate.parse("2023-12-08")));
         physicalProductRepository.save(new PhysicalProductDAO("physical test title3", 300, "physical test decription3", 2, 96, "keyboard", LocalDate.parse("2023-12-08")));
 
-        physicalImageRepository.save(new PhysicalImageDAO(1, new byte[]{1, 2, 3}, 1));
-        physicalImageRepository.save(new PhysicalImageDAO(2, new byte[]{4, 5, 6}, 2));
-        physicalImageRepository.save(new PhysicalImageDAO(3, new byte[]{7, 8, 9}, 3));
+        physicalImageRepository.save(new PhysicalImageDAO(1, "123", 1));
+        physicalImageRepository.save(new PhysicalImageDAO(2, "456", 2));
+        physicalImageRepository.save(new PhysicalImageDAO(3, "789", 3));
 
         digitalProductRepository.save(new DigitalProductDAO("digital test title1", 100, "digital test decription1", 2, 96, "action", "code1", LocalDate.parse("2023-12-08")));
         digitalProductRepository.save(new DigitalProductDAO("digital test title2", 200, "digital test decription2", 2, 96, "arcade", "code2", LocalDate.parse("2023-12-08")));
         digitalProductRepository.save(new DigitalProductDAO("digital test title3", 300, "digital test decription3", 2, 96, "sport", "code3", LocalDate.parse("2023-12-08")));
 
-        digitalImageRepository.save(new DigitalImageDAO(1, new byte[]{1, 2, 3}, 1));
-        digitalImageRepository.save(new DigitalImageDAO(2, new byte[]{4, 5, 6}, 2));
-        digitalImageRepository.save(new DigitalImageDAO(3, new byte[]{7, 8, 9}, 3));
+        digitalImageRepository.save(new DigitalImageDAO(1, "123", 1));
+        digitalImageRepository.save(new DigitalImageDAO(2, "456", 2));
+        digitalImageRepository.save(new DigitalImageDAO(3, "789", 3));
     }
 
 
@@ -72,7 +72,7 @@ public class ProductServiceSortTests {
         assertNotNull(result);
         assertEquals(1, result.getId());
         assertEquals(100, result.getPrice());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.getImages().get(0));
+        assertEquals("123", result.getUrls().get(0));
         assertEquals("physical test decription1", result.getDescription());
         assertEquals("physical test title1", result.getTitle());
         assertEquals(96, result.getCount());
@@ -87,7 +87,7 @@ public class ProductServiceSortTests {
         assertNotNull(result);
         assertEquals(2, result.getId());
         assertEquals(200, result.getPrice());
-        assertArrayEquals(new byte[]{4, 5, 6}, result.getImages().get(0));
+        assertEquals("456", result.getUrls().get(0));
         assertEquals("physical test decription2", result.getDescription());
         assertEquals("physical test title2", result.getTitle());
         assertEquals(96, result.getCount());
@@ -109,7 +109,7 @@ public class ProductServiceSortTests {
         assertNotNull(result);
         assertEquals(1, result.getId());
         assertEquals(100, result.getPrice());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.getImages().get(0));
+        assertEquals("123", result.getUrls().get(0));
         assertEquals("digital test decription1", result.getDescription());
         assertEquals("digital test title1", result.getTitle());
         assertEquals(96, result.getCount());
@@ -124,7 +124,7 @@ public class ProductServiceSortTests {
         assertNotNull(result);
         assertEquals(2, result.getId());
         assertEquals(200, result.getPrice());
-        assertArrayEquals(new byte[]{4, 5, 6}, result.getImages().get(0));
+        assertEquals("456", result.getUrls().get(0));
         assertEquals("digital test decription2", result.getDescription());
         assertEquals("digital test title2", result.getTitle());
         assertEquals(96, result.getCount());
@@ -148,7 +148,7 @@ public class ProductServiceSortTests {
         assertEquals(1, result.get(0).getId());
         assertEquals(100, result.get(0).getPrice());
         assertEquals("physical test title1", result.get(0).getTitle());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.get(0).getImage());
+        assertEquals("123", result.get(0).getUrl());
     }
 
     @Test
@@ -168,7 +168,7 @@ public class ProductServiceSortTests {
         assertEquals(1, result.get(0).getId());
         assertEquals(100, result.get(0).getPrice());
         assertEquals("digital test title1", result.get(0).getTitle());
-        assertArrayEquals(new byte[]{1, 2, 3}, result.get(0).getImage());
+        assertEquals("123", result.get(0).getUrl());
     }
 
     @Test
@@ -190,7 +190,7 @@ public class ProductServiceSortTests {
             ProductBriefDTO product = results.get(i);
             assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
             assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
+            assertEquals("" + (int)(3*i+1) +  (3*i+2) + (3*i+3), product.getUrl());
         }
     }
 
@@ -213,7 +213,7 @@ public class ProductServiceSortTests {
             ProductBriefDTO product = results.get(i);
             assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
             assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
+            assertEquals("" + (3*i+1) +  (3*i+2) + (3*i+3), product.getUrl());
         }
     }
 
@@ -236,7 +236,7 @@ public class ProductServiceSortTests {
             ProductBriefDTO product = results.get(i);
             assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
             assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
+            assertEquals("" + (3*i+1) +  (3*i+2) + (3*i+3), product.getUrl());
         }
     }
 
@@ -259,7 +259,7 @@ public class ProductServiceSortTests {
             ProductBriefDTO product = results.get(i);
             assertTrue(product.getPrice() >= 100 && product.getPrice() <= 250);
             assertEquals(i+1, product.getId());
-            assertArrayEquals(new byte[]{(byte) (3*i+1), (byte) (3*i+2), (byte) (3*i+3)}, product.getImage());
+            assertEquals("" + (3*i+1) +  (3*i+2) + (3*i+3), product.getUrl());
         }
     }
 

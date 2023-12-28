@@ -110,13 +110,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Mock Title 1");
         mockProduct1.setPrice(50);
-        mockProduct1.setImage(new byte[]{1, 2, 3});
+        mockProduct1.setUrl("123");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Mock Title 2");
         mockProduct2.setPrice(75);
-        mockProduct2.setImage(new byte[]{4, 5, 6});
+        mockProduct2.setUrl("456");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -132,11 +132,11 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(50))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[0].url").value("123"))
                 .andExpect(jsonPath("$[1].id").value(2))
                 .andExpect(jsonPath("$[1].title").value("Mock Title 2"))
                 .andExpect(jsonPath("$[1].price").value(75))
-                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
+                .andExpect(jsonPath("$[1].url").value("456"));
 
         verify(productService, times(1)).searchPhysicalByTitle(searchKey);
     }
@@ -150,13 +150,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Mock Title 1");
         mockProduct1.setPrice(50);
-        mockProduct1.setImage(new byte[]{1, 2, 3});
+        mockProduct1.setUrl("123");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Mock Title 2");
         mockProduct2.setPrice(75);
-        mockProduct2.setImage(new byte[]{4, 5, 6});
+        mockProduct2.setUrl("456");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -172,12 +172,11 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(50))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[0].url").value("123"))
                 .andExpect(jsonPath("$[1].id").value(2))
                 .andExpect(jsonPath("$[1].title").value("Mock Title 2"))
                 .andExpect(jsonPath("$[1].price").value(75))
-                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
-
+                .andExpect(jsonPath("$[1].url").value("456"));
         verify(productService, times(1)).searchDigitalByTitle(searchKey);
     }
 
@@ -189,13 +188,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Mock Title 1");
         mockProduct1.setPrice(50.5F);
-        mockProduct1.setImage(new byte[]{1, 2, 3});
+        mockProduct1.setUrl("123");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Mock Title 2");
         mockProduct2.setPrice(75.6F);
-        mockProduct2.setImage(new byte[]{4, 5, 6});
+        mockProduct2.setUrl("456");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -214,7 +213,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(50.5F))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))));
+                .andExpect(jsonPath("$[0].url").value("123"));
 
         verify(productService, times(1)).filterPhysical(0F, 75F, "mouse");
     }
@@ -227,13 +226,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Mock Title 1");
         mockProduct1.setPrice(50.5F);
-        mockProduct1.setImage(new byte[]{1, 2, 3});
+        mockProduct1.setUrl("123");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Mock Title 2");
         mockProduct2.setPrice(75.6F);
-        mockProduct2.setImage(new byte[]{4, 5, 6});
+        mockProduct2.setUrl("456");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -252,11 +251,11 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(50.5F))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[0].url").value(equalTo("123")))
                 .andExpect(jsonPath("$[1].id").value(2))
                 .andExpect(jsonPath("$[1].title").value("Mock Title 2"))
                 .andExpect(jsonPath("$[1].price").value(75.6F))
-                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
+                .andExpect(jsonPath("$[1].url").value(equalTo("456")));
 
         verify(productService, times(1)).filterPhysical(0F, (float) Integer.MAX_VALUE, "mouse");
     }
@@ -269,13 +268,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Digital Mock Title 1");
         mockProduct1.setPrice(100.5F);
-        mockProduct1.setImage(new byte[]{10, 11, 12});
+        mockProduct1.setUrl("101112");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Digital Mock Title 2");
         mockProduct2.setPrice(150.6F);
-        mockProduct2.setImage(new byte[]{13, 14, 15});
+        mockProduct2.setUrl("131415");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -294,7 +293,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Digital Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(100.5F))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))));
+                .andExpect(jsonPath("$[0].url").value("101112"));
 
         verify(productService, times(1)).filterDigital(0F, 150F, "action");
     }
@@ -307,13 +306,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Digital Mock Title 1");
         mockProduct1.setPrice(100.5F);
-        mockProduct1.setImage(new byte[]{10, 11, 12});
+        mockProduct1.setUrl("101112");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Digital Mock Title 2");
         mockProduct2.setPrice(150.6F);
-        mockProduct2.setImage(new byte[]{13, 14, 15});
+        mockProduct2.setUrl("131415");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -332,12 +331,11 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Digital Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(100.5F))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[0].url").value("101112"))
                 .andExpect(jsonPath("$[1].id").value(2))
                 .andExpect(jsonPath("$[1].title").value("Digital Mock Title 2"))
                 .andExpect(jsonPath("$[1].price").value(150.6F))
-                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
-
+                .andExpect(jsonPath("$[1].url").value("131415"));
         verify(productService, times(1)).filterDigital(100.5F, (float) Integer.MAX_VALUE, "action");
     }
 
@@ -350,13 +348,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Mock Title 1");
         mockProduct1.setPrice(50.5F);
-        mockProduct1.setImage(new byte[]{1, 2, 3});
+        mockProduct1.setUrl("123");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Mock Title 2");
         mockProduct2.setPrice(75.6F);
-        mockProduct2.setImage(new byte[]{4, 5, 6});
+        mockProduct2.setUrl("456");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -373,11 +371,11 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(50.5F))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[0].url").value("123"))
                 .andExpect(jsonPath("$[1].id").value(2))
                 .andExpect(jsonPath("$[1].title").value("Mock Title 2"))
                 .andExpect(jsonPath("$[1].price").value(75.6F))
-                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
+                .andExpect(jsonPath("$[1].url").value("456"));
 
         verify(productService, times(1)).sortPhysical(ascending);
     }
@@ -391,13 +389,13 @@ public class ProductControllerTest {
         mockProduct1.setId(1);
         mockProduct1.setTitle("Digital Mock Title 1");
         mockProduct1.setPrice(100.5F);
-        mockProduct1.setImage(new byte[]{10, 11, 12});
+        mockProduct1.setUrl("101112");
 
         ProductBriefDTO mockProduct2 = new ProductBriefDTO();
         mockProduct2.setId(2);
         mockProduct2.setTitle("Digital Mock Title 2");
         mockProduct2.setPrice(150.6F);
-        mockProduct2.setImage(new byte[]{13, 14, 15});
+        mockProduct2.setUrl("131415");
 
         mockProductList.add(mockProduct1);
         mockProductList.add(mockProduct2);
@@ -414,11 +412,11 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(jsonPath("$[0].title").value("Digital Mock Title 1"))
                 .andExpect(jsonPath("$[0].price").value(100.5F))
-                .andExpect(jsonPath("$[0].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct1.getImage()))))
+                .andExpect(jsonPath("$[0].url").value("101112"))
                 .andExpect(jsonPath("$[1].id").value(2))
                 .andExpect(jsonPath("$[1].title").value("Digital Mock Title 2"))
                 .andExpect(jsonPath("$[1].price").value(150.6F))
-                .andExpect(jsonPath("$[1].image").value(equalTo(Base64.getEncoder().encodeToString(mockProduct2.getImage()))));
+                .andExpect(jsonPath("$[1].url").value("131415"));
 
         verify(productService, times(1)).sortDigital(ascending);
     }
