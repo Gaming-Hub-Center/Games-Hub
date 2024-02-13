@@ -25,13 +25,13 @@ const updateUserData = async () => {
   }
 };
 
-export const httpRequest = async (method: string, url: string, data?: any) => {
+export const httpRequest = async (method: string, url: string, data?: any, params?: any) => {
   const jwtToken = getToken();
   if (jwtToken && jwtToken !== "null") {
     await updateUserData();
   }
 
-  return sendHttpRequest(method, url, data);
+  return sendHttpRequest(method, url, data, params);
 };
 
 export const sendHttpRequest = (method: string, url: string, data?: any, params?: any) => {

@@ -92,9 +92,6 @@ const HomePageAdmin = () => {
                 <li onClick={() => setActiveSection('Admins')}>
                   <FaStore className="admin-icon"/> Admins
                 </li>
-                <li onClick={() => setActiveSection('Admins')}>
-                    <FaStore className="admin-icon" /> Admins
-                </li>
             </ul>
         </aside>`
 

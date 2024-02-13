@@ -163,6 +163,7 @@ public class ProductService {
         for(ProductBriefDTO productDTO: productDTOs) {
             String url = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setUrl(url);
+            productDTO.setProductType("physical");
         }
         return ascending ? productDTOs : productDTOs.reversed();
     }
@@ -173,6 +174,7 @@ public class ProductService {
         for(ProductBriefDTO productDTO: productDTOs) {
             String url = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setUrl(url);
+            productDTO.setProductType("digital");
         }
         return ascending ? productDTOs : productDTOs.reversed();
     }

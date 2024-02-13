@@ -17,7 +17,6 @@ import { ProductView } from "./Components/ProductView";
 import { SellerProductCatalog } from "./Pages/Seller_Pages/ProductCatalog/SellerProductCatalog";
 import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProductView";
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
-import HomePageAdmin from "./Pages/admin/AdminDashboard";
 import { gapi } from "gapi-script";
 import PhysicalWishlist from "./Pages/Physical_wishList";
 import DigitalWishlist from "./Pages/Digital_wishList";
@@ -26,16 +25,14 @@ import SellerProfilePage from "./Pages/Profile-Page/seller_profile_page";
 
 
 
-import BuyerOrders from "./Pages/BuyerOrders";
 import HomePageAdmin from "./Pages/Admin/AdminDashboard";
 
-import {SellerView} from "./Pages/admin/SellerView";
-import {BuyerView} from "./Pages/admin/BuyerView";
-
+import React, { useEffect } from "react";
+import {SellerView} from "./Pages/Admin/SellerView";
+import {BuyerView} from "./Pages/Admin/BuyerView";
+import {AdminView} from "./Pages/Admin/AdminView";
+import {SellerCatalogView} from "./Pages/Admin/SellerCatalogView";
 import BuyerOrders from "./Pages/BuyerOrders";
-import {AdminView} from "./Pages/admin/AdminView";
-import {SellerCatalogView} from "./Pages/admin/SellerCatalogView";
-import { useEffect } from "react";
 
 
 const clientId = "922788866859-fv5d49j6cqd2orfai2c1dnte4c8v5ii8.apps.googleusercontent.com";

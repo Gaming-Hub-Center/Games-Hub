@@ -122,31 +122,6 @@ public class WishlistServiceTests {
 
     @Test
     @Transactional
-    public void test_MultipleNewPhysicalWishlistProducts() {
-        wishlistService.addPhysicalWishlistProduct(testBuyer.getId(), testProductPhysical.getId());
-        System.out.println(testProductPhysical.getId());
-        // Fetch the wishlist item
-        PhysicalWishlistDAO.WishlistKey WishlistKey = new PhysicalWishlistDAO.WishlistKey(testBuyer.getId(), testProductPhysical.getId());
-        PhysicalWishlistDAO savedWishlistItem = physicalWishlistRepository.findById(WishlistKey).orElse(null);
-
-        assertNotNull(savedWishlistItem, "Wishlist item should not be null");
-        assertEquals(testBuyer.getId(), savedWishlistItem.getId().getBuyerID(), "Buyer ID should match");
-        assertEquals(testProductPhysical.getId(), savedWishlistItem.getId().getProductID(), "Product ID should match");
-
-        // Fetch all wishlist items for the buyer and assert the count is 1
-        List<PhysicalWishlistDAO> buyerWishlistItems = wishlistService.getPhysicalWishlistItems(testBuyer.getId());
-        assertEquals(1, buyerWishlistItems.size(), "The number of cart items should be " + "1");
-
-        // Add another item to the wishlist
-
-        LocalDate localDate = LocalDate.now();
-        PhysicalProductDAO product = new PhysicalProductDAO("Test ProductP2", 50.0f, "Description", testSeller.getId(), 10, "Category", localDate);
-        physicalProductRepository.save(product);
-        wishlistService.addPhysicalWishlistProduct(testBuyer.getId(), product.getId());
-    }
-
-    @Test
-    @Transactional
     public void test_addDupPhysicalWishlistProduct() {
         wishlistService.addPhysicalWishlistProduct(testBuyer.getId(), testProductPhysical.getId());
 
@@ -241,5 +216,77 @@ public class WishlistServiceTests {
         // Fetch all wishlist items for the buyer and assert the count is 0
         List<PhysicalWishlistDAO> buyerWishlistItems_after = wishlistService.getPhysicalWishlistItems(testBuyer.getId());
         assertEquals(0, buyerWishlistItems_after.size(), "The number of cart items should be " + "1");
+    }
+
+
+    @Test
+    @Transactional
+    public void test_MultipleNewPhysicalWishlistProducts() {
+        wishlistService.addPhysicalWishlistProduct(testBuyer.getId(), testProductPhysical.getId());
+        System.out.println(testProductPhysical.getId());
+        // Fetch the wishlist item
+        PhysicalWishlistDAO.WishlistKey WishlistKey = new PhysicalWishlistDAO.WishlistKey(testBuyer.getId(), testProductPhysical.getId());
+        PhysicalWishlistDAO savedWishlistItem = physicalWishlistRepository.findById(WishlistKey).orElse(null);
+
+        assertNotNull(savedWishlistItem, "Wishlist item should not be null");
+        assertEquals(testBuyer.getId(), savedWishlistItem.getId().getBuyerID(), "Buyer ID should match");
+        assertEquals(testProductPhysical.getId(), savedWishlistItem.getId().getProductID(), "Product ID should match");
+
+        // Fetch all wishlist items for the buyer and assert the count is 1
+        List<PhysicalWishlistDAO> buyerWishlistItems = wishlistService.getPhysicalWishlistItems(testBuyer.getId());
+        assertEquals(1, buyerWishlistItems.size(), "The number of cart items should be " + "1");
+
+        // Add another item to the wishlist
+
+        LocalDate localDate = LocalDate.now();
+        PhysicalProductDAO product = new PhysicalProductDAO("Test ProductP2", 50.0f, "Description", testSeller.getId(), 10, "Category", localDate);
+        physicalProductRepository.save(product);
+        wishlistService.addPhysicalWishlistProduct(testBuyer.getId(), product.getId());
+
+        // Fetch all wishlist items for the buyer and assert the count is 2
+        List<PhysicalWishlistDAO> buyerWishlistItems2 = wishlistService.getPhysicalWishlistItems(testBuyer.getId());
+        assertEquals(2, buyerWishlistItems2.size(), "The number of cart items should be " + "2");
+
+        // Delete the wishlist items
+        wishlistService.deletePhysicalWishlistProduct(testBuyer.getId(), testProductPhysical.getId());
+        wishlistService.deletePhysicalWishlistProduct(testBuyer.getId(), product.getId());
+        // Fetch all wishlist items for the buyer and assert the count is 0
+        List<PhysicalWishlistDAO> buyerWishlistItems_after = wishlistService.getPhysicalWishlistItems(testBuyer.getId());
+        assertEquals(0, buyerWishlistItems_after.size(), "The number of cart items should be " + "1");
+    }
+
+    @Test
+    @Transactional
+    public void test_MultipleNewDigitalWishlistProducts() {
+        wishlistService.addDigitalWishlistProduct(testBuyer.getId(), testProductDigital.getId());
+
+        // Fetch the wishlist item
+        DigitalWishlistDAO.WishlistKey WishlistKey = new DigitalWishlistDAO.WishlistKey(testBuyer.getId(), testProductDigital.getId());
+        DigitalWishlistDAO savedWishlistItem = digitalWishlistRepository.findById(WishlistKey).orElse(null);
+
+        assertNotNull(savedWishlistItem, "Wishlist item should not be null");
+        assertEquals(testBuyer.getId(), savedWishlistItem.getId().getBuyerID(), "Buyer ID should match");
+        assertEquals(testProductDigital.getId(), savedWishlistItem.getId().getProductID(), "Product ID should match");
+
+        // Fetch all wishlist items for the buyer and assert the count is 1
+        List<DigitalWishlistDAO> buyerWishlistItems = wishlistService.getDigitalWishlistItems(testBuyer.getId());
+        assertEquals(1, buyerWishlistItems.size(), "The number of cart items should be " + "1");
+
+        // Add another item to the wishlist
+        LocalDate localDate = LocalDate.now();
+        DigitalProductDAO product = new DigitalProductDAO("Test ProductD2", 50.0f, "Description", testSeller.getId(), 10, "Category", "123", localDate);
+        digitalProductRepository.save(product);
+        wishlistService.addDigitalWishlistProduct(testBuyer.getId(), product.getId());
+
+        // Fetch all wishlist items for the buyer and assert the count is 2
+        List<DigitalWishlistDAO> buyerWishlistItems2 = wishlistService.getDigitalWishlistItems(testBuyer.getId());
+        assertEquals(2, buyerWishlistItems2.size(), "The number of cart items should be " + "2");
+
+        // Delete the wishlist items
+        wishlistService.deleteDigitalWishlistProduct(testBuyer.getId(), testProductDigital.getId());
+        wishlistService.deleteDigitalWishlistProduct(testBuyer.getId(), product.getId());
+        // Fetch all wishlist items for the buyer and assert the count is 0
+        List<DigitalWishlistDAO> buyerWishlistItems_after = wishlistService.getDigitalWishlistItems(testBuyer.getId());
+        assertEquals(0, buyerWishlistItems_after.size(), "The number of cart items should be" + "0");
     }
 }

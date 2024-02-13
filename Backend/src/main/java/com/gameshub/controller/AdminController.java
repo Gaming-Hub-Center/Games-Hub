@@ -20,10 +20,11 @@ public class AdminController {
     private final AdminProductsService productRequestApproveService;
     private final AdminProductsService adminProductsService;
 
-    @PostMapping("/approve-product/create")
-    public ResponseEntity<?> approveProductCreation(@RequestParam String productType, @RequestParam int requestId) {
-        productRequestApproveService.approveProductCreation(productType, requestId);
-        return ResponseEntity.ok("Product creation request approved successfully.");
+    @GetMapping("/approve")
+    public ResponseEntity<List<ProductRequestDTO>> approveProductCreation(@RequestParam String productType, @RequestParam int requestId) {
+        adminProductsService.approveProductCreation(productType, requestId);
+        List<ProductRequestDTO> productsRequest = adminProductsService.getAdminProducts(productType, "Pending");
+        return ResponseEntity.ok(productsRequest);
     }
 
     @GetMapping("/products")

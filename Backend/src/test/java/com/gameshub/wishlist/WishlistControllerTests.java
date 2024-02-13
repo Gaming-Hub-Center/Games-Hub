@@ -185,4 +185,74 @@ public class WishlistControllerTests {
                 .andExpect(status().isInternalServerError())
                 .andExpect(content().string("Error: No buyer or Digital_Product exists with that ID"));
     }
+
+    @Test
+    void test_AddMultiplePhysicalWishlistItem() throws Exception {
+        WishlistDTO wishlistDTO = new WishlistDTO();
+        wishlistDTO.setBuyerID(1);
+        wishlistDTO.setProductID(2);
+
+        mockMvc.perform(post("/wishlist/physical/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(wishlistDTO)))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Physical wishlist item added successfully"));
+
+        verify(wishlistService).addPhysicalWishlistProduct(1, 2);
+
+        WishlistDTO wishlistDTO_2 = new WishlistDTO();
+        wishlistDTO_2.setBuyerID(1);
+        wishlistDTO_2.setProductID(3);
+
+        mockMvc.perform(post("/wishlist/physical/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(wishlistDTO_2)))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Physical wishlist item added successfully"));
+
+        verify(wishlistService).addPhysicalWishlistProduct(1, 3);
+
+        when(wishlistService.getPhysicalWishlistItems(1)).thenReturn(List.of(new PhysicalWishlistDAO()));
+
+        mockMvc.perform(get("/wishlist/physical")
+                        .param("buyerId", "1"))
+                .andExpect(status().isOk());
+
+        verify(wishlistService).getPhysicalWishlistItems(1);
+    }
+
+    @Test
+    void test_AddMultipleDigitalWishlistItem() throws Exception {
+        WishlistDTO wishlistDTO = new WishlistDTO();
+        wishlistDTO.setBuyerID(1);
+        wishlistDTO.setProductID(2);
+
+        mockMvc.perform(post("/wishlist/digital/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(wishlistDTO)))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Digital wishlist item added successfully"));
+
+        verify(wishlistService).addDigitalWishlistProduct(1, 2);
+
+        WishlistDTO wishlistDTO_2 = new WishlistDTO();
+        wishlistDTO_2.setBuyerID(1);
+        wishlistDTO_2.setProductID(3);
+
+        mockMvc.perform(post("/wishlist/digital/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(wishlistDTO_2)))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Digital wishlist item added successfully"));
+
+        verify(wishlistService).addDigitalWishlistProduct(1, 3);
+
+        when(wishlistService.getDigitalWishlistItems(1)).thenReturn(List.of(new DigitalWishlistDAO()));
+
+        mockMvc.perform(get("/wishlist/digital")
+                        .param("buyerId", "1"))
+                .andExpect(status().isOk());
+
+        verify(wishlistService).getDigitalWishlistItems(1);
+    }
 }
