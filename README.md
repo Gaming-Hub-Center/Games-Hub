@@ -29,7 +29,7 @@ The development of Games Hub is organized into three milestones to ensure a syst
 - User Searches and Sorts Products.
 - Buyer Filters Products.
 
-  
+  ![image_2024-04-04_23-14-23](https://github.com/Gaming-Hub-Center/Games-Hub/assets/97472134/bf20a024-41cc-4099-8f76-9a4294aa250f)
 
 ### Milestone 3: Advanced Features and Optimization
 - Create seller profile page.
@@ -42,6 +42,9 @@ The development of Games Hub is organized into three milestones to ensure a syst
 - Admin views user list.
 - Admin remove user from the system.
 - Buyer view order history.
+
+  ![image_2024-04-04_23-20-45](https://github.com/Gaming-Hub-Center/Games-Hub/assets/97472134/7eb69e2b-e59f-40ea-ab8b-f012af5cb5a5)
+
 
 ## Getting Started
 
