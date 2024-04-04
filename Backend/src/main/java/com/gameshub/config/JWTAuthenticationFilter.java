@@ -1,13 +1,5 @@
 package com.gameshub.config;
 
-<<<<<<< Updated upstream
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import lombok.*;
-import org.springframework.http.*;
-import org.springframework.security.core.context.*;
-import org.springframework.web.filter.*;
-=======
 import com.gameshub.model.user.UserDAO;
 import com.gameshub.service.user.UserService;
 import jakarta.servlet.FilterChain;
@@ -22,7 +14,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
->>>>>>> Stashed changes
 
 import java.io.IOException;
 import java.util.List;
@@ -55,7 +46,6 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         }
-
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 

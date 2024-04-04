@@ -18,13 +18,10 @@ import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
 import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 
 import { BuyerRegistrationDTO } from "../../Controller/DTO/user/BuyerRegistrationDTO";
-<<<<<<< Updated upstream
-=======
 import { GoogleSignUpButtonBuyer } from "../../Components/googleAuthButtons/googleSignupBuyer";
 import {getCurrentProductPage, setRole, setToken} from "../../session/CurrentSession";
 import {updateSessionPeriodically} from "../../session/UpdateSession";
 import {ProductType} from "../../enums/ProductType";
->>>>>>> Stashed changes
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
@@ -354,6 +351,7 @@ export function SignUpBuyer() {
               Submit
             </Button>
           </div>
+          <GoogleSignUpButtonBuyer />
           <div
               style={{ width: "100%", display: "flex", justifyContent: "center" }}
           >

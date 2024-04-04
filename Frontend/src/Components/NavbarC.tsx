@@ -1,31 +1,24 @@
-import {Form, NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Button, Col, Container, FormControl, Image } from "react-bootstrap";
-import React, { SetStateAction, useState } from "react";
+import React, {SetStateAction, useCallback, useState} from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-<<<<<<< Updated upstream
-import {faCartShopping, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-=======
 import {faCartShopping, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import {clearCurrentSession, getCurrentProductPage, getRole, noCurrentSession} from "../session/CurrentSession";
 import {clearAllIntervals} from "../session/UpdateSession";
 import {ProductType} from "../enums/ProductType";
->>>>>>> Stashed changes
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
 
-<<<<<<< Updated upstream
-=======
   const handleLogOut = () => {
       clearCurrentSession()
       setTimeout(() => {}, 100)
       clearAllIntervals()
   };
->>>>>>> Stashed changes
 
   const handleSearchTextChange = (event: {
         target: { value: SetStateAction<string> };
@@ -50,9 +43,6 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
     };
 
   function goToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-<<<<<<< Updated upstream
-    navigate("/digital-cart");
-=======
     const path = getCurrentProductPage() === ProductType.PHYSICAL ? '/physical-cart' : '/digital-cart'
     navigate(path);
   }
@@ -60,7 +50,6 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
   function goToWishlist(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
     const path = getCurrentProductPage() === ProductType.PHYSICAL ? '/physical-wishlist' : '/digital-wishlist'
     navigate(path);
->>>>>>> Stashed changes
   }
 
   return (
@@ -170,50 +159,89 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
                 >
                   <FontAwesomeIcon icon={faCartShopping} />
                 </Button>
-
+                <Button style={{
+                  backgroundColor: "#733BC0",
+                  color: "#f0f0f0",
+                  borderColor: "#733BC0",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s",
+                  marginLeft: "10px",
+                }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.backgroundColor = "#733BC0")
+                        }
+                        onClick={goToWishlist}
+                >
+                  <FontAwesomeIcon icon={faHeart} />
+                </Button>
               </Col>
-
                 <Nav>
+                    {noCurrentSession()? <><Nav.Link
+                      as={NavLink}
+                      to="/signin"
+                      style={{
+                          marginTop: "3px",
+                          marginRight: "10px",
+                          borderRadius: "50px",
+                      }}
+                  >
+                      Sign In
+                  </Nav.Link><Nav.Link
+                      as={NavLink}
+                      to="/signup/buyer"
+                      style={{
+                          marginTop: "3px",
+                          marginRight: "10px",
+                          borderRadius: "50px",
+                      }}
+                  >
+                          Sign Up
+                      </Nav.Link></> 
+                      : 
+                      <><Nav.Link
+                      as={NavLink}
+                      to={getRole() === "BUYER" ? "/buyer/profile" : "/seller/profile"}
+                      style={{
+                          marginTop: "3px",
+                          marginRight: "10px",
+                          borderRadius: "50px",
+                      }}
+                  >
+                      Profile
+                  </Nav.Link>
+                  {getRole() === "BUYER" && (
                     <Nav.Link
-                        as={NavLink}
-                        to="/signin"
-                        style={{
-                            marginTop: "3px",
-                            marginRight: "10px",
-                            borderRadius: "50px",
-                        }}
+                      as={NavLink}
+                      to="/buyer/orders"
+                      style={{
+                        marginTop: "3px",
+                        marginRight: "10px",
+                        borderRadius: "50px",
+                      }}
                     >
-                        Sign In
+                      Orders
                     </Nav.Link>
-                    <Nav.Link
-                        as={NavLink}
-                        to="/signup/buyer"
-                        style={{
-                            marginTop: "3px",
-                            marginRight: "10px",
-                            borderRadius: "50px",
-                        }}
-                    >
-                        Sign Up
-                    </Nav.Link>
+                  )}
+                  <Nav.Link
+                    onClick={handleLogOut}
+                    as={NavLink}
+                    to="/"
+                    style={{
+                        marginTop: "3px",
+                        marginRight: "10px",
+                        borderRadius: "50px",
+                    }}
+                  >
+                    Log Out
+                  </Nav.Link>
+                  
+                  </>}
                 </Nav>
             </Container>
         </Navbar>
     );
-}
-
-{
-    /* <NavDropdown
-
-              title={""}
-              style={{ marginTop: "3px", marginRight: "20px", paddingRight: "0" }}
-              align="end"
-            >
-              <NavDropdown.Item as={NavLink} to="/signup/buyer">
-                Sign up
-              </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/signin">
-                Sign in
-              </NavDropdown.Item>
-            </NavDropdown> */
 }

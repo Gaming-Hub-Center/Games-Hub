@@ -1,12 +1,5 @@
 package com.gameshub.service.user;
 
-<<<<<<< Updated upstream
-import com.gameshub.exception.*;
-import com.gameshub.model.user.*;
-import com.gameshub.repository.user.*;
-import lombok.*;
-import org.springframework.stereotype.*;
-=======
 import com.gameshub.dto.user.UserDTO;
 import com.gameshub.exception.ResourceAlreadyFoundException;
 import com.gameshub.exception.ResourceNotFoundException;
@@ -20,7 +13,6 @@ import com.gameshub.repository.user.SellerRepository;
 import com.gameshub.utils.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
->>>>>>> Stashed changes
 
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +23,8 @@ public class UserService {
 
     private final BuyerRepository buyerRepository;
     private final SellerRepository sellerRepository;
+    private final AdminRepository adminRepository;
+    private final UserMapper userMapper;
 
     public List<BuyerDAO> getAllBuyers() {
         return buyerRepository.findAll();
@@ -40,22 +34,21 @@ public class UserService {
         return sellerRepository.findAll();
     }
 
-<<<<<<< Updated upstream
-    public UserDAO getByEmail(String email) {
-=======
     public List<AdminDAO> getAllAdmins() {
         return adminRepository.findAll();
     }
 
     public UserDAO getUserByEmail(String email) {
->>>>>>> Stashed changes
         Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findByEmail(email);
         Optional<SellerDAO> sellerDAOOptional = sellerRepository.findByEmail(email);
+        Optional<AdminDAO> adminDAOOptional = adminRepository.findByEmail(email);
 
         if (buyerDAOOptional.isPresent())
             return buyerDAOOptional.get();
         else if (sellerDAOOptional.isPresent())
             return sellerDAOOptional.get();
+        else if (adminDAOOptional.isPresent())
+            return adminDAOOptional.get();
         else
             throw new ResourceNotFoundException("User not found with email: " + email);
     }
@@ -93,10 +86,6 @@ public class UserService {
             throw new ResourceNotFoundException("User not found with id: " + sellerID);
     }
 
-<<<<<<< Updated upstream
-    public Boolean userExists(String email) {
-        return buyerRepository.existsByEmail(email) || sellerRepository.existsByEmail(email);
-=======
     public AdminDAO getAdminById(int adminID) {
         Optional<AdminDAO> adminDAOOptional = adminRepository.findById(adminID);
 
@@ -135,7 +124,6 @@ public class UserService {
 
     public Boolean userExistsByEmail(String email) {
         return buyerRepository.existsByEmail(email) || sellerRepository.existsByEmail(email) || adminRepository.existsByEmail(email);
->>>>>>> Stashed changes
     }
 
     public Boolean userExistsById(int id) {
@@ -154,8 +142,6 @@ public class UserService {
         sellerRepository.save(sellerDAO);
     }
 
-<<<<<<< Updated upstream
-=======
     public void saveNewAdmin(AdminDAO adminDAO) {
         if (userExistsByEmail(adminDAO.getEmail()))
             throw new ResourceAlreadyFoundException("User already found with email: " + adminDAO.getEmail());
@@ -194,5 +180,4 @@ public class UserService {
         sellerRepository.save(sellerDAO);
     }
 
->>>>>>> Stashed changes
 }

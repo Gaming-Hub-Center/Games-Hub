@@ -26,15 +26,7 @@ public abstract class UserDAO {
     @Column(name = "Phone")
     protected String phone;
 
-<<<<<<< Updated upstream
-    @Column(name = "Address")
-    protected String address;
-
-    @Column(name = "Balance")
-    protected float balance;
-=======
     @Transient
     protected String role;
->>>>>>> Stashed changes
 
 }

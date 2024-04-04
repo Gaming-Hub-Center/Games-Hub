@@ -33,4 +33,6 @@ public interface PhysicalProductRequestRepository extends JpaRepository<Physical
     @Query(value = "ALTER TABLE physicalproductrequest ALTER COLUMN id RESTART WITH 1", nativeQuery = true)
     void resetAutoIncrement();
 
+    List<PhysicalProductRequestDAO> findByStatus(String status);
+
 }

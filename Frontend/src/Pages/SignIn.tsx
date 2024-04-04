@@ -9,14 +9,10 @@ import Row from "react-bootstrap/Row";
 import { Link, useNavigate } from "react-router-dom";
 import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
 import { httpRequest } from "../Controller/HttpProxy";
-<<<<<<< Updated upstream
-import { clearCurrentSession, storeUserData } from "../CurrentSession";
-=======
 import { getCurrentProductPage, setRole, setToken} from "../session/CurrentSession";
 import { GoogleLoginButton } from "../Components/googleAuthButtons/googleLogin";
 import {updateSessionPeriodically} from "../session/UpdateSession";
 import {ProductType} from "../enums/ProductType";
->>>>>>> Stashed changes
 
 export function SignIn() {
     const [validated, setValidated] = useState(false);
@@ -44,10 +40,6 @@ export function SignIn() {
                 setRole(role)
                 setToken(token)
                 setValidated(true)
-<<<<<<< Updated upstream
-                navigate('/')
-                console.log(responseData)
-=======
                 if (role === 'ADMIN')
                   navigate('/admin/dashboard')
                 else if (role === 'SELLER')
@@ -57,7 +49,6 @@ export function SignIn() {
                 console.log(role)
                 console.log(token)
                 // updateSessionPeriodically()
->>>>>>> Stashed changes
             })
             .catch((error) => {
                 console.log(error)
@@ -193,30 +184,8 @@ export function SignIn() {
                         Submit
                     </Button>
                 </div>
-                {/* "Sign in with Google" button */}
-                <div
-                    className="mb-1"
-                    style={{ display: "flex", justifyContent: "center" }}
-                >
-                    <Button
-                        variant="danger"
-                        onClick={() => {
-                            // Handle Google Sign-In logic here
-                        }}
-                        style={{ width: "100%" }}
-                    >
-                        <FontAwesomeIcon
-                            icon={faGoogle}
-                            style={{
-                                color: "white",
-                                fontSize: "15px",
-                                marginRight: "10px",
-                                paddingRight: "5",
-                            }}
-                        />
-                        Sign in with Google
-                    </Button>
-                </div>
+                <GoogleLoginButton />
+                
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <p style={{ paddingRight: "10px" }}>Don't have an account? </p>
                     <Link to="/signup/buyer">Sign Up</Link>

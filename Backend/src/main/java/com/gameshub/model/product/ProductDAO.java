@@ -1,13 +1,8 @@
 package com.gameshub.model.product;
 
-<<<<<<< Updated upstream
-import lombok.*;
-import jakarta.persistence.*;
-=======
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
->>>>>>> Stashed changes
 
 import java.time.LocalDate;
 

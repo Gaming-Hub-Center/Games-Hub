@@ -17,8 +17,6 @@ import java.time.LocalDate;
 @Table(name = "seller")
 public class SellerDAO extends UserDAO {
 
-<<<<<<< Updated upstream
-=======
     public SellerDAO(String name, String email, String password, String phone, String address, float balance, String nationalId, LocalDate dateJoined, String sellerDescription, String vatRegistrationNumber) {
         this.name = name;
         this.email = email;
@@ -43,7 +41,6 @@ public class SellerDAO extends UserDAO {
     @Column(name = "Balance")
     protected float balance;
 
->>>>>>> Stashed changes
     @Column(name = "Nationalid")
     private String nationalId;
 

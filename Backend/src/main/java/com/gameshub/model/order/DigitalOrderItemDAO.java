@@ -3,12 +3,8 @@ package com.gameshub.model.order;
 import jakarta.persistence.*;
 import lombok.*;
 
-<<<<<<< Updated upstream
-import java.io.*;
-=======
 import java.io.Serializable;
 import java.util.List;
->>>>>>> Stashed changes
 
 @Getter
 @Setter
@@ -47,5 +43,8 @@ public class DigitalOrderItemDAO {
 
     @Column(name = "Totalprice")
     private float totalPrice;
+
+    @Transient
+    List<String> codes;
 
 }

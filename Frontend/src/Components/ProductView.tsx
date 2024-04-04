@@ -96,7 +96,7 @@ export function ProductView() {
               <Carousel.Item>
                 <Image
                   className="d-block"
-                  src={`data:image/jpeg;base64,${response.images[0]}`}
+                  src={response.urls[0]}
                   alt="First slide"
                   style={{
                     objectFit: "cover",
@@ -108,7 +108,7 @@ export function ProductView() {
               <Carousel.Item>
                 <Image
                   className="d-block"
-                  src={`data:image/jpeg;base64,${response.images[1]}`}
+                  src={response.urls[1]}
                   alt="Second slide"
                   style={{
                     objectFit: "cover",
@@ -120,7 +120,7 @@ export function ProductView() {
               <Carousel.Item>
                 <Image
                   className="d-block"
-                  src={`data:image/jpeg;base64,${response.images[2]}`}
+                  src={response.urls[2]}
                   alt="Third slide"
                   style={{
                     objectFit: "cover",

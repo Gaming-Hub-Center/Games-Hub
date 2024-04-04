@@ -8,6 +8,8 @@ import EditableProductDetailsItem from "./EditableProductDetailsItem";
 import "./EditableProductDetailsItem.css";
 import { ProductPatch } from "./Model/ProductPatch";
 import './SellerProductEdit.css';
+import { Container } from "react-bootstrap";
+import { NavbarC } from "../../../Components/NavbarC";
 
 export function SellerProductEdit(props){
     const navigate = useNavigate();
@@ -72,6 +74,16 @@ export function SellerProductEdit(props){
     }
 
     return(
+        <Container
+        fluid
+        style={{
+          height: "170vh",
+          padding: 0,
+          backgroundColor: "#121212",
+          color: "white"
+        }}
+      >
+        <NavbarC productType={undefined} updateProductCardPropsList={undefined} />
         <div className="product-details-form">
             <div style={{width: '50px'}} className="product-images-column">
                 {/* {displayedImageURLs.map((imageURL, index) => index === 0? null : <img key={imageURL} 
@@ -116,6 +128,7 @@ export function SellerProductEdit(props){
             </div>
             <button style={{paddingLeft: '30px', paddingRight: '30px'}} onClick={handleSaveEdit} className="GH_Btn general save"><i className="bi bi-floppy"></i></button>
         </div>
+        </Container>
     )
 
 }

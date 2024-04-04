@@ -10,4 +10,5 @@ export interface ProductRequestDTO {
     count: number;
     sellerId: number;
     category: string;
+    images: string[]; // Array of strings (assuming these are URLs)
 }

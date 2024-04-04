@@ -6,10 +6,6 @@ import com.gameshub.dto.product.ProductPatchDTO;
 import com.gameshub.dto.product.ProductRequestDTO;
 import com.gameshub.enums.ProductStatus;
 import com.gameshub.exception.ResourceAlreadyFoundException;
-<<<<<<< Updated upstream:Backend/src/main/java/com/gameshub/service/request/ProductRequestService.java
-import com.gameshub.model.request.*;
-import com.gameshub.repository.request.*;
-=======
 import com.gameshub.model.request.DigitalProductRequestDAO;
 import com.gameshub.model.request.DigitalProductRequestImage;
 import com.gameshub.model.request.PhysicalProductRequestDAO;
@@ -18,7 +14,6 @@ import com.gameshub.repository.product.DigitalProductRequestImageRepository;
 import com.gameshub.repository.product.DigitalProductRequestRepository;
 import com.gameshub.repository.product.PhysicalProductRequestImageRepository;
 import com.gameshub.repository.product.PhysicalProductRequestRepository;
->>>>>>> Stashed changes:Backend/src/main/java/com/gameshub/service/product/ProductRequestService.java
 import com.gameshub.utils.ProductRequestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,15 +29,13 @@ public class ProductRequestService {
     private final PhysicalProductRequestRepository physicalProductRequestRepository;
     private final DigitalProductRequestRepository digitalProductRequestRepository;
     private final ProductRequestMapper productRequestMapper;
+    private final PhysicalProductRequestImageRepository physicalProductRequestImageRepository;
+    private final DigitalProductRequestImageRepository digitalProductRequestImageRepository;
 
     public void saveProductRequest(ProductRequestDTO productRequestDTO) {
         if (productRequestDTO instanceof PhysicalProductRequestDTO) {
             PhysicalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((PhysicalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
-<<<<<<< Updated upstream:Backend/src/main/java/com/gameshub/service/request/ProductRequestService.java
-                productRequestDAO.setRequestType(PENDING);
-                physicalProductRequestRepository.save(productRequestDAO);
-=======
                 productRequestDAO.setRequestType(ProductStatus.PENDING.name());
                 PhysicalProductRequestDAO savedRequest = physicalProductRequestRepository.save(productRequestDAO);
 
@@ -56,16 +49,11 @@ public class ProductRequestService {
                         physicalProductRequestImageRepository.save(imageDAO);
                     }
                 }
->>>>>>> Stashed changes:Backend/src/main/java/com/gameshub/service/product/ProductRequestService.java
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");
         } else if (productRequestDTO instanceof DigitalProductRequestDTO) {
             DigitalProductRequestDAO productRequestDAO = productRequestMapper.toDAO((DigitalProductRequestDTO) productRequestDTO);
             if (isNotDuplicate(productRequestDTO)) {
-<<<<<<< Updated upstream:Backend/src/main/java/com/gameshub/service/request/ProductRequestService.java
-                productRequestDAO.setStatus(PENDING);
-                digitalProductRequestRepository.save(productRequestDAO);
-=======
                 productRequestDAO.setStatus(ProductStatus.PENDING.name());
                 DigitalProductRequestDAO savedRequest = digitalProductRequestRepository.save(productRequestDAO);
 
@@ -80,7 +68,6 @@ public class ProductRequestService {
                         digitalProductRequestImageRepository.save(imageDAO);
                     }
                 }
->>>>>>> Stashed changes:Backend/src/main/java/com/gameshub/service/product/ProductRequestService.java
             } else
                 throw new ResourceAlreadyFoundException("Duplicate Found");
         } else {
@@ -99,11 +86,7 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-<<<<<<< Updated upstream:Backend/src/main/java/com/gameshub/service/request/ProductRequestService.java
-                    "approved");
-=======
                     ProductStatus.APPROVED.name());
->>>>>>> Stashed changes:Backend/src/main/java/com/gameshub/service/product/ProductRequestService.java
         else if (productRequestDTO instanceof DigitalProductRequestDTO)
             return !digitalProductRequestRepository.existsByDescriptionAndTitleAndSellerIdAndStatus(
                     productRequestDTO.getDescription(),
@@ -114,11 +97,7 @@ public class ProductRequestService {
                     productRequestDTO.getDescription(),
                     productRequestDTO.getTitle(),
                     productRequestDTO.getSellerId(),
-<<<<<<< Updated upstream:Backend/src/main/java/com/gameshub/service/request/ProductRequestService.java
-                    "approved");
-=======
                     ProductStatus.APPROVED.name());
->>>>>>> Stashed changes:Backend/src/main/java/com/gameshub/service/product/ProductRequestService.java
         return false;
     }
 

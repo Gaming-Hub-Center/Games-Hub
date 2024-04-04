@@ -54,29 +54,6 @@ export const getVatRegistrationNumber = () => {
     return window.sessionStorage.getItem("vatRegistrationNumber")
 }
 
-<<<<<<< Updated upstream:Frontend/src/CurrentSession.ts
-export const getJwtToken = () => {
-    return window.sessionStorage.getItem("jwtToken")
-}
-
-export const storeUserData = (userDTO: UserDTO) => {
-    window.sessionStorage.setItem("id", userDTO.id.toString())
-    window.sessionStorage.setItem("name", userDTO.name)
-    window.sessionStorage.setItem("email", userDTO.email)
-    window.sessionStorage.setItem("phone", userDTO.phone)
-    window.sessionStorage.setItem("address", userDTO.address)
-    window.sessionStorage.setItem("balance", userDTO.balance.toString())
-    window.sessionStorage.setItem("nationalID", userDTO.nationalID)
-    window.sessionStorage.setItem("dateJoined", userDTO.dateJoined)
-    window.sessionStorage.setItem("sellerDescription", userDTO.sellerDescription)
-    window.sessionStorage.setItem("vatRegistrationNumber", userDTO.vatRegistrationNumber)
-    window.sessionStorage.setItem("jwtToken", userDTO.token)
-}
-
-export const clearCurrentSession = () => {
-  window.sessionStorage.clear();
-};
-=======
 export const setRole = (role: string) => {
     setSessionItem("role", role)
 }
@@ -113,4 +90,3 @@ export const noCurrentSession = () => {
 export const clearCurrentSession = () => {
   window.sessionStorage.clear()
 }
->>>>>>> Stashed changes:Frontend/src/session/CurrentSession.ts

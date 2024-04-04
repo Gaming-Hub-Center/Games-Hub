@@ -17,9 +17,4 @@ public class ImageDAO {
     @Column(name = "Url")
     protected String url;
 
-<<<<<<< Updated upstream
-    @Column(name = "image")
-    private byte[] image;
-=======
->>>>>>> Stashed changes
 }

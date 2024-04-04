@@ -5,11 +5,8 @@ import { ProductCard } from "../../../Components/ProductCard";
 import "./PaginationC.css";
 import {httpRequest} from "../../../Controller/HttpProxy";
 import Button from "react-bootstrap/Button";
-<<<<<<< Updated upstream
-=======
 import {setCurrentProductPage} from "../../../session/CurrentSession";
 import {ProductType} from "../../../enums/ProductType";
->>>>>>> Stashed changes
 
 export function HomeAccessories() {
 
@@ -21,11 +18,8 @@ export function HomeAccessories() {
 
   // Fetch all products when the component mounts
   useEffect(() => {
-<<<<<<< Updated upstream
-=======
     setCurrentProductPage(ProductType.PHYSICAL)
 
->>>>>>> Stashed changes
     const fetchData = async () => {
       const products = await fetchAllProducts();
       setProductCardPropsList(products); // Update state with fetched data
@@ -232,6 +226,24 @@ export function HomeAccessories() {
                       checked={categoryFilterOption === "Keyboard"}
                       onClick={() => handleCategoryCheckboxClick("Keyboard")}
                   />
+                  <Form.Check
+                        type="checkbox"
+                        label="Gaming PC"
+                        checked={categoryFilterOption === "Gaming PC"}
+                        onClick={() => handleCategoryCheckboxClick("Gaming PC")}
+                  />
+                    <Form.Check
+                        type="checkbox"
+                        label="Gaming Furniture"
+                        checked={categoryFilterOption === "Gaming Furniture"}
+                        onClick={() => handleCategoryCheckboxClick("Gaming Furniture")}
+                    />
+                    <Form.Check
+                        type="checkbox"
+                        label="Gaming LAPTOP"
+                        checked={categoryFilterOption === "Gaming LAPTOP"}
+                        onClick={() => handleCategoryCheckboxClick("Gaming LAPTOP")}
+                    />
                 </div>
               </Row>
               <Row style={{ height: "10%" }}>

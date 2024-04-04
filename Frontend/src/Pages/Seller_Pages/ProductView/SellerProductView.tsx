@@ -5,6 +5,8 @@ import '../ProductEdit/SellerProductEdit.css'
 import { ProductDAO } from "../../../Models/product/ProductDAO";
 import { useParams } from "react-router";
 import { getProduct } from "../../../Controller/API/SellerAPI";
+import { Container } from "react-bootstrap";
+import { NavbarC } from "../../../Components/NavbarC";
 
 export function SellerProductView(props){
 
@@ -31,6 +33,16 @@ export function SellerProductView(props){
     let [displayedImageIDX, setDisplayedImageIDX] = useState(0);
 
     return(
+        <Container
+        fluid
+        style={{
+          height: "170vh",
+          padding: 0,
+          backgroundColor: "#121212",
+          color: 'white'
+        }}
+      >
+        <NavbarC productType={undefined} updateProductCardPropsList={undefined} />
         <div className="product-details-form">
             <div className="product-images-column">
                 {/* {product.imageURLs.map((imageURL, index) => <img 
@@ -62,6 +74,7 @@ export function SellerProductView(props){
                 <div style={{fontSize: `14px`}} dangerouslySetInnerHTML={{ __html: product.description }} />
             </div>
         </div>
+        </Container>
     )
 
 }

@@ -1,11 +1,10 @@
 .catalog-item {
     display: flex;
-    margin: 10px;
     margin-bottom: 20px;
     margin-top: 0px;
     padding: 0px;
     border-radius: 8px;
-    width: 50vw;
+    width: 60vw;
     flex-wrap: wrap;
 }
 

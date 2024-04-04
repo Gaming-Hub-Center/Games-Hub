@@ -40,6 +40,7 @@ public class ProductRequestMapper {
 
         DigitalProductRequestDTO digitalProductRequestDTO = new DigitalProductRequestDTO();
 
+        digitalProductRequestDTO.setId( digitalProductRequestDAO.getId() );
         digitalProductRequestDTO.setDateReceived( digitalProductRequestDAO.getDateReceived() );
         digitalProductRequestDTO.setStatus( digitalProductRequestDAO.getStatus() );
         digitalProductRequestDTO.setRequestType( digitalProductRequestDAO.getRequestType() );
@@ -80,6 +81,7 @@ public class ProductRequestMapper {
 
         PhysicalProductRequestDTO physicalProductRequestDTO = new PhysicalProductRequestDTO();
 
+        physicalProductRequestDTO.setId( physicalProductRequestDAO.getId() );
         physicalProductRequestDTO.setDateReceived( physicalProductRequestDAO.getDateReceived() );
         physicalProductRequestDTO.setStatus( physicalProductRequestDAO.getStatus() );
         physicalProductRequestDTO.setRequestType( physicalProductRequestDAO.getRequestType() );

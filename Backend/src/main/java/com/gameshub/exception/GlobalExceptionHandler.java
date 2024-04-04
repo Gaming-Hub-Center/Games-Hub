@@ -1,15 +1,10 @@
 package com.gameshub.exception;
 
-<<<<<<< Updated upstream
-import org.springframework.http.*;
-import org.springframework.web.bind.annotation.*;
-=======
 import com.sun.jdi.request.InvalidRequestStateException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
->>>>>>> Stashed changes
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -44,8 +39,6 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(ex, HttpStatus.PAYMENT_REQUIRED);
     }
 
-<<<<<<< Updated upstream
-=======
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<ErrorResponse> handleUnauthorizedException(UnauthorizedException ex) {
         return buildErrorResponse(ex, HttpStatus.UNAUTHORIZED);
@@ -78,5 +71,4 @@ public class GlobalExceptionHandler {
         };
     }
 
->>>>>>> Stashed changes
 }

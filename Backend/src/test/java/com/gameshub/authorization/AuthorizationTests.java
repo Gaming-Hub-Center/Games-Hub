@@ -115,22 +115,13 @@ public class AuthorizationTests {
     }
 
     @Test
-<<<<<<< Updated upstream
-    public void testEmptyTokenAuthorizedPath() throws Exception {  // TODO
-=======
     public void testEmptyTokenAuthorizedPath() throws Exception {
->>>>>>> Stashed changes
         String token = "Bearer";
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/authorized")
                         .header("Authorization", token))
-<<<<<<< Updated upstream
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Welcome Authorized")));
-=======
                 .andExpect(status().isUnauthorized());
->>>>>>> Stashed changes
     }
 
 }

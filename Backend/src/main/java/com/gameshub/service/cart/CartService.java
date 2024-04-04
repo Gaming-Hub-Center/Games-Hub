@@ -1,12 +1,5 @@
 package com.gameshub.service.cart;
 
-<<<<<<< Updated upstream
-import com.gameshub.model.cart.*;
-import com.gameshub.repository.cart.*;
-import lombok.*;
-import org.springframework.stereotype.*;
-import org.springframework.transaction.annotation.*;
-=======
 import com.gameshub.model.cart.CartDAO;
 import com.gameshub.model.cart.DigitalCartDAO;
 import com.gameshub.model.cart.PhysicalCartDAO;
@@ -15,7 +8,6 @@ import com.gameshub.repository.cart.PhysicalCartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
->>>>>>> Stashed changes
 
 import java.util.List;
 
@@ -70,8 +62,6 @@ public class CartService {
         return digitalCartRepository.findById_BuyerId(buyerId);
     }
 
-<<<<<<< Updated upstream
-=======
     public void deletePhysicalCartItems(int buyerId) {
         physicalCartRepository.deleteById_BuyerId(buyerId);
     }
@@ -80,5 +70,4 @@ public class CartService {
         digitalCartRepository.deleteById_BuyerId(buyerId);
     }
 
->>>>>>> Stashed changes
 }

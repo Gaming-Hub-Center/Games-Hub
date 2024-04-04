@@ -1,17 +1,5 @@
 package com.gameshub.service.order;
 
-<<<<<<< Updated upstream
-import com.gameshub.exception.*;
-import com.gameshub.model.cart.*;
-import com.gameshub.model.order.*;
-import com.gameshub.model.product.*;
-import com.gameshub.model.user.*;
-import com.gameshub.repository.order.*;
-import com.gameshub.service.cart.*;
-import com.gameshub.service.user.*;
-import lombok.*;
-import org.springframework.stereotype.*;
-=======
 import com.gameshub.enums.OrderPayment;
 import com.gameshub.enums.OrderStatus;
 import com.gameshub.exception.BadRequestException;
@@ -37,7 +25,6 @@ import com.gameshub.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
->>>>>>> Stashed changes
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,18 +35,11 @@ import java.util.List;
 public class OrderService {
 
     private final CartService cartService;
-//    private final ProductService productService;
+    private final ProductService productService;
     private final UserService userService;
     private final OrderRepository orderRepository;
     private final PhysicalOrderItemRepository physicalOrderItemRepository;
     private final DigitalOrderItemRepository digitalOrderItemRepository;
-<<<<<<< Updated upstream
-
-    public void orderPhysical(int buyerID, boolean isWallet) {
-        // TODO: decrease buyer wallet and increase seller's wallets
-
-        List<PhysicalCartDAO> physicalCartDAOs = cartService.getPhysicalCartItems(buyerID);
-=======
     private final DigitalCodeRepository digitalCodeRepository;
 
     public List<OrderDAO> getOrders(int buyerId) {
@@ -92,16 +72,11 @@ public class OrderService {
     private List<PhysicalOrderItemDAO> preparePhysicalOrderItems(List<PhysicalCartDAO> physicalCartDAOs) {
         if (physicalCartDAOs.isEmpty())
             throw new BadRequestException("Sorry, your cart is empty!");
->>>>>>> Stashed changes
         List<PhysicalOrderItemDAO> physicalOrderItemDAOs = new ArrayList<>();
-        float orderPrice = 0;
-
         for (PhysicalCartDAO cartProductItem : physicalCartDAOs) {
+            PhysicalProductDAO product = cartProductItem.getProduct();
+            validatePhysicalProductAvailability(product, cartProductItem);
 
-            PhysicalOrderItemDAO physicalOrderItemDAO = getPhysicalOrderItemDAO(cartProductItem);
-
-<<<<<<< Updated upstream
-=======
             PhysicalOrderItemDAO physicalOrderItemDAO = new PhysicalOrderItemDAO(
                     0,
                     product.getId(),
@@ -109,58 +84,25 @@ public class OrderService {
                     product.getPrice(),
                     (float) cartProductItem.getCount() * product.getPrice()
             );
->>>>>>> Stashed changes
             physicalOrderItemDAOs.add(physicalOrderItemDAO);
-            orderPrice += physicalOrderItemDAO.getTotalPrice();
         }
-
-        BuyerDAO buyer = userService.getBuyerById(buyerID);
-
-        if (isWallet && buyer.getBalance() < orderPrice)
-            throw new InsufficientBalanceException("Sorry, your wallet balance is insufficient for this transaction");
-
-        OrderDAO orderDAO = new OrderDAO(
-                buyer,
-                LocalDate.now(),
-                orderPrice,
-                "Processing"
-        );
-
-        orderRepository.save(orderDAO);
-
-        for (PhysicalOrderItemDAO physicalOrderItemDAO : physicalOrderItemDAOs)
-            physicalOrderItemDAO.getId().setOrderID(orderDAO.getId());
-
-        physicalOrderItemRepository.saveAll(physicalOrderItemDAOs);
-
-        // cartService.clearPhysicalCart(buyerID);
+        return physicalOrderItemDAOs;
     }
 
-    private static PhysicalOrderItemDAO getPhysicalOrderItemDAO(PhysicalCartDAO cartProductItem) {
-        PhysicalProductDAO product = cartProductItem.getProduct();
-
+    private void validatePhysicalProductAvailability(PhysicalProductDAO product, PhysicalCartDAO cartProductItem) {
         if (product == null)
             throw new ResourceNotFoundException("Sorry, the product you are looking for is no longer available.");
-
         if (product.getCount() < cartProductItem.getCount())
-            throw new OutOfStockException("The product " + product.getTitle() + " has only " + product.getCount() + " pieces left!");
-
-//            productService.updatePhysical(product.getId(), product.getCount() - physicalCartDAO.getCount());
-
-<<<<<<< Updated upstream
-        return new PhysicalOrderItemDAO(
-            new PhysicalOrderItemDAO.PhysicalOrderItemId(0, product),
-            cartProductItem.getCount(),
-            product.getPrice(),
-            (float) cartProductItem.getCount() * product.getPrice()
-        );
+            throw new OutOfStockException("The product \"" + product.getTitle() + "\" has only " + product.getCount() + " pieces left!");
     }
 
-    public void orderDigital(int buyerID, boolean isWallet) {
-        // TODO: decrease buyer wallet and increase seller's wallets
+    private float calculateTotalPhysicalOrderPrice(List<PhysicalOrderItemDAO> physicalOrderItemDAOs) {
+        float orderPrice = 0;
+        for (PhysicalOrderItemDAO item : physicalOrderItemDAOs)
+            orderPrice += item.getTotalPrice();
+        return orderPrice;
+    }
 
-        List<DigitalCartDAO> digitalCartDAOs = cartService.getDigitalCartItems(buyerID);
-=======
     private void updatePhysicalOrderItemsWithOrderId(List<PhysicalOrderItemDAO> physicalOrderItemDAOs, int orderId) {
         for (PhysicalOrderItemDAO item : physicalOrderItemDAOs)
             item.getId().setOrderId(orderId);
@@ -199,21 +141,10 @@ public class OrderService {
     private List<DigitalOrderItemDAO> prepareDigitalOrderItems(List<DigitalCartDAO> digitalCartDAOs) {
         if (digitalCartDAOs.isEmpty())
             throw new BadRequestException("Sorry, your cart is empty!");
->>>>>>> Stashed changes
         List<DigitalOrderItemDAO> digitalOrderItemDAOs = new ArrayList<>();
-        float orderPrice = 0;
-
         for (DigitalCartDAO cartProductItem : digitalCartDAOs) {
-
             DigitalProductDAO product = cartProductItem.getProduct();
-
-            if (product == null)
-                throw new ResourceNotFoundException("Sorry, the product you are looking for is no longer available.");
-
-            if (product.getCount() < cartProductItem.getCount())
-                throw new OutOfStockException("The product " + product.getTitle() + " has only " + product.getCount() + " pieces left!");
-
-//            productService.updateDigital(product.getId(), product.getCount() - digitalCartDAO.getCount());
+            validateDigitalProductAvailability(product, cartProductItem);
 
             DigitalOrderItemDAO digitalOrderItemDAO = new DigitalOrderItemDAO(
                     0,
@@ -222,34 +153,30 @@ public class OrderService {
                     product.getPrice(),
                     (float) cartProductItem.getCount() * product.getPrice()
             );
-
             digitalOrderItemDAOs.add(digitalOrderItemDAO);
-            orderPrice += digitalOrderItemDAO.getTotalPrice();
         }
+        return digitalOrderItemDAOs;
+    }
 
-        BuyerDAO buyer = userService.getBuyerById(buyerID);
+    private void validateDigitalProductAvailability(DigitalProductDAO product, DigitalCartDAO cartProductItem) {
+        if (product == null)
+            throw new ResourceNotFoundException("Sorry, the product you are looking for is no longer available.");
+        if (product.getCount() < cartProductItem.getCount())
+            throw new OutOfStockException("The product \"" + product.getTitle() + "\" has only " + product.getCount() + " pieces left!");
+    }
 
-        if (isWallet && buyer.getBalance() < orderPrice)
-            throw new InsufficientBalanceException("Sorry, your wallet balance is insufficient for this transaction");
+    private float calculateTotalDigitalOrderPrice(List<DigitalOrderItemDAO> digitalOrderItemDAOs) {
+        float orderPrice = 0;
+        for (DigitalOrderItemDAO item : digitalOrderItemDAOs)
+            orderPrice += item.getTotalPrice();
+        return orderPrice;
+    }
 
-        OrderDAO orderDAO = new OrderDAO(
-                buyer,
-                LocalDate.now(),
-                orderPrice,
-                "Processing"
-        );
-
-        orderRepository.save(orderDAO);
-
-        for (DigitalOrderItemDAO physicalOrderItemDAO : digitalOrderItemDAOs)
-            physicalOrderItemDAO.getId().setOrderId(orderDAO.getId());
-
+    private void updateDigitalOrderItemsWithOrderId(List<DigitalOrderItemDAO> digitalOrderItemDAOs, int orderId) {
+        for (DigitalOrderItemDAO item : digitalOrderItemDAOs)
+            item.getId().setOrderId(orderId);
         digitalOrderItemRepository.saveAll(digitalOrderItemDAOs);
 
-<<<<<<< Updated upstream
-        for (DigitalCartDAO cartProductItem : digitalCartDAOs)
-            cartService.removeDigitalCartItem(buyerID, cartProductItem.getProduct().getId());
-=======
         for (DigitalOrderItemDAO item : digitalOrderItemDAOs)
             addDigitalCodes(orderId, item.getId().getProductId(), item.getCount());
     }
@@ -301,7 +228,6 @@ public class OrderService {
             if (buyer.getBalance() < orderPrice)
                 throw new InsufficientBalanceException("Sorry, your wallet balance is insufficient for this transaction");
         }
->>>>>>> Stashed changes
     }
 
 }

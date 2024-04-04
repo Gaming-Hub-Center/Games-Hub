@@ -22,7 +22,6 @@ import java.time.LocalDate;
 public class RegistrationController {
 
     private final UserService userService;
-    private final UserMapper userMapper;
     private final JWTGenerator jwtGenerator;
     private final PasswordEncoder passwordEncoder;
 
@@ -38,18 +37,10 @@ public class RegistrationController {
                 0
             )
         );
-<<<<<<< Updated upstream
-        String token = jwtGenerator.createToken(buyerRegistrationDTO.getEmail());
-        UserDAO userDAO = userService.getByEmail(buyerRegistrationDTO.getEmail());
-        UserDTO userDTO = userMapper.toUserDTO(userDAO);
-        userDTO.setToken(token);
-        return ResponseEntity.ok(userDTO);
-=======
 
         String email = buyerRegistrationDTO.getEmail();
         String token = jwtGenerator.createToken(userService.getUserByEmail(email));
         return ResponseEntity.ok(token);
->>>>>>> Stashed changes
     }
 
     @PostMapping("seller")
@@ -68,18 +59,10 @@ public class RegistrationController {
                 sellerRegistrationDTO.getVatRegistrationNumber()
             )
         );
-<<<<<<< Updated upstream
-        String token = jwtGenerator.createToken(sellerRegistrationDTO.getEmail());
-        UserDAO userDAO = userService.getByEmail(sellerRegistrationDTO.getEmail());
-        UserDTO userDTO = userMapper.toUserDTO(userDAO);
-        userDTO.setToken(token);
-        return ResponseEntity.ok(userDTO);
-=======
 
         String email = sellerRegistrationDTO.getEmail();
         String token = jwtGenerator.createToken(userService.getUserByEmail(email));
         return ResponseEntity.ok(token);
->>>>>>> Stashed changes
     }
 
 }

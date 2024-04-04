@@ -9,9 +9,4 @@ export type UserDTO = {
     dateJoined: string
     sellerDescription: string
     vatRegistrationNumber: string
-<<<<<<< Updated upstream
-    token: string
-};
-=======
 }
->>>>>>> Stashed changes

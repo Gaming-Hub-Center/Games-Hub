@@ -6,13 +6,9 @@ import { PhysicalProductDAO } from "../../../Models/product/PhysicalProductDAO";
 import { DigitalProductRequestDAO } from "../../../Models/product_request/DigitalProductRequestDAO";
 import { PhysicalProductRequestDAO } from "../../../Models/product_request/PhysicalProductRequestDAO";
 import { ProductCatalogItem } from "./SellerProductCatalogItem";
-<<<<<<< Updated upstream
-import {getId} from "../../../CurrentSession";
-=======
 import {getId} from "../../../session/CurrentSession";
 import { Container } from "react-bootstrap";
 import { NavbarC } from "../../../Components/NavbarC";
->>>>>>> Stashed changes
 
 export function SellerProductCatalog() {
   const sellerId = window.sessionStorage.getItem("id");
@@ -124,6 +120,7 @@ export function SellerProductCatalog() {
   }, []);
 
   useEffect(() => {
+    
     const fetchData = async () => {
       try {
         const products = await getAllPhysicalProductsBySellerID(sellerId);
@@ -142,33 +139,46 @@ export function SellerProductCatalog() {
   
   return (
       <>
-      <div style={{ width: '600px'}} className="GH_Btn_series">
-          <button type="button" className={`GH_Btn general ${activeTab === 'Catalog' ? 'active' : 'inactive'} left`} onClick={() => {setActiveTab('Catalog'); setActiveProductType('Digital')}}>
-          Catalog
-          </button>
-          <button type="button" className={`GH_Btn general ${activeTab === 'Pending' ? 'active' : 'inactive'} right`} onClick={() => {setActiveTab('Pending'); setActiveProductType('Digital')}}>
-          Pending
-          </button>
-      </div>
-      <div className="tab-content">
-          <div className="GH_Btn_series" style={{width: '600px'}}>
-              <button style={{whiteSpace: 'nowrap'}} type="button" className={`GH_Btn general ${activeProductType === 'Digital' ? `active` : 'inactive'} left`}onClick={() => setActiveProductType('Digital')}>Digital Products</button>
-              <button style={{whiteSpace: 'nowrap', overflowWrap: 'normal'}} type="button" className={`GH_Btn general ${activeProductType === 'Physical' ? `active` : 'inactive'} right`}onClick={() => setActiveProductType('Physical')}>Physical products</button>
-              <button onClick={handleCreateNewProduct} style={{paddingLeft: '30px', paddingRight: '30px'}} className="GH_Btn general add"><i className="bi bi-plus-lg"></i></button>
+      <Container
+        fluid
+        style={{
+          height: "170vh",
+          padding: 0,
+          backgroundColor: "#121212",
+          color: "white",
+        }}
+      >
+      <NavbarC productType={undefined} updateProductCardPropsList={undefined} />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="tab-content">
+          <div style={{ width: '60vw'}} className="GH_Btn_series">
+              <button type="button" className={`GH_Btn general ${activeTab === 'Catalog' ? 'active' : 'inactive'} left`} onClick={() => {setActiveTab('Catalog'); setActiveProductType('Digital')}}>
+              Catalog
+              </button>
+              <button type="button" className={`GH_Btn general ${activeTab === 'Pending' ? 'active' : 'inactive'} right`} onClick={() => {setActiveTab('Pending'); setActiveProductType('Digital')}}>
+              Pending
+              </button>
           </div>
-          <ul className={`list-group ${(activeTab === 'Catalog' && activeProductType === 'Digital') ? 'fade-in' : 'fade-out'}`}>
-              {catalogDigitalProducts.map((item: DigitalProductDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewCatalogDigitalProduct(item)} onDeleteHandler={handleDeleteCatalogDigitalProduct(item)} onEditHandler={handleEditCatalogDigitalProduct(item)}/>)}
-          </ul>
-          <ul className={`list-group ${(activeTab === 'Catalog' && activeProductType === 'Physical') ? 'fade-in' : 'fade-out'}`}>
-              {catalogPhysicalProducts.map((item: PhysicalProductDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewCatalogPhysicalProduct(item)} onDeleteHandler={handleDeleteCatalogPhysicalProduct(item)} onEditHandler={handleEditCatalogPhysicalProduct(item)}/>)}
-          </ul>
-          <ul className={`list-group ${(activeTab === 'Pending' && activeProductType === 'Digital') ? 'fade-in' : 'fade-out'}`}>
-              {pendingDigitalProducts.map((item: DigitalProductRequestDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewPendingDigitalProduct(item)} onDeleteHandler={handleDeletePendingDigitalProduct(item)} onEditHandler={handleEditPendingDigitalProduct(item)}/>)}
-          </ul>
-          <ul className={`list-group ${(activeTab === 'Pending' && activeProductType === 'Physical')? 'fade-in' : 'fade-out'}`}>
-              {pendingPhysicalProducts.map((item: PhysicalProductRequestDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewPendingPhysicalProduct(item)} onDeleteHandler={handleDeletePendingPhysicalProduct(item)} onEditHandler={handleEditPendingPhysicalProduct(item)}/>)}
-          </ul>
+            <div className="GH_Btn_series" style={{width: '60vw'}}>
+                <button style={{whiteSpace: 'nowrap'}} type="button" className={`GH_Btn general ${activeProductType === 'Digital' ? `active` : 'inactive'} left`}onClick={() => setActiveProductType('Digital')}>Digital Products</button>
+                <button style={{whiteSpace: 'nowrap', overflowWrap: 'normal'}} type="button" className={`GH_Btn general ${activeProductType === 'Physical' ? `active` : 'inactive'} right`}onClick={() => setActiveProductType('Physical')}>Physical products</button>
+                <button onClick={handleCreateNewProduct} style={{paddingLeft: '30px', paddingRight: '30px'}} className="GH_Btn general add"><i className="bi bi-plus-lg"></i></button>
+            </div>
+            <ul className={`list-group ${(activeTab === 'Catalog' && activeProductType === 'Digital') ? 'fade-in' : 'fade-out'}`}>
+                {catalogDigitalProducts.map((item: DigitalProductDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewCatalogDigitalProduct(item)} onDeleteHandler={handleDeleteCatalogDigitalProduct(item)} onEditHandler={handleEditCatalogDigitalProduct(item)}/>)}
+            </ul>
+            <ul className={`list-group ${(activeTab === 'Catalog' && activeProductType === 'Physical') ? 'fade-in' : 'fade-out'}`}>
+                {catalogPhysicalProducts.map((item: PhysicalProductDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewCatalogPhysicalProduct(item)} onDeleteHandler={handleDeleteCatalogPhysicalProduct(item)} onEditHandler={handleEditCatalogPhysicalProduct(item)}/>)}
+            </ul>
+            <ul className={`list-group ${(activeTab === 'Pending' && activeProductType === 'Digital') ? 'fade-in' : 'fade-out'}`}>
+                {pendingDigitalProducts.map((item: DigitalProductRequestDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewPendingDigitalProduct(item)} onDeleteHandler={handleDeletePendingDigitalProduct(item)} onEditHandler={handleEditPendingDigitalProduct(item)}/>)}
+            </ul>
+            <ul className={`list-group ${(activeTab === 'Pending' && activeProductType === 'Physical')? 'fade-in' : 'fade-out'}`}>
+                {pendingPhysicalProducts.map((item: PhysicalProductRequestDAO) => <ProductCatalogItem item={item} onClickHandler={handleViewPendingPhysicalProduct(item)} onDeleteHandler={handleDeletePendingPhysicalProduct(item)} onEditHandler={handleEditPendingPhysicalProduct(item)}/>)}
+            </ul>
+        </div>
       </div>
+      </Container>
       </>
       
   );

@@ -8,6 +8,8 @@ import com.gameshub.model.user.UserDAO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
@@ -17,24 +19,18 @@ public interface UserMapper {
 
     SellerDTO toUserDTO(SellerDAO sellerDAO);
 
-<<<<<<< Updated upstream
-=======
     AdminDTO toUserDTO(AdminDAO adminDAO);
 
->>>>>>> Stashed changes
     @Mapping(target = "password", ignore = true)
     BuyerDAO toUserDAO(BuyerRegistrationDTO buyerRegistrationDTO);
 
     @Mapping(target = "password", ignore = true)
     SellerDAO toUserDAO(SellerRegistrationDTO sellerRegistrationDTO);
 
-<<<<<<< Updated upstream
-=======
     List<BuyerDTO> toBuyerDTOList(List<BuyerDAO> buyerDAOs);
 
     List<SellerDTO> toSellerDTOList(List<SellerDAO> sellerDAOs);
 
     List<AdminDTO> toAdminDTOList(List<AdminDAO> adminDAOs);
 
->>>>>>> Stashed changes
 }

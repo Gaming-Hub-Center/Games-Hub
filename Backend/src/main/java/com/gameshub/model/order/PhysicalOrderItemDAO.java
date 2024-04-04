@@ -26,11 +26,7 @@ public class PhysicalOrderItemDAO {
     @Embeddable
     public static class PhysicalOrderItemId implements Serializable {
         @Column(name = "Orderid")
-<<<<<<< Updated upstream
-        private int orderID;
-=======
         protected int orderId;
->>>>>>> Stashed changes
 
         @Column(name = "Productid")
         protected int productId;

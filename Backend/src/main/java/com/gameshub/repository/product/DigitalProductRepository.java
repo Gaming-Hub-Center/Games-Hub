@@ -56,11 +56,8 @@ public interface DigitalProductRepository extends JpaRepository<DigitalProductDA
             "FROM DigitalProductDAO p ORDER BY p.price ASC")
     Optional<List<ProductBriefDTO>> getOrderedByPrice();
 
-<<<<<<< Updated upstream
-=======
     @Query("SELECT new com.gameshub.dto.product.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
             "FROM DigitalProductDAO p WHERE p.sellerId = :sellerId")
     List<ProductBriefDTO> getAllBySellerID(@Param("sellerId") int sellerId);
 
->>>>>>> Stashed changes
 }

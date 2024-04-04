@@ -17,17 +17,9 @@ public class PhysicalImageDAO extends ImageDAO {
     @Column(name = "physical_product_id")
     int productId;
 
-<<<<<<< Updated upstream
-    public PhysicalImageDAO(int id, byte[] image, int product_id) {
-        setId(id);
-        setImage(image);
-        this.product_id = product_id;
-    }
-=======
     public PhysicalImageDAO(String url, int productId) {
         this.url = url;
         this.productId = productId;
     }
 
->>>>>>> Stashed changes
 }

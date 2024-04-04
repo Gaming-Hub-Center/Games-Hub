@@ -1,12 +1,15 @@
 export interface ProductDTO {
   id: number;
+  dateReceived: string; // Change to match LocalDate format in Java (e.g., 'yyyy-MM-dd')
+  status: string;
+  requestType: string;
+  title: string;
   price: number;
   description: string;
-  title: string;
+  postDate: string; // Change to match LocalDate format in Java (e.g., 'yyyy-MM-dd')
   count: number;
-  sellerID: number;
-  created_date: string;
+  sellerId: number;
   category: string;
-  images: string[];
+  urls: string[];
   code: string;
 }

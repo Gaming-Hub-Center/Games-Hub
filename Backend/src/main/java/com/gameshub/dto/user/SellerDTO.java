@@ -10,13 +10,9 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 public class SellerDTO extends UserDTO {
-<<<<<<< Updated upstream:Backend/src/main/java/com/gameshub/controller/DTO/user/SellerDTO.java
-    private String nationalID;
-=======
     private String address;
     private float balance;
     private String nationalId;
->>>>>>> Stashed changes:Backend/src/main/java/com/gameshub/dto/user/SellerDTO.java
     private LocalDate dateJoined;
     private String sellerDescription;
     private String vatRegistrationNumber;

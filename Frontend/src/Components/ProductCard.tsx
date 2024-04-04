@@ -3,45 +3,19 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../Utilities/formatCurrency";
 import {httpRequest} from "../Controller/HttpProxy";
-<<<<<<< Updated upstream
-import{getId} from "../CurrentSession";
-=======
 import {getCurrentProductPage, getId} from "../session/CurrentSession";
 import React from "react";
 import {ProductType} from "../enums/ProductType";
->>>>>>> Stashed changes
 
 export interface cardProps {
   id: number;
   title: string;
   description: string;
-  image: string;
+  url: string;
   price: number;
 }
 
 
-<<<<<<< Updated upstream
-export function ProductCard({ id, title, description, image, price, productType }: cardProps) {
-  const navigate = useNavigate();
-
-    function goToViewProduct(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-        navigate(`/buyer/productview/${id}`, {
-            state: { productType }
-        });
-    }
-
-  function addToCart(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ): void {
-    const cartDTO = {
-      buyerID: getId(),
-      productID: id,
-      count: 1
-    };
-    httpRequest('post', '/cart/digital/addOrUpdate', cartDTO)
-      .then(() => {
-
-=======
 export function ProductCard({ id, title, description, url, price }: cardProps) {
   const navigate = useNavigate();
 
@@ -89,11 +63,20 @@ export function ProductCard({ id, title, description, url, price }: cardProps) {
       httpRequest("post", "/wishlist/digital/add", wishlistDTO)
       .then(() => {
         alert("added successfully");
->>>>>>> Stashed changes
       })
-      .catch(error => {
-        console.error('Error updating cart item:', error);
+      .catch(() => {
+        alert("item is already added")
       });
+    }
+    else {
+      httpRequest("post", "/wishlist/physical/add", wishlistDTO)
+      .then(() => {
+        alert("added successfully");
+      })
+      .catch((error) => {
+        alert("item is already added")
+      });
+    }
   }
 
   return (
@@ -109,7 +92,7 @@ export function ProductCard({ id, title, description, url, price }: cardProps) {
     >
       <Card.Img
         variant="top"
-        src={`data:image/jpeg;base64,${image}`}
+        src={url}
         style={{ height: "40%", objectFit: "cover" }}
       />
       <Card.Body
@@ -121,13 +104,13 @@ export function ProductCard({ id, title, description, url, price }: cardProps) {
       >
         <Card.Title className="d-flex justify-content-between align-items-baseline">
           <span
-              style={{
-                  overflow: "hidden",
-                  whiteSpace: "nowrap",
-                  textOverflow: "ellipsis",
-                  height: "2.6vh",
-                  display: "inline-block",
-              }}
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+              height: "2.6vh",
+              display: "inline-block",
+            }}
           >
             {title}
           </span>
@@ -185,6 +168,25 @@ export function ProductCard({ id, title, description, url, price }: cardProps) {
             onClick={addToCart}
           >
             Add to cart
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "#733BC0",
+              color: "#f0f0f0",
+              borderColor: "#733BC0",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "rgba(115,	59,	192 ,0.5)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#733BC0")
+            }
+            onClick={addToWishlist}
+          >
+            Add to wishlist
           </Button>
         </div>
       </Card.Body>

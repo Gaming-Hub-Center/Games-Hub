@@ -32,23 +32,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-<<<<<<< Updated upstream
-                .exceptionHandling(customizer -> customizer.authenticationEntryPoint(authenticationEntryPoint))
-                .addFilterBefore(new JWTAuthenticationFilter(jwtGenerator), UsernamePasswordAuthenticationFilter.class)
-                .csrf(customizer -> customizer.disable())
-                .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers(new AntPathRequestMatcher("/public/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/registration/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/product/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/products/approve/**")).permitAll()  //TODO Remove
-                        .requestMatchers(new AntPathRequestMatcher("/product-request/**")).permitAll()  //TODO Remove
-                        .requestMatchers(new AntPathRequestMatcher("/cart/**")).permitAll()  //TODO Remove
-                        .anyRequest().authenticated());
-//                .oauth2Login(Customizer.withDefaults());
-=======
             .exceptionHandling(customizer -> customizer.authenticationEntryPoint(customEntryPoint))
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .cors(customizer -> customizer.configurationSource(request -> {
@@ -73,7 +56,6 @@ public class SecurityConfig {
                 .requestMatchers(new AntPathRequestMatcher("/buyer/**")).hasRole(Role.BUYER.name())
                 .anyRequest().authenticated()
             );
->>>>>>> Stashed changes
 
         return http.build();
     }

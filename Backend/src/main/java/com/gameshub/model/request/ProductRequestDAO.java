@@ -1,14 +1,9 @@
 package com.gameshub.model.request;
 
 import jakarta.persistence.*;
-<<<<<<< Updated upstream
-import lombok.*;
-import java.time.*;
-=======
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
->>>>>>> Stashed changes
 
 import java.time.LocalDate;
 
@@ -36,7 +31,7 @@ public abstract class ProductRequestDAO {
     protected String title;
 
     @Column(name = "Price")
-    protected int price;
+    protected float price;
 
     @Column(name = "Description")
     protected String description;

@@ -5,11 +5,8 @@ import { ProductCard } from "../../../Components/ProductCard";
 import "./PaginationC.css";
 import {httpRequest} from "../../../Controller/HttpProxy";
 import Button from "react-bootstrap/Button";
-<<<<<<< Updated upstream
-=======
 import {setCurrentProductPage} from "../../../session/CurrentSession";
 import {ProductType} from "../../../enums/ProductType";
->>>>>>> Stashed changes
 
 export function HomeGames() {
 
@@ -20,11 +17,9 @@ export function HomeGames() {
 
     // Fetch all products when the component mounts
     useEffect(() => {
+
         const fetchData = async () => {
-<<<<<<< Updated upstream
-=======
             setCurrentProductPage(ProductType.DIGITAL)
->>>>>>> Stashed changes
             const products = await fetchAllProducts();
             setProductCardPropsList(products); // Update state with fetched data
         };
@@ -233,6 +228,24 @@ export function HomeGames() {
                               label="Sports"
                               checked={categoryFilterOption === "Sports"}
                               onClick={() => handleCategoryCheckboxClick("Sports")}
+                          />
+                          <Form.Check
+                              type="checkbox"
+                              label="Mobile Gaming"
+                              checked={categoryFilterOption === "Mobile Gaming"}
+                              onClick={() => handleCategoryCheckboxClick("Mobile Gaming")}
+                          />
+                          <Form.Check
+                              type="checkbox"
+                              label="Software and Utilities"
+                              checked={categoryFilterOption === "Software and Utilities"}
+                              onClick={() => handleCategoryCheckboxClick("Software and Utilities")}
+                          />
+                          <Form.Check
+                              type="checkbox"
+                              label="VR Games"
+                              checked={categoryFilterOption === "VR Games"}
+                              onClick={() => handleCategoryCheckboxClick("VR Games")}
                           />
                       </div>
                   </Row>

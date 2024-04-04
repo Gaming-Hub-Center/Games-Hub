@@ -19,12 +19,9 @@ import { SellerRegistrationDTO } from "../../Controller/DTO/user/SellerRegistrat
 import { httpRequest } from "../../Controller/HttpProxy";
 import { getCurrentProductPage, setRole, setToken } from "../../session/CurrentSession";
 import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
-<<<<<<< Updated upstream
-=======
 import { GoogleSignUpButtonSeller } from "../../Components/googleAuthButtons/googleSignupSeller";
 import {updateSessionPeriodically} from "../../session/UpdateSession";
 import {ProductType} from "../../enums/ProductType";
->>>>>>> Stashed changes
 
 export function SignUpSeller() {
   const [validated, setValidated] = useState(false);
@@ -511,6 +508,7 @@ export function SignUpSeller() {
               Submit
             </Button>
           </div>
+          <GoogleSignUpButtonSeller />
           <div
               style={{ width: "100%", display: "flex", justifyContent: "center" }}
           >
