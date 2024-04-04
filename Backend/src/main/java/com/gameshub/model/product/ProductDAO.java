@@ -1,11 +1,18 @@
 package com.gameshub.model.product;
 
+<<<<<<< Updated upstream
 import lombok.*;
 import jakarta.persistence.*;
+=======
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+>>>>>>> Stashed changes
 
-import java.time.*;
+import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class ProductDAO {
 
@@ -24,7 +31,7 @@ public abstract class ProductDAO {
     protected String description;
 
     @Column(name = "Sellerid")
-    protected int sellerID;
+    protected int sellerId;
 
     @Column(name = "Count")
     protected int count;

@@ -1,18 +1,24 @@
 package com.gameshub.authentication;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.gameshub.dto.user.UserSignInDTO;
+import com.gameshub.controller.auth.AuthenticationController;
+import com.gameshub.exception.PasswordMismatchException;
+import com.gameshub.model.user.BuyerDAO;
+import com.gameshub.model.user.SellerDAO;
+import com.gameshub.repository.user.BuyerRepository;
+import com.gameshub.repository.user.SellerRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 
-import com.gameshub.controller.DTO.user.*;
-import com.gameshub.controller.auth.*;
-import com.gameshub.model.user.*;
-import com.gameshub.repository.user.*;
-import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.test.context.*;
-import org.springframework.http.*;
-import org.springframework.security.authentication.*;
+import java.time.LocalDate;
 
-import java.time.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class SignInTests {
@@ -51,7 +57,7 @@ public class SignInTests {
     }
 
     @Test
-    public void testBuyerValidSignIn() throws Exception {
+    public void testBuyerValidSignIn() {
         UserSignInDTO userSignInDTO = new UserSignInDTO();
         userSignInDTO.setEmail("john.doe@example.com");
         userSignInDTO.setPassword("password123");
@@ -61,7 +67,7 @@ public class SignInTests {
     }
 
     @Test
-    public void testSellerValidSignIn() throws Exception {
+    public void testSellerValidSignIn() {
         UserSignInDTO userSignInDTO = new UserSignInDTO();
         userSignInDTO.setEmail("alice.blue@example.com");
         userSignInDTO.setPassword("alicepass");
@@ -71,36 +77,30 @@ public class SignInTests {
     }
 
     @Test
-    public void testInvalidEmail() throws Exception {
+    public void testInvalidEmail() {
         UserSignInDTO userSignInDTO = new UserSignInDTO();
         userSignInDTO.setEmail("invalid.email@example.com");
         userSignInDTO.setPassword("password123");
 
-        assertThrows(InternalAuthenticationServiceException.class, () -> {
-            authenticationController.signin(userSignInDTO);
-        });
+        assertThrows(InternalAuthenticationServiceException.class, () -> authenticationController.signin(userSignInDTO));
     }
 
     @Test
-    public void testBuyerInvalidPassword() throws Exception {
+    public void testBuyerInvalidPassword() {
         UserSignInDTO userSignInDTO = new UserSignInDTO();
         userSignInDTO.setEmail("john.doe@example.com");
         userSignInDTO.setPassword("invalid_password");
 
-        assertThrows(BadCredentialsException.class, () -> {
-            authenticationController.signin(userSignInDTO);
-        });
+        assertThrows(PasswordMismatchException.class, () -> authenticationController.signin(userSignInDTO));
     }
 
     @Test
-    public void testSellerInvalidPassword() throws Exception {
+    public void testSellerInvalidPassword() {
         UserSignInDTO userSignInDTO = new UserSignInDTO();
         userSignInDTO.setEmail("alice.blue@example.com");
         userSignInDTO.setPassword("invalid_password");
 
-        assertThrows(BadCredentialsException.class, () -> {
-            authenticationController.signin(userSignInDTO);
-        });
+        assertThrows(PasswordMismatchException.class, () -> authenticationController.signin(userSignInDTO));
     }
 
 }

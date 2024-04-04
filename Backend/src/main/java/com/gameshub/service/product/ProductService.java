@@ -1,17 +1,23 @@
 package com.gameshub.service.product;
 
-import com.gameshub.controller.DTO.DigitalProductDTO;
-import com.gameshub.controller.DTO.PhysicalProductDTO;
-import com.gameshub.controller.DTO.ProductBriefDTO;
-import com.gameshub.controller.DTO.request.*;
+import com.gameshub.dto.product.DigitalProductDTO;
+import com.gameshub.dto.product.PhysicalProductDTO;
+import com.gameshub.dto.product.ProductBriefDTO;
+import com.gameshub.dto.product.ProductPatchDTO;
+import com.gameshub.enums.ProductType;
 import com.gameshub.exception.ResourceNotFoundException;
-import com.gameshub.model.product.*;
-import com.gameshub.repository.product.*;
+import com.gameshub.model.product.DigitalProductDAO;
+import com.gameshub.model.product.PhysicalProductDAO;
+import com.gameshub.repository.product.DigitalImageRepository;
+import com.gameshub.repository.product.DigitalProductRepository;
+import com.gameshub.repository.product.PhysicalImageRepository;
+import com.gameshub.repository.product.PhysicalProductRepository;
 import com.gameshub.utils.ProductMapper;
-import lombok.*;
-import org.springframework.stereotype.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -23,54 +29,46 @@ public class ProductService {
     private final DigitalImageRepository digitalImageRepository;
     private final ProductMapper productMapper;
 
-    public List<PhysicalProductDAO> getAllPhysicalProductsBySellerID(int sellerID) {
-        return physicalProductRepository.findBySellerID(sellerID);
+    public List<PhysicalProductDAO> getAllPhysicalProductsBySellerId(int sellerId) {
+        return physicalProductRepository.findBySellerId(sellerId);
     }
 
-    public List<DigitalProductDAO> getAllDigitalProductsBySellerID(int sellerID) {
-        return digitalProductRepository.findBySellerID(sellerID);
+    public List<DigitalProductDAO> getAllDigitalProductsBySellerId(int sellerId) {
+        return digitalProductRepository.findBySellerId(sellerId);
     }
 
-    public DigitalProductDAO getDigitalProductByProductID(int productID){
-        Optional<DigitalProductDAO> foundProduct = digitalProductRepository.findById(productID);
-
-        if(foundProduct.isPresent())
-            return foundProduct.get();
-
-        return new DigitalProductDAO();
+    public DigitalProductDAO getDigitalProductByProductId(int productId) {
+        Optional<DigitalProductDAO> foundProduct = digitalProductRepository.findById(productId);
+        return foundProduct.orElse(null);
     }
 
-    public PhysicalProductDAO getPhysicalProductByProductID(int productID){
-        Optional<PhysicalProductDAO> foundProduct = physicalProductRepository.findById(productID);
-
-        if(foundProduct.isPresent())
-            return foundProduct.get();
-
-        return new PhysicalProductDAO();
+    public PhysicalProductDAO getPhysicalProductByProductId(int productId) {
+        Optional<PhysicalProductDAO> foundProduct = physicalProductRepository.findById(productId);
+        return foundProduct.orElse(null);
     }
 
-    public boolean deleteDigitalProductBySellerIdAndProductID(int sellerID, int productId){
-        long numberOfDeletedProducts = digitalProductRepository.deleteByIdAndSellerID(productId, sellerID);
+    public boolean deleteDigitalProductBySellerIdAndProductId(int sellerId, int productId) {
+        long numberOfDeletedProducts = digitalProductRepository.deleteByIdAndSellerId(productId, sellerId);
         return numberOfDeletedProducts != 0;
     }
 
-    public boolean deletePhysicalProductBySellerIdAndProductID(int sellerID, int productId){
-        long numberOfDeletedProducts = physicalProductRepository.deleteByIdAndSellerID(productId, sellerID);
+    public boolean deletePhysicalProductBySellerIdAndProductId(int sellerId, int productId) {
+        long numberOfDeletedProducts = physicalProductRepository.deleteByIdAndSellerId(productId, sellerId);
         return numberOfDeletedProducts != 0;
     }
 
-    public boolean updateDigitalProductByProductID(int productId, ProductPatchDTO patch){
+    public boolean updateDigitalProductByProductId(int productId, ProductPatchDTO patch) {
         int numberOfUpdatedProducts = digitalProductRepository.updateById(productId, patch);
         return numberOfUpdatedProducts != 0;
     }
 
-    public boolean updatePhysicalProductByProductID(int productId, ProductPatchDTO patch){
+    public boolean updatePhysicalProductByProductId(int productId, ProductPatchDTO patch) {
         int numberOfUpdatedProducts = physicalProductRepository.updateById(productId, patch);
         return numberOfUpdatedProducts != 0;
     }
 
-    public PhysicalProductDTO getPhysicalByID(int id) {
-        PhysicalProductDAO productDAO = physicalProductRepository.findById(id).orElse(null);
+    public PhysicalProductDTO getPhysicalById(int id) {
+        PhysicalProductDAO productDAO = getPhysicalProductByProductId(id);
         PhysicalProductDTO productDTO = productMapper.toPhysicalProductDTO(productDAO);
         if(productDAO != null) {
             List<byte[]> list = physicalImageRepository.findAllByProduct_id(id).orElse(null);
@@ -81,8 +79,8 @@ public class ProductService {
         return productDTO;
     }
 
-    public DigitalProductDTO getDigitalByID(int id) {
-        DigitalProductDAO productDAO = digitalProductRepository.findById(id).orElse(null);
+    public DigitalProductDTO getDigitalById(int id) {
+        DigitalProductDAO productDAO = getDigitalProductByProductId(id);
         DigitalProductDTO productDTO = productMapper.toDigitalProductDTO(productDAO);
         if(productDAO != null) {
             List<byte[]> list = digitalImageRepository.findAllByProduct_id(id).orElse(null);
@@ -95,22 +93,44 @@ public class ProductService {
 
     public List<ProductBriefDTO> searchPhysicalByTitle(String key) {
         List<ProductBriefDTO> productDTOs = physicalProductRepository.findAllByTitleContainingIgnoreCase(key).orElse(null);
+<<<<<<< Updated upstream
         if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
             productDTO.setProductType("physical");
+=======
+
+        if (productDTOs == null || productDTOs.isEmpty())
+            return productDTOs;
+
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+            productDTO.setProductType(ProductType.PHYSICAL.name());
+>>>>>>> Stashed changes
         }
         return productDTOs;
     }
 
     public List<ProductBriefDTO> searchDigitalByTitle(String key) {
         List<ProductBriefDTO> productDTOs = digitalProductRepository.findAllByTitleContainingIgnoreCase(key).orElse(null);
+<<<<<<< Updated upstream
         if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
             productDTO.setProductType("digital");
+=======
+
+        if (productDTOs == null || productDTOs.isEmpty())
+            return productDTOs;
+
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+            productDTO.setProductType(ProductType.DIGITAL.name());
+>>>>>>> Stashed changes
         }
         return productDTOs;
     }
@@ -118,10 +138,17 @@ public class ProductService {
     public List<ProductBriefDTO> filterPhysical(float lowerBound, float upperBound, String category) {
         category = (category == null) ? null : category.toLowerCase();
         List<ProductBriefDTO> productDTOs = physicalProductRepository.filterPhysical(lowerBound, upperBound, category);
+<<<<<<< Updated upstream
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
             productDTO.setProductType("physical");
+=======
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+            productDTO.setProductType(ProductType.PHYSICAL.name());
+>>>>>>> Stashed changes
         }
         return productDTOs;
     }
@@ -129,54 +156,104 @@ public class ProductService {
     public List<ProductBriefDTO> filterDigital(float lowerBound, float upperBound, String category) {
         category = (category == null) ? null : category.toLowerCase();
         List<ProductBriefDTO> productDTOs = digitalProductRepository.filterPhysical(lowerBound, upperBound, category);
+<<<<<<< Updated upstream
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
             productDTO.setProductType("digital");
+=======
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+            productDTO.setProductType(ProductType.DIGITAL.name());
+>>>>>>> Stashed changes
         }
         return productDTOs;
     }
 
     public List<ProductBriefDTO> getAllPhysical() {
         List<ProductBriefDTO> productDTOs = physicalProductRepository.findAllProducts().orElse(null);
+<<<<<<< Updated upstream
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
             productDTO.setProductType("physical");
+=======
+
+        if (productDTOs == null || productDTOs.isEmpty())
+            return productDTOs;
+
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+            productDTO.setProductType(ProductType.PHYSICAL.name());
+>>>>>>> Stashed changes
         }
         return productDTOs;
     }
 
     public List<ProductBriefDTO> getAllDigital() {
         List<ProductBriefDTO> productDTOs = digitalProductRepository.findAllProducts().orElse(null);
+<<<<<<< Updated upstream
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
             productDTO.setProductType("digital");
+=======
+
+        if (productDTOs == null || productDTOs.isEmpty())
+            return productDTOs;
+
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+            productDTO.setProductType(ProductType.DIGITAL.name());
+>>>>>>> Stashed changes
         }
         return productDTOs;
     }
 
     public List<ProductBriefDTO> sortPhysical(boolean ascending) {
         List<ProductBriefDTO> productDTOs = physicalProductRepository.getOrderedByPrice().orElse(null);
+<<<<<<< Updated upstream
         if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
+=======
+
+        if (productDTOs == null || productDTOs.isEmpty())
+            return productDTOs;
+
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = physicalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+>>>>>>> Stashed changes
         }
         return ascending ? productDTOs : productDTOs.reversed();
     }
 
     public List<ProductBriefDTO> sortDigital(boolean ascending) {
         List<ProductBriefDTO> productDTOs = digitalProductRepository.getOrderedByPrice().orElse(null);
+<<<<<<< Updated upstream
         if(productDTOs == null || productDTOs.isEmpty()) return productDTOs;
         for(ProductBriefDTO productDTO: productDTOs) {
             byte[] image = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
             productDTO.setImage(image);
+=======
+
+        if (productDTOs == null || productDTOs.isEmpty())
+            return productDTOs;
+
+        for (ProductBriefDTO productDTO: productDTOs) {
+            String url = digitalImageRepository.findByProduct_id(productDTO.getId()).orElse(null);
+            productDTO.setUrl(url);
+>>>>>>> Stashed changes
         }
         return ascending ? productDTOs : productDTOs.reversed();
     }
 
+<<<<<<< Updated upstream
     public void save(PhysicalProductDAO physicalProductDAO, List<PhysicalImageDAO> list) {
         physicalProductRepository.save(physicalProductDAO);
         for (PhysicalImageDAO imageDAO: list) {
@@ -191,6 +268,18 @@ public class ProductService {
             imageDAO.setProduct_id(digitalProductDAO.getId());
             digitalImageRepository.save(imageDAO);
         }
+=======
+    public void decreasePhysicalProductCount(int productID, int count) {
+        PhysicalProductDAO productDAO = getPhysicalProductByProductId(productID);
+        productDAO.setCount(productDAO.getCount() - count);
+        physicalProductRepository.save(productDAO);
+    }
+
+    public void decreaseDigitalProductCount(int productID, int count) {
+        DigitalProductDAO productDAO = getDigitalProductByProductId(productID);
+        productDAO.setCount(productDAO.getCount() - count);
+        digitalProductRepository.save(productDAO);
+>>>>>>> Stashed changes
     }
 
 }

@@ -1,19 +1,23 @@
 package com.gameshub.authorization;
 
-import com.gameshub.controller.DTO.user.*;
-import com.gameshub.controller.auth.*;
-import com.gameshub.model.user.*;
-import com.gameshub.repository.user.*;
-import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.test.autoconfigure.web.servlet.*;
-import org.springframework.boot.test.context.*;
-import org.springframework.http.*;
-import org.springframework.test.web.servlet.*;
-import org.springframework.test.web.servlet.request.*;
+import com.gameshub.dto.user.UserSignInDTO;
+import com.gameshub.controller.auth.AuthenticationController;
+import com.gameshub.controller.auth.AuthorizationController;
+import com.gameshub.model.user.BuyerDAO;
+import com.gameshub.repository.user.BuyerRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -38,14 +42,15 @@ public class AuthorizationTests {
     public void setup() {
         buyerRepository.deleteAll();
         buyerRepository.resetAutoIncrement();
+
         BuyerDAO buyerDAO = new BuyerDAO("John Doe", "john.doe@example.com", "$2a$10$YJGLrNDJ0F.mE2E6IFWnDeDrkKlvQ3FuSYaOiUieGjTMkraZJoRBG", "+1234567890", "123 Elm Street", 1000);
         buyerRepository.save(buyerDAO);
 
         UserSignInDTO userSignInDTO = new UserSignInDTO();
         userSignInDTO.setEmail("john.doe@example.com");
         userSignInDTO.setPassword("password123");
-        ResponseEntity<UserDTO> responseEntity = authenticationController.signin(userSignInDTO);
-        validToken = responseEntity.getBody().getToken();
+        ResponseEntity<String> responseEntity = authenticationController.signin(userSignInDTO);
+        validToken = responseEntity.getBody();
         invalidToken = "invalid";
     }
 
@@ -110,14 +115,22 @@ public class AuthorizationTests {
     }
 
     @Test
+<<<<<<< Updated upstream
     public void testEmptyTokenAuthorizedPath() throws Exception {  // TODO
+=======
+    public void testEmptyTokenAuthorizedPath() throws Exception {
+>>>>>>> Stashed changes
         String token = "Bearer";
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/authorized")
                         .header("Authorization", token))
+<<<<<<< Updated upstream
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Welcome Authorized")));
+=======
+                .andExpect(status().isUnauthorized());
+>>>>>>> Stashed changes
     }
 
 }

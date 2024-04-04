@@ -17,9 +17,14 @@ import { httpRequest } from "../../Controller/HttpProxy";
 import { SignUpNavbar } from "../../Components/SignUp/SignUpNavbar";
 import PhoneNumberInput from "../../Components/SignUp/PhoneNumberInputC";
 
-import { UserDTO } from "../../Controller/DTO/user/UserDTO";
-import { clearCurrentSession, storeUserData } from "../../CurrentSession";
 import { BuyerRegistrationDTO } from "../../Controller/DTO/user/BuyerRegistrationDTO";
+<<<<<<< Updated upstream
+=======
+import { GoogleSignUpButtonBuyer } from "../../Components/googleAuthButtons/googleSignupBuyer";
+import {getCurrentProductPage, setRole, setToken} from "../../session/CurrentSession";
+import {updateSessionPeriodically} from "../../session/UpdateSession";
+import {ProductType} from "../../enums/ProductType";
+>>>>>>> Stashed changes
 
 export function SignUpBuyer() {
   const [validated, setValidated] = useState(false);
@@ -98,20 +103,27 @@ export function SignUpBuyer() {
       address: address,
     };
 
-    httpRequest("POST", "registration/buyer", buyerRegistrationDTO)
-        .then((response) => {
-          const responseData = response.data as UserDTO;
-          storeUserData(responseData);
-          setValidated(true);
-          navigate("/");
-          console.log(responseData);
-        })
-        .catch((error) => {
-          console.log(error);
-          alert(
-              "The email address you have entered is already associated with an account. Please use a different email address or sign in to your existing account."
-          );
-        });
+    httpRequest('POST', 'registration/buyer', buyerRegistrationDTO)
+      .then((response) => {
+        const token = response.data as string
+        const role = JSON.parse(atob(token.split(".")[1])).role
+        setRole(role)
+        setToken(token)
+        setValidated(true)
+        if (role === 'ADMIN')
+          navigate('/admin/dashboard')
+        else if (role === 'SELLER')
+          navigate('/seller/catalog')
+        else
+          navigate(`/buyer/home/${getCurrentProductPage() === ProductType.PHYSICAL ? 'accessories' : 'games'}`)
+        console.log(role)
+        console.log(token)
+        updateSessionPeriodically()
+      })
+      .catch((error) => {
+        console.log(error)
+        alert(error.response.data.message)
+      })
   };
 
   return (

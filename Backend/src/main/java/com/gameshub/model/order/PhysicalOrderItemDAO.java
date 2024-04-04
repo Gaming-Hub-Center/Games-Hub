@@ -1,10 +1,11 @@
 package com.gameshub.model.order;
 
-import com.gameshub.model.product.*;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
@@ -12,8 +13,8 @@ import java.io.*;
 @Table(name = "physicalorderitem")
 public class PhysicalOrderItemDAO {
 
-    public PhysicalOrderItemDAO(PhysicalOrderItemId physicalOrderItemId, int count, float unitPrice, float totalPrice) {
-        this.id = physicalOrderItemId;
+    public PhysicalOrderItemDAO(int orderId, int productId, int count, float unitPrice, float totalPrice) {
+        this.id = new PhysicalOrderItemId(orderId, productId);
         this.count = count;
         this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
@@ -25,11 +26,14 @@ public class PhysicalOrderItemDAO {
     @Embeddable
     public static class PhysicalOrderItemId implements Serializable {
         @Column(name = "Orderid")
+<<<<<<< Updated upstream
         private int orderID;
+=======
+        protected int orderId;
+>>>>>>> Stashed changes
 
-        @ManyToOne
-        @JoinColumn(name = "Productid")
-        private PhysicalProductDAO physicalProductDAO;
+        @Column(name = "Productid")
+        protected int productId;
     }
 
     @EmbeddedId

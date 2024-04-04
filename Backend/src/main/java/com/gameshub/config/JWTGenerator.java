@@ -1,59 +1,49 @@
 package com.gameshub.config;
 
-import com.auth0.jwt.*;
+import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
+<<<<<<< Updated upstream
 import com.auth0.jwt.algorithms.*;
 import com.auth0.jwt.interfaces.*;
 import com.gameshub.model.user.*;
 import com.gameshub.service.user.UserService;
 import jakarta.annotation.*;
 import lombok.*;
+=======
+import com.auth0.jwt.algorithms.Algorithm;
+import com.gameshub.model.user.UserDAO;
+import lombok.RequiredArgsConstructor;
+>>>>>>> Stashed changes
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.*;
-import org.springframework.security.authentication.*;
-import org.springframework.security.core.*;
-import org.springframework.stereotype.*;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 @RequiredArgsConstructor
 @EnableConfigurationProperties
 @Component
 public class JWTGenerator {
 
-    private final UserService userService;
-
-    @Value("${security.jwt.token.secret-key:secret-key}")
+    @Value("${security.jwt.token.secret-key}")
     private String secretKey;
 
-    @PostConstruct
-    protected void init() {
-        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-    }
-
-    public String createToken(String email) {
-        Date now = new Date();
-        Date validity = new Date(now.getTime() + ConfigConstants.JWT_EXPIRATION);
-
-        Algorithm algorithm = Algorithm.HMAC256(secretKey);
-
+    public String createToken(UserDAO userDAO) {
         return JWT.create()
-                .withSubject(email)
-                .withIssuedAt(now)
-                .withExpiresAt(validity)
-                .sign(algorithm);
+            .withSubject(String.valueOf(userDAO.getEmail()))
+            .withIssuedAt(Instant.now())
+            .withExpiresAt(Instant.now().plus(1, ChronoUnit.HOURS))
+            .withClaim("role", userDAO.getRole())
+            .sign(Algorithm.HMAC256(secretKey));
     }
 
-    public Authentication validateToken(String token) {
+    public String validateToken(String token) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
         JWTVerifier verifier = JWT.require(algorithm).build();
 
-        DecodedJWT decoded = verifier.verify(token);
-
-        UserDAO userDAO = userService.getByEmail(decoded.getSubject());
-
-        return new UsernamePasswordAuthenticationToken(userDAO, null, Collections.emptyList());
+        return verifier.verify(token).getSubject();
     }
 
 }

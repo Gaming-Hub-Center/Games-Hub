@@ -45,8 +45,8 @@ INSERT INTO `Seller` (`VatRegistrationNumber`, `DateJoined`, `Name`, `Phone`, `E
 -- Inserting dummy data into `Admin`
 -- -----------------------------------------------------
 INSERT INTO `Admin` (`Name`, `Phone`, `Email`, `Password`) VALUES
-('Alice Johnson','1234567890','alice.johnson@example.com', 'alicepass'),
-('Bob Smith','0987654321','bob.smith@example.com', 'bobpass'),
+('Alice Johnson','1234567890','alice.johnson@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG'),
+('Bob Smith','0987654321','bob.smith@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG'),
 ('Carol White','1122334455','carol.white@example.com', 'carolpass'),
 ('David Brown','2233445566','david.brown@example.com', 'davidpass');
 
@@ -68,9 +68,129 @@ INSERT INTO `PhysicalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Cou
 INSERT INTO `DigitalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Count`, `Category`, `Code`, `PostDate`) VALUES
 ('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 1, 10, 'Games', 'DG001', '2023-12-08'),
 ('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 1, 15, 'VR Games', 'VR001', '2023-12-08'),
+<<<<<<< Updated upstream
 ('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 2, 25, 'Accessories', 'WG001', '2023-12-08'),
 ('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 2, 5, 'Computers', 'HL001', '2023-12-08'),
 ('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 2, 2, 'Games', 'EQ001', '2023-12-08');
+=======
+('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 2, 25, 'Action', 'WG001', '2023-12-08'),
+('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 2, 5, 'PC', 'HL001', '2023-12-08'),
+('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 2, 2, 'Software and Utilities', 'EQ001', '2023-12-08'),
+('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 3, 10, 'Mobile Gaming', 'DG002', '2023-12-08'),
+('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 3, 15, 'VR Games', 'VR002', '2023-12-08'),
+('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 3, 25, 'Action', 'WG002', '2023-12-08'),
+('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 3, 5, 'PC', 'HL002', '2023-12-08'),
+('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 3, 2, 'Games', 'EQ002', '2023-12-08'),
+('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 4, 10, 'Software and Utilities', 'DG003', '2023-12-08'),
+('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 4, 15, 'VR Games', 'VR003', '2023-12-08'),
+('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 4, 25, 'Mobile Gaming', 'WG003', '2023-12-08'),
+('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 4, 5, 'Sports', 'HL003', '2023-12-08'),
+('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 4, 2, 'Mobile Gaming', 'EQ003', '2023-12-08');
+
+
+INSERT INTO `physical_product_image` (`url`, `physical_product_id`) VALUES
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 11),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 11),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 11),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 12),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 12),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 12),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 13),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 13),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 13),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 14),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 14),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 14),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 15),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 15),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 15),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 16),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 16),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 16),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 17),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 17),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 17),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 18),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 18),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 18),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 19),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 19),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 19),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 20),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 20),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 20);
+
+
+INSERT INTO `digital_product_image` (`url`, `digital_product_id`) VALUES
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 2),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 3),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764800/Games-Hub/wp883347-grand-theft-auto-v-wallpapers_kddzzs.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 4),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 5),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764379/Games-Hub/wp1809633-grand-theft-auto-v-wallpapers_zukatt.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 6),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 7),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 8),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764800/Games-Hub/wp883347-grand-theft-auto-v-wallpapers_kddzzs.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 9),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764800/Games-Hub/wp883347-grand-theft-auto-v-wallpapers_kddzzs.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 10),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 11),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 11),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764319/Games-Hub/pubg_mobile_season_14_4k_hd-1600x900_dkxpxh.jpg', 12),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764303/Games-Hub/gta_5_hnv3h1.jpg', 12),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 13),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 13),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 14),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 15);
+>>>>>>> Stashed changes
 
 
 -- -----------------------------------------------------
@@ -137,6 +257,19 @@ INSERT INTO `PhysicalProductRequest` (`DateReceived`, `Status`, `RequestType`, `
 INSERT INTO `DigitalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`, `Code`) VALUES
 ('2023-12-10', 'Pending', 'New', 'Digital Artwork', 500, 'High-quality digital art for game development.', 1, 5, '2023-12-12', 'Art', 'ART001'),
 ('2023-12-11', 'Approved', 'Update', 'E-book Collection', 300, 'Collection of fantasy e-books.', 2, 10, '2023-12-13', 'Books', 'EBK002');
+
+
+-- Dummy data for PhysicalProductRequestImagesUrl
+INSERT INTO GamesHub.PhysicalProductRequestImagesUrl (Image, requestId) VALUES
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 2);
+
+-- Dummy data for DigitalProductRequestImagesUrl
+INSERT INTO GamesHub.DigitalProductRequestImagesUrl (Image, requestId) VALUES
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
+('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 2);
 
 
 -- -----------------------------------------------------

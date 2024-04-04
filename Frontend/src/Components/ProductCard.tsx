@@ -3,7 +3,13 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../Utilities/formatCurrency";
 import {httpRequest} from "../Controller/HttpProxy";
+<<<<<<< Updated upstream
 import{getId} from "../CurrentSession";
+=======
+import {getCurrentProductPage, getId} from "../session/CurrentSession";
+import React from "react";
+import {ProductType} from "../enums/ProductType";
+>>>>>>> Stashed changes
 
 export interface cardProps {
   id: number;
@@ -11,10 +17,10 @@ export interface cardProps {
   description: string;
   image: string;
   price: number;
-  productType: string;
 }
 
 
+<<<<<<< Updated upstream
 export function ProductCard({ id, title, description, image, price, productType }: cardProps) {
   const navigate = useNavigate();
 
@@ -35,6 +41,55 @@ export function ProductCard({ id, title, description, image, price, productType 
     httpRequest('post', '/cart/digital/addOrUpdate', cartDTO)
       .then(() => {
 
+=======
+export function ProductCard({ id, title, description, url, price }: cardProps) {
+  const navigate = useNavigate();
+
+  function goToViewProduct(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    navigate(`/buyer/productview/${id}`, {
+      state: { productPage: getCurrentProductPage() },
+    });
+  }
+
+  function addToCart(): void {
+    const cartDTO = {
+      productId: id,
+      changeCount: 1,
+    };
+    if(getCurrentProductPage() === ProductType.DIGITAL) {
+      httpRequest("POST", "cart/digital/addOrUpdate", cartDTO)
+      .then(() => {
+        alert("added successfully");
+      })
+      .catch((error) => {
+        console.error("Error updating cart item:", error);
+      });
+    }
+    else {
+      httpRequest("POST", "cart/physical/addOrUpdate", cartDTO)
+      .then(() => {
+        alert("added successfully");
+      })
+      .catch((error) => {
+        console.error("Error updating cart item:", error);
+      });
+    }
+  }
+
+  function addToWishlist(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    const wishlistDTO = {
+      buyerID: getId(),
+      productID: id,
+    };
+    if(getCurrentProductPage() === ProductType.DIGITAL) {
+      httpRequest("post", "/wishlist/digital/add", wishlistDTO)
+      .then(() => {
+        alert("added successfully");
+>>>>>>> Stashed changes
       })
       .catch(error => {
         console.error('Error updating cart item:', error);
@@ -76,11 +131,11 @@ export function ProductCard({ id, title, description, image, price, productType 
           >
             {title}
           </span>
-          <span className="ms-2 text-muted ">{formatCurrency(price)}</span>
+          <span className="ms-2">{formatCurrency(price)}</span>
         </Card.Title>
         <Card.Text
           style={{
-            height: "10vh",
+            height: "7vh",
             overflow: "auto",
           }}
         >

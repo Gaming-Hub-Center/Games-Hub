@@ -6,7 +6,13 @@ import { PhysicalProductDAO } from "../../../Models/product/PhysicalProductDAO";
 import { DigitalProductRequestDAO } from "../../../Models/product_request/DigitalProductRequestDAO";
 import { PhysicalProductRequestDAO } from "../../../Models/product_request/PhysicalProductRequestDAO";
 import { ProductCatalogItem } from "./SellerProductCatalogItem";
+<<<<<<< Updated upstream
 import {getId} from "../../../CurrentSession";
+=======
+import {getId} from "../../../session/CurrentSession";
+import { Container } from "react-bootstrap";
+import { NavbarC } from "../../../Components/NavbarC";
+>>>>>>> Stashed changes
 
 export function SellerProductCatalog() {
   const sellerId = window.sessionStorage.getItem("id");

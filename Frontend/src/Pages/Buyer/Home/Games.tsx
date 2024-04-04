@@ -5,6 +5,11 @@ import { ProductCard } from "../../../Components/ProductCard";
 import "./PaginationC.css";
 import {httpRequest} from "../../../Controller/HttpProxy";
 import Button from "react-bootstrap/Button";
+<<<<<<< Updated upstream
+=======
+import {setCurrentProductPage} from "../../../session/CurrentSession";
+import {ProductType} from "../../../enums/ProductType";
+>>>>>>> Stashed changes
 
 export function HomeGames() {
 
@@ -16,6 +21,10 @@ export function HomeGames() {
     // Fetch all products when the component mounts
     useEffect(() => {
         const fetchData = async () => {
+<<<<<<< Updated upstream
+=======
+            setCurrentProductPage(ProductType.DIGITAL)
+>>>>>>> Stashed changes
             const products = await fetchAllProducts();
             setProductCardPropsList(products); // Update state with fetched data
         };
@@ -27,7 +36,7 @@ export function HomeGames() {
     const fetchAllProducts = async () => {
         let response = null;
         try {
-            response = await httpRequest("GET", `/product/digital/getall`);
+            response = await httpRequest("GET", `product/digital/getall`);
             // Assuming response.data is an array of products
             return response.data; // Return the fetched data
         } catch (error) {
@@ -99,7 +108,7 @@ export function HomeGames() {
         if(upperBound != null) url += `upperBound=${upperBound}`
         try {
             const response = await httpRequest("GET", url)
-            console.log(response.data.length)
+            console.log(response.data)
             console.log(response.data[0]?.price)
             return response.data
         } catch (error) {

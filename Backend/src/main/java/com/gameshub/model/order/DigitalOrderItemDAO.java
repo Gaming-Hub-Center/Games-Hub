@@ -1,35 +1,39 @@
 package com.gameshub.model.order;
 
-import com.gameshub.model.product.*;
 import jakarta.persistence.*;
 import lombok.*;
 
+<<<<<<< Updated upstream
 import java.io.*;
+=======
+import java.io.Serializable;
+import java.util.List;
+>>>>>>> Stashed changes
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "digitalorderitem")
 public class DigitalOrderItemDAO {
 
-    public DigitalOrderItemDAO(DigitalOrderItemId digitalOrderItemId, int count, float unitPrice, float totalPrice) {
-        this.id = digitalOrderItemId;
+    public DigitalOrderItemDAO(int orderId, int productId, int count, float unitPrice, float totalPrice) {
+        this.id = new DigitalOrderItemId(orderId, productId);
         this.count = count;
         this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
     }
 
     @Data
-    @AllArgsConstructor
     @NoArgsConstructor
+    @AllArgsConstructor
     @Embeddable
     public static class DigitalOrderItemId implements Serializable {
         @Column(name = "Orderid")
-        private int orderId;
+        protected int orderId;
 
-        @ManyToOne
-        @JoinColumn(name = "Productid")
-        private DigitalProductDAO digitalProductDAO;
+        @Column(name = "Productid")
+        protected int productId;
     }
 
     @EmbeddedId

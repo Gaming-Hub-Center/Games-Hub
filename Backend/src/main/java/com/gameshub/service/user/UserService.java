@@ -1,12 +1,29 @@
 package com.gameshub.service.user;
 
+<<<<<<< Updated upstream
 import com.gameshub.exception.*;
 import com.gameshub.model.user.*;
 import com.gameshub.repository.user.*;
 import lombok.*;
 import org.springframework.stereotype.*;
+=======
+import com.gameshub.dto.user.UserDTO;
+import com.gameshub.exception.ResourceAlreadyFoundException;
+import com.gameshub.exception.ResourceNotFoundException;
+import com.gameshub.model.user.AdminDAO;
+import com.gameshub.model.user.BuyerDAO;
+import com.gameshub.model.user.SellerDAO;
+import com.gameshub.model.user.UserDAO;
+import com.gameshub.repository.user.AdminRepository;
+import com.gameshub.repository.user.BuyerRepository;
+import com.gameshub.repository.user.SellerRepository;
+import com.gameshub.utils.UserMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+>>>>>>> Stashed changes
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -23,7 +40,15 @@ public class UserService {
         return sellerRepository.findAll();
     }
 
+<<<<<<< Updated upstream
     public UserDAO getByEmail(String email) {
+=======
+    public List<AdminDAO> getAllAdmins() {
+        return adminRepository.findAll();
+    }
+
+    public UserDAO getUserByEmail(String email) {
+>>>>>>> Stashed changes
         Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findByEmail(email);
         Optional<SellerDAO> sellerDAOOptional = sellerRepository.findByEmail(email);
 
@@ -33,6 +58,21 @@ public class UserService {
             return sellerDAOOptional.get();
         else
             throw new ResourceNotFoundException("User not found with email: " + email);
+    }
+
+    public UserDAO getUserById(int id) {
+        Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findById(id);
+        Optional<SellerDAO> sellerDAOOptional = sellerRepository.findById(id);
+        Optional<AdminDAO> adminDAOOptional = adminRepository.findById(id);
+
+        if (buyerDAOOptional.isPresent())
+            return buyerDAOOptional.get();
+        else if (sellerDAOOptional.isPresent())
+            return sellerDAOOptional.get();
+        else if (adminDAOOptional.isPresent())
+            return adminDAOOptional.get();
+        else
+            throw new ResourceNotFoundException("User not found with id " + id);
     }
 
     public BuyerDAO getBuyerById(int buyerID) {
@@ -53,20 +93,106 @@ public class UserService {
             throw new ResourceNotFoundException("User not found with id: " + sellerID);
     }
 
+<<<<<<< Updated upstream
     public Boolean userExists(String email) {
         return buyerRepository.existsByEmail(email) || sellerRepository.existsByEmail(email);
+=======
+    public AdminDAO getAdminById(int adminID) {
+        Optional<AdminDAO> adminDAOOptional = adminRepository.findById(adminID);
+
+        if (adminDAOOptional.isPresent())
+            return adminDAOOptional.get();
+        else
+            throw new ResourceNotFoundException("User not found with id: " + adminID);
+    }
+
+    public UserDTO getUserDTOByEmail(String email) {
+        try {
+            return getUserDTOById(getUserByEmail(email).getId());
+        } catch (ResourceNotFoundException e) {
+            throw new ResourceNotFoundException("User not found with email " + email);
+        }
+    }
+
+    public UserDTO getUserDTOById(int id) {
+        Optional<BuyerDAO> buyerDAOOptional = buyerRepository.findById(id);
+        Optional<SellerDAO> sellerDAOOptional = sellerRepository.findById(id);
+        Optional<AdminDAO> adminDAOOptional = adminRepository.findById(id);
+
+        if (buyerDAOOptional.isPresent()) {
+            BuyerDAO buyerDAO = buyerDAOOptional.get();
+            return userMapper.toUserDTO(buyerDAO);
+        } else if (sellerDAOOptional.isPresent()) {
+            SellerDAO sellerDAO = sellerDAOOptional.get();
+            return userMapper.toUserDTO(sellerDAO);
+        } else if (adminDAOOptional.isPresent()) {
+            AdminDAO adminDAO = adminDAOOptional.get();
+            return userMapper.toUserDTO(adminDAO);
+        } else {
+            throw new ResourceNotFoundException("User not found with id " + id);
+        }
+    }
+
+    public Boolean userExistsByEmail(String email) {
+        return buyerRepository.existsByEmail(email) || sellerRepository.existsByEmail(email) || adminRepository.existsByEmail(email);
+>>>>>>> Stashed changes
+    }
+
+    public Boolean userExistsById(int id) {
+        return buyerRepository.existsById(id) || sellerRepository.existsById(id) || adminRepository.existsById(id);
     }
 
     public void saveNewBuyer(BuyerDAO buyerDAO) {
-        if (userExists(buyerDAO.getEmail()))
+        if (userExistsByEmail(buyerDAO.getEmail()))
             throw new ResourceAlreadyFoundException("User already found with email: " + buyerDAO.getEmail());
         buyerRepository.save(buyerDAO);
     }
 
     public void saveNewSeller(SellerDAO sellerDAO) {
-        if (userExists(sellerDAO.getEmail()))
+        if (userExistsByEmail(sellerDAO.getEmail()))
             throw new ResourceAlreadyFoundException("User already found with email: " + sellerDAO.getEmail());
         sellerRepository.save(sellerDAO);
     }
 
+<<<<<<< Updated upstream
+=======
+    public void saveNewAdmin(AdminDAO adminDAO) {
+        if (userExistsByEmail(adminDAO.getEmail()))
+            throw new ResourceAlreadyFoundException("User already found with email: " + adminDAO.getEmail());
+        adminRepository.save(adminDAO);
+    }
+
+    public void updateBuyer(int id, String newName, String newEmail, String newPhone, String newAddress, float newBalance) {
+        BuyerDAO buyer = getBuyerById(id);
+        buyer.setName(newName);
+        buyer.setEmail(newEmail);
+        buyer.setPhone(newPhone);
+        buyer.setAddress(newAddress);
+        buyer.setBalance(newBalance);
+        buyerRepository.save(buyer);
+    }
+
+    public void updateSeller(int id, String newName, String newEmail, String newPhone, String newAddress, String newDescription) {
+        SellerDAO seller = getSellerById(id);
+        seller.setName(newName);
+        seller.setEmail(newEmail);
+        seller.setPhone(newPhone);
+        seller.setAddress(newAddress);
+        seller.setSellerDescription(newDescription);
+        sellerRepository.save(seller);
+    }
+
+    public void decreaseBuyerBalance(int buyerID, float amount) {
+        BuyerDAO buyerDAO = getBuyerById(buyerID);
+        buyerDAO.setBalance(buyerDAO.getBalance() - amount);
+        buyerRepository.save(buyerDAO);
+    }
+
+    public void increaseSellerBalance(int sellerID, float amount) {
+        SellerDAO sellerDAO = getSellerById(sellerID);
+        sellerDAO.setBalance(sellerDAO.getBalance() + amount);
+        sellerRepository.save(sellerDAO);
+    }
+
+>>>>>>> Stashed changes
 }

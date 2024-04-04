@@ -1,26 +1,28 @@
 package com.gameshub.model.cart;
 
-import com.gameshub.model.user.*;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 
-import java.io.*;
+import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class CartDAO {
 
     @Data
-    @EqualsAndHashCode
     @NoArgsConstructor
     @AllArgsConstructor
     @Embeddable
     public static class CartKey implements Serializable {
         @Column(name = "Buyerid")
-        protected int buyerID;
+        protected int buyerId;
 
         @Column(name = "Productid")
-        protected int productID;
+        protected int productId;
     }
 
     @EmbeddedId
@@ -28,9 +30,5 @@ public abstract class CartDAO {
 
     @Column(name = "Count", nullable = false)
     protected int count;
-
-    @ManyToOne
-    @JoinColumn(name = "Buyerid", insertable = false, updatable = false)
-    protected BuyerDAO buyer;
 
 }

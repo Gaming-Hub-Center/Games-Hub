@@ -1,16 +1,23 @@
 package com.gameshub.config;
 
-import org.springframework.context.annotation.*;
-import org.springframework.security.crypto.bcrypt.*;
-import org.springframework.security.crypto.password.*;
-import org.springframework.stereotype.*;
+import com.gameshub.exception.PasswordMismatchException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 
-@Component
-public class PasswordConfig {
+public class PasswordConfig extends DaoAuthenticationProvider {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    @Override
+    protected void additionalAuthenticationChecks(UserDetails userDetails,
+                                                  UsernamePasswordAuthenticationToken authentication)
+                                                  throws AuthenticationException {
+
+        try {
+            super.additionalAuthenticationChecks(userDetails, authentication);
+        } catch (BadCredentialsException e) {
+            throw new PasswordMismatchException("Invalid username or password.");
+        }
     }
-
 }

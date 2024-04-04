@@ -19,7 +19,47 @@ import { SellerProductView } from "./Pages/Seller_Pages/ProductView/SellerProduc
 import { SellerProductEdit } from "./Pages/Seller_Pages/ProductEdit/SellerProductEdit";
 
 
+<<<<<<< Updated upstream
 function App() {
+=======
+import {SellerView} from "./Pages/admin/SellerView";
+import {BuyerView} from "./Pages/admin/BuyerView";
+
+import BuyerOrders from "./Pages/BuyerOrders";
+import {AdminView} from "./Pages/admin/AdminView";
+import {SellerCatalogView} from "./Pages/admin/SellerCatalogView";
+import { useEffect } from "react";
+import {clearAllIntervals, updateSessionPeriodically} from "./session/UpdateSession";
+
+
+const clientId = "922788866859-fv5d49j6cqd2orfai2c1dnte4c8v5ii8.apps.googleusercontent.com";
+
+const RoleBasedRoute = ({ children, allowedRoles }) => {
+  // const userRole = 'admin'; // replace with the role of the user in the current session
+
+  // if (!allowedRoles.includes(userRole)) {
+  //   // Redirect or show not authorized page
+  //   return <Navigate to="/unauthorized" />;
+  // }
+
+  return children;
+};
+
+function App() {
+  useEffect (() => {
+    updateSessionPeriodically()
+      function start() {
+        gapi.client.init({
+        clientId: clientId,
+        scope: ""
+      })
+    };
+      gapi.load('client:auth2', start);
+      clearAllIntervals()
+  });
+
+  
+>>>>>>> Stashed changes
   return (
     <Container
       fluid

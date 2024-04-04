@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './CatalogRequestForm.css';
 import { PhysicalProductRequestDTO } from '../../Controller/DTO/request-dto/PhysicalProductRequestDTO';
 import { httpRequest } from '../../Controller/HttpProxy';
-import { getId } from '../../CurrentSession';
+import { getId } from '../../session/CurrentSession';
 import AlertOk from '../../Components/AlertDisnissible';
 import AlertError from '../../Components/AlertError';
 import { DigitalProductRequestDTO } from '../../Controller/DTO/request-dto/DigitalProductRequestDTO';

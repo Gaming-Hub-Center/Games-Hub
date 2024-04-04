@@ -5,12 +5,27 @@ import { Button, Col, Container, FormControl, Image } from "react-bootstrap";
 import React, { SetStateAction, useState } from "react";
 import {httpRequest} from "../Controller/HttpProxy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+<<<<<<< Updated upstream
 import {faCartShopping, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+=======
+import {faCartShopping, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {clearCurrentSession, getCurrentProductPage, getRole, noCurrentSession} from "../session/CurrentSession";
+import {clearAllIntervals} from "../session/UpdateSession";
+import {ProductType} from "../enums/ProductType";
+>>>>>>> Stashed changes
 
 export function NavbarC( { productType, updateProductCardPropsList } ) {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
 
+<<<<<<< Updated upstream
+=======
+  const handleLogOut = () => {
+      clearCurrentSession()
+      setTimeout(() => {}, 100)
+      clearAllIntervals()
+  };
+>>>>>>> Stashed changes
 
   const handleSearchTextChange = (event: {
         target: { value: SetStateAction<string> };
@@ -35,7 +50,17 @@ export function NavbarC( { productType, updateProductCardPropsList } ) {
     };
 
   function goToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+<<<<<<< Updated upstream
     navigate("/digital-cart");
+=======
+    const path = getCurrentProductPage() === ProductType.PHYSICAL ? '/physical-cart' : '/digital-cart'
+    navigate(path);
+  }
+
+  function goToWishlist(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    const path = getCurrentProductPage() === ProductType.PHYSICAL ? '/physical-wishlist' : '/digital-wishlist'
+    navigate(path);
+>>>>>>> Stashed changes
   }
 
   return (

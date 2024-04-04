@@ -1,11 +1,19 @@
 package com.gameshub.model.request;
 
-import com.gameshub.model.user.*;
 import jakarta.persistence.*;
+<<<<<<< Updated upstream
 import lombok.*;
 import java.time.*;
+=======
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+>>>>>>> Stashed changes
 
-@Data
+import java.time.LocalDate;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @MappedSuperclass
 public abstract class ProductRequestDAO {
@@ -42,8 +50,7 @@ public abstract class ProductRequestDAO {
     @Column(name = "Category")
     protected String category;
 
-    @ManyToOne
-    @JoinColumn(name = "Sellerid")
-    protected SellerDAO seller;
+    @Column(name = "Sellerid")
+    protected int sellerId;
 
 }

@@ -1,20 +1,24 @@
 package com.gameshub.controller.auth;
 
-import com.gameshub.config.*;
-import com.gameshub.controller.DTO.user.*;
-import com.gameshub.model.user.*;
-import com.gameshub.service.user.*;
-import com.gameshub.utils.*;
-import lombok.*;
-import org.springframework.http.*;
-import org.springframework.security.crypto.password.*;
-import org.springframework.web.bind.annotation.*;
+import com.gameshub.config.JWTGenerator;
+import com.gameshub.dto.user.BuyerRegistrationDTO;
+import com.gameshub.dto.user.SellerRegistrationDTO;
+import com.gameshub.model.user.BuyerDAO;
+import com.gameshub.model.user.SellerDAO;
+import com.gameshub.service.user.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.time.*;
+import java.time.LocalDate;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/registration")
+@RequestMapping("registration")
 public class RegistrationController {
 
     private final UserService userService;
@@ -22,8 +26,8 @@ public class RegistrationController {
     private final JWTGenerator jwtGenerator;
     private final PasswordEncoder passwordEncoder;
 
-    @PostMapping("/buyer")
-    public ResponseEntity<UserDTO> registerNewBuyer(@RequestBody BuyerRegistrationDTO buyerRegistrationDTO){
+    @PostMapping("buyer")
+    public ResponseEntity<String> registerNewBuyer(@RequestBody BuyerRegistrationDTO buyerRegistrationDTO) {
         userService.saveNewBuyer(
             new BuyerDAO(
                 buyerRegistrationDTO.getName(),
@@ -34,15 +38,22 @@ public class RegistrationController {
                 0
             )
         );
+<<<<<<< Updated upstream
         String token = jwtGenerator.createToken(buyerRegistrationDTO.getEmail());
         UserDAO userDAO = userService.getByEmail(buyerRegistrationDTO.getEmail());
         UserDTO userDTO = userMapper.toUserDTO(userDAO);
         userDTO.setToken(token);
         return ResponseEntity.ok(userDTO);
+=======
+
+        String email = buyerRegistrationDTO.getEmail();
+        String token = jwtGenerator.createToken(userService.getUserByEmail(email));
+        return ResponseEntity.ok(token);
+>>>>>>> Stashed changes
     }
 
-    @PostMapping("/seller")
-    public ResponseEntity<UserDTO> registerNewSeller(@RequestBody SellerRegistrationDTO sellerRegistrationDTO){
+    @PostMapping("seller")
+    public ResponseEntity<String> registerNewSeller(@RequestBody SellerRegistrationDTO sellerRegistrationDTO) {
         userService.saveNewSeller(
             new SellerDAO(
                 sellerRegistrationDTO.getName(),
@@ -51,17 +62,24 @@ public class RegistrationController {
                 sellerRegistrationDTO.getPhone(),
                 sellerRegistrationDTO.getAddress(),
                 0,
-                sellerRegistrationDTO.getNationalID(),
+                sellerRegistrationDTO.getNationalId(),
                 LocalDate.now(),
                 sellerRegistrationDTO.getDescription(),
                 sellerRegistrationDTO.getVatRegistrationNumber()
             )
         );
+<<<<<<< Updated upstream
         String token = jwtGenerator.createToken(sellerRegistrationDTO.getEmail());
         UserDAO userDAO = userService.getByEmail(sellerRegistrationDTO.getEmail());
         UserDTO userDTO = userMapper.toUserDTO(userDAO);
         userDTO.setToken(token);
         return ResponseEntity.ok(userDTO);
+=======
+
+        String email = sellerRegistrationDTO.getEmail();
+        String token = jwtGenerator.createToken(userService.getUserByEmail(email));
+        return ResponseEntity.ok(token);
+>>>>>>> Stashed changes
     }
 
 }

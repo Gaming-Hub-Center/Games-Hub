@@ -1,20 +1,25 @@
 package com.gameshub.authentication;
 
-import com.gameshub.controller.DTO.user.*;
-import com.gameshub.controller.auth.*;
-import com.gameshub.exception.*;
-import com.gameshub.model.user.*;
-import com.gameshub.repository.user.*;
-import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.test.context.*;
-import org.springframework.http.*;
-import org.springframework.security.crypto.password.*;
+import com.gameshub.dto.user.BuyerRegistrationDTO;
+import com.gameshub.dto.user.SellerRegistrationDTO;
+import com.gameshub.controller.auth.RegistrationController;
+import com.gameshub.exception.ResourceAlreadyFoundException;
+import com.gameshub.model.user.BuyerDAO;
+import com.gameshub.model.user.SellerDAO;
+import com.gameshub.repository.user.BuyerRepository;
+import com.gameshub.repository.user.SellerRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.*;
-import java.util.*;
+import java.time.LocalDate;
+import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class SignUpTests {
@@ -90,9 +95,7 @@ public class SignUpTests {
         newUserData.setPassword(passwordEncoder.encode("password123"));
         newUserData.setEmail("john.doe@example.com");
 
-        assertThrows(ResourceAlreadyFoundException.class, () -> {
-            registrationController.registerNewBuyer(newUserData);
-        });
+        assertThrows(ResourceAlreadyFoundException.class, () -> registrationController.registerNewBuyer(newUserData));
     }
 
     @Test
@@ -102,9 +105,7 @@ public class SignUpTests {
         newUserData.setPassword(passwordEncoder.encode("alicepass"));
         newUserData.setEmail("alice.blue@example.com");
 
-        assertThrows(ResourceAlreadyFoundException.class, () -> {
-            registrationController.registerNewSeller(newUserData);
-        });
+        assertThrows(ResourceAlreadyFoundException.class, () -> registrationController.registerNewSeller(newUserData));
     }
 
 }

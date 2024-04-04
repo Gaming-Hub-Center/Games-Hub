@@ -1,9 +1,11 @@
 package com.gameshub.model.user;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class UserDAO {
 
@@ -24,10 +26,15 @@ public abstract class UserDAO {
     @Column(name = "Phone")
     protected String phone;
 
+<<<<<<< Updated upstream
     @Column(name = "Address")
     protected String address;
 
     @Column(name = "Balance")
     protected float balance;
+=======
+    @Transient
+    protected String role;
+>>>>>>> Stashed changes
 
 }

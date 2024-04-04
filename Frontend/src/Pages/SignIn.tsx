@@ -1,4 +1,3 @@
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { SetStateAction, useState } from "react";
@@ -7,11 +6,17 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
-import { UserDTO } from "../Controller/DTO/user/UserDTO";
 import { httpRequest } from "../Controller/HttpProxy";
+<<<<<<< Updated upstream
 import { clearCurrentSession, storeUserData } from "../CurrentSession";
+=======
+import { getCurrentProductPage, setRole, setToken} from "../session/CurrentSession";
+import { GoogleLoginButton } from "../Components/googleAuthButtons/googleLogin";
+import {updateSessionPeriodically} from "../session/UpdateSession";
+import {ProductType} from "../enums/ProductType";
+>>>>>>> Stashed changes
 
 export function SignIn() {
     const [validated, setValidated] = useState(false);
@@ -32,19 +37,31 @@ export function SignIn() {
             password: password,
         };
 
-        clearCurrentSession();
-
         httpRequest('POST', 'auth/signin', userSignInDTO)
-            .then((response) => {
-                const responseData = response.data as UserDTO
-                storeUserData(responseData)
+            .then((response: any) => {
+                const token = response.data as string
+                const role = JSON.parse(atob(token.split(".")[1])).role
+                setRole(role)
+                setToken(token)
                 setValidated(true)
+<<<<<<< Updated upstream
                 navigate('/')
                 console.log(responseData)
+=======
+                if (role === 'ADMIN')
+                  navigate('/admin/dashboard')
+                else if (role === 'SELLER')
+                  navigate('/seller/catalog')
+                else
+                  navigate(`/buyer/home/${getCurrentProductPage() === ProductType.PHYSICAL ? 'accessories' : 'games'}`)
+                console.log(role)
+                console.log(token)
+                // updateSessionPeriodically()
+>>>>>>> Stashed changes
             })
             .catch((error) => {
                 console.log(error)
-                alert("The email or password you entered is incorrect. Please re-check your credentials and try again.")
+                alert(error.response.data.message)
             })
     };
 

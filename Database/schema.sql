@@ -94,8 +94,12 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProduct` (
   `Description` TEXT,
   `SellerId` INT NOT NULL,
   `Count` INT,
+<<<<<<< Updated upstream
   `Category` VARCHAR(20),
   `Code` VARCHAR(100) NOT NULL,
+=======
+  `Category` VARCHAR(50),
+>>>>>>> Stashed changes
   `PostDate` DATE NOT NULL,
   PRIMARY KEY (`Id`),
   INDEX `SellerIdIdx` (`SellerId` ASC) VISIBLE,
@@ -253,6 +257,23 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProductRequest` (
   `Code` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`SellerId`) REFERENCES `GamesHub`.`Seller` (`Id`)
+) ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProductRequestImagesUrl` (
+    `Id` INT NOT NULL AUTO_INCREMENT,
+    `Image` TEXT NOT NULL,
+    `requestId` INT,
+    PRIMARY KEY (`Id`),
+    FOREIGN KEY (`requestId`) REFERENCES `GamesHub`.`PhysicalProductRequest` (`Id`)
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProductRequestImagesUrl` (
+    `Id` INT NOT NULL AUTO_INCREMENT,
+    `Image` TEXT NOT NULL,
+    `requestId` INT,
+    PRIMARY KEY (`Id`),
+    FOREIGN KEY (`requestId`) REFERENCES `GamesHub`.`DigitalProductRequest` (`Id`)
 ) ENGINE = InnoDB;
 
 

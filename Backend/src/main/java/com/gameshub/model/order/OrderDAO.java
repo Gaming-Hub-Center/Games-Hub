@@ -1,13 +1,15 @@
 package com.gameshub.model.order;
 
-import com.gameshub.model.user.*;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.*;
-import java.util.*;
+import java.time.LocalDate;
+import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "`order`")

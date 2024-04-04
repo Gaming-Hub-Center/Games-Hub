@@ -1,24 +1,27 @@
 package com.gameshub.repository.product;
 
-import com.gameshub.controller.DTO.ProductBriefDTO;
-import com.gameshub.controller.DTO.request.*;
-import com.gameshub.model.product.*;
-import org.springframework.data.jpa.repository.*;
-import org.springframework.data.repository.query.*;
-import org.springframework.stereotype.*;
-import org.springframework.transaction.annotation.*;
+import com.gameshub.dto.product.ProductBriefDTO;
+import com.gameshub.dto.product.ProductPatchDTO;
+import com.gameshub.model.product.DigitalProductDAO;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface DigitalProductRepository extends JpaRepository<DigitalProductDAO, Integer> {
 
-    List<DigitalProductDAO> findBySellerID(int sellerId);
-    boolean existsBySellerID(int sellerId);
+    List<DigitalProductDAO> findBySellerId(int sellerId);
+    boolean existsBySellerId(int sellerId);
     Optional<DigitalProductDAO> findById(int id);
 
     @Transactional
-    long deleteByIdAndSellerID(int id, int sellerId);
+    long deleteByIdAndSellerId(int id, int sellerId);
 
     @Transactional
     @Modifying
@@ -32,13 +35,13 @@ public interface DigitalProductRepository extends JpaRepository<DigitalProductDA
 
     Optional<DigitalProductDAO> findById(Integer ID);
 
-    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM DigitalProductDAO p")
+    @Query("SELECT new com.gameshub.dto.product.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM DigitalProductDAO p")
     Optional<List<ProductBriefDTO>> findAllProducts();
 
-    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM DigitalProductDAO p WHERE LOWER(p.title) LIKE LOWER(CONCAT('%', :key, '%'))")
+    @Query("SELECT new com.gameshub.dto.product.ProductBriefDTO(p.id, p.price, p.title, p.description) FROM DigitalProductDAO p WHERE LOWER(p.title) LIKE LOWER(CONCAT('%', :key, '%'))")
     Optional<List<ProductBriefDTO>> findAllByTitleContainingIgnoreCase(@Param("key") String key);
 
-    @Query(value = "SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
+    @Query(value = "SELECT new com.gameshub.dto.product.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
             "FROM DigitalProductDAO p " +
             "WHERE (p.price >= :lowerBound) " +
             "AND (p.price < :upperBound) " +
@@ -49,8 +52,15 @@ public interface DigitalProductRepository extends JpaRepository<DigitalProductDA
             @Param("category") String category
     );
 
-    @Query("SELECT new com.gameshub.controller.DTO.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
+    @Query("SELECT new com.gameshub.dto.product.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
             "FROM DigitalProductDAO p ORDER BY p.price ASC")
     Optional<List<ProductBriefDTO>> getOrderedByPrice();
 
+<<<<<<< Updated upstream
+=======
+    @Query("SELECT new com.gameshub.dto.product.ProductBriefDTO(p.id, p.price, p.title, p.description) " +
+            "FROM DigitalProductDAO p WHERE p.sellerId = :sellerId")
+    List<ProductBriefDTO> getAllBySellerID(@Param("sellerId") int sellerId);
+
+>>>>>>> Stashed changes
 }
