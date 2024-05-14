@@ -85,6 +85,6 @@ We are a dedicated team of engineers from the Faculty of Engineering at Alexandr
 - **[Rowaina Abdelnaser](https://github.com/rowaina2025)**
 - **[Marwan Yasser](https://github.com/Maro1123)**
 - **[Elbadry Mohamed](https://github.com/Elbadry2025)**
-- **[Mkario Michel](https://github.com/Mkario)**
+- **[Makario Michel](https://github.com/Mak-Michel)**
 
 Feel free to reach out to any of us for questions, collaboration, or contributions to the project!
