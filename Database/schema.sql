@@ -13,19 +13,10 @@ USE `GamesHub` ;
 
 
 -- -----------------------------------------------------
--- Table `GamesHub`.`User`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `GamesHub`.`User` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`Id`)
-) ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `GamesHub`.`Buyer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Buyer` (
-  `Id` INT NOT NULL,
+  `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -41,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Buyer` (
 -- Table `GamesHub`.`Seller`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Seller` (
-  `Id` INT NOT NULL,
+  `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -61,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Seller` (
 -- Table `GamesHub`.`Admin`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Admin` (
-  `Id` INT NOT NULL,
+  `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
