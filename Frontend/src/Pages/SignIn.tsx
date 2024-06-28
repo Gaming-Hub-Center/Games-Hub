@@ -1,16 +1,16 @@
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { SetStateAction, useState } from "react";
-import { Container } from "react-bootstrap";
+import {faEnvelope, faLock} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import React, {SetStateAction, useState} from "react";
+import {Container} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { Link, useNavigate } from "react-router-dom";
-import { UserSignInDTO } from "../Controller/DTO/user/UserSignInDTO";
-import { httpRequest } from "../Controller/HttpProxy";
-import { getCurrentProductPage, setRole, setToken} from "../session/CurrentSession";
-import { GoogleLoginButton } from "../Components/googleAuthButtons/googleLogin";
+import {Link, useNavigate} from "react-router-dom";
+import {UserSignInDTO} from "../Controller/DTO/user/UserSignInDTO";
+import {httpRequest} from "../Controller/HttpProxy";
+import {getCurrentProductPage, getToken, setRole, setToken} from "../session/CurrentSession";
+import {GoogleLoginButton} from "../Components/googleAuthButtons/googleLogin";
 import {updateSessionPeriodically} from "../session/UpdateSession";
 import {ProductType} from "../enums/ProductType";
 
@@ -39,16 +39,17 @@ export function SignIn() {
                 const role = JSON.parse(atob(token.split(".")[1])).role
                 setRole(role)
                 setToken(token)
+                console.log(getToken())
                 setValidated(true)
                 if (role === 'ADMIN')
-                  navigate('/admin/dashboard')
+                    navigate('/admin/dashboard')
                 else if (role === 'SELLER')
-                  navigate('/seller/catalog')
+                    navigate('/seller/catalog')
                 else
-                  navigate(`/buyer/home/${getCurrentProductPage() === ProductType.PHYSICAL ? 'accessories' : 'games'}`)
+                    navigate(`/buyer/home/${getCurrentProductPage() === ProductType.PHYSICAL ? 'accessories' : 'games'}`)
                 console.log(role)
                 console.log(token)
-                // updateSessionPeriodically()
+                updateSessionPeriodically()
             })
             .catch((error) => {
                 console.log(error)
@@ -101,13 +102,13 @@ export function SignIn() {
                 validated={validated}
                 onSubmit={handleSubmit}
             >
-                <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Sign In</h2>
+                <h2 style={{textAlign: "center", marginBottom: "20px"}}>Sign In</h2>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="validationCustomEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Container fluid style={{ padding: 0 }}>
+                        <Container fluid style={{padding: 0}}>
                             <Row>
-                                <Col md={1} style={{ paddingTop: 8 }}>
+                                <Col md={1} style={{paddingTop: 8}}>
                                     <FontAwesomeIcon
                                         icon={faEnvelope}
                                         style={{
@@ -134,9 +135,9 @@ export function SignIn() {
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="validationCustomPassword">
                         <Form.Label>Password</Form.Label>
-                        <Container fluid style={{ padding: 0 }}>
+                        <Container fluid style={{padding: 0}}>
                             <Row>
-                                <Col md={1} style={{ paddingTop: 8 }}>
+                                <Col md={1} style={{paddingTop: 8}}>
                                     <FontAwesomeIcon
                                         icon={faLock}
                                         style={{
@@ -162,7 +163,7 @@ export function SignIn() {
                 </Row>
                 <div
                     className="mb-1"
-                    style={{ display: "flex", justifyContent: "center" }}
+                    style={{display: "flex", justifyContent: "center"}}
                 >
                     <Button
                         type="submit"
@@ -184,10 +185,10 @@ export function SignIn() {
                         Submit
                     </Button>
                 </div>
-                <GoogleLoginButton />
-                
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                    <p style={{ paddingRight: "10px" }}>Don't have an account? </p>
+                <GoogleLoginButton/>
+
+                <div style={{display: "flex", justifyContent: "center"}}>
+                    <p style={{paddingRight: "10px"}}>Don't have an account? </p>
                     <Link to="/signup/buyer">Sign Up</Link>
                 </div>
             </Form>

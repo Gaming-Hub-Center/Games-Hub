@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import {Container, Row, Col, Pagination, Dropdown, FormControl, Form} from "react-bootstrap";
-import { NavbarC } from "../../../Components/NavbarC";
-import { ProductCard } from "../../../Components/ProductCard";
+import {NavbarC} from "../../../Components/NavbarC";
+import {ProductCard} from "../../../Components/ProductCard";
 import "./PaginationC.css";
 import {httpRequest} from "../../../Controller/HttpProxy";
 import Button from "react-bootstrap/Button";
@@ -25,7 +25,6 @@ export function HomeGames() {
         };
         fetchData();
     }, []); // Empty dependency array to run only once
-
 
 
     const fetchAllProducts = async () => {
@@ -98,9 +97,9 @@ export function HomeGames() {
 
     const filterProducts = async (category: string, lowerBound: number, upperBound: number, productType: string) => {
         let url = `/product/${productType}/filter?`
-        if(category != null) url += `category=${category}&`
-        if(lowerBound != null) url += `lowerBound=${lowerBound}&`
-        if(upperBound != null) url += `upperBound=${upperBound}`
+        if (category != null) url += `category=${category}&`
+        if (lowerBound != null) url += `lowerBound=${lowerBound}&`
+        if (upperBound != null) url += `upperBound=${upperBound}`
         try {
             const response = await httpRequest("GET", url)
             console.log(response.data)
@@ -136,312 +135,313 @@ export function HomeGames() {
 
 
     // Calculate the index range for the current page
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-  // Get the product cards for the current page
-  const currentProductCards = productCardPropsList.slice(startIndex, endIndex);
+    // Get the product cards for the current page
+    const currentProductCards = productCardPropsList.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(productCardPropsList.length / itemsPerPage);
+    const totalPages = Math.ceil(productCardPropsList.length / itemsPerPage);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
 
-  const renderPaginationItems = () => {
-    const items = [];
-    const startPage = Math.max(
-      1,
-      currentPage - Math.floor(maxVisiblePages / 2)
-    );
-    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    const renderPaginationItems = () => {
+        const items = [];
+        const startPage = Math.max(
+            1,
+            currentPage - Math.floor(maxVisiblePages / 2)
+        );
+        const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
-    for (let i = startPage; i <= endPage; i++) {
-      items.push(
-        <Pagination.Item
-          key={i}
-          active={i === currentPage}
-          onClick={() => handlePageChange(i)}
-        >
-          {i}
-        </Pagination.Item>
-      );
-    }
+        for (let i = startPage; i <= endPage; i++) {
+            items.push(
+                <Pagination.Item
+                    key={i}
+                    active={i === currentPage}
+                    onClick={() => handlePageChange(i)}
+                >
+                    {i}
+                </Pagination.Item>
+            );
+        }
 
-    return items;
-  };
+        return items;
+    };
 
-  return (
-    <>
-      <Container
-        fluid
-        style={{
-          height: "170vh",
-          padding: 0,
-          backgroundColor: "#121212",
-        }}
-      >
-        <NavbarC
-            productType={"digital"}
-            updateProductCardPropsList={updateProductCardPropsList}
-        />
-          <Row style={{ display: "flex", flexDirection: "row", height: "160vh" }}>
-              <Col
-                  md={2}
-                  style={{
-                      height: "79vh",
-                      marginTop: "30px",
-                      marginLeft: "55px",
-                      backgroundColor: "black",
-                      color: "#f0f0f0",
-                      display: "flex",
-                      flexDirection: "column",
-                  }}
-              >
-                  <Row style={{ height: "30%" }}>
-                      <div
-                          style={{
-                              maxHeight: "30%",
-                              display: "flex",
-                              flexDirection: "column",
-                          }}
-                      >
-                          <span className="fs-3">Filter</span>
-                          <span className="fs-5">Category</span>
-                      </div>
-                      <div
-                          style={{
-                              marginTop: "0.5vh",
-                              maxHeight: "70%",
-                              overflowY: "auto",
-                              alignItems: "flex-start",
-                          }}
-                      >
-                          <Form.Check
-                              type="checkbox"
-                              label="Action"
-                              checked={categoryFilterOption === "Action"}
-                              onClick={() => handleCategoryCheckboxClick("Action")}
-                          />
-                          <Form.Check
-                              type="checkbox"
-                              label="Sports"
-                              checked={categoryFilterOption === "Sports"}
-                              onClick={() => handleCategoryCheckboxClick("Sports")}
-                          />
-                          <Form.Check
-                              type="checkbox"
-                              label="Mobile Gaming"
-                              checked={categoryFilterOption === "Mobile Gaming"}
-                              onClick={() => handleCategoryCheckboxClick("Mobile Gaming")}
-                          />
-                          <Form.Check
-                              type="checkbox"
-                              label="Software and Utilities"
-                              checked={categoryFilterOption === "Software and Utilities"}
-                              onClick={() => handleCategoryCheckboxClick("Software and Utilities")}
-                          />
-                          <Form.Check
-                              type="checkbox"
-                              label="VR Games"
-                              checked={categoryFilterOption === "VR Games"}
-                              onClick={() => handleCategoryCheckboxClick("VR Games")}
-                          />
-                      </div>
-                  </Row>
-                  <Row style={{ height: "10%" }}>
-              <span className="fs-5" style={{ marginTop: "0.5vh" }}>
+    return (
+        <>
+            <Container
+                fluid
+                style={{
+                    height: "170vh",
+                    padding: 0,
+                    backgroundColor: "#121212",
+                }}
+            >
+                <NavbarC
+                    productType={"digital"}
+                    updateProductCardPropsList={updateProductCardPropsList}
+                />
+                <Row style={{display: "flex", flexDirection: "row", height: "160vh"}}>
+                    <Col
+                        md={2}
+                        style={{
+                            height: "79vh",
+                            marginTop: "30px",
+                            marginLeft: "55px",
+                            backgroundColor: "black",
+                            color: "#f0f0f0",
+                            display: "flex",
+                            flexDirection: "column",
+                        }}
+                    >
+                        <Row style={{height: "30%"}}>
+                            <div
+                                style={{
+                                    maxHeight: "30%",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                }}
+                            >
+                                <span className="fs-3">Filter</span>
+                                <span className="fs-5">Category</span>
+                            </div>
+                            <div
+                                style={{
+                                    marginTop: "0.5vh",
+                                    maxHeight: "70%",
+                                    overflowY: "auto",
+                                    alignItems: "flex-start",
+                                }}
+                            >
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Action"
+                                    checked={categoryFilterOption === "Action"}
+                                    onClick={() => handleCategoryCheckboxClick("Action")}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Sports"
+                                    checked={categoryFilterOption === "Sports"}
+                                    onClick={() => handleCategoryCheckboxClick("Sports")}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Mobile Gaming"
+                                    checked={categoryFilterOption === "Mobile Gaming"}
+                                    onClick={() => handleCategoryCheckboxClick("Mobile Gaming")}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Software and Utilities"
+                                    checked={categoryFilterOption === "Software and Utilities"}
+                                    onClick={() => handleCategoryCheckboxClick("Software and Utilities")}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="VR Games"
+                                    checked={categoryFilterOption === "VR Games"}
+                                    onClick={() => handleCategoryCheckboxClick("VR Games")}
+                                />
+                            </div>
+                        </Row>
+                        <Row style={{height: "10%"}}>
+              <span className="fs-5" style={{marginTop: "0.5vh"}}>
                 Price
               </span>
-                      <Col
-                          style={{
-                              display: "flex",
-                              flexDirection: "row",
-                              height: "50%",
-                          }}
-                      >
-                          <FormControl
-                              style={{
-                                  width: "40%",
-                                  backgroundColor: "#121212",
-                                  color: "#f0f0f0",
-                                  borderColor: "#f0f0f0",
-                              }}
-                              type="number"
-                              placeholder="Min"
-                              className="mr-sm-2"
-                              value={minPrice}
-                              onChange={handleMinCostChange}
-                          />
-                          <span style={{ margin: "6px 5px" }}>to</span>
-                          <FormControl
-                              style={{
-                                  width: "40%",
-                                  backgroundColor: "#121212",
-                                  color: "#f0f0f0",
-                                  borderColor: "#f0f0f0",
-                              }}
-                              type="number"
-                              placeholder="Max"
-                              className="mr-sm-2"
-                              value={maxPrice}
-                              onChange={handleMaxCostChange}
-                          />
-                          <Button
-                              style={{
-                                  marginLeft: "10px",
-                                  backgroundColor: "#733BC0",
-                                  color: "#f0f0f0",
-                                  borderColor: "#733BC0",
-                                  borderRadius: "5px",
-                                  cursor: "pointer",
-                                  transition: "background-color 0.3s",
-                              }}
-                              onMouseEnter={(e) =>
-                                  (e.currentTarget.style.backgroundColor =
-                                      "rgba(115,	59,	192 ,0.5)")
-                              }
-                              onMouseLeave={(e) =>
-                                  (e.currentTarget.style.backgroundColor = "#733BC0")
-                              }
-                              onClick={handlePriceFilterRequest}
-                          >
-                              Go
-                          </Button>
-                      </Col>
-                  </Row>
-                  <Row style={{ height: "30%" }}>
-                      <div
-                          style={{
-                              maxHeight: "30%",
-                              display: "flex",
-                              flexDirection: "column",
-                          }}
-                      >
-                          <hr
-                              style={{
-                                  borderColor: "gray",
-                                  margin: "10px 0",
-                                  width: "100%",
-                              }}
-                          />{" "}
-                          <span className="fs-3">Sort</span>
-                          <Dropdown style={{ marginTop: "5px" }}>
-                              <Dropdown.Toggle
-                                  style={{
-                                      backgroundColor: "#733BC0",
-                                      color: "#f0f0f0",
-                                      borderColor: "#733BC0",
-                                      borderRadius: "5px",
-                                      cursor: "pointer",
-                                      transition: "background-color 0.3s",
-                                  }}
-                                  onMouseEnter={(e) =>
-                                      (e.currentTarget.style.backgroundColor =
-                                          "rgba(115,	59,	192 ,0.5)")
-                                  }
-                                  onMouseLeave={(e) =>
-                                      (e.currentTarget.style.backgroundColor = "#733BC0")
-                                  }
-                              >
-                                  Sort by price{" "}
-                              </Dropdown.Toggle>
-                              <Dropdown.Menu>
-                                  <Dropdown.Item
-                                      onClick={() => handleSortChange("Ascendingly")}
-                                      active={sortOption === "Ascendingly"}
-                                      style={{
-                                          backgroundColor:
-                                              sortOption === "Ascendingly" ? "#7b3cc0" : "white",
-                                          color: sortOption === "Ascendingly" ? "white" : "black",
-                                      }}
-                                      onMouseEnter={(e) => {
-                                          if (!sortOption || sortOption !== "Ascendingly") {
-                                              e.currentTarget.style.backgroundColor =
-                                                  "rgba(115, 59, 192, 0.5)";
-                                          }
-                                      }}
-                                      onMouseLeave={(e) => {
-                                          if (!sortOption || sortOption !== "Ascendingly") {
-                                              e.currentTarget.style.backgroundColor = "white";
-                                              e.currentTarget.style.color = "black";
-                                          }
-                                      }}
-                                  >
-                                      Ascendingly
-                                  </Dropdown.Item>
-                                  <Dropdown.Item
-                                      onClick={() => handleSortChange("Descendingly")}
-                                      active={sortOption === "Descendingly"}
-                                      style={{
-                                          backgroundColor:
-                                              sortOption === "Descendingly" ? "#7b3cc0" : "white",
-                                          color:
-                                              sortOption === "Descendingly" ? "white" : "black",
-                                      }}
-                                      onMouseEnter={(e) => {
-                                          if (!sortOption || sortOption !== "Descendingly") {
-                                              e.currentTarget.style.backgroundColor =
-                                                  "rgba(115, 59, 192, 0.5)";
-                                          }
-                                      }}
-                                      onMouseLeave={(e) => {
-                                          if (!sortOption || sortOption !== "Descendingly") {
-                                              e.currentTarget.style.backgroundColor = "white";
-                                              e.currentTarget.style.color = "black";
-                                          }
-                                      }}
-                                  >
-                                      Descendingly
-                                  </Dropdown.Item>
-                              </Dropdown.Menu>
-                          </Dropdown>
-                      </div>
-                  </Row>
-              </Col>
-              <Col
-                  style={{
-                      height: "82vh",
-                      marginTop: "30px",
-                      display: "flex",
-                      flexDirection: "row",
-                      flexWrap: "wrap",
-                      justifyContent: "flex-start",
-                  }}
-              >
-                  {currentProductCards.map((productCardProps, index) => (
-                      <ProductCard key={startIndex + index} {...productCardProps} />
-                  ))}
-              </Col>
-          </Row>
-          <Row style={{ height: "8vh", backgroundColor: "black" }}>
-              <Col
-                  style={{
-                      height: "8vh",
-                      display: "flex",
-                      justifyContent: "center",
-                  }}
-              >
-                  <Pagination style={{ marginTop: "20px", color: "black" }}>
-                      <Pagination.First onClick={() => handlePageChange(1)} />
-                      <Pagination.Prev
-                          onClick={() =>
-                              handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
-                          }
-                      />
-                      {renderPaginationItems()}
-                      <Pagination.Next
-                          onClick={() =>
-                              handlePageChange(
-                                  currentPage < totalPages ? currentPage + 1 : totalPages
-                              )
-                          }
-                      />
-                      <Pagination.Last onClick={() => handlePageChange(totalPages)} />
-                  </Pagination>
-              </Col>
-          </Row>
-      </Container>
-    </>
-  );
+                            <Col
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    height: "50%",
+                                }}
+                            >
+                                <FormControl
+                                    style={{
+                                        width: "40%",
+                                        backgroundColor: "#121212",
+                                        color: "#f0f0f0",
+                                        borderColor: "#f0f0f0",
+                                    }}
+                                    type="number"
+                                    placeholder="Min"
+                                    className="mr-sm-2"
+                                    value={minPrice}
+                                    onChange={handleMinCostChange}
+                                />
+                                <span style={{margin: "6px 5px"}}>to</span>
+                                <FormControl
+                                    style={{
+                                        width: "40%",
+                                        backgroundColor: "#121212",
+                                        color: "#f0f0f0",
+                                        borderColor: "#f0f0f0",
+                                    }}
+                                    type="number"
+                                    placeholder="Max"
+                                    className="mr-sm-2"
+                                    value={maxPrice}
+                                    onChange={handleMaxCostChange}
+                                />
+                                <Button
+                                    style={{
+                                        marginLeft: "10px",
+                                        backgroundColor: "#733BC0",
+                                        color: "#f0f0f0",
+                                        borderColor: "#733BC0",
+                                        borderRadius: "5px",
+                                        cursor: "pointer",
+                                        transition: "background-color 0.3s",
+                                    }}
+                                    onMouseEnter={(e) =>
+                                        (e.currentTarget.style.backgroundColor =
+                                            "rgba(115,	59,	192 ,0.5)")
+                                    }
+                                    onMouseLeave={(e) =>
+                                        (e.currentTarget.style.backgroundColor = "#733BC0")
+                                    }
+                                    onClick={handlePriceFilterRequest}
+                                >
+                                    Go
+                                </Button>
+                            </Col>
+                        </Row>
+                        <Row style={{height: "30%"}}>
+                            <div
+                                style={{
+                                    maxHeight: "30%",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                }}
+                            >
+                                <hr
+                                    style={{
+                                        borderColor: "gray",
+                                        margin: "10px 0",
+                                        width: "100%",
+                                    }}
+                                />
+                                {" "}
+                                <span className="fs-3">Sort</span>
+                                <Dropdown style={{marginTop: "5px"}}>
+                                    <Dropdown.Toggle
+                                        style={{
+                                            backgroundColor: "#733BC0",
+                                            color: "#f0f0f0",
+                                            borderColor: "#733BC0",
+                                            borderRadius: "5px",
+                                            cursor: "pointer",
+                                            transition: "background-color 0.3s",
+                                        }}
+                                        onMouseEnter={(e) =>
+                                            (e.currentTarget.style.backgroundColor =
+                                                "rgba(115,	59,	192 ,0.5)")
+                                        }
+                                        onMouseLeave={(e) =>
+                                            (e.currentTarget.style.backgroundColor = "#733BC0")
+                                        }
+                                    >
+                                        Sort by price{" "}
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item
+                                            onClick={() => handleSortChange("Ascendingly")}
+                                            active={sortOption === "Ascendingly"}
+                                            style={{
+                                                backgroundColor:
+                                                    sortOption === "Ascendingly" ? "#7b3cc0" : "white",
+                                                color: sortOption === "Ascendingly" ? "white" : "black",
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                if (!sortOption || sortOption !== "Ascendingly") {
+                                                    e.currentTarget.style.backgroundColor =
+                                                        "rgba(115, 59, 192, 0.5)";
+                                                }
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                if (!sortOption || sortOption !== "Ascendingly") {
+                                                    e.currentTarget.style.backgroundColor = "white";
+                                                    e.currentTarget.style.color = "black";
+                                                }
+                                            }}
+                                        >
+                                            Ascendingly
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            onClick={() => handleSortChange("Descendingly")}
+                                            active={sortOption === "Descendingly"}
+                                            style={{
+                                                backgroundColor:
+                                                    sortOption === "Descendingly" ? "#7b3cc0" : "white",
+                                                color:
+                                                    sortOption === "Descendingly" ? "white" : "black",
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                if (!sortOption || sortOption !== "Descendingly") {
+                                                    e.currentTarget.style.backgroundColor =
+                                                        "rgba(115, 59, 192, 0.5)";
+                                                }
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                if (!sortOption || sortOption !== "Descendingly") {
+                                                    e.currentTarget.style.backgroundColor = "white";
+                                                    e.currentTarget.style.color = "black";
+                                                }
+                                            }}
+                                        >
+                                            Descendingly
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </div>
+                        </Row>
+                    </Col>
+                    <Col
+                        style={{
+                            height: "82vh",
+                            marginTop: "30px",
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            justifyContent: "flex-start",
+                        }}
+                    >
+                        {currentProductCards.map((productCardProps, index) => (
+                            <ProductCard key={startIndex + index} {...productCardProps} />
+                        ))}
+                    </Col>
+                </Row>
+                <Row style={{height: "8vh", backgroundColor: "black"}}>
+                    <Col
+                        style={{
+                            height: "8vh",
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Pagination style={{marginTop: "20px", color: "black"}}>
+                            <Pagination.First onClick={() => handlePageChange(1)}/>
+                            <Pagination.Prev
+                                onClick={() =>
+                                    handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
+                                }
+                            />
+                            {renderPaginationItems()}
+                            <Pagination.Next
+                                onClick={() =>
+                                    handlePageChange(
+                                        currentPage < totalPages ? currentPage + 1 : totalPages
+                                    )
+                                }
+                            />
+                            <Pagination.Last onClick={() => handlePageChange(totalPages)}/>
+                        </Pagination>
+                    </Col>
+                </Row>
+            </Container>
+        </>
+    );
 }

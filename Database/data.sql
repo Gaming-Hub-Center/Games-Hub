@@ -45,21 +45,53 @@ INSERT INTO `Seller` (`VatRegistrationNumber`, `DateJoined`, `Name`, `Phone`, `E
 -- Inserting dummy data into `Admin`
 -- -----------------------------------------------------
 INSERT INTO `Admin` (`Name`, `Phone`, `Email`, `Password`) VALUES
-('Alice Johnson','1234567890','alice.johnson@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG'),
-('Bob Smith','0987654321','bob.smith@example.com', '$2a$10$HaID.XdQm../yady9rA2k.EoY4oiL/In32c/cLRa3DWyW/Nn6DXcG'),
+('Alice Johnson','1234567890','alice.johnson@example.com', 'alicepass'),
+('Bob Smith','0987654321','bob.smith@example.com', 'bobpass'),
 ('Carol White','1122334455','carol.white@example.com', 'carolpass'),
-('David Brown','2233445566','david.brown@example.com', 'davidpass');
+('David Brown','2233445566','david.brown@example.com', 'davidpass'),
+('Eva Davis','3344556677','eva.davis@example.com', 'evapass'),
+('Frank Miller','4455667788','frank.miller@example.com', 'frankpass'),
+('Grace Wilson','5566778899','grace.wilson@example.com', 'gracepass'),
+('Harry Taylor','6677889900','harry.taylor@example.com', 'harrypass'),
+('Ivy Clark','7788990011','ivy.clark@example.com', 'ivypass'),
+('Jack Turner','8899001122','jack.turner@example.com', 'jackpass'),
+('Karen Evans','9900112233','karen.evans@example.com', 'karenpass'),
+('Liam Anderson','1122334455','liam.anderson@example.com', 'liampass'),
+('Mia Garcia','2233445566','mia.garcia@example.com', 'miapass'),
+('Noah Brown','3344556677','noah.brown@example.com', 'noahpass'),
+('Olivia Taylor','4455667788','olivia.taylor@example.com', 'oliviapass'),
+('Paul Robinson','5566778899','paul.robinson@example.com', 'paulpass'),
+('Quinn Harris','6677889900','quinn.harris@example.com', 'quinnpass'),
+('Rose Carter','7788990011','rose.carter@example.com', 'rosepass'),
+('Samuel Davis','8899001122','samuel.davis@example.com', 'samuelpass'),
+('Taylor Smith','9900112233','taylor.smith@example.com', 'taylorpass');
 
 
 -- -----------------------------------------------------
 -- Inserting dummy data into `PhysicalProduct`
 -- -----------------------------------------------------
 INSERT INTO `PhysicalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Count`, `Category`, `PostDate`) VALUES
-('Game Console', 300.00, 'Latest model of our popular game console.', 1, 10, 'Electronics', '2023-12-08'),
-('Virtual Reality Headset', 200.00, 'Immersive VR experience with high resolution.', 1, 15, 'Electronics', '2023-12-08'),
-('Wireless Gaming Controller', 60.00, 'Ergonomic wireless controller for various gaming platforms.', 2, 25, 'Accessories', '2023-12-08'),
-('Gaming Laptop', 1000.00, 'High-performance laptop designed for gaming.', 2, 5, 'Computers', '2023-12-08'),
-('Strategy Game', 50.00, 'A new strategy game with epic quests.', 2, 2, 'Games', '2023-12-08');
+('VR Headset', 200.00, 'Immersive VR experience with high resolution.', 1, 15, 'Gaming PC', '2023-12-08'),
+('Gaming Console', 300.00, 'Latest model of our popular game console.', 1, 10, 'Gaming PC', '2023-12-08'),
+('Gaming Laptop', 800.00, 'High-performance gaming laptop designed for gaming.', 1, 8, 'Gaming LAPTOP', '2023-12-08'),
+('Gaming Chair', 150.00, 'Comfortable gaming chair for long gaming sessions.', 1, 20, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 50.00, 'Ergonomic wireless mouse for gaming.', 2, 30, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 80.00, 'Mechanical keyboard for precise gaming control.', 2, 25, 'Keyboard', '2023-12-08'),
+('Gaming PC', 1200.00, 'Powerful gaming PC for ultimate gaming experience.', 2, 5, 'Gaming PC', '2023-12-08'),
+('Gaming Desk', 100.00, 'Spacious gaming desk for multiple monitors.', 2, 15, 'Gaming Furniture', '2023-12-08'),
+('Gaming Laptop', 900.00, 'High-performance gaming laptop designed for gaming.', 3, 10, 'Gaming LAPTOP', '2023-12-08'),
+('Gaming Chair', 120.00, 'Comfortable gaming chair for long gaming sessions.', 3, 18, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 55.00, 'Ergonomic wireless mouse for gaming.', 3, 25, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 75.00, 'Mechanical keyboard for precise gaming control.', 3, 20, 'Keyboard', '2023-12-08'),
+('Gaming PC', 1100.00, 'Powerful gaming PC for ultimate gaming experience.', 4, 7, 'Gaming PC', '2023-12-08'),
+('Gaming Desk', 80.00, 'Spacious gaming desk for multiple monitors.', 4, 12, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 60.00, 'Ergonomic wireless mouse for gaming.', 4, 22, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 90.00, 'Mechanical keyboard for precise gaming control.', 4, 18, 'Keyboard', '2023-12-08'),
+('Gaming Laptop', 950.00, 'High-performance gaming laptop designed for gaming.', 5, 12, 'Gaming LAPTOP', '2023-12-08'),
+('Gaming Chair', 130.00, 'Comfortable gaming chair for long gaming sessions.', 5, 15, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 65.00, 'Ergonomic wireless mouse for gaming.', 5, 20, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 85.00, 'Mechanical keyboard for precise gaming control.', 5, 15, 'Keyboard', '2023-12-08');
+
 
 
 -- -----------------------------------------------------
@@ -68,11 +100,6 @@ INSERT INTO `PhysicalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Cou
 INSERT INTO `DigitalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Count`, `Category`, `Code`, `PostDate`) VALUES
 ('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 1, 10, 'Games', 'DG001', '2023-12-08'),
 ('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 1, 15, 'VR Games', 'VR001', '2023-12-08'),
-<<<<<<< Updated upstream
-('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 2, 25, 'Accessories', 'WG001', '2023-12-08'),
-('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 2, 5, 'Computers', 'HL001', '2023-12-08'),
-('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 2, 2, 'Games', 'EQ001', '2023-12-08');
-=======
 ('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 2, 25, 'Action', 'WG001', '2023-12-08'),
 ('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 2, 5, 'PC', 'HL001', '2023-12-08'),
 ('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 2, 2, 'Software and Utilities', 'EQ001', '2023-12-08'),
@@ -86,69 +113,6 @@ INSERT INTO `DigitalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Coun
 ('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 4, 25, 'Mobile Gaming', 'WG003', '2023-12-08'),
 ('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 4, 5, 'Sports', 'HL003', '2023-12-08'),
 ('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 4, 2, 'Mobile Gaming', 'EQ003', '2023-12-08');
-
-
-INSERT INTO `physical_product_image` (`url`, `physical_product_id`) VALUES
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 1),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 1),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 1),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 2),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 2),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 2),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 3),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 3),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 3),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 4),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 4),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 4),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 5),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 5),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 5),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 6),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 6),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 6),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 7),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 7),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 7),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 8),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 8),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 8),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 9),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 9),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 9),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 10),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 10),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 10),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 11),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 11),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 11),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 12),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 12),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 12),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 13),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 13),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766126/th_rxxzhj.jpg', 13),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 14),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 14),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 14),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 15),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 15),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 15),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 16),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 16),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 16),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 17),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/download_uvdpnl.jpg', 17),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_3_q47mxt.jpg', 17),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 18),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 18),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 18),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 19),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 19),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 19),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_2_nwzkvl.jpg', 20),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766129/OIP_qyzkue.jpg', 20),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_4_brupxn.jpg', 20);
 
 
 INSERT INTO `digital_product_image` (`url`, `digital_product_id`) VALUES
@@ -190,7 +154,6 @@ INSERT INTO `digital_product_image` (`url`, `digital_product_id`) VALUES
 ('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764284/Games-Hub/766119-GTA-5-Logo-Emblem_x5ncoj.jpg', 13),
 ('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764336/Games-Hub/wallpaperflare.com_wallpaper_rzaqgd.jpg', 14),
 ('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703764367/Games-Hub/wp1809623-grand-theft-auto-v-wallpapers_n8tfov.jpg', 15);
->>>>>>> Stashed changes
 
 
 -- -----------------------------------------------------
@@ -218,11 +181,11 @@ INSERT INTO `DigitalCart` (`BuyerId`, `ProductId`, `Count`) VALUES
 -- -----------------------------------------------------
 -- Inserting dummy data into `Order`
 -- -----------------------------------------------------
-INSERT INTO `Order` (`BuyerId`, `OrderDate`, `OrderPrice`, `OrderStatus`) VALUES
-(1, '2023-01-15', 800.00, 'Shipped'),
-(2, '2023-02-20', 300.00, 'Returned'),
-(1, '2023-01-15', 800.00, 'Shipped'),
-(2, '2023-02-20', 300.00, 'Returned');
+INSERT INTO `Order` (`BuyerId`, `OrderDate`, `OrderPrice`, `PaymentMethod`, `OrderStatus`) VALUES
+(1, '2023-01-15', 800.00, 'Wallet', 'Shipped'),
+(2, '2023-02-20', 300.00, 'COD', 'Returned'),
+(1, '2023-01-15', 800.00, 'COD', 'Shipped'),
+(2, '2023-02-20', 300.00, 'Wallet', 'Returned');
 
 
 -- -----------------------------------------------------
@@ -244,10 +207,24 @@ INSERT INTO `DigitalOrderItem` (`OrderId`, `ProductId`, `Count`, `UnitPrice`, `T
 
 
 -- -----------------------------------------------------
+-- Inserting dummy data into `DigitalCode`
+-- -----------------------------------------------------
+INSERT INTO `DigitalCode` (`OrderId`, `ProductId`, `Code`) VALUES
+(3, 1, 'AAAAAAAA'),
+(3, 1, 'BBBBBBBB'),
+(3, 2, 'CCCCCCCC'),
+(4, 3, 'DDDDDDDD'),
+(4, 3, 'EEEEEEEE'),
+(4, 3, 'FFFFFFFF'),
+(4, 3, 'GGGGGGGG'),
+(4, 3, 'HHHHHHHH');
+
+
+-- -----------------------------------------------------
 -- Inserting dummy data into `PhysicalProductRequest`
 -- -----------------------------------------------------
 INSERT INTO `PhysicalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`) VALUES
-('2023-12-08', 'Review', 'New', 'Board Game', 40, 'Family board game for all ages.', 1, 20, '2023-12-15', 'Games'),
+('2023-12-08', 'Pending', 'New', 'Board Game', 40, 'Family board game for all ages.', 1, 20, '2023-12-15', 'Games'),
 ('2023-12-09', 'Denied', 'Update', 'Cycling Helmet', 150, 'High-quality helmet for cycling enthusiasts.', 2, 10, '2023-12-16', 'Sports');
 
 
@@ -257,19 +234,6 @@ INSERT INTO `PhysicalProductRequest` (`DateReceived`, `Status`, `RequestType`, `
 INSERT INTO `DigitalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`, `Code`) VALUES
 ('2023-12-10', 'Pending', 'New', 'Digital Artwork', 500, 'High-quality digital art for game development.', 1, 5, '2023-12-12', 'Art', 'ART001'),
 ('2023-12-11', 'Approved', 'Update', 'E-book Collection', 300, 'Collection of fantasy e-books.', 2, 10, '2023-12-13', 'Books', 'EBK002');
-
-
--- Dummy data for PhysicalProductRequestImagesUrl
-INSERT INTO GamesHub.PhysicalProductRequestImagesUrl (Image, requestId) VALUES
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 2);
-
--- Dummy data for DigitalProductRequestImagesUrl
-INSERT INTO GamesHub.DigitalProductRequestImagesUrl (Image, requestId) VALUES
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 1),
-('https://res.cloudinary.com/dvnf3jmrz/image/upload/v1703766127/OIP_1_vt7a7z.jpg', 2);
 
 
 -- -----------------------------------------------------

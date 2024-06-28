@@ -13,10 +13,19 @@ USE `GamesHub` ;
 
 
 -- -----------------------------------------------------
+-- Table `GamesHub`.`User`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `GamesHub`.`User` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Id`)
+) ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `GamesHub`.`Buyer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Buyer` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Id` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -32,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Buyer` (
 -- Table `GamesHub`.`Seller`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Seller` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Id` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -52,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Seller` (
 -- Table `GamesHub`.`Admin`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Admin` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Id` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -72,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProduct` (
   `Description` TEXT,
   `SellerId` INT NOT NULL,
   `Count` INT,
-  `Category` VARCHAR(20),
+  `Category` VARCHAR(50),
   `PostDate` DATE NOT NULL,
   PRIMARY KEY (`Id`),
   INDEX `SellerIdIdx` (`SellerId` ASC) VISIBLE,
@@ -94,12 +103,8 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProduct` (
   `Description` TEXT,
   `SellerId` INT NOT NULL,
   `Count` INT,
-<<<<<<< Updated upstream
-  `Category` VARCHAR(20),
-  `Code` VARCHAR(100) NOT NULL,
-=======
   `Category` VARCHAR(50),
->>>>>>> Stashed changes
+  `Code` VARCHAR(100) NOT NULL,
   `PostDate` DATE NOT NULL,
   PRIMARY KEY (`Id`),
   INDEX `SellerIdIdx` (`SellerId` ASC) VISIBLE,
@@ -109,6 +114,32 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProduct` (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
+
+
+DROP TABLE IF EXISTS `physical_product_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE physical_product_image (
+    `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `url` TEXT,
+    `physical_product_id` INT NOT NULL,
+    FOREIGN KEY (physical_product_id) REFERENCES physicalproduct(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+
+DROP TABLE IF EXISTS `digital_product_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE digital_product_image (
+    `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `url` TEXT,
+    `digital_product_id` INT NOT NULL,
+    FOREIGN KEY (digital_product_id) REFERENCES digitalproduct(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
 
 
 -- -----------------------------------------------------
@@ -163,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Order` (
   `BuyerId` INT NOT NULL,
   `OrderDate` DATE,
   `OrderPrice` FLOAT NOT NULL,
+  `PaymentMethod` VARCHAR(10),
   `OrderStatus` VARCHAR(45),
   PRIMARY KEY (`Id`),
   CONSTRAINT `OrderBuyerIdFK1`
@@ -220,6 +252,22 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalOrderItem` (
 
 
 -- -----------------------------------------------------
+-- Table `GamesHub`.`DigitalCode`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalCode` (
+  `OrderId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
+  `Code` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`OrderId`, `ProductId`, `Code`),
+  CONSTRAINT `DigitalProductIdFK3`
+    FOREIGN KEY (`OrderId`, `ProductId`)
+    REFERENCES `GamesHub`.`DigitalOrderItem` (`OrderId`, `ProductId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `GamesHub`.`PhysicalProductRequest`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProductRequest` (
@@ -260,23 +308,6 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProductRequest` (
 ) ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `GamesHub`.`PhysicalProductRequestImagesUrl` (
-    `Id` INT NOT NULL AUTO_INCREMENT,
-    `Image` TEXT NOT NULL,
-    `requestId` INT,
-    PRIMARY KEY (`Id`),
-    FOREIGN KEY (`requestId`) REFERENCES `GamesHub`.`PhysicalProductRequest` (`Id`)
-) ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS `GamesHub`.`DigitalProductRequestImagesUrl` (
-    `Id` INT NOT NULL AUTO_INCREMENT,
-    `Image` TEXT NOT NULL,
-    `requestId` INT,
-    PRIMARY KEY (`Id`),
-    FOREIGN KEY (`requestId`) REFERENCES `GamesHub`.`DigitalProductRequest` (`Id`)
-) ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
--- End of Tables
+-- End of Tablesphysical_product_image
 -- -----------------------------------------------------
