@@ -13,10 +13,19 @@ USE `GamesHub` ;
 
 
 -- -----------------------------------------------------
+-- Table `GamesHub`.`User`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `GamesHub`.`User` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Id`)
+) ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `GamesHub`.`Buyer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Buyer` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Id` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -27,12 +36,23 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Buyer` (
   PRIMARY KEY (`Id`)
 ) ENGINE = InnoDB;
 
+-- Trigger for Buyer
+DELIMITER //
+CREATE TRIGGER `GamesHub`.`before_buyer_insert`
+BEFORE INSERT ON `GamesHub`.`Buyer`
+FOR EACH ROW
+BEGIN
+  INSERT INTO `GamesHub`.`User` () VALUES ();
+  SET NEW.Id = LAST_INSERT_ID();
+END //
+DELIMITER ;
+
 
 -- -----------------------------------------------------
 -- Table `GamesHub`.`Seller`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Seller` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Id` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -47,12 +67,23 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Seller` (
   UNIQUE INDEX `EmailUnique` (`Email` ASC) VISIBLE
 ) ENGINE = InnoDB;
 
+-- Trigger for Seller
+DELIMITER //
+CREATE TRIGGER `GamesHub`.`before_seller_insert`
+BEFORE INSERT ON `GamesHub`.`Seller`
+FOR EACH ROW
+BEGIN
+  INSERT INTO `GamesHub`.`User` () VALUES ();
+  SET NEW.Id = LAST_INSERT_ID();
+END //
+DELIMITER ;
+
 
 -- -----------------------------------------------------
 -- Table `GamesHub`.`Admin`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamesHub`.`Admin` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Id` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Phone` VARCHAR(15) NULL,
   `Email` VARCHAR(255) NOT NULL,
@@ -60,6 +91,17 @@ CREATE TABLE IF NOT EXISTS `GamesHub`.`Admin` (
   UNIQUE INDEX `EmailUnique` (`Email` ASC) VISIBLE,
   PRIMARY KEY (`Id`)
 ) ENGINE = InnoDB;
+
+-- Trigger for Admin
+DELIMITER //
+CREATE TRIGGER `GamesHub`.`before_admin_insert`
+BEFORE INSERT ON `GamesHub`.`Admin`
+FOR EACH ROW
+BEGIN
+  INSERT INTO `GamesHub`.`User` () VALUES ();
+  SET NEW.Id = LAST_INSERT_ID();
+END //
+DELIMITER ;
 
 
 -- -----------------------------------------------------

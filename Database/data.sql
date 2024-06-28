@@ -71,26 +71,26 @@ INSERT INTO `Admin` (`Name`, `Phone`, `Email`, `Password`) VALUES
 -- Inserting dummy data into `PhysicalProduct`
 -- -----------------------------------------------------
 INSERT INTO `PhysicalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Count`, `Category`, `PostDate`) VALUES
-('VR Headset', 200.00, 'Immersive VR experience with high resolution.', 1, 15, 'Gaming PC', '2023-12-08'),
-('Gaming Console', 300.00, 'Latest model of our popular game console.', 1, 10, 'Gaming PC', '2023-12-08'),
-('Gaming Laptop', 800.00, 'High-performance gaming laptop designed for gaming.', 1, 8, 'Gaming LAPTOP', '2023-12-08'),
-('Gaming Chair', 150.00, 'Comfortable gaming chair for long gaming sessions.', 1, 20, 'Gaming Furniture', '2023-12-08'),
-('Wireless Gaming Mouse', 50.00, 'Ergonomic wireless mouse for gaming.', 2, 30, 'Mouse', '2023-12-08'),
-('Mechanical Gaming Keyboard', 80.00, 'Mechanical keyboard for precise gaming control.', 2, 25, 'Keyboard', '2023-12-08'),
-('Gaming PC', 1200.00, 'Powerful gaming PC for ultimate gaming experience.', 2, 5, 'Gaming PC', '2023-12-08'),
-('Gaming Desk', 100.00, 'Spacious gaming desk for multiple monitors.', 2, 15, 'Gaming Furniture', '2023-12-08'),
-('Gaming Laptop', 900.00, 'High-performance gaming laptop designed for gaming.', 3, 10, 'Gaming LAPTOP', '2023-12-08'),
-('Gaming Chair', 120.00, 'Comfortable gaming chair for long gaming sessions.', 3, 18, 'Gaming Furniture', '2023-12-08'),
-('Wireless Gaming Mouse', 55.00, 'Ergonomic wireless mouse for gaming.', 3, 25, 'Mouse', '2023-12-08'),
-('Mechanical Gaming Keyboard', 75.00, 'Mechanical keyboard for precise gaming control.', 3, 20, 'Keyboard', '2023-12-08'),
-('Gaming PC', 1100.00, 'Powerful gaming PC for ultimate gaming experience.', 4, 7, 'Gaming PC', '2023-12-08'),
-('Gaming Desk', 80.00, 'Spacious gaming desk for multiple monitors.', 4, 12, 'Gaming Furniture', '2023-12-08'),
-('Wireless Gaming Mouse', 60.00, 'Ergonomic wireless mouse for gaming.', 4, 22, 'Mouse', '2023-12-08'),
-('Mechanical Gaming Keyboard', 90.00, 'Mechanical keyboard for precise gaming control.', 4, 18, 'Keyboard', '2023-12-08'),
-('Gaming Laptop', 950.00, 'High-performance gaming laptop designed for gaming.', 5, 12, 'Gaming LAPTOP', '2023-12-08'),
-('Gaming Chair', 130.00, 'Comfortable gaming chair for long gaming sessions.', 5, 15, 'Gaming Furniture', '2023-12-08'),
-('Wireless Gaming Mouse', 65.00, 'Ergonomic wireless mouse for gaming.', 5, 20, 'Mouse', '2023-12-08'),
-('Mechanical Gaming Keyboard', 85.00, 'Mechanical keyboard for precise gaming control.', 5, 15, 'Keyboard', '2023-12-08');
+('VR Headset', 200.00, 'Immersive VR experience with high resolution.', 11, 15, 'Gaming PC', '2023-12-08'),
+('Gaming Console', 300.00, 'Latest model of our popular game console.', 11, 10, 'Gaming PC', '2023-12-08'),
+('Gaming Laptop', 800.00, 'High-performance gaming laptop designed for gaming.', 11, 8, 'Gaming LAPTOP', '2023-12-08'),
+('Gaming Chair', 150.00, 'Comfortable gaming chair for long gaming sessions.', 11, 20, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 50.00, 'Ergonomic wireless mouse for gaming.', 12, 30, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 80.00, 'Mechanical keyboard for precise gaming control.', 12, 25, 'Keyboard', '2023-12-08'),
+('Gaming PC', 1200.00, 'Powerful gaming PC for ultimate gaming experience.', 12, 5, 'Gaming PC', '2023-12-08'),
+('Gaming Desk', 100.00, 'Spacious gaming desk for multiple monitors.', 12, 15, 'Gaming Furniture', '2023-12-08'),
+('Gaming Laptop', 900.00, 'High-performance gaming laptop designed for gaming.', 13, 10, 'Gaming LAPTOP', '2023-12-08'),
+('Gaming Chair', 120.00, 'Comfortable gaming chair for long gaming sessions.', 13, 18, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 55.00, 'Ergonomic wireless mouse for gaming.', 13, 25, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 75.00, 'Mechanical keyboard for precise gaming control.', 13, 20, 'Keyboard', '2023-12-08'),
+('Gaming PC', 1100.00, 'Powerful gaming PC for ultimate gaming experience.', 14, 7, 'Gaming PC', '2023-12-08'),
+('Gaming Desk', 80.00, 'Spacious gaming desk for multiple monitors.', 14, 12, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 60.00, 'Ergonomic wireless mouse for gaming.', 14, 22, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 90.00, 'Mechanical keyboard for precise gaming control.', 14, 18, 'Keyboard', '2023-12-08'),
+('Gaming Laptop', 950.00, 'High-performance gaming laptop designed for gaming.', 15, 12, 'Gaming LAPTOP', '2023-12-08'),
+('Gaming Chair', 130.00, 'Comfortable gaming chair for long gaming sessions.', 15, 15, 'Gaming Furniture', '2023-12-08'),
+('Wireless Gaming Mouse', 65.00, 'Ergonomic wireless mouse for gaming.', 15, 20, 'Mouse', '2023-12-08'),
+('Mechanical Gaming Keyboard', 85.00, 'Mechanical keyboard for precise gaming control.', 15, 15, 'Keyboard', '2023-12-08');
 
 
 
@@ -98,21 +98,21 @@ INSERT INTO `PhysicalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Cou
 -- Inserting dummy data into `DigitalProduct`
 -- -----------------------------------------------------
 INSERT INTO `DigitalProduct` (`Title`, `Price`, `Description`, `SellerId`, `Count`, `Category`, `Code`, `PostDate`) VALUES
-('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 1, 10, 'Games', 'DG001', '2023-12-08'),
-('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 1, 15, 'VR Games', 'VR001', '2023-12-08'),
-('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 2, 25, 'Action', 'WG001', '2023-12-08'),
-('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 2, 5, 'PC', 'HL001', '2023-12-08'),
-('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 2, 2, 'Software and Utilities', 'EQ001', '2023-12-08'),
-('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 3, 10, 'Mobile Gaming', 'DG002', '2023-12-08'),
-('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 3, 15, 'VR Games', 'VR002', '2023-12-08'),
-('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 3, 25, 'Action', 'WG002', '2023-12-08'),
-('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 3, 5, 'PC', 'HL002', '2023-12-08'),
-('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 3, 2, 'Games', 'EQ002', '2023-12-08'),
-('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 4, 10, 'Software and Utilities', 'DG003', '2023-12-08'),
-('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 4, 15, 'VR Games', 'VR003', '2023-12-08'),
-('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 4, 25, 'Mobile Gaming', 'WG003', '2023-12-08'),
-('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 4, 5, 'Sports', 'HL003', '2023-12-08'),
-('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 4, 2, 'Mobile Gaming', 'EQ003', '2023-12-08');
+('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 11, 10, 'Games', 'DG001', '2023-12-08'),
+('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 11, 15, 'VR Games', 'VR001', '2023-12-08'),
+('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 12, 25, 'Action', 'WG001', '2023-12-08'),
+('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 12, 5, 'PC', 'HL001', '2023-12-08'),
+('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 12, 2, 'Software and Utilities', 'EQ001', '2023-12-08'),
+('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 13, 10, 'Mobile Gaming', 'DG002', '2023-12-08'),
+('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 13, 15, 'VR Games', 'VR002', '2023-12-08'),
+('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 13, 25, 'Action', 'WG002', '2023-12-08'),
+('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 13, 5, 'PC', 'HL002', '2023-12-08'),
+('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 13, 2, 'Games', 'EQ002', '2023-12-08'),
+('Digital Game Bundle', 300.00, 'Get the latest digital game bundle with multiple titles.', 14, 10, 'Software and Utilities', 'DG003', '2023-12-08'),
+('Virtual Reality Gaming Experience', 200.00, 'Immersive VR gaming with a high-resolution headset.', 14, 15, 'VR Games', 'VR003', '2023-12-08'),
+('Wireless Gaming Controller Pack', 60.00, 'Bundle of ergonomic wireless controllers for various gaming platforms.', 14, 25, 'Mobile Gaming', 'WG003', '2023-12-08'),
+('High-Performance Gaming Laptop', 1000.00, 'Top-notch gaming laptop for an exceptional gaming experience.', 14, 5, 'Sports', 'HL003', '2023-12-08'),
+('Epic Quests Strategy Game', 50.00, 'Embark on epic quests with our latest strategy game.', 14, 2, 'Mobile Gaming', 'EQ003', '2023-12-08');
 
 
 INSERT INTO `digital_product_image` (`url`, `digital_product_id`) VALUES
@@ -224,16 +224,16 @@ INSERT INTO `DigitalCode` (`OrderId`, `ProductId`, `Code`) VALUES
 -- Inserting dummy data into `PhysicalProductRequest`
 -- -----------------------------------------------------
 INSERT INTO `PhysicalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`) VALUES
-('2023-12-08', 'Pending', 'New', 'Board Game', 40, 'Family board game for all ages.', 1, 20, '2023-12-15', 'Games'),
-('2023-12-09', 'Denied', 'Update', 'Cycling Helmet', 150, 'High-quality helmet for cycling enthusiasts.', 2, 10, '2023-12-16', 'Sports');
+('2023-12-08', 'Pending', 'New', 'Board Game', 40, 'Family board game for all ages.', 11, 20, '2023-12-15', 'Games'),
+('2023-12-09', 'Denied', 'Update', 'Cycling Helmet', 150, 'High-quality helmet for cycling enthusiasts.', 12, 10, '2023-12-16', 'Sports');
 
 
 -- -----------------------------------------------------
 -- Inserting dummy data into `DigitalProductRequest`
 -- -----------------------------------------------------
 INSERT INTO `DigitalProductRequest` (`DateReceived`, `Status`, `RequestType`, `Title`, `Price`, `Description`, `SellerId`, `Count`, `PostDate`, `Category`, `Code`) VALUES
-('2023-12-10', 'Pending', 'New', 'Digital Artwork', 500, 'High-quality digital art for game development.', 1, 5, '2023-12-12', 'Art', 'ART001'),
-('2023-12-11', 'Approved', 'Update', 'E-book Collection', 300, 'Collection of fantasy e-books.', 2, 10, '2023-12-13', 'Books', 'EBK002');
+('2023-12-10', 'Pending', 'New', 'Digital Artwork', 500, 'High-quality digital art for game development.', 11, 5, '2023-12-12', 'Art', 'ART001'),
+('2023-12-11', 'Approved', 'Update', 'E-book Collection', 300, 'Collection of fantasy e-books.', 12, 10, '2023-12-13', 'Books', 'EBK002');
 
 
 -- -----------------------------------------------------
